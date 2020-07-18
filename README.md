@@ -93,7 +93,7 @@ inserted this command.
 
 ### Tips when using a macro
 TO GET... | ...WRITE
---------------------
+----------|----------
 @ | @@
 { (in a macro) | @{
 } (in a macro) | @}
