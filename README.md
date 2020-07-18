@@ -118,7 +118,9 @@ distribution. There are packages for other systems.
 To compile invoke the build script, for example: `makeBook en pdf`
 
 
-Do not read bellow, need to be processed, not yet there.
+**DO NOT READ BELLOW, NEED TO BE PROCESSED, NOT YET THERE.**
+
+-------------------------------------------------------------------------------
 
 SPECIAL BLOC COMMAND TO DESCRIBE METHODS
 read source book for examples
