@@ -1,0 +1,364 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This book is for Cuis-Smalltalk (5.0#4253), a free and modern
+implementation of the Smalltalk language and environment.
+
+Copyright (C) 2020 Hilaire Fernandes and Juan Vuletich
+
+Compilation : July 18, 2020
+
+Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
+
+
+
+The contents of this book are protected under Creative Commons
+Attribution-ShareAlike 4.0 International.
+
+You are free to:
+
+
+Share - copy and redistribute the material in any medium or
+format
+
+
+Adapt - remix, transform, and build upon the material for any
+purpose, even commercially.
+
+
+
+Under the following terms:
+
+
+Attribution. You must give appropriate credit, provide a link to
+the license, and indicate if changes were made. You may do so in any
+reasonable manner, but not in any way that suggests the licensor
+endorses you or your use.
+
+
+Share Alike. If you remix, transform, or build upon the material,
+you must distribute your contributions under the same license as the
+original.
+
+Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+ -->
+<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Writing your first scripts (The Cuis-Smalltalk Book)</title>
+
+<meta name="description" content="Writing your first scripts (The Cuis-Smalltalk Book)">
+<meta name="keywords" content="Writing your first scripts (The Cuis-Smalltalk Book)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Indexes.html#Indexes" rel="index" title="Indexes">
+<link href="Getting-started.html#Getting-started" rel="up" title="Getting started">
+<link href="Introduction-to-the-system-classes.html#Introduction-to-the-system-classes" rel="next" title="Introduction to the system classes">
+<link href="Installing-and-configuring-Cuis_002dSmalltalk.html#Installing-and-configuring-Cuis_002dSmalltalk" rel="prev" title="Installing and configuring Cuis-Smalltalk">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="style.css">
+
+
+</head>
+
+<body lang="en">
+<a name="Writing-your-first-scripts"></a>
+<div class="header">
+<p>
+Next: <a href="Introduction-to-the-system-classes.html#Introduction-to-the-system-classes" accesskey="n" rel="next">Introduction to the system classes</a>, Previous: <a href="Installing-and-configuring-Cuis_002dSmalltalk.html#Installing-and-configuring-Cuis_002dSmalltalk" accesskey="p" rel="prev">Installing and configuring Cuis-Smalltalk</a>, Up: <a href="Getting-started.html#Getting-started" accesskey="u" rel="up">Getting started</a> &nbsp; [<a href="Indexes.html#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Writing-your-first-scripts-1"></a>
+<h3 class="section">1.2 Writing your first scripts</h3>
+<p>In this section we present a few scripts so you will get a taste and
+feeling about Smalltalk code. The examples are completed with small
+exercises to experiment with and accompanied with solutions in the
+annex. We intentionally keep the details of the syntax out of this
+section.
+</p>
+<p>Smalltalk script are usually written in a Workspace. The usual
+<em>Hello world!</em> program is written as:
+</p>
+<div class="float"><a name="hello"></a>
+<div class="display">
+<pre class="display"><span class="sansserif">Transcript show: &rsquo;Hello World&rsquo;</span>
+</pre></div>
+
+<div class="float-caption"><p><strong><em>Example</em> 1.1: </strong>The traditional &rsquo;Hello World!&rsquo; program</p></div></div>
+<a name="index-tools_002c-transcript"></a>
+<p>To execute this code, select it with the mouse and
+...right mouse click &rarr; Do it (d)...  Nothing
+happen! Indeed to see the output, you need a <em>Transcript</em> window,
+it is a place where programmer send information for the user as we are
+doing in our example. Do ...Background click &rarr;
+Open... &rarr; Transcript... and execute again the code.
+</p>
+<div class="float"><a name="B_002d01_002dimg2"></a>
+<div align="center"><img src="B-01-img2.png" alt="B-01-img2">
+</div>
+<div class="float-caption"><p><strong><em>Figure</em> 1.2: </strong>Transcript window with output</p></div></div>
+<p>This code comes in three parts:
+</p>
+<ul>
+<li> the literal <span class="sansserif">&rsquo;Hello World!&rsquo;</span>  
+
+</li><li> the message <span class="sansserif">#show:</span> with its argument <span class="sansserif">&rsquo;Hello World!&rsquo;</span>
+
+</li><li> the class <span class="sansserif">Transcript</span> receiving the message <span class="sansserif">#show:</span> with its argument
+
+</li></ul>
+
+<p>The action of printing takes place in the class
+<span class="sansserif">Transcript</span>. The code execution is invoked with keyboard
+shortcuts <kbd>Ctrl-A</kbd> then <kbd>Ctrl-D</kbd> (<em><b>D</b>o it</em>).
+</p>
+<div class="float"><a name="hello2"></a>
+<div class="display">
+<pre class="display"><span class="sansserif">Transcript show: &rsquo;Hello World!&rsquo;.
+Transcript newLine.
+Transcript show: &rsquo;I am Cuising&rsquo;</span>
+</pre></div>
+
+<div class="float-caption"><p><strong><em>Example</em> 1.2: </strong>Multiple lines</p></div></div>
+<p>In this three lines script, observe how the line are separated by a
+dot &ldquo;.&rdquo;. It is really a line separator not needed in the third line
+nor in a one line script. The message <span class="sansserif">#newLine</span> has no argument.
+</p>
+<a name="index-cascade-of-messages"></a>
+<p>In the <a href="#hello2"><em>Example</em> 1.2</a> example, the message <span class="sansserif">#show:</span> and <span class="sansserif">#newLine</span>
+are sent to the same <span class="sansserif">Transcript</span> class. In such circumstance,
+we can use the cascade technique to avoid this repetition. The
+receiver <span class="sansserif">Transcript</span> is written once and the sent messages are
+separated by semicolon:
+</p>
+<div class="float"><a name="helloCascade"></a>
+<div class="display">
+<pre class="display"><span class="sansserif">Transcript
+   show: &rsquo;Hello World!&rsquo;;
+   newLine;
+   show: &rsquo;I am Cuising&rsquo;</span>
+</pre></div>
+
+<div class="float-caption"><p><strong><em>Example</em> 1.3: </strong>Cascade of message</p></div></div>
+<p>Observe the text layout to ease code understanding. It is possible to
+write the cascade of messages in one line, but it reduces the
+readability of the code:
+</p>
+<div class="display">
+<pre class="display"><span class="sansserif">Transcript show: &rsquo;Hello World!&rsquo;; newLine; show: &rsquo;I am Cuising&rsquo;</span>
+</pre></div>
+
+<p>The <span class="sansserif">Transcript</span> class is most of the time used to output useful
+information when developing an application. As an alternative to the
+<kbd>Ctrl-d</kbd> shortcut, <kbd>Ctrl-p</kbd> (<em><b>P</b>rint it</em>) executes the
+script and prints as is the result of the last line of
+the script in the Workspace .
+</p>
+<a name="Fun-with-integers"></a>
+<h4 class="subsection">1.2.1 Fun with integers</h4>
+<a name="index-number_002c-integer"></a>
+<p>In your Workspace, try out and invoke with <kbd>Ctrl-a</kbd> then
+<kbd>Ctrl-p</kbd> to get an unordered set of natural numbers from 0 to 100:
+</p>
+<div class="display">
+<pre class="display"><span class="sansserif">(1 to: 100) asArray
+&rArr; #(1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22
+23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45
+46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68
+69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91
+92 93 94 95 96 97 98 99 100)</span>
+</pre></div>
+
+<p>In this line of code, the message <span class="sansserif">#to:</span> is sent to <span class="sansserif">1</span>
+with the argument <span class="sansserif">100</span>. It returns an interval object. The
+message <span class="sansserif">#asArray</span> sent to the interval returns an array.
+</p>
+<div class="float"><a name="exeNegativeIntegers"></a>
+<blockquote class="indentedblock">
+<p><em>Create an
+array of integer numbers ranging from -80 to 50.</em>
+</p></blockquote>
+
+
+<div class="float-caption"><p><strong><em>Exercise</em> 1.2: </strong>Negative integer numbers</p></div></div>
+<p>Cuis-Smalltalk knows some arithmetic operations to test if an integer is an
+odd, even or prime number. You just send the appropriate message to
+the number:
+</p>
+<div class="float"><a name="integerBasicTest"></a>
+<div class="display">
+<pre class="display"><span class="sansserif">25 odd                             
+&rArr; true
+25 even
+&rArr; false
+25 isPrime
+&rArr; false
+23 isPrime
+&rArr; true</span>
+</pre></div>
+
+<div class="float-caption"><p><strong><em>Example</em> 1.4: </strong>Testing on integer</p></div></div>
+<p>To select the prime number from 1 to 100, we use one of the numerous
+enumerate Cuis-Smalltalk methods:
+</p>
+<div class="float"><a name="primber100"></a>
+<div class="display">
+<pre class="display"><span class="sansserif">(1 to: 100) select: [:n | n isPrime]</span>
+</pre></div>
+
+<div class="float-caption"><p><strong><em>Example</em> 1.5: </strong>Select prime number between 1 and 100</p></div></div>
+<p>This example introduces the message <span class="sansserif">#select:</span> and an important
+constituting element of Cuis-Smalltalk: the block of code between square
+brackets. A block of code is a piece of code for later
+execution(s). Let&rsquo;s explain how this script is executed:
+</p>
+<ul>
+<li> <span class="sansserif">(1 to: 100)</span> is evaluated as an interval
+
+</li><li> the block of code <span class="sansserif">[:n | n isPrime]</span> is instantiated
+
+</li><li> the message <span class="sansserif">#select:</span> is sent to the interval with the
+ block of code as argument
+
+</li><li> for each integer of the interval, the block of code is executed
+ with the argument <span class="sansserif">n</span> taking the integer value. Then, each
+ time the <span class="sansserif">n isPrime</span> returns true, the <span class="sansserif">n</span> value
+ is selected in a collection to be returned at the end of the
+ <span class="sansserif">select:</span> method.
+
+</li></ul>
+
+
+<div class="float"><a name="oddNumbers"></a>
+<blockquote class="indentedblock">
+<p>Select the odd number between -20 and
+45.
+</p></blockquote>
+
+
+<div class="float-caption"><p><strong><em>Exercise</em> 1.3: </strong>Odd numbers</p></div></div>
+<a name="Fun-with-decimal"></a>
+<h4 class="subsection">1.2.2 Fun with decimal</h4>
+<a name="index-number_002c-decimal"></a>
+<p>Decimal numbers are written with a dot &ldquo;.&rdquo; to separate the integer
+and the decimal parts: <span class="sansserif">1.5</span>, <span class="sansserif">1235.021</span> or
+<span class="sansserif">0.5</span>. The number <span class="sansserif">0.00004</span> is more easily written
+<span class="sansserif">4e-5</span>; it means 4 preceded by 5 zeros or 4 as the fifth
+digit after the decimal dot.
+</p>
+<p><strong>Attention.</strong> Computer represents decimal number
+imprecisely. You need to be aware of that when doing computation and
+equality comparison. Most system hides these errors because there are
+very tiny errors. Cuis-Smalltalk does not hide these inaccuracy.
+</p>
+<div class="float"><a name="FloatPrecision"></a>
+<div class="display">
+<pre class="display"><span class="sansserif">0.1 + 0.2 - 0.3
+&rArr; 5.551115123125783e-17</span>
+</pre></div>
+
+<div class="float-caption"><p><strong><em>Example</em> 1.6: </strong>Computer dyscalculia!</p></div></div>
+<p>In <a href="#FloatPrecision"><em>Example</em> 1.6</a>, the returned value should be zero but it is
+not the case. The computer returns <span class="sansserif">5.55e-17</span>, or
+<span class="sansserif">0.0000000000000000555</span>, it is very close to zero, but there
+is an error.
+</p>
+<div class="float"><a name="exeFloatPrecision"></a>
+<blockquote class="indentedblock">
+<p><em>Give 3 calculus showing errors compare
+to the expected results.</em>
+</p></blockquote>
+
+
+<div class="float-caption"><p><strong><em>Exercise</em> 1.4: </strong>Miscellaneous calculus errors with decimal
+number</p></div></div>
+<p>When accuracy is absolutely mandatory use the Rational Numbers
+representation of Cuis-Smalltalk.
+</p>
+<a name="index-number_002c-rational"></a>
+<a name="index-number_002c-fraction"></a>
+<p>A rational number is written with the division symbol between two
+integers: do <kbd>Ctrl-p</kbd> on <span class="sansserif">5/2</span> &rArr;
+<span class="sansserif">(5/2)</span>. Cuis-Smalltalk returns a fraction surrounded by
+parenthesis, it is not calculated as a decimal.
+</p>
+<div class="float"><a name="exeZeroDivide"></a>
+<blockquote class="indentedblock">
+<p><em>What happen when
+executing this code</em> <span class="sansserif">5/0</span><em>?</em>
+</p></blockquote>
+
+
+<div class="float-caption"><p><strong><em>Exercise</em> 1.5: </strong>Toward the infinite</p></div></div>
+<p>Let&rsquo;s come back to our computer dyscalculia with decimal numbers. When
+using the rational numbers, l&rsquo;<a href="#FloatPrecision"><em>Example</em> 1.6</a> becomes:
+</p>
+<div class="float"><a name="FractionPrecision"></a>
+<div class="display">
+<pre class="display"><span class="sansserif">(1/10) + (2/10) - (3/10)
+&rArr; 0</span>
+</pre></div>
+
+<div class="float-caption"><p><strong><em>Example</em> 1.7: </strong>Right with fraction!</p></div></div>
+<p>This time we have the expected result. Underneath the computer only
+does calculus with integers.
+</p>
+<div class="float"><a name="exeFractionPrecision"></a>
+<blockquote class="indentedblock">
+<p><em>Return to
+<a href="#exeFloatPrecision"><em>Exercise</em> 1.4</a> and use rational writing to represent decimal
+numbers. The errors are gone.</em>
+</p></blockquote>
+
+
+<div class="float-caption"><p><strong><em>Exercise</em> 1.6: </strong>Fix the errors</p></div></div>
+<p>Cuis-Smalltalk knows how to convert a decimal number as a fraction, by
+sending the message <span class="sansserif">#asFraction</span>. We already acknowledged the
+computer dyscalculia trouble with decimal number, this is why when
+asking for a fraction representation we have this strange answer. The
+internal computer represenation of <span class="sansserif">1.3</span> is not exactly it:
+</p>
+<div class="display">
+<pre class="display"><span class="sansserif">1.3 asFraction
+&rArr; 5854679515581645/45035996273704</span>
+</pre></div>
+
+
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Introduction-to-the-system-classes.html#Introduction-to-the-system-classes" accesskey="n" rel="next">Introduction to the system classes</a>, Previous: <a href="Installing-and-configuring-Cuis_002dSmalltalk.html#Installing-and-configuring-Cuis_002dSmalltalk" accesskey="p" rel="prev">Installing and configuring Cuis-Smalltalk</a>, Up: <a href="Getting-started.html#Getting-started" accesskey="u" rel="up">Getting started</a> &nbsp; [<a href="Indexes.html#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>
