@@ -261,14 +261,14 @@ representation of @cuis{}.
 @cindex number, fraction
 A rational number is written with the division symbol between two
 integers: do @kbd{Ctrl-p} on @smalltalk{5/2} @result{}
-@smalltalk{(5/2)}. @cuis{} returns a fraction surrounded by
-parenthesis, it is not calculated as a decimal.
+@smalltalk{5/2}. @cuis{} returns a fraction, it does note compute a
+decimal.
 
 @exercise{Toward the infinite,exeZeroDivide, @emph{What happen when
 executing this code} @smalltalk{5/0}@emph{?}}
 
 Let's come back to our computer dyscalculia with decimal numbers. When
-using the rational numbers, l'@ref{FloatPrecision} becomes:
+using the rational numbers, the @ref{FloatPrecision} becomes:
 
 @smalltalkExampleCaption{Right with fraction!,FractionPrecision,
 (1/10) + (2/10) - (3/10)

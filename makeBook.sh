@@ -55,6 +55,8 @@ function doHtml {
     cd $lang
     texi2any -I $imgPath --output=$htmlDest/ --html --css-ref=style.css $masterDoc
     cd -
+    # copy to docs for git hub publishing
+    cp -a $lang/$htmlDest/* docs/
 }
 
 function cleanupDestination {
