@@ -1,7 +1,7 @@
 \input texinfo @c -*-texinfo-*-
 @c %**start of header
 @settitle The Cuis-Smalltalk Book
-@set timeStamp Time-stamp: <2020-07-17 18:10:23 hilaire>
+@set timeStamp Time-stamp: <2020-07-18 11:31:10 hilaire>
 @set cuisVersion 5.0#4253
 @set txicodequoteundirected ON 
 @paragraphindent 0
@@ -28,43 +28,32 @@ Compilation : @today{}
 
 Documentation source: @url{https://github.com/Cuis-Smalltalk/TheCuisBook} 
 
-The contents of this book are protected under Creative Commons Attribution-ShareAlike 3.0
-Unported license.
 @*
-@i{You are free:}
+The contents of this book are protected under Creative Commons
+Attribution-ShareAlike 4.0 International.
+
+@i{You are free to:}
 @*
-@b{to Share} -- to copy, distribute and transmit the work
+@b{Share} -- copy and redistribute the material in any medium or
+format
 @*
-@b{to Remix} -- to adapt the work
+@b{Adapt} -- remix, transform, and build upon the material for any
+purpose, even commercially.
+
 @*
-@i{Under the following conditions:}
+@i{Under the following terms:}
 @*
-@b{Attribution.} You must attribute the work in the manner specified by the author or licensor
-(but not in any way that suggests that they endorse you or your use of the work).
+@b{Attribution.} You must give appropriate credit, provide a link to
+the license, and indicate if changes were made. You may do so in any
+reasonable manner, but not in any way that suggests the licensor
+endorses you or your use.
 @*
-@b{Share Alike.} If you alter, transform, or build upon this work, you may distribute the resulting
-work only under the same, similar or a compatible license.
+@b{Share Alike.} If you remix, transform, or build upon the material,
+you must distribute your contributions under the same license as the
+original.
 
-@itemize
+Complete license: @url{https://creativecommons.org/licenses/by-sa/4.0/legalcode}
 
-  @item For any reuse or distribution, you must make clear to others
-  the license terms of this work. The best way to do this is with a
-  link to this web page: creativecommons.org/ licenses/by-sa/3.0/
-
-  @item Any of the above conditions can be waived if you get
-  permission from the copyright holder.
-
-  @item Nothing in this license impairs or restricts the author’s
-  moral rights. Your fair dealing and other rights are in no way
-  affected by the above. This is a human-readable summary of the Legal
-  Code (the full license):
-  creativecommons.org/licenses/by-sa/3.0/legalcode
-
-@end itemize
-
-Your fair dealing and other rights are in no way affected by the
-above. This is a human-readable summary of the Legal Code (the full
-license): creativecommons.org/licenses/by-sa/3.0/legalcode
 @end copying
 
 @titlepage

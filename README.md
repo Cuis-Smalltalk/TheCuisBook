@@ -14,6 +14,12 @@ The book comes with examples and exercises. The solutions of the
 exercises are in the annexes. We encourage writers to provides both
 examples then exercises with solutions in annexes.
 
+
+## License 
+
+The contents of this book are protected under Creative Commons
+[Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/)
+
 # Notes to the writers
 The book is writen with the GNU Texinfo software. It is the
 documentation package of the GNU project. It is a well maintained and
@@ -121,6 +127,7 @@ To compile invoke the build script, for example: `makeBook en pdf`
 **DO NOT READ BELLOW, NEED TO BE PROCESSED, NOT YET THERE.**
 
 -------------------------------------------------------------------------------
+
 
 SPECIAL BLOC COMMAND TO DESCRIBE METHODS
 read source book for examples
