@@ -46,12 +46,12 @@ To learn more about the Texinfo format:
 not use tab unless the text editor converts it to spaces.
 
 **Index.** Index when important concepts are explained. We write index
-entry lowercase! Insert an index just after a section, and just before
-a paragraph. The command to use is @cindex for conceptual index:
-`@cindex tool, workspace`
+entry lowercase! Insert an index just after a section title, and just
+before a paragraph. The command to use is @cindex for conceptual
+index: `@cindex tools, workspace`
 
 ### Macros and commands to use
-We defined a few macros to. Of course standard Texinfo command are
+We defined a few macros too. Of course standard Texinfo command are
 used, you should look at the written documentation to see when and how
 to use them.
 
@@ -75,14 +75,14 @@ flow of text
 **@dfn{Workspace}.** To emphasis a new term when it is first
 defined. Use only once.
 
-**@clicksequence{}** To describe a clic sequence, for example:
+**@clicksequence{}** To describe click sequence, for example:
 
 `...@clicksequence{Background click @click{} Open... @click{}
 Workspace}...`
 
 **@smalltalkExample{smalltalk code}.** To display in its own block
 environment an example of Smalltlak code. Use this when writing an
-example that don't need to be added to list of examples nor references
+example that doesn't need to be added to list of examples nor referenced
 from elsewhere.
 
 `@smalltalkExemple{@{1 . 2 . 3 @} collect: [:x |
@@ -96,7 +96,7 @@ the list of examples in the annexes.
 
 **@exercise{caption,uniqueLabel,text}.** To display in its own block
 environment an exercise. The exercises are compiled in the annexes, and
-the resolved exercise must be added to the E-Exercises section too.
+the resolved exercise must be added to the E-Exercises annex too.
 
 **@figure{caption,filename,width}.** Add a centered image with a
 caption with the given width in cm. The filename (without path) must
@@ -121,7 +121,7 @@ To compile the documentation you need to install the Texinfo package
 and PDFLatex. Texinfo is shipped with all GNU/Linux
 distribution. There are packages for other systems.
 
-To compile invoke the build script, for example: `makeBook en pdf`
+To compile, invoke the build script, for example: `makeBook en pdf`
 
 
 **DO NOT READ BELLOW, NEED TO BE PROCESSED, NOT YET THERE.**
