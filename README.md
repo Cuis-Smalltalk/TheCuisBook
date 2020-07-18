@@ -3,7 +3,7 @@ A book about Cuis Smalltalk. A community effort to bring documentation
 to people new to Smalltalk and even computer programming. The book
 comes in three parts.
 
-The part one of the book is an introduction to Smalltalk, it wants to
+Part one of the book is an introduction to Smalltalk, it wants to
 be an informal introduction to get the user smoothly acclimated to the
 Cuis world: the user will learn a bit about the syntax, the
 environment and its tools, the user will write small applications. The
