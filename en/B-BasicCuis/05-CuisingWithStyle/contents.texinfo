@@ -1,0 +1,22 @@
+@node Cuising with Style
+@chapter Cuising with Style
+Best practices to write @cuis{} code with style.
+
+@menu
+* Naming variable::
+* Comment::
+* Method scope::
+* Design Patterns::
+@end menu
+
+@node Naming variable
+@section Naming variable
+
+@node Comment
+@section Comment
+
+@node Method scope
+@section Method scope
+
+@node Design Patterns
+@section Design Patterns

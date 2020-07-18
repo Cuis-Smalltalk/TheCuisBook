@@ -1,0 +1,18 @@
+@node Understanding the basis of the @cuis{} model
+@chapter Understanding the basis of the @cuis{} model
+
+@menu
+* The syntax::
+* Statement as block and message sent::
+* Fundamental classes::
+@end menu
+
+
+@node The syntax
+@section The syntax
+
+@node Statement as block and message sent
+@section Statement as block and message sent
+
+@node Fundamental classes
+@section Fundamental classes

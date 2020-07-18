@@ -1,0 +1,47 @@
+@c Solution of the exercises
+@node Solutions of the exercises
+@appendix Solutions of the exercises
+
+@section Installing and configuring @cuis{}
+@subheading @ref{exePlacement}
+@figure{Placement,E-img1,8}
+
+@section Writing your first scripts
+@subheading @ref{exeNegativeIntegers}
+@example
+(-80 to: 50) asArray
+@end example
+
+@subheading @ref{exeFloatPrecision}
+@example
+5.2 + 0.9  - 6.1
+@result{} 8.881784197001252e-16
+
+5.2 + 0.7 + 0.11
+@result{} 6.010000000000001
+
+1.2 * 3  - 3.6
+@result{} -4.440892098500626e-16
+@end example
+
+@subheading @ref{exeZeroDivide}
+The system returns the error @smalltalk{ZeroDivide}, division by zero.
+
+
+@subheading @ref{exeFractionPrecision}
+@example
+(52/10) + (9/10)  - (61/10)
+@result{} 0
+
+(52/10) + (7/10)  + (11/100)
+@result{} 601/100 soit 6.01
+
+(12/10) * 3  - (36/10)
+@result{} 0
+@end example
+
+@subheading @ref{oddNumbers}
+@example
+(-20 to: 45) select: [:z | z odd]
+@end example
+

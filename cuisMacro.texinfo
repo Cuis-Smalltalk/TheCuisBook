@@ -1,0 +1,102 @@
+@c Macro definitions
+@macro cuis
+Cuis-Smalltalk
+@end macro
+
+@macro writers
+Hilaire Fernandes and Juan Vuletich
+@end macro
+
+@macro vm
+@acronym{VM}
+@end macro
+
+@c Smalltalk code in a text flow
+@alias class=sansserif
+@alias smalltalk=sansserif
+@alias method=sansserif
+@macro msg{messageName}
+@sansserif{#\messageName\}
+@end macro
+@c Smalltalk example
+@macro smalltalkExample{example}
+@iftex
+   @sp 1
+@c   @cartouche
+@end iftex
+@display
+@sansserif{\example\}
+@end display
+@iftex
+@c   @end cartouche
+   @sp 1
+@end iftex
+@end macro
+
+@c Smalltalk example with caption
+@macro smalltalkExampleCaption{caption,label,example}
+@float @emph{Example},\label\
+@iftex
+@c   @cartouche
+@end iftex
+@display
+@sansserif{\example\}
+@end display
+@iftex
+@c   @end cartouche
+@end iftex
+@caption{\caption\}
+@end float
+@iftex
+   @sp 1
+@end iftex
+@end macro
+
+@c Exercise with caption
+@macro exercise{caption,label,text}
+@float @emph{Exercise},\label\
+@iftex
+@c   @cartouche
+@end iftex
+@indentedblock
+ \text\
+@end indentedblock
+@iftex
+@c   @end cartouche
+@end iftex
+@caption{\caption\}
+@shortcaption{\caption\}
+@end float
+@iftex
+@sp 1
+@end iftex
+@end macro
+
+@c Figure with caption
+@macro figure{caption,file,width}
+@ifnotplaintext
+ @float @emph{Figure},\file\
+ @center @image{\file\,\width\cm}
+ @caption{\caption\}
+ @end float
+@end ifnotplaintext
+@ifplaintext
+ @float Figure
+ @caption{\caption\}
+ @end float
+@end ifplaintext
+@iftex
+   @sp 1
+@end iftex
+@end macro
+
+@c Iconic button
+@macro button{file}
+@ifnotplaintext
+ @image{\file\,,0.5cm}
+@end ifnotplaintext
+@end macro
+
+@macro icon{file}
+@image{\file\,1cm}
+@end macro

@@ -1,0 +1,2 @@
+@node The chronology protocol
+@chapter The chronology protocol

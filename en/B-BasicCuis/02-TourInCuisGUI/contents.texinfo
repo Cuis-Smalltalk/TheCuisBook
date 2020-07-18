@@ -1,0 +1,4 @@
+@node Writing your first application
+@chapter Writing your first application
+An excuse to discover some of the @cuis tools: the Browser and the
+Insepctor.

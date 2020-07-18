@@ -1,0 +1,198 @@
+\input texinfo @c -*-texinfo-*-
+@c %**start of header
+@settitle The Cuis-Smalltalk Book
+@set timeStamp Time-stamp: <2020-07-17 18:10:23 hilaire>
+@set cuisVersion 5.0#4253
+@set txicodequoteundirected ON 
+@paragraphindent 0
+@setfilename TheCuisBook.info
+@include ../cuisMacro.texinfo
+
+@macro thanks
+Thanks to the readers:
+@end macro
+
+@c @afourwide
+@c @afourlatex
+@c 7x9.25 inches 17.8x23.5
+@c @smallbook
+@c %**end of header
+
+@copying
+This book is for @cuis{} (@value{cuisVersion}), a free and modern
+implementation of the Smalltalk language and environment.
+
+Copyright @copyright{} 2020 @writers{}
+
+Compilation : @today{}
+
+Documentation source: @url{https://github.com/Cuis-Smalltalk/TheCuisBook} 
+
+The contents of this book are protected under Creative Commons Attribution-ShareAlike 3.0
+Unported license.
+@*
+@i{You are free:}
+@*
+@b{to Share} -- to copy, distribute and transmit the work
+@*
+@b{to Remix} -- to adapt the work
+@*
+@i{Under the following conditions:}
+@*
+@b{Attribution.} You must attribute the work in the manner specified by the author or licensor
+(but not in any way that suggests that they endorse you or your use of the work).
+@*
+@b{Share Alike.} If you alter, transform, or build upon this work, you may distribute the resulting
+work only under the same, similar or a compatible license.
+
+@itemize
+
+  @item For any reuse or distribution, you must make clear to others
+  the license terms of this work. The best way to do this is with a
+  link to this web page: creativecommons.org/ licenses/by-sa/3.0/
+
+  @item Any of the above conditions can be waived if you get
+  permission from the copyright holder.
+
+  @item Nothing in this license impairs or restricts the author’s
+  moral rights. Your fair dealing and other rights are in no way
+  affected by the above. This is a human-readable summary of the Legal
+  Code (the full license):
+  creativecommons.org/licenses/by-sa/3.0/legalcode
+
+@end itemize
+
+Your fair dealing and other rights are in no way affected by the
+above. This is a human-readable summary of the Legal Code (the full
+license): creativecommons.org/licenses/by-sa/3.0/legalcode
+@end copying
+
+@titlepage
+@title The @cuis{} book
+@author @writers{}
+
+@iftex
+   @page
+   @vskip 0pt plus 1filll
+   @insertcopying
+   @*
+   @thanks{}
+@end iftex
+@end titlepage
+
+@iftex
+@shortcontents
+@contents
+@end iftex
+
+@node Top
+
+@ifnottex
+@top @cuis
+@end ifnottex
+
+@menu
+* Preface::
+* Getting started::
+* Writing your first application::
+* Understanding the basis of the @cuis{} model::
+* Writing your second application::
+* Cuising with Style::
+* The Object protocol::
+* The numeric protocol::
+* The chronology protocol::
+* The collection protocol::
+* The text protocol::
+* The stream protocol::
+* The graphic protocol::
+* The process protocol::
+* Code management::
+* The Morpic system::
+* Testing your code::
+* Reflective programming::
+* The exercices::
+* Solutions of the exercises::
+* The examples::
+* The figures::
+* Indexes::
+@end menu
+
+@ifnottex
+ @insertcopying
+ @thanks
+@end ifnottex 
+
+@c================================================================
+@c Preface
+@include A-Preface/contents.texinfo
+@c================================================================
+@c:Part One
+@part Part One @*The basis of @cuis{}
+@c:Getting started
+@include B-BasicCuis/01-GettingStarted/contents.texinfo
+@c:Writing your first application
+@include B-BasicCuis/02-TourInCuisGUI/contents.texinfo
+@c:Understanding the basis of the Cuis model
+@include B-BasicCuis/03-BasicCuisModel/contents.texinfo
+@c:Writing your second application
+@include B-BasicCuis/04-TourInCuisGUI/contents.texinfo
+@c:Cuising with Style
+@include B-BasicCuis/05-CuisingWithStyle/contents.texinfo
+@c================================================================
+@c:Part Two
+@part Part Two @*System classes
+@c:The Object protocol
+@include C-SystemClasses/01-Object/contents.texinfo
+@c:The numeric protocol
+@include C-SystemClasses/02-Numeric/contents.texinfo
+@c:The chronology protocol
+@include C-SystemClasses/03-Chronology/contents.texinfo
+@c:The collection protocol
+@include C-SystemClasses/04-Collection/contents.texinfo
+@c:The text protocol
+@include C-SystemClasses/05-Text/contents.texinfo
+@c:The stream protocol
+@include C-SystemClasses/06-Stream/contents.texinfo
+@c:The graphic protocol
+@include C-SystemClasses/07-Graphic/contents.texinfo
+@c:The process protocol
+@include C-SystemClasses/08-Process/contents.texinfo
+@c================================================================
+@c:Part Three
+@part Part Three @*Advanced @cuis{}
+@c:Code Management
+@include D-AdvancedCuis/01-CodeManagement/contents.texinfo
+@c:The Morpic system
+@include D-AdvancedCuis/02-GoingVisual/contents.texinfo
+@c:Testing your code
+@include D-AdvancedCuis/03-TestingYourCode/contents.texinfo
+@c:Reflective programming
+@include D-AdvancedCuis/04-ReflectiveProgramming/contents.texinfo
+@c================================================================
+@c: Part Four
+@part Part Four @*Appendices
+@c List of exercises
+@node The exercices
+@appendix Liste des exercices
+@listoffloats Exercise
+@c Solutions of exercises
+@include E-Exercises/contents.texinfo
+@c List of examples
+@node The examples
+@appendix List of the examples
+@listoffloats Example
+@c List of figures
+@node The figures
+@appendix List of the figures
+@listoffloats Figure
+@c Indexes
+@node Indexes
+@appendix Conceptual index
+@printindex cp
+@c================================================================
+@c: To be filled
+
+
+
+@c:END OF THE BOOK
+@bye

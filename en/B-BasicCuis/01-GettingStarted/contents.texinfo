@@ -1,0 +1,297 @@
+@node Getting started
+@chapter Getting started
+
+@menu
+* Installing and configuring @cuis{}::
+* Writing your first scripts::
+* Introduction to the system classes::
+@end menu
+                                   
+@node Installing and configuring @cuis{}
+@section Installing and configuring @cuis{}
+@cuis{} is an environment and a programming language executed on a
+virtual computer. Therefore it is essentially based on two components:
+the Smalltalk @dfn{virtual machine} conceptualizing this virtual
+computer and an @dfn{image} representing the state of this computer.
+
+The virtual machine is an executable program running on a dedicated
+host (GNU/Linux, Mac OS X, Windows, etc.). It is called the @dfn{Open
+Smalltalk Virtual Machine}, or Squeak @vm{} in short. There are
+different flavors of @vm{}, one for each combination of Operating
+System and CPU architecture. Therefore, one @vm{} compiled
+for Windows in Intel architecture will not work on Linux in
+ARM architecture. You need the specific @vm{} compiled for
+the combination of Operating System and CPU architecture
+your computer is based on.
+
+The image is a regular file feeding the @vm{} with all the objects
+ defining the state of the virtual computer. These objects are
+ classes, methods, instances of those classes as numbers, strings,
+ windows, debuggers whatever existed when the state of the virtual
+ computer was saved. An image file saved on a given Operating System
+ and CPU architecture run identically on another system as
+ long as the same @vm{} version is used.
+
+What makes @cuis{} special is the living entities in the image: its
+classes population and arrangement, how they inherit from each
+other. The @cuis{} moto is to be a tiny, coherent and human
+understandable Smalltalk environment; its class population is inferior
+to 500.
+
+To get you started easily, @url{http://cuis-Smalltalk/BooResources,we
+provide three archives} for GNU/Linux, Mac OS X and Windows on Intel
+architecture. These archives come with the dedicated @vm{} and the
+image of @cuis{} @value{cuisVersion}. Into this image we pre-installed
+a few packages to make your life easier when you experience the
+examples and exercises of the book. At the reading time of this book,
+@cuis{} has likely evolved with a more recent version, nevertheless
+your learning is transferable to more recent version of @cuis{}.
+
+To get @cuis{} running on your computer, follow the instructions in
+the @file{README} file accompanying the archive. Once you get @cuis{}
+running, read the information displayed on the windows. When you are
+done, close these windows, next you will adjust @cuis{} to your
+preferences.
+
+@subsection Editing your preferences
+Once you read the instructions on the default windows, the second
+things you want to do is to adjust its visual properties to fit your
+preferences and needs. To do so, access the World menu
+...@clicksequence{Background click @click{} Preferences...} then
+select the pin on the top right of the menu to make it permanent. Here
+you have the most important options: the choice for the @strong{font
+size}, the @strong{themes} whenever your prefer light or dark
+colouring. There are other preferences you can explore by
+yourself. Once you are done, access again the World menu
+...@clicksequence{Background click @click{} Save}... to make your
+preferences permanent. In this book, we keep the default @cuis{}
+theme, we suggest you to do the same so your environment reflects the
+book screenshots.
+
+@subsection Fun with windows placement
+@cindex tools, workspace
+The first tool to discover is the @dfn{Workspace} tool. It is a kind
+of text editor to key in Smalltalk code you can execute
+immediately. Do a ...@clicksequence{Background click @click{}
+Open... @click{} Workspace}...
+
+Now we ask @cuis{} to make the windows placement: click the blue icon
+(top left) to access the window option and experiment with the white
+area to place the Workspace window at the half left of the @cuis{}
+environment.
+
+@figure{Window options,B-01-img1,7}
+
+The @option{resize...} option even offers more freedom to place the
+window. Try the resolve the following exercise:
+
+@exercise{Middle placement,exePlacement, @emph{Use the
+@option{resize...} option to place the Workspace centered on @cuis{}
+environment.}}
+
+@node Writing your first scripts
+@section Writing your first scripts
+In this section we present a few scripts so you will get a taste and
+feeling about Smalltalk code. The examples are completed with small
+exercises to experiment with and accompanied with solutions in the
+annex. We intentionally keep the details of the syntax out of this
+section.
+
+Smalltalk script are usually written in a Workspace. The usual
+@emph{Hello world!} program is written as:
+
+@smalltalkExampleCaption{The traditional 'Hello World!' program,hello,
+Transcript show: 'Hello World'}
+
+@cindex tools, transcript
+To execute this code, select it with the mouse and
+...@clicksequence{right mouse click @click{} Do it (d)}...  Nothing
+happen! Indeed to see the output, you need a @dfn{Transcript} window,
+it is a place where programmer send information for the user as we are
+doing in our example. Do ...@clicksequence{Background click @click{}
+Open... @click{} Transcript}... and execute again the code.
+
+@figure{Transcript window with output,B-01-img2,3}
+
+This code comes in three parts:
+
+@itemize
+
+@item the literal @smalltalk{'Hello World!'}  
+
+@item the message @msg{show:} with its argument @smalltalk{'Hello World!'}
+
+@item the class @class{Transcript} receiving the message @msg{show:} with its argument
+
+@end itemize
+
+The action of printing takes place in the class
+@class{Transcript}. The code execution is invoked with keyboard
+shortcuts @kbd{Ctrl-A} then @kbd{Ctrl-D} (@emph{@b{D}o it}).
+
+@smalltalkExampleCaption{Multiple lines, hello2,
+Transcript show: 'Hello World!'.
+Transcript newLine.
+Transcript show: 'I am Cuising'}
+
+In this three lines script, observe how the line are separated by a
+dot ``.''. It is really a line separator not needed in the third line
+nor in a one line script. The message @msg{newLine} has no argument.
+
+@cindex cascade of messages
+In the @ref{hello2} example, the message @msg{show:} and @msg{newLine}
+are sent to the same @class{Transcript} class. In such circumstance,
+we can use the cascade technique to avoid this repetition. The
+receiver @class{Transcript} is written once and the sent messages are
+separated by semicolon:
+
+@smalltalkExampleCaption{Cascade of message, helloCascade,
+Transcript
+   show: 'Hello World!';
+   newLine;
+   show: 'I am Cuising'}
+
+Observe the text layout to ease code understanding. It is possible to
+write the cascade of messages in one line, but it reduces the
+readability of the code:
+
+@smalltalkExample{Transcript show: 'Hello World!'; newLine; show: 'I am Cuising'}
+
+The @class{Transcript} class is most of the time used to output useful
+information when developing an application. As an alternative to the
+@kbd{Ctrl-d} shortcut, @kbd{Ctrl-p} (@emph{@b{P}rint it}) executes the
+script and prints as is the result of the last line of
+the script in the Workspace .
+
+@subsection Fun with integers
+@cindex number, integer
+In your Workspace, try out and invoke with @kbd{Ctrl-a} then
+@kbd{Ctrl-p} to get an unordered set of natural numbers from 0 to 100:
+
+@smalltalkExample{(1 to: 100) asArray
+@result{} #(1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22
+23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45
+46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68
+69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91
+92 93 94 95 96 97 98 99 100)}
+
+In this line of code, the message @msg{to:} is sent to @smalltalk{1}
+with the argument @smalltalk{100}. It returns an interval object. The
+message @msg{asArray} sent to the interval returns an array.
+
+@exercise{Negative integer numbers,exeNegativeIntegers,@emph{Create an
+array of integer numbers ranging from -80 to 50.}}
+
+@cuis{} knows some arithmetic operations to test if an integer is an
+odd, even or prime number. You just send the appropriate message to
+the number:
+
+@smalltalkExampleCaption{Testing on integer,integerBasicTest,
+25 odd                             
+@result{} true
+25 even
+@result{} false
+25 isPrime
+@result{} false
+23 isPrime
+@result{} true}
+
+To select the prime number from 1 to 100, we use one of the numerous
+enumerate @cuis{} methods:
+
+@smalltalkExampleCaption{Select prime number between 1 and 100,primber100,
+(1 to: 100) select: [:n | n isPrime]}
+
+This example introduces the message @msg{select:} and an important
+constituting element of @cuis{}: the block of code between square
+brackets. A block of code is a piece of code for later
+execution(s). Let's explain how this script is executed:
+
+@itemize
+
+ @item @smalltalk{(1 to: 100)} is evaluated as an interval
+
+ @item the block of code @smalltalk{[:n | n isPrime]} is instantiated
+
+ @item the message @msg{select:} is sent to the interval with the
+ block of code as argument
+
+ @item for each integer of the interval, the block of code is executed
+ with the argument @smalltalk{n} taking the integer value. Then, each
+ time the @smalltalk{n isPrime} returns true, the @smalltalk{n} value
+ is selected in a collection to be returned at the end of the
+ @smalltalk{select:} method.
+
+@end itemize
+
+
+@exercise{Odd numbers,oddNumbers,Select the odd number between -20 and
+45.}
+
+@subsection Fun with decimal
+@cindex number, decimal
+Decimal numbers are written with a dot ``.'' to separate the integer
+and the decimal parts: @smalltalk{1.5}, @smalltalk{1235.021} or
+@smalltalk{0.5}. The number @smalltalk{0.00004} is more easily written
+@smalltalk{4e-5}; it means 4 preceded by 5 zeros or 4 as the fifth
+digit after the decimal dot.
+
+@strong{Attention.} Computer represents decimal number
+imprecisely. You need to be aware of that when doing computation and
+equality comparison. Most system hides these errors because there are
+very tiny errors. @cuis{} does not hide these inaccuracy.
+
+@smalltalkExampleCaption{Computer dyscalculia!,FloatPrecision,
+0.1 + 0.2 - 0.3
+@result{} 5.551115123125783e-17}
+
+In @ref{FloatPrecision}, the returned value should be zero but it is
+not the case. The computer returns @smalltalk{5.55e-17}, or
+@smalltalk{0.0000000000000000555}, it is very close to zero, but there
+is an error.
+
+@exercise{Miscellaneous calculus errors with decimal
+number,exeFloatPrecision,@emph{Give 3 calculus showing errors compare
+to the expected results.}}
+
+When accuracy is absolutely mandatory use the Rational Numbers
+representation of @cuis{}.
+
+@cindex number, rational
+@cindex number, fraction
+A rational number is written with the division symbol between two
+integers: do @kbd{Ctrl-p} on @smalltalk{5/2} @result{}
+@smalltalk{(5/2)}. @cuis{} returns a fraction surrounded by
+parenthesis, it is not calculated as a decimal.
+
+@exercise{Toward the infinite,exeZeroDivide, @emph{What happen when
+executing this code} @smalltalk{5/0}@emph{?}}
+
+Let's come back to our computer dyscalculia with decimal numbers. When
+using the rational numbers, l'@ref{FloatPrecision} becomes:
+
+@smalltalkExampleCaption{Right with fraction!,FractionPrecision,
+(1/10) + (2/10) - (3/10)
+@result{} 0}
+
+This time we have the expected result. Underneath the computer only
+does calculus with integers.
+
+@exercise{Fix the errors,exeFractionPrecision, @emph{Return to
+@ref{exeFloatPrecision} and use rational writing to represent decimal
+numbers. The errors are gone.}}
+
+@cuis{} knows how to convert a decimal number as a fraction, by
+sending the message @msg{asFraction}. We already acknowledged the
+computer dyscalculia trouble with decimal number, this is why when
+asking for a fraction representation we have this strange answer. The
+internal computer represenation of @smalltalk{1.3} is not exactly it:
+
+@smalltalkExample{1.3 asFraction
+@result{} 5854679515581645/45035996273704}
+
+
+
+@node Introduction to the system classes
+@section Introduction to the system classes
+

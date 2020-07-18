@@ -1,0 +1,4 @@
+@node Writing your second application
+@chapter Writing your second application
+Another excuse to discover some of the @cuis{} tools: the Debugger and
+the Changset.

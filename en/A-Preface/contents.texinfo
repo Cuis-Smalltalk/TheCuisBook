@@ -1,0 +1,9 @@
+@node Preface
+@unnumbered Preface
+
+Once unpon a time... @class{Object} gave birth to many @method{new}
+children to raise a large familly of @smalltalk{allInstance size} living and vivid objects.
+@smalltalkExample{
+1 to: 10 by: 1 do: [:i |
+   i even ifTrue: [
+      i * i ] ]}
