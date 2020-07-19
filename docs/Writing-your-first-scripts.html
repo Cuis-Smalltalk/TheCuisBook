@@ -182,8 +182,8 @@ information when developing an application. As an alternative to the
 script and prints in the Workspace the result of the last line of the
 script.
 </p>
-<a name="Fun-with-integer-numbers"></a>
-<h4 class="subsection">1.2.1 Fun with integer numbers</h4>
+<a name="Fun-with-numbers"></a>
+<h4 class="subsection">1.2.1 Fun with numbers</h4>
 <a name="index-number_002c-integer"></a>
 
 <p>In your Workspace, to compute a factorial execute the example bellow
@@ -248,10 +248,10 @@ sum of the first four integer inverses.</em>
 <p>All four arithmetic operations and mathematical functions are
 compatible with the rational number representation:
 </p><div class="display">
-<pre class="display"><span class="sansserif">(3 / 4) squared
-&rArr; 9 / 16
-(25 / 4) sqrt
-&rArr; 5 / 2</span>
+<pre class="display"><span class="sansserif">(15 / 14) * (21 / 5) &rArr; 9 / 2
+(15 / 14) / ( 5 / 21) &rArr; 9 /2 
+(3 / 4) squared &rArr; 9 / 16
+(25 / 4) sqrt &rArr; 5 / 2</span>
 </pre></div>
 
 <div class="float"><a name="squaredSum"></a>
@@ -262,16 +262,191 @@ sum of the squares of the inverse of the first four integers.
 
 
 <div class="float-caption"><p><strong><em>Exercise</em> 1.3: </strong>Sum of the squares</p></div></div>
-<p>Integer can be printed in different forms:
+<a name="index-number_002c-decimal-division"></a>
+<p>If Cuis-Smalltalk divide integer as rational number, how do we compute the
+decimal division? One option is to write a number as a
+<em>Float</em>, it is the decimal representation in programming language:
 </p><div class="display">
+<pre class="display"><span class="sansserif">15.0 / 4 &rArr; 3.75 
+15 / 4.0 &rArr; 3.75</span>
+</pre></div>
+
+<p>Another option is to convert an integer to a float with the
+<span class="sansserif">#asFloat</span> message. It is very useful when the integer is in a
+variable:
+</p>
+<div class="display">
+<pre class="display"><span class="sansserif">15 asFloat / 4 &rArr; 3.75</span>
+</pre></div>
+
+<a name="index-number_002c-integer-division"></a>
+<p>Alternatively to the decimal division, you ask integer division with
+the message <span class="sansserif">#//</span>:
+</p><div class="display">
+<pre class="display"><span class="sansserif">15 // 4 &rArr; 3</span>
+</pre></div>
+
+<a name="index-number_002c-division-reminder"></a>
+<p>The reminder of the Euclidean division is computed with the message
+<span class="sansserif">#\\\</span>:
+</p><div class="display">
+<pre class="display"><span class="sansserif">15 \\\ 4 &rArr; 3</span>
+</pre></div>
+
+
+<a name="index-number_002c-odd"></a>
+<a name="index-number_002c-even"></a>
+<a name="index-number_002c-prime"></a>
+<p>Cuis-Smalltalk knows some arithmetic operations to test if an integer is an
+odd, even or prime number. You just send the appropriate message to
+the number:
+</p>
+<div class="float"><a name="integerBasicTest"></a>
+<div class="display">
+<pre class="display"><span class="sansserif">25 odd                             
+&rArr; true
+25 even
+&rArr; false
+25 isPrime
+&rArr; false
+23 isPrime
+&rArr; true</span>
+</pre></div>
+
+<div class="float-caption"><p><strong><em>Example</em> 1.4: </strong>Testing on integer</p></div></div>
+<a name="index-number_002c-gcd"></a>
+<a name="index-number_002c-lcm"></a>
+<p>With specific <em>keyword messages</em> you compute the Least Common
+Multiple and Greatest Common Divisor. A keyword message is composed of
+one or several colon(s) &ldquo;:&rdquo; to insert argument(s):
+</p>
+<div class="display">
+<pre class="display"><span class="sansserif">12 lcm: 15 &rArr; 60
+
+12 gcd: 15 &rArr; 3</span>
+</pre></div>
+<p>Integer can be printed in different forms:
+</p>
+<a name="index-number_002c-roman"></a>
+<a name="index-number_002c-as-words"></a>
+<a name="index-number_002c-base"></a>
+<div class="display">
 <pre class="display"><span class="sansserif">2020 printStringRoman &rArr; &rsquo;MMXX&rsquo; 
 2020 printStringWords  &rArr; &rsquo;two thousand, twenty&rsquo;
 &quot;Number as the Maya did&quot;
 2020 printStringBase: 20 &rArr; &rsquo;510&rsquo;</span>
 </pre></div>
 
-<a name="Collection"></a>
-<h4 class="subsection">1.2.2 Collection</h4>
+
+<a name="Hiatus-with-decimal-numbers"></a>
+<h4 class="subsubheading">Hiatus with decimal numbers</h4>
+<a name="index-number_002c-decimal"></a>
+<p>Decimal numbers are written with a dot &ldquo;.&rdquo; to separate the integer
+and the decimal parts: <span class="sansserif">1.5</span>, <span class="sansserif">1235.021</span> or
+<span class="sansserif">0.5</span>. The number <span class="sansserif">0.00004</span> is more easily written
+<span class="sansserif">4e-5</span>; it means 4 preceded by 5 zeros or 4 as the fifth
+digit after the decimal dot.
+</p>
+<p><strong>Attention.</strong> Computer represents decimal number
+imprecisely. You need to be aware of that when doing computation and
+equality comparison. Most system hides these errors because there are
+very tiny errors. Cuis-Smalltalk does not hide these inaccuracy.
+</p>
+<div class="float"><a name="FloatPrecision"></a>
+<div class="display">
+<pre class="display"><span class="sansserif">0.1 + 0.2 - 0.3
+&rArr; 5.551115123125783e-17</span>
+</pre></div>
+
+<div class="float-caption"><p><strong><em>Example</em> 1.5: </strong>Computer dyscalculia!</p></div></div>
+<p>In <a href="#FloatPrecision"><em>Example</em> 1.5</a>, the returned value should be zero but it is
+not the case. The computer returns <span class="sansserif">5.55e-17</span>, or
+<span class="sansserif">0.0000000000000000555</span>, it is very close to zero, but there
+is an error.
+</p>
+<div class="float"><a name="exeFloatPrecision"></a>
+<blockquote class="indentedblock">
+<p><em>Give 3 calculus showing errors compare
+to the expected results.</em>
+</p></blockquote>
+
+
+<div class="float-caption"><p><strong><em>Exercise</em> 1.4: </strong>Miscellaneous calculus errors with decimal
+number</p></div></div>
+<p>When accuracy is absolutely mandatory use the Rational Numbers
+representation of Cuis-Smalltalk.
+</p>
+<a name="index-number_002c-rational"></a>
+<a name="index-number_002c-fraction"></a>
+<p>A rational number is written with the division symbol between two
+integers: do <kbd>Ctrl-p</kbd> on <span class="sansserif">5/2</span> &rArr;
+<span class="sansserif">5/2</span>. Cuis-Smalltalk returns a fraction, it does note compute a
+decimal.
+</p>
+<div class="float"><a name="exeZeroDivide"></a>
+<blockquote class="indentedblock">
+<p><em>What happen when
+executing this code</em> <span class="sansserif">5/0</span><em>?</em>
+</p></blockquote>
+
+
+<div class="float-caption"><p><strong><em>Exercise</em> 1.5: </strong>Toward the infinite</p></div></div>
+<p>Let&rsquo;s come back to our computer dyscalculia with decimal numbers. When
+using the rational numbers, the <a href="#FloatPrecision"><em>Example</em> 1.5</a> becomes:
+</p>
+<div class="float"><a name="FractionPrecision"></a>
+<div class="display">
+<pre class="display"><span class="sansserif">(1/10) + (2/10) - (3/10)
+&rArr; 0</span>
+</pre></div>
+
+<div class="float-caption"><p><strong><em>Example</em> 1.6: </strong>Right with fraction!</p></div></div>
+<p>This time we have the expected result. Underneath the computer only
+does calculus with integers.
+</p>
+<div class="float"><a name="exeFractionPrecision"></a>
+<blockquote class="indentedblock">
+<p><em>Return to
+<a href="#exeFloatPrecision"><em>Exercise</em> 1.4</a> and use rational writing to represent decimal
+numbers. The errors are gone.</em>
+</p></blockquote>
+
+
+<div class="float-caption"><p><strong><em>Exercise</em> 1.6: </strong>Fix the errors</p></div></div>
+<p>Cuis-Smalltalk knows how to convert a decimal number as a fraction, by
+sending the message <span class="sansserif">#asFraction</span>. We already acknowledged the
+computer dyscalculia trouble with decimal number, this is why when
+asking for a fraction representation we have this strange answer. The
+internal computer represenation of <span class="sansserif">1.3</span> is not exactly it:
+</p>
+<div class="display">
+<pre class="display"><span class="sansserif">1.3 asFraction
+&rArr; 5854679515581645/45035996273704</span>
+</pre></div>
+
+<a name="Fun-with-text"></a>
+<h4 class="subsection">1.2.2 Fun with text</h4>
+<a name="index-string"></a>
+<p>A <em>String</em> is the way text are represented in programming
+language, it is a collection of characters. We already met string with
+our first script, it is enclosed in double quotes &ldquo;&quot;&rdquo;:
+<span class="sansserif">&quot;hello world!&quot;</span>. We capitalize it with the <span class="sansserif">#capitalized</span>:
+</p>
+<a name="index-string_002c-capitalized"></a>
+<div class="display">
+<pre class="display"><span class="sansserif">&rsquo;hello world!&rsquo; capitalized &rArr; &rsquo;Hello world!&rsquo; </span>
+</pre></div>
+
+<div class="float"><a name="capWordNumber"></a>
+<blockquote class="indentedblock">
+<p><em>Print 2020 as
+words capitalized.</em>
+</p></blockquote>
+
+
+<div class="float-caption"><p><strong><em>Exercise</em> 1.7: </strong>Capitalize number as words</p></div></div>
+<a name="Fun-with-collection"></a>
+<h4 class="subsection">1.2.3 Fun with collection</h4>
 <p>To get an unordered set of natural numbers from 0 to 100, do
 <kbd>Ctrl-a</kbd> then <kbd>Ctrl-p</kbd> on the following code:
 </p>
@@ -295,24 +470,8 @@ array of integer numbers ranging from -80 to 50.</em>
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong><em>Exercise</em> 1.4: </strong>Negative integer numbers</p></div></div>
-<p>Cuis-Smalltalk knows some arithmetic operations to test if an integer is an
-odd, even or prime number. You just send the appropriate message to
-the number:
-</p>
-<div class="float"><a name="integerBasicTest"></a>
-<div class="display">
-<pre class="display"><span class="sansserif">25 odd                             
-&rArr; true
-25 even
-&rArr; false
-25 isPrime
-&rArr; false
-23 isPrime
-&rArr; true</span>
-</pre></div>
+<div class="float-caption"><p><strong><em>Exercise</em> 1.8: </strong>Negative integer numbers</p></div></div>
 
-<div class="float-caption"><p><strong><em>Example</em> 1.4: </strong>Testing on integer</p></div></div>
 <p>To select the prime number from 1 to 100, we use one of the numerous
 enumerate Cuis-Smalltalk methods:
 </p>
@@ -323,7 +482,7 @@ enumerate Cuis-Smalltalk methods:
 73 79 83 89 97)</span>
 </pre></div>
 
-<div class="float-caption"><p><strong><em>Example</em> 1.5: </strong>Select prime number between 1 and 100</p></div></div>
+<div class="float-caption"><p><strong><em>Example</em> 1.7: </strong>Select prime number between 1 and 100</p></div></div>
 <p>This example introduces the message <span class="sansserif">#select:</span> and an important
 constituting element of Cuis-Smalltalk: the block of code between square
 brackets. A block of code is a piece of code for later
@@ -353,94 +512,7 @@ execution(s). Let&rsquo;s explain how this script is executed:
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong><em>Exercise</em> 1.5: </strong>Odd numbers</p></div></div>
-<a name="Hiatus-with-decimal-numbers"></a>
-<h4 class="subsection">1.2.3 Hiatus with decimal numbers</h4>
-<a name="index-number_002c-decimal"></a>
-<p>Decimal numbers are written with a dot &ldquo;.&rdquo; to separate the integer
-and the decimal parts: <span class="sansserif">1.5</span>, <span class="sansserif">1235.021</span> or
-<span class="sansserif">0.5</span>. The number <span class="sansserif">0.00004</span> is more easily written
-<span class="sansserif">4e-5</span>; it means 4 preceded by 5 zeros or 4 as the fifth
-digit after the decimal dot.
-</p>
-<p><strong>Attention.</strong> Computer represents decimal number
-imprecisely. You need to be aware of that when doing computation and
-equality comparison. Most system hides these errors because there are
-very tiny errors. Cuis-Smalltalk does not hide these inaccuracy.
-</p>
-<div class="float"><a name="FloatPrecision"></a>
-<div class="display">
-<pre class="display"><span class="sansserif">0.1 + 0.2 - 0.3
-&rArr; 5.551115123125783e-17</span>
-</pre></div>
-
-<div class="float-caption"><p><strong><em>Example</em> 1.6: </strong>Computer dyscalculia!</p></div></div>
-<p>In <a href="#FloatPrecision"><em>Example</em> 1.6</a>, the returned value should be zero but it is
-not the case. The computer returns <span class="sansserif">5.55e-17</span>, or
-<span class="sansserif">0.0000000000000000555</span>, it is very close to zero, but there
-is an error.
-</p>
-<div class="float"><a name="exeFloatPrecision"></a>
-<blockquote class="indentedblock">
-<p><em>Give 3 calculus showing errors compare
-to the expected results.</em>
-</p></blockquote>
-
-
-<div class="float-caption"><p><strong><em>Exercise</em> 1.6: </strong>Miscellaneous calculus errors with decimal
-number</p></div></div>
-<p>When accuracy is absolutely mandatory use the Rational Numbers
-representation of Cuis-Smalltalk.
-</p>
-<a name="index-number_002c-rational"></a>
-<a name="index-number_002c-fraction"></a>
-<p>A rational number is written with the division symbol between two
-integers: do <kbd>Ctrl-p</kbd> on <span class="sansserif">5/2</span> &rArr;
-<span class="sansserif">5/2</span>. Cuis-Smalltalk returns a fraction, it does note compute a
-decimal.
-</p>
-<div class="float"><a name="exeZeroDivide"></a>
-<blockquote class="indentedblock">
-<p><em>What happen when
-executing this code</em> <span class="sansserif">5/0</span><em>?</em>
-</p></blockquote>
-
-
-<div class="float-caption"><p><strong><em>Exercise</em> 1.7: </strong>Toward the infinite</p></div></div>
-<p>Let&rsquo;s come back to our computer dyscalculia with decimal numbers. When
-using the rational numbers, the <a href="#FloatPrecision"><em>Example</em> 1.6</a> becomes:
-</p>
-<div class="float"><a name="FractionPrecision"></a>
-<div class="display">
-<pre class="display"><span class="sansserif">(1/10) + (2/10) - (3/10)
-&rArr; 0</span>
-</pre></div>
-
-<div class="float-caption"><p><strong><em>Example</em> 1.7: </strong>Right with fraction!</p></div></div>
-<p>This time we have the expected result. Underneath the computer only
-does calculus with integers.
-</p>
-<div class="float"><a name="exeFractionPrecision"></a>
-<blockquote class="indentedblock">
-<p><em>Return to
-<a href="#exeFloatPrecision"><em>Exercise</em> 1.6</a> and use rational writing to represent decimal
-numbers. The errors are gone.</em>
-</p></blockquote>
-
-
-<div class="float-caption"><p><strong><em>Exercise</em> 1.8: </strong>Fix the errors</p></div></div>
-<p>Cuis-Smalltalk knows how to convert a decimal number as a fraction, by
-sending the message <span class="sansserif">#asFraction</span>. We already acknowledged the
-computer dyscalculia trouble with decimal number, this is why when
-asking for a fraction representation we have this strange answer. The
-internal computer represenation of <span class="sansserif">1.3</span> is not exactly it:
-</p>
-<div class="display">
-<pre class="display"><span class="sansserif">1.3 asFraction
-&rArr; 5854679515581645/45035996273704</span>
-</pre></div>
-
-
+<div class="float-caption"><p><strong><em>Exercise</em> 1.9: </strong>Odd numbers</p></div></div>
 
 <hr>
 <div class="header">
