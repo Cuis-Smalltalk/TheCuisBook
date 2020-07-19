@@ -14,6 +14,7 @@ The book comes with examples and exercises. The solutions of the
 exercises are in the annexes. We encourage writers to provides both
 examples then exercises with solutions in annexes.
 
+Draft: https://cuis-smalltalk.github.io/TheCuisBook/
 
 ## License 
 
