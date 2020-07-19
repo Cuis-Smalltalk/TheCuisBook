@@ -56,13 +56,13 @@ Hilaire Fernandes and Juan Vuletich
 @macro exercise{caption,label,text}
 @float @emph{Exercise},\label\
 @iftex
-@c   @cartouche
+   @cartouche
 @end iftex
 @indentedblock
  \text\
 @end indentedblock
 @iftex
-@c   @end cartouche
+   @end cartouche
 @end iftex
 @caption{\caption\}
 @shortcaption{\caption\}
@@ -99,4 +99,20 @@ Hilaire Fernandes and Juan Vuletich
 
 @macro icon{file}
 @image{\file\,1cm}
+@end macro
+
+@c Highlighted Note
+@macro cuisNote{aNote}
+@indentedblock
+@iftex
+   @cartouche
+@end iftex
+@ifnotplaintext
+@tie{}@image{note,1cm}
+@end ifnotplaintext
+\aNote\
+@iftex
+   @end cartouche
+@end iftex
+@end indentedblock
 @end macro

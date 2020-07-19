@@ -107,6 +107,8 @@ inserted this command.
 
 **@icon{filename}.** To insert an icon (1 cm width)
 
+**@cuisNote{aNote}.** Display an highlit note in a frame
+
 ### Tips when using a macro
 TO GET... | ...WRITE
 ----------|----------

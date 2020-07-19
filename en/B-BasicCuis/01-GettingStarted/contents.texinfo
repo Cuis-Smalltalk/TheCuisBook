@@ -83,7 +83,7 @@ environment.
 @figure{Window options,B-01-img1,7}
 
 The @option{resize...} option even offers more freedom to place the
-window. Try the resolve the following exercise:
+window. Resolve the following exercise:
 
 @exercise{Middle placement,exePlacement, @emph{Use the
 @option{resize...} option to place the Workspace centered on @cuis{}
@@ -155,18 +155,81 @@ Observe the text layout to ease code understanding. It is possible to
 write the cascade of messages in one line, but it reduces the
 readability of the code:
 
-@smalltalkExample{Transcript show: 'Hello World!'; newLine; show: 'I am Cuising'}
+@smalltalkExample{Transcript show: 'Hello World!'; newLine; show: 'I
+am Cuising'}
 
 The @class{Transcript} class is most of the time used to output useful
 information when developing an application. As an alternative to the
 @kbd{Ctrl-d} shortcut, @kbd{Ctrl-p} (@emph{@b{P}rint it}) executes the
-script and prints as is the result of the last line of
-the script in the Workspace .
+script and prints in the Workspace the result of the last line of the
+script.
 
-@subsection Fun with integers
+@subsection Fun with integer numbers
 @cindex number, integer
-In your Workspace, try out and invoke with @kbd{Ctrl-a} then
-@kbd{Ctrl-p} to get an unordered set of natural numbers from 0 to 100:
+
+In your Workspace, to compute a factorial execute the example bellow
+with @kbd{Ctrl-a} then @kbd{Ctrl-p}:
+@smalltalkExample{100 factorial
+@result{}  9332621544394415268169923885626670049071596826438162146859
+29638952175999932299156089414639761565182862536979208272237582
+51185210916864000000000000000000000000}
+
+@cuis{} handles very large integer number without the need to use
+special type or method. To convince yourelf try the example bellow:
+@smalltalkExample{10000 factorial / 9999 factorial
+@result{} 10000}
+
+If you execute and print with @kbd{Ctrl-p} @smalltalk{10000
+factorial}, you realize it takes far more time to print one factorial
+than computing two factorials and a division. The result is an integer
+as expected, not a decimal number answer as many computer languages
+will return.
+
+As we are discussing division, you may not get the result you think:
+@smalltalkExample{15 / 4 @result{} 15/4}
+
+It looks like @cuis{} is lazy because it does not respond the decimal
+number @smalltalk{3.75} as we were expecting. In fact @cuis{} wants to
+be as accurate as possible, and its answer is a fraction number! After
+all, fraction number are just division we are too lazy -- because it
+is troublesome -- to compute, @cuis{} does just that!
+
+Try out this to understand what is happening underneath:
+@smalltalkExample{(15 / 4) + (1 / 4) @result{} 4}
+
+Is it not wonderful? @cuis{} computes with rational numbers. We
+started with division and addition operations on integer, and we got
+an accurate result thanks to intermediate computation on rational
+numbers.
+
+@cuisNote{In the example, observe how the parenthesis are used
+although in arithmetic calculus the division is operated first. With
+@cuis{} you need to explicit the order of operation with
+parenthesis. We will explain why in Part Two.}
+
+@exercise{Inverse sum,inverseSum, @emph{Write the code to compute the
+sum of the first four integer inverses.}}
+
+All four arithmetic operations and mathematical functions are
+compatible with the rational number representation:
+@smalltalkExample {(3 / 4) squared
+@result{} 9 / 16
+(25 / 4) sqrt
+@result{} 5 / 2}
+
+@exercise{Sum of the squares,squaredSum,Write the code to compute the
+sum of the squares of the inverse of the first four integers.}
+
+Integer can be printed in different forms:
+@smalltalkExample{
+2020 printStringRoman @result{} 'MMXX' 
+2020 printStringWords  @result{} 'two thousand, twenty'
+"Number as the Maya did"
+2020 printStringBase: 20 @result{} '510'}
+
+@subsection Collection
+To get an unordered set of natural numbers from 0 to 100, do
+@kbd{Ctrl-a} then @kbd{Ctrl-p} on the following code:
 
 @smalltalkExample{(1 to: 100) asArray
 @result{} #(1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22
@@ -200,7 +263,9 @@ To select the prime number from 1 to 100, we use one of the numerous
 enumerate @cuis{} methods:
 
 @smalltalkExampleCaption{Select prime number between 1 and 100,primber100,
-(1 to: 100) select: [:n | n isPrime]}
+(1 to: 100) select: [:n | n isPrime]
+@result{}  #(2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71
+73 79 83 89 97)}
 
 This example introduces the message @msg{select:} and an important
 constituting element of @cuis{}: the block of code between square
@@ -228,7 +293,7 @@ execution(s). Let's explain how this script is executed:
 @exercise{Odd numbers,oddNumbers,Select the odd number between -20 and
 45.}
 
-@subsection Fun with decimal
+@subsection Hiatus with decimal numbers
 @cindex number, decimal
 Decimal numbers are written with a dot ``.'' to separate the integer
 and the decimal parts: @smalltalk{1.5}, @smalltalk{1235.021} or

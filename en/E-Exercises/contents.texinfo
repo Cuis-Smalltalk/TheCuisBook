@@ -7,9 +7,27 @@
 @figure{Placement,E-img1,8}
 
 @section Writing your first scripts
+
+@subheading @ref{inverseSum}
+@example
+1 + (1/2) + (1/3) + (1/4)
+@result{} 25/12 
+@end example
+
+@subheading @ref{squaredSum}
+@example
+1 + (1/2) squared + (1/3) squared + (1/4) squared
+@result{}  205 / 144
+@end example
+
 @subheading @ref{exeNegativeIntegers}
 @example
 (-80 to: 50) asArray
+@end example
+
+@subheading @ref{oddNumbers}
+@example
+(-20 to: 45) select: [:z | z odd]
 @end example
 
 @subheading @ref{exeFloatPrecision}
@@ -38,10 +56,5 @@ The system returns the error @smalltalk{ZeroDivide}, division by zero.
 
 (12/10) * 3  - (36/10)
 @result{} 0
-@end example
-
-@subheading @ref{oddNumbers}
-@example
-(-20 to: 45) select: [:z | z odd]
 @end example
 
