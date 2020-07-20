@@ -56,6 +56,18 @@ Several messages can be sent one after the other:
 2020 printStringWords capitalized 
 @end example
 
+@subheading @ref{helloBelle}
+@example
+'Hello' 
+   at: 1 put: $B;
+   at: 2 put: $e;
+   at: 3 put: $l;
+   at: 4 put: $l;
+   at: 5 put: $e;
+   yourself
+@end example
+
+
 @unnumberedsubsec Fun with collection 
 @subheading @ref{exeNegativeIntegers}
 @example

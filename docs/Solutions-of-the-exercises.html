@@ -5,7 +5,7 @@ implementation of the Smalltalk language and environment.
 
 Copyright (C) 2020 Hilaire Fernandes and Juan Vuletich
 
-Compilation : July 19, 2020
+Compilation : July 20, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -165,16 +165,29 @@ Next: <a href="The-examples.html#The-examples" accesskey="n" rel="next">The exam
 <pre class="example">2020 printStringWords capitalized 
 </pre></div>
 
+<a name="helloBelle-1"></a>
+<h4 class="subheading"><a href="Writing-your-first-scripts.html#helloBelle"><em>Exercise</em> 1.8</a></h4>
+<div class="example">
+<pre class="example">'Hello' 
+   at: 1 put: $B;
+   at: 2 put: $e;
+   at: 3 put: $l;
+   at: 4 put: $l;
+   at: 5 put: $e;
+   yourself
+</pre></div>
+
+
 <a name="Fun-with-collection-1"></a>
 <h4 class="unnumberedsubsec">Fun with collection</h4>
 <a name="exeNegativeIntegers-1"></a>
-<h4 class="subheading"><a href="Writing-your-first-scripts.html#exeNegativeIntegers"><em>Exercise</em> 1.8</a></h4>
+<h4 class="subheading"><a href="Writing-your-first-scripts.html#exeNegativeIntegers"><em>Exercise</em> 1.9</a></h4>
 <div class="example">
 <pre class="example">(-80 to: 50) asArray
 </pre></div>
 
 <a name="oddNumbers-1"></a>
-<h4 class="subheading"><a href="Writing-your-first-scripts.html#oddNumbers"><em>Exercise</em> 1.9</a></h4>
+<h4 class="subheading"><a href="Writing-your-first-scripts.html#oddNumbers"><em>Exercise</em> 1.10</a></h4>
 <div class="example">
 <pre class="example">(-20 to: 45) select: [:z | z odd]
 </pre></div>

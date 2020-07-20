@@ -186,7 +186,8 @@ as expected, not a decimal number answer as many computer languages
 will return.
 
 As we are discussing division, you may not get the result you think:
-@smalltalkExample{15 / 4 @result{} 15/4}
+@smalltalkExample{15 / 4
+@result{} 15/4}
 
 It looks like @cuis{} is lazy because it does not respond the decimal
 number @smalltalk{3.75} as we were expecting. In fact @cuis{} wants to
@@ -195,7 +196,8 @@ all, fraction number are just division we are too lazy -- because it
 is troublesome -- to compute, @cuis{} does just that!
 
 Try out this to understand what is happening underneath:
-@smalltalkExample{(15 / 4) + (1 / 4) @result{} 4}
+@smalltalkExample{(15 / 4) + (1 / 4)
+@result{} 4}
 
 Is it not wonderful? @cuis{} computes with rational numbers. We
 started with division and addition operations on integer, and we got
@@ -221,28 +223,31 @@ compatible with the rational number representation:
 sum of the squares of the inverse of the first four integers.}
 
 @cindex number, decimal division
-If @cuis{} divide integer as rational number, how do we compute the
-decimal division? One option is to write a number as a
-@dfn{Float}, it is the decimal representation in programming language:
-@smalltalkExample{
-15.0 / 4 @result{} 3.75 
+If @cuis{} divides integer as rational number, how to compute the
+decimal division? One option is to write a number as a @dfn{Float}, it
+is the decimal representation in programming language, the integer
+part and fractional parts are separated by a dot ``.'':
+@smalltalkExample{ 15.0 / 4 @result{}3.75
 15 / 4.0 @result{} 3.75}
 
 Another option is to convert an integer to a float with the
 @msg{asFloat} message. It is very useful when the integer is in a
 variable:
 
-@smalltalkExample{15 asFloat / 4 @result{} 3.75}
+@smalltalkExample{15 asFloat / 4
+@result{} 3.75}
 
 @cindex number, integer division
 Alternatively to the decimal division, you ask integer division with
 the message @msg{//}:
-@smalltalkExample{15 // 4 @result{} 3}
+@smalltalkExample{15 // 4
+@result{} 3}
 
 @cindex number, division reminder
 The reminder of the Euclidean division is computed with the message
-@msg{\\\\\\}:
-@smalltalkExample{15 \\\\\ 4 @result{} 3}
+@msg{\\\\}:
+@smalltalkExample{15 \\\\ 4
+@result{} 3}
 
 
 @cindex number, odd
@@ -253,14 +258,10 @@ odd, even or prime number. You just send the appropriate message to
 the number:
 
 @smalltalkExampleCaption{Testing on integer,integerBasicTest,
-25 odd                             
-@result{} true
-25 even
-@result{} false
-25 isPrime
-@result{} false
-23 isPrime
-@result{} true}
+25 odd @result{} true
+25 even @result{} false
+25 isPrime @result{} false
+23 isPrime @result{} true}
 
 @cindex number, gcd
 @cindex number, lcm
@@ -269,7 +270,6 @@ Multiple and Greatest Common Divisor. A keyword message is composed of
 one or several colon(s) ``:'' to insert argument(s):
 
 @smalltalkExample{12 lcm: 15 @result{} 60
-
 12 gcd: 15 @result{} 3}
 Integer can be printed in different forms:
 
@@ -285,11 +285,11 @@ Integer can be printed in different forms:
 
 @subsubheading Hiatus with decimal numbers
 @cindex number, decimal
-Decimal numbers are written with a dot ``.'' to separate the integer
-and the decimal parts: @smalltalk{1.5}, @smalltalk{1235.021} or
-@smalltalk{0.5}. The number @smalltalk{0.00004} is more easily written
-@smalltalk{4e-5}; it means 4 preceded by 5 zeros or 4 as the fifth
-digit after the decimal dot.
+We saw decimal numbers are written with a dot ``.'' to separate the
+integer and the decimal parts: @smalltalk{1.5}, @smalltalk{1235.021}
+or @smalltalk{0.5}. The number @smalltalk{0.00004} is more easily
+written @smalltalk{4e-5}; it means 4 preceded by 5 zeros or 4 as the
+fifth digit after the decimal dot.
 
 @strong{Attention.} Computer represents decimal number
 imprecisely. You need to be aware of that when doing computation and
@@ -340,7 +340,8 @@ numbers. The errors are gone.}}
 sending the message @msg{asFraction}. We already acknowledged the
 computer dyscalculia trouble with decimal number, this is why when
 asking for a fraction representation we have this strange answer. The
-internal computer represenation of @smalltalk{1.3} is not exactly it:
+internal computer represenation of @smalltalk{1.3} is not exactly as
+it seems:
 
 @smalltalkExample{1.3 asFraction
 @result{} 5854679515581645/45035996273704}
@@ -353,12 +354,65 @@ our first script, it is enclosed in double quotes ``"'':
 @smalltalk{"hello world!"}. We capitalize it with the @msg{capitalized}:
 
 @cindex string, capitalized
-@smalltalkExample{'hello world!' capitalized @result{} 'Hello world!' }
+@smalltalkExample{'hello world!' capitalized
+@result{} 'Hello world!' }
 
 @exercise{Capitalize number as words,capWordNumber,@emph{Print 2020 as
 words capitalized.}}
 
+@cindex string, concatenate
+Two strings are concatenated with the @msg{,} message
+@smalltalkExample{'Hello', ' ', 'my beloved', ' ', 'friend'
+@result{} 'Hello my beloved friend'}
+
+@cindex string, character access
+Access to a character in a string is done with the keyword message
+@msg{at:} and its index position in the string:
+@smalltalkExample{'Hello' at: 1 @result{} $H
+'Hello' at: 5 @result{} $0}
+
+Observe how a character is prefixed with the ``$'' symbol.
+
+@strong{Caution.} The index position starts naturally from 1 to the
+string length.
+
+To change one character, use the companion two keywords message
+@msg{at:put:}. The argument must be noted as a character:
+@smalltalkExample{'Hello' at: 2 put: $a; yourself
+@result{} 'Hallo'}
+
+Observe the use of the cascade with the @msg{yourself} message. It is
+send to the instance string to get it returned.
+
+@exercise{Hello to Belle,helloBelle, @emph{Replace each character of
+the string 'Hello' to become 'Belle'}}
+
+@cindex character, ascii
+Character can be converted to integer and integer to character:
+@smalltalkExample{$A asciiValue @result{} 65
+(65 + 25) asCharacter @result{} $Z}
+
+@cindex string, shuffled
+@cindex collection, shuffled
+Shuffling a string is funny but without much use. Nevertheless,
+shuffling apply to any kind of collection, not only to string, and it
+proves to be of some use as we may see later:
+@smalltalkExample{'hello world' shuffled
+@result{} 'wod llreohl'}
+
+@cindex string, sorted
+We can write the same about sorting a string:
+@smalltalkExample{'bonjour' sorted
+@result{}#($b $j $n $o $o $r $u)}
+
 @subsection Fun with collection
+Collection is the Smalltalk general term to design a set of
+objects. Other languages name it array or list. There are different
+kind of collection. We already discussed one particular collection:
+@dfn{String} is a collection of characters.
+
+
+
 To get an unordered set of natural numbers from 0 to 100, do
 @kbd{Ctrl-a} then @kbd{Ctrl-p} on the following code:
 
@@ -411,6 +465,11 @@ execution(s). Let's explain how this script is executed:
 @exercise{Odd numbers,oddNumbers,Select the odd number between -20 and
 45.}
 
+
+@c ceasar cipher
+@c ($A to: $Z) collect: [:c | (c asciiValue - 64 + 4 \\ 26 + 65) asCharacter ]
+@c 'BONJOUR' collect: [:c | (c asciiValue - 64 + 0 \\ 26 + 65) asCharacter ]
+@c fibo example, with golden number convergence
 
 @node Introduction to the system classes
 @section Introduction to the system classes
