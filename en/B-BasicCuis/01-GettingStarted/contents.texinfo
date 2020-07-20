@@ -527,8 +527,17 @@ execution(s). Let's explain how this script is executed:
 @exercise{Odd integers,oddNumbers,@emph{Select the odd number between -20 and
 45.}}
 
+How many prime numbers is there under 100? Just send the
+message @msg{size} to the answered collection at @ref{prime100}:
+@smalltalkExample{( (1 to: 100) select: [:n | n isPrime] ) size
+@result{} 25}
+
+The parenthesis are mandatory to ensure the @msg{size} is sent last to
+the resulting collection.
+
+
 @exercise{Odd and non prime integers,oddNonPrime,@emph{Build a
-collection of the odd integers in [1 ; 100] which are not prime number.}}
+collection of the odd integers in [1 ; 100] which are not prime.}}
 
 @c ceasar cipher
 @c ($A to: $Z) collect: [:c | (c asciiValue - 64 + 4 \\ 26 + 65) asCharacter ]

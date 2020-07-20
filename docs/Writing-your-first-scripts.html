@@ -669,10 +669,21 @@ execution(s). Let&rsquo;s explain how this script is executed:
 
 
 <div class="float-caption"><p><strong><em>Exercise</em> 1.11: </strong>Odd integers</p></div></div>
+<p>How many prime numbers is there under 100? Just send the
+message <span class="sansserif">#size</span> to the answered collection at <a href="#prime100"><em>Example</em> 1.8</a>:
+</p><div class="display">
+<pre class="display"><span class="sansserif">( (1 to: 100) select: [:n | n isPrime] ) size
+&rArr; 25</span>
+</pre></div>
+
+<p>The parenthesis are mandatory to ensure the <span class="sansserif">#size</span> is sent last to
+the resulting collection.
+</p>
+
 <div class="float"><a name="oddNonPrime"></a>
 <blockquote class="indentedblock">
 <p><em>Build a
-collection of the odd integers in [1 ; 100] which are not prime number.</em>
+collection of the odd integers in [1 ; 100] which are not prime.</em>
 </p></blockquote>
 
 
