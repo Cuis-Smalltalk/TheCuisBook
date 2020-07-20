@@ -515,9 +515,61 @@ proves to be of some use as we may see later:
 <p>Collection is the Smalltalk general term to design a set of
 objects. Other languages name it array or list. There are different
 kind of collection. We already discussed one particular collection:
-<em>String</em> is a collection of characters.
+<span class="sansserif">String</span> is a collection of characters.
 </p>
+<a name="index-array"></a>
+<p><span class="sansserif">Array</span> is a fixed size collection, contrary to string it can
+contain heterogeneous literal enclosed in <span class="sansserif">#(&nbsp;)</span>:
+</p><div class="display">
+<pre class="display"><span class="sansserif">&quot;array of numbers&quot;
+#(1 3 5 7 11 1.1)
+&quot;array of mixed literal&quot;
+#(1 &rsquo;friend&rsquo; $&amp; &rsquo;al&rsquo;)</span>
+</pre></div>
 
+<p>Using non literal expression in the array will not work as expected:
+</p><div class="display">
+<pre class="display"><span class="sansserif">#(1 2/3)
+&rArr; #(1 2 #/ 3)</span>
+</pre></div>
+
+<a name="index-array_002c-dynamic"></a>
+<p>Indeed, the &ldquo;/&rdquo; is interpreted as a literate, a symbol and
+<span class="sansserif">2/3</span> is not interpreted as fraction. To get it evaluated,
+you use a <em>run-time array</em> or <em>dynamic array</em>, its elements
+are expressions separated by dot and surrounded with <span class="sansserif">{
+}</span>:
+</p>
+<div class="display">
+<pre class="display"><span class="sansserif">{1 . 2/3 . 7.5}
+&rArr; #(1 2/3 7.5)</span>
+</pre></div>
+
+<a name="index-array_002c-operation"></a>
+<a name="index-array_002c-size"></a>
+<p>With an array filled with number you can request information and
+arithmetic operations:
+</p><div class="display">
+<pre class="display"><span class="sansserif">#(1 2 3 4) size &rArr; 4
+#(1 2 3 4) + 10 &rArr; #(11 12 13 14)
+#(1 2 3 4) / 10 &rArr; #(1/10 1/5 3/10 2/5)</span>
+</pre></div>
+
+<p>Mathematics operations work as well:
+</p><div class="display">
+<pre class="display"><span class="sansserif">#(1 2 3 4) squared &rArr; #(1 4 9 16)
+#(1 2 3 4) cos
+&rArr; #(0.5403023058681398 -0.41614683654714235 -0.9899924966004454 -0.6536436208636119) </span>
+</pre></div>
+
+<a name="index-array_002c-statistic"></a>
+<p>Basic statistic methods can be used directly on array of numbers:
+</p><div class="display">
+<pre class="display"><span class="sansserif">#(7.5 3.5 8.9) mean &rArr; 6.633333333333333 
+#(7.5 3.5 8.9) range &rArr; 5.4
+#(7.5 3.5 8.9) min &rArr; 3.5
+#(7.5 3.5 8.9) max &rArr; 8.9</span>
+</pre></div>
 
 <p>To get an unordered set of natural numbers from 0 to 100, do
 <kbd>Ctrl-a</kbd> then <kbd>Ctrl-p</kbd> on the following code:
