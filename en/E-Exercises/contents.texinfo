@@ -87,6 +87,19 @@ Several messages can be sent one after the other:
 (-20 to: 45) select: [:z | z odd]
 @end example
 
+@subheading @ref{qtyPrime200}
+@example
+((101 to: 200) select: [:n | n isPrime]) size
+@result{} 21 
+@end example
+
+@subheading @ref{multiples7}
+@example
+(1 to: 100) select:[:n | n isDivisibleBy: 7]
+@result{} #(7 14 21 28 35 42 49 56 63 70 77 84 91 98) 
+@end example
+
+
 @subheading @ref{oddNonPrime}
 This solution, based on set operations and multiple use of the
 @msg{select:} message, is mostly compatible with the knowledge
@@ -99,8 +112,14 @@ acquired at this point of the book. Parenthesis are mandatory:
 77 81 85 87 91 93 95 99) 
 @end example
 
-A shorter solution with logical operations:
+A shorter solution with logical operations we have not discussed so
+far:
 @example
 (1 to: 100) select:[:n | n isPrime not and: [n odd]]
 @end example
 
+@subheading @ref{decodeCipher}
+@example
+'Zpvs!bsf!cppt' collect: [:c | (c asciiValue - 1) asCharacter]
+@result{} 'Your are boos' 
+@end example
