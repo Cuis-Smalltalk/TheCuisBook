@@ -5,7 +5,7 @@ implementation of the Smalltalk language and environment.
 
 Copyright (C) 2020 Hilaire Fernandes and Juan Vuletich
 
-Compilation : July 20, 2020
+Compilation : July 21, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -303,6 +303,7 @@ the message <span class="sansserif">#//</span>:
 <a name="index-number_002c-odd"></a>
 <a name="index-number_002c-even"></a>
 <a name="index-number_002c-prime"></a>
+<a name="index-number_002c-divisible"></a>
 <p>Cuis-Smalltalk knows some arithmetic operations to test if an integer is an
 odd, even or prime number. You just send the appropriate message to
 the number:
@@ -312,7 +313,10 @@ the number:
 <pre class="display"><span class="sansserif">25 odd &rArr; true
 25 even &rArr; false
 25 isPrime &rArr; false
-23 isPrime &rArr; true</span>
+23 isPrime &rArr; true
+91 isDivisibleBy: 7 &rArr; true
+117 isDivisibleBy: 7 &rArr; false
+117 isDivisibleBy: 9 &rArr; true</span>
 </pre></div>
 
 <div class="float-caption"><p><strong><em>Example</em> 1.4: </strong>Testing on integer</p></div></div>
@@ -558,8 +562,9 @@ arithmetic operations:
 <p>Mathematics operations work as well:
 </p><div class="display">
 <pre class="display"><span class="sansserif">#(1 2 3 4) squared &rArr; #(1 4 9 16)
-#(1 2 3 4) cos
-&rArr; #(0.5403023058681398 -0.41614683654714235 -0.9899924966004454 -0.6536436208636119) </span>
+#(0 30 45 60) degreeCos
+&rArr; #(1.0 0.8660254037844386
+0.7071067811865475 0.49999999999999994)</span>
 </pre></div>
 
 <a name="index-array_002c-statistic"></a>
@@ -600,7 +605,7 @@ array of integer numbers ranging from -80 to 50.</em>
 <p>The collection comes with a set of helpful methods named
 enumerators. They operate one each element of a collection.
 </p>
-<a name="index-array_002c-set-operations"></a>
+<a name="index-collection_002c-set-operations-_0028union_002c-intersection_002c-difference_0029"></a>
 <p>Set operations between two collections are computed with the
 <span class="sansserif">#union:</span>, <span class="sansserif">#intersection:</span> and <span class="sansserif">#difference:</span> messages.
 </p><div class="float"><a name="setOpe"></a>
@@ -629,8 +634,12 @@ comparing objects later.
 &rArr; #(3 &rsquo;e&rsquo;)</span>
 </pre></div>
 
+<a name="index-collection_002c-_0023select_003a"></a>
+<a name="index-collection_002c-enumerator-mechanism"></a>
+<a name="index-block"></a>
 <p>To select the prime numbers from 1 to 100, we use the <span class="sansserif">#select:</span>
-enumerator:
+enumerator. This message is sent to a collection, then it will select
+each element of the collection returning true to a test condition:
 </p>
 <div class="float"><a name="prime100"></a>
 <div class="display">
@@ -640,9 +649,9 @@ enumerator:
 </pre></div>
 
 <div class="float-caption"><p><strong><em>Example</em> 1.8: </strong>Select prime numbers between 1 and 100</p></div></div>
-<p>This example introduces the message <span class="sansserif">#select:</span> and an important
-constituting element of Cuis-Smalltalk: the block of code, delimited by square
-brackets. A block of code is a piece of code for later
+<p>This example introduces the message <span class="sansserif">#select:</span> and block of code, a
+primordial constituting element of the Cuis-Smalltalk model. A block of code,
+delimited by square brackets, is a piece of code for later
 execution(s). Let&rsquo;s explain how this script is executed:
 </p>
 <ul>
@@ -655,31 +664,52 @@ execution(s). Let&rsquo;s explain how this script is executed:
 
 </li><li> for each integer of the interval, the block of code is executed
  with its parameter <span class="sansserif">n</span> set to the integer value. Then, each
- time <span class="sansserif">n isPrime</span> returns true, the <span class="sansserif">n</span> value
- is added in a collection to be returned at the end of the
- <span class="sansserif">select:</span> method.
+ time <span class="sansserif">n isPrime</span> evaluates to true, the <span class="sansserif">n</span> value
+ is added to a new collection answered when the <span class="sansserif">select:</span>
+ method finished testing each element of the collection.
 
 </li></ul>
 
+<p>Enumerators are tremendously powerful to process collection without
+the need of index.
+</p>
 <div class="float"><a name="oddNumbers"></a>
 <blockquote class="indentedblock">
-<p><em>Select the odd number between -20 and
-45.</em>
+<p><em>Select the odd number between
+-20 and 45.</em>
 </p></blockquote>
 
 
 <div class="float-caption"><p><strong><em>Exercise</em> 1.11: </strong>Odd integers</p></div></div>
-<p>How many prime numbers is there under 100? Just send the
-message <span class="sansserif">#size</span> to the answered collection at <a href="#prime100"><em>Example</em> 1.8</a>:
-</p><div class="display">
+<p>You want to know the quantity of prime numbers under 100.  Just send
+the message <span class="sansserif">#size</span> to the answered collection at
+<a href="#prime100"><em>Example</em> 1.8</a>. The parenthesis are mandatory to ensure the <span class="sansserif">#size</span>
+is sent last to the resulting collection:
+</p><div class="float"><a name="qtyPrime100"></a>
+<div class="display">
 <pre class="display"><span class="sansserif">( (1 to: 100) select: [:n | n isPrime] ) size
 &rArr; 25</span>
 </pre></div>
 
-<p>The parenthesis are mandatory to ensure the <span class="sansserif">#size</span> is sent last to
-the resulting collection.
-</p>
+<div class="float-caption"><p><strong><em>Example</em> 1.9: </strong>Number of prime numbers between 1 and
+100</p></div></div>
+<div class="float"><a name="qtyPrime200"></a>
+<blockquote class="indentedblock">
+<p><em>Modify <a href="#qtyPrime100"><em>Example</em> 1.9</a> to calculate the number
+of prime numbers between 101 and 200.</em>
+</p></blockquote>
 
+
+<div class="float-caption"><p><strong><em>Exercise</em> 1.12: </strong>Number of prime number between 101 and
+200</p></div></div>
+<div class="float"><a name="multiples7"></a>
+<blockquote class="indentedblock">
+<p><em>Build the list of the
+multiples to 7 bellow 100</em>
+</p></blockquote>
+
+
+<div class="float-caption"><p><strong><em>Exercise</em> 1.13: </strong>Multiple of 7</p></div></div>
 <div class="float"><a name="oddNonPrime"></a>
 <blockquote class="indentedblock">
 <p><em>Build a
@@ -687,7 +717,45 @@ collection of the odd integers in [1 ; 100] which are not prime.</em>
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong><em>Exercise</em> 1.12: </strong>Odd and non prime integers</p></div></div>
+<div class="float-caption"><p><strong><em>Exercise</em> 1.14: </strong>Odd and non prime integers</p></div></div>
+<a name="index-collection_002c-_0023collect_003a"></a>
+<p>A sister enumerator to <span class="sansserif">#select:</span> is <span class="sansserif">#collect:</span>. It returns a
+new collection of the same size, with each element transformed by a
+block of code. When searching perfect cubic roots, it is useful to
+know about some cubes:
+</p>
+<div class="float"><a name="cubesCollect"></a>
+<div class="display">
+<pre class="display"><span class="sansserif">(1 to: 10) collect:[:n | n cubed]
+&rArr; #(1 8 27 64 125 216 343 512 729 1000)</span>
+</pre></div>
+
+<div class="float-caption"><p><strong><em>Example</em> 1.10: </strong>Collect cubes</p></div></div>
+<p>The collected elements can be of a different type:
+</p>
+<div class="display">
+<pre class="display"><span class="sansserif">&rsquo;Bonjour&rsquo; collect: [:c | c asciiValue ]
+&rArr;  #(66 111 110 106 111 117 114)</span>
+</pre></div>
+
+<p>We can shift the ascii value, convert back to character then collect
+in a new string. It is a simple cipher:
+</p><div class="float"><a name="simpleCipher"></a>
+<div class="display">
+<pre class="display"><span class="sansserif">&rsquo;Bonjour&rsquo; collect: [:c | (c asciiValue + 1) asCharacter ]
+&rArr; &rsquo;Cpokpvs&rsquo;</span>
+</pre></div>
+
+<div class="float-caption"><p><strong><em>Example</em> 1.11: </strong>Simple cipher</p></div></div>
+<div class="float"><a name="decodeCipher"></a>
+<blockquote class="indentedblock">
+<p><em>Decode cipher
+&rsquo;Zpvs!bsf!cppt&rsquo;, it was encoded with <a href="#simpleCipher"><em>Example</em> 1.11</a></em>
+</p></blockquote>
+
+
+<div class="float-caption"><p><strong><em>Exercise</em> 1.15: </strong>Decode cipher</p></div></div>
+
 
 <hr>
 <div class="header">
