@@ -238,8 +238,34 @@ far:
 <a name="decodeCipher-1"></a>
 <h4 class="subheading"><a href="Writing-your-first-scripts.html#decodeCipher"><em>Exercise</em> 1.15</a></h4>
 <div class="example">
-<pre class="example">'Zpvs!bsf!cppt' collect: [:c | (c asciiValue - 1) asCharacter]
-&rArr; 'Your are boos' 
+<pre class="example">'Zpvs!bsf!cptt' collect: [:c |
+   (c asciiValue - 1) asCharacter]
+&rArr; 'Your are a boss' 
+</pre></div>
+
+<a name="alphabetCipher-1"></a>
+<h4 class="subheading"><a href="Writing-your-first-scripts.html#alphabetCipher"><em>Exercise</em> 1.16</a></h4>
+<div class="example">
+<pre class="example">($A to: $Z) collect: [:c |
+   (c asciiValue - 65 + 3 \\ 26 + 65) asCharacter]
+</pre></div>
+
+<a name="encodeCaesar-1"></a>
+<h4 class="subheading"><a href="Writing-your-first-scripts.html#encodeCaesar"><em>Exercise</em> 1.17</a></h4>
+<p>In the solution of <a href="Writing-your-first-scripts.html#alphabetCipher"><em>Exercise</em> 1.16</a>, we just need to replace the
+characters intervale with a string:
+</p><div class="example">
+<pre class="example">'SMALLTALKEXPRESSION' collect: [:c |
+   (c asciiValue - 65 + 3 \\ 26 + 65) asCharacter]
+&rArr; 'VPDOOWDONHASUHVVLRQ' 
+</pre></div>
+
+<a name="decodeCaesar-1"></a>
+<h4 class="subheading"><a href="Writing-your-first-scripts.html#decodeCaesar"><em>Exercise</em> 1.18</a></h4>
+<div class="example">
+<pre class="example">  'DOHDMDFWDHVW' collect: [:c |
+    (c asciiValue - 65 - 3 \\ 26 + 65) asCharacter]
+&rArr; 'ALEAJACTAEST'
 </pre></div>
 <hr>
 <div class="header">

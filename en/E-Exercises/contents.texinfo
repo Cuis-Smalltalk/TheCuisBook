@@ -120,6 +120,29 @@ far:
 
 @subheading @ref{decodeCipher}
 @example
-'Zpvs!bsf!cppt' collect: [:c | (c asciiValue - 1) asCharacter]
-@result{} 'Your are boos' 
+'Zpvs!bsf!cptt' collect: [:c |
+   (c asciiValue - 1) asCharacter]
+@result{} 'Your are a boss' 
+@end example
+
+@subheading @ref{alphabetCipher}
+@example
+($A to: $Z) collect: [:c |
+   (c asciiValue - 65 + 3 \\ 26 + 65) asCharacter]
+@end example
+
+@subheading @ref{encodeCaesar}
+In the solution of @ref{alphabetCipher}, we just need to replace the
+characters intervale with a string:
+@example
+'SMALLTALKEXPRESSION' collect: [:c |
+   (c asciiValue - 65 + 3 \\ 26 + 65) asCharacter]
+@result{} 'VPDOOWDONHASUHVVLRQ' 
+@end example
+
+@subheading @ref{decodeCaesar}
+@example
+  'DOHDMDFWDHVW' collect: [:c |
+    (c asciiValue - 65 - 3 \\ 26 + 65) asCharacter]
+@result{} 'ALEAJACTAEST'
 @end example

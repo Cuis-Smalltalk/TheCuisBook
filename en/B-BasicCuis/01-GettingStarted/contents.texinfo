@@ -578,13 +578,31 @@ in a new string. It is a simple cipher:
 'Bonjour' collect: [:c | (c asciiValue + 1) asCharacter ]
 @result{} 'Cpokpvs'}
 
-@exercise{Decode cipher,decodeCipher,@emph{Decode cipher
-'Zpvs!bsf!cppt', it was encoded with @ref{simpleCipher}}}
+@exercise{Cipher decode,decodeCipher,@emph{Decode cipher
+'Zpvs!bsf!cptt', it was encoded with @ref{simpleCipher}}}
+
+The Caesar's cipher is based on shifting letter to the right in the
+alphabet order.  The method is named after Julius Caesar, who used it
+in his private correspondence with a shift of 3.
+
+@exercise{Alphabet Caesar's cipher,alphabetCipher,@emph{Write a script
+to collection the upper letters representing the Caesar's cipher. The
+expected answers is} #($D $E $F $G $H $I $J $K $L $M $N $O $P $Q $R $S
+$T $U $V $W $X $Y $Z $A $B $C)}
+
+Once you get the alphabet cipher right, you can encode your first
+message:
+@exercise{Encode with Caesar's cipher,encodeCaesar,@emph{Encode the
+phrase 'SMALLTALKEXPRESSION'.}}
+
+And decode message:
+@exercise{Decode with Caesar's cipher,decodeCaesar,@emph{Decode the
+message 'SURJUDPPLQJ'.}}
 
 
 @c ceasar cipher
-@c ($A to: $Z) collect: [:c | (c asciiValue - 64 + 4 \\ 26 + 65) asCharacter ]
-@c 'BONJOUR' collect: [:c | (c asciiValue - 64 + 0 \\ 26 + 65) asCharacter ]
+@c ($A to: $Z) collect: [:c | (c asciiValue - 65 + 5 \\ 26 + 65) asCharacter ]
+@c 'BONJOUR' collect: [:c | (c asciiValue - 65 + 0 \\ 26 + 65) asCharacter ]
 @c fibo example, with golden number convergence
 @c A graph to show the progression of Qty of prime number 100 large interval integer 
 
