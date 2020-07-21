@@ -220,11 +220,12 @@ Next: <a href="The-examples.html#The-examples" accesskey="n" rel="next">The exam
 <h4 class="subheading"><a href="Writing-your-first-scripts.html#oddNonPrime"><em>Exercise</em> 1.14</a></h4>
 <p>This solution, based on set operations and multiple use of the
 <span class="sansserif">#select:</span> message, is mostly compatible with the knowledge
-acquired at this point of the book. Parenthesis are mandatory:
+acquired at this point of the book.
 </p><div class="example">
-<pre class="example">( (1 to: 100) difference:
-   ((1 to: 100) select: [:n | n isPrime]) )
-      select: [:n | n odd]
+<pre class="example">| primeNumbers nonPrimeNumbers |
+primeNumbers := (1 to: 100) select: [:n | n isPrime].
+nonPrimeNumbers := (1 to: 100) difference: primeNumbers.
+nonPrimeNumbers select: [:n | n odd]
 &rArr; #(1 9 15 21 25 27 33 35 39 45 49 51 55 57 63 65 69 75
 77 81 85 87 91 93 95 99) 
 </pre></div>

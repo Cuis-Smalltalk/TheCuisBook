@@ -386,7 +386,7 @@ To change one character, use the companion two keywords message
 @result{} 'Hallo'}
 
 Observe the use of the cascade with the @msg{yourself} message. It is
-send to the instance string to get it returned.
+sent to the instance string to get it returned.
 
 @exercise{Hello to Belle,helloBelle, @emph{Replace each character of
 the string 'Hello' to become 'Belle'}}
@@ -408,6 +408,25 @@ proves to be of some use as we may see later:
 We can write the same about sorting a string:
 @smalltalkExample{'bonjour' sorted
 @result{}#($b $j $n $o $o $r $u)}
+
+@subsection Fun with variables
+@cindex variable
+How a variable can be fun? With @cuis{}, a variable is untyped, it
+is only a reference to an object of any nature. Therefore to declare a
+variable we name it at the beginning of the script and surround it by
+pipe ``|''.
+
+So far we sent messages directly to objects, we can send message to a
+variable bounded to an object too.
+
+@strong{Caution.} This ease of use has a drawback: when sending a
+message to a variable bounded to an object, the system does not check
+the object understand the message. Nevertheless there is a procedure
+to catch up this kind of situation.
+
+@smalltalkExample{| msg |
+msg := 'hello world!.
+msg capitalized}
 
 @subsection Fun with collections
 Collection is the Smalltalk general term to design a set of
@@ -475,6 +494,35 @@ message @msg{asArray} sent to the interval returns an array.
 
 @exercise{Negative integer numbers,exeNegativeIntegers,@emph{Create an
 array of integer numbers ranging from -80 to 50.}}
+
+@c introduce ordered collection
+@cindex collection, dynamic
+@cindex collection, @class{OrderedCollection}
+@cindex collection, @msg{add:}
+The size of n array is fixed size, it can not grow. An
+@class{OrderedCollection} is a dynamic, ordered collection, it grows
+when adding element with the @msg{add:} message:
+@smalltalkExampleCaption{Dynamic size collection,dynamicSize,
+| fibo | 
+fibo := OrderedCollection newFrom: #(1 1 2 3).
+fibo add: 5;
+   add: 8;
+   add: 13;
+   add: 21.
+fibo
+@result{} an OrderedCollection(1 1 2 3 5 8 13 21)}
+
+@cindex collection, @msg{at:}
+@cindex collection, @msg{last}
+@cindex collection, @msg{atLast:}
+Index access to the elements of a collection is done with a variety of
+messages. The index naturally ranges from 1 to the collection size:
+@smalltalkExample{fibo at:1 @result{} 1
+fibo at: 6 @result{} 5
+fibo last @result{} 21
+fibo atLast: 2 @result{} 13
+fibo at: fibo size @result{} 21}
+
 
 @subsubheading Playing with enumerators
 The collection comes with a set of helpful methods named
@@ -547,6 +595,12 @@ is sent last to the resulting collection:
 100,qtyPrime100, ( (1 to: 100) select: [:n | n isPrime] ) size
 @result{} 25}
 
+For more clarity, we use a variable named @smalltalk{primeNumbers} to
+remembers about the prime numbers list we build:
+@smalltalkExample{| primeNumbers |
+primeNumbers := (1 to: 100) select: [:n | n isPrime].
+primeNumbers size}
+
 @exercise{Number of prime number between 101 and
 200,qtyPrime200,@emph{Modify @ref{qtyPrime100} to calculate the number
 of prime numbers between 101 and 200.}}
@@ -567,7 +621,8 @@ know about some cubes:
 (1 to: 10) collect:[:n | n cubed]
 @result{} #(1 8 27 64 125 216 343 512 729 1000)}
 
-The collected elements can be of a different type:
+The collected elements can be of a different type. Bellow, a string is
+enumerated and integers are collected:
 
 @smalltalkExample{'Bonjour' collect: [:c | c asciiValue ]
 @result{}  #(66 111 110 106 111 117 114)}
@@ -578,15 +633,15 @@ in a new string. It is a simple cipher:
 'Bonjour' collect: [:c | (c asciiValue + 1) asCharacter ]
 @result{} 'Cpokpvs'}
 
-@exercise{Cipher decode,decodeCipher,@emph{Decode cipher
-'Zpvs!bsf!cptt', it was encoded with @ref{simpleCipher}}}
+@exercise{Cipher decode,decodeCipher,@emph{Write the script to decode
+cipher 'Zpvs!bsf!cptt', it was encoded with @ref{simpleCipher}}}
 
 The Caesar's cipher is based on shifting letter to the right in the
 alphabet order.  The method is named after Julius Caesar, who used it
 in his private correspondence with a shift of 3.
 
 @exercise{Alphabet Caesar's cipher,alphabetCipher,@emph{Write a script
-to collection the upper letters representing the Caesar's cipher. The
+to collect the upper letters representing the Caesar's cipher. The
 expected answers is} #($D $E $F $G $H $I $J $K $L $M $N $O $P $Q $R $S
 $T $U $V $W $X $Y $Z $A $B $C)}
 
@@ -597,13 +652,17 @@ phrase 'SMALLTALKEXPRESSION'.}}
 
 And decode message:
 @exercise{Decode with Caesar's cipher,decodeCaesar,@emph{Decode the
-message 'SURJUDPPLQJ'.}}
+message 'DOHDMDFWDHVW'.}}
 
 
-@c ceasar cipher
-@c ($A to: $Z) collect: [:c | (c asciiValue - 65 + 5 \\ 26 + 65) asCharacter ]
-@c 'BONJOUR' collect: [:c | (c asciiValue - 65 + 0 \\ 26 + 65) asCharacter ]
+
 @c fibo example, with golden number convergence
+@c | fibo |
+@c fibo _ OrderedCollection newFrom: #(1 1).
+@c 10 timesRepeat: [
+@c 	fibo add: (fibo last + fibo atLast: 2)].
+@c fibo pairsDo: [:i :j |
+@c 	Transcript show: (j / i ) asFloat ; cr].
 @c A graph to show the progression of Qty of prime number 100 large interval integer 
 
 @node Introduction to the system classes
