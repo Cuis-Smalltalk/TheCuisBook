@@ -246,7 +246,8 @@ sum of the first four integer inverses.</em>
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong><em>Exercise</em> 1.2: </strong>Inverse sum</p></div></div>
+<div class="float-caption"><p><strong><em>Exercise</em> 1.2: </strong>Inverse sum</p></div></div><a name="index-number_002c-root"></a>
+<a name="index-number_002c-square"></a>
 <p>All four arithmetic operations and mathematical functions are
 compatible with the rational number representation:
 </p><div class="display">
@@ -581,6 +582,7 @@ arithmetic operations:
 #(1 2 3 4) / 10 &rArr; #(1/10 1/5 3/10 2/5)</span>
 </pre></div>
 
+<a name="index-collection_002c-squared"></a>
 <p>Mathematics operations work as well:
 </p><div class="display">
 <pre class="display"><span class="sansserif">#(1 2 3 4) squared &rArr; #(1 4 9 16)
@@ -819,6 +821,7 @@ cipher &rsquo;Zpvs!bsf!cptt&rsquo;, it was encoded with <a href="#simpleCipher">
 
 
 <div class="float-caption"><p><strong><em>Exercise</em> 1.15: </strong>Cipher decode</p></div></div>
+<a name="index-Caesar-cipher"></a>
 <p>The Caesar&rsquo;s cipher is based on shifting letter to the right in the
 alphabet order.  The method is named after Julius Caesar, who used it
 in his private correspondence with a shift of 3.
@@ -883,6 +886,7 @@ inserted:
 </pre></div>
 
 <a name="index-loop_002c-repeat"></a>
+<a name="index-Fibonacci-sequence"></a>
 <p>A repeated loop without index or any collection is written with the
 <span class="sansserif">#timesRepeat:</span> message:
 </p><div class="float"><a name="repeatLoop"></a>
@@ -892,7 +896,7 @@ fibo := OrderedCollection newFrom: #(1 1).
 10 timesRepeat: [
    fibo add: (fibo last + fibo atLast: 2)].
 fibo
-&rArr; an OrderedCollection(1 1 2 3 5 8 13 21 34 55 89 144) </span>
+&rArr; an OrderedCollection(1 1 2 3 5 8 13 21 34 55 89 144)</span>
 </pre></div>
 
 <div class="float-caption"><p><strong><em>Example</em> 1.14: </strong>A <em>repeat</em> loop</p></div></div>
@@ -908,9 +912,6 @@ value:
 &rArr; 1.6176470588235294
 &rArr; 1.6179775280898876</span>
 </pre></div>
-
-
-
 
 
 <hr>

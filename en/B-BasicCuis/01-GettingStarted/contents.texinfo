@@ -723,9 +723,77 @@ criteria:
 
    @item @strong{A behavior.} It is modeled by message(s) -- we
    already used this vocabulary -- sent to the object. When the object
-   receive a message it understands, it executes the code of an
+   receives a message it understands, it executes the code of an
    internal method named as the message.
 
 @end itemize
+@cindex class
+@cindex instance
+
+Several entities sharing the same variables and messages understanding
+are very likely to exist within @cuis{} -- think about the
+numbers. Therefore, entities are created -- @dfn{instantiated} --
+following a model, this model is called a @dfn{Class}.
+
+A specific class declares the internal variables and the behavior by
+implementing the methods. Let see how the @class{Fraction} is declared:
+@smalltalkExample{Number subclass: #Fraction
+   instanceVariableNames: 'numerator denominator'
+   classVariableNames: ''
+   poolDictionaries: ''
+   category: 'Kernel-Numbers'}
+
+As expected there are two variables -- named @dfn{instance variables}
+-- to define the @smalltalk{numerator} and @smalltalk{denominator} of
+a fraction. From this declaration, we observe there is a hierarchy in
+the class definition: @class{Fraction} is a kind of
+@class{Number}. This mean a fraction inherits the internal state --
+variables -- and behavior -- methods -- defined in the @class{Number}
+class.
+
+This aspect of object oriented programming is called
+@dfn{inheritance}. In @cuis{}, each class inherits from one parent
+class.
+
+@c instance creation
+@cindex instance, creation
+In the previous section, we already met fraction. Those fractions are
+objects called @dfn{instance} of the class @class{Fraction}. To create
+this instance we wrote @smalltalk{5 / 4}, the mechanism is based on
+message sending and polymorphism. The number @smalltalk{5} is an
+integer receiving the message @msg{/}, therefore looking at the method
+@method{/} in the @class{Integer} class explains how is instantiated
+the fraction. See part of this method, we remove intentionally part of
+its source code:
+@smalltalkExample{/ aNumber
+"Refer to the comment in Number / "
+| quoRem |
+aNumber isInteger ifTrue:
+../..
+   ifFalse: [^ (Fraction numerator: self denominator: aNumber) reduced]].
+../..}
+
+
+@cindex class, class method
+We learn that in some situation, the method returns a fraction,
+reduced. We can expect that in some other situation an integer is
+returned, for example @smalltalk{6 / 2}.
+
+In the example, we observe the message @msg{numerator:denominator:} is
+sent to the class @class{Fraction}, such a message refers to a
+@dfn{class method} understood only by the @class{Fraction} class. It
+is expected such a named method returns an instance of a Fraction.
+
+Try out in a workspace:
+@smalltalkExample{Fraction numerator: 24 denominator: 21
+@result{} 24/21}
+Observe how the fraction is not reduced, where as it is with this code:
+@smalltalkExample{ 24 / 21
+@result{} 8/7}
+
+@c class method
+
+@c instance method
+
 
 @c explain with Fraction squared
