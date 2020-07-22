@@ -5,7 +5,7 @@ implementation of the Smalltalk language and environment.
 
 Copyright (C) 2020 Hilaire Fernandes and Juan Vuletich
 
-Compilation : July 21, 2020
+Compilation : July 22, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -852,6 +852,64 @@ message &rsquo;DOHDMDFWDHVW&rsquo;.</em>
 
 
 <div class="float-caption"><p><strong><em>Exercise</em> 1.18: </strong>Decode with Caesar&rsquo;s cipher</p></div></div>
+<a name="Fun-with-loop"></a>
+<h4 class="subsubheading">Fun with loop</h4>
+<p>Collection can be iterated with traditional loops: there is a whole
+family of <em>repeat</em>, <em>while</em> and <em>for</em> loops.
+</p>
+<a name="index-loop_002c-for"></a>
+<p>A straight <em>for</em> loop between to integer value is written with
+the keyword message <span class="sansserif">#to:do:</span>, the last argument is a block of code
+executed for each index:
+</p><div class="float"><a name="forLoop"></a>
+<div class="display">
+<pre class="display"><span class="sansserif">| sequence |
+sequence := OrderedCollection new.
+1 to: 10 do: [:k | sequence add: 1 / k].
+sequence
+&rArr; an OrderedCollection(1 1/2 1/3 1/4 1/5 1/6 1/7 1/8 1/9 1/10)</span>
+</pre></div>
+
+<div class="float-caption"><p><strong><em>Example</em> 1.13: </strong>A <em>for</em> loop</p></div></div>
+<p>A collect writes more concisely, though:
+</p><div class="display">
+<pre class="display"><span class="sansserif">(1 to: 10) collect: [:k | 1/k]</span>
+</pre></div>
+
+<p>To step with a different value than 1, a third numeric argument is
+inserted:
+</p><div class="display">
+<pre class="display"><span class="sansserif">1 to: 10 by: 0.5 do: [:k | sequence add: 1 / k]</span>
+</pre></div>
+
+<a name="index-loop_002c-repeat"></a>
+<p>A repeated loop without index or any collection is written with the
+<span class="sansserif">#timesRepeat:</span> message:
+</p><div class="float"><a name="repeatLoop"></a>
+<div class="display">
+<pre class="display"><span class="sansserif">| fibo |
+fibo := OrderedCollection newFrom: #(1 1).
+10 timesRepeat: [
+   fibo add: (fibo last + fibo atLast: 2)].
+fibo
+&rArr; an OrderedCollection(1 1 2 3 5 8 13 21 34 55 89 144) </span>
+</pre></div>
+
+<div class="float-caption"><p><strong><em>Example</em> 1.14: </strong>A <em>repeat</em> loop</p></div></div>
+<p>The quotient of consecutive Fibonacci terms converge toward the golden
+value:
+</p><div class="display">
+<pre class="display"><span class="sansserif">fibo pairsDo: [:i :j |
+   Transcript show: (j / i ) asFloat ; cr]
+&rArr; 1.0
+&rArr; 1.5
+&rArr; 1.6
+&rArr; 1.6153846153846154
+&rArr; 1.6176470588235294
+&rArr; 1.6179775280898876</span>
+</pre></div>
+
+
 
 
 

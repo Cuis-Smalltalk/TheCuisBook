@@ -654,15 +654,53 @@ And decode message:
 @exercise{Decode with Caesar's cipher,decodeCaesar,@emph{Decode the
 message 'DOHDMDFWDHVW'.}}
 
+@subsubheading Fun with loop
+Collection can be iterated with traditional loops: there is a whole
+family of @emph{repeat}, @emph{while} and @emph{for} loops.
+
+@cindex loop, for
+A straight @emph{for} loop between to integer value is written with
+the keyword message @msg{to:do:}, the last argument is a block of code
+executed for each index:
+@smalltalkExampleCaption{A @emph{for} loop,forLoop,
+| sequence |
+sequence := OrderedCollection new.
+1 to: 10 do: [:k | sequence add: 1 / k].
+sequence
+@result{} an OrderedCollection(1 1/2 1/3 1/4 1/5 1/6 1/7 1/8 1/9 1/10)}
+
+A collect writes more concisely, though:
+@smalltalkExample{(1 to: 10) collect: [:k | 1/k]}
+
+To step with a different value than 1, a third numeric argument is
+inserted:
+@smalltalkExample{1 to: 10 by: 0.5 do: [:k | sequence add: 1 / k]}
+
+@cindex loop, repeat
+A repeated loop without index or any collection is written with the
+@msg{timesRepeat:} message:
+@smalltalkExampleCaption{A @emph{repeat} loop, repeatLoop,
+| fibo |
+fibo := OrderedCollection newFrom: #(1 1).
+10 timesRepeat: [
+   fibo add: (fibo last + fibo atLast: 2)].
+fibo
+@result{} an OrderedCollection(1 1 2 3 5 8 13 21 34 55 89 144) }
+
+The quotient of consecutive Fibonacci terms converge toward the golden
+value:
+@smalltalkExample{fibo pairsDo: [:i :j |
+   Transcript show: (j / i ) asFloat ; cr]
+@result{} 1.0
+@result{} 1.5
+@result{} 1.6
+@result{} 1.6153846153846154
+@result{} 1.6176470588235294
+@result{} 1.6179775280898876}
 
 
-@c fibo example, with golden number convergence
-@c | fibo |
-@c fibo _ OrderedCollection newFrom: #(1 1).
-@c 10 timesRepeat: [
-@c 	fibo add: (fibo last + fibo atLast: 2)].
-@c fibo pairsDo: [:i :j |
-@c 	Transcript show: (j / i ) asFloat ; cr].
+
+
 @c A graph to show the progression of Qty of prime number 100 large interval integer 
 
 @node Introduction to the system classes
