@@ -2,3 +2,6 @@
 @chapter Writing your first application
 An excuse to discover some of the @cuis tools: the Browser and the
 Insepctor.
+
+@c A graph to show the progression of Qty of prime number 100 large
+@c interval integer, to be done with Pen, may not need class creation

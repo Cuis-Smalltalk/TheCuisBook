@@ -211,7 +211,8 @@ parenthesis. We will explain why in Part Two.}
 
 @exercise{Inverse sum,inverseSum, @emph{Write the code to compute the
 sum of the first four integer inverses.}}
-
+@cindex number, root
+@cindex number, square
 All four arithmetic operations and mathematical functions are
 compatible with the rational number representation:
 @smalltalkExample {(15 / 14) * (21 / 5) @result{} 9 / 2
@@ -464,6 +465,7 @@ arithmetic operations:
 #(1 2 3 4) + 10 @result{} #(11 12 13 14)
 #(1 2 3 4) / 10 @result{} #(1/10 1/5 3/10 2/5)}
 
+@cindex collection, squared
 Mathematics operations work as well:
 @smalltalkExample{#(1 2 3 4) squared @result{} #(1 4 9 16)
 #(0 30 45 60) degreeCos
@@ -636,6 +638,7 @@ in a new string. It is a simple cipher:
 @exercise{Cipher decode,decodeCipher,@emph{Write the script to decode
 cipher 'Zpvs!bsf!cptt', it was encoded with @ref{simpleCipher}}}
 
+@cindex Caesar cipher
 The Caesar's cipher is based on shifting letter to the right in the
 alphabet order.  The method is named after Julius Caesar, who used it
 in his private correspondence with a shift of 3.
@@ -677,6 +680,7 @@ inserted:
 @smalltalkExample{1 to: 10 by: 0.5 do: [:k | sequence add: 1 / k]}
 
 @cindex loop, repeat
+@cindex Fibonacci sequence
 A repeated loop without index or any collection is written with the
 @msg{timesRepeat:} message:
 @smalltalkExampleCaption{A @emph{repeat} loop, repeatLoop,
@@ -685,7 +689,7 @@ fibo := OrderedCollection newFrom: #(1 1).
 10 timesRepeat: [
    fibo add: (fibo last + fibo atLast: 2)].
 fibo
-@result{} an OrderedCollection(1 1 2 3 5 8 13 21 34 55 89 144) }
+@result{} an OrderedCollection(1 1 2 3 5 8 13 21 34 55 89 144)}
 
 The quotient of consecutive Fibonacci terms converge toward the golden
 value:
@@ -698,11 +702,30 @@ value:
 @result{} 1.6176470588235294
 @result{} 1.6179775280898876}
 
-
-
-
 @c A graph to show the progression of Qty of prime number 100 large interval integer 
 
 @node Introduction to the system classes
 @section Introduction to the system classes
+@cuis{} is a pure object oriented language: all the entities as
+integer, float, rational number, string, collection, block of code we
+discovered in the previous section are objects.
 
+But what is an object? An object is an entity responding to two
+criteria:
+
+@itemize
+
+   @item @strong{An internal state.} It is materialized by variable(s)
+   known only by the object. A variable only visible within the object
+   is called @dfn{private}. As a consequence, it is impossible -- if
+   the object decides so -- to know the internal state of the object
+   from another object.
+
+   @item @strong{A behavior.} It is modeled by message(s) -- we
+   already used this vocabulary -- sent to the object. When the object
+   receive a message it understands, it executes the code of an
+   internal method named as the message.
+
+@end itemize
+
+@c explain with Fraction squared
