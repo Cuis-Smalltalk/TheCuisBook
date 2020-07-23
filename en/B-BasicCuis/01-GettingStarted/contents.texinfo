@@ -92,7 +92,7 @@ environment.}}
 @node Writing your first scripts
 @section Writing your first scripts
 In this section we present a few scripts so you will get a taste and
-feeling about Smalltalk code. The examples are completed with small
+feeling about Smalltalk code. The examples are associated with small
 exercises to experiment with and accompanied with solutions in the
 annex. We intentionally keep the details of the syntax out of this
 section.
@@ -763,8 +763,7 @@ this instance we wrote @smalltalk{5 / 4}, the mechanism is based on
 message sending and polymorphism. The number @smalltalk{5} is an
 integer receiving the message @msg{/}, therefore looking at the method
 @method{/} in the @class{Integer} class explains how is instantiated
-the fraction. See part of this method, we remove intentionally part of
-its source code:
+the fraction. See part of this method:
 @smalltalkExample{/ aNumber
 "Refer to the comment in Number / "
 | quoRem |
@@ -775,19 +774,23 @@ aNumber isInteger ifTrue:
 
 
 @cindex class, class method
-We learn that in some situation, the method returns a fraction,
-reduced. We can expect that in some other situation an integer is
-returned, for example @smalltalk{6 / 2}.
+From this source code, we learn that in some situation, the method
+returns a fraction, reduced. We can expect that in some other
+situation an integer is returned, for example @smalltalk{6 / 2}.
 
 In the example, we observe the message @msg{numerator:denominator:} is
 sent to the class @class{Fraction}, such a message refers to a
 @dfn{class method} understood only by the @class{Fraction} class. It
-is expected such a named method returns an instance of a Fraction.
+is expected such a named method returns an instance of a
+@class{Fraction}.
 
 Try out in a workspace:
 @smalltalkExample{Fraction numerator: 24 denominator: 21
 @result{} 24/21}
-Observe how the fraction is not reduced, where as it is with this code:
+
+Observe how the fraction is not reduced. Whereas it is when
+instantiated with the @msg{/} message:
+
 @smalltalkExample{ 24 / 21
 @result{} 8/7}
 

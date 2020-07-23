@@ -5,7 +5,7 @@ implementation of the Smalltalk language and environment.
 
 Copyright (C) 2020 Hilaire Fernandes and Juan Vuletich
 
-Compilation : July 22, 2020
+Compilation : July 23, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -154,8 +154,7 @@ this instance we wrote <span class="sansserif">5 / 4</span>, the mechanism is ba
 message sending and polymorphism. The number <span class="sansserif">5</span> is an
 integer receiving the message <span class="sansserif">#/</span>, therefore looking at the method
 <span class="sansserif">/</span> in the <span class="sansserif">Integer</span> class explains how is instantiated
-the fraction. See part of this method, we remove intentionally part of
-its source code:
+the fraction. See part of this method:
 </p><div class="display">
 <pre class="display"><span class="sansserif">/ aNumber
 &quot;Refer to the comment in Number / &quot;
@@ -168,22 +167,26 @@ aNumber isInteger ifTrue:
 
 
 <a name="index-class_002c-class-method"></a>
-<p>We learn that in some situation, the method returns a fraction,
-reduced. We can expect that in some other situation an integer is
-returned, for example <span class="sansserif">6 / 2</span>.
+<p>From this source code, we learn that in some situation, the method
+returns a fraction, reduced. We can expect that in some other
+situation an integer is returned, for example <span class="sansserif">6 / 2</span>.
 </p>
 <p>In the example, we observe the message <span class="sansserif">#numerator:denominator:</span> is
 sent to the class <span class="sansserif">Fraction</span>, such a message refers to a
 <em>class method</em> understood only by the <span class="sansserif">Fraction</span> class. It
-is expected such a named method returns an instance of a Fraction.
+is expected such a named method returns an instance of a
+<span class="sansserif">Fraction</span>.
 </p>
 <p>Try out in a workspace:
 </p><div class="display">
 <pre class="display"><span class="sansserif">Fraction numerator: 24 denominator: 21
 &rArr; 24/21</span>
 </pre></div>
-<p>Observe how the fraction is not reduced, where as it is with this code:
-</p><div class="display">
+
+<p>Observe how the fraction is not reduced. Whereas it is when
+instantiated with the <span class="sansserif">#/</span> message:
+</p>
+<div class="display">
 <pre class="display"><span class="sansserif">24 / 21
 &rArr; 8/7</span>
 </pre></div>
