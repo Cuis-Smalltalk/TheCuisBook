@@ -5,7 +5,7 @@ implementation of the Smalltalk language and environment.
 
 Copyright (C) 2020 Hilaire Fernandes and Juan Vuletich
 
-Compilation : July 23, 2020
+Compilation : July 24, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -148,6 +148,7 @@ class.
 class.
 </p>
 <a name="index-instance_002c-creation"></a>
+<a name="index-class_002c-class-method"></a>
 <p>In the previous section, we already met fraction. Those fractions are
 objects called <em>instance</em> of the class <span class="sansserif">Fraction</span>. To create
 this instance we wrote <span class="sansserif">5 / 4</span>, the mechanism is based on
@@ -165,8 +166,6 @@ aNumber isInteger ifTrue:
 ../..</span>
 </pre></div>
 
-
-<a name="index-class_002c-class-method"></a>
 <p>From this source code, we learn that in some situation, the method
 returns a fraction, reduced. We can expect that in some other
 situation an integer is returned, for example <span class="sansserif">6 / 2</span>.
@@ -183,7 +182,7 @@ is expected such a named method returns an instance of a
 &rArr; 24/21</span>
 </pre></div>
 
-<p>Observe how the fraction is not reduced. Whereas it is when
+<p>Observe how the fraction is not reduced. Whereas it is, when
 instantiated with the <span class="sansserif">#/</span> message:
 </p>
 <div class="display">
@@ -191,8 +190,69 @@ instantiated with the <span class="sansserif">#/</span> message:
 &rArr; 8/7</span>
 </pre></div>
 
+<p>A class method is often used to create a new instance from a class. In
+<a href="Writing-your-first-scripts.html#forLoop"><em>Example</em> 1.13</a>, the message <span class="sansserif">#new</span> is sent to the class
+<span class="sansserif">OrderedCollection</span> to create a new empty collection;
+<span class="sansserif">new</span> is a class method.
+</p>
+<p>In <a href="Writing-your-first-scripts.html#repeatLoop"><em>Example</em> 1.14</a>, the <span class="sansserif">#newFrom:</span> message is sent to the class
+<span class="sansserif">OrdredCollection</span> to create a new collection filled with
+elements from the array given in argument; <span class="sansserif">newFrom:</span> is
+another class method.
+</p>
+<a name="index-class_002c-instance-method"></a>
+<p>Observe the hierarchy of the Number classes:
+</p><div class="format">
+<pre class="format"><span class="sansserif">Number</span>
+   <span class="sansserif">Float</span>
+      <span class="sansserif">BoxedFloat64</span>
+      <span class="sansserif">SmallFloat64</span>
+   <span class="sansserif">Fraction</span>
+   <span class="sansserif">Integer</span>
+      <span class="sansserif">LargePositiveInteger</span>
+         <span class="sansserif">LargeNegativeInteger</span>
+      <span class="sansserif">SmalltalkInteger</span>
+</pre></div>
 
+<p><span class="sansserif">Float</span>, <span class="sansserif">Integer</span> inherit from the <span class="sansserif">Number</span>
+class. We already learnt about the <span class="sansserif">#squared</span> message sent to
+integer and fraction instances:
+</p><div class="display">
+<pre class="display"><span class="sansserif">16 squared &rArr; 256
+(2 / 3) squared &rArr; 4/9</span>
+</pre></div>
 
+<p>As the <span class="sansserif">#squared</span> message is sent to instance of <span class="sansserif">Integer</span>
+and <span class="sansserif">Fraction</span> instance, the associated <span class="sansserif">squared</span> method
+is called an <em>instance method</em>. This method is defined in both the
+<span class="sansserif">Number</span> and <span class="sansserif">Fraction</span> classes.
+</p>
+
+<p>Let&rsquo;s examine this method in <span class="sansserif">Number</span>:
+</p><div class="display">
+<pre class="display"><span class="sansserif">Number&gt;&gt;squared
+&quot;Answer the receiver multiplied by itself.&quot;
+   ^self * self</span>
+</pre></div>
+
+<p>In an instance method source code, <span class="sansserif">self</span> refers to the
+object itself, here it is the value of the number. The <span class="sansserif">^</span>
+symbol indicates to return the following value <span class="sansserif">self *
+self</span>.
+</p>
+<p>Now let&rsquo;s examine this same method in <span class="sansserif">Fraction</span>:
+</p><div class="display">
+<pre class="display"><span class="sansserif">Fraction&gt;&gt;squared
+   ^ Fraction numerator: numerator squared denominator: denominator squared</span>
+</pre></div>
+
+<p>Here a new fraction is instantiated with numerator and denominator squared.
+</p>
+<p>When message <span class="sansserif">#squared</span> is sent to a number, different methods is
+executed depending on the number is a fraction or any other kind of
+number. This fundamental mechanism to oriented object programming is
+called <em>Polymorphism</em>.
+</p>
 
 <hr>
 <div class="header">

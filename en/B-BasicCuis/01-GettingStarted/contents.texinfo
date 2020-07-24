@@ -757,6 +757,7 @@ class.
 
 @c instance creation
 @cindex instance, creation
+@cindex class, class method
 In the previous section, we already met fraction. Those fractions are
 objects called @dfn{instance} of the class @class{Fraction}. To create
 this instance we wrote @smalltalk{5 / 4}, the mechanism is based on
@@ -772,8 +773,6 @@ aNumber isInteger ifTrue:
    ifFalse: [^ (Fraction numerator: self denominator: aNumber) reduced]].
 ../..}
 
-
-@cindex class, class method
 From this source code, we learn that in some situation, the method
 returns a fraction, reduced. We can expect that in some other
 situation an integer is returned, for example @smalltalk{6 / 2}.
@@ -788,15 +787,70 @@ Try out in a workspace:
 @smalltalkExample{Fraction numerator: 24 denominator: 21
 @result{} 24/21}
 
-Observe how the fraction is not reduced. Whereas it is when
+Observe how the fraction is not reduced. Whereas it is, when
 instantiated with the @msg{/} message:
 
 @smalltalkExample{ 24 / 21
 @result{} 8/7}
 
-@c class method
+A class method is often used to create a new instance from a class. In
+@ref{forLoop}, the message @msg{new} is sent to the class
+@class{OrderedCollection} to create a new empty collection;
+@method{new} is a class method.
+
+In @ref{repeatLoop}, the @msg{newFrom:} message is sent to the class
+@class{OrdredCollection} to create a new collection filled with
+elements from the array given in argument; @method{newFrom:} is
+another class method.
 
 @c instance method
+@cindex class, instance method
+Observe the hierarchy of the Number classes:
+@format
+@class{Number}
+   @class{Float}
+      @class{BoxedFloat64}
+      @class{SmallFloat64}
+   @class{Fraction}
+   @class{Integer}
+      @class{LargePositiveInteger}
+         @class{LargeNegativeInteger}
+      @class{SmalltalkInteger}
+@end format
+
+@class{Float}, @class{Integer} inherit from the @class{Number}
+class. We already learnt about the @msg{squared} message sent to
+integer and fraction instances:
+@smalltalkExample{
+16 squared @result{} 256
+(2 / 3) squared @result{} 4/9}
+
+As the @msg{squared} message is sent to @class{Integer} and
+@class{Fraction} instances, the associated @method{squared} method is
+called an @dfn{instance method}. This method is defined in both the
+@class{Number} and @class{Fraction} classes.
+
+
+Let's examine this method in @class{Number}:
+@smalltalkExample{Number>>squared
+"Answer the receiver multiplied by itself."
+   ^self * self}
+
+In an instance method source code, @smalltalk{self} refers to the
+object itself, here it is the value of the number. The @smalltalk{^}
+symbol indicates to return the following value @smalltalk{self *
+self}.
+
+Now let's examine this same method in @class{Fraction}:
+@smalltalkExample{Fraction>>squared
+   ^ Fraction numerator: numerator squared denominator: denominator squared}
+
+Here a new fraction is instantiated with numerator and denominator squared.
+
+When message @msg{squared} is sent to a number, different methods are
+executed depending on the number is a fraction or any other kind of
+number. This fundamental mechanism of oriented object programming is
+called @dfn{Polymorphism}.
 
 
 @c explain with Fraction squared
