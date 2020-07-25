@@ -711,7 +711,8 @@ value:
 integer, float, rational number, string, collection, block of code we
 discovered in the previous section are objects.
 
-But what is an object? An object is an entity responding to two
+@subsection Understanding Object Oriented Programming
+But what is an object?  An object is an entity responding to two
 criteria:
 
 @itemize
@@ -738,7 +739,9 @@ numbers. Therefore, entities are created -- @dfn{instantiated} --
 following a model, this model is called a @dfn{Class}.
 
 A specific class declares the internal variables and the behavior by
-implementing the methods. Let see how the @class{Fraction} is declared:
+implementing the methods. Let see how the @class{Fraction} class is
+declared:
+
 @smalltalkExample{Number subclass: #Fraction
    instanceVariableNames: 'numerator denominator'
    classVariableNames: ''
@@ -749,7 +752,7 @@ As expected there are two variables -- named @dfn{instance variables}
 -- to define the @smalltalk{numerator} and @smalltalk{denominator} of
 a fraction. From this declaration, we observe there is a hierarchy in
 the class definition: @class{Fraction} is a kind of
-@class{Number}. This mean a fraction inherits the internal state --
+@class{Number}. This means a fraction inherits the internal state --
 variables -- and behavior -- methods -- defined in the @class{Number}
 class. @class{Fraction} is called a @dfn{subclass} of @class{Number}.
 
@@ -809,7 +812,8 @@ another class method.
 @cindex class, instance method
 @cindex polymorphism
 @cindex number, @msg{squared}
-Observe the hierarchy of the Number classes:
+Now observe the hierarchy of the Number class:
+
 @format
 @class{Number}
    @class{Float}
@@ -822,11 +826,11 @@ Observe the hierarchy of the Number classes:
       @class{SmalltalkInteger}
 @end format
 
-@class{Float}, @class{Integer} inherit from the @class{Number}
-class. We already learnt about the @msg{squared} message sent to
-integer and fraction instances:
-@smalltalkExample{
-16 squared @result{} 256
+@class{Float}, @class{Integer} and @class{Fraction} are direct
+descendants of the @class{Number} class. We already learnt about the
+@msg{squared} message sent to integer and fraction instances:
+
+@smalltalkExample{16 squared @result{} 256
 (2 / 3) squared @result{} 4/9}
 
 As the @msg{squared} message is sent to @class{Integer} and
@@ -847,9 +851,13 @@ self}.
 
 Now let's examine this same method in @class{Fraction}:
 @smalltalkExample{Fraction>>squared
-   ^ Fraction numerator: numerator squared denominator: denominator squared}
+   ^ Fraction
+      numerator: numerator squared
+      denominator: denominator squared}
 
-Here a new fraction is instantiated with numerator and denominator squared.
+Here a new fraction is instantiated with numerator and denominator
+squared. This alternate @method{squared} method, ensure a fraction is
+returned.
 
 When message @msg{squared} is sent to a number, different methods are
 executed depending on the number is a fraction or any other kind of
@@ -858,16 +866,17 @@ called @dfn{Polymorphism}. More precisely, the @class{Fraction} class
 is @dfn{overriding} the @method{squared} method, defined above in the
 class hierarchy.
 
-@cindex number, abs
-Still in the Number hierarchy, let's examine another example of
-polymorphism with the @msg{abs} message:
+@cindex number, @msg{abs}
+Still in the @class{Number} hierarchy, let's examine another example
+of polymorphism with the @msg{abs} message:
+
 @smalltalkExample{-10 abs @result{} 10
 5.3 abs @result{} 5.3
 (-5 / 3) abs @result{} 5/3}
 
 The implementation in @class{Number} does not need much
 explanation. There is the @msg{ifTrue:ifFalse:} we have not yet
-discussed so far, but get the idea:
+discussed so far, but the code is quite self-explanatory:
 
 @smalltalkExample{Number>>abs
 "Answer a Number that is the absolute value (positive magnitude) of the 
@@ -878,12 +887,21 @@ receiver."
 
 This implementation will do just fine for the @class{Number}
 subclasses. Nevertheless, there are several classes overriding it for
-optimization purpose, because there are more efficient.
+optimization purpose.
 
-For example, regarding large positive integer, @method{abs} just need
-to be empty. Indeed the default returned value by a method is itself,
-in this a @class{LargePositiveInteger} instance:
+For example, regarding large positive integer, @method{abs} is
+empty. Indeed, in the absence of explicitly returned value, the
+default returned value is the instance itself, in our situation the
+@class{LargePositiveInteger} instance:
 
-@smalltalkExample{LargePositiveInteger>>abs }
+@smalltalkExample{LargePositiveInteger>>abs}
 
-@c explain with Fraction 
+The @class{LargeNegativeInteger} counter part compute the opposite
+with @msg{negated} message:
+
+@smalltalkExample{LargeNegativeInteger>>abs
+   ^ self negated}
+   
+These two overriding methods are more efficient as they avoid test and
+ifTrue/ifFasse branches. Polymorphism is often used to avoid test and
+branching, it is done at the object level.
