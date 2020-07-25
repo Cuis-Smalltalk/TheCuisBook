@@ -212,7 +212,8 @@ parenthesis. We will explain why in Part Two.}
 @exercise{Inverse sum,inverseSum, @emph{Write the code to compute the
 sum of the first four integer inverses.}}
 @cindex number, root
-@cindex number, square
+@cindex number, @msg{sqrt}
+@cindex number, @msg{squared}
 All four arithmetic operations and mathematical functions are
 compatible with the rational number representation:
 @smalltalkExample {(15 / 14) * (21 / 5) @result{} 9 / 2
@@ -251,10 +252,10 @@ The reminder of the Euclidean division is computed with the message
 @result{} 3}
 
 
-@cindex number, odd
-@cindex number, even
-@cindex number, prime
-@cindex number, divisible
+@cindex number, @msg{odd}
+@cindex number, @msg{even}
+@cindex number, @msg{isPrime}
+@cindex number, @msg{isDivisibleBy:}
 @cuis{} knows some arithmetic operations to test if an integer is an
 odd, even or prime number. You just send the appropriate message to
 the number:
@@ -268,8 +269,8 @@ the number:
 117 isDivisibleBy: 7 @result{} false
 117 isDivisibleBy: 9 @result{} true}
 
-@cindex number, gcd
-@cindex number, lcm
+@cindex number, @msg{gcd:}
+@cindex number, @msg{lcm:}
 With specific @dfn{keyword messages} you compute the Least Common
 Multiple and Greatest Common Divisor. A keyword message is composed of
 one or several colon(s) ``:'' to insert argument(s):
@@ -405,7 +406,7 @@ proves to be of some use as we may see later:
 @smalltalkExample{'hello world' shuffled
 @result{} 'wod llreohl'}
 
-@cindex string, sorted
+@cindex string, @msg{sorted}
 We can write the same about sorting a string:
 @smalltalkExample{'bonjour' sorted
 @result{}#($b $j $n $o $o $r $u)}
@@ -465,7 +466,7 @@ arithmetic operations:
 #(1 2 3 4) + 10 @result{} #(11 12 13 14)
 #(1 2 3 4) / 10 @result{} #(1/10 1/5 3/10 2/5)}
 
-@cindex collection, squared
+@cindex collection, @msg{squared}
 Mathematics operations work as well:
 @smalltalkExample{#(1 2 3 4) squared @result{} #(1 4 9 16)
 #(0 30 45 60) degreeCos
@@ -728,6 +729,7 @@ criteria:
 
 @end itemize
 @cindex class
+@cindex subclass
 @cindex instance
 
 Several entities sharing the same variables and messages understanding
@@ -749,7 +751,7 @@ a fraction. From this declaration, we observe there is a hierarchy in
 the class definition: @class{Fraction} is a kind of
 @class{Number}. This mean a fraction inherits the internal state --
 variables -- and behavior -- methods -- defined in the @class{Number}
-class.
+class. @class{Fraction} is called a @dfn{subclass} of @class{Number}.
 
 This aspect of object oriented programming is called
 @dfn{inheritance}. In @cuis{}, each class inherits from one parent
@@ -805,6 +807,8 @@ another class method.
 
 @c instance method
 @cindex class, instance method
+@cindex polymorphism
+@cindex number, @msg{squared}
 Observe the hierarchy of the Number classes:
 @format
 @class{Number}
@@ -850,7 +854,36 @@ Here a new fraction is instantiated with numerator and denominator squared.
 When message @msg{squared} is sent to a number, different methods are
 executed depending on the number is a fraction or any other kind of
 number. This fundamental mechanism of oriented object programming is
-called @dfn{Polymorphism}.
+called @dfn{Polymorphism}. More precisely, the @class{Fraction} class
+is @dfn{overriding} the @method{squared} method, defined above in the
+class hierarchy.
 
+@cindex number, abs
+Still in the Number hierarchy, let's examine another example of
+polymorphism with the @msg{abs} message:
+@smalltalkExample{-10 abs @result{} 10
+5.3 abs @result{} 5.3
+(-5 / 3) abs @result{} 5/3}
 
-@c explain with Fraction squared
+The implementation in @class{Number} does not need much
+explanation. There is the @msg{ifTrue:ifFalse:} we have not yet
+discussed so far, but get the idea:
+
+@smalltalkExample{Number>>abs
+"Answer a Number that is the absolute value (positive magnitude) of the 
+receiver."
+   self < 0
+      ifTrue: [^self negated]
+      ifFalse: [^self]}
+
+This implementation will do just fine for the @class{Number}
+subclasses. Nevertheless, there are several classes overriding it for
+optimization purpose, because there are more efficient.
+
+For example, regarding large positive integer, @method{abs} just need
+to be empty. Indeed the default returned value by a method is itself,
+in this a @class{LargePositiveInteger} instance:
+
+@smalltalkExample{LargePositiveInteger>>abs }
+
+@c explain with Fraction 

@@ -5,7 +5,7 @@ implementation of the Smalltalk language and environment.
 
 Copyright (C) 2020 Hilaire Fernandes and Juan Vuletich
 
-Compilation : July 24, 2020
+Compilation : July 25, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -247,7 +247,8 @@ sum of the first four integer inverses.</em>
 
 
 <div class="float-caption"><p><strong><em>Exercise</em> 1.2: </strong>Inverse sum</p></div></div><a name="index-number_002c-root"></a>
-<a name="index-number_002c-square"></a>
+<a name="index-number_002c-_0023sqrt"></a>
+<a name="index-number_002c-_0023squared"></a>
 <p>All four arithmetic operations and mathematical functions are
 compatible with the rational number representation:
 </p><div class="display">
@@ -301,10 +302,10 @@ the message <span class="sansserif">#//</span>:
 </pre></div>
 
 
-<a name="index-number_002c-odd"></a>
-<a name="index-number_002c-even"></a>
-<a name="index-number_002c-prime"></a>
-<a name="index-number_002c-divisible"></a>
+<a name="index-number_002c-_0023odd"></a>
+<a name="index-number_002c-_0023even"></a>
+<a name="index-number_002c-_0023isPrime"></a>
+<a name="index-number_002c-_0023isDivisibleBy_003a"></a>
 <p>Cuis-Smalltalk knows some arithmetic operations to test if an integer is an
 odd, even or prime number. You just send the appropriate message to
 the number:
@@ -321,8 +322,8 @@ the number:
 </pre></div>
 
 <div class="float-caption"><p><strong><em>Example</em> 1.4: </strong>Testing on integer</p></div></div>
-<a name="index-number_002c-gcd"></a>
-<a name="index-number_002c-lcm"></a>
+<a name="index-number_002c-_0023gcd_003a"></a>
+<a name="index-number_002c-_0023lcm_003a"></a>
 <p>With specific <em>keyword messages</em> you compute the Least Common
 Multiple and Greatest Common Divisor. A keyword message is composed of
 one or several colon(s) &ldquo;:&rdquo; to insert argument(s):
@@ -508,7 +509,7 @@ proves to be of some use as we may see later:
 &rArr; &rsquo;wod llreohl&rsquo;</span>
 </pre></div>
 
-<a name="index-string_002c-sorted"></a>
+<a name="index-string_002c-_0023sorted"></a>
 <p>We can write the same about sorting a string:
 </p><div class="display">
 <pre class="display"><span class="sansserif">&rsquo;bonjour&rsquo; sorted
@@ -582,7 +583,7 @@ arithmetic operations:
 #(1 2 3 4) / 10 &rArr; #(1/10 1/5 3/10 2/5)</span>
 </pre></div>
 
-<a name="index-collection_002c-squared"></a>
+<a name="index-collection_002c-_0023squared"></a>
 <p>Mathematics operations work as well:
 </p><div class="display">
 <pre class="display"><span class="sansserif">#(1 2 3 4) squared &rArr; #(1 4 9 16)

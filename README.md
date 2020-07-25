@@ -38,8 +38,6 @@ To learn more about the Texinfo format:
   * [GNU Texinfo manual](https://www.gnu.org/software/texinfo/manual/texinfo/)
 
 
-
-
 ## Writing documentation
 
 ### General recommendations
@@ -50,6 +48,14 @@ not use tab unless the text editor converts it to spaces.
 entry lowercase! Insert an index just after a section title, and just
 before a paragraph. The command to use is @cindex for conceptual
 index: `@cindex tools, workspace`
+
+Regarding indexing message, here is the rule:
+  * When the message name is meaningfull, index with messsage name
+    itself with the appropriate tag. For example `@cindex number, @msg{isPrime}`
+  * When the message name is not meaningfull enought or too long,
+    index with a meaning term. For examples, `@cindex number, as
+    words` for the message printStringWords; `@cindex number, base`
+    for the message printStringBase:
 
 ### Macros and commands to use
 We defined a few macros too. Of course standard Texinfo command are

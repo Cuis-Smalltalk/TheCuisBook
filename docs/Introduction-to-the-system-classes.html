@@ -5,7 +5,7 @@ implementation of the Smalltalk language and environment.
 
 Copyright (C) 2020 Hilaire Fernandes and Juan Vuletich
 
-Compilation : July 24, 2020
+Compilation : July 25, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -118,6 +118,7 @@ criteria:
 
 </li></ul>
 <a name="index-class"></a>
+<a name="index-subclass"></a>
 <a name="index-instance"></a>
 
 <p>Several entities sharing the same variables and messages understanding
@@ -141,7 +142,7 @@ a fraction. From this declaration, we observe there is a hierarchy in
 the class definition: <span class="sansserif">Fraction</span> is a kind of
 <span class="sansserif">Number</span>. This mean a fraction inherits the internal state &ndash;
 variables &ndash; and behavior &ndash; methods &ndash; defined in the <span class="sansserif">Number</span>
-class.
+class. <span class="sansserif">Fraction</span> is called a <em>subclass</em> of <span class="sansserif">Number</span>.
 </p>
 <p>This aspect of object oriented programming is called
 <em>inheritance</em>. In Cuis-Smalltalk, each class inherits from one parent
@@ -201,6 +202,8 @@ elements from the array given in argument; <span class="sansserif">newFrom:</spa
 another class method.
 </p>
 <a name="index-class_002c-instance-method"></a>
+<a name="index-polymorphism"></a>
+<a name="index-number_002c-_0023squared-1"></a>
 <p>Observe the hierarchy of the Number classes:
 </p><div class="format">
 <pre class="format"><span class="sansserif">Number</span>
@@ -222,9 +225,9 @@ integer and fraction instances:
 (2 / 3) squared &rArr; 4/9</span>
 </pre></div>
 
-<p>As the <span class="sansserif">#squared</span> message is sent to instance of <span class="sansserif">Integer</span>
-and <span class="sansserif">Fraction</span> instance, the associated <span class="sansserif">squared</span> method
-is called an <em>instance method</em>. This method is defined in both the
+<p>As the <span class="sansserif">#squared</span> message is sent to <span class="sansserif">Integer</span> and
+<span class="sansserif">Fraction</span> instances, the associated <span class="sansserif">squared</span> method is
+called an <em>instance method</em>. This method is defined in both the
 <span class="sansserif">Number</span> and <span class="sansserif">Fraction</span> classes.
 </p>
 
@@ -248,11 +251,46 @@ self</span>.
 
 <p>Here a new fraction is instantiated with numerator and denominator squared.
 </p>
-<p>When message <span class="sansserif">#squared</span> is sent to a number, different methods is
+<p>When message <span class="sansserif">#squared</span> is sent to a number, different methods are
 executed depending on the number is a fraction or any other kind of
-number. This fundamental mechanism to oriented object programming is
-called <em>Polymorphism</em>.
+number. This fundamental mechanism of oriented object programming is
+called <em>Polymorphism</em>. More precisely, the <span class="sansserif">Fraction</span> class
+is <em>overriding</em> the <span class="sansserif">squared</span> method, defined above in the
+class hierarchy.
 </p>
+<a name="index-number_002c-abs"></a>
+<p>Still in the Number hierarchy, let&rsquo;s examine another example of
+polymorphism with the <span class="sansserif">#abs</span> message:
+</p><div class="display">
+<pre class="display"><span class="sansserif">-10 abs &rArr; 10
+5.3 abs &rArr; 5.3
+(-5 / 3) abs &rArr; 5/3</span>
+</pre></div>
+
+<p>The implementation in <span class="sansserif">Number</span> does not need much
+explanation. There is the <span class="sansserif">#ifTrue:ifFalse:</span> we have not yet
+discussed so far, but get the idea:
+</p>
+<div class="display">
+<pre class="display"><span class="sansserif">Number&gt;&gt;abs
+&quot;Answer a Number that is the absolute value (positive magnitude) of the 
+receiver.&quot;
+   self &lt; 0
+      ifTrue: [^self negated]
+      ifFalse: [^self]</span>
+</pre></div>
+
+<p>This implementation will do just fine for the <span class="sansserif">Number</span>
+subclasses. Nevertheless, there are several classes overriding it for
+optimization purpose, because there are more efficient.
+</p>
+<p>For example, regarding large positive integer, <span class="sansserif">abs</span> just need
+to be empty. Indeed the default returned value by a method is itself,
+in this a <span class="sansserif">LargePositiveInteger</span> instance:
+</p>
+<div class="display">
+<pre class="display"><span class="sansserif">LargePositiveInteger&gt;&gt;abs </span>
+</pre></div>
 
 <hr>
 <div class="header">
