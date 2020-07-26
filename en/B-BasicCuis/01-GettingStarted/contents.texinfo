@@ -859,6 +859,8 @@ Here a new fraction is instantiated with numerator and denominator
 squared. This alternate @method{squared} method, ensure a fraction is
 returned.
 
+@cindex method, overriding
+@cindex overriding
 When message @msg{squared} is sent to a number, different methods are
 executed depending on the number is a fraction or any other kind of
 number. This fundamental mechanism of oriented object programming is
@@ -952,8 +954,8 @@ the other categories as @smalltalk{Kernel-Text} and
 @smalltalk{Kernel-Chronology} related to text and date entities.
 
 @cindex class, declaration
-Next to the right are the classes in the select class categories. They
-are nice presented in a parent-child class hierarchy. When a class is
+Next to the right are the classes in the selected class category. They
+are nicely presented in a parent-child class hierarchy. When a class is
 first selected in this pane, its declaration appears in the large pane
 bellow, the @class{Number} class declaration is:
 
@@ -963,26 +965,40 @@ bellow, the @class{Number} class declaration is:
    poolDictionaries: ''
    category: 'Kernel-Numbers'}
 
-Observe a few important point in this declaration:
+Observe a few important points in this declaration:
 
 @itemize
 
    @item @class{Number} is a sub class of @class{Magnitude}
 
-   @item the declaration itself is Smalltalk code, indeed here the
-   message
-   @msg{subclass:instanceVariableNames:classVariableNames:poolDictionaries:category:}
-   is sent to @class{Magnitude}
+   @item the declaration itself is Smalltalk code, indeed the message
+   @msg{subclass:instanceVariableNames:classVariableNames:poolDictionaries:
+   category:} is sent to @class{Magnitude}
 
    @item the @smalltalk{subclass:} argument @class{Number} is prefixed
    with ``#'', it is a symbol, a kind of unique string. Indeed when
    declaring the @class{Number} class, the system does not know it
-   yet.
+   yet, so it is named as a symbol.
 
-   @item The @smalltalk{instanceVariableNames:} argument are string:
-   the instance variables of the class are declared only by name.
+   @item The @smalltalk{instanceVariableNames:} argument is a string:
+   the instance variables of the class are declared by name separated
+   by a space.
 
 @end itemize
 
+Next to the right is the method categories panel. It is user defined
+method categories. A class can come with tenth of methods, grouping
+them by category ease the user access. As a reference, @class{Number}
+has more than 100 instance side methods implemented in
+itself@footnote{When considering its parents, the count is greater
+than 300.}; therefore clicking the @smalltalk{arithmetic} category
+directly gives access to related methods in the next and last pane at
+the right.
 
+@exercise{Count of methods,stringArith,@emph{How many methods is there
+in the @smalltalk{arithmetic} method category of the @class{String}
+class?}}
 
+@c explain mini panel | instance | ? | class |
+
+@c The smalltlak way to discover class capability: A workspace + a browser 

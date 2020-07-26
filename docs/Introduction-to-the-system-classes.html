@@ -261,6 +261,8 @@ self</span>.
 squared. This alternate <span class="sansserif">squared</span> method, ensure a fraction is
 returned.
 </p>
+<a name="index-method_002c-overriding"></a>
+<a name="index-overriding"></a>
 <p>When message <span class="sansserif">#squared</span> is sent to a number, different methods are
 executed depending on the number is a fraction or any other kind of
 number. This fundamental mechanism of oriented object programming is
@@ -366,8 +368,8 @@ the other categories as <span class="sansserif">Kernel-Text</span> and
 <span class="sansserif">Kernel-Chronology</span> related to text and date entities.
 </p>
 <a name="index-class_002c-declaration"></a>
-<p>Next to the right are the classes in the select class categories. They
-are nice presented in a parent-child class hierarchy. When a class is
+<p>Next to the right are the classes in the selected class category. They
+are nicely presented in a parent-child class hierarchy. When a class is
 first selected in this pane, its declaration appears in the large pane
 bellow, the <span class="sansserif">Number</span> class declaration is:
 </p>
@@ -379,28 +381,50 @@ bellow, the <span class="sansserif">Number</span> class declaration is:
    category: &rsquo;Kernel-Numbers&rsquo;</span>
 </pre></div>
 
-<p>Observe a few important point in this declaration:
+<p>Observe a few important points in this declaration:
 </p>
 <ul>
 <li> <span class="sansserif">Number</span> is a sub class of <span class="sansserif">Magnitude</span>
 
-</li><li> the declaration itself is Smalltalk code, indeed here the
-   message
-   <span class="sansserif">#subclass:instanceVariableNames:classVariableNames:poolDictionaries:category:</span>
-   is sent to <span class="sansserif">Magnitude</span>
+</li><li> the declaration itself is Smalltalk code, indeed the message
+   <span class="sansserif">#subclass:instanceVariableNames:classVariableNames:poolDictionaries:
+   category:</span> is sent to <span class="sansserif">Magnitude</span>
 
 </li><li> the <span class="sansserif">subclass:</span> argument <span class="sansserif">Number</span> is prefixed
    with &ldquo;#&rdquo;, it is a symbol, a kind of unique string. Indeed when
    declaring the <span class="sansserif">Number</span> class, the system does not know it
-   yet.
+   yet, so it is named as a symbol.
 
-</li><li> The <span class="sansserif">instanceVariableNames:</span> argument are string:
-   the instance variables of the class are declared only by name.
+</li><li> The <span class="sansserif">instanceVariableNames:</span> argument is a string:
+   the instance variables of the class are declared by name separated
+   by a space.
 
 </li></ul>
 
+<p>Next to the right is the method categories panel. It is user defined
+method categories. A class can come with tenth of methods, grouping
+them by category ease the user access. As a reference, <span class="sansserif">Number</span>
+has more than 100 instance side methods implemented in
+itself<a name="DOCF1" href="#FOOT1"><sup>1</sup></a>; therefore clicking the <span class="sansserif">arithmetic</span> category
+directly gives access to related methods in the next and last pane at
+the right.
+</p>
+<div class="float"><a name="stringArith"></a>
+<blockquote class="indentedblock">
+<p><em>How many methods is there
+in the <span class="sansserif">arithmetic</span> method category of the <span class="sansserif">String</span>
+class?</em>
+</p></blockquote>
 
 
+<div class="float-caption"><p><strong><em>Exercise</em> 1.19: </strong>Count of methods</p></div></div><div class="footnote">
+<hr>
+<h4 class="footnotes-heading">Footnotes</h4>
+
+<h3><a name="FOOT1" href="#DOCF1">(1)</a></h3>
+<p>When considering its parents, the count is greater
+than 300.</p>
+</div>
 <hr>
 <div class="header">
 <p>

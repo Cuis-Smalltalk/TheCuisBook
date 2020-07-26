@@ -147,3 +147,12 @@ characters intervale with a string:
     (c asciiValue - 65 - 3 \\ 26 + 65) asCharacter]
 @result{} 'ALEAJACTAEST'
 @end example
+
+@unnumberedsec Introduction to the system class
+
+@subheading @ref{stringArith}
+From a System Browser, do from the left panel to the
+right...@clicksequence{@smalltalk{Kernel-Text} @click{} @class{String}
+@click{} @smalltalk{arithmetic}}... the count of methods in the last
+right panel is 6: @method{*}, @method{+}, @method{-}, @method{/},
+@method{//} and @method{\\}.
