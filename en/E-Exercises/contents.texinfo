@@ -152,7 +152,12 @@ characters intervale with a string:
 
 @subheading @ref{stringArith}
 From a System Browser, do from the left panel to the
-right...@clicksequence{@smalltalk{Kernel-Text} @click{} @class{String}
+right...@clicksequence{@option{Kernel-Text} @click{} @class{String}
 @click{} @smalltalk{arithmetic}}... the count of methods in the last
 right panel is 6: @method{*}, @method{+}, @method{-}, @method{/},
 @method{//} and @method{\\}.
+
+@subheading @ref{floatInfo}
+When the @class{Float} is selected, the wide text pane prints: ``class
+definition for Float @textdegree{} 92 instance methods @textdegree{}
+34 class methods @textdegree{} 1280 total lines of code''
