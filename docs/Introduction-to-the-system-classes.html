@@ -5,7 +5,7 @@ implementation of the Smalltalk language and environment.
 
 Copyright (C) 2020 Hilaire Fernandes and Juan Vuletich
 
-Compilation : July 26, 2020
+Compilation : July 27, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -340,12 +340,12 @@ and user classes, but it will help us to draw a boundary around the
 most used objects. We will give a brief introduction to these classes
 and the most important methods, part two gives a more detailed
 presentation. To ease the presentation of these classes we will
-introduce the system browser.
+introduce the system browser tool.
 </p>
 <a name="index-tools_002c-system-browser"></a>
 <a name="index-browser"></a>
-<a name="The-system-browser"></a>
-<h4 class="subsubsection">1.3.2.1 The system browser</h4>
+<a name="A-brief-introduction-to-the-system-browser"></a>
+<h4 class="subsubheading">A brief introduction to the system browser</h4>
 <p>The <em>System Browser</em>, in short the <em>Browser</em>, is a tool to
 rule all the classes in Cuis-Smalltalk. It is both a tool to explore the
 classes (system or user ones) and to write new classes and methods.
@@ -361,11 +361,11 @@ Open... &rarr; Browser...
 <p>At the top left are the <em>class categories</em>, there are group of
 classes part of the same theme. It is also called <em>Package</em>, it is
 an organisational element to save code. In <a href="#browserDetailed"><em>Figure</em> 1.3</a>, the
-selected class category is <span class="sansserif">Kernel-Numbers</span>, a group of
-classes we already explored. The term <span class="sansserif">Kernel-</span> indicates it
+selected class category is <samp>Kernel-Numbers</samp>, a group of
+classes we already explored. The term <samp>Kernel-</samp> indicates it
 is part of fundamental categories, but it is only a convention. See
-the other categories as <span class="sansserif">Kernel-Text</span> and
-<span class="sansserif">Kernel-Chronology</span> related to text and date entities.
+the other categories as <samp>Kernel-Text</samp> and
+<samp>Kernel-Chronology</samp> related to text and date entities.
 </p>
 <a name="index-class_002c-declaration"></a>
 <p>Next to the right are the classes in the selected class category. They
@@ -405,19 +405,139 @@ bellow, the <span class="sansserif">Number</span> class declaration is:
 method categories. A class can come with tenth of methods, grouping
 them by category ease the user access. As a reference, <span class="sansserif">Number</span>
 has more than 100 instance side methods implemented in
-itself<a name="DOCF1" href="#FOOT1"><sup>1</sup></a>; therefore clicking the <span class="sansserif">arithmetic</span> category
+itself<a name="DOCF1" href="#FOOT1"><sup>1</sup></a>; therefore clicking the <samp>arithmetic</samp> category
 directly gives access to related methods in the next and last pane at
 the right.
 </p>
 <div class="float"><a name="stringArith"></a>
 <blockquote class="indentedblock">
 <p><em>How many methods is there
-in the <span class="sansserif">arithmetic</span> method category of the <span class="sansserif">String</span>
+in the <samp>arithmetic</samp> method category of the <span class="sansserif">String</span>
 class?</em>
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong><em>Exercise</em> 1.19: </strong>Count of methods</p></div></div><div class="footnote">
+<div class="float-caption"><p><strong><em>Exercise</em> 1.19: </strong>Count of methods</p></div></div>
+<p>In <a href="#browserDetailed"><em>Figure</em> 1.3</a>, bellow the classes pane, there are three
+buttons:
+</p>
+<ul>
+<li> <samp>instance</samp>: to access the <strong>instance methods</strong> of
+   the selected class. For the recall, these methods are only
+   accessible from the instances of the class.
+
+</li><li> <samp>?</samp>: to access to documentation &ndash; comment &ndash; of the
+   selected class.
+
+</li><li> <samp>class</samp>: to access the <strong>class methods</strong> of the
+   selected class. These methods are only accessible from the class
+   itself.
+
+</li></ul>
+
+<p>Bellow this three buttons, observe the wide text pane, it provides
+contextual information on the selected item.
+</p>
+<div class="float"><a name="floatInfo"></a>
+<blockquote class="indentedblock">
+<p><em>When the
+<span class="sansserif">Float</span> class is selected, what is the information provided by
+the text pane?</em>
+</p></blockquote>
+
+
+<div class="float-caption"><p><strong><em>Exercise</em> 1.20: </strong>Float class information</p></div></div>
+<p>It is important to distinguish instance methods and class
+methods. Let&rsquo;s consider the <span class="sansserif">Float</span> class as an example.
+</p>
+<p><strong>Class Methods.</strong> In <a href="#floatClassSide"><em>Figure</em> 1.4</a> the methods listed are
+class side, in the browser the <samp>class</samp> is pressed to see this
+list. From a Workspace, this methods are called with the message name
+sent directly to the class:
+</p>
+<div class="display">
+<pre class="display"><span class="sansserif">Float e
+&rArr; 2.718281828459045
+Float epsilon
+&rArr; 2.220446049250313e-16
+Float fmax
+&rArr; 1.7976931348623157e308</span>
+</pre></div>
+
+<p>Nevertheless, you can not send this message to instance of
+<span class="sansserif">Float</span>, it throws an error and open the red debugger window:
+</p>
+<div class="display">
+<pre class="display"><span class="sansserif">3.14 pi
+&rArr; MessageNotUnderstood: SmallFloat64&gt;&gt;pi
+Float pi e
+&rArr; MessageNotUnderstood: SmallFloat64&gt;&gt;e</span>
+</pre></div>
+
+<p>Often these class methods are used to access constant value as seen in
+the previous example or to create a new instances:
+</p>
+<div class="display">
+<pre class="display"><span class="sansserif">OrderedCollection new
+&rArr; Create a new empty ordered collection
+Fraction numerator: 1 denominator: 3
+&rArr; 1/3 a fraction instance
+Float new
+&rArr; 0.0
+Float readFrom: &rsquo;001.200&rsquo;
+&rArr; 1.2 
+Integer primesUpTo: 20
+&rArr; #(2 3 5 7 11 13 17 19) </span>
+</pre></div>
+
+<div class="float"><a name="floatClassSide"></a>
+<div align="center"><img src="floatClassSide.png" alt="floatClassSide">
+</div>
+<div class="float-caption"><p><strong><em>Figure</em> 1.4: </strong>Class methods in <span class="sansserif">Float</span></p></div></div>
+<p><strong>Instance methods.</strong> In <a href="#floatInstanceSide"><em>Figure</em> 1.5</a>, the methods
+listed are instance side, in the browser the <samp>instance</samp> button
+is pressed to see this list. In a Workspace, this methods are called
+with the message name sent directly to an instance:
+</p>
+<div class="display">
+<pre class="display"><span class="sansserif">-10.12 abs &rArr; 10.12
+3.14 cos &rArr; -0.9999987317275395
+-10.12 * 2 &rArr; -20.24</span>
+</pre></div>
+
+<p>Instance method message can not be sent directly to a class, you need
+to instantiate first an object:
+</p>
+<div class="display">
+<pre class="display"><span class="sansserif">Float cos
+&rArr; MessageNotUnderstood: Float class&gt;&gt;cos
+Fraction squared
+&rArr; MessageNotUnderstood: Fraction class&gt;&gt;squared
+OrderedCollection add: 10
+&rArr; MessageNotUnderstood: OrderedCollection class&gt;&gt;add:</span>
+</pre></div>
+
+<p>Of course you can mix both class and instance methods, as long as you
+send the message to the appropriate class or instance:
+</p>
+<div class="display">
+<pre class="display"><span class="sansserif">Float pi cos
+&rArr; -1.0
+Float e ln
+&rArr; 1.0 
+(Fraction numerator: 4 denominator: 5) squared
+&rArr; 16/25
+OrderedCollection new add: Float pi; add: Float e; yourself
+&rArr; an OrderedCollection(3.141592653589793 2.718281828459045) 
+</span>
+</pre></div>
+
+<div class="float"><a name="floatInstanceSide"></a>
+<div align="center"><img src="floatInstanceSide.png" alt="floatInstanceSide">
+</div>
+<div class="float-caption"><p><strong><em>Figure</em> 1.5: </strong>Instance methods in <span class="sansserif">Float</span></p></div></div>
+
+<div class="footnote">
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
