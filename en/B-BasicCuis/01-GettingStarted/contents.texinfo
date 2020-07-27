@@ -941,7 +941,7 @@ classes (system or user ones) and to write new classes and methods.
 To access the tool, ...@clicksequence{Background click @click{}
 Open... @click{} Browser}...
 
-@figure{The System Browser,browserDetailed,12}
+@figure{The System Browser,B-01-browserDetailed,12}
 
 @cindex browser, class category
 At the top left are the @dfn{class categories}, there are group of
@@ -1028,7 +1028,8 @@ the text pane?}}
 It is important to distinguish instance methods and class
 methods. Let's consider the @class{Float} class as an example.
 
-@strong{Class Methods.} In @ref{floatClassSide} the methods listed are
+@cindex class, class method
+@strong{Class Methods.} In @ref{B-01-floatClassSide} the methods listed are
 class side, in the browser the @option{class} is pressed to see this
 list. From a Workspace, this methods are called with the message name
 sent directly to the class:
@@ -1064,9 +1065,10 @@ Float readFrom: '001.200'
 Integer primesUpTo: 20
 @result{} #(2 3 5 7 11 13 17 19) }
 
-@figure{Class methods in @class{Float},floatClassSide,5}
+@figure{Class methods in @class{Float},B-01-floatClassSide,5}
 
-@strong{Instance methods.} In @ref{floatInstanceSide}, the methods
+@cindex class, instance method
+@strong{Instance methods.} In @ref{B-01-floatInstanceSide}, the methods
 listed are instance side, in the browser the @option{instance} button
 is pressed to see this list. In a Workspace, this methods are called
 with the message name sent directly to an instance:
@@ -1100,7 +1102,7 @@ OrderedCollection new add: Float pi; add: Float e; yourself
 @result{} an OrderedCollection(3.141592653589793 2.718281828459045) 
 }
 
-@figure{Instance methods in @class{Float},floatInstanceSide,7}
+@figure{Instance methods in @class{Float},B-01-floatInstanceSide,7}
 
 
 @c The smalltlak way to discover class capability: A workspace + a browser 
