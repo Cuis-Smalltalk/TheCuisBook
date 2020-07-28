@@ -658,7 +658,7 @@ And decode message:
 @exercise{Decode with Caesar's cipher,decodeCaesar,@emph{Decode the
 message 'DOHDMDFWDHVW'.}}
 
-@subsubheading Fun with loop
+@subsubheading Fun with loops
 Collection can be iterated with traditional loops: there is a whole
 family of @emph{repeat}, @emph{while} and @emph{for} loops.
 
@@ -933,7 +933,7 @@ introduce the system browser tool.
 
 @cindex tools, system browser
 @cindex browser
-@subsubheading A brief introduction to the system browser
+@subsubsection A brief introduction to the system browser
 The @dfn{System Browser}, in short the @dfn{Browser}, is a tool to
 rule all the classes in @cuis{}. It is both a tool to explore the
 classes (system or user ones) and to write new classes and methods.
@@ -946,7 +946,7 @@ Open... @click{} Browser}...
 @cindex browser, class category
 At the top left are the @dfn{class categories}, there are group of
 classes part of the same theme. It is also called @dfn{Package}, it is
-an organisational element to save code. In @ref{browserDetailed}, the
+an organisational element to save code. In @ref{B-01-browserDetailed}, the
 selected class category is @option{Kernel-Numbers}, a group of
 classes we already explored. The term @option{Kernel-} indicates it
 is part of fundamental categories, but it is only a convention. See
@@ -1000,7 +1000,7 @@ in the @option{arithmetic} method category of the @class{String}
 class?}}
 
 @c explain mini panel | instance | ? | class |
-In @ref{browserDetailed}, bellow the classes pane, there are three
+In @ref{B-01-browserDetailed}, bellow the classes pane, there are three
 buttons:
 
 @itemize
@@ -1104,5 +1104,58 @@ OrderedCollection new add: Float pi; add: Float e; yourself
 
 @figure{Instance methods in @class{Float},B-01-floatInstanceSide,7}
 
+@subsubsection Tour to system classes
+The classes are organised in hierarchy grouped in categories. To
+discover the most important classes, we use the browser to navigate
+these categories in the left pane. Important categories to start with
+are:
+
+
+@itemize
+
+   @item @option{Kernel-Numbers}. Related to the different number
+   representations and calculus, including mathematics functions,
+   conversion, intervals and even iterations.
+   
+   @item @option{Kernel-Text}. Related to character and string as
+   collection of characters.
+   
+   @item @option{Collections-Abstract},
+   @option{Collections-Unordered}, @option{Collections-Sequenceable},
+   @option{Collections-Arrayed}. Related to Array, Dictionary, dynamic
+   collection as OrderedCollection and many more. It includes
+   accessing, enumerators, mathematics functions, sorting.
+
+@end itemize
+
+
+@strong{Kernel-Numbers.} The top hierarchy @class{Number} class shows
+most of the behaviors inherited by the sub classes as @class{Float},
+@class{Integer} and @class{Fraction}. The Smalltalk way to learn about
+a behavior is to point the System Browser toward a top hierarchy class
+and to explore the method categories.
+
+Let's suppose we want to round a float number. In @class{Number}, we
+explore the @option{Truncation and round off} method category to
+discover several behaviors. The next things to do, is to test these
+messages in a Workspace to discover the one we are searching for:
+
+@smalltalkExampleCaption{Rounding numbers, Workspace try out, roundingNumbers,
+1.264 roundTo: 0.1 @result{} 1.3 
+1.264 roundTo: 0.01 @result{} 1.26 
+1.264 roundTo: 0.001 @result{} 1.2000000000000002
+1.264 roundUpTo: 0.01 @result{} 1.27 }
+
+
+@cindex loop, for
+Number is a very strange place to look for an indexed for loop in a
+given interval. Nevertheless, an interval is defined by start and stop
+numbers. In the @class{Number} class, the method category
+@option{intervals} reveals related behaviors, we already met some of
+them.
+
+@strong{Kernel-Text.}
+
+@strong{Collections.}
 
 @c The smalltlak way to discover class capability: A workspace + a browser 
