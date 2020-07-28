@@ -5,7 +5,7 @@ implementation of the Smalltalk language and environment.
 
 Copyright (C) 2020 Hilaire Fernandes and Juan Vuletich
 
-Compilation : July 27, 2020
+Compilation : July 28, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -856,12 +856,13 @@ message &rsquo;DOHDMDFWDHVW&rsquo;.</em>
 
 
 <div class="float-caption"><p><strong><em>Exercise</em> 1.18: </strong>Decode with Caesar&rsquo;s cipher</p></div></div>
-<a name="Fun-with-loop"></a>
-<h4 class="subsubheading">Fun with loop</h4>
+<a name="Fun-with-loops"></a>
+<h4 class="subsubheading">Fun with loops</h4>
 <p>Collection can be iterated with traditional loops: there is a whole
 family of <em>repeat</em>, <em>while</em> and <em>for</em> loops.
 </p>
 <a name="index-loop_002c-for"></a>
+<a name="index-for-loop"></a>
 <p>A straight <em>for</em> loop between to integer value is written with
 the keyword message <span class="sansserif">#to:do:</span>, the last argument is a block of code
 executed for each index:
@@ -887,6 +888,7 @@ inserted:
 </pre></div>
 
 <a name="index-loop_002c-repeat"></a>
+<a name="index-repeat"></a>
 <a name="index-Fibonacci-sequence"></a>
 <p>A repeated loop without index or any collection is written with the
 <span class="sansserif">#timesRepeat:</span> message:

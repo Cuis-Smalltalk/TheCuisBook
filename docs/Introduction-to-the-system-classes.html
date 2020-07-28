@@ -5,7 +5,7 @@ implementation of the Smalltalk language and environment.
 
 Copyright (C) 2020 Hilaire Fernandes and Juan Vuletich
 
-Compilation : July 27, 2020
+Compilation : July 28, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -345,7 +345,7 @@ introduce the system browser tool.
 <a name="index-tools_002c-system-browser"></a>
 <a name="index-browser"></a>
 <a name="A-brief-introduction-to-the-system-browser"></a>
-<h4 class="subsubheading">A brief introduction to the system browser</h4>
+<h4 class="subsubsection">1.3.2.1 A brief introduction to the system browser</h4>
 <p>The <em>System Browser</em>, in short the <em>Browser</em>, is a tool to
 rule all the classes in Cuis-Smalltalk. It is both a tool to explore the
 classes (system or user ones) and to write new classes and methods.
@@ -353,14 +353,14 @@ classes (system or user ones) and to write new classes and methods.
 <p>To access the tool, ...Background click &rarr;
 Open... &rarr; Browser...
 </p>
-<div class="float"><a name="browserDetailed"></a>
-<div align="center"><img src="browserDetailed.png" alt="browserDetailed">
+<div class="float"><a name="B_002d01_002dbrowserDetailed"></a>
+<div align="center"><img src="B-01-browserDetailed.png" alt="B-01-browserDetailed">
 </div>
 <div class="float-caption"><p><strong><em>Figure</em> 1.3: </strong>The System Browser</p></div></div>
 <a name="index-browser_002c-class-category"></a>
 <p>At the top left are the <em>class categories</em>, there are group of
 classes part of the same theme. It is also called <em>Package</em>, it is
-an organisational element to save code. In <a href="#browserDetailed"><em>Figure</em> 1.3</a>, the
+an organisational element to save code. In <a href="#B_002d01_002dbrowserDetailed"><em>Figure</em> 1.3</a>, the
 selected class category is <samp>Kernel-Numbers</samp>, a group of
 classes we already explored. The term <samp>Kernel-</samp> indicates it
 is part of fundamental categories, but it is only a convention. See
@@ -418,7 +418,7 @@ class?</em>
 
 
 <div class="float-caption"><p><strong><em>Exercise</em> 1.19: </strong>Count of methods</p></div></div>
-<p>In <a href="#browserDetailed"><em>Figure</em> 1.3</a>, bellow the classes pane, there are three
+<p>In <a href="#B_002d01_002dbrowserDetailed"><em>Figure</em> 1.3</a>, bellow the classes pane, there are three
 buttons:
 </p>
 <ul>
@@ -451,7 +451,7 @@ the text pane?</em>
 methods. Let&rsquo;s consider the <span class="sansserif">Float</span> class as an example.
 </p>
 <a name="index-class_002c-class-method-1"></a>
-<p><strong>Class Methods.</strong> In <a href="#floatClassSide"><em>Figure</em> 1.4</a> the methods listed are
+<p><strong>Class Methods.</strong> In <a href="#B_002d01_002dfloatClassSide"><em>Figure</em> 1.4</a> the methods listed are
 class side, in the browser the <samp>class</samp> is pressed to see this
 list. From a Workspace, this methods are called with the message name
 sent directly to the class:
@@ -491,12 +491,12 @@ Integer primesUpTo: 20
 &rArr; #(2 3 5 7 11 13 17 19) </span>
 </pre></div>
 
-<div class="float"><a name="floatClassSide"></a>
-<div align="center"><img src="floatClassSide.png" alt="floatClassSide">
+<div class="float"><a name="B_002d01_002dfloatClassSide"></a>
+<div align="center"><img src="B-01-floatClassSide.png" alt="B-01-floatClassSide">
 </div>
 <div class="float-caption"><p><strong><em>Figure</em> 1.4: </strong>Class methods in <span class="sansserif">Float</span></p></div></div>
 <a name="index-class_002c-instance-method-1"></a>
-<p><strong>Instance methods.</strong> In <a href="#floatInstanceSide"><em>Figure</em> 1.5</a>, the methods
+<p><strong>Instance methods.</strong> In <a href="#B_002d01_002dfloatInstanceSide"><em>Figure</em> 1.5</a>, the methods
 listed are instance side, in the browser the <samp>instance</samp> button
 is pressed to see this list. In a Workspace, this methods are called
 with the message name sent directly to an instance:
@@ -534,11 +534,102 @@ OrderedCollection new add: Float pi; add: Float e; yourself
 </span>
 </pre></div>
 
-<div class="float"><a name="floatInstanceSide"></a>
-<div align="center"><img src="floatInstanceSide.png" alt="floatInstanceSide">
+<div class="float"><a name="B_002d01_002dfloatInstanceSide"></a>
+<div align="center"><img src="B-01-floatInstanceSide.png" alt="B-01-floatInstanceSide">
 </div>
 <div class="float-caption"><p><strong><em>Figure</em> 1.5: </strong>Instance methods in <span class="sansserif">Float</span></p></div></div>
+<a name="Tour-to-system-classes"></a>
+<h4 class="subsubsection">1.3.2.2 Tour to system classes</h4>
+<p>The classes are organised in hierarchy grouped in categories. To
+discover the most important classes, we use the browser to navigate
+these categories in the left pane. Important categories to start with
+are:
+</p>
 
+<ul>
+<li> <samp>Kernel-Numbers</samp>. Related to the different number
+   representations and calculus, including mathematics functions,
+   conversion, intervals and even iterations.
+   
+</li><li> <samp>Kernel-Text</samp>. Related to character and string as
+   collection of characters.
+   
+</li><li> <samp>Collections-Abstract</samp>,
+   <samp>Collections-Unordered</samp>, <samp>Collections-Sequenceable</samp>,
+   <samp>Collections-Arrayed</samp>. Related to Array, Dictionary, dynamic
+   collection as OrderedCollection and many more. It includes
+   accessing, enumerators, mathematics functions, sorting.
+
+</li></ul>
+
+
+<p><strong>Kernel-Numbers.</strong> The top hierarchy <span class="sansserif">Number</span> class shows
+most of the behaviors inherited by the sub classes as <span class="sansserif">Float</span>,
+<span class="sansserif">Integer</span> and <span class="sansserif">Fraction</span>. The Smalltalk way to learn about
+a behavior is to point the System Browser toward a top hierarchy class
+and to explore the method categories.
+</p>
+<p>Let&rsquo;s suppose we want to round a float number. In <span class="sansserif">Number</span>, we
+explore the <samp>Truncation and round off</samp> method category to
+discover several behaviors. The next things to do, is to test these
+messages in a Workspace to discover the one we are searching for:
+</p>
+<div class="float"><a name="roundingNumbers"></a>
+<div class="display">
+<pre class="display"><span class="sansserif">1.264 roundTo: 0.1 &rArr; 1.3 
+1.264 roundTo: 0.01 &rArr; 1.26 
+1.264 roundTo: 0.001 &rArr; 1.2000000000000002
+1.264 roundUpTo: 0.01 &rArr; 1.27 </span>
+</pre></div>
+
+<div class="float-caption"><p><strong><em>Example</em> 1.15: </strong>Rounding numbers, Workspace try out</p></div></div>
+
+<a name="index-loop_002c-for-1"></a>
+<a name="index-for-loop-1"></a>
+<p>Number is a very strange place to look for an indexed loop in a given
+interval. Nevertheless, an interval is defined by start and stop
+numbers. In the <span class="sansserif">Number</span> class, the method category
+<samp>intervals</samp> reveals related behaviors, we already met some of
+them. These methods works indifferently with all kind of number:
+</p>
+<div class="float"><a name="intervalLoops"></a>
+<div class="display">
+<pre class="display"><span class="sansserif">1 to: 10 do: [:i | Transcript show: 1 / i; space]
+&rArr; 1 (1/2) (1/3) (1/4) (1/5) (1/6) (1/7) (1/8) (1/9) (1/10)
+
+1 to: 10 by: 2 do: [:i | Transcript show: 1 / i; space]
+&rArr; 1 (1/3) (1/5) (1/7) (1/9)
+
+1/10 to: 5/3 by: 1/2 do: [:i | Transcript show: i; space]
+&rArr; (1/10) (3/5) (11/10) (8/5) (1/10) (3/5) (11/10) (8/5) 
+
+Float pi to: 5 by: 1/3 do: [:i | Transcript show: (i roundTo: 0.01) ; space]
+&rArr; 3.14 3.47 3.81 4.14 4.47 4.81</span>
+</pre></div>
+
+<div class="float-caption"><p><strong><em>Example</em> 1.16: </strong>Interval loops (for-loop)</p></div></div>
+<a name="index-loop_002c-repeat-1"></a>
+<a name="index-repeat-1"></a>
+<p>Now, in the <span class="sansserif">Integer</span>, explore the method category
+<samp>enumerating</samp>, here is the <span class="sansserif">timesRepeat:</span>. When a
+portion of code needs to be executed several times
+<a name="DOCF2" href="#FOOT2"><sup>2</sup></a>, without
+the need of an index, the <span class="sansserif">#timesRepeat:</span> message is sent to an
+integer. We already saw this variant in a previous section of this
+chapter.  Throwing 5 times a 6 faces dice can be simulated with
+integer:
+</p>
+<div class="float"><a name="playingDice"></a>
+<div class="display">
+<pre class="display"><span class="sansserif">5 timesRepeat: [Transcript show: 6 atRandom; space]
+&rArr; 1 2 4 6 2</span>
+</pre></div>
+
+<div class="float-caption"><p><strong><em>Example</em> 1.17: </strong>Throwing a dice 5 times</p></div></div>
+<p><strong>Kernel-Text.</strong>
+</p>
+<p><strong>Collections.</strong>
+</p>
 <div class="footnote">
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
@@ -546,6 +637,8 @@ OrderedCollection new add: Float pi; add: Float e; yourself
 <h3><a name="FOOT1" href="#DOCF1">(1)</a></h3>
 <p>When considering its parents, the count is greater
 than 300.</p>
+<h3><a name="FOOT2" href="#DOCF2">(2)</a></h3>
+<p>Understand repeated an integer number of times.</p>
 </div>
 <hr>
 <div class="header">
