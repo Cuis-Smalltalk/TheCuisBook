@@ -663,6 +663,7 @@ Collection can be iterated with traditional loops: there is a whole
 family of @emph{repeat}, @emph{while} and @emph{for} loops.
 
 @cindex loop, for
+@cindex for loop
 A straight @emph{for} loop between to integer value is written with
 the keyword message @msg{to:do:}, the last argument is a block of code
 executed for each index:
@@ -681,6 +682,7 @@ inserted:
 @smalltalkExample{1 to: 10 by: 0.5 do: [:k | sequence add: 1 / k]}
 
 @cindex loop, repeat
+@cindex repeat
 @cindex Fibonacci sequence
 A repeated loop without index or any collection is written with the
 @msg{timesRepeat:} message:
@@ -1148,11 +1150,40 @@ messages in a Workspace to discover the one we are searching for:
 
 
 @cindex loop, for
-Number is a very strange place to look for an indexed for loop in a
-given interval. Nevertheless, an interval is defined by start and stop
+@cindex for loop
+Number is a very strange place to look for an indexed loop in a given
+interval. Nevertheless, an interval is defined by start and stop
 numbers. In the @class{Number} class, the method category
 @option{intervals} reveals related behaviors, we already met some of
-them.
+them. These methods works indifferently with all kind of number:
+
+@smalltalkExampleCaption{Interval loops (for-loop), intervalLoops,
+1 to: 10 do: [:i | Transcript show: 1 / i; space]
+@result{} 1 (1/2) (1/3) (1/4) (1/5) (1/6) (1/7) (1/8) (1/9) (1/10)
+
+1 to: 10 by: 2 do: [:i | Transcript show: 1 / i; space]
+@result{} 1 (1/3) (1/5) (1/7) (1/9)
+
+1/10 to: 5/3 by: 1/2 do: [:i | Transcript show: i; space]
+@result{} (1/10) (3/5) (11/10) (8/5) (1/10) (3/5) (11/10) (8/5) 
+
+Float pi to: 5 by: 1/3 do: [:i | Transcript show: (i roundTo: 0.01) ; space]
+@result{} 3.14 3.47 3.81 4.14 4.47 4.81}
+
+@cindex loop, repeat
+@cindex repeat
+Now, in the @class{Integer}, explore the method category
+@option{enumerating}, here is the @method{timesRepeat:}. When a
+portion of code needs to be executed several times
+@footnote{Understand repeated an integer number of times.}, without
+the need of an index, the @msg{timesRepeat:} message is sent to an
+integer. We already saw this variant in a previous section of this
+chapter.  Throwing 5 times a 6 faces dice can be simulated with
+integer:
+
+@smalltalkExampleCaption{Throwing a dice 5 times, playingDice,
+5 timesRepeat: [Transcript show: 6 atRandom; space]
+@result{} 1 2 4 6 2}
 
 @strong{Kernel-Text.}
 
