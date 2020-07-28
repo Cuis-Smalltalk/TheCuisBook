@@ -1140,7 +1140,7 @@ explore the @option{Truncation and round off} method category to
 discover several behaviors. The next things to do, is to test these
 messages in a Workspace to discover the one we are searching for:
 
-@smalltalkExampleCaption{Rounding numbers, Workspace try out, roundingNumbers,
+@smalltalkExampleCaption{Rounding numbers@comma{} Workspace try out, roundingNumbers,
 1.264 roundTo: 0.1 @result{} 1.3 
 1.264 roundTo: 0.01 @result{} 1.26 
 1.264 roundTo: 0.001 @result{} 1.2000000000000002
