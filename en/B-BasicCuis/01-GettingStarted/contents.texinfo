@@ -907,35 +907,15 @@ with @msg{negated} message:
    ^ self negated}
    
 These two overriding methods are more efficient as they avoid test and
-ifTrue/ifFasse branches. Polymorphism is often used to avoid test and
+ifTrue/ifFalse branches. Polymorphism is often used to avoid test and
 branching, it is done at the object level.
 
-This brief introduction to the oriented object programming gave you
-the basic elements to understand how the system classes are
-implemented in @cuis{}.
-
-@subsection @cuis{} system classes
-As we already wrote @cuis{} is a pure object oriented environment. It
-means that every single entities you are dealing with are represented
-as instances of classes written in @cuis{} itself. As a direct
-consequence, @cuis{} is mostly written in itself.  In the previous
-section we read some details of the @class{Fraction} class and both
-instance and class side methods (@method{abs}, @method{squared} and
-@method{numerator:denominator:}.
-
-What we call system classes are models of fundamental objects. In
-other programming languages, it will be called standard library.
-
-To be honest, there is no such a distinction between system classes
-and user classes, but it will help us to draw a boundary around the
-most used objects. We will give a brief introduction to these classes
-and the most important methods, part two gives a more detailed
-presentation. To ease the presentation of these classes we will
-introduce the system browser tool.
+To ease the exploration of the system classes, we first introduce the
+system browser, a central tool to @cuis{} oriented object programming.
 
 @cindex tools, system browser
 @cindex browser
-@subsubsection A brief introduction to the system browser
+@subsection A brief introduction to the system browser
 The @dfn{System Browser}, in short the @dfn{Browser}, is a tool to
 rule all the classes in @cuis{}. It is both a tool to explore the
 classes (system or user ones) and to write new classes and methods.
@@ -1106,7 +1086,27 @@ OrderedCollection new add: Float pi; add: Float e; yourself
 
 @figure{Instance methods in @class{Float},B-01-floatInstanceSide,7}
 
-@subsubsection Tour to system classes
+This brief introduction to the system browser will be useful to
+explore the system classes implementation in @cuis{}.
+
+@subsection @cuis{} system classes
+As we already wrote @cuis{} is a pure object oriented environment. It
+means that every single entities you are dealing with are represented
+as instances of classes written in @cuis{} itself. As a direct
+consequence, @cuis{} is mostly written in itself.  In the previous
+section we read some details of the @class{Fraction} class and both
+instance and class side methods (@method{abs}, @method{squared} and
+@method{numerator:denominator:}.
+
+What we call system classes are models of fundamental objects. In
+other programming languages, it will be called standard library.
+
+To be honest, there is no such a distinction between system classes
+and user classes, but it will help us to draw a boundary around the
+most used objects. We will give a brief introduction to these classes
+and the most important methods, part two gives a more detailed
+presentation.
+
 The classes are organised in hierarchy grouped in categories. To
 discover the most important classes, we use the browser to navigate
 these categories in the left pane. Important categories to start with
@@ -1189,6 +1189,9 @@ integer:
 the interval [0 ; 2PI]@comma{} each 1/10. Output in the transcript.}}
 
 @c Integer bits representation and manpulation
+Integer number can be represented and converted in different base:
+
+
 @strong{Kernel-Text.}  Notably, this category comes with
 @class{Character}, @class{String} and @class{Symbol}. @class{String}
 instance are collection of @class{Character} instances.
