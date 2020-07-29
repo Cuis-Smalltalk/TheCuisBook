@@ -910,8 +910,9 @@ These two overriding methods are more efficient as they avoid test and
 ifTrue/ifFalse branches. Polymorphism is often used to avoid test and
 branching, it is done at the object level.
 
-To ease the exploration of the system classes, we first introduce the
-system browser, a central tool to @cuis{} oriented object programming.
+To ease the exploration of the system classes, we will first introduce
+the system browser, a central tool to @cuis{} oriented object
+programming.
 
 @cindex tools, system browser
 @cindex browser
@@ -1086,8 +1087,8 @@ OrderedCollection new add: Float pi; add: Float e; yourself
 
 @figure{Instance methods in @class{Float},B-01-floatInstanceSide,7}
 
-This brief introduction to the system browser will be useful to
-explore the system classes implementation in @cuis{}.
+With this brief introduction to the system browser, your are now
+equipped to explore the system classes.
 
 @subsection @cuis{} system classes
 As we already wrote @cuis{} is a pure object oriented environment. It
