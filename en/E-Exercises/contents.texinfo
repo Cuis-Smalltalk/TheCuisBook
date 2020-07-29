@@ -152,7 +152,7 @@ characters intervale with a string:
 
 @subheading @ref{stringArith}
 From a System Browser, do from the left panel to the
-right...@clicksequence{@option{Kernel-Text} @click{} @class{String}
+right ...@clicksequence{@option{Kernel-Text} @click{} @class{String}
 @click{} @smalltalk{arithmetic}}... the count of methods in the last
 right panel is 6: @method{*}, @method{+}, @method{-}, @method{/},
 @method{//} and @method{\\}.
@@ -161,3 +161,31 @@ right panel is 6: @method{*}, @method{+}, @method{-}, @method{/},
 When the @class{Float} is selected, the wide text pane prints: ``class
 definition for Float @textdegree{} 92 instance methods @textdegree{}
 34 class methods @textdegree{} 1280 total lines of code''
+
+@subheading @ref{cosTable}
+@example
+0 to: Float twoPi by: 1/10 do: [:i |
+   Transcript show: i cos; cr]
+@end example
+
+@subheading @ref{selectApples}
+There are different options, with slightly different results:
+@example
+'There are 12 apples' select: [:i |i isLetter].
+@result{} 'Thereareapples' 
+@end example
+
+Not really satisfying. So another option:
+@example
+'There are 12 apples' select: [:i |i isDigit not].
+@result{} 'There are  apples'
+@end example
+
+Or even a shorter option with the @msg{reject:} message:
+@example
+'There are 12 apples' reject: [:i |i isDigit].
+@result{} 'There are  apples' 
+@end example
+
+
+

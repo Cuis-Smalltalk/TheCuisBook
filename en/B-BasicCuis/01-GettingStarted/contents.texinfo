@@ -1145,8 +1145,8 @@ messages in a Workspace to discover the one we are searching for:
 @smalltalkExampleCaption{Rounding numbers@comma{} Workspace try out, roundingNumbers,
 1.264 roundTo: 0.1 @result{} 1.3 
 1.264 roundTo: 0.01 @result{} 1.26 
-1.264 roundTo: 0.001 @result{} 1.2000000000000002
-1.264 roundUpTo: 0.01 @result{} 1.27 }
+1.264 roundUpTo: 0.01 @result{} 1.27
+1.264 roundTo: 0.001 @result{} 1.264}
 
 
 @cindex loop, for
@@ -1172,7 +1172,7 @@ Float pi to: 5 by: 1/3 do: [:i | Transcript show: (i roundTo: 0.01) ; space]
 
 @cindex loop, repeat
 @cindex repeat
-Now, in the @class{Integer}, explore the method category
+Now, in the @class{Integer} class, explore the method category
 @option{enumerating}, here is the @method{timesRepeat:}. When a
 portion of code needs to be executed several times
 @footnote{Understand repeated an integer number of times.}, without
@@ -1185,8 +1185,37 @@ integer:
 5 timesRepeat: [Transcript show: 6 atRandom; space]
 @result{} 1 2 4 6 2}
 
-@strong{Kernel-Text.}
+@exercise{Cosine table,cosTable, @emph{Compute the cosine values in
+the interval [0 ; 2PI]@comma{} each 1/10. Output in the transcript.}}
+
+@c Integer bits representation and manpulation
+@strong{Kernel-Text.}  Notably, this category comes with
+@class{Character}, @class{String} and @class{Symbol}. @class{String}
+instance are collection of @class{Character} instances.
+
+An individual character is written prefixed with a ``$'':
+@smalltalk{$A}. It can be defined with the class side method
+@method{numericValue:} or converted from an integer instance with the
+@msg{asCharacter}:
+
+@smalltalkExample{
+Character numericValue: 65 @result{} $A
+65 asCharacter @result{} $A}
+
+There are class side methods for non printable characters:
+@smalltalk{Character tab}, @smalltalk{Character lf}, etc.
+
+As string are collection of characters, when enumerating a string we
+can use the @class{Character} instance methods:
+
+@smalltalkExampleCaption{Twelve apples,apples12,
+'There are 12 apples.' select: [:i |i isDigit].
+@result{} '12'}
+
+@exercise{Select apples,selectApples, @emph{Modify @ref{apples12} to
+reject the numeric characters.}}
+
 
 @strong{Collections.}
 
-@c The smalltlak way to discover class capability: A workspace + a browser 
+
