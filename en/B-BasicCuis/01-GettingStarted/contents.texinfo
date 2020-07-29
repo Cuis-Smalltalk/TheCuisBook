@@ -731,7 +731,7 @@ criteria:
 
 @itemize
 
-   @item @strong{An internal state.} It is materialized by variable(s)
+   @item @strong{An internal state.} It is embodied by variable(s)
    known only by the object. A variable only visible within the object
    is called @dfn{private}. As a consequence, it is impossible -- if
    the object decides so -- to know the internal state of the object
@@ -780,7 +780,7 @@ This aspect of object oriented programming is called
 @dfn{inheritance}. In @cuis{}, each class inherits from one parent
 class.
 
-In Smalltalk, each Each object decides for itself how it reponds to a message.
+In Smalltalk, each object decides for itself how it reponds to a message.
 This is called @dfn{polymorphism}.
 The same message selector may be sent to objects of different Classes.  
 The 'shape' (morph) of the computation is different depending on the specific 
@@ -1029,7 +1029,7 @@ buttons:
 
 @end itemize
 
-Bellow this three buttons, observe the wide text pane, it provides
+Below these three buttons, observe the wide text pane, it provides
 contextual information on the selected item.
 
 @exercise{Float class information, floatInfo, @emph{When the
@@ -1053,7 +1053,10 @@ Float fmax
 @result{} 1.7976931348623157e308}
 
 Nevertheless, you can not send this message to instance of
-@class{Float}, it throws an error and open the red debugger window:
+@class{Float}, it throws an error and opens the red debugger window.
+
+Just close the debug window for now to ignore the result.
+We will look into this in more detail later.
 
 @smalltalkExample{
 3.14 pi
