@@ -10,7 +10,7 @@
 @node Installing and configuring @cuis{}
 @section Installing and configuring @cuis{}
 @cuis{} is an environment and a programming language executed on a
-virtual computer. Therefore it is essentially based on two components:
+virtual computer. It is based on two major components:
 the Smalltalk @dfn{virtual machine} conceptualizing this virtual
 computer and an @dfn{image} representing the state of this computer.
 
@@ -35,10 +35,10 @@ The image is a regular file feeding the @vm{} with all the objects
 What makes @cuis{} special is the living entities in the image: its
 classes population and arrangement, how they inherit from each
 other. The @cuis{} moto is to be a tiny, coherent and human
-understandable Smalltalk environment; its class population is inferior
-to 500.
+understandable Smalltalk environment; its class count is typically
+less than 600.
 
-To get you started easily, @url{http://cuis-Smalltalk/BooResources,we
+To get you started easily, @url{http://github.com/Cuis-Smalltalk/BookResources,we
 provide three archives} for GNU/Linux, Mac OS X and Windows on Intel
 architecture. These archives come with the dedicated @vm{} and the
 image of @cuis{} @value{cuisVersion}. Into this image we pre-installed
@@ -68,6 +68,8 @@ preferences permanent. In this book, we keep the default @cuis{}
 theme, we suggest you to do the same so your environment reflects the
 book screenshots.
 
+@figure{Set Preferences,B-01-Preferences,12}
+
 @subsection Fun with window placement
 @cindex tools, workspace
 The first tool to discover is the @dfn{Workspace} tool. It is a kind
@@ -80,7 +82,7 @@ Now we ask @cuis{} to make the windows placement: click the blue icon
 area to place the Workspace window at the half left of the @cuis{}
 environment.
 
-@figure{Window options,B-01-img1,7}
+@figure{Window options,B-01-img1a,7}
 
 The @option{resize...} option even offers more freedom to place the
 window. Resolve the following exercise:
@@ -191,8 +193,8 @@ As we are discussing division, you may not get the result you think:
 
 It looks like @cuis{} is lazy because it does not respond the decimal
 number @smalltalk{3.75} as we were expecting. In fact @cuis{} wants to
-be as accurate as possible, and its answer is a fraction number! After
-all, fraction number are just division we are too lazy -- because it
+be as accurate as possible, and its answer is a rational fraction! After
+all, fractions are just division we are too lazy -- because it
 is troublesome -- to compute, @cuis{} does just that!
 
 Try out this to understand what is happening underneath:
@@ -205,7 +207,7 @@ an accurate result thanks to intermediate computation on rational
 numbers.
 
 @cuisNote{In the example, observe how the parenthesis are used
-although in arithmetic calculus the division is operated first. With
+although in arithmetic calculation the division is operated first. With
 @cuis{} you need to explicit the order of operation with
 parenthesis. We will explain why in Part Two.}
 
@@ -311,8 +313,8 @@ not the case. The computer returns @smalltalk{5.55e-17}, or
 @smalltalk{0.0000000000000000555}, it is very close to zero, but there
 is an error.
 
-@exercise{Miscellaneous calculus errors with decimal
-number,exeFloatPrecision,@emph{Give 3 calculus showing errors compare
+@exercise{Miscellaneous calculation errors with decimal
+number,exeFloatPrecision,@emph{Give 3 calculation showing errors compare
 to the expected results.}}
 
 When accuracy is absolutely mandatory use the Rational Numbers
@@ -322,7 +324,7 @@ representation of @cuis{}.
 @cindex number, fraction
 A rational number is written with the division symbol between two
 integers: do @kbd{Ctrl-p} on @smalltalk{5/2} @result{}
-@smalltalk{5/2}. @cuis{} returns a fraction, it does note compute a
+@smalltalk{5/2}. @cuis{} returns a rational fraction, it does not compute a
 decimal.
 
 @exercise{Toward the infinite,exeZeroDivide, @emph{What happen when
@@ -336,7 +338,7 @@ using the rational numbers, the @ref{FloatPrecision} becomes:
 @result{} 0}
 
 This time we have the expected result. Underneath the computer only
-does calculus with integers.
+does the calculations with integers.
 
 @exercise{Fix the errors,exeFractionPrecision, @emph{Return to
 @ref{exeFloatPrecision} and use rational writing to represent decimal
@@ -349,15 +351,17 @@ asking for a fraction representation we have this strange answer. The
 internal computer represenation of @smalltalk{1.3} is not exactly as
 it seems:
 
-@smalltalkExample{1.3 asFraction
+@smalltalkExample{(13/10) asFloat
+@result{} 1.3}
+@smalltalkExample{(13/10) asFloat asFraction
 @result{} 5854679515581645/45035996273704}
 
-@subsection Fun with texts
+@subsection Fun with text
 @cindex string
-A @dfn{String} is the way text are represented in programming
+A @dfn{String} is the way text is represented in a programming
 language, it is a collection of characters. We already met string with
-our first script, it is enclosed in double quotes ``"'':
-@smalltalk{"hello world!"}. We capitalize it with the @msg{capitalized}:
+our first script, it is enclosed in single quotes:
+@smalltalk{'hello world!'}. We capitalize it with the @msg{capitalized}:
 
 @cindex string, capitalized
 @smalltalkExample{'hello world!' capitalized
@@ -375,7 +379,7 @@ Two strings are concatenated with the @msg{,} message
 Access to a character in a string is done with the keyword message
 @msg{at:} and its index position in the string:
 @smalltalkExample{'Hello' at: 1 @result{} $H
-'Hello' at: 5 @result{} $0}
+'Hello' at: 5 @result{} $o}
 
 Observe how a character is prefixed with the ``$'' symbol.
 
@@ -413,32 +417,40 @@ We can write the same about sorting a string:
 
 @subsection Fun with variables
 @cindex variable
-How a variable can be fun? With @cuis{}, a variable is untyped, it
-is only a reference to an object of any nature. Therefore to declare a
-variable we name it at the beginning of the script and surround it by
-pipe ``|''.
+How a variable can be fun? With @cuis{}, a variable is the name of a box
+that holds a value. A variable can hold a value of any class.
+The value is strongly typed (we can always determine its Class), but the
+variable (box) is not restricted to holding a value of a single type.
+
+To declare a variable we name it at the beginning of the script
+and surround it by pipe charaters ``|''.
 
 So far we sent messages directly to objects, we can send message to a
 variable bounded to an object too.
 
-@strong{Caution.} This ease of use has a drawback: when sending a
-message to a variable bounded to an object, the system does not check
-the object understand the message. Nevertheless there is a procedure
-to catch up this kind of situation.
+Any object responds to the message #printString.
 
 @smalltalkExample{| msg |
-msg := 'hello world!.
-msg capitalized}
+msg := 'hello world!'.
+Transcript show: msg capitalized printString, ' is a kind of '.
+Transcript show: msg class printString; newLine.
+msg := 5.
+Transcript show: msg printString, ' is a kind of '.
+Transcript show: msg class printString; newLine.}
+
+@strong{Caution.} This ease of use has a drawback: when sending a
+message to a variable bounded to an object, the system does not check
+that the object understands the message. Nevertheless there is a procedure
+to catch this kind of situation.
 
 @subsection Fun with collections
-Collection is the Smalltalk general term to design a set of
-objects. Other languages name it array or list. There are different
-kind of collection. We already discussed one particular collection:
-@class{String} is a collection of characters.
+A Collection is a grouping of objects. Arrays and Lists are collections.  
+A @class{String} is a collection of characters.
+Many kinds of Collection have similar behaviors.
 
 @cindex array
 @class{Array} is a fixed size collection, contrary to string it can
-contain heterogeneous literal enclosed in @smalltalk{#(@tie{})}:
+contain any kind of literal enclosed in @smalltalk{#(@tie{})}:
 @smalltalkExample{"array of numbers"
 #(1 3 5 7 11 1.1)
 "array of mixed literals"
@@ -449,8 +461,8 @@ Using non literal expression in the array will not work as expected:
 @result{} #(1 2 #/ 3)}
 
 @cindex array, dynamic
-Indeed, the ``/'' is interpreted as a literate, a symbol and
-@smalltalk{2/3} is not executed as a fraction. To get a fraction
+Indeed, the ``/'' is interpreted as a literal symbol and
+@smalltalk{2/3} is not interpreted as a fraction. To get a fraction
 inserted in the array, you use a @dfn{run-time array} or @dfn{dynamic
 array}, its elements are expressions separated by dot and surrounded
 with @smalltalk{@{ @}}:
@@ -517,13 +529,13 @@ fibo
 
 @cindex collection, @msg{at:}
 @cindex collection, @msg{last}
-@cindex collection, @msg{atLast:}
+@cindex collection, @msg{indexOf:}
 Index access to the elements of a collection is done with a variety of
 messages. The index naturally ranges from 1 to the collection size:
 @smalltalkExample{fibo at:1 @result{} 1
 fibo at: 6 @result{} 5
 fibo last @result{} 21
-fibo atLast: 2 @result{} 13
+fibo indexOf: 2 @result{} 3
 fibo at: fibo size @result{} 21}
 
 
@@ -664,7 +676,7 @@ family of @emph{repeat}, @emph{while} and @emph{for} loops.
 
 @cindex loop, for
 @cindex for loop
-A straight @emph{for} loop between to integer value is written with
+A simple @emph{for} loop between two integer values is written with
 the keyword message @msg{to:do:}, the last argument is a block of code
 executed for each index:
 @smalltalkExampleCaption{A @emph{for} loop,forLoop,
@@ -735,7 +747,7 @@ criteria:
 @cindex subclass
 @cindex instance
 
-Several entities sharing the same variables and messages understanding
+Several entities sharing the same variables and understanding the same messages
 are very likely to exist within @cuis{} -- think about the
 numbers. Therefore, entities are created -- @dfn{instantiated} --
 following a model, this model is called a @dfn{Class}.
@@ -758,9 +770,25 @@ the class definition: @class{Fraction} is a kind of
 variables -- and behavior -- methods -- defined in the @class{Number}
 class. @class{Fraction} is called a @dfn{subclass} of @class{Number}.
 
+A Class specifies the behavior of all of its instances.  It is useful 
+to be able to say "this object is like that object, but for these differences".  
+We do this in Smalltalk by a Class inheriting instance state and behavior from 
+its parent Class.  This child, or subclass then specifies just the
+instance state and behavior which is different from its parent.
+
 This aspect of object oriented programming is called
 @dfn{inheritance}. In @cuis{}, each class inherits from one parent
 class.
+
+In Smalltalk, each Each object decides for itself how it reponds to a message.
+This is called @dfn{polymorphism}.
+The same message selector may be sent to objects of different Classes.  
+The 'shape' (morph) of the computation is different depending on the specific 
+class of the 'many' (poly) possible classes of the object receiving the message.
+
+We saw above that different kinds of objects
+all responded to the same #printString message in different,
+but appropriate ways.
 
 @c instance creation
 @cindex instance, creation
@@ -1117,7 +1145,7 @@ are:
 @itemize
 
    @item @option{Kernel-Numbers}. Related to the different number
-   representations and calculus, including mathematics functions,
+   representations and calculated, including mathematics functions,
    conversion, intervals and even iterations.
    
    @item @option{Kernel-Text}. Related to character and string as
