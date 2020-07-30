@@ -1221,7 +1221,48 @@ integer:
 the interval [0 ; 2PI]@comma{} each 1/10. Output in the transcript.}}
 
 @c Integer bits representation and manpulation
-Integer number can be represented and converted in different base:
+@cindex number, base
+Integer numbers are represented in different bases when prefixed with
+the base and ``r''. When executing and printing @kbd{Ctrl-p} such a
+number, it is immediately printed in the decimal base:
+
+@smalltalkExampleCaption{Integer represented in different base,integerBase,
+2r1111 @result{} 15
+16rF @result{} 15
+8r17 @result{} 15
+20rF @result{} 15
+10r15 @result{} 15}
+
+Writing numbers as Mayans or Babylonians@footnote{Bases 20 and 60
+number representation are not exclusive to these civilisations,
+although there are the most documented use cases.}:
+
+@smalltalkExampleCaption{Counting like the ancients,countingAncients,
+"The Babylonians"
+60r10 @result{} 60
+60r30 @result{} 180
+60r60 @result{} 360
+60r30 + 60r60 @result{} 540 
+(60r30 + 60r60) printStringRadix: 60 @result{} '60r90' 
+
+"The Mayans"
+20r10 @result{} 20
+20r40 @result{} 80 "pronounced 4-twenties in some languages"
+20r100 @result{} 400}
+
+@cindex integer, bits shifting
+Because of the nature of a number represented in base 2, shifting its
+bits left and right is equivalent to multiplying by 2 and dividing by
+2:
+
+@smalltalkExampleCaption{Shifting bits, shiftBits,
+(2r1111 << 1) printStringBase: 2 @result{} '11110'
+2r1111 << 1 @result{} 30
+(2r1111 >> 1) printStringBase: 2 @result{} '111'
+2r1111 >> 1 @result{} 7}
+
+@exercise{Multiply by 1024,multiplyBy1024, @emph{How will you multiply
+the integer 360 by 1024?}}
 
 
 @strong{Kernel-Text.}  Notably, this category comes with

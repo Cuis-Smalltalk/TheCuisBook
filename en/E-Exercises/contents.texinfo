@@ -168,6 +168,24 @@ definition for Float @textdegree{} 92 instance methods @textdegree{}
    Transcript show: i cos; cr]
 @end example
 
+@subheading @ref{multiplyBy1024}
+1024 is not a random number. It is 2@sup{10} then written in base 2 :
+10000000000, it is also @smalltalk{1 << 10}:
+
+@example
+2^10 @result{} 1024
+1024 printStringBase: 2 @result{} '10000000000'
+1 << 10 @result{} 1024 
+@end example
+
+Therefore, to multiply an integer by 1024, we shift left of 10 its digits:
+
+@example
+360 << 10 @result{} 368640 
+360 * 1024 @result{} 368640 
+@end example
+
+
 @subheading @ref{selectApples}
 There are different options, with slightly different results:
 @example
