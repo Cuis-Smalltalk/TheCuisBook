@@ -5,7 +5,7 @@ implementation of the Smalltalk language and environment.
 
 Copyright (C) 2020 Hilaire Fernandes and Juan Vuletich
 
-Compilation : July 29, 2020
+Compilation : July 30, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -156,7 +156,7 @@ Next: <a href="The-examples.html#The-examples" accesskey="n" rel="next">The exam
 </pre></div>
 
 
-<a name="Fun-with-text"></a>
+<a name="Fun-with-text-1"></a>
 <h4 class="unnumberedsubsec">Fun with text</h4>
 <a name="capWordNumber-1"></a>
 <h4 class="subheading"><a href="Writing-your-first-scripts.html#capWordNumber"><em>Exercise</em> 1.7</a></h4>
@@ -293,8 +293,27 @@ definition for Float &deg; 92 instance methods &deg;
    Transcript show: i cos; cr]
 </pre></div>
 
+<a name="multiplyBy1024-1"></a>
+<h4 class="subheading"><a href="Introduction-to-the-system-classes.html#multiplyBy1024"><em>Exercise</em> 1.22</a></h4>
+<p>1024 is not a random number. It is 2<sup>10</sup> then written in base 2 :
+10000000000, it is also <span class="sansserif">1 &lt;&lt; 10</span>:
+</p>
+<div class="example">
+<pre class="example">2^10 &rArr; 1024
+1024 printStringBase: 2 &rArr; '10000000000'
+1 &lt;&lt; 10 &rArr; 1024 
+</pre></div>
+
+<p>Therefore, to multiply an integer by 1024, we shift left of 10 its digits:
+</p>
+<div class="example">
+<pre class="example">360 &lt;&lt; 10 &rArr; 368640 
+360 * 1024 &rArr; 368640 
+</pre></div>
+
+
 <a name="selectApples-1"></a>
-<h4 class="subheading"><a href="Introduction-to-the-system-classes.html#selectApples"><em>Exercise</em> 1.22</a></h4>
+<h4 class="subheading"><a href="Introduction-to-the-system-classes.html#selectApples"><em>Exercise</em> 1.23</a></h4>
 <p>There are different options, with slightly different results:
 </p><div class="example">
 <pre class="example">'There are 12 apples' select: [:i |i isLetter].

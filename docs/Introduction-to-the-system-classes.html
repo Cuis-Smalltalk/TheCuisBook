@@ -5,7 +5,7 @@ implementation of the Smalltalk language and environment.
 
 Copyright (C) 2020 Hilaire Fernandes and Juan Vuletich
 
-Compilation : July 29, 2020
+Compilation : July 30, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -107,7 +107,7 @@ discovered in the previous section are objects.
 criteria:
 </p>
 <ul>
-<li> <strong>An internal state.</strong> It is materialized by variable(s)
+<li> <strong>An internal state.</strong> It is embodied by variable(s)
    known only by the object. A variable only visible within the object
    is called <em>private</em>. As a consequence, it is impossible &ndash; if
    the object decides so &ndash; to know the internal state of the object
@@ -123,7 +123,7 @@ criteria:
 <a name="index-subclass"></a>
 <a name="index-instance"></a>
 
-<p>Several entities sharing the same variables and messages understanding
+<p>Several entities sharing the same variables and understanding the same messages
 are very likely to exist within Cuis-Smalltalk &ndash; think about the
 numbers. Therefore, entities are created &ndash; <em>instantiated</em> &ndash;
 following a model, this model is called a <em>Class</em>.
@@ -148,9 +148,25 @@ the class definition: <span class="sansserif">Fraction</span> is a kind of
 variables &ndash; and behavior &ndash; methods &ndash; defined in the <span class="sansserif">Number</span>
 class. <span class="sansserif">Fraction</span> is called a <em>subclass</em> of <span class="sansserif">Number</span>.
 </p>
+<p>A Class specifies the behavior of all of its instances.  It is useful 
+to be able to say &quot;this object is like that object, but for these differences&quot;.  
+We do this in Smalltalk by a Class inheriting instance state and behavior from 
+its parent Class.  This child, or subclass then specifies just the
+instance state and behavior which is different from its parent.
+</p>
 <p>This aspect of object oriented programming is called
 <em>inheritance</em>. In Cuis-Smalltalk, each class inherits from one parent
 class.
+</p>
+<p>In Smalltalk, each object decides for itself how it reponds to a message.
+This is called <em>polymorphism</em>.
+The same message selector may be sent to objects of different Classes.  
+The &rsquo;shape&rsquo; (morph) of the computation is different depending on the specific 
+class of the &rsquo;many&rsquo; (poly) possible classes of the object receiving the message.
+</p>
+<p>We saw above that different kinds of objects
+all responded to the same #printString message in different,
+but appropriate ways.
 </p>
 <a name="index-instance_002c-creation"></a>
 <a name="index-class_002c-class-method"></a>
@@ -315,37 +331,17 @@ with <span class="sansserif">#negated</span> message:
 </pre></div>
    
 <p>These two overriding methods are more efficient as they avoid test and
-ifTrue/ifFasse branches. Polymorphism is often used to avoid test and
+ifTrue/ifFalse branches. Polymorphism is often used to avoid test and
 branching, it is done at the object level.
 </p>
-<p>This brief introduction to the oriented object programming gave you
-the basic elements to understand how the system classes are
-implemented in Cuis-Smalltalk.
-</p>
-<a name="Cuis_002dSmalltalk-system-classes"></a>
-<h4 class="subsection">1.3.2 Cuis-Smalltalk system classes</h4>
-<p>As we already wrote Cuis-Smalltalk is a pure object oriented environment. It
-means that every single entities you are dealing with are represented
-as instances of classes written in Cuis-Smalltalk itself. As a direct
-consequence, Cuis-Smalltalk is mostly written in itself.  In the previous
-section we read some details of the <span class="sansserif">Fraction</span> class and both
-instance and class side methods (<span class="sansserif">abs</span>, <span class="sansserif">squared</span> and
-<span class="sansserif">numerator:denominator:</span>.
-</p>
-<p>What we call system classes are models of fundamental objects. In
-other programming languages, it will be called standard library.
-</p>
-<p>To be honest, there is no such a distinction between system classes
-and user classes, but it will help us to draw a boundary around the
-most used objects. We will give a brief introduction to these classes
-and the most important methods, part two gives a more detailed
-presentation. To ease the presentation of these classes we will
-introduce the system browser tool.
+<p>To ease the exploration of the system classes, we will first introduce
+the system browser, a central tool to Cuis-Smalltalk oriented object
+programming.
 </p>
 <a name="index-tools_002c-system-browser"></a>
 <a name="index-browser"></a>
 <a name="A-brief-introduction-to-the-system-browser"></a>
-<h4 class="subsubsection">1.3.2.1 A brief introduction to the system browser</h4>
+<h4 class="subsection">1.3.2 A brief introduction to the system browser</h4>
 <p>The <em>System Browser</em>, in short the <em>Browser</em>, is a tool to
 rule all the classes in Cuis-Smalltalk. It is both a tool to explore the
 classes (system or user ones) and to write new classes and methods.
@@ -356,11 +352,11 @@ Open... &rarr; Browser...
 <div class="float"><a name="B_002d01_002dbrowserDetailed"></a>
 <div align="center"><img src="B-01-browserDetailed.png" alt="B-01-browserDetailed">
 </div>
-<div class="float-caption"><p><strong><em>Figure</em> 1.3: </strong>The System Browser</p></div></div>
+<div class="float-caption"><p><strong><em>Figure</em> 1.4: </strong>The System Browser</p></div></div>
 <a name="index-browser_002c-class-category"></a>
 <p>At the top left are the <em>class categories</em>, there are group of
 classes part of the same theme. It is also called <em>Package</em>, it is
-an organisational element to save code. In <a href="#B_002d01_002dbrowserDetailed"><em>Figure</em> 1.3</a>, the
+an organisational element to save code. In <a href="#B_002d01_002dbrowserDetailed"><em>Figure</em> 1.4</a>, the
 selected class category is <samp>Kernel-Numbers</samp>, a group of
 classes we already explored. The term <samp>Kernel-</samp> indicates it
 is part of fundamental categories, but it is only a convention. See
@@ -418,7 +414,7 @@ class?</em>
 
 
 <div class="float-caption"><p><strong><em>Exercise</em> 1.19: </strong>Count of methods</p></div></div>
-<p>In <a href="#B_002d01_002dbrowserDetailed"><em>Figure</em> 1.3</a>, bellow the classes pane, there are three
+<p>In <a href="#B_002d01_002dbrowserDetailed"><em>Figure</em> 1.4</a>, bellow the classes pane, there are three
 buttons:
 </p>
 <ul>
@@ -435,7 +431,7 @@ buttons:
 
 </li></ul>
 
-<p>Bellow this three buttons, observe the wide text pane, it provides
+<p>Below these three buttons, observe the wide text pane, it provides
 contextual information on the selected item.
 </p>
 <div class="float"><a name="floatInfo"></a>
@@ -451,7 +447,7 @@ the text pane?</em>
 methods. Let&rsquo;s consider the <span class="sansserif">Float</span> class as an example.
 </p>
 <a name="index-class_002c-class-method-1"></a>
-<p><strong>Class Methods.</strong> In <a href="#B_002d01_002dfloatClassSide"><em>Figure</em> 1.4</a> the methods listed are
+<p><strong>Class Methods.</strong> In <a href="#B_002d01_002dfloatClassSide"><em>Figure</em> 1.5</a> the methods listed are
 class side, in the browser the <samp>class</samp> is pressed to see this
 list. From a Workspace, this methods are called with the message name
 sent directly to the class:
@@ -466,7 +462,10 @@ Float fmax
 </pre></div>
 
 <p>Nevertheless, you can not send this message to instance of
-<span class="sansserif">Float</span>, it throws an error and open the red debugger window:
+<span class="sansserif">Float</span>, it throws an error and opens the red debugger window.
+</p>
+<p>Just close the debug window for now to ignore the result.
+We will look into this in more detail later.
 </p>
 <div class="display">
 <pre class="display"><span class="sansserif">3.14 pi
@@ -494,9 +493,9 @@ Integer primesUpTo: 20
 <div class="float"><a name="B_002d01_002dfloatClassSide"></a>
 <div align="center"><img src="B-01-floatClassSide.png" alt="B-01-floatClassSide">
 </div>
-<div class="float-caption"><p><strong><em>Figure</em> 1.4: </strong>Class methods in <span class="sansserif">Float</span></p></div></div>
+<div class="float-caption"><p><strong><em>Figure</em> 1.5: </strong>Class methods in <span class="sansserif">Float</span></p></div></div>
 <a name="index-class_002c-instance-method-1"></a>
-<p><strong>Instance methods.</strong> In <a href="#B_002d01_002dfloatInstanceSide"><em>Figure</em> 1.5</a>, the methods
+<p><strong>Instance methods.</strong> In <a href="#B_002d01_002dfloatInstanceSide"><em>Figure</em> 1.6</a>, the methods
 listed are instance side, in the browser the <samp>instance</samp> button
 is pressed to see this list. In a Workspace, this methods are called
 with the message name sent directly to an instance:
@@ -537,9 +536,29 @@ OrderedCollection new add: Float pi; add: Float e; yourself
 <div class="float"><a name="B_002d01_002dfloatInstanceSide"></a>
 <div align="center"><img src="B-01-floatInstanceSide.png" alt="B-01-floatInstanceSide">
 </div>
-<div class="float-caption"><p><strong><em>Figure</em> 1.5: </strong>Instance methods in <span class="sansserif">Float</span></p></div></div>
-<a name="Tour-to-system-classes"></a>
-<h4 class="subsubsection">1.3.2.2 Tour to system classes</h4>
+<div class="float-caption"><p><strong><em>Figure</em> 1.6: </strong>Instance methods in <span class="sansserif">Float</span></p></div></div>
+<p>With this brief introduction to the system browser, your are now
+equipped to explore the system classes.
+</p>
+<a name="Cuis_002dSmalltalk-system-classes"></a>
+<h4 class="subsection">1.3.3 Cuis-Smalltalk system classes</h4>
+<p>As we already wrote Cuis-Smalltalk is a pure object oriented environment. It
+means that every single entities you are dealing with are represented
+as instances of classes written in Cuis-Smalltalk itself. As a direct
+consequence, Cuis-Smalltalk is mostly written in itself.  In the previous
+section we read some details of the <span class="sansserif">Fraction</span> class and both
+instance and class side methods (<span class="sansserif">abs</span>, <span class="sansserif">squared</span> and
+<span class="sansserif">numerator:denominator:</span>.
+</p>
+<p>What we call system classes are models of fundamental objects. In
+other programming languages, it will be called standard library.
+</p>
+<p>To be honest, there is no such a distinction between system classes
+and user classes, but it will help us to draw a boundary around the
+most used objects. We will give a brief introduction to these classes
+and the most important methods, part two gives a more detailed
+presentation.
+</p>
 <p>The classes are organised in hierarchy grouped in categories. To
 discover the most important classes, we use the browser to navigate
 these categories in the left pane. Important categories to start with
@@ -548,7 +567,7 @@ are:
 
 <ul>
 <li> <samp>Kernel-Numbers</samp>. Related to the different number
-   representations and calculus, including mathematics functions,
+   representations and calculated, including mathematics functions,
    conversion, intervals and even iterations.
    
 </li><li> <samp>Kernel-Text</samp>. Related to character and string as
@@ -634,6 +653,62 @@ the interval [0 ; 2PI], each 1/10. Output in the transcript.</em>
 
 
 <div class="float-caption"><p><strong><em>Exercise</em> 1.21: </strong>Cosine table</p></div></div>
+<a name="index-number_002c-base-1"></a>
+<p>Integer numbers are represented in different bases when prefixed with
+the base and &ldquo;r&rdquo;. When executing and printing <kbd>Ctrl-p</kbd> such a
+number, it is immediately printed in the decimal base:
+</p>
+<div class="float"><a name="integerBase"></a>
+<div class="display">
+<pre class="display"><span class="sansserif">2r1111 &rArr; 15
+16rF &rArr; 15
+8r17 &rArr; 15
+20rF &rArr; 15
+10r15 &rArr; 15</span>
+</pre></div>
+
+<div class="float-caption"><p><strong><em>Example</em> 1.18: </strong>Integer represented in different base</p></div></div>
+<p>Writing numbers as Mayans or Babylonians<a name="DOCF3" href="#FOOT3"><sup>3</sup></a>:
+</p>
+<div class="float"><a name="countingAncients"></a>
+<div class="display">
+<pre class="display"><span class="sansserif">&quot;The Babylonians&quot;
+60r10 &rArr; 60
+60r30 &rArr; 180
+60r60 &rArr; 360
+60r30 + 60r60 &rArr; 540 
+(60r30 + 60r60) printStringRadix: 60 &rArr; &rsquo;60r90&rsquo; 
+
+&quot;The Mayans&quot;
+20r10 &rArr; 20
+20r40 &rArr; 80 &quot;pronounced 4-twenties in some languages&quot;
+20r100 &rArr; 400</span>
+</pre></div>
+
+<div class="float-caption"><p><strong><em>Example</em> 1.19: </strong>Counting like the ancients</p></div></div>
+<a name="index-integer_002c-bits-shifting"></a>
+<p>Because of the nature of a number represented in base 2, shifting its
+bits left and right is equivalent to multiplying by 2 and dividing by
+2:
+</p>
+<div class="float"><a name="shiftBits"></a>
+<div class="display">
+<pre class="display"><span class="sansserif">(2r1111 &lt;&lt; 1) printStringBase: 2 &rArr; &rsquo;11110&rsquo;
+2r1111 &lt;&lt; 1 &rArr; 30
+(2r1111 &gt;&gt; 1) printStringBase: 2 &rArr; &rsquo;111&rsquo;
+2r1111 &gt;&gt; 1 &rArr; 7</span>
+</pre></div>
+
+<div class="float-caption"><p><strong><em>Example</em> 1.20: </strong>Shifting bits</p></div></div>
+<div class="float"><a name="multiplyBy1024"></a>
+<blockquote class="indentedblock">
+<p><em>How will you multiply
+the integer 360 by 1024?</em>
+</p></blockquote>
+
+
+<div class="float-caption"><p><strong><em>Exercise</em> 1.22: </strong>Multiply by 1024</p></div></div>
+
 <p><strong>Kernel-Text.</strong>  Notably, this category comes with
 <span class="sansserif">Character</span>, <span class="sansserif">String</span> and <span class="sansserif">Symbol</span>. <span class="sansserif">String</span>
 instance are collection of <span class="sansserif">Character</span> instances.
@@ -660,15 +735,15 @@ can use the <span class="sansserif">Character</span> instance methods:
 &rArr; &rsquo;12&rsquo;</span>
 </pre></div>
 
-<div class="float-caption"><p><strong><em>Example</em> 1.18: </strong>Twelve apples</p></div></div>
+<div class="float-caption"><p><strong><em>Example</em> 1.21: </strong>Twelve apples</p></div></div>
 <div class="float"><a name="selectApples"></a>
 <blockquote class="indentedblock">
-<p><em>Modify <a href="#apples12"><em>Example</em> 1.18</a> to
+<p><em>Modify <a href="#apples12"><em>Example</em> 1.21</a> to
 reject the numeric characters.</em>
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong><em>Exercise</em> 1.22: </strong>Select apples</p></div></div>
+<div class="float-caption"><p><strong><em>Exercise</em> 1.23: </strong>Select apples</p></div></div>
 
 <p><strong>Collections.</strong>
 </p>
@@ -682,6 +757,10 @@ reject the numeric characters.</em>
 than 300.</p>
 <h3><a name="FOOT2" href="#DOCF2">(2)</a></h3>
 <p>Understand repeated an integer number of times.</p>
+<h3><a name="FOOT3" href="#DOCF3">(3)</a></h3>
+<p>Bases 20 and 60
+number representation are not exclusive to these civilisations,
+although there are the most documented use cases.</p>
 </div>
 <hr>
 <div class="header">
