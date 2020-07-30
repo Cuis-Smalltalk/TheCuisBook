@@ -1262,7 +1262,7 @@ bits left and right is equivalent to multiplying by 2 and dividing by
 2r1111 >> 1 @result{} 7}
 
 @exercise{Multiply by 1024,multiplyBy1024, @emph{How will you multiply
-the integer 360 by 1024?}}
+the integer 360 by 1024@comma{} without using the multiplication operation?}}
 
 
 @strong{Kernel-Text.}  Notably, this category comes with
