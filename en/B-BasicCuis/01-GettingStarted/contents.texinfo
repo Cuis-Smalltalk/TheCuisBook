@@ -314,7 +314,7 @@ not the case. The computer returns @smalltalk{5.55e-17}, or
 is an error.
 
 @exercise{Miscellaneous calculation errors with decimal
-number,exeFloatPrecision,@emph{Give 3 calculation showing errors compare
+number,exeFloatPrecision,@emph{Give 3 calculations showing errors compared
 to the expected results.}}
 
 When accuracy is absolutely mandatory use the Rational Numbers
@@ -426,7 +426,7 @@ To declare a variable we name it at the beginning of the script
 and surround it by pipe charaters ``|''.
 
 So far we sent messages directly to objects, we can send message to a
-variable bounded to an object too.
+variable bound to an object too.
 
 Any object responds to the message #printString.
 
