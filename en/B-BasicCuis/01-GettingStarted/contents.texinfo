@@ -439,7 +439,7 @@ Transcript show: msg printString, ' is a kind of '.
 Transcript show: msg class printString; newLine.}
 
 @strong{Caution.} This ease of use has a drawback: when sending a
-message to a variable bounded to an object, the system does not check
+message to a variable bound to an object, the system does not check
 that the object understands the message. Nevertheless there is a procedure
 to catch this kind of situation.
 
