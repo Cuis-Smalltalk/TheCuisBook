@@ -1141,9 +1141,9 @@ returned class:
    @item In the workspace, on @smalltalk{1 class} execute and print
    with @kbd{Ctrl-p},
 
-   @item @class{SmallInteger} is printed, and selected,
+   @item @class{SmallInteger} is printed and automatically selected by default,
 
-   @item invoke the browser on the selected @class{SmalltalkInteger}
+   @item Invoke the browser on the selected @class{SmalltalkInteger}
    class with @kbd{Ctrl-b},
 
    @item The browser is open on the @class{SmalltalkInteger}, ready to
@@ -1318,11 +1318,56 @@ As string are collection of characters, when enumerating a string we
 can use the @class{Character} instance methods:
 
 @smalltalkExampleCaption{Twelve apples,apples12,
-'There are 12 apples.' select: [:i |i isDigit].
+'There are 12 apples.' select: [:c |c isDigit].
 @result{} '12'}
 
 @exercise{Select apples,selectApples, @emph{Modify @ref{apples12} to
 reject the numeric characters.}}
+
+@class{String} is a very large class, it comes with more than 200
+methods. Hopefully the methods are grouped in categories and it is
+very easy to experiment from a Workspace when you are looking for a
+specific behavior.
+
+Consider you need to search for a string in a string: when browsing
+the @class{String} class, search for method categories named like
+@option{finding...} or @option{accessing}. There you find a family of
+@method{findXXX} methods. Read the comments at the beginning of these
+methods:
+
+@smalltalkExample{
+findString: subString
+   "Answer the index of subString within the receiver, starting at
+   start. If the receiver does not contain subString, answer 0."
+   ^self findString: subString startingAt: 1.}
+
+Or:
+
+@smalltalkExample{findString: key startingAt: start caseSensitive: caseSensitive
+   "Answer the index in this String at which the substring key first
+   occurs, at or beyond start.  The match can be case-sensitive or
+   not.  If no match is found, zero will be returned."
+   ../..}
+
+Then experiment the potentially interesting messages in a workspace:
+
+@smalltalkExample{'I love apples' findString: 'love' @result{} 3 "find at position 3"
+'I love apples' findString: 'hate'
+@result{}  0 "no finding"
+'We humans, we all love apples' findString: 'we'
+@result{} 12 
+'We humans, we all love apples'
+   findString: 'we'
+   startingAt: 1
+   caseSensitive: false
+@result{} 1 
+'we humans, we all love apples' findString: 'we'
+@result{} 1 
+'we humans, we all love apples' findString: 'we' startingAt: 2
+@result{} 12}
+
+Following these paths will, most of the time, leads you to the answer
+your are looking for.
 
 
 @strong{Collections.}
