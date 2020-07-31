@@ -205,5 +205,13 @@ Or even a shorter option with the @msg{reject:} message:
 @result{} 'There are  apples' 
 @end example
 
+@subheading @ref{formatString}
+In @class{String}, search for the method category @option{format}, there
+you find the @method{format:} method:
+@example
+'Joe bought @{1@} apples and @{2@} oranges' format: #(5 4)
+@result{}  'Joe bought 5 apples and 4 oranges' 
+@end example
 
+.
 

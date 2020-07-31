@@ -770,6 +770,7 @@ the class definition: @class{Fraction} is a kind of
 variables -- and behavior -- methods -- defined in the @class{Number}
 class. @class{Fraction} is called a @dfn{subclass} of @class{Number}.
 
+@cindex class, inheritance
 A Class specifies the behavior of all of its instances.  It is useful 
 to be able to say "this object is like that object, but for these differences".  
 We do this in Smalltalk by a Class inheriting instance state and behavior from 
@@ -1054,7 +1055,7 @@ methods. Let's consider the @class{Float} class as an example.
 
 @cindex class, class method
 @strong{Class Methods.} In @ref{B-01-floatClassSide} the methods listed are
-class side, in the browser the @option{class} is pressed to see this
+class side, in the browser the @option{class} button is pressed to see this
 list. From a Workspace, this methods are called with the message name
 sent directly to the class:
 
@@ -1367,8 +1368,17 @@ Then experiment the potentially interesting messages in a workspace:
 @result{} 12}
 
 Following these paths will, most of the time, leads you to the answer
-your are looking for.
+you are looking for.
 
+@c an exercise to find a method given a behavior
+@exercise{Format a string, formatString, @emph{We want to format a
+string of the form 'Joe bought XX apples and YY oranges' to the form
+'Joe bought 5 apples and 4 oranges'. What message should be used?}}
+
+
+@c browse the hierarchy to find more inherited behavior, Should this be documented in browser section, or just there
+@cindex browser, hierarchy
+@cindex class, inheritance
 
 @strong{Collections.}
 
