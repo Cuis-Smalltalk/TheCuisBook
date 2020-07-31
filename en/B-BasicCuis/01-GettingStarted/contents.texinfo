@@ -938,6 +938,19 @@ These two overriding methods are more efficient as they avoid test and
 ifTrue/ifFalse branches. Polymorphism is often used to avoid test and
 branching, it is done at the object level.
 
+As an object is modeled against a class, it is possible to ask its
+class with the @msg{class} message. Observe carefully the class
+returned in line 2 and 3:
+
+@smalltalkExampleCaption{Asking the class of an instance,askingClass,
+1 class @result{} SmallInteger 
+(1/3) class @result{} Fraction 
+(6/2) class @result{} SmallInteger 
+(1/3) asFloat class  @result{} SmallFloat64 
+(1.0/3) class @result{} SmallFloat64 
+'Hello' class @result{} String 
+('Hello' at: 1) class @result{} Character}
+
 To ease the exploration of the system classes, we will first introduce
 the system browser, a central tool to @cuis{} oriented object
 programming.
@@ -1117,6 +1130,26 @@ OrderedCollection new add: Float pi; add: Float e; yourself
 }
 
 @figure{Instance methods in @class{Float},B-01-floatInstanceSide,7}
+
+@cindex browser, invoke from workspace
+A last bit of advice,  in the workspace when requesting the
+class of an instance, @kbd{Ctrl-b} will invoke the browser on the
+returned class:
+
+@itemize
+
+   @item In the workspace, on @smalltalk{1 class} execute and print
+   with @kbd{Ctrl-p},
+
+   @item @class{SmallInteger} is printed, and selected,
+
+   @item invoke the browser on the selected @class{SmalltalkInteger}
+   class with @kbd{Ctrl-b},
+
+   @item The browser is open on the @class{SmalltalkInteger}, ready to
+   be explored.
+
+@end itemize
 
 With this brief introduction to the system browser, your are now
 equipped to explore the system classes.
