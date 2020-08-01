@@ -856,7 +856,7 @@ and its parents is named its <em>protocol</em>.
 <p>Again the browser is helpful to explore a class protocol. You have two
 options:
 </p>
-<ul>
+<ol>
 <li> <strong>Explore the protocol.</strong> In the class pane of the
    browser, do ...select <span class="sansserif">String</span> class &rarr;
    click the right mouse button &rarr; in the menu select
@@ -869,8 +869,17 @@ options:
 <div class="float-caption"><p><strong><em>Figure</em> 1.7: </strong>Browse <span class="sansserif">String</span> protocol</p></div></div>
 <p>The new window is a protocol browser for the <span class="sansserif">String</span>
    class. At the left, a hierarchy of the <span class="sansserif">String</span> ancestors;
-   selecting one class there only show the protocol starting from this
-   class down to the <span class="sansserif">String</span> class.
+   selecting one class there only shows the protocol starting from
+   this class down to the <span class="sansserif">String</span> class. In the pane at the
+   right is the list of methods of the selected ancestry. The specific
+   protocol to <span class="sansserif">String</span> is bold; surrounded by parenthesis, the
+   class the method is implemented in.
+</p>
+<p>In <a href="#B_002d01_002dbrowseProtocol"><em>Figure</em> 1.7</a>, no specific class is selected,
+   therefore the whole <span class="sansserif">String</span> protocol is listed at the
+   right. The method <span class="sansserif">before:</span> implemented in
+   <span class="sansserif">SequenceableCollection</span> is selected and its source code is
+   displayed on the large bottom pane.
 </p>
 </li><li> <strong>Explore the hierarchy.</strong> In the class pane of the
    browser, do ...select <span class="sansserif">String</span> class &rarr;
@@ -878,9 +887,38 @@ options:
    <samp>Browse hierarchy (h)</samp>... Alternatively, use the keyboard
    shortcut <kbd>Ctrl-h</kbd>.
 
+<div class="float"><a name="B_002d01_002dbrowseHierarchy"></a>
+<div align="center"><img src="B-01-browseHierarchy.png" alt="B-01-browseHierarchy">
+</div>
+<div class="float-caption"><p><strong><em>Figure</em> 1.8: </strong>Browse the <span class="sansserif">String</span> hierarchy</p></div></div>
+<p>The hierarchy browser is very like the system browser with only two
+   differences:
+</p>
+<ul>
+<li> At the far left, the class categories pane is absent,
+      
+</li><li> In the classes pane, the hierarchy of <span class="sansserif">String</span> is
+      printed. It makes easy to browse <span class="sansserif">String</span> parents and
+      children class.
+
 </li></ul>
 
+</li></ol>
 
+<p>The hierarchy browser is a general tool for exploration. Contrary to
+the protocol browser, it does not display at once the whole protocol
+of a class. In <a href="#B_002d01_002dbrowseHierarchy"><em>Figure</em> 1.8</a>, the class
+<span class="sansserif">SequenceableCollection</span> is selected as well as its method
+<span class="sansserif">before:</span>.
+</p>
+<p>To extract a character before a specific character, we try with the
+<span class="sansserif">#before:</span> message:
+</p>
+<div class="display">
+<pre class="display"><span class="sansserif">&rsquo;1 + 3i&rsquo; before: $i
+&rArr; $3 
+</span>
+</pre></div>
 
 <p><strong>Collections.</strong>
 </p>

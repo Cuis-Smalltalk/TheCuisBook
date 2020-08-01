@@ -1394,7 +1394,7 @@ and its parents is named its @dfn{protocol}.
 Again the browser is helpful to explore a class protocol. You have two
 options:
 
-@itemize
+@enumerate
 
    @item @strong{Explore the protocol.} In the class pane of the
    browser, do ...@clicksequence{select @class{String} class @click{}
@@ -1406,8 +1406,17 @@ options:
 
    The new window is a protocol browser for the @class{String}
    class. At the left, a hierarchy of the @class{String} ancestors;
-   selecting one class there only show the protocol starting from this
-   class down to the @class{String} class.
+   selecting one class there only shows the protocol starting from
+   this class down to the @class{String} class. In the pane at the
+   right is the list of methods of the selected ancestry. The specific
+   protocol to @class{String} is bold; surrounded by parenthesis, the
+   class the method is implemented in.
+
+   In @ref{B-01-browseProtocol}, no specific class is selected,
+   therefore the whole @class{String} protocol is listed at the
+   right. The method @method{before:} implemented in
+   @class{SequenceableCollection} is selected and its source code is
+   displayed on the large bottom pane.
 
    @item @strong{Explore the hierarchy.} In the class pane of the
    browser, do ...@clicksequence{select @class{String} class @click{}
@@ -1415,9 +1424,36 @@ options:
    @option{Browse hierarchy (h)}}... Alternatively, use the keyboard
    shortcut @kbd{Ctrl-h}.
 
-@end itemize
+   @figure{Browse the @class{String} hierarchy,B-01-browseHierarchy,8}
 
+   The hierarchy browser is very like the system browser with only two
+   differences:
 
+   @itemize
+
+      @item At the far left, the class categories pane is absent,
+      
+      @item In the classes pane, the hierarchy of @class{String} is
+      printed. It makes easy to browse @class{String} parents and
+      children class.
+
+   @end itemize
+
+@end enumerate
+
+The hierarchy browser is a general tool for exploration. Contrary to
+the protocol browser, it does not display at once the whole protocol
+of a class. In @ref{B-01-browseHierarchy}, the class
+@class{SequenceableCollection} is selected as well as its method
+@method{before:}.
+
+To extract a character before a specific character, we try with the
+@msg{before:} message:
+
+@smalltalkExample{
+'1 + 3i' before: $i
+@result{} $3 
+}
 
 @strong{Collections.}
 
