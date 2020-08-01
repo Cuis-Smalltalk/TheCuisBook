@@ -5,7 +5,7 @@ implementation of the Smalltalk language and environment.
 
 Copyright (C) 2020 Hilaire Fernandes and Juan Vuletich
 
-Compilation : July 31, 2020
+Compilation : August 1, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -148,6 +148,7 @@ the class definition: <span class="sansserif">Fraction</span> is a kind of
 variables &ndash; and behavior &ndash; methods &ndash; defined in the <span class="sansserif">Number</span>
 class. <span class="sansserif">Fraction</span> is called a <em>subclass</em> of <span class="sansserif">Number</span>.
 </p>
+<a name="index-class_002c-inheritance"></a>
 <p>A Class specifies the behavior of all of its instances.  It is useful 
 to be able to say &quot;this object is like that object, but for these differences&quot;.  
 We do this in Smalltalk by a Class inheriting instance state and behavior from 
@@ -464,7 +465,7 @@ methods. Let&rsquo;s consider the <span class="sansserif">Float</span> class as 
 </p>
 <a name="index-class_002c-class-method-1"></a>
 <p><strong>Class Methods.</strong> In <a href="#B_002d01_002dfloatClassSide"><em>Figure</em> 1.5</a> the methods listed are
-class side, in the browser the <samp>class</samp> is pressed to see this
+class side, in the browser the <samp>class</samp> button is pressed to see this
 list. From a Workspace, this methods are called with the message name
 sent directly to the class:
 </p>
@@ -827,8 +828,59 @@ methods:
 </pre></div>
 
 <p>Following these paths will, most of the time, leads you to the answer
-your are looking for.
+you are looking for.
 </p>
+<div class="float"><a name="formatString"></a>
+<blockquote class="indentedblock">
+<p><em>We want to format a
+string of the form &rsquo;Joe bought XX apples and YY oranges&rsquo; to the form
+&rsquo;Joe bought 5 apples and 4 oranges&rsquo;. What message should be used?</em>
+</p></blockquote>
+
+
+<div class="float-caption"><p><strong><em>Exercise</em> 1.24: </strong>Format a string</p></div></div>
+
+<a name="index-class_002c-inheritance-1"></a>
+<a name="index-class_002c-protocol"></a>
+<a name="index-protocol"></a>
+
+<p>The <span class="sansserif">String</span> also inherits its behavior from its ancestors,
+parent classes. Indeed a <span class="sansserif">String</span> is a subclass of
+<span class="sansserif">ArrayedCollection</span>. The direct consequence is that when
+searching for some specific behavior, you need to explore the parent
+classes too. The whole behavior of a class, defined in the class itself
+and its parents is named its <em>protocol</em>.
+</p>
+<a name="index-browser_002c-hierarchy"></a>
+<a name="index-browser_002c-protocol"></a>
+<p>Again the browser is helpful to explore a class protocol. You have two
+options:
+</p>
+<ul>
+<li> <strong>Explore the protocol.</strong> In the class pane of the
+   browser, do ...select <span class="sansserif">String</span> class &rarr;
+   click the right mouse button &rarr; in the menu select
+   <samp>Browse protocol (p)</samp>... Alternatively, use the keyboard
+   shortcut <kbd>Ctrl-p</kbd>.
+
+<div class="float"><a name="B_002d01_002dbrowseProtocol"></a>
+<div align="center"><img src="B-01-browseProtocol.png" alt="B-01-browseProtocol">
+</div>
+<div class="float-caption"><p><strong><em>Figure</em> 1.7: </strong>Browse <span class="sansserif">String</span> protocol</p></div></div>
+<p>The new window is a protocol browser for the <span class="sansserif">String</span>
+   class. At the left, a hierarchy of the <span class="sansserif">String</span> ancestors;
+   selecting one class there only show the protocol starting from this
+   class down to the <span class="sansserif">String</span> class.
+</p>
+</li><li> <strong>Explore the hierarchy.</strong> In the class pane of the
+   browser, do ...select <span class="sansserif">String</span> class &rarr;
+   click the right mouse button &rarr; in the menu select
+   <samp>Browse hierarchy (h)</samp>... Alternatively, use the keyboard
+   shortcut <kbd>Ctrl-h</kbd>.
+
+</li></ul>
+
+
 
 <p><strong>Collections.</strong>
 </p>

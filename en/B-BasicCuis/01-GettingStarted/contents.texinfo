@@ -1376,9 +1376,48 @@ string of the form 'Joe bought XX apples and YY oranges' to the form
 'Joe bought 5 apples and 4 oranges'. What message should be used?}}
 
 
-@c browse the hierarchy to find more inherited behavior, Should this be documented in browser section, or just there
-@cindex browser, hierarchy
+@c browse the hierarchy to find more inherited behavior, Should this
+@c be documented in browser section, or just there
 @cindex class, inheritance
+@cindex class, protocol
+@cindex protocol
+
+The @class{String} also inherits its behavior from its ancestors,
+parent classes. Indeed a @class{String} is a subclass of
+@class{ArrayedCollection}. The direct consequence is that when
+searching for some specific behavior, you need to explore the parent
+classes too. The whole behavior of a class, defined in the class itself
+and its parents is named its @dfn{protocol}.
+
+@cindex browser, hierarchy
+@cindex browser, protocol
+Again the browser is helpful to explore a class protocol. You have two
+options:
+
+@itemize
+
+   @item @strong{Explore the protocol.} In the class pane of the
+   browser, do ...@clicksequence{select @class{String} class @click{}
+   click the right mouse button @click{} in the menu select
+   @option{Browse protocol (p)}}... Alternatively, use the keyboard
+   shortcut @kbd{Ctrl-p}.
+
+   @figure{Browse @class{String} protocol,B-01-browseProtocol,8}
+
+   The new window is a protocol browser for the @class{String}
+   class. At the left, a hierarchy of the @class{String} ancestors;
+   selecting one class there only show the protocol starting from this
+   class down to the @class{String} class.
+
+   @item @strong{Explore the hierarchy.} In the class pane of the
+   browser, do ...@clicksequence{select @class{String} class @click{}
+   click the right mouse button @click{} in the menu select
+   @option{Browse hierarchy (h)}}... Alternatively, use the keyboard
+   shortcut @kbd{Ctrl-h}.
+
+@end itemize
+
+
 
 @strong{Collections.}
 

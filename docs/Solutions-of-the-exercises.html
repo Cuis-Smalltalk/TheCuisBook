@@ -5,7 +5,7 @@ implementation of the Smalltalk language and environment.
 
 Copyright (C) 2020 Hilaire Fernandes and Juan Vuletich
 
-Compilation : July 31, 2020
+Compilation : August 1, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -332,8 +332,17 @@ definition for Float &deg; 92 instance methods &deg;
 &rArr; 'There are  apples' 
 </pre></div>
 
+<a name="formatString-1"></a>
+<h4 class="subheading"><a href="Introduction-to-the-system-classes.html#formatString"><em>Exercise</em> 1.24</a></h4>
+<p>In <span class="sansserif">String</span>, search for the method category <samp>format</samp>, there
+you find the <span class="sansserif">format:</span> method:
+</p><div class="example">
+<pre class="example">'Joe bought {1} apples and {2} oranges' format: #(5 4)
+&rArr;  'Joe bought 5 apples and 4 oranges' 
+</pre></div>
 
-
+<p>.
+</p>
 <hr>
 <div class="header">
 <p>
