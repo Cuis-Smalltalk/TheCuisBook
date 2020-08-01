@@ -1197,11 +1197,12 @@ are:
 @end itemize
 
 
-@strong{Kernel-Numbers.} The top hierarchy @class{Number} class shows
-most of the behaviors inherited by the sub classes as @class{Float},
-@class{Integer} and @class{Fraction}. The Smalltalk way to learn about
-a behavior is to point the System Browser toward a top hierarchy class
-and to explore the method categories.
+@subsubsection Kernel-Numbers
+The top hierarchy @class{Number} class shows most of the behaviors
+inherited by the sub classes as @class{Float}, @class{Integer} and
+@class{Fraction}. The Smalltalk way to learn about a behavior is to
+point the System Browser toward a top hierarchy class and to explore
+the method categories.
 
 Let's suppose we want to round a float number. In @class{Number}, we
 explore the @option{Truncation and round off} method category to
@@ -1299,9 +1300,10 @@ bits left and right is equivalent to multiplying by 2 and dividing by
 the integer 360 by 1024@comma{} without using the multiplication operation?}}
 
 
-@strong{Kernel-Text.}  Notably, this category comes with
-@class{Character}, @class{String} and @class{Symbol}. @class{String}
-instance are collection of @class{Character} instances.
+@subsubsection Kernel-Text
+Notably, this category comes with @class{Character}, @class{String}
+and @class{Symbol}. @class{String} instance are collection of
+@class{Character} instances.
 
 An individual character is written prefixed with a ``$'':
 @smalltalk{$A}. It can be defined with the class side method
@@ -1385,9 +1387,9 @@ string of the form 'Joe bought XX apples and YY oranges' to the form
 The @class{String} also inherits its behavior from its ancestors,
 parent classes. Indeed a @class{String} is a subclass of
 @class{ArrayedCollection}. The direct consequence is that when
-searching for some specific behavior, you need to explore the parent
-classes too. The whole behavior of a class, defined in the class itself
-and its parents is named its @dfn{protocol}.
+searching for some specific behavior, you may need to explore the
+parent classes too. The whole behavior of a class, defined in the
+class itself and its parents is named its @dfn{protocol}.
 
 @cindex browser, hierarchy
 @cindex browser, protocol
@@ -1447,17 +1449,62 @@ of a class. In @ref{B-01-browseHierarchy}, the class
 @class{SequenceableCollection} is selected as well as its method
 @method{before:}.
 
-To extract a character before a specific character, we try with the
-@msg{before:} message:
+This method extracts from a collection the element before a specified
+element. When inherited in @class{String}, those elements are
+@class{Character} instances:
 
 @smalltalkExample{
 '1 + 3i' before: $i
 @result{} $3 
 }
 
+Practice the tools and resolve the exercise bellow.
+
 @exercise{Cut a string, cutString,@emph{Find the appropriate
 method to transform 'Hello My Friend' in 'My Friend'?}}
 
-@strong{Collections.}
+Beware, some messages in the @class{String} protocol may obviously not
+work. Observe bellow, the error is thrown on a @class{Character}
+instance:
 
+@smalltalkExample{'Hello My Friend' cos
+@result{} MesageNotUnderstood: Character>>cos}
+
+@subsubsection Collections
+The @option{Collections-} class categories are the most prolific,
+there are 7 of them gathering 46 classes.
+
+@c explain category Collections-Abstract
+@cindex class, abstract
+The category @option{Collections-Abstract} groups classes which are
+said to be abstract. An @dfn{abstract} class cannot be instantiated,
+its behavior is declared but not completely implemented. It is the
+responsibility of its sub classes to implement the missing part of the
+behavior. Observe how the important @method{do:} method is declared
+but not implemented:
+
+@smalltalkExample{Collection>>do: aBlock 
+"Evaluate aBlock with each of the receiver's elements as the argument."
+self subclassResponsibility}
+
+Then observe how two different @class{Collection} sub classes
+implement it:
+
+@smalltalkExample{OrderedCollection>>do: aBlock 
+firstIndex to: lastIndex do: [ :index |
+   aBlock value: (array at: index) ]}
+
+and:
+
+@smalltalkExample{Dictionary>>do: aBlock
+super do: [:assoc | aBlock value: assoc value]}
+
+
+@c distinguish growable and non-growable collection Array (Collections-Arrayed) and OrderedCollection
+@c (Collections_Sequenceable)
+
+
+@c Explain in detail Array, OrderedCollection, Dictionary and Set
+
+@c The other kind of collection should be self-discoverable
 
