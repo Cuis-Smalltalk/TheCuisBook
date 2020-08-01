@@ -213,5 +213,11 @@ you find the @method{format:} method:
 @result{}  'Joe bought 5 apples and 4 oranges' 
 @end example
 
-.
-
+@subheading @ref{cutString}
+Open the protocol browser opened on the class @class{String}, search
+for the method @method{allButFirst:} implemented in
+@class{SequenceableCollection}. Read its comment in its source code.
+@example
+'Hello My Friend' allButFirst: 6
+@result{} 'My Friend'
+@end example

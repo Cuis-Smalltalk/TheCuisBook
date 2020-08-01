@@ -1455,6 +1455,9 @@ To extract a character before a specific character, we try with the
 @result{} $3 
 }
 
+@exercise{Cut a string, cutString,@emph{Find the appropriate
+method to transform 'Hello My Friend' in 'My Friend'?}}
+
 @strong{Collections.}
 
 
