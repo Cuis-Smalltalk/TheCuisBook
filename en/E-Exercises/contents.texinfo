@@ -255,3 +255,13 @@ just do:
 @example
 array4 atAllPut: 'kiwi'.
 @end example
+
+@subheading @ref{addAfter}
+In the @class{OrderedCollection} protocol search for the method
+@method{add:after:}.
+@example
+coll1 := @{2 . 'Apple' . 2@@1 . 1/3 @} asOrderedCollection .		
+coll1 add: 'Orange' after: 'Apple'; yourself.
+@result{}  an OrderedCollection(2 'Apple' 'Orange' 2@@1 1/3) 
+@end example
+

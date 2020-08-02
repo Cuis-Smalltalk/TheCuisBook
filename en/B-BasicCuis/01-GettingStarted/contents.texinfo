@@ -1584,13 +1584,16 @@ instance. You can add and remove element, though:
 @smalltalkExampleCaption{Adding@comma{} removing element from a
 dynamic array,remDelArray,
 coll1 add: 'Orange'; yourself
-@result{} an OrderedCollection(2 'Apple' 2@@1 1/3 'Orange'
+@result{} an OrderedCollection(2 'Apple' 2@@1 1/3 'Orange')
 coll1 remove: 2@@1; yourself
-@result{}
-an OrderedCollection(2 'Apple' 1/3)} 
+@result{} an OrderedCollection(2 'Apple' 1/3)} 
+
+@c exercise with ordered collection
+@exercise{Add element after,addAfter, @emph{How to add 'Orange' after
+'Apple' in @smalltalk{coll1}?}}
 
 
-@c Explain in detail Array, OrderedCollection, Dictionary and Set
+@c Explain in detail Dictionary and Set
 
 @c The other kind of collection should be self-discoverable
 
