@@ -5,7 +5,7 @@ implementation of the Smalltalk language and environment.
 
 Copyright (C) 2020 Hilaire Fernandes and Juan Vuletich
 
-Compilation : August 1, 2020
+Compilation : August 2, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -341,8 +341,51 @@ you find the <span class="sansserif">format:</span> method:
 &rArr;  'Joe bought 5 apples and 4 oranges' 
 </pre></div>
 
-<p>.
+<a name="cutString-1"></a>
+<h4 class="subheading"><a href="Introduction-to-the-system-classes.html#cutString"><em>Exercise</em> 1.25</a></h4>
+<p>Open the protocol browser on the class <span class="sansserif">String</span>, search for the
+method <span class="sansserif">allButFirst:</span> implemented in
+<span class="sansserif">SequenceableCollection</span>. Read its comment in its source code.
+</p><div class="example">
+<pre class="example">'Hello My Friend' allButFirst: 6
+&rArr; 'My Friend'
+</pre></div>
+
+<a name="collFirst-1"></a>
+<h4 class="subheading"><a href="Introduction-to-the-system-classes.html#collFirst"><em>Exercise</em> 1.26</a></h4>
+<p>The appropriate message is <span class="sansserif">#first:</span>, defined in the parent
+class <span class="sansserif">SequenceableCollection</span>. You need to use the protocol or
+hierarchy browser on <span class="sansserif">Array</span> to discover it:
 </p>
+<div class="example">
+<pre class="example">array1 first: 2
+&rArr; #(2 'Apple') 
+</pre></div>
+
+<a name="fillArray-1"></a>
+<h4 class="subheading"><a href="Introduction-to-the-system-classes.html#fillArray"><em>Exercise</em> 1.27</a></h4>
+<p>You could simply do a thumb:
+</p>
+<div class="example">
+<pre class="example">array4 at: 1 put: 'kiwi'.
+array4 at: 2 put: 'kiwi'.
+array4 at: 3 put: 'kiwi'.
+array4 at: 4 put: 'kiwi'.
+</pre></div>
+
+<p>Or even a bit less thumb:
+</p>
+<div class="example">
+<pre class="example">1 to: 4 do: [:index |
+   array4 at: index put: 'kiwi']
+</pre></div>
+
+<p>But if you search for carefully the <span class="sansserif">Array</span> protocol, you can
+just do:
+</p>
+<div class="example">
+<pre class="example">array4 atAllPut: 'kiwi'.
+</pre></div>
 <hr>
 <div class="header">
 <p>

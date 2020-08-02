@@ -1424,7 +1424,8 @@ options:
    browser, do ...@clicksequence{select @class{String} class @click{}
    click the right mouse button @click{} in the menu select
    @option{Browse hierarchy (h)}}... Alternatively, use the keyboard
-   shortcut @kbd{Ctrl-h}.
+   shortcut @kbd{Ctrl-h} or the button @option{hierarchy} on the
+   system browser.
 
    @figure{Browse the @class{String} hierarchy,B-01-browseHierarchy,8}
 
@@ -1471,6 +1472,7 @@ instance:
 @result{} MesageNotUnderstood: Character>>cos}
 
 @subsubsection Collections
+@cindex collection
 The @option{Collections-} class categories are the most prolific,
 there are 7 of them gathering 46 classes.
 
@@ -1499,9 +1501,93 @@ and:
 @smalltalkExample{Dictionary>>do: aBlock
 super do: [:assoc | aBlock value: assoc value]}
 
-
 @c distinguish growable and non-growable collection Array (Collections-Arrayed) and OrderedCollection
 @c (Collections_Sequenceable)
+
+Two groups of collections must be distinguished: collection with a
+fixed size and collection with a variable size.
+
+@cindex collection, fixed size
+@strong{Collection of fixed size.}  Such collections are gathered in
+the category @option{Collections-Arrayed}. The most notable one is
+@class{Array}, its size -- the number of elements it can hold -- is
+set when creating the instance:
+
+@cindex collection, instantiate array
+@cindex @class{Array}
+@smalltalkExampleCaption{Collection with a fixed size,createArray,
+array1 := #(2 'Apple' $@@ 4) "create at compile time"
+array1b := @{2 . 'Apple' . 2@@1 . 1/3 @} "created a execution time"
+array2 := Array with: 2 with: 'Apple' with: 2@@3 with: 1/3.
+array3 := Array ofSize: 4 "an empty array with a 4 elements capacity"}
+
+Array @smalltalk{array1} and @smalltalk{array1b} are bit
+different. The former one is created and filled with its contents at
+compile time of the code, the consequence is it can be only filled
+with literal elements as integer, float, string. The later one is
+created at execution time of the code, it can be filled with elements
+instantiated at the execution time as @class{Fraction} or
+@class{Point} instances.
+
+@cindex collection, access element
+You can access element:
+@smalltalkExampleCaption{Collection access to elements,collectionAccess,
+array1 first @result{} 2
+array1 second @result{} 'Apple'
+array1 third @result{} $@@
+array1 fourth @result{} 4
+array1 last @result{} 4
+array1 at: 2 @result{} 'Apple'
+array2 at: 3 @result{} $2@@3
+array2 swap: 2 with: 4 @result{} #(2 4 $@@ 'Apple') 
+array1 at: 2 put: 'Orange'; yourself @result{} #(2 'Orange' $@@ 4)
+array1 indexOf: 'Apple' @result{} 2}
+
+Use the system browser to discover alternative way to access elements
+of a collection.
+
+@exercise{Access part of a collection, collFirst, @emph{What is the
+appropriate message to access the first 2 elements of the
+@smalltalk{array1} collection?}}
+
+You can't add or remove an element, though:
+
+@smalltalkExample{
+array1 add: 'Orange'
+@result{} Error: 'This message is not appropriate for this object'
+array1 remove: 'Apple'
+@result{}  Error: 'This message is not appropriate for this object'}
+
+Nevertheless, it is possible to fill at once an array:
+
+@exercise{Fill an array,fillArray, @emph{How will you fill at once
+@smalltalk{array4} with 'kiwi'?}}
+
+@cindex collection, variable size
+@strong{Collection of variable size.}  Such collection are gathered in
+several class categories: @option{Collections-Unordered},
+@option{Collections-Sequenceable}, etc. They represent the most common
+collection. The most notable one is @class{OrderedCollection}. Its
+size is variable depending on added or removed elements.
+
+@cindex collection, instantiate dynamic array
+@cindex @class{OrderedCollection}
+
+@smalltalkExampleCaption{Collection with a variable size, createOrderedColl,
+coll1 := @{2 . 'Apple' . 2@@1 . 1/3 @} asOrdredCollection
+coll2 := OrderedCollection with: 2 with: 'Apple' with: 2@@1 with: 1/3
+coll3 := OrderedCollection ofSize: 4}
+
+The access to its elements is identical to an @class{Array}
+instance. You can add and remove element, though:
+
+@smalltalkExampleCaption{Adding@comma{} removing element from a
+dynamic array,remDelArray,
+coll1 add: 'Orange'; yourself
+@result{} an OrderedCollection(2 'Apple' 2@@1 1/3 'Orange'
+coll1 remove: 2@@1; yourself
+@result{}
+an OrderedCollection(2 'Apple' 1/3)} 
 
 
 @c Explain in detail Array, OrderedCollection, Dictionary and Set
