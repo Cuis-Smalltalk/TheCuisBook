@@ -284,8 +284,7 @@ Integer can be printed in different forms:
 @cindex number, roman
 @cindex number, as words
 @cindex number, base
-@smalltalkExample{
-2020 printStringRoman @result{} 'MMXX' 
+@smalltalkExample{2020 printStringRoman @result{} 'MMXX' 
 2020 printStringWords  @result{} 'two thousand, twenty'
 "Number as the Maya did"
 2020 printStringBase: 20 @result{} '510'}
@@ -487,8 +486,8 @@ Mathematics operations work as well:
 
 @cindex array, statistic
 Basic statistic methods can be used directly on array of numbers:
-@smalltalkExample{
-#(7.5 3.5 8.9) mean @result{} 6.633333333333333 
+
+@smalltalkExample{#(7.5 3.5 8.9) mean @result{} 6.633333333333333 
 #(7.5 3.5 8.9) range @result{} 5.4
 #(7.5 3.5 8.9) min @result{} 3.5
 #(7.5 3.5 8.9) max @result{} 8.9}
@@ -1072,8 +1071,7 @@ Nevertheless, you can not send this message to instance of
 Just close the debug window for now to ignore the result.
 We will look into this in more detail later.
 
-@smalltalkExample{
-3.14 pi
+@smalltalkExample{3.14 pi
 @result{} MessageNotUnderstood: SmallFloat64>>pi
 Float pi e
 @result{} MessageNotUnderstood: SmallFloat64>>e}
@@ -1081,8 +1079,7 @@ Float pi e
 Often these class methods are used to access constant value as seen in
 the previous example or to create a new instances:
 
-@smalltalkExample{
-OrderedCollection new
+@smalltalkExample{OrderedCollection new
 @result{} Create a new empty ordered collection
 Fraction numerator: 1 denominator: 3
 @result{} 1/3 a fraction instance
@@ -1101,16 +1098,14 @@ listed are instance side, in the browser the @option{instance} button
 is pressed to see this list. In a Workspace, this methods are called
 with the message name sent directly to an instance:
 
-@smalltalkExample{
--10.12 abs @result{} 10.12
+@smalltalkExample{-10.12 abs @result{} 10.12
 3.14 cos @result{} -0.9999987317275395
 -10.12 * 2 @result{} -20.24}
 
 Instance method message can not be sent directly to a class, you need
 to instantiate first an object:
 
-@smalltalkExample{
-Float cos
+@smalltalkExample{Float cos
 @result{} MessageNotUnderstood: Float class>>cos
 Fraction squared
 @result{} MessageNotUnderstood: Fraction class>>squared
@@ -1311,8 +1306,7 @@ and @class{Symbol}. @class{String} instance are collection of
 @method{numericValue:} or converted from an integer instance with the
 @msg{asCharacter}:
 
-@smalltalkExample{
-Character numericValue: 65 @result{} $A
+@smalltalkExample{Character numericValue: 65 @result{} $A
 65 asCharacter @result{} $A}
 
 There are class side methods for non printable characters:
@@ -1340,8 +1334,7 @@ the @class{String} class, search for method categories named like
 @method{findXXX} methods. Read the comments at the beginning of these
 methods:
 
-@smalltalkExample{
-findString: subString
+@smalltalkExample{findString: subString
    "Answer the index of subString within the receiver, starting at
    start. If the receiver does not contain subString, answer 0."
    ^self findString: subString startingAt: 1.}
@@ -1455,8 +1448,7 @@ This method extracts from a collection the element before a specified
 element. When inherited in @class{String}, those elements are
 @class{Character} instances:
 
-@smalltalkExample{
-'1 + 3i' before: $i
+@smalltalkExample{'1 + 3i' before: $i
 @result{} $3 
 }
 
@@ -1484,8 +1476,7 @@ duplicated -- understand not the same memory location in the computer
 -- however symbols are identical even when duplicated@footnote{To be
 honest, copying a symbol just returns the original symbol.}:
 
-@smalltalkExample{
-'hello' == 'hello' copy
+@smalltalkExample{'hello' == 'hello' copy
 @result{} false 
 #hello  == #hello copy
 @result{} true}
@@ -1499,8 +1490,7 @@ Symbols can be written with space:
 @class{Symbol} is a sub class of @class{String}, a lot of its behavior
 is inherited. It is helpful to make handy symbol:
 
-@smalltalkExample{
-'hello my friend' asCamelCase asSymbol 
+@smalltalkExample{'hello my friend' asCamelCase asSymbol 
 @result{} #helloMyFriend}
 
 @subsubsection Collections
@@ -1588,8 +1578,7 @@ appropriate message to access the first 2 elements of the
 
 You can't add or remove an element, though:
 
-@smalltalkExample{
-array1 add: 'Orange'
+@smalltalkExample{array1 add: 'Orange'
 @result{} Error: 'This message is not appropriate for this object'
 array1 remove: 'Apple'
 @result{}  Error: 'This message is not appropriate for this object'}
@@ -1666,16 +1655,77 @@ collection, is to create a dynamic array and convert it with the
 
 Observe the alternate conversion messages:
 
-@smalltalkExample{
-@{1 . Float pi . 3/3 . 1/3 . 1.0@} asOrderedCollection
+@smalltalkExample{@{1 . Float pi . 3/3 . 1/3 . 1.0@} asOrderedCollection
 @result{} an OrderedCollection(1 3.141592653589793 1 1/3 1.0) 
 
 @{1 . Float pi . 3/3 . 1/3 . 1.0@} asSortedCollection
 @result{} a SortedCollection(1/3 1 1 1.0 3.141592653589793)}
 
+To compile the divisors list of 30 and 45 (not the common divisors):
+
+@smalltalkExample{Set  new 
+   addAll: #(1 2 3 5 6 10 15 30) ; 
+   addAll: #(1 3 5 9 15 45) ; 
+   yourself. 
+@result{} a Set(5 10 15 1 6 30 45 2 3 9) }
+
+@exercise{Letters, setLetters, @emph{How will you compile the letters in
+the sentences 'buenos d@'{@dotless{i}}as' and 'bonjour'?}}
+
 @cindex collection, @class{Dictionary}
 @cindex @class{Dictionary}
-@strong{Dictionary.} 
+@strong{Dictionary.} A dictionary is a list of associations between a
+key and an object. Of course a key is an object, but it must respond
+to the equality behavior. Most of the time, the used are symbol.
+
+To compile a list of colors:
+
+@smalltalkExampleCaption{Dictionary of colors, colorDict,
+| colors |
+colors := Dictonary new.
+colors
+   add: #red -> Color red;
+   add: #blue -> Color blue;
+   add: #green -> Color green}
+
+There are shorter writings:
+@smalltalkExample{colors := Dictionary newFrom:
+   @{#red -> Color red . #blue -> Color blue . #green -> Color green@}.
+colors := @{#red -> Color red . #blue -> Color blue .
+   #green -> Color green@} asDictionary}
+
+You access color by symbols:
+
+@smalltalkExample{colors at: #blue
+@result{} Color blue
+colors at: #blue put: Color blue darker
+colors at: #yellow ifAbsentPut: Color yellow
+@result{} association `#yellow -> Colors yellow` added to the dictionary}
+
+
+There are different way to access a dictionary contents:
+
+@smalltalkExample{colors keys.
+@result{} #(#red #green #blue) 
+colors keyAtValue: Color green
+@result{} #green }
+
+@strong{Beware.} The classic enumerators iterate the values of the
+dictionary:
+
+@smalltalkExample{colors do: [:value | Transcript show:  value; space ]
+@result{} (Color r: 1.000 g: 1.000 b: 0.078) (Color r: 0.898 g: 0.000 b: 0.000)...}
+
+Sometimes, you really need to iterated the whole key-value association:
+
+@smalltalkExample{colors associationsDo: [:assoc | 
+   Transcript show: assoc key; space; assoc value; cr ] }
+
+There are other variants to explore by yourself.
+
+@exercise{Color by name, nameColor, @emph{With an appropriate
+enumerator, how will you edit the contents of the @smalltalk{colors}
+dictionary to replace its values with a nicely capitalized string?}}
 
 @c The other kind of collection should be self-discoverable
 

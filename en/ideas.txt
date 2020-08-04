@@ -1,0 +1,18 @@
++---------------------------------+
+| Code snippet example to be used |
++---------------------------------+
+
+"Introduce Block with reusability behavior:"
+"This code should be rewritten"
+| n m |
+n := 60.
+m:= 45
+(1 to: n) select: [:d | n \\ d = 0 ].
+(1 to: m) select: [:d | m \\ d = 0] #(1 3 5 9 15 45)
+"As:"
+| divisors |
+divisors := [:x | (1 to: x) select: [:d | x \\ d = 0].
+divisors value: 60.
+divisors value: 45
+""
+""

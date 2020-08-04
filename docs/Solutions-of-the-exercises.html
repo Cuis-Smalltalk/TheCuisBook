@@ -5,7 +5,7 @@ implementation of the Smalltalk language and environment.
 
 Copyright (C) 2020 Hilaire Fernandes and Juan Vuletich
 
-Compilation : August 3, 2020
+Compilation : August 4, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -397,6 +397,25 @@ coll1 add: 'Orange' after: 'Apple'; yourself.
 &rArr;  an OrderedCollection(2 'Apple' 'Orange' 2@1 1/3) 
 </pre></div>
 
+<a name="setLetters-1"></a>
+<h4 class="subheading"><a href="Introduction-to-the-system-classes.html#setLetters"><em>Exercise</em> 1.29</a></h4>
+<div class="example">
+<pre class="example">Set  new
+   addAll: 'buenos d&iacute;as';
+   addAll: 'bonjour';
+   yourself.
+&rArr;  a Set($e $j $o $a $u $b $  $&iacute; $r $d $n $s) 
+</pre></div>
+
+<a name="nameColor-1"></a>
+<h4 class="subheading"><a href="Introduction-to-the-system-classes.html#nameColor"><em>Exercise</em> 1.30</a></h4>
+<div class="example">
+<pre class="example">colors keysDo: [:key |
+   colors at: key put: key asString capitalized].
+colors
+&rArr; a Dictionary(#blue-&gt;'Blue' #green-&gt;'Green' #red-&gt;'Red'
+#yellow-&gt;'Yellow' ) 
+</pre></div>
 <hr>
 <div class="header">
 <p>
