@@ -97,6 +97,52 @@ Next: <a href="Statement-as-block-and-message-sent.html#Statement-as-block-and-m
 <hr>
 <a name="The-syntax-1"></a>
 <h3 class="section">3.1 The syntax</h3>
+<p>Cuis-Smalltalkâs syntax is minimal. Essentially there is syntax only for
+sending messages (i.e., expressions) . Expressions are built up from a
+very small number of primitive elements. There are only 6 keywords,
+and <strong>there is no syntax for control structures</strong> or declaring
+new classes. Instead, nearly everything is achieved by sending
+messages to objects. For instance, instead of an if-then-else control
+structure, Smalltalk sends messages like <span class="sansserif">#ifTrue:</span> to
+<span class="sansserif">Boolean</span> objects. New (sub-)classes are created by sending a
+message to their superclass.
+</p>
+<a name="Syntactic-elements"></a>
+<h4 class="subsection">3.1.1 Syntactic elements</h4>
+<p>Expressions are composed of the following building blocks: (i) six
+reserved keywords, or <em>pseudo-variables</em>:
+</p>
+<ol>
+<li> <span class="sansserif">self</span>, <span class="sansserif">super</span>, <span class="sansserif">nil</span>,
+    <span class="sansserif">true</span>, <span class="sansserif">false</span>, and <span class="sansserif">thisContext</span>,
+
+</li><li> constant expressions for <em>literal objects</em> including
+  numbers, characters, strings, symbols and arrays,
+
+</li><li> variable declarations
+
+</li><li> assignments,
+
+</li><li> block closures,
+  
+</li><li> messages.
+
+</li></ol>
+
+<p>Observe the various syntactic elements in <a href="#cuisSyntax"><em>Cuis-Smalltalk syntax</em> 3.1</a>.
+</p>
+<div class="float"><a name="cuisSyntax"></a>
+<table>
+<thead><tr><th width="40%">Syntax</th><th width="60%">What it represents</th></tr></thead>
+<tr><td width="40%">startPoint</td><td width="60%">a variable name</td></tr>
+<tr><td width="40%">Transcript</td><td width="60%">a global variable name</td></tr>
+<tr><td width="40%">self</td><td width="60%">pseudo-variable</td></tr>
+</table>
+<div class="float-caption"><p><strong><em>Cuis-Smalltalk syntax</em> 3.1
+</strong></p></div></div>
+
+
+
 
 
 

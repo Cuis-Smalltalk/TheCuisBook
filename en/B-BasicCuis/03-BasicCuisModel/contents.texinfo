@@ -10,6 +10,79 @@
 
 @node The syntax
 @section The syntax
+@cuis{}’s syntax is minimal. Essentially there is syntax only for
+sending messages (i.e., expressions) . Expressions are built up from a
+very small number of primitive elements. There are only 6 keywords,
+and @strong{there is no syntax for control structures} or declaring
+new classes. Instead, nearly everything is achieved by sending
+messages to objects. For instance, instead of an if-then-else control
+structure, Smalltalk sends messages like @msg{ifTrue:} to
+@class{Boolean} objects. New (sub-)classes are created by sending a
+message to their superclass.
+
+@subsection Syntactic elements
+Expressions are composed of the following building blocks: (i) six
+reserved keywords, or @emph{pseudo-variables}:
+
+@enumerate
+
+  @item @smalltalk{self}, @smalltalk{super}, @smalltalk{nil},
+    @smalltalk{true}, @smalltalk{false}, and @smalltalk{thisContext},
+
+  @item constant expressions for @emph{literal objects} including
+  numbers, characters, strings, symbols and arrays,
+
+  @item variable declarations
+
+  @item assignments,
+
+  @item block closures,
+  
+  @item messages.
+
+@end enumerate
+
+Observe the various syntactic elements in @ref{cuisSyntax}.
+
+@float @emph{Table},cuisSyntax
+@multitable @columnfractions .45 .55
+@headitem TableSyntax @tab What it represents
+   @item @smalltalk{startPoint}                 @tab a variable name
+   @item @smalltalk{Transcript}                 @tab a global variable name
+   @item @smalltalk{self}                       @tab pseudo-variable
+   \hrulefill
+   @item @tab
+   @item @smalltalk{1}                          @tab decimal integer
+   @item @smalltalk{2r101}                      @tab binary integer
+   @item @smalltalk{1.5}                        @tab floating point number
+   @item @smalltalk{2.4e7}                      @tab exponential notation
+   @item @smalltalk{$a}                         @tab the character ‘a’
+   @item @smalltalk{’Hello’}                     @tab the string “Hello”
+   @item @smalltalk{#Hello}                     @tab the symbol #Hello
+   @item @smalltalk{#(1 2 3)}                   @tab a literal array
+   @item @smalltalk{@{1. 2. 1+2@}}              @tab a dynamic array
+   @item @tab
+   @item @smalltalk{"a comment"}                @tab a comment
+   @item @tab
+   @item @smalltalk{|xy|}                       @tab declaration of variables x and y
+   @item @smalltalk{x := 1}                     @tab assign 1 to x
+   @item @smalltalk{[x+y]}                      @tab a block that evaluates to x+y
+   @item @smalltalk{<primitive: 1>}             @tab virtual machine primitive or annotation
+   @item @tab
+   @item @smalltalk{3 factorial}                @tab unary message
+   @item @smalltalk{3+4}                        @tab binary messages
+   @item @smalltalk{2 raisedTo: 6 modulo: 10}   @tab keyword message
+   @item @tab
+   @item @smalltalk{^ true}                     @tab return the value true
+   @item @smalltalk{Transcript show: ’hello’. Transcript cr} @tab expression separator (.)
+   @item @smalltalk{Transcript show: ’hello’; cr} @tab message cascade (;)
+@end multitable
+@caption {@cuis{} syntax}
+@end float
+
+
+
+
 
 @node Statement as block and message sent
 @section Statement as block and message sent

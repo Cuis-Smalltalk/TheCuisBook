@@ -1728,5 +1728,6 @@ enumerator, how will you edit the contents of the @smalltalk{colors}
 dictionary to replace its values with a nicely capitalized string?}}
 
 @c The other kind of collection should be self-discoverable
-
-@c iterators for collection
+There are many more collections to explore. You now know enough to
+explore and to search by yourself with the system browser, and to
+experiment with the workspace.
