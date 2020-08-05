@@ -14,7 +14,7 @@ Ducasse, Oscar Nierstrasz and Damien Pollet.
 
 
 
-Compilation : August 4, 2020
+Compilation : August 5, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -118,11 +118,11 @@ message to their superclass.
 </p>
 <a name="Syntactic-elements"></a>
 <h4 class="subsection">3.1.1 Syntactic elements</h4>
-<p>Expressions are composed of the following building blocks: (i) six
-reserved keywords, or <em>pseudo-variables</em>:
+<p>Expressions are composed of the following building blocks:
 </p>
 <ol>
-<li> <span class="sansserif">self</span>, <span class="sansserif">super</span>, <span class="sansserif">nil</span>,
+<li> six reserved keywords, or <em>pseudo-variables</em>:
+    <span class="sansserif">self</span>, <span class="sansserif">super</span>, <span class="sansserif">nil</span>,
     <span class="sansserif">true</span>, <span class="sansserif">false</span>, and <span class="sansserif">thisContext</span>,
 
 </li><li> constant expressions for <em>literal objects</em> including
@@ -294,10 +294,10 @@ reserved keywords, or <em>pseudo-variables</em>:
 <dt><strong>Assignment.</strong></dt>
 <dd>
 <p><span class="sansserif">:=</span> assigns an object to a variable. Sometimes you will
- see <span class="sansserif">â</span> used instead. Unfortunately, since this is not an
- ASCII character, it will appear as an underscore unless you are using
- a special font. So, <span class="sansserif">x := 1</span> is the same as <span class="sansserif">x â
- 1</span> or <span class="sansserif">x _ 1</span>.
+ see &#x2190; used instead. Since this character is not present in the
+ keyboard, you key in with the underscore character key. So,
+ <span class="sansserif">x := 1</span> is the same as <span class="sansserif">x &#x2190; 1</span> or
+ <span class="sansserif">x _ 1</span>.
 </p>
 <a name="index-block-1"></a>
 </dd>
@@ -372,8 +372,89 @@ reserved keywords, or <em>pseudo-variables</em>:
 </dd>
 </dl>
 
+<a name="index-variable_002c-pseudo"></a>
+<a name="Pseudo_002dvariables"></a>
+<h4 class="subsection">3.1.2 Pseudo-variables</h4>
+<p>In Smalltalk, there are 6 reserved keywords, or pseudo-variables:
+<span class="sansserif">nil</span>, <span class="sansserif">true</span>, <span class="sansserif">false</span>,
+<span class="sansserif">self</span>, <span class="sansserif">super</span>, and <span class="sansserif">thisContext</span>. They
+are called <em>pseudo-variables</em> because they are predefined and
+cannot be assigned to. <span class="sansserif">true</span>, <span class="sansserif">false</span>, and
+<span class="sansserif">nil</span> are constants while the values of <span class="sansserif">self</span>,
+<span class="sansserif">super</span>, and <span class="sansserif">thisContext</span> vary dynamically as
+code is executed.
+</p>
+<p><span class="sansserif">true</span> and <span class="sansserif">false</span> are the unique instances of the
+<span class="sansserif">Boolean</span> classes <span class="sansserif">True</span> and <span class="sansserif">False</span>.
+</p>
+<p><span class="sansserif">self</span> always refers to the receiver of the currently
+executing method.
+</p>
+<p><span class="sansserif">super</span> also refers to the receiver of the current method,
+but when you send a message to <span class="sansserif">super</span>, the method-lookup
+changes so that it starts from the superclass of the class containing
+the method that uses super.
+</p>
+<p><span class="sansserif">nil</span> is the undefined object. It is the unique instance of
+the class <span class="sansserif">UndefinedObject</span>. Instance variables, class
+variables and local variables are initialized to <span class="sansserif">nil</span>.
+</p>
+<p><span class="sansserif">thisContext</span> is a pseudo-variable that represents the top
+frame of the run-time stack. In other words, it represents the
+currently executing <span class="sansserif">MethodContext</span> or
+<span class="sansserif">BlockContext</span>. <span class="sansserif">thisContext</span> is normally not of
+interest to most programmers, but it is essential for implementing
+development tools like the debugger and it is also used to implement
+exception handling and continuations.
+</p>
+<a name="index-message_002c-send"></a>
+<a name="Message-sends"></a>
+<h4 class="subsection">3.1.3 Message sends</h4>
+<p>There are three kinds of messages in Cuis-Smalltalk:
+</p>
+<ul>
+<li> <strong>Unary messages</strong> take no argument. <span class="sansserif">1
+ factorial</span> sends the message <span class="sansserif">#factorial</span> to the object
+ <span class="sansserif">1</span>,
 
+</li><li> <strong>Binary messages</strong> take exactly one
+ argument. <span class="sansserif">1 + 2</span> sends the message <span class="sansserif">#+</span> with argument
+ <span class="sansserif">2</span> to the object <span class="sansserif">1</span>.
 
+</li><li> <strong>Keyword messages</strong> take an arbitrary number of
+ arguments. <span class="sansserif">2 raisedTo: 6 modulo: 10</span> sends the message
+ consisting of the message selector <span class="sansserif">#raisedTo:modulo:</span> and the
+ arguments <span class="sansserif">6</span> and <span class="sansserif">10</span> to the object
+ <span class="sansserif">2</span>.
+
+</li></ul>
+
+<p>Unary message selectors consist of alphanumeric characters, and start
+with a lower case letter.
+</p>
+<p>Binary message selectors consist of one or more characters from the
+following set:
+</p>
+<div class="display">
+<pre class="display"><span class="sansserif">+ &ndash; / \ * â¼ &lt; &gt; = @ % | &amp; ? ,</span>
+</pre></div>
+
+<p>Keyword message selectors consist of a series of alphanumeric
+keywords, where each keyword starts with a lower-case letter and ends
+with a colon.
+</p>
+<p>Unary messages have the highest precedence, then binary messages, and
+finally keyword messages, so:
+</p>
+<div class="display">
+<pre class="display"><span class="sansserif">2 raisedTo: 1 + 3 factorial
+&rArr; 128</span>
+</pre></div>
+
+<p>First we send <span class="sansserif">factorial</span> to <span class="sansserif">3</span>, then we send
+<span class="sansserif">+ 6</span> to <span class="sansserif">1</span>, and finally we send
+<span class="sansserif">raisedTo: 7</span> to <span class="sansserif">2</span>.
+</p>
 <hr>
 <div class="header">
 <p>
