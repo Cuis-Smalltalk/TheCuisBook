@@ -1549,7 +1549,7 @@ array3 := Array ofSize: 4 "an empty array with a 4 elements capacity"}
 
 Array @smalltalk{array1} and @smalltalk{array1b} are bit
 different. The former one is created and filled with its contents at
-compile time of the code, the consequence is it can be only filled
+compile time of the code, the consequence is it can only be filled
 with literal elements as integer, float, string. The later one is
 created at execution time of the code, it can be filled with elements
 instantiated at the execution time as @class{Fraction} or

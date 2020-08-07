@@ -12,6 +12,15 @@ Hilaire Fernandes and Juan Vuletich
 @end macro
 
 @c Smalltalk code in a text flow
+
+@c up arrow, return symbol
+@macro return
+@U{2191}
+@end macro
+@c left arrow, assignment
+@macro assign
+@U{2190}
+@end macro
 @alias class=sansserif
 @alias smalltalk=sansserif
 @alias method=sansserif

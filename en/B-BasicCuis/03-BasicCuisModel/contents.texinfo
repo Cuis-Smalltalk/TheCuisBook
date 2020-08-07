@@ -1,15 +1,16 @@
-@node Understanding the basis of the @cuis{} model
-@chapter Understanding the basis of the @cuis{} model
+@node @cuis{} syntax
+@chapter @cuis{} syntax
 
 @menu
-* The syntax::
-* Statement as block and message sent::
-* Fundamental classes::
+* Syntactic elements::
+* Pseudo-variables::
+* Message sends::
+* Method syntax::
+* Block syntax::
+* Control flow with block and message::
 @end menu
 
 
-@node The syntax
-@section The syntax
 @cuis{}’s syntax is minimal. Essentially there is syntax only for
 sending messages (i.e., expressions) . Expressions are built up from a
 very small number of primitive elements. There are only 6 keywords,
@@ -20,7 +21,8 @@ structure, Smalltalk sends messages like @msg{ifTrue:} to
 @class{Boolean} objects. New (sub-)classes are created by sending a
 message to their superclass.
 
-@subsection Syntactic elements
+@node Syntactic elements
+@section Syntactic elements
 Expressions are composed of the following building blocks:
 
 @enumerate
@@ -186,9 +188,9 @@ Observe the various syntactic elements in @ref{cuisSyntax}.
  @item Assignment.
 
  @smalltalk{:=} assigns an object to a variable. Sometimes you will
- see @U{2190} used instead. Since this character is not present in the
+ see @assign{} used instead. Since this character is not present in the
  keyboard, you key in with the underscore character key. So,
- @smalltalk{x := 1} is the same as @smalltalk{x @U{2190} 1} or
+ @smalltalk{x := 1} is the same as @smalltalk{x @assign{} 1} or
  @smalltalk{x _ 1}.
 
  @cindex block
@@ -204,7 +206,7 @@ Observe the various syntactic elements in @ref{cuisSyntax}.
 
  @smalltalk{<primitive: ...>} denotes an invocation of a virtual
  machine primitive. (@smalltalk{<primitive: 1>} is the VM primitive
- for @smalltalk{SmallInteger»+}.) Any code following the primitive is
+ for @smalltalk{SmallInteger>>+}.) Any code following the primitive is
  executed only if the primitive fails. The same syntax is also used
  for method annotations.
 
@@ -256,7 +258,8 @@ Observe the various syntactic elements in @ref{cuisSyntax}.
 @end table
 
 @cindex variable, pseudo
-@subsection Pseudo-variables
+@node Pseudo-variables
+@section Pseudo-variables
 In Smalltalk, there are 6 reserved keywords, or pseudo-variables:
 @smalltalk{nil}, @smalltalk{true}, @smalltalk{false},
 @smalltalk{self}, @smalltalk{super}, and @smalltalk{thisContext}. They
@@ -290,7 +293,11 @@ development tools like the debugger and it is also used to implement
 exception handling and continuations.
 
 @cindex message, send
-@subsection Message sends
+@cindex message, unary
+@cindex message, binary
+@cindex message, keyword
+@node Message sends
+@section Message sends
 There are three kinds of messages in @cuis{}:
 
 @itemize
@@ -323,6 +330,7 @@ Keyword message selectors consist of a series of alphanumeric
 keywords, where each keyword starts with a lower-case letter and ends
 with a colon.
 
+@cindex message, precedence
 Unary messages have the highest precedence, then binary messages, and
 finally keyword messages, so:
 
@@ -333,8 +341,173 @@ First we send @smalltalk{factorial} to @smalltalk{3}, then we send
 @smalltalk{+ 6} to @smalltalk{1}, and finally we send
 @smalltalk{raisedTo: 7} to @smalltalk{2}.
 
-@node Statement as block and message sent
-@section Statement as block and message sent
+Precedence aside, evaluation is strictly from left to right, so
 
-@node Fundamental classes
-@section Fundamental classes
+@smalltalkExample{1+2*3
+@result{} 9}
+
+not 7. Parentheses must be used to alter the order of evaluation:
+
+@smalltalkExample{1 + (2 * 3)
+@result{} 7}
+
+Message sends may be composed with periods and semi-colons. A
+period-separated sequence of expressions causes each expression in the
+series to be evaluated as a @emph{statement}, one after the other.
+
+@smalltalkExample{Transcript cr.
+Transcript show: 'hello world'.
+Transcript cr}
+
+This will send @msg{cr} to the @class{Transcript} class, then send it
+@msg{show: 'hello world'}, and finally send it another @msg{cr}.
+
+When a series of messages is being sent to the same receiver, then this
+can be expressed more succinctly as a cascade. The receiver is specified just
+once, and the sequence of messages is separated by semi-colons:
+
+@smalltalkExample{Transcript cr;
+   show: 'hello world';
+   cr}
+   
+This has precisely the same effect as the previous example.
+
+@cindex method
+@node Method syntax
+@section Method syntax
+Whereas expressions may be evaluated anywhere in @cuis{} (for example,
+in a workspace, in a debugger, or in a browser), methods are normally
+defined in a browser window, or in the debugger. (Methods can also be
+filed in from an external medium, but this is not the usual way to
+program in @cuis{}.)
+
+Programs are developed one method at a time, in the context of a given
+class. (A class is defined by sending a message to an existing class,
+asking it to create a subclass, so there is no special syntax required
+for defining classes.)
+
+Here is the method @method{lineCount} in the class
+@class{String}. (The usual convention is to refer to methods as
+@smalltalk{ClassName>>methodName}, so we call this method
+@smalltalk{String>>lineCount}.)
+
+@smalltalkExampleCaption{Line count, lineCount,
+String>>lineCount
+  "Answer the number of lines represented by the receiver@comma{}
+  where every cr adds one line."
+  | cr count |
+  cr := Character cr.
+  count := 1 min: self size.
+  self do:
+     [:c | c == cr ifTrue: [count := count + 1]].
+  ^ count}
+
+Syntactically, a method consists of:
+
+@itemize
+
+ @item the method pattern, containing the name (@emph{i.e.},
+ @method{lineCount}) and any arguments (none in this example),
+
+ @item comments (these may occur anywhere, but the convention is to
+ put one at the top that explains what the method does),
+ 
+ @item declarations of local variables (@emph{i.e.}, @smalltalk{cr}
+ and @smalltalk{count}),
+
+ @item and any number of expressions separated by dots; here there are
+ four.
+
+@end itemize
+
+The evaluation of any expression preceded by a @return{} (typed as ^)
+will cause the method to exit at that point, returning the value of
+that expression. A method that terminates without explicitly returning
+some expression will implicitly return @smalltalk{self}.
+
+Arguments and local variables should always start with lower case
+letters. Names starting with upper-case letters are assumed to be
+global variables. Class names, like @class{Character}, for example,
+are simply global vari- ables referring to the object representing
+that class.
+
+@cindex block
+@node Block syntax
+@section Block syntax
+Blocks provide a mechanism to defer the evaluation of expressions. A
+block is essentially an anonymous function. A block is evaluated by
+sending it the message value. The block answers the value of the last
+expression in its body, unless there is an explicit return (with
+@return{}), in which case it does not answer any value.
+
+@smalltalkExample{[ 1 + 2 ] value
+@return 3}
+
+Blocks may take parameters, each of which is declared with a leading
+colon. A vertical bar separates the parameter declaration(s) from the
+body of the block. To evaluate a block with one parameter, you must
+send it the message @msg{value:} with one argument. A two-parameter
+block must be sent @msg{value:value:}, and so on, up to 4 arguments:
+
+@smalltalkExample{[ :x | 1 + x ] value: 2
+@result{} 3
+[ :x :y | x + y ] value: 1 value: 2
+@result{} 3}
+
+If you have a block with more than four parameters, you must use
+@msg{valueWithArguments:} and pass the arguments in an array. (A block
+with a large number of parameters is often a sign of a design
+problem.)
+
+@cindex block, local variable
+Blocks may also declare local variables, which are surrounded by
+vertical bars, just like local variable declarations in a
+method. Locals are declared after any arguments:
+
+@smalltalkExample{[ :x :y | | z | z := x+ y. z ] value: 1 value: 2
+@result{} 3}
+
+Blocks are actually lexical closures, since they can refer to
+variables of the surrounding environment. The following block refers
+to the variable x of its enclosing environment:
+
+@smalltalkExample{|x|
+x := 1.
+[ :y | x + y ] value: 2
+@result{} 3}
+
+@cindex block, assigned to variable
+Blocks are instances of the class @class{BlockClosure}. This means
+that they are objects, so they can be assigned to variables and passed
+as arguments just like any other object.
+
+Consider the example below to compute the divisors of an integer:
+
+@smalltalkExample{| n m |
+n := 60.
+m:= 45.
+(1 to: n) select: [:d | n \\ d = 0 ].
+"@result{} #(1 2 3 4 5 6 10 12 15 20 30 60)"
+(1 to: m) select: [:d | m \\ d = 0]
+"@result{} #(1 3 5 9 15 45)"}
+
+The problem with this example is the code duplication in the divisor
+computation. We can avoid duplication with a dedicated block doing the
+computation and assigning it to a variable:
+
+@smalltalkExampleCaption{Block to compute divisors,blockDivisor,
+| divisors |
+divisors := [:x | (1 to: x) select: [:d | x \\ d = 0].
+divisors value: 60.
+"@result{} #(1 2 3 4 5 6 10 12 15 20 30 60)"
+divisors value: 45
+"@result{} #(1 3 5 9 15 45)"}
+
+@node Control flow with block and message
+@section Control flow with block and message
+Smalltalk offers no special syntax for control constructs. Instead, these
+are typically expressed by sending messages to booleans, numbers and
+collections, with blocks as arguments.
+     Conditionals are expressed by sending one of the messages ifTrue:, ifFalse:
+or ifTrue:ifFalse: to the result of a boolean expression. See Chapter 8 for more
+

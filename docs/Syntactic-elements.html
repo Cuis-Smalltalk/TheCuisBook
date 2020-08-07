@@ -53,18 +53,18 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>The syntax (The Cuis-Smalltalk Book)</title>
+<title>Syntactic elements (The Cuis-Smalltalk Book)</title>
 
-<meta name="description" content="The syntax (The Cuis-Smalltalk Book)">
-<meta name="keywords" content="The syntax (The Cuis-Smalltalk Book)">
+<meta name="description" content="Syntactic elements (The Cuis-Smalltalk Book)">
+<meta name="keywords" content="Syntactic elements (The Cuis-Smalltalk Book)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
 <link href="index.html#Top" rel="start" title="Top">
 <link href="Indexes.html#Indexes" rel="index" title="Indexes">
-<link href="Understanding-the-basis-of-the-Cuis_002dSmalltalk-model.html#Understanding-the-basis-of-the-Cuis_002dSmalltalk-model" rel="up" title="Understanding the basis of the Cuis-Smalltalk model">
-<link href="Control-flow-with-block-and-message.html#Control-flow-with-block-and-message" rel="next" title="Control flow with block and message">
-<link href="Understanding-the-basis-of-the-Cuis_002dSmalltalk-model.html#Understanding-the-basis-of-the-Cuis_002dSmalltalk-model" rel="prev" title="Understanding the basis of the Cuis-Smalltalk model">
+<link href="Cuis_002dSmalltalk-syntax.html#Cuis_002dSmalltalk-syntax" rel="up" title="Cuis-Smalltalk syntax">
+<link href="Pseudo_002dvariables.html#Pseudo_002dvariables" rel="next" title="Pseudo-variables">
+<link href="Cuis_002dSmalltalk-syntax.html#Cuis_002dSmalltalk-syntax" rel="prev" title="Cuis-Smalltalk syntax">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -98,26 +98,14 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<a name="The-syntax"></a>
+<a name="Syntactic-elements"></a>
 <div class="header">
 <p>
-Next: <a href="Control-flow-with-block-and-message.html#Control-flow-with-block-and-message" accesskey="n" rel="next">Control flow with block and message</a>, Up: <a href="Understanding-the-basis-of-the-Cuis_002dSmalltalk-model.html#Understanding-the-basis-of-the-Cuis_002dSmalltalk-model" accesskey="u" rel="up">Understanding the basis of the Cuis-Smalltalk model</a> &nbsp; [<a href="Indexes.html#Indexes" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Pseudo_002dvariables.html#Pseudo_002dvariables" accesskey="n" rel="next">Pseudo-variables</a>, Up: <a href="Cuis_002dSmalltalk-syntax.html#Cuis_002dSmalltalk-syntax" accesskey="u" rel="up">Cuis-Smalltalk syntax</a> &nbsp; [<a href="Indexes.html#Indexes" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<a name="The-syntax-1"></a>
-<h3 class="section">3.1 The syntax</h3>
-<p>Cuis-Smalltalkâs syntax is minimal. Essentially there is syntax only for
-sending messages (i.e., expressions) . Expressions are built up from a
-very small number of primitive elements. There are only 6 keywords,
-and <strong>there is no syntax for control structures</strong> or declaring
-new classes. Instead, nearly everything is achieved by sending
-messages to objects. For instance, instead of an if-then-else control
-structure, Smalltalk sends messages like <span class="sansserif">#ifTrue:</span> to
-<span class="sansserif">Boolean</span> objects. New (sub-)classes are created by sending a
-message to their superclass.
-</p>
-<a name="Syntactic-elements"></a>
-<h4 class="subsection">3.1.1 Syntactic elements</h4>
+<a name="Syntactic-elements-1"></a>
+<h3 class="section">3.1 Syntactic elements</h3>
 <p>Expressions are composed of the following building blocks:
 </p>
 <ol>
@@ -373,283 +361,10 @@ message to their superclass.
 </dl>
 
 <a name="index-variable_002c-pseudo"></a>
-<a name="Pseudo_002dvariables"></a>
-<h4 class="subsection">3.1.2 Pseudo-variables</h4>
-<p>In Smalltalk, there are 6 reserved keywords, or pseudo-variables:
-<span class="sansserif">nil</span>, <span class="sansserif">true</span>, <span class="sansserif">false</span>,
-<span class="sansserif">self</span>, <span class="sansserif">super</span>, and <span class="sansserif">thisContext</span>. They
-are called <em>pseudo-variables</em> because they are predefined and
-cannot be assigned to. <span class="sansserif">true</span>, <span class="sansserif">false</span>, and
-<span class="sansserif">nil</span> are constants while the values of <span class="sansserif">self</span>,
-<span class="sansserif">super</span>, and <span class="sansserif">thisContext</span> vary dynamically as
-code is executed.
-</p>
-<p><span class="sansserif">true</span> and <span class="sansserif">false</span> are the unique instances of the
-<span class="sansserif">Boolean</span> classes <span class="sansserif">True</span> and <span class="sansserif">False</span>.
-</p>
-<p><span class="sansserif">self</span> always refers to the receiver of the currently
-executing method.
-</p>
-<p><span class="sansserif">super</span> also refers to the receiver of the current method,
-but when you send a message to <span class="sansserif">super</span>, the method-lookup
-changes so that it starts from the superclass of the class containing
-the method that uses super.
-</p>
-<p><span class="sansserif">nil</span> is the undefined object. It is the unique instance of
-the class <span class="sansserif">UndefinedObject</span>. Instance variables, class
-variables and local variables are initialized to <span class="sansserif">nil</span>.
-</p>
-<p><span class="sansserif">thisContext</span> is a pseudo-variable that represents the top
-frame of the run-time stack. In other words, it represents the
-currently executing <span class="sansserif">MethodContext</span> or
-<span class="sansserif">BlockContext</span>. <span class="sansserif">thisContext</span> is normally not of
-interest to most programmers, but it is essential for implementing
-development tools like the debugger and it is also used to implement
-exception handling and continuations.
-</p>
-<a name="index-message_002c-send"></a>
-<a name="index-message_002c-unary-1"></a>
-<a name="index-message_002c-binary-1"></a>
-<a name="index-message_002c-keyword-1"></a>
-<a name="Message-sends"></a>
-<h4 class="subsection">3.1.3 Message sends</h4>
-<p>There are three kinds of messages in Cuis-Smalltalk:
-</p>
-<ul>
-<li> <strong>Unary messages</strong> take no argument. <span class="sansserif">1
- factorial</span> sends the message <span class="sansserif">#factorial</span> to the object
- <span class="sansserif">1</span>,
-
-</li><li> <strong>Binary messages</strong> take exactly one
- argument. <span class="sansserif">1 + 2</span> sends the message <span class="sansserif">#+</span> with argument
- <span class="sansserif">2</span> to the object <span class="sansserif">1</span>.
-
-</li><li> <strong>Keyword messages</strong> take an arbitrary number of
- arguments. <span class="sansserif">2 raisedTo: 6 modulo: 10</span> sends the message
- consisting of the message selector <span class="sansserif">#raisedTo:modulo:</span> and the
- arguments <span class="sansserif">6</span> and <span class="sansserif">10</span> to the object
- <span class="sansserif">2</span>.
-
-</li></ul>
-
-<p>Unary message selectors consist of alphanumeric characters, and start
-with a lower case letter.
-</p>
-<p>Binary message selectors consist of one or more characters from the
-following set:
-</p>
-<div class="display">
-<pre class="display"><span class="sansserif">+ &ndash; / \ * â¼ &lt; &gt; = @ % | &amp; ? ,</span>
-</pre></div>
-
-<p>Keyword message selectors consist of a series of alphanumeric
-keywords, where each keyword starts with a lower-case letter and ends
-with a colon.
-</p>
-<a name="index-message_002c-precedence"></a>
-<p>Unary messages have the highest precedence, then binary messages, and
-finally keyword messages, so:
-</p>
-<div class="display">
-<pre class="display"><span class="sansserif">2 raisedTo: 1 + 3 factorial
-&rArr; 128</span>
-</pre></div>
-
-<p>First we send <span class="sansserif">factorial</span> to <span class="sansserif">3</span>, then we send
-<span class="sansserif">+ 6</span> to <span class="sansserif">1</span>, and finally we send
-<span class="sansserif">raisedTo: 7</span> to <span class="sansserif">2</span>.
-</p>
-<p>Precedence aside, evaluation is strictly from left to right, so
-</p>
-<div class="display">
-<pre class="display"><span class="sansserif">1+2*3
-&rArr; 9</span>
-</pre></div>
-
-<p>not 7. Parentheses must be used to alter the order of evaluation:
-</p>
-<div class="display">
-<pre class="display"><span class="sansserif">1 + (2 * 3)
-&rArr; 7</span>
-</pre></div>
-
-<p>Message sends may be composed with periods and semi-colons. A
-period-separated sequence of expressions causes each expression in the
-series to be evaluated as a <em>statement</em>, one after the other.
-</p>
-<div class="display">
-<pre class="display"><span class="sansserif">Transcript cr.
-Transcript show: &rsquo;hello world&rsquo;.
-Transcript cr</span>
-</pre></div>
-
-<p>This will send <span class="sansserif">#cr</span> to the <span class="sansserif">Transcript</span> class, then send it
-<span class="sansserif">#show: &rsquo;hello world&rsquo;</span>, and finally send it another <span class="sansserif">#cr</span>.
-</p>
-<p>When a series of messages is being sent to the same receiver, then this
-can be expressed more succinctly as a cascade. The receiver is specified just
-once, and the sequence of messages is separated by semi-colons:
-</p>
-<div class="display">
-<pre class="display"><span class="sansserif">Transcript cr;
-   show: &rsquo;hello world&rsquo;;
-   cr</span>
-</pre></div>
-   
-<p>This has precisely the same effect as the previous example.
-</p>
-<a name="index-method"></a>
-<a name="Method-syntax"></a>
-<h4 class="subsection">3.1.4 Method syntax</h4>
-<p>Whereas expressions may be evaluated anywhere in Cuis-Smalltalk (for example,
-in a workspace, in a debugger, or in a browser), methods are normally
-defined in a browser window, or in the debugger. (Methods can also be
-filed in from an external medium, but this is not the usual way to
-program in Cuis-Smalltalk.)
-</p>
-<p>Programs are developed one method at a time, in the context of a given
-class. (A class is defined by sending a message to an existing class,
-asking it to create a subclass, so there is no special syntax required
-for defining classes.)
-</p>
-<p>Here is the method <span class="sansserif">lineCount</span> in the class
-<span class="sansserif">String</span>. (The usual convention is to refer to methods as
-<span class="sansserif">ClassName&gt;&gt;methodName</span>, so we call this method
-<span class="sansserif">String&gt;&gt;lineCount</span>.)
-</p>
-<div class="float"><a name="lineCount"></a>
-<div class="display">
-<pre class="display"><span class="sansserif">String&gt;&gt;lineCount
-  &quot;Answer the number of lines represented by the receiver,
-  where every cr adds one line.&quot;
-  | cr count |
-  cr := Character cr.
-  count := 1 min: self size.
-  self do:
-     [:c | c == cr ifTrue: [count := count + 1]].
-  ^ count</span>
-</pre></div>
-
-<div class="float-caption"><p><strong><em>Example</em> 3.1: </strong>Line count</p></div></div>
-<p>Syntactically, a method consists of:
-</p>
-<ul>
-<li> the method pattern, containing the name (<em>i.e.</em>,
- <span class="sansserif">lineCount</span>) and any arguments (none in this example),
-
-</li><li> comments (these may occur anywhere, but the convention is to
- put one at the top that explains what the method does),
- 
-</li><li> declarations of local variables (<em>i.e.</em>, <span class="sansserif">cr</span>
- and <span class="sansserif">count</span>),
-
-</li><li> and any number of expressions separated by dots; here there are
- four.
-
-</li></ul>
-
-<p>The evaluation of any expression preceded by a &#x2191; (typed as ^)
-will cause the method to exit at that point, returning the value of
-that expression. A method that terminates without explicitly returning
-some expression will implicitly return <span class="sansserif">self</span>.
-</p>
-<p>Arguments and local variables should always start with lower case
-letters. Names starting with upper-case letters are assumed to be
-global variables. Class names, like <span class="sansserif">Character</span>, for example,
-are simply global vari- ables referring to the object representing
-that class.
-</p>
-<a name="index-block-2"></a>
-<a name="Block-syntax"></a>
-<h4 class="subsection">3.1.5 Block syntax</h4>
-<p>Blocks provide a mechanism to defer the evaluation of expressions. A
-block is essentially an anonymous function. A block is evaluated by
-sending it the message value. The block answers the value of the last
-expression in its body, unless there is an explicit return (with
-&#x2191;), in which case it does not answer any value.
-</p>
-<div class="display">
-<pre class="display"><span class="sansserif">[ 1 + 2 ] value
-&#x2191; 3</span>
-</pre></div>
-
-<p>Blocks may take parameters, each of which is declared with a leading
-colon. A vertical bar separates the parameter declaration(s) from the
-body of the block. To evaluate a block with one parameter, you must
-send it the message <span class="sansserif">#value:</span> with one argument. A two-parameter
-block must be sent <span class="sansserif">#value:value:</span>, and so on, up to 4 arguments:
-</p>
-<div class="display">
-<pre class="display"><span class="sansserif">[ :x | 1 + x ] value: 2
-&rArr; 3
-[ :x :y | x + y ] value: 1 value: 2
-&rArr; 3</span>
-</pre></div>
-
-<p>If you have a block with more than four parameters, you must use
-<span class="sansserif">#valueWithArguments:</span> and pass the arguments in an array. (A block
-with a large number of parameters is often a sign of a design
-problem.)
-</p>
-<a name="index-block_002c-local-variable"></a>
-<p>Blocks may also declare local variables, which are surrounded by
-vertical bars, just like local variable declarations in a
-method. Locals are declared after any arguments:
-</p>
-<div class="display">
-<pre class="display"><span class="sansserif">[ :x :y | | z | z := x+ y. z ] value: 1 value: 2
-&rArr; 3</span>
-</pre></div>
-
-<p>Blocks are actually lexical closures, since they can refer to
-variables of the surrounding environment. The following block refers
-to the variable x of its enclosing environment:
-</p>
-<div class="display">
-<pre class="display"><span class="sansserif">|x|
-x := 1.
-[ :y | x + y ] value: 2
-&rArr; 3</span>
-</pre></div>
-
-<a name="index-block_002c-assigned-to-variable"></a>
-<p>Blocks are instances of the class <span class="sansserif">BlockClosure</span>. This means
-that they are objects, so they can be assigned to variables and passed
-as arguments just like any other object.
-</p>
-<p>Consider the example below to compute the divisors of an integer:
-</p>
-<div class="display">
-<pre class="display"><span class="sansserif">| n m |
-n := 60.
-m:= 45.
-(1 to: n) select: [:d | n \ d = 0 ].
-&quot;&rArr; #(1 2 3 4 5 6 10 12 15 20 30 60)&quot;
-(1 to: m) select: [:d | m \ d = 0]
-&quot;&rArr; #(1 3 5 9 15 45)&quot;</span>
-</pre></div>
-
-<p>The problem with this example is the code duplication in the divisor
-computation. We can avoid duplication with a dedicated block doing the
-computation and assigning it to a variable:
-</p>
-<div class="float"><a name="blockDivisor"></a>
-<div class="display">
-<pre class="display"><span class="sansserif">| divisors |
-divisors := [:x | (1 to: x) select: [:d | x \ d = 0].
-divisors value: 60.
-&quot;&rArr; #(1 2 3 4 5 6 10 12 15 20 30 60)&quot;
-divisors value: 45
-&quot;&rArr; #(1 3 5 9 15 45)&quot;</span>
-</pre></div>
-
-<div class="float-caption"><p><strong><em>Example</em> 3.2: </strong>Block to compute divisors</p></div></div>
-
-
 <hr>
 <div class="header">
 <p>
-Next: <a href="Control-flow-with-block-and-message.html#Control-flow-with-block-and-message" accesskey="n" rel="next">Control flow with block and message</a>, Up: <a href="Understanding-the-basis-of-the-Cuis_002dSmalltalk-model.html#Understanding-the-basis-of-the-Cuis_002dSmalltalk-model" accesskey="u" rel="up">Understanding the basis of the Cuis-Smalltalk model</a> &nbsp; [<a href="Indexes.html#Indexes" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Pseudo_002dvariables.html#Pseudo_002dvariables" accesskey="n" rel="next">Pseudo-variables</a>, Up: <a href="Cuis_002dSmalltalk-syntax.html#Cuis_002dSmalltalk-syntax" accesskey="u" rel="up">Cuis-Smalltalk syntax</a> &nbsp; [<a href="Indexes.html#Indexes" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

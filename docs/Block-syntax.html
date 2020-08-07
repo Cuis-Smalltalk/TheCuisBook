@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This book is for Cuis-Smalltalk (5.0#4253), a free and modern
+implementation of the Smalltalk language and environment.
+
+Copyright (C) 2020 Hilaire Fernandes and Juan Vuletich
+
+
+
+The syntax chapter is from the Squeak by Example book.
+
+Copyright (C) 2007, 2008, 2009 by Andrew P. Black, StÃ©phane
+Ducasse, Oscar Nierstrasz and Damien Pollet.
+
+
+
+Compilation : August 7, 2020
+
+Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
+
+
+
+The contents of this book are protected under Creative Commons
+Attribution-ShareAlike 4.0 International.
+
+You are free to:
+
+
+Share - copy and redistribute the material in any medium or
+format
+
+
+Adapt - remix, transform, and build upon the material for any
+purpose, even commercially.
+
+
+
+Under the following terms:
+
+
+Attribution. You must give appropriate credit, provide a link to
+the license, and indicate if changes were made. You may do so in any
+reasonable manner, but not in any way that suggests the licensor
+endorses you or your use.
+
+
+Share Alike. If you remix, transform, or build upon the material,
+you must distribute your contributions under the same license as the
+original.
+
+Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+ -->
+<!-- Created by GNU Texinfo 6.5, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Block syntax (The Cuis-Smalltalk Book)</title>
+
+<meta name="description" content="Block syntax (The Cuis-Smalltalk Book)">
+<meta name="keywords" content="Block syntax (The Cuis-Smalltalk Book)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Indexes.html#Indexes" rel="index" title="Indexes">
+<link href="Cuis_002dSmalltalk-syntax.html#Cuis_002dSmalltalk-syntax" rel="up" title="Cuis-Smalltalk syntax">
+<link href="Control-flow-with-block-and-message.html#Control-flow-with-block-and-message" rel="next" title="Control flow with block and message">
+<link href="Method-syntax.html#Method-syntax" rel="prev" title="Method syntax">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="style.css">
+
+
+</head>
+
+<body lang="en">
+<a name="Block-syntax"></a>
+<div class="header">
+<p>
+Next: <a href="Control-flow-with-block-and-message.html#Control-flow-with-block-and-message" accesskey="n" rel="next">Control flow with block and message</a>, Previous: <a href="Method-syntax.html#Method-syntax" accesskey="p" rel="prev">Method syntax</a>, Up: <a href="Cuis_002dSmalltalk-syntax.html#Cuis_002dSmalltalk-syntax" accesskey="u" rel="up">Cuis-Smalltalk syntax</a> &nbsp; [<a href="Indexes.html#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Block-syntax-1"></a>
+<h3 class="section">3.5 Block syntax</h3>
+<p>Blocks provide a mechanism to defer the evaluation of expressions. A
+block is essentially an anonymous function. A block is evaluated by
+sending it the message value. The block answers the value of the last
+expression in its body, unless there is an explicit return (with
+&#x2191;), in which case it does not answer any value.
+</p>
+<div class="display">
+<pre class="display"><span class="sansserif">[ 1 + 2 ] value
+&#x2191; 3</span>
+</pre></div>
+
+<p>Blocks may take parameters, each of which is declared with a leading
+colon. A vertical bar separates the parameter declaration(s) from the
+body of the block. To evaluate a block with one parameter, you must
+send it the message <span class="sansserif">#value:</span> with one argument. A two-parameter
+block must be sent <span class="sansserif">#value:value:</span>, and so on, up to 4 arguments:
+</p>
+<div class="display">
+<pre class="display"><span class="sansserif">[ :x | 1 + x ] value: 2
+&rArr; 3
+[ :x :y | x + y ] value: 1 value: 2
+&rArr; 3</span>
+</pre></div>
+
+<p>If you have a block with more than four parameters, you must use
+<span class="sansserif">#valueWithArguments:</span> and pass the arguments in an array. (A block
+with a large number of parameters is often a sign of a design
+problem.)
+</p>
+<a name="index-block_002c-local-variable"></a>
+<p>Blocks may also declare local variables, which are surrounded by
+vertical bars, just like local variable declarations in a
+method. Locals are declared after any arguments:
+</p>
+<div class="display">
+<pre class="display"><span class="sansserif">[ :x :y | | z | z := x+ y. z ] value: 1 value: 2
+&rArr; 3</span>
+</pre></div>
+
+<p>Blocks are actually lexical closures, since they can refer to
+variables of the surrounding environment. The following block refers
+to the variable x of its enclosing environment:
+</p>
+<div class="display">
+<pre class="display"><span class="sansserif">|x|
+x := 1.
+[ :y | x + y ] value: 2
+&rArr; 3</span>
+</pre></div>
+
+<a name="index-block_002c-assigned-to-variable"></a>
+<p>Blocks are instances of the class <span class="sansserif">BlockClosure</span>. This means
+that they are objects, so they can be assigned to variables and passed
+as arguments just like any other object.
+</p>
+<p>Consider the example below to compute the divisors of an integer:
+</p>
+<div class="display">
+<pre class="display"><span class="sansserif">| n m |
+n := 60.
+m:= 45.
+(1 to: n) select: [:d | n \ d = 0 ].
+&quot;&rArr; #(1 2 3 4 5 6 10 12 15 20 30 60)&quot;
+(1 to: m) select: [:d | m \ d = 0]
+&quot;&rArr; #(1 3 5 9 15 45)&quot;</span>
+</pre></div>
+
+<p>The problem with this example is the code duplication in the divisor
+computation. We can avoid duplication with a dedicated block doing the
+computation and assigning it to a variable:
+</p>
+<div class="float"><a name="blockDivisor"></a>
+<div class="display">
+<pre class="display"><span class="sansserif">| divisors |
+divisors := [:x | (1 to: x) select: [:d | x \ d = 0].
+divisors value: 60.
+&quot;&rArr; #(1 2 3 4 5 6 10 12 15 20 30 60)&quot;
+divisors value: 45
+&quot;&rArr; #(1 3 5 9 15 45)&quot;</span>
+</pre></div>
+
+<div class="float-caption"><p><strong><em>Example</em> 3.2: </strong>Block to compute divisors</p></div></div>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Control-flow-with-block-and-message.html#Control-flow-with-block-and-message" accesskey="n" rel="next">Control flow with block and message</a>, Previous: <a href="Method-syntax.html#Method-syntax" accesskey="p" rel="prev">Method syntax</a>, Up: <a href="Cuis_002dSmalltalk-syntax.html#Cuis_002dSmalltalk-syntax" accesskey="u" rel="up">Cuis-Smalltalk syntax</a> &nbsp; [<a href="Indexes.html#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>
