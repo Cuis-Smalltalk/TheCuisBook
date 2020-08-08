@@ -61,13 +61,13 @@ Observe the various syntactic elements in @ref{cuisSyntax}.
    @item @smalltalk{’Hello’}                     @tab the string “Hello”
    @item @smalltalk{#Hello}                     @tab the symbol #Hello
    @item @smalltalk{#(1 2 3)}                   @tab a literal array
-   @item @smalltalk{@{1. 2. 1+2@}}              @tab a dynamic array
+   @item @smalltalk{@{1. 2. 1 + 2@}}              @tab a dynamic array
    @item @tab
    @item @smalltalk{"a comment"}                @tab a comment
    @item @tab
    @item @smalltalk{|xy|}                       @tab declaration of variables x and y
    @item @smalltalk{x := 1}                     @tab assign 1 to x
-   @item @smalltalk{[x+y]}                      @tab a block that evaluates to x+y
+   @item @smalltalk{[x + y]}                      @tab a block that evaluates to x+y
    @item @smalltalk{<primitive: 1>}             @tab virtual machine primitive or annotation
    @item @tab
    @item @smalltalk{3 factorial}                @tab unary message
@@ -220,7 +220,7 @@ Observe the various syntactic elements in @ref{cuisSyntax}.
  @item Binary messages.
 
  Binary messages are operators (like @smalltalk{+}) sent to a receiver
- and taking a single argument. In @smalltalk{3+4}, the receiver is
+ and taking a single argument. In @smalltalk{3 + 4}, the receiver is
  @smalltalk{3} and the argument is @smalltalk{4}.
 
  @cindex message, keyword
@@ -236,8 +236,8 @@ Observe the various syntactic elements in @ref{cuisSyntax}.
  @cindex returned value
  @item Method return.
 
- ↑ is used to return a value from a method. (You must type ^ to obtain
- the ↑ character.)
+ @return{} is used to return a value from a method. (You must type ^ to obtain
+ the @return{} character.)
 
  @cindex sequence
  @item Sequences of statements.
@@ -343,7 +343,7 @@ First we send @smalltalk{factorial} to @smalltalk{3}, then we send
 
 Precedence aside, evaluation is strictly from left to right, so
 
-@smalltalkExample{1+2*3
+@smalltalkExample{1 + 2 * 3
 @result{} 9}
 
 not 7. Parentheses must be used to alter the order of evaluation:
@@ -464,7 +464,7 @@ Blocks may also declare local variables, which are surrounded by
 vertical bars, just like local variable declarations in a
 method. Locals are declared after any arguments:
 
-@smalltalkExample{[ :x :y | | z | z := x+ y. z ] value: 1 value: 2
+@smalltalkExample{[ :x :y | | z | z := x + y. z ] value: 1 value: 2
 @result{} 3}
 
 Blocks are actually lexical closures, since they can refer to
@@ -483,9 +483,9 @@ as arguments just like any other object.
 
 Consider the example below to compute the divisors of an integer:
 
-@smalltalkExample{| n m |
+@smalltalkExampleCaption{Compute divisors, computeDivisors,| n m |
 n := 60.
-m:= 45.
+m := 45.
 (1 to: n) select: [:d | n \\ d = 0 ].
 "@result{} #(1 2 3 4 5 6 10 12 15 20 30 60)"
 (1 to: m) select: [:d | m \\ d = 0]
@@ -495,19 +495,124 @@ The problem with this example is the code duplication in the divisor
 computation. We can avoid duplication with a dedicated block doing the
 computation and assigning it to a variable:
 
-@smalltalkExampleCaption{Block to compute divisors,blockDivisor,
-| divisors |
-divisors := [:x | (1 to: x) select: [:d | x \\ d = 0].
-divisors value: 60.
-"@result{} #(1 2 3 4 5 6 10 12 15 20 30 60)"
-divisors value: 45
-"@result{} #(1 3 5 9 15 45)"}
+@exercise{Block to compute divisors,blockDivisor, @emph{How will you
+rewrite @ref{computeDivisors} to avoid code duplication?}}
 
+
+
+@cindex control flow
 @node Control flow with block and message
 @section Control flow with block and message
-Smalltalk offers no special syntax for control constructs. Instead, these
-are typically expressed by sending messages to booleans, numbers and
-collections, with blocks as arguments.
-     Conditionals are expressed by sending one of the messages ifTrue:, ifFalse:
-or ifTrue:ifFalse: to the result of a boolean expression. See Chapter 8 for more
+Smalltalk offers no special syntax for control constructs. Instead,
+these are typically expressed by sending messages to booleans, numbers
+and collections, with blocks as arguments.
 
+@cindex control flow, test
+@cindex test
+@cindex Boolean
+@subheading Test
+Conditionals are expressed by sending one of the messages
+@msg{ifTrue:}, @msg{ifFalse:} or @msg{ifTrue:ifFalse:} to the result
+of a boolean expression:
+
+@smalltalkExample{(17 * 13 > 220)
+  ifTrue: [ 'bigger' ]
+  ifFalse: [ 'smaller' ]
+@result{} 'bigger'}
+
+The class @class{Boolean} offers a fascinating insight into how much
+of the Smalltalk language has been pushed into the class
+library. @class{Boolean} is the abstract superclass of the
+@emph{Singleton} classes @class{True} and @class{False}@footnote{A
+singleton class is designed to have only one instance. Each of
+@class{True} and @class{False} classes has one instance,
+@smalltalk{true} and @smalltalk{false}.}.
+
+Most of the behaviour of @class{Boolean} instances can be understood
+by considering the method @method{ifTrue:ifFalse:}, which takes two
+blocks as arguments:
+
+@smalltalkExample{(4 factorial > 20) ifTrue: [ 'bigger' ] ifFalse: [ 'smaller' ]
+@result{} 'bigger'}
+
+The method is abstract in @class{Boolean}. It is implemented in its
+concrete subclasses @class{True} and @class{False}:
+
+@smalltalkExampleCaption{Implementations of ifTrue:ifFalse:, ifTrueIfFalse, 
+True>>ifTrue: trueAlternativeBlock ifFalse: falseAlternativeBlock
+  @return{} trueAlternativeBlock value
+
+False>>ifTrue: trueAlternativeBlock ifFalse: falseAlternativeBlock
+  @return{} falseAlternativeBlock value}
+
+In fact, this is the essence of OOP: when a message is sent to an
+object, the object itself determines which method will be used to
+respond. In this case an instance of True simply evaluates the true
+alternative, while an instance of False evaluates the false
+alternative. All the abstract @class{Boolean} methods are implemented
+in this way for @class{True} and @class{False}. Look at another
+example:
+
+@smalltalkExampleCaption{Implementing negation, negation,
+True>>not
+   "Negation----answer false since the receiver is true."
+   @return{} false}
+
+Booleans offer several useful convenience methods, such as
+@method{ifTrue:}, @method{ifFalse:}, @method{ifFalse:ifTrue}. You also
+have the choice between eager and lazy conjunctions and disjunctions:
+
+@smalltalkExample{(1 > 2) & (3 < 4)
+@result{} false  "must evaluate both sides"
+(1 > 2) and: [ 3 < 4 ]
+@result{} false   "only evaluate receiver"
+(1 > 2) and: [ (1 / 0) > 0 ]
+@result{} false "argument block is never evaluated, so no exception"}
+
+In the first example, both @class{Boolean} subexpressions are
+evaluated, since @smalltalk{&} takes a @class{Boolean} argument. In
+the second and third examples, only the first is evaluated, since
+@method{and:} expects a @class{Block} as its argument. The
+@class{Block} is evaluated only if the first argument is true.
+
+@exercise{Implementing @method{and:} and @method{or:}, implementingAndOr,
+@emph{Try to imagine how @method{and:} and @method{or:} are  implemented.}}
+
+@cindex control flow, loop
+@cindex loop
+@subheading Loop
+Loops are typically expressed by sending messages to blocks, integers
+or collections. Since the exit condition for a loop may be repeatedly
+evaluated, it should be a block rather than a boolean value. Here is
+an example of a very procedural loop:
+
+@smalltalkExample{n := 1.
+[ n < 1000 ] whileTrue: [ n := n * 2 ].
+n @result{} 1024}
+
+@msg{whileFalse:} reverses the exit condition:
+
+@smalltalkExample{n := 1.
+[ n > 1000 ] whileFalse: [ n := n * 2 ].
+n @result{} 1024}
+
+You can check all the alternatives in the @option{controlling} method
+category of the class @class{BlockClosure}.
+
+@msg{timesRepeat:} offers a simple way to implement a fixed iteration:
+
+@smalltalkExample{n := 1.
+10 timesRepeat: [ n := n * 2 ].
+n @result{} 1024}
+
+We can also send the message @msg{to:do:} to a number which then acts
+as the initial value of a loop counter. The two arguments are the
+upper bound, and a block that takes the current value of the loop
+counter as its argument:
+
+@smalltalkExample{result := String new.
+1 to: 10 do: [:n | result := result, n printString, ' '].
+result @result{} '1 2 3 4 5 6 7 8 9 10 '}
+
+You can check all the alternatives in the @option{intervals} method
+category of the class @class{Number}.

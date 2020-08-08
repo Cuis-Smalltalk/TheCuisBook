@@ -282,3 +282,17 @@ colors
 @result{} a Dictionary(#blue->'Blue' #green->'Green' #red->'Red'
 #yellow->'Yellow' ) 
 @end example
+
+@subheading @ref{blockDivisor}
+@example
+| divisors |
+divisors := [:x | (1 to: x) select: [:d | x \\ d = 0] ].
+divisors value: 60.
+"@result{} #(1 2 3 4 5 6 10 12 15 20 30 60)"
+divisors value: 45
+"@result{} #(1 3 5 9 15 45)"
+@end example
+
+@subheading @ref{implementingAndOr}
+Check the implementations in @class{Boolean}, @class{True} and
+@class{False}.

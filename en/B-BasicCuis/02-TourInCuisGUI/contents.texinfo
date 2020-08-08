@@ -1,7 +1,5 @@
-@node Writing your first application
-@chapter Writing your first application
+@node Space Invader -- Part One
+@chapter Space Invader -- Part One
 An excuse to discover some of the @cuis tools: the Browser and the
 Insepctor.
 
-@c A graph to show the progression of Qty of prime number 100 large
-@c interval integer, to be done with Pen, may not need class creation

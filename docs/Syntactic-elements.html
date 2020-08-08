@@ -14,7 +14,7 @@ Ducasse, Oscar Nierstrasz and Damien Pollet.
 
 
 
-Compilation : August 7, 2020
+Compilation : August 8, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -143,13 +143,13 @@ Next: <a href="Pseudo_002dvariables.html#Pseudo_002dvariables" accesskey="n" rel
 <tr><td width="45%"><span class="sansserif">âHelloâ</span></td><td width="55%">the string âHelloâ</td></tr>
 <tr><td width="45%"><span class="sansserif">#Hello</span></td><td width="55%">the symbol #Hello</td></tr>
 <tr><td width="45%"><span class="sansserif">#(1 2 3)</span></td><td width="55%">a literal array</td></tr>
-<tr><td width="45%"><span class="sansserif">{1. 2. 1+2}</span></td><td width="55%">a dynamic array</td></tr>
+<tr><td width="45%"><span class="sansserif">{1. 2. 1 + 2}</span></td><td width="55%">a dynamic array</td></tr>
 <tr><td width="45%"></td><td width="55%"></td></tr>
 <tr><td width="45%"><span class="sansserif">&quot;a comment&quot;</span></td><td width="55%">a comment</td></tr>
 <tr><td width="45%"></td><td width="55%"></td></tr>
 <tr><td width="45%"><span class="sansserif">|xy|</span></td><td width="55%">declaration of variables x and y</td></tr>
 <tr><td width="45%"><span class="sansserif">x := 1</span></td><td width="55%">assign 1 to x</td></tr>
-<tr><td width="45%"><span class="sansserif">[x+y]</span></td><td width="55%">a block that evaluates to x+y</td></tr>
+<tr><td width="45%"><span class="sansserif">[x + y]</span></td><td width="55%">a block that evaluates to x+y</td></tr>
 <tr><td width="45%"><span class="sansserif">&lt;primitive: 1&gt;</span></td><td width="55%">virtual machine primitive or annotation</td></tr>
 <tr><td width="45%"></td><td width="55%"></td></tr>
 <tr><td width="45%"><span class="sansserif">3 factorial</span></td><td width="55%">unary message</td></tr>
@@ -318,7 +318,7 @@ Next: <a href="Pseudo_002dvariables.html#Pseudo_002dvariables" accesskey="n" rel
 <dt><strong>Binary messages.</strong></dt>
 <dd>
 <p>Binary messages are operators (like <span class="sansserif">+</span>) sent to a receiver
- and taking a single argument. In <span class="sansserif">3+4</span>, the receiver is
+ and taking a single argument. In <span class="sansserif">3 + 4</span>, the receiver is
  <span class="sansserif">3</span> and the argument is <span class="sansserif">4</span>.
 </p>
 <a name="index-message_002c-keyword"></a>
@@ -336,8 +336,8 @@ Next: <a href="Pseudo_002dvariables.html#Pseudo_002dvariables" accesskey="n" rel
 </dd>
 <dt><strong>Method return.</strong></dt>
 <dd>
-<p>â is used to return a value from a method. (You must type ^ to obtain
- the â character.)
+<p>&#x2191; is used to return a value from a method. (You must type ^ to obtain
+ the &#x2191; character.)
 </p>
 <a name="index-sequence"></a>
 </dd>

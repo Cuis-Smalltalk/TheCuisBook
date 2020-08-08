@@ -1,4 +1,5 @@
-@node Writing your second application
-@chapter Writing your second application
+@node Space Invader -- Part Two
+@chapter Space Invader -- Part Two
+
 Another excuse to discover some of the @cuis{} tools: the Debugger and
 the Changset.

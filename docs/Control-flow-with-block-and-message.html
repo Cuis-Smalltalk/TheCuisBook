@@ -14,7 +14,7 @@ Ducasse, Oscar Nierstrasz and Damien Pollet.
 
 
 
-Compilation : August 7, 2020
+Compilation : August 8, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -63,7 +63,7 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="index.html#Top" rel="start" title="Top">
 <link href="Indexes.html#Indexes" rel="index" title="Indexes">
 <link href="Cuis_002dSmalltalk-syntax.html#Cuis_002dSmalltalk-syntax" rel="up" title="Cuis-Smalltalk syntax">
-<link href="Writing-your-second-application.html#Writing-your-second-application" rel="next" title="Writing your second application">
+<link href="Space-Invader-_002d_002d-Part-Two.html#Space-Invader-_002d_002d-Part-Two" rel="next" title="Space Invader -- Part Two">
 <link href="Block-syntax.html#Block-syntax" rel="prev" title="Block syntax">
 <style type="text/css">
 <!--
@@ -106,12 +106,157 @@ Previous: <a href="Block-syntax.html#Block-syntax" accesskey="p" rel="prev">Bloc
 <hr>
 <a name="Control-flow-with-block-and-message-1"></a>
 <h3 class="section">3.6 Control flow with block and message</h3>
-<p>Smalltalk offers no special syntax for control constructs. Instead, these
-are typically expressed by sending messages to booleans, numbers and
-collections, with blocks as arguments.
-     Conditionals are expressed by sending one of the messages ifTrue:, ifFalse:
-or ifTrue:ifFalse: to the result of a boolean expression. See Chapter 8 for more
+<p>Smalltalk offers no special syntax for control constructs. Instead,
+these are typically expressed by sending messages to booleans, numbers
+and collections, with blocks as arguments.
 </p>
+<a name="index-control-flow_002c-test"></a>
+<a name="index-test"></a>
+<a name="index-Boolean"></a>
+<a name="Test"></a>
+<h4 class="subheading">Test</h4>
+<p>Conditionals are expressed by sending one of the messages
+<span class="sansserif">#ifTrue:</span>, <span class="sansserif">#ifFalse:</span> or <span class="sansserif">#ifTrue:ifFalse:</span> to the result
+of a boolean expression:
+</p>
+<div class="display">
+<pre class="display"><span class="sansserif">(17 * 13 &gt; 220)
+  ifTrue: [ &rsquo;bigger&rsquo; ]
+  ifFalse: [ &rsquo;smaller&rsquo; ]
+&rArr; &rsquo;bigger&rsquo;</span>
+</pre></div>
+
+<p>The class <span class="sansserif">Boolean</span> offers a fascinating insight into how much
+of the Smalltalk language has been pushed into the class
+library. <span class="sansserif">Boolean</span> is the abstract superclass of the
+<em>Singleton</em> classes <span class="sansserif">True</span> and <span class="sansserif">False</span><a name="DOCF6" href="#FOOT6"><sup>6</sup></a>.
+</p>
+<p>Most of the behaviour of <span class="sansserif">Boolean</span> instances can be understood
+by considering the method <span class="sansserif">ifTrue:ifFalse:</span>, which takes two
+blocks as arguments:
+</p>
+<div class="display">
+<pre class="display"><span class="sansserif">(4 factorial &gt; 20) ifTrue: [ &rsquo;bigger&rsquo; ] ifFalse: [ &rsquo;smaller&rsquo; ]
+&rArr; &rsquo;bigger&rsquo;</span>
+</pre></div>
+
+<p>The method is abstract in <span class="sansserif">Boolean</span>. It is implemented in its
+concrete subclasses <span class="sansserif">True</span> and <span class="sansserif">False</span>:
+</p>
+<div class="float"><a name="ifTrueIfFalse"></a>
+<div class="display">
+<pre class="display"><span class="sansserif">True&gt;&gt;ifTrue: trueAlternativeBlock ifFalse: falseAlternativeBlock
+  &#x2191; trueAlternativeBlock value
+
+False&gt;&gt;ifTrue: trueAlternativeBlock ifFalse: falseAlternativeBlock
+  &#x2191; falseAlternativeBlock value</span>
+</pre></div>
+
+<div class="float-caption"><p><strong><em>Example</em> 3.3: </strong>Implementations of ifTrue:ifFalse:</p></div></div>
+<p>In fact, this is the essence of OOP: when a message is sent to an
+object, the object itself determines which method will be used to
+respond. In this case an instance of True simply evaluates the true
+alternative, while an instance of False evaluates the false
+alternative. All the abstract <span class="sansserif">Boolean</span> methods are implemented
+in this way for <span class="sansserif">True</span> and <span class="sansserif">False</span>. Look at another
+example:
+</p>
+<div class="float"><a name="negation"></a>
+<div class="display">
+<pre class="display"><span class="sansserif">True&gt;&gt;not
+   &quot;Negation&mdash;-answer false since the receiver is true.&quot;
+   &#x2191; false</span>
+</pre></div>
+
+<div class="float-caption"><p><strong><em>Example</em> 3.4: </strong>Implementing negation</p></div></div>
+<p>Booleans offer several useful convenience methods, such as
+<span class="sansserif">ifTrue:</span>, <span class="sansserif">ifFalse:</span>, <span class="sansserif">ifFalse:ifTrue</span>. You also
+have the choice between eager and lazy conjunctions and disjunctions:
+</p>
+<div class="display">
+<pre class="display"><span class="sansserif">(1 &gt; 2) &amp; (3 &lt; 4)
+&rArr; false  &quot;must evaluate both sides&quot;
+(1 &gt; 2) and: [ 3 &lt; 4 ]
+&rArr; false   &quot;only evaluate receiver&quot;
+(1 &gt; 2) and: [ (1 / 0) &gt; 0 ]
+&rArr; false &quot;argument block is never evaluated, so no exception&quot;</span>
+</pre></div>
+
+<p>In the first example, both <span class="sansserif">Boolean</span> subexpressions are
+evaluated, since <span class="sansserif">&amp;</span> takes a <span class="sansserif">Boolean</span> argument. In
+the second and third examples, only the first is evaluated, since
+<span class="sansserif">and:</span> expects a <span class="sansserif">Block</span> as its argument. The
+<span class="sansserif">Block</span> is evaluated only if the first argument is true.
+</p>
+<div class="float"><a name="implementingAndOr"></a>
+<blockquote class="indentedblock">
+<p><em>Try to imagine how <span class="sansserif">and:</span> and <span class="sansserif">or:</span> are  implemented.</em>
+</p></blockquote>
+
+
+<div class="float-caption"><p><strong><em>Exercise</em> 3.2: </strong>Implementing <span class="sansserif">and:</span> and <span class="sansserif">or:</span></p></div></div>
+<a name="index-control-flow_002c-loop"></a>
+<a name="index-loop"></a>
+<a name="Loop"></a>
+<h4 class="subheading">Loop</h4>
+<p>Loops are typically expressed by sending messages to blocks, integers
+or collections. Since the exit condition for a loop may be repeatedly
+evaluated, it should be a block rather than a boolean value. Here is
+an example of a very procedural loop:
+</p>
+<div class="display">
+<pre class="display"><span class="sansserif">n := 1.
+[ n &lt; 1000 ] whileTrue: [ n := n * 2 ].
+n &rArr; 1024</span>
+</pre></div>
+
+<p><span class="sansserif">#whileFalse:</span> reverses the exit condition:
+</p>
+<div class="display">
+<pre class="display"><span class="sansserif">n := 1.
+[ n &gt; 1000 ] whileFalse: [ n := n * 2 ].
+n &rArr; 1024</span>
+</pre></div>
+
+<p>You can check all the alternatives in the <samp>controlling</samp> method
+category of the class <span class="sansserif">BlockClosure</span>.
+</p>
+<p><span class="sansserif">#timesRepeat:</span> offers a simple way to implement a fixed iteration:
+</p>
+<div class="display">
+<pre class="display"><span class="sansserif">n := 1.
+10 timesRepeat: [ n := n * 2 ].
+n &rArr; 1024</span>
+</pre></div>
+
+<p>We can also send the message <span class="sansserif">#to:do:</span> to a number which then acts
+as the initial value of a loop counter. The two arguments are the
+upper bound, and a block that takes the current value of the loop
+counter as its argument:
+</p>
+<div class="display">
+<pre class="display"><span class="sansserif">result := String new.
+1 to: 10 do: [:n | result := result, n printString, &rsquo; &rsquo;].
+result &rArr; &rsquo;1 2 3 4 5 6 7 8 9 10 &rsquo;</span>
+</pre></div>
+
+<p>You can check all the alternatives in the <samp>intervals</samp> method
+category of the class <span class="sansserif">Number</span>.
+</p><div class="footnote">
+<hr>
+<h4 class="footnotes-heading">Footnotes</h4>
+
+<h3><a name="FOOT6" href="#DOCF6">(6)</a></h3>
+<p>A
+singleton class is designed to have only one instance. Each of
+<span class="sansserif">True</span> and <span class="sansserif">False</span> classes has one instance,
+<span class="sansserif">true</span> and <span class="sansserif">false</span>.</p>
+</div>
+<hr>
+<div class="header">
+<p>
+Previous: <a href="Block-syntax.html#Block-syntax" accesskey="p" rel="prev">Block syntax</a>, Up: <a href="Cuis_002dSmalltalk-syntax.html#Cuis_002dSmalltalk-syntax" accesskey="u" rel="up">Cuis-Smalltalk syntax</a> &nbsp; [<a href="Indexes.html#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
 
 
 
