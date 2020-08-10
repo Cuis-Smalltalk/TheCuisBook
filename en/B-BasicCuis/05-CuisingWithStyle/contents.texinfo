@@ -12,8 +12,26 @@ Best practices to write @cuis{} code with style.
 @node Naming variable
 @section Naming variable
 
+Meaningful name. A variable references an object, do not name a
+variable according to the object type -- class -- but according to
+what it is.
+
+When the variable is best written with several word, use camel case
+writing.
+
 @node Comment
 @section Comment
+There are comments related to class and method.
+
+Class comment should describe what the object does and if possible
+proposes code the user can select and execute.
+
+Method should start with one or two lines comment, if possible with
+executable code. Nevertheless, only write comment when it is
+meaningful: in a @class{Morph} sub-class, most of the time you will
+not need to comment the @method{drawOn: aCanvas} method. Indeed, the
+intend of this method is very well known; if necessary the user
+browses its implementation in the parent class.
 
 @node Method scope
 @section Method scope

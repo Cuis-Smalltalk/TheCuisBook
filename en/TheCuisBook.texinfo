@@ -1,7 +1,7 @@
 \input texinfo @c -*-texinfo-*-
 @c %**start of header
 @settitle The Cuis-Smalltalk Book
-@set timeStamp Time-stamp: <2020-08-08 19:44:03 hilaire>
+@set timeStamp Time-stamp: <2020-08-10 14:27:48 hilaire>
 @set cuisVersion 5.0#4253
 @set txicodequoteundirected ON 
 @paragraphindent 0
@@ -91,9 +91,9 @@ Complete license: @url{https://creativecommons.org/licenses/by-sa/4.0/legalcode}
 @menu
 * Preface::
 * Getting started::
-* Space Invader -- Part One::
+* Spacewar! -- Part One::
 * @cuis{} syntax::
-* Space Invader -- Part Two::
+* Spacewar! -- Part Two::
 * Cuising with Style::
 * The Object protocol::
 * The numeric protocol::

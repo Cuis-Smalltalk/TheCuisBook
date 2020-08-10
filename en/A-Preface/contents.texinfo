@@ -1,9 +1,12 @@
 @node Preface
 @unnumbered Preface
 
-What @cuis{} is: Cuis is a portable environment for doing, building, and sharing software.
+What @cuis{} is: @cuis{} -- or in short Cuis -- is a portable
+environment for doing, building, and sharing software.
 
-Cuis is a journey and a process and comes with a philosophy of reducing complexity while providing a complete, live software development experience.
+Cuis is a journey and a process and comes with a philosophy of
+reducing complexity while providing a complete, live software
+development experience.
 
 This book is an introduction and invitation to exploring Cuis.
 
@@ -11,10 +14,8 @@ We hope you will join us in this journey to make Cuis ever better.
 
 @figure{Cuis,A-01-img1,12}
 
-Once unpon a time... @class{Object} gave birth to many @method{new}
-children to raise a large familly of @smalltalk{allInstance size} living and vivid objects.
-@smalltalkExample{
-1 to: 10 by: 1 do: [:i |
-   i even ifTrue: [
-      i * i ] ]}
-
+To make your journey with this book more enjoyable, the
+@emph{Spacewar!}@footnote{@url{https://en.wikipedia.org/wiki/Spacewar!}}
+project is its recurring theme. It is distilled along the book in code
+examples, exercises and dedicated chapters. At the end of the book,
+you will have written a replica of this historic video game.

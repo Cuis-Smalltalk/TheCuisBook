@@ -11,7 +11,7 @@
 @end menu
 
 
-@cuis{}’s syntax is minimal. Essentially there is syntax only for
+@cuis{} syntax is minimal. Essentially there is syntax only for
 sending messages (i.e., expressions) . Expressions are built up from a
 very small number of primitive elements. There are only 6 keywords,
 and @strong{there is no syntax for control structures} or declaring

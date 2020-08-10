@@ -14,7 +14,7 @@ Ducasse, Oscar Nierstrasz and Damien Pollet.
 
 
 
-Compilation : August 8, 2020
+Compilation : August 10, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -106,7 +106,18 @@ Next: <a href="Method-scope.html#Method-scope" accesskey="n" rel="next">Method s
 <hr>
 <a name="Comment-1"></a>
 <h3 class="section">5.2 Comment</h3>
-
+<p>There are comments related to class and method.
+</p>
+<p>Class comment should describe what the object does and if possible
+proposes code the user can select and execute.
+</p>
+<p>Method should start with one or two lines comment, if possible with
+executable code. Nevertheless, only write comment when it is
+meaningful: in a <span class="sansserif">Morph</span> sub-class, most of the time you will
+not need to comment the <span class="sansserif">drawOn: aCanvas</span> method. Indeed, the
+intend of this method is very well known; if necessary the user
+browses its implementation in the parent class.
+</p>
 
 
 
