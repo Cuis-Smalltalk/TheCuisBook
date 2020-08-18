@@ -6,18 +6,13 @@ htmlDest="cuisHtml"
 infoDest="cuisInfo"
 docbookDest="cuisDocbook"
 masterDoc="TheCuisBook.texinfo"
-parts="B-BasicCuis C-SystemClasses D-AdvancedCuis"
+chapNumbers="00 01 02 03 04 05 06 07 08 09 50"
 
 function collateChapters {
-    chapters="A-Preface E-Exercises"
-    for part in $parts
+    chapters=""
+    for n in $chapNumbers
     do
-	for file in `ls -1 $lang/$part`
-	do
-	    if [[ $file != "img" && $file != "contents.texinfo" ]]; then
-		chapters="$chapters $part/$file"
-	    fi
-	done
+	chapters="$chapters chapter-$n"
     done	     
 
     imgPath="./img"
