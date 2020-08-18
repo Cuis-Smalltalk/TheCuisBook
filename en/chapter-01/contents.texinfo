@@ -1,0 +1,3 @@
+@node Smalltalk Philisophy
+@chapter Smalltalk Philisophy
+

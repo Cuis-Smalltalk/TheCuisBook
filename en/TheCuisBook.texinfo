@@ -1,0 +1,165 @@
+\input texinfo @c -*-texinfo-*-
+@c %**start of header
+@settitle The Cuis-Smalltalk Book
+@set timeStamp Time-stamp: <2020-08-18 15:54:02 hilaire>
+@set cuisVersion 5.0#4253
+@set txicodequoteundirected ON 
+@paragraphindent 0
+@setfilename TheCuisBook.info
+@include ../cuisMacro.texinfo
+
+@macro thanks
+Thanks to Ken Dickey for its careful review.
+@end macro
+
+@c @afourwide
+@c @afourlatex
+@c 7x9.25 inches 17.8x23.5
+@smallbook
+@c %**end of header
+
+@copying
+This book is for @cuis{} (@value{cuisVersion}), a free and modern
+implementation of the Smalltalk language and environment.
+
+Copyright @copyright{} 2020 @writers{}
+@*
+
+The syntax chapter is from the @emph{Squeak by Example} book.
+
+Copyright @copyright{} 2007, 2008, 2009 by Andrew P. Black, Stéphane
+Ducasse, Oscar Nierstrasz and Damien Pollet.
+
+@*
+Compilation : @today{}
+
+Documentation source: @url{https://github.com/Cuis-Smalltalk/TheCuisBook} 
+
+@*
+The contents of this book are protected under Creative Commons
+Attribution-ShareAlike 4.0 International.
+
+@i{You are free to:}
+@*
+@b{Share} -- copy and redistribute the material in any medium or
+format
+@*
+@b{Adapt} -- remix, transform, and build upon the material for any
+purpose, even commercially.
+
+@*
+@i{Under the following terms:}
+@*
+@b{Attribution.} You must give appropriate credit, provide a link to
+the license, and indicate if changes were made. You may do so in any
+reasonable manner, but not in any way that suggests the licensor
+endorses you or your use.
+@*
+@b{Share Alike.} If you remix, transform, or build upon the material,
+you must distribute your contributions under the same license as the
+original.
+
+Complete license: @url{https://creativecommons.org/licenses/by-sa/4.0/legalcode}
+
+@end copying
+
+@titlepage
+@title The @cuis{} book
+@subtitle Work-In-Progress
+@author @writers{}
+
+@iftex
+   @page
+   @vskip 0pt plus 1filll
+   @insertcopying
+   @*
+   @thanks{}
+@end iftex
+@end titlepage
+
+@iftex
+@shortcontents
+@contents
+@end iftex
+
+@node Top
+
+@ifnottex
+@top @cuis
+@end ifnottex
+
+@menu
+* Preface::
+* Smalltalk Philosophy::
+* The Message Way Of Life::
+* Classes::
+* Control Flow Messaging::
+* Visual With Morph::
+* Model And View::
+* Events::
+* Process::
+* Code Management::
+* The exercices::
+* Solutions of the exercises::
+* The examples::
+* The figures::
+* Indexes::
+@end menu
+
+@ifnottex
+ @insertcopying
+ @thanks
+@end ifnottex 
+
+@c================================================================
+@c Preface
+@include chapter-00/contents.texinfo
+@c================================================================
+@c:Part One
+@c @part Part One @*The basis of @cuis{}
+@c
+@include chapter-01/contents.texinfo
+@c
+@include chapter-02/contents.texinfo
+@c
+@include chapter-03/contents.texinfo
+@c
+@include chapter-04/contents.texinfo
+@c
+@include chapter-05/contents.texinfo
+@c
+@include chapter-06/contents.texinfo
+@c
+@include chapter-07/contents.texinfo
+@c
+@include chapter-08/contents.texinfo
+@c
+@include chapter-09/contents.texinfo
+@c================================================================
+@c: Part Four
+@c @part Part Four @*Appendices
+@c List of exercises
+@node The exercices
+@appendix Liste des exercices
+@listoffloats Exercise
+@c Solutions of exercises
+@include chapter-50/contents.texinfo
+@c List of examples
+@node The examples
+@appendix List of the examples
+@listoffloats Example
+@c List of figures
+@node The figures
+@appendix List of the figures
+@listoffloats Figure
+@c Indexes
+@node Indexes
+@appendix Conceptual index
+@printindex cp
+@c================================================================
+@c: To be filled
+
+
+
+@c:END OF THE BOOK
+@bye
