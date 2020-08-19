@@ -2,16 +2,14 @@
 @unnumbered Preface
 
 
-What @cuis{} is: @cuis{} -- or in short Cuis -- is a portable
-environment for doing, building, and sharing software.
+@cuis{}, or in short Cuis -- is a portable environment for doing, building and sharing software. Like any other tool, Cuis doesn't require having a particular mindset or following a particular process. However, Cuis is built with a specific view on what is software, and what it means to build software. As a consequence, Cuis is especially effective if these ideas resonate with you and, at least occasionally, you let then guide your thoughts and actions.
 
-Cuis is a journey and a process and comes with a philosophy of
-reducing complexity while providing a complete, live software
-development experience.
+We understand software development as the activity of learning and documenting knowledge, for us and others to use, and also to be run on a computer. The fact that the computer run is useful to solve some problem, is a consequence of the knowledge being sound and relevant. (Just making it work is not the important part!)
 
-This book is an introduction and invitation to exploring Cuis.
+These ideas, that will be further developed along the book you are reading, strongly shape Cuis and the experience of using it. Amongst their most obvious consequence are a passion about reducing unneeded complexity, while providing a complete, live software development experience. 
 
-We hope you will join us in this journey to make Cuis ever better.
+This book is an introduction and invitation to exploring Cuis. 
+We hope you will join us in this journey to use Cuis as a medium to express ideas and thoughts, and to build cool stuff, and to make Cuis ever better. 
 
 @figure{Cuis,ch00-img1,12}
 
