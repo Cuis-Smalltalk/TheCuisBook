@@ -6,7 +6,7 @@
 
 In this book, we will go along with you as you explore, discover and learn about Cuis and Smalltalk.
 
-We don't assume knowledge of computer programming, but if you have some experience with an Object Oriented or Functional language you will recognize many concepts. If instead you have coded ina an imperative, closer to the metal language, such as C or Assembly language, more of the ideas might be new.
+We don't assume knowledge of computer programming, but if you have some experience with an Object Oriented or Functional language you will recognize many concepts. If instead you have coded in an imperative, closer to the metal language, such as C or Assembly language, more of the ideas might be new.
 
 In any case, especially during the first chapters, read this book and follow the examples with an open mind. A new point of view on what software development means will be an enriching experience.
 
