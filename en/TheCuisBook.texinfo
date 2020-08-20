@@ -5,11 +5,12 @@
 @set cuisVersion 5.0#4253
 @set txicodequoteundirected ON 
 @paragraphindent 0
+@firstparagraphindent insert
 @setfilename TheCuisBook.info
 @include ../cuisMacro.texinfo
 
 @macro thanks
-Thanks to Ken Dickey for its careful review.
+Thanks to Ken Dickey for the careful review.
 @end macro
 
 @c @afourwide
