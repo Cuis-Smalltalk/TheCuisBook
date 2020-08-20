@@ -4,12 +4,18 @@
 
 @cuis{}, or in short Cuis -- is a portable environment for doing, building and sharing software. Like any other tool, Cuis doesn't require having a particular mindset or following a particular process. However, Cuis is built with a specific view on what is software, and what it means to build software. As a consequence, Cuis is especially effective if these ideas resonate with you and, at least occasionally, you let then guide your thoughts and actions.
 
+In this book, we will go along with you as you explore, discover and learn about Cuis and Smalltalk.
+
+We don't assume knowledge of computer programming, but if you have some experience with an Object Oriented or Functional language you will recognize many concepts. If instead you have coded ina an imperative, closer to the metal language, such as C or Assembly language, more of the ideas might be new.
+
+In any case, especially during the first chapters, read this book and follow the examples with an open mind. A new point of view on what software development means will be an enriching experience.
+
 We understand software development as the activity of learning and documenting knowledge, for us and others to use, and also to be run on a computer. The fact that the computer run is useful to solve some problem, is a consequence of the knowledge being sound and relevant. (Just making it work is not the important part!)
 
 These ideas, that will be further developed along the book you are reading, strongly shape Cuis and the experience of using it. Amongst their most obvious consequence are a passion about reducing unneeded complexity, while providing a complete, live software development experience. 
 
 This book is an introduction and invitation to exploring Cuis. 
-We hope you will join us in this journey to use Cuis as a medium to express ideas and thoughts, and to build cool stuff, and to make Cuis ever better. 
+We hope you will join us in this journey to use Cuis as a medium to express ideas and thoughts, to build cool stuff, and to make Cuis ever better. 
 
 @figure{Cuis,ch00-img1,12}
 
