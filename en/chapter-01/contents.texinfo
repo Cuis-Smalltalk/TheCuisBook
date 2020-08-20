@@ -10,13 +10,13 @@
 @section Context
 
 Before getting into the details of how to use the @cuis{} language and tools to build software, we need to understand the point of view, assumptions and intentions that shape how @cuis{} is meant to be used. We can call this the Smalltalk philosophy of programming.
-@sp1
+@sp 1
 These ideas are not new, but they are not the basis of mainstream approaches to software development. The first clear vision of an automated information processor that would help people think and share knowledge in greately improved ways was the Memex described by Vannevar Bush in "As We May Think", published in 1945 @footnote{@url{https://en.wikipedia.org/wiki/As_We_May_Think}}. This ideas inspired many later thinkers and inventors. The most straightforward development of this was the adoption of digital computers and networks as the support for Memex like systems. Notable milestones in this line of development were Ivan Sutherland's Sketchpad (1963), the RAND Tablet (1964), and Doug Engelbart's NLS ("oN-Line System") (1968). Later developments include Ted Nelson's Xanadu, the Apple Macintosh, the World Wide Web, and Smartphones and Tablet computers.
-@sp1
+@sp 1
 But, originally inspired by the Memex and the first wave of developments listed above, another completely different vision was developed. This vision was also influenced by the work understanding how humans learn of J. Piaget, J. Brunner, O. K. Moore and S. Papert. Alan Kay conceived the idea that computer software and computer programming could be a new medium for expressing thoughts and knowledge. He called his concept the "Dynabook" and described it in "Personal Dynamic Media" (1977). Another essential reading by Alan is "The Early History of Smalltalk".
-@sp1
+@sp 1
 Note the contrast with the mainstream point of view of programming, that is giving a computer a set of instructions so it can solve some problem. In this more common point of view, the only value of software is to solve a problem, and it is only as interesting as solving that problem.
-@sp1
+@sp 1
 The Dynabook vision included two main parts: hardware and software. Their original development took place at the Xerox PARC research center, in the 1970's. The first "interim Dynabook" hardware was the Xerox Alto, usually considered the first Personal Computer. The software part was Smalltalk. The design of both was guided by the objectives of making "Personal Dynamic Media" and the Dynabook real. The final version of Smalltalk built at Xerox was Smalltalk-80.
 @sp 1
 Hardware has evolved a lot in the following decades. Smartphones, Tablets and Laptops have effectively reached the kind of capabilities a Dynabook was envisioned to have. However, the same hasn't happened for software. After Smalltalk-80, further development of Smalltalk only meant making it an appropriate tool for professional software developers to write software for end users. Little has been advanced in the idea of a new medium for people to express ideas.
