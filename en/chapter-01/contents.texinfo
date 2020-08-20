@@ -1,6 +1,14 @@
 @node Smalltalk Philosophy
 @chapter Smalltalk Philosophy
 
+@menu
+* Context::
+* Installing and configuring @cuis{}::
+@end menu
+
+@node Context
+@section Context
+
 Before getting into the details of how to use the @cuis{} language and tools to build software, we need to understand point of view, assumptions and intentions that shape how @cuis{} is meant to be used. We can call this the Smalltalk philosophy of programming.
 
 These ideas are not new, but they are not the basis of mainstream approaches to software development. The first clear vision of an automated information processor that would help people think and share knowledge in greately improved ways was the Memex described by Vannevar Bush in "As We May Think", published in 1945 @footnote{@url{https://en.wikipedia.org/wiki/As_We_May_Think}}. This ideas inspired many later thinkers and inventors. The most straightforward development of this was the adoption of digital computers and networks as the support for Memex like systems. Notable milestones in this line of development were Ivan Sutherland's Sketchpad (1963), the RAND Tablet (1964), and Doug Engelbart's NLS ("oN-Line System") (1968). Later developments include Ted Nelson's Xanadu, the Apple Macintosh, the World Wide Web, and Smartphones and Tablet computers.
@@ -10,3 +18,88 @@ But, originally inspired by the Memex and the first wave of developments listed 
 Note the contrast with the mainstream point of view of programming, that is giving a computer a set of instructions so it can solve some problem. In this more common point of view, the only value of software is to solve a problem, and it is only as interesting as solving that problem.
 
 The Dynabook vision included two main parts: hardware and software. Their original development took place at the Xerox PARC research center, in the 1970's. The first "interim Dynabook" hardware was the Xerox Alto, usually considered the first Personal Computer. The software part was Smalltalk. The design of both was guided by the objectives of making "Personal Dynamic Media" and the Dynabook real. The final version of Smalltalk built at Xerox was Smalltalk-80.
+
+
+@node Installing and configuring @cuis{}
+@section Installing and configuring @cuis{}
+@cuis{} is an environment and a programming language executed on a
+virtual computer. It is based on two major components:
+the Smalltalk @dfn{virtual machine} conceptualizing this virtual
+computer and an @dfn{image} representing the state of this computer.
+
+The virtual machine is an executable program running on a dedicated
+host (GNU/Linux, Mac OS X, Windows, etc.). It is called the @dfn{Open
+Smalltalk Virtual Machine}, or Squeak @vm{} in short. There are
+different flavors of @vm{}, one for each combination of Operating
+System and CPU architecture. Therefore, one @vm{} compiled
+for Windows in Intel architecture will not work on Linux in
+ARM architecture. You need the specific @vm{} compiled for
+the combination of Operating System and CPU architecture
+your computer is based on.
+
+The image is a regular file feeding the @vm{} with all the objects
+ defining the state of the virtual computer. These objects are
+ classes, methods, instances of those classes as numbers, strings,
+ windows, debuggers whatever existed when the state of the virtual
+ computer was saved. An image file saved on a given Operating System
+ and CPU architecture run identically on another system as
+ long as the same @vm{} version is used.
+
+What makes @cuis{} special is the living entities in the image: its
+classes population and arrangement, how they inherit from each
+other. The @cuis{} moto is to be a tiny, coherent and human
+understandable Smalltalk environment; its class count is typically
+less than 600.
+
+To get you started easily, @url{http://github.com/Cuis-Smalltalk/BookResources,we
+provide three archives} for GNU/Linux, Mac OS X and Windows on Intel
+architecture. These archives come with the dedicated @vm{} and the
+image of @cuis{} @value{cuisVersion}. Into this image we pre-installed
+a few packages to make your life easier when you experience the
+examples and exercises of the book. At the reading time of this book,
+@cuis{} has likely evolved with a more recent version, nevertheless
+your learning is transferable to more recent version of @cuis{}.
+
+To get @cuis{} running on your computer, follow the instructions in
+the @file{README} file accompanying the archive. Once you get @cuis{}
+running, read the information displayed on the windows. When you are
+done, close these windows, next you will adjust @cuis{} to your
+preferences.
+
+@subsection Editing your preferences
+Once you read the instructions on the default windows, the second
+things you want to do is to adjust its visual properties to fit your
+preferences and needs. To do so, access the World menu
+...@clicksequence{Background click @click{} Preferences...} then
+select the pin on the top right of the menu to make it permanent. Here
+you have the most important options: the choice for the @strong{font
+size}, the @strong{themes} whenever your prefer light or dark
+colouring. There are other preferences you can explore by
+yourself. Once you are done, access again the World menu
+...@clicksequence{Background click @click{} Save}... to make your
+preferences permanent. In this book, we keep the default @cuis{}
+theme, we suggest you to do the same so your environment reflects the
+book screenshots.
+
+@figure{Set Preferences,ch01-Preferences,12}
+
+@subsection Fun with window placement
+@cindex tools, workspace
+The first tool to discover is the @dfn{Workspace} tool. It is a kind
+of text editor to key in Smalltalk code you can execute
+immediately. Do a ...@clicksequence{Background click @click{}
+Open... @click{} Workspace}...
+
+Now we ask @cuis{} to make the windows placement: click the blue icon
+(top left) to access the window option and experiment with the white
+area to place the Workspace window at the half left of the @cuis{}
+environment.
+
+@figure{Window options,ch01-img1a,7}
+
+The @option{resize...} option even offers more freedom to place the
+window. Resolve the following exercise:
+
+@exercise{Middle placement,exePlacement, @emph{Use the
+@option{resize...} option to place the Workspace centered on @cuis{}
+environment.}}
