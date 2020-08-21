@@ -4,6 +4,7 @@
 @menu
 * Context::
 * Installing and configuring @cuis{}::
+* Writing your first scripts::
 @end menu
 
 @node Context
@@ -59,14 +60,15 @@ other. The @cuis{} moto is to be a tiny, coherent and human
 understandable Smalltalk environment; its class count is typically
 less than 600.
 
-To get you started easily, @url{http://github.com/Cuis-Smalltalk/BookResources,we
-provide three archives} for GNU/Linux, Mac OS X and Windows on Intel
-architecture. These archives come with the dedicated @vm{} and the
-image of @cuis{} @value{cuisVersion}. Into this image we pre-installed
-a few packages to make your life easier when you experience the
-examples and exercises of the book. At the reading time of this book,
-@cuis{} has likely evolved with a more recent version, nevertheless
-your learning is transferable to more recent version of @cuis{}.
+To get you started easily, we provide three
+archives@footnote{@url{http://github.com/Cuis-Smalltalk/BookResources}}
+for GNU/Linux, Mac OS X and Windows on Intel architecture. These
+archives come with the dedicated @vm{} and the image of @cuis{}
+@value{cuisVersion}. Into this image we pre-installed a few packages
+to make your life easier when you experience the examples and
+exercises of the book. At the reading time of this book, @cuis{} has
+likely evolved with a more recent version, nevertheless your learning
+is transferable to more recent version of @cuis{}.
 
 To get @cuis{} running on your computer, follow the instructions in
 the @file{README} file accompanying the archive. Once you get @cuis{}
@@ -111,3 +113,78 @@ window. Resolve the following exercise:
 @exercise{Middle placement,exePlacement, @emph{Use the
 @option{resize...} option to place the Workspace centered on @cuis{}
 environment.}}
+
+@node Writing your first scripts
+@section Writing your first scripts
+In this section we present a few scripts so you will get a taste and
+feeling about Smalltalk code. The examples are associated with small
+exercises to experiment with and accompanied with solutions in the
+annex. We intentionally keep the details of the syntax out of this
+section.
+
+Smalltalk script are usually written in a Workspace. The usual
+@emph{Hello world!} program is written as:
+
+@smalltalkExampleCaption{The traditional 'Hello World!' program,hello,
+Transcript show: 'Hello World'}
+
+@cindex tools, transcript
+To execute this code, select it with the mouse and
+...@clicksequence{right mouse click @click{} Do it (d)}...  Nothing
+happen! Indeed to see the output, you need a @dfn{Transcript} window,
+it is a place where programmer send information for the user as we are
+doing in our example. Do ...@clicksequence{Background click @click{}
+Open... @click{} Transcript}... and execute again the code.
+
+@figure{Transcript window with output,ch01-img2,3}
+
+This code comes in three parts:
+
+@itemize
+
+@item the literal @smalltalk{'Hello World!'}  
+
+@item the message @msg{show:} with its argument @smalltalk{'Hello World!'}
+
+@item the class @class{Transcript} receiving the message @msg{show:} with its argument
+
+@end itemize
+
+The action of printing takes place in the class
+@class{Transcript}. The code execution is invoked with keyboard
+shortcuts @kbd{Ctrl-A} then @kbd{Ctrl-D} (@emph{@b{D}o it}).
+
+@smalltalkExampleCaption{Multiple lines, hello2,
+Transcript show: 'Hello World!'.
+Transcript newLine.
+Transcript show: 'I am Cuising'}
+
+In this three lines script, observe how the line are separated by a
+dot ``.''. It is really a line separator not needed in the third line
+nor in a one line script. The message @msg{newLine} has no argument.
+
+@cindex cascade of messages
+In the @ref{hello2} example, the message @msg{show:} and @msg{newLine}
+are sent to the same @class{Transcript} class. In such circumstance,
+we can use the cascade technique to avoid this repetition. The
+receiver @class{Transcript} is written once and the sent messages are
+separated by semicolon:
+
+@smalltalkExampleCaption{Cascade of message, helloCascade,
+Transcript
+   show: 'Hello World!';
+   newLine;
+   show: 'I am Cuising'}
+
+Observe the text layout to ease code understanding. It is possible to
+write the cascade of messages in one line, but it reduces the
+readability of the code:
+
+@smalltalkExample{Transcript show: 'Hello World!'; newLine; show: 'I
+am Cuising'}
+
+The @class{Transcript} class is most of the time used to output useful
+information when developing an application. As an alternative to the
+@kbd{Ctrl-d} shortcut, @kbd{Ctrl-p} (@emph{@b{P}rint it}) executes the
+script and prints in the Workspace the result of the last line of the
+script.
