@@ -1,11 +1,9 @@
 \input texinfo @c -*-texinfo-*-
 @c %**start of header
 @settitle The Cuis-Smalltalk Book
-@set timeStamp Time-stamp: <2020-08-23 11:31:23 hilaire>
+@set timeStamp Time-stamp: <2020-08-23 11:45:41 hilaire>
 @set cuisVersion 5.0#4253
 @set txicodequoteundirected ON 
-@c @paragraphindent 0
-@c @firstparagraphindent insert
 @setfilename TheCuisBook.info
 @include ../cuisMacro.texinfo
 
@@ -101,7 +99,7 @@ Complete license: @url{https://creativecommons.org/licenses/by-sa/4.0/legalcode}
 * Process::
 * Code Management::
 * The exercices::
-@c * Solutions of the exercises::
+* Solutions of the exercises::
 * The examples::
 * The figures::
 * Indexes::
@@ -144,7 +142,7 @@ Complete license: @url{https://creativecommons.org/licenses/by-sa/4.0/legalcode}
 @appendix Liste des exercices
 @listoffloats Exercise
 @c Solutions of exercises
-@c @include chapter-50/contents.texinfo
+@include chapter-50/contents.texinfo
 @c List of examples
 @node The examples
 @appendix List of the examples
