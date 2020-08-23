@@ -49,13 +49,13 @@ your computer is based on.
 The image is a regular file feeding the @vm{} with all the objects
  defining the state of the virtual computer. These objects are
  classes, methods, instances of those classes as numbers, strings,
- windows, debuggers whatever existed when the state of the virtual
+ windows, debuggers -- whatever existed when the state of the virtual
  computer was saved. An image file saved on a given Operating System
  and CPU architecture run identically on another system as
  long as the same @vm{} version is used.
 
 What makes @cuis{} special is the living entities in the image: its
-classes population and arrangement, how they inherit from each
+class population and arrangement, how the classes inherit from each
 other. The @cuis{} moto is to be a tiny, coherent and human
 understandable Smalltalk environment; its class count is typically
 less than 600.
@@ -77,8 +77,8 @@ done, close these windows, next you will adjust @cuis{} to your
 preferences.
 
 @subsection Editing your preferences
-Once you read the instructions on the default windows, the second
-things you want to do is to adjust its visual properties to fit your
+Once you read the instructions on the default windows, the next 
+thing you want to do is to adjust its visual properties to fit your
 preferences and needs. To do so, access the World menu
 ...@clicksequence{Background click @click{} Preferences...} then
 select the pin on the top right of the menu to make it permanent. Here
@@ -122,7 +122,7 @@ exercises to experiment with and accompanied with solutions in the
 annex. We intentionally keep the details of the syntax out of this
 section.
 
-Smalltalk script are usually written in a Workspace. The usual
+Smalltalk scripts are usually written in a Workspace. The usual
 @emph{Hello world!} program is written as:
 
 @smalltalkExampleCaption{The traditional 'Hello World!' program,hello,
@@ -130,11 +130,11 @@ Transcript show: 'Hello World'}
 
 @cindex tools, transcript
 To execute this code, select it with the mouse and
-...@clicksequence{right mouse click @click{} Do it (d)}...  Nothing
-happen! Indeed to see the output, you need a @dfn{Transcript} window,
-it is a place where programmer send information for the user as we are
-doing in our example. Do ...@clicksequence{Background click @click{}
-Open... @click{} Transcript}... and execute again the code.
+...@clicksequence{right mouse click @click{} Do it (d)}...  You may now see nothing
+happen! Indeed to see the output, you need a @dfn{Transcript} window to be visible.
+The @class{Transcript} is a place where programmer can send information for the user as we are
+doing here. Do ...@clicksequence{Background click @click{}
+Open... @click{} Transcript}... and execute the code again.
 
 @figure{Transcript window with output,ch01-img2,3}
 
@@ -160,13 +160,13 @@ Transcript newLine.
 Transcript show: 'I am Cuising'}
 
 In this three lines script, observe how the line are separated by a
-dot ``.''. It is really a line separator not needed in the third line
+dot ``.''. This period is a line separator not needed in the third line
 nor in a one line script. The message @msg{newLine} has no argument.
 
 @cindex cascade of messages
 In the @ref{hello2} example, the message @msg{show:} and @msg{newLine}
 are sent to the same @class{Transcript} class. In such circumstance,
-we can use the cascade technique to avoid this repetition. The
+we can use the @dfn{cascade} technique to avoid this repetition. The
 receiver @class{Transcript} is written once and the sent messages are
 separated by semicolon:
 
@@ -176,14 +176,18 @@ Transcript
    newLine;
    show: 'I am Cuising'}
 
-Observe the text layout to ease code understanding. It is possible to
+Observe the text here is formatted to ease code understanding. It is possible to
 write the cascade of messages in one line, but it reduces the
 readability of the code:
 
 @smalltalkExample{Transcript show: 'Hello World!'; newLine; show: 'I am Cuising'}
 
-The @class{Transcript} class is most of the time used to output useful
+The @class{Transcript} class is frequently helpful in presenting useful
 information when developing an application. As an alternative to the
 @kbd{Ctrl-d} shortcut, @kbd{Ctrl-p} (@emph{@b{P}rint it}) executes the
-script and prints in the Workspace the result of the last line of the
-script.
+script and prints the result direcly in the Workspace.
+
+In the example, we have requested no special result.
+Selecting the text and typing @kbd{Ctrl-p} results in
+the default, which is to return the object to which a
+message is sent, in this case the @class{Transcript}.
