@@ -54,6 +54,7 @@ running, read the information displayed on the windows. When you are
 done, close these windows, next you will adjust @cuis{} to your
 preferences.
 
+@c transfered
 @subsection Editing your preferences
 Once you read the instructions on the default windows, the second
 things you want to do is to adjust its visual properties to fit your
@@ -71,6 +72,7 @@ book screenshots.
 
 @figure{Set Preferences,B-01-Preferences,12}
 
+@c transfered
 @subsection Fun with window placement
 @cindex tools, workspace
 The first tool to discover is the @dfn{Workspace} tool. It is a kind
@@ -166,8 +168,7 @@ information when developing an application. As an alternative to the
 script and prints in the Workspace the result of the last line of the
 script.
 
-@c==start here
-
+@c transfered
 @subsection Fun with numbers
 @cindex number, integer
 
@@ -291,7 +292,7 @@ Integer can be printed in different forms:
 "Number as the Maya did"
 2020 printStringBase: 20 @result{} '510'}
 
-
+@c not transfered
 @subsubheading Hiatus with decimal numbers
 @cindex number, decimal
 We saw decimal numbers are written with a dot ``.'' to separate the
@@ -357,6 +358,7 @@ it seems:
 @smalltalkExample{(13/10) asFloat asFraction
 @result{} 5854679515581645/45035996273704}
 
+@c transfered
 @subsection Fun with text
 @cindex string
 A @dfn{String} is the way text is represented in a programming

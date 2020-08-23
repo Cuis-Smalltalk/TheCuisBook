@@ -187,3 +187,186 @@ information when developing an application. As an alternative to the
 @kbd{Ctrl-d} shortcut, @kbd{Ctrl-p} (@emph{@b{P}rint it}) executes the
 script and prints in the Workspace the result of the last line of the
 script.
+
+@subsection Fun with numbers
+@cindex number, integer
+
+In your Workspace, to compute a factorial execute the example bellow
+with @kbd{Ctrl-a} then @kbd{Ctrl-p}:
+@smalltalkExample{100 factorial
+@result{}  9332621544394415268169923885626670049071596826438162146859
+29638952175999932299156089414639761565182862536979208272237582
+51185210916864000000000000000000000000}
+
+@cuis{} handles very large integer number without the need to use
+special type or method. To convince yourelf try the example bellow:
+@smalltalkExample{10000 factorial / 9999 factorial
+@result{} 10000}
+
+If you execute and print with @kbd{Ctrl-p} @smalltalk{10000
+factorial}, you realize it takes far more time to print one factorial
+than computing two factorials and a division. The result is an integer
+as expected, not a decimal number answer as many computer languages
+will return.
+
+As we are discussing division, you may not get the result you think:
+@smalltalkExample{15 / 4
+@result{} 15/4}
+
+It looks like @cuis{} is lazy because it does not respond the decimal
+number @smalltalk{3.75} as we were expecting. In fact @cuis{} wants to
+be as accurate as possible, and its answer is a rational fraction! After
+all, fractions are just division we are too lazy -- because it
+is troublesome -- to compute, @cuis{} does just that!
+
+Try out this to understand what is happening underneath:
+@smalltalkExample{(15 / 4) + (1 / 4)
+@result{} 4}
+
+Is it not wonderful? @cuis{} computes with rational numbers. We
+started with division and addition operations on integer, and we got
+an accurate result thanks to intermediate computation on rational
+numbers.
+
+@cuisNote{In the example, observe how the parenthesis are used
+although in arithmetic calculation the division is operated first. With
+@cuis{} you need to explicit the order of operation with
+parenthesis. We will explain why in Part Two.}
+
+@exercise{Inverse sum,inverseSum, @emph{Write the code to compute the
+sum of the first four integer inverses.}}
+@cindex number, root
+@cindex number, @msg{sqrt}
+@cindex number, @msg{squared}
+All four arithmetic operations and mathematical functions are
+compatible with the rational number representation:
+@smalltalkExample {(15 / 14) * (21 / 5) @result{} 9 / 2
+(15 / 14) / ( 5 / 21) @result{} 9 /2 
+(3 / 4) squared @result{} 9 / 16
+(25 / 4) sqrt @result{} 5 / 2}
+
+@exercise{Sum of the squares,squaredSum,Write the code to compute the
+sum of the squares of the inverse of the first four integers.}
+
+@cindex number, decimal division
+If @cuis{} divides integer as rational number, how to compute the
+decimal division? One option is to write a number as a @dfn{Float}, it
+is the decimal representation in programming language, the integer
+part and fractional parts are separated by a dot ``.'':
+@smalltalkExample{ 15.0 / 4 @result{}3.75
+15 / 4.0 @result{} 3.75}
+
+Another option is to convert an integer to a float with the
+@msg{asFloat} message. It is very useful when the integer is in a
+variable:
+
+@smalltalkExample{15 asFloat / 4
+@result{} 3.75}
+
+@cindex number, integer division
+Alternatively to the decimal division, you ask integer division with
+the message @msg{//}:
+@smalltalkExample{15 // 4
+@result{} 3}
+
+@cindex number, division reminder
+The reminder of the Euclidean division is computed with the message
+@msg{\\\\}:
+@smalltalkExample{15 \\\\ 4
+@result{} 3}
+
+
+@cindex number, @msg{odd}
+@cindex number, @msg{even}
+@cindex number, @msg{isPrime}
+@cindex number, @msg{isDivisibleBy:}
+@cuis{} knows some arithmetic operations to test if an integer is an
+odd, even or prime number. You just send the appropriate message to
+the number:
+
+@smalltalkExampleCaption{Testing on integer,integerBasicTest,
+25 odd @result{} true
+25 even @result{} false
+25 isPrime @result{} false
+23 isPrime @result{} true
+91 isDivisibleBy: 7 @result{} true
+117 isDivisibleBy: 7 @result{} false
+117 isDivisibleBy: 9 @result{} true}
+
+@cindex number, @msg{gcd:}
+@cindex number, @msg{lcm:}
+With specific @dfn{keyword messages} you compute the Least Common
+Multiple and Greatest Common Divisor. A keyword message is composed of
+one or several colon(s) ``:'' to insert argument(s):
+
+@smalltalkExample{12 lcm: 15 @result{} 60
+12 gcd: 15 @result{} 3}
+Integer can be printed in different forms:
+
+@cindex number, roman
+@cindex number, as words
+@cindex number, base
+@smalltalkExample{2020 printStringRoman @result{} 'MMXX' 
+2020 printStringWords  @result{} 'two thousand, twenty'
+"Number as the Maya did"
+2020 printStringBase: 20 @result{} '510'}
+
+@subsection Fun with text
+@cindex string
+A @dfn{String} is the way text is represented in a programming
+language, it is a collection of characters. We already met string with
+our first script, it is enclosed in single quotes: @smalltalk{'hello
+world!'}. We capitalize it with the @msg{capitalized} message:
+
+@cindex string, capitalized
+@smalltalkExample{'hello world!' capitalized
+@result{} 'Hello world!' }
+
+@exercise{Capitalize number as words,capWordNumber,@emph{Print 2020 as
+words capitalized.}}
+
+@cindex string, concatenate
+Two strings are concatenated with the @msg{,} message
+@smalltalkExample{'Hello', ' ', 'my beloved', ' ', 'friend'
+@result{} 'Hello my beloved friend'}
+
+@cindex string, character access
+Access to a character in a string is done with the keyword message
+@msg{at:} and its index position in the string:
+@smalltalkExample{'Hello' at: 1 @result{} $H
+'Hello' at: 5 @result{} $o}
+
+Observe how a character is prefixed with the ``$'' symbol.
+
+@strong{Caution.} The index position starts naturally from 1 to the
+string length.
+
+To change one character, use the companion two keywords message
+@msg{at:put:}. The argument must be noted as a character:
+@smalltalkExample{'Hello' at: 2 put: $a; yourself
+@result{} 'Hallo'}
+
+Observe the use of the cascade with the @msg{yourself} message. It is
+sent to the instance string to get it returned.
+
+@exercise{Hello to Belle,helloBelle, @emph{Replace each character of
+the string 'Hello' to become 'Belle'}}
+
+@cindex character, ascii
+Character can be converted to integer and integer to character:
+@smalltalkExample{$A asciiValue @result{} 65
+(65 + 25) asCharacter @result{} $Z}
+
+@cindex string, shuffled
+@cindex collection, shuffled
+Shuffling a string is funny but without much use. Nevertheless,
+shuffling apply to any kind of collection, not only to string, and it
+proves to be of some use as we may see later:
+@smalltalkExample{'hello world' shuffled
+@result{} 'wod llreohl'}
+
+@cindex string, @msg{sorted}
+We can write the same about sorting a string:
+@smalltalkExample{'bonjour' sorted
+@result{}#($b $j $n $o $o $r $u)}
+
