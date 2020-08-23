@@ -180,8 +180,7 @@ Observe the text layout to ease code understanding. It is possible to
 write the cascade of messages in one line, but it reduces the
 readability of the code:
 
-@smalltalkExample{Transcript show: 'Hello World!'; newLine; show: 'I
-am Cuising'}
+@smalltalkExample{Transcript show: 'Hello World!'; newLine; show: 'I am Cuising'}
 
 The @class{Transcript} class is most of the time used to output useful
 information when developing an application. As an alternative to the

@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This book is for Cuis-Smalltalk (5.0#4253), a free and modern
+implementation of the Smalltalk language and environment.
+
+Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
+
+
+
+
+
+
+
+Compilation : August 23, 2020
+
+Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
+
+
+
+The contents of this book are protected under Creative Commons
+Attribution-ShareAlike 4.0 International.
+
+You are free to:
+
+
+Share - copy and redistribute the material in any medium or
+format
+
+
+Adapt - remix, transform, and build upon the material for any
+purpose, even commercially.
+
+
+
+Under the following terms:
+
+
+Attribution. You must give appropriate credit, provide a link to
+the license, and indicate if changes were made. You may do so in any
+reasonable manner, but not in any way that suggests the licensor
+endorses you or your use.
+
+
+Share Alike. If you remix, transform, or build upon the material,
+you must distribute your contributions under the same license as the
+original.
+
+Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+ -->
+<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Context (The Cuis-Smalltalk Book)</title>
+
+<meta name="description" content="Context (The Cuis-Smalltalk Book)">
+<meta name="keywords" content="Context (The Cuis-Smalltalk Book)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Indexes.html" rel="index" title="Indexes">
+<link href="Smalltalk-Philosophy.html" rel="up" title="Smalltalk Philosophy">
+<link href="Installing-and-configuring-Cuis_002dSmalltalk.html" rel="next" title="Installing and configuring Cuis-Smalltalk">
+<link href="Smalltalk-Philosophy.html" rel="prev" title="Smalltalk Philosophy">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="style.css">
+
+
+</head>
+
+<body lang="en">
+<span id="Context"></span><div class="header">
+<p>
+Next: <a href="Installing-and-configuring-Cuis_002dSmalltalk.html" accesskey="n" rel="next">Installing and configuring Cuis-Smalltalk</a>, Up: <a href="Smalltalk-Philosophy.html" accesskey="u" rel="up">Smalltalk Philosophy</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Context-1"></span><h3 class="section">1.1 Context</h3>
+
+<p>Before getting into the details of how to use the Cuis-Smalltalk language and tools to build software, we need to understand the point of view, assumptions and intentions that shape how Cuis-Smalltalk is meant to be used. We can call this the Smalltalk philosophy of programming.
+</p>
+<p>These ideas are not new, but they are not the basis of mainstream approaches to software development. The first clear vision of an automated information processor that would help people think and share knowledge in greately improved ways was the Memex described by Vannevar Bush in &quot;As We May Think&quot;, published in 1945 <a id="DOCF2" href="#FOOT2"><sup>2</sup></a>. This ideas inspired many later thinkers and inventors. The most straightforward development of this was the adoption of digital computers and networks as the support for Memex like systems. Notable milestones in this line of development were Ivan Sutherland&rsquo;s Sketchpad (1963), the RAND Tablet (1964), and Doug Engelbart&rsquo;s NLS (&quot;oN-Line System&quot;) (1968). Later developments include Ted Nelson&rsquo;s Xanadu, the Apple Macintosh, the World Wide Web, and Smartphones and Tablet computers.
+</p>
+<p>But, originally inspired by the Memex and the first wave of developments listed above, another completely different vision was developed. This vision was also influenced by the work understanding how humans learn of J. Piaget, J. Brunner, O. K. Moore and S. Papert. Alan Kay conceived the idea that computer software and computer programming could be a new medium for expressing thoughts and knowledge. He called his concept the &quot;Dynabook&quot; and described it in &quot;Personal Dynamic Media&quot; (1977). Another essential reading by Alan is &quot;The Early History of Smalltalk&quot;.
+</p>
+<p>Note the contrast with the mainstream point of view of programming, that is giving a computer a set of instructions so it can solve some problem. In this more common point of view, the only value of software is to solve a problem, and it is only as interesting as solving that problem.
+</p>
+<p>The Dynabook vision included two main parts: hardware and software. Their original development took place at the Xerox PARC research center, in the 1970&rsquo;s. The first &quot;interim Dynabook&quot; hardware was the Xerox Alto, usually considered the first Personal Computer. The software part was Smalltalk. The design of both was guided by the objectives of making &quot;Personal Dynamic Media&quot; and the Dynabook real. The final version of Smalltalk built at Xerox was Smalltalk-80.
+</p>
+<p>Hardware has evolved a lot in the following decades. Smartphones, Tablets and Laptops have effectively reached the kind of capabilities a Dynabook was envisioned to have. However, the same hasn&rsquo;t happened for software. After Smalltalk-80, further development of Smalltalk only meant making it an appropriate tool for professional software developers to write software for end users. Little has been advanced in the idea of a new medium for people to express ideas.
+</p>
+<p>The development of the World Wide Web, and modern applications for handhelds and laptops, meant that software is written by professional developers: the kinds of media that are made available for users to create content include text, photographs and video, but not a more advanced way to express knowledge.
+</p>
+<p>For this reason, Cuis is a Smalltalk system, and one that is rather close to Smalltalk-80. It is well adapted to modern hardware and operating environments, and includes many modern programming facilities.
+</p>
+<p>But we still believe that the best way to write programs is to capture a set of ideas and knowledge, that other people can understand, and that a computer can run. Cuis-Smalltalk is meant to be used this way.
+</p>
+
+<div class="footnote">
+<hr>
+<h4 class="footnotes-heading">Footnotes</h4>
+
+<h5><a id="FOOT2" href="#DOCF2">(2)</a></h3>
+<p><a href="https://en.wikipedia.org/wiki/As_We_May_Think">https://en.wikipedia.org/wiki/As_We_May_Think</a></p>
+</div>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Installing-and-configuring-Cuis_002dSmalltalk.html" accesskey="n" rel="next">Installing and configuring Cuis-Smalltalk</a>, Up: <a href="Smalltalk-Philosophy.html" accesskey="u" rel="up">Smalltalk Philosophy</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

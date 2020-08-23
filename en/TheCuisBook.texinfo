@@ -1,14 +1,14 @@
 \input texinfo @c -*-texinfo-*-
 @c %**start of header
 @settitle The Cuis-Smalltalk Book
-@set timeStamp Time-stamp: <2020-08-23 11:45:41 hilaire>
+@set timeStamp Time-stamp: <2020-08-23 12:01:33 hilaire>
 @set cuisVersion 5.0#4253
 @set txicodequoteundirected ON 
 @setfilename TheCuisBook.info
 @include ../cuisMacro.texinfo
 
 @macro thanks
-Thanks to Ken Dickey for the careful review.
+@c
 @end macro
 
 @c @afourwide
@@ -24,10 +24,9 @@ implementation of the Smalltalk language and environment.
 Copyright @copyright{} 2020 @writers{}
 @*
 
-The syntax chapter is from the @emph{Squeak by Example} book.
+@c The syntax chapter is from the @emph{Squeak by Example} book.
 
-Copyright @copyright{} 2007, 2008, 2009 by Andrew P. Black, Stéphane
-Ducasse, Oscar Nierstrasz and Damien Pollet.
+@c Copyright @copyright{} 2007, 2008, 2009 by Andrew P. Black, St@'{e}phane Ducasse, Oscar Nierstrasz and Damien Pollet.
 
 @*
 Compilation : @today{}

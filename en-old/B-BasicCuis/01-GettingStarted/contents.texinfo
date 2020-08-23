@@ -144,9 +144,9 @@ nor in a one line script. The message @msg{newLine} has no argument.
 @cindex cascade of messages
 In the @ref{hello2} example, the message @msg{show:} and @msg{newLine}
 are sent to the same @class{Transcript} class. In such circumstance,
-we can use the cascade technique to avoid this repetition. The
-receiver @class{Transcript} is written once and the sent messages are
-separated by semicolon:
+we can use the @dfn{cascade of messages} technique to avoid this
+repetition. The receiver @class{Transcript} is written once and the
+sent messages are separated by semicolon:
 
 @smalltalkExampleCaption{Cascade of message, helloCascade,
 Transcript
