@@ -116,14 +116,14 @@ environment.}}
 
 @node Writing your first scripts
 @section Writing your first scripts
-In this section we present a few scripts so you will get a taste and
-feeling about Smalltalk code. The examples are associated with small
-exercises to experiment with and accompanied with solutions in the
-annex. We intentionally keep the details of the syntax out of this
-section.
+In this section you will learn how to write simple scripts in the
+Workspace to get a taste and feeling about Smalltalk code. The
+examples are associated with small exercises to experiment with and
+accompanied with solutions in the annex. We intentionally keep the
+details of the syntax out of this section.
 
-Smalltalk scripts are usually written in a Workspace. The usual
-@emph{Hello world!} program is written as:
+In a Workspace, the usual @emph{Hello world!} program can be written
+in Smalltalk:
 
 @smalltalkExampleCaption{The traditional 'Hello World!' program,hello,
 Transcript show: 'Hello World'}
@@ -209,7 +209,7 @@ special type or method. To convince yourelf try the example bellow:
 @smalltalkExample{10000 factorial / 9999 factorial
 @result{} 10000}
 
-If you execute and print with @kbd{Ctrl-p} @smalltalk{10000
+If you execute and print with @kbd{Ctrl-p} the code: @smalltalk{10000
 factorial}, you realize it takes far more time to print one factorial
 than computing two factorials and a division. The result is an integer
 as expected, not a decimal number answer as many computer languages
@@ -237,7 +237,7 @@ numbers.
 @cuisNote{In the example, observe how the parenthesis are used
 although in arithmetic calculation the division is operated first. With
 @cuis{} you need to explicit the order of operation with
-parenthesis. We will explain why in Part Two.}
+parenthesis. We will explain why later.}
 
 @exercise{Inverse sum,inverseSum, @emph{Write the code to compute the
 sum of the first four integer inverses.}}
