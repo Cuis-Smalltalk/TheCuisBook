@@ -11,7 +11,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : August 23, 2020
+Compilation : August 30, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -60,7 +60,7 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="Smalltalk-Philosophy.html" rel="up" title="Smalltalk Philosophy">
-<link href="The-Message-Way-Of-Life.html" rel="next" title="The Message Way Of Life">
+<link href="Spacewar_0021.html" rel="next" title="Spacewar!">
 <link href="Installing-and-configuring-Cuis_002dSmalltalk.html" rel="prev" title="Installing and configuring Cuis-Smalltalk">
 <style type="text/css">
 <!--
@@ -88,18 +88,18 @@ ul.no-bullet {list-style: none}
 <body lang="en">
 <span id="Writing-your-first-scripts"></span><div class="header">
 <p>
-Previous: <a href="Installing-and-configuring-Cuis_002dSmalltalk.html" accesskey="p" rel="prev">Installing and configuring Cuis-Smalltalk</a>, Up: <a href="Smalltalk-Philosophy.html" accesskey="u" rel="up">Smalltalk Philosophy</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Spacewar_0021.html" accesskey="n" rel="next">Spacewar!</a>, Previous: <a href="Installing-and-configuring-Cuis_002dSmalltalk.html" accesskey="p" rel="prev">Installing and configuring Cuis-Smalltalk</a>, Up: <a href="Smalltalk-Philosophy.html" accesskey="u" rel="up">Smalltalk Philosophy</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <span id="Writing-your-first-scripts-1"></span><h3 class="section">1.3 Writing your first scripts</h3>
-<p>In this section we present a few scripts so you will get a taste and
-feeling about Smalltalk code. The examples are associated with small
-exercises to experiment with and accompanied with solutions in the
-annex. We intentionally keep the details of the syntax out of this
-section.
+<p>In this section you will learn how to write simple scripts in the
+Workspace to get a taste and feeling about Smalltalk code. The
+examples are associated with small exercises to experiment with and
+accompanied with solutions in the annex. We intentionally keep the
+details of the syntax out of this section.
 </p>
-<p>Smalltalk script are usually written in a Workspace. The usual
-<em>Hello world!</em> program is written as:
+<p>In a Workspace, the usual <em>Hello world!</em> program can be written
+in Smalltalk:
 </p>
 <div class="float"><span id="hello"></span>
 <div class="display">
@@ -109,11 +109,11 @@ section.
 <div class="float-caption"><p><strong><em>Example</em> 1.1: </strong>The traditional &rsquo;Hello World!&rsquo; program</p></div></div>
 <span id="index-tools_002c-transcript"></span>
 <p>To execute this code, select it with the mouse and
-...right mouse click &rarr; Do it (d)...  Nothing
-happen! Indeed to see the output, you need a <em>Transcript</em> window,
-it is a place where programmer send information for the user as we are
-doing in our example. Do ...Background click &rarr;
-Open... &rarr; Transcript... and execute again the code.
+...right mouse click &rarr; Do it (d)...  You may now see nothing
+happen! Indeed to see the output, you need a <em>Transcript</em> window to be visible.
+The <span class="sansserif">Transcript</span> is a place where programmer can send information for the user as we are
+doing here. Do ...Background click &rarr;
+Open... &rarr; Transcript... and execute the code again.
 </p>
 <div class="float"><span id="ch01_002dimg2"></span>
 <div align="center"><img src="ch01-img2.png" alt="ch01-img2">
@@ -143,13 +143,13 @@ Transcript show: &rsquo;I am Cuising&rsquo;</span>
 
 <div class="float-caption"><p><strong><em>Example</em> 1.2: </strong>Multiple lines</p></div></div>
 <p>In this three lines script, observe how the line are separated by a
-dot &ldquo;.&rdquo;. It is really a line separator not needed in the third line
+dot &ldquo;.&rdquo;. This period is a line separator not needed in the third line
 nor in a one line script. The message <span class="sansserif">#newLine</span> has no argument.
 </p>
 <span id="index-cascade-of-messages"></span>
 <p>In the <a href="#hello2"><em>Example</em> 1.2</a> example, the message <span class="sansserif">#show:</span> and <span class="sansserif">#newLine</span>
 are sent to the same <span class="sansserif">Transcript</span> class. In such circumstance,
-we can use the cascade technique to avoid this repetition. The
+we can use the <em>cascade</em> technique to avoid this repetition. The
 receiver <span class="sansserif">Transcript</span> is written once and the sent messages are
 separated by semicolon:
 </p>
@@ -162,7 +162,7 @@ separated by semicolon:
 </pre></div>
 
 <div class="float-caption"><p><strong><em>Example</em> 1.3: </strong>Cascade of message</p></div></div>
-<p>Observe the text layout to ease code understanding. It is possible to
+<p>Observe the text here is formatted to ease code understanding. It is possible to
 write the cascade of messages in one line, but it reduces the
 readability of the code:
 </p>
@@ -170,12 +170,18 @@ readability of the code:
 <pre class="display"><span class="sansserif">Transcript show: &rsquo;Hello World!&rsquo;; newLine; show: &rsquo;I am Cuising&rsquo;</span>
 </pre></div>
 
-<p>The <span class="sansserif">Transcript</span> class is most of the time used to output useful
-information when developing an application. As an alternative to the
-<kbd>Ctrl-d</kbd> shortcut, <kbd>Ctrl-p</kbd> (<em><b>P</b>rint it</em>) executes the
-script and prints in the Workspace the result of the last line of the
-script.
+<p>The <span class="sansserif">Transcript</span> class is frequently helpful in presenting
+useful information when developing an application. As an alternative
+to the <kbd>Ctrl-d</kbd> shortcut, <kbd>Ctrl-p</kbd> (<em><b>P</b>rint it</em>)
+executes the script and prints the result direcly in the Workspace.
 </p>
+<p>In the example, we have requested no special result.  Selecting the
+text and typing <kbd>Ctrl-p</kbd> results in the default, which is to
+return the object to which a message is sent, in this case the
+<span class="sansserif">Transcript</span>.
+</p>
+
+
 <span id="Fun-with-numbers"></span><h4 class="subsection">1.3.1 Fun with numbers</h4>
 <span id="index-number_002c-integer"></span>
 
@@ -195,7 +201,7 @@ special type or method. To convince yourelf try the example bellow:
 &rArr; 10000</span>
 </pre></div>
 
-<p>If you execute and print with <kbd>Ctrl-p</kbd> <span class="sansserif">10000
+<p>If you execute and print with <kbd>Ctrl-p</kbd> the code: <span class="sansserif">10000
 factorial</span>, you realize it takes far more time to print one factorial
 than computing two factorials and a division. The result is an integer
 as expected, not a decimal number answer as many computer languages
@@ -229,7 +235,7 @@ numbers.
 In the example, observe how the parenthesis are used
 although in arithmetic calculation the division is operated first. With
 Cuis-Smalltalk you need to explicit the order of operation with
-parenthesis. We will explain why in Part Two.
+parenthesis. We will explain why later.
 </p></blockquote>
 
 <div class="float"><span id="inverseSum"></span>
@@ -294,6 +300,8 @@ the message <span class="sansserif">#//</span>:
 &rArr; 3</span>
 </pre></div>
 
+<p><strong>TO BE WRITTEN:</strong> Numeric literals
+</p>
 
 <span id="index-number_002c-_0023odd"></span>
 <span id="index-number_002c-_0023even"></span>
@@ -423,7 +431,7 @@ proves to be of some use as we may see later:
 <hr>
 <div class="header">
 <p>
-Previous: <a href="Installing-and-configuring-Cuis_002dSmalltalk.html" accesskey="p" rel="prev">Installing and configuring Cuis-Smalltalk</a>, Up: <a href="Smalltalk-Philosophy.html" accesskey="u" rel="up">Smalltalk Philosophy</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Spacewar_0021.html" accesskey="n" rel="next">Spacewar!</a>, Previous: <a href="Installing-and-configuring-Cuis_002dSmalltalk.html" accesskey="p" rel="prev">Installing and configuring Cuis-Smalltalk</a>, Up: <a href="Smalltalk-Philosophy.html" accesskey="u" rel="up">Smalltalk Philosophy</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

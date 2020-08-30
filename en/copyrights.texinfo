@@ -1,0 +1,11 @@
+@c Documents avec copyright
+@node Documents copyright
+@appendix Documents copyright
+
+@raggedright
+@subheading @ref{Spacewar!-PDP}
+Spacewar running on PDP-1, Joi Ito, 12 May 2007 @*
+resized,
+https://www.flickr.com/photos/35034362831@@N01/494431001,
+https://creativecommons.org/licenses/by/2.0/deed.en
+@end raggedright

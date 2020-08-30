@@ -1,7 +1,7 @@
 \input texinfo @c -*-texinfo-*-
 @c %**start of header
 @settitle The Cuis-Smalltalk Book
-@set timeStamp Time-stamp: <2020-08-23 12:01:33 hilaire>
+@set timeStamp Time-stamp: <2020-08-30 12:24:48 hilaire>
 @set cuisVersion 5.0#4253
 @set txicodequoteundirected ON 
 @setfilename TheCuisBook.info
@@ -97,7 +97,8 @@ Complete license: @url{https://creativecommons.org/licenses/by-sa/4.0/legalcode}
 * Events::
 * Process::
 * Code Management::
-* The exercices::
+* Documents copyright::
+* The exercises::
 * Solutions of the exercises::
 * The examples::
 * The figures::
@@ -136,8 +137,10 @@ Complete license: @url{https://creativecommons.org/licenses/by-sa/4.0/legalcode}
 @c================================================================
 @c: Part Four
 @c @part Part Four @*Appendices
+@c Copyrighted document used in the book
+@include copyrights.texinfo
 @c List of exercises
-@node The exercices
+@node The exercises
 @appendix Liste des exercices
 @listoffloats Exercise
 @c Solutions of exercises

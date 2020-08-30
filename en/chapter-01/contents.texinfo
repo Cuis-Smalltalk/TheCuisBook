@@ -5,6 +5,7 @@
 * Context::
 * Installing and configuring @cuis{}::
 * Writing your first scripts::
+* Spacewar!::
 @end menu
 
 @node Context
@@ -377,4 +378,61 @@ proves to be of some use as we may see later:
 We can write the same about sorting a string:
 @smalltalkExample{'bonjour' sorted
 @result{}#($b $j $n $o $o $r $u)}
+
+@node Spacewar!
+@section Spacewar!
+The Spacewar! game was initially developed in 1962 by Steve Russell on
+DEC PDP-1 minicomputer. It is said to be the first known video game
+installed on several computers and it was very popular in the
+programming community in the 1960s. It was ported and rewritten
+several time to different hardware architectures and complemented with
+additional features. @emph{Computer Space}, the first arcade video
+game cabinet was a clone of Spacewar!
+
+@figure{Spacewar! game on DEC PDP-1 minicomputer,Spacewar!-PDP,8}
+
+It is a top down view of a space combat simulation featuring:
+
+@enumerate
+ @item a central star generating a gravity field,
+
+ @item star field background,
+
+ @item two space ships called @emph{the needle} and @emph{the wedge}
+ controlled by two players.
+
+ @item torpedoes fired by the players.
+
+@end enumerate
+
+Wikipedia describes very precisely its game play:
+
+@quotation
+The gameplay of Spacewar! involves two monochrome spaceships called
+"the needle" and "the wedge", each controlled by a player, attempting
+to shoot one another while maneuvering on a two-dimensional plane in
+the gravity well of a star, set against the backdrop of a
+starfield. The ships fire torpedoes, which are not affected by
+the gravitational pull of the star. The ships have a limited number of
+torpedoes and supply of fuel, which is used when the player fires the
+ship's thrusters. Torpedoes are fired one at a time by flipping a
+toggle switch on the computer or pressing a button on the control pad,
+and there is a cooldown period between launches. The ships remain in
+motion even when the player is not accelerating, and rotating the
+ships does not change the direction of their motion, though the ships
+can rotate at a constant rate without inertia.
+
+Each player controls one of the ships and must attempt to shoot down
+the other ship while avoiding a collision with the star or the
+opposing ship. Flying near the star can provide a gravity assist to
+the player at the risk of misjudging the trajectory and falling into
+the star. If a ship moves past one edge of the screen, it reappears on
+the other side in a wraparound effect. A hyperspace feature, or "panic
+button", can be used as a last-ditch means to evade enemy torpedoes by
+moving the player's ship to another location on the screen after it
+disappears for a few seconds, but the reentry from hyperspace occurs
+at a random location, and in some versions there is an increasing
+probability of the ship exploding with each use.
+@author Wikipedia, @url{https://en.wikipedia.org/wiki/Spacewar!#Gameplay,Spacewar!,Spacewar!}
+@end quotation
 
