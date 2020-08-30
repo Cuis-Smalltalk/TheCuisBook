@@ -94,6 +94,33 @@ Next: <a href="Classes.html" accesskey="n" rel="next">Classes</a>, Previous: <a 
 <span id="The-Message-Way-Of-Life-1"></span><h2 class="chapter">2 The Message Way Of Life</h2>
 
 
+<span id="Smalltalk-design"></span><h3 class="section">2.1 Smalltalk design</h3>
+
+<p>Smalltalk design is based on entites communicating with each other
+through messages. That&rsquo;s all, there is nothing more.
+</p>
+<p>When a given entity receives a message from another entity, it triggers
+a specific behavior.  The receiving entity of the message is called
+the <em>receiver</em> and the sending entity, the <em>sender</em>.
+</p>
+<p>The behavior is defined internally in the receiver and it can be
+triggered from any entity. Again this behavior is described only with
+messages sending to other entities including the self entity.
+</p>
+<p>It results in a huge cloud of entities communicating with each
+other. New entities are instantiated when needed then automatically
+garbage collected when not required anymore. On a fresh Cuis-Smalltalk
+environment, the entities count is higher than 150&rsquo;000.
+</p>
+<div class="float"><span id="entitiesCount"></span>
+<div class="display">
+<pre class="display"><span class="sansserif">ProtoObject allSubclasses inject: 0 into: [:count :class |
+   count + class allInstances size] 
+&rArr; 152058</span>
+</pre></div>
+
+<div class="float-caption"><p><strong><em>Example</em> 2.1: </strong>Counting the number of entities</p></div></div>
+
 
 </body>
 </html>

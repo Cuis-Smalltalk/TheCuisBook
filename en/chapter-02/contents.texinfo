@@ -1,2 +1,26 @@
 @node The Message Way Of Life
 @chapter The Message Way Of Life
+
+
+@section Smalltalk design
+
+Smalltalk design is based on entites communicating with each other
+through messages. That's all, there is nothing more.
+
+When a given entity receives a message from another entity, it triggers
+a specific behavior.  The receiving entity of the message is called
+the @dfn{receiver} and the sending entity, the @dfn{sender}.
+
+The behavior is defined internally in the receiver and it can be
+triggered from any entity. Again this behavior is described only with
+messages sending to other entities including the self entity.
+
+It results in a huge cloud of entities communicating with each
+other. New entities are instantiated when needed then automatically
+garbage collected when not required anymore. On a fresh @cuis{}
+environment, the entities count is higher than 150'000.
+
+@smalltalkExampleCaption{Counting the number of entities, entitiesCount,
+ProtoObject allSubclasses inject: 0 into: [:count :class |
+   count + class allInstances size] 
+@result{} 152058}
