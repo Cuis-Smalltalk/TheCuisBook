@@ -243,8 +243,8 @@ parenthesis. We will explain why later.}
 @exercise{Inverse sum,inverseSum, @emph{Write the code to compute the
 sum of the first four integer inverses.}}
 @cindex number, root
-@cindex number, @msg{sqrt}
-@cindex number, @msg{squared}
+@cindex number, sqrt
+@cindex number, squared
 All four arithmetic operations and mathematical functions are
 compatible with the rational number representation:
 @smalltalkExample {(15 / 14) * (21 / 5) @result{} 9 / 2
@@ -282,13 +282,10 @@ The reminder of the Euclidean division is computed with the message
 @smalltalkExample{15 \\\\ 4
 @result{} 3}
 
-@todo{Numeric literals}
-
-
-@cindex number, @msg{odd}
-@cindex number, @msg{even}
-@cindex number, @msg{isPrime}
-@cindex number, @msg{isDivisibleBy:}
+@cindex number, odd
+@cindex number, even
+@cindex number, isPrime
+@cindex number, isDivisibleBy:
 @cuis{} knows some arithmetic operations to test if an integer is an
 odd, even or prime number. You just send the appropriate message to
 the number:
@@ -302,8 +299,8 @@ the number:
 117 isDivisibleBy: 7 @result{} false
 117 isDivisibleBy: 9 @result{} true}
 
-@cindex number, @msg{gcd:}
-@cindex number, @msg{lcm:}
+@cindex number, gcd:
+@cindex number, lcm:
 With specific @dfn{keyword messages} you compute the Least Common
 Multiple and Greatest Common Divisor. A keyword message is composed of
 one or several colon(s) ``:'' to insert argument(s):
@@ -319,6 +316,23 @@ Integer can be printed in different forms:
 2020 printStringWords  @result{} 'two thousand, twenty'
 "Number as the Maya did"
 2020 printStringBase: 20 @result{} '510'}
+
+@cindex number, literal
+@cindex literal, number
+Integer and float numbers we have played with are @dfn{Numeric
+Literals}. There are building blocks of the language and considered as
+constant expressions. There are different syntax to write a number:
+
+@multitable @columnfractions .45 .55
+@headitem Numeric literal @tab What it represents
+   @item @smalltalk{1}                          @tab decimal integer
+   @item @smalltalk{2r101}                      @tab binary integer
+   @item @smalltalk{16rFF}                      @tab hexadecimal integer
+   @item @smalltalk{1.5}                        @tab floating point number
+   @item @smalltalk{2.4e7}                      @tab exponential notation
+@end multitable
+
+
 
 @subsection Fun with text
 @cindex string
@@ -374,7 +388,7 @@ proves to be of some use as we may see later:
 @smalltalkExample{'hello world' shuffled
 @result{} 'wod llreohl'}
 
-@cindex string, @msg{sorted}
+@cindex string, sorted
 We can write the same about sorting a string:
 @smalltalkExample{'bonjour' sorted
 @result{}#($b $j $n $o $o $r $u)}
