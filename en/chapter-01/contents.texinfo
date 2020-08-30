@@ -281,6 +281,8 @@ The reminder of the Euclidean division is computed with the message
 @smalltalkExample{15 \\\\ 4
 @result{} 3}
 
+@todo{Numeric literals}
+
 
 @cindex number, @msg{odd}
 @cindex number, @msg{even}

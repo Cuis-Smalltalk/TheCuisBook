@@ -11,6 +11,10 @@ K. Dickey, H. Fernandes, J. Vuletich
 @acronym{VM}
 @end macro
 
+@macro todo{note}
+@strong{TO BE WRITTEN:} \note\
+@end macro
+
 @c Smalltalk code in a text flow
 
 @c up arrow, return symbol
