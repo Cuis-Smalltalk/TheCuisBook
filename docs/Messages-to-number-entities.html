@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This book is for Cuis-Smalltalk (5.0#4253), a free and modern
+implementation of the Smalltalk language and environment.
+
+Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
+
+
+
+
+
+
+
+Compilation : September 1, 2020
+
+Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
+
+
+
+The contents of this book are protected under Creative Commons
+Attribution-ShareAlike 4.0 International.
+
+You are free to:
+
+
+Share - copy and redistribute the material in any medium or
+format
+
+
+Adapt - remix, transform, and build upon the material for any
+purpose, even commercially.
+
+
+
+Under the following terms:
+
+
+Attribution. You must give appropriate credit, provide a link to
+the license, and indicate if changes were made. You may do so in any
+reasonable manner, but not in any way that suggests the licensor
+endorses you or your use.
+
+
+Share Alike. If you remix, transform, or build upon the material,
+you must distribute your contributions under the same license as the
+original.
+
+Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+ -->
+<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Messages to number entities (The Cuis-Smalltalk Book)</title>
+
+<meta name="description" content="Messages to number entities (The Cuis-Smalltalk Book)">
+<meta name="keywords" content="Messages to number entities (The Cuis-Smalltalk Book)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Indexes.html" rel="index" title="Indexes">
+<link href="The-Message-Way-Of-Life.html" rel="up" title="The Message Way Of Life">
+<link href="Classes.html" rel="next" title="Classes">
+<link href="Message-to-string-entities.html" rel="prev" title="Message to string entities">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="style.css">
+
+
+</head>
+
+<body lang="en">
+<span id="Messages-to-number-entities"></span><div class="header">
+<p>
+Previous: <a href="Message-to-string-entities.html" accesskey="p" rel="prev">Message to string entities</a>, Up: <a href="The-Message-Way-Of-Life.html" accesskey="u" rel="up">The Message Way Of Life</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Messages-to-number-entities-1"></span><h3 class="section">2.4 Messages to number entities</h3>
+<span id="index-number_002c-odd"></span>
+<span id="index-number_002c-even"></span>
+<span id="index-number_002c-isPrime"></span>
+<span id="index-number_002c-isDivisibleBy_003a"></span>
+<p>Cuis-Smalltalk knows some arithmetic operations to test if an integer is an
+odd, even, prime number or divider. You just send the appropriate
+unary or keyword message to the number:
+</p>
+<div class="float"><span id="integerBasicTest"></span>
+<div class="display">
+<pre class="display"><span class="sansserif">25 odd &rArr; true
+25 even &rArr; false
+25 isPrime &rArr; false
+23 isPrime &rArr; true
+91 isDivisibleBy: 7 &rArr; true
+117 isDivisibleBy: 7 &rArr; false
+117 isDivisibleBy: 9 &rArr; true</span>
+</pre></div>
+
+<div class="float-caption"><p><strong><em>Example</em> 2.3: </strong>Testing on integer</p></div></div>
+<span id="index-number_002c-gcd_003a"></span>
+<span id="index-number_002c-lcm_003a"></span>
+<p>With specific <em>keyword messages</em> you compute the Least Common
+Multiple and Greatest Common Divisor. A keyword message is composed of
+one or several colon(s) &ldquo;:&rdquo; to insert argument(s):
+</p>
+<div class="display">
+<pre class="display"><span class="sansserif">12 lcm: 15 &rArr; 60
+12 gcd: 15 &rArr; 3</span>
+</pre></div>
+
+<p>Integer can be printed in different forms with the appropriate
+message:
+</p>
+<span id="index-number_002c-roman"></span>
+<span id="index-number_002c-as-words"></span>
+<span id="index-number_002c-base"></span>
+<div class="display">
+<pre class="display"><span class="sansserif">2020 printStringRoman &rArr; &rsquo;MMXX&rsquo; 
+2020 printStringWords  &rArr; &rsquo;two thousand, twenty&rsquo;
+&quot;Number as the Maya did&quot;
+2020 printStringBase: 20 &rArr; &rsquo;510&rsquo;</span>
+</pre></div>
+
+
+
+
+</body>
+</html>

@@ -2,6 +2,14 @@
 @chapter The Message Way Of Life
 
 
+@menu
+* Smalltalk design::
+* Messages sends definition::
+* Message to string entities::
+* Messages to number entities::
+@end menu
+
+@node Smalltalk design
 @section Smalltalk design
 
 Smalltalk design is based on entites communicating with each other
@@ -24,3 +32,187 @@ environment, the entities count is higher than 150'000.
 ProtoObject allSubclasses inject: 0 into: [:count :class |
    count + class allInstances size] 
 @result{} 152058}
+
+To be honest, in our previous chapter we skipped this important detail
+on Smalltalk design. We did not want to afraid you with this radical
+design. The scripts you read and write were all about entities
+communicating with each other through messages.
+
+
+@todo{SystemWindows. Text editor menus. Keyboard shortcuts.}
+
+@cindex message, send
+@cindex message, unary
+@cindex message, binary
+@cindex message, keyword
+@node Messages sends definition
+@section Message sends definition
+There are three kinds of messages in @cuis{}:
+
+@itemize
+
+ @item @strong{Unary messages} take no argument.
+ @*
+ @smalltalk{1 factorial} sends the message @msg{factorial} to the object
+ @smalltalk{1},
+
+ @item @strong{Binary messages} take exactly one argument.
+ @*
+ @smalltalk{1 + 2} sends the message @msg{+} with argument
+ @smalltalk{2} to the object @smalltalk{1}.
+
+ @item @strong{Keyword messages} take an arbitrary number of
+ arguments.
+ @*
+ @smalltalk{2 raisedTo: 6 modulo: 10} sends the message
+ consisting of the message selector @msg{raisedTo:modulo:} and the
+ arguments @smalltalk{6} and @smalltalk{10} to the object
+ @smalltalk{2}.
+
+@end itemize
+
+Unary message selectors consist of alphanumeric characters, and start
+with a lower case letter.
+
+Binary message selectors consist of one or more characters from the
+following set:
+
+@smalltalkExample{+ -- / \ * ∼ < > = @@ % | & ? ,}
+
+Keyword message selectors consist of a series of alphanumeric
+keywords, where each keyword starts with a lower-case letter and ends
+with a colon.
+
+@cindex message, precedence
+Unary messages have the highest precedence, then binary messages, and
+finally keyword messages, so:
+
+@smalltalkExample{2 raisedTo: 1 + 3 factorial
+@result{} 128}
+
+First we send @smalltalk{factorial} to @smalltalk{3}, then we send
+@smalltalk{+ 6} to @smalltalk{1}, and finally we send
+@smalltalk{raisedTo: 7} to @smalltalk{2}.
+
+Precedence aside, evaluation is strictly from left to right, so
+
+@smalltalkExample{1 + 2 * 3
+@result{} 9}
+
+is not 7. Parentheses must be used to alter the order of evaluation:
+
+@smalltalkExample{1 + (2 * 3)
+@result{} 7}
+
+@cindex cascade of messages
+In the @ref{hello2} example, the message @msg{show:} and @msg{newLine}
+are sent to the same @class{Transcript} entity. In such circumstance,
+we can use the @dfn{cascade} technique to avoid this repetition. The
+receiver @class{Transcript} is written once and the sent messages are
+separated by semicolon:
+
+@smalltalkExampleCaption{Cascade of message, helloCascade,
+Transcript
+   show: 'Hello World!';
+   newLine;
+   show: 'I am Cuising'}
+
+Observe the text here is formatted to ease code understanding. It is possible to
+write the cascade of messages in one line, but it reduces the
+readability of the code:
+
+@smalltalkExample{Transcript show: 'Hello World!'; newLine; show: 'I am Cuising'}
+
+The @class{Transcript} class is frequently helpful in presenting
+useful information when developing an application. As an alternative
+to the @kbd{Ctrl-d} shortcut, @kbd{Ctrl-p} (@emph{@b{P}rint it})
+executes the script and prints the result direcly in the Workspace.
+
+In the example, we have requested no special result.  Selecting the
+text and typing @kbd{Ctrl-p} results in the default, which is to
+return the object to which a message is sent, in this case the
+@class{Transcript}.
+
+@node Message to string entities
+@section Message to string entities
+@cindex string, character access
+Access to a character in a string is done with the keyword message
+@msg{at:} and its index position in the string. Execute the following
+examples with the @kbd{Ctrl-p} shortcut:
+
+@smalltalkExample{'Hello' at: 1 @result{} $H
+'Hello' at: 5 @result{} $o}
+
+Observe how a character is prefixed with the ``$'' symbol.
+
+@strong{Caution.} The index position starts naturally from 1 to the
+string length.
+
+To change one character, use the companion two keywords message
+@msg{at:put:}. The argument must be noted as a character:
+@smalltalkExample{'Hello' at: 2 put: $a; yourself
+@result{} 'Hallo'}
+
+Observe the use of the cascade with the @msg{yourself} message. It is
+sent to the instance string to get it returned.
+
+@exercise{Hello to Belle,helloBelle, @emph{Replace each character of
+the string 'Hello' to become 'Belle'}}
+
+@cindex character, ascii
+Character can be converted to integer and integer to character:
+@smalltalkExample{$A asciiValue @result{} 65
+(65 + 25) asCharacter @result{} $Z}
+
+@cindex string, shuffled
+@cindex collection, shuffled
+Shuffling a string is funny but without much use. Nevertheless,
+shuffling apply to any kind of collection, not only to string, and it
+proves to be of some use as we may see later:
+@smalltalkExample{'hello world' shuffled
+@result{} 'wod llreohl'}
+
+@cindex string, sorted
+We can write the same about sorting a string:
+@smalltalkExample{'bonjour' sorted
+@result{}#($b $j $n $o $o $r $u)}
+
+@node Messages to number entities
+@section Messages to number entities
+@cindex number, odd
+@cindex number, even
+@cindex number, isPrime
+@cindex number, isDivisibleBy:
+@cuis{} knows some arithmetic operations to test if an integer is an
+odd, even, prime number or divider. You just send the appropriate
+unary or keyword message to the number:
+
+@smalltalkExampleCaption{Testing on integer,integerBasicTest,
+25 odd @result{} true
+25 even @result{} false
+25 isPrime @result{} false
+23 isPrime @result{} true
+91 isDivisibleBy: 7 @result{} true
+117 isDivisibleBy: 7 @result{} false
+117 isDivisibleBy: 9 @result{} true}
+
+@cindex number, gcd:
+@cindex number, lcm:
+With specific @dfn{keyword messages} you compute the Least Common
+Multiple and Greatest Common Divisor. A keyword message is composed of
+one or several colon(s) ``:'' to insert argument(s):
+
+@smalltalkExample{12 lcm: 15 @result{} 60
+12 gcd: 15 @result{} 3}
+
+Integer can be printed in different forms with the appropriate
+message:
+
+@cindex number, roman
+@cindex number, as words
+@cindex number, base
+@smalltalkExample{2020 printStringRoman @result{} 'MMXX' 
+2020 printStringWords  @result{} 'two thousand, twenty'
+"Number as the Maya did"
+2020 printStringBase: 20 @result{} '510'}
+

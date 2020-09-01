@@ -58,7 +58,7 @@ Observe the various syntactic elements in @ref{cuisSyntax}.
    @item @smalltalk{1.5}                        @tab floating point number
    @item @smalltalk{2.4e7}                      @tab exponential notation
    @item @smalltalk{$a}                         @tab the character ‘a’
-   @item @smalltalk{’Hello’}                     @tab the string “Hello”
+   @item @smalltalk{'Hello'}                     @tab the string “Hello”
    @item @smalltalk{#Hello}                     @tab the symbol #Hello
    @item @smalltalk{#(1 2 3)}                   @tab a literal array
    @item @smalltalk{@{1. 2. 1 + 2@}}              @tab a dynamic array

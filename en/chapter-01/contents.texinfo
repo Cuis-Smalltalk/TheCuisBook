@@ -143,7 +143,7 @@ This code comes in three parts:
 
 @itemize
 
-@item the literal @smalltalk{'Hello World!'}  
+@item the string literal @smalltalk{'Hello World!'}  
 
 @item the message @msg{show:} with its argument @smalltalk{'Hello World!'}
 
@@ -164,36 +164,23 @@ In this three lines script, observe how the line are separated by a
 dot ``.''. This period is a line separator not needed in the third line
 nor in a one line script. The message @msg{newLine} has no argument.
 
-@cindex cascade of messages
-In the @ref{hello2} example, the message @msg{show:} and @msg{newLine}
-are sent to the same @class{Transcript} class. In such circumstance,
-we can use the @dfn{cascade} technique to avoid this repetition. The
-receiver @class{Transcript} is written once and the sent messages are
-separated by semicolon:
+@cindex string
+A @dfn{String} is the way text is represented in a programming
+language, it is a collection of characters. We already met string with
+our first script, it is enclosed in single quotes: @smalltalk{'hello
+world!'}. We capitalize it with the @msg{capitalized} message:
 
-@smalltalkExampleCaption{Cascade of message, helloCascade,
-Transcript
-   show: 'Hello World!';
-   newLine;
-   show: 'I am Cuising'}
+@cindex string, capitalized
+@smalltalkExample{Transcript show: 'hello world!' capitalized
+@result{} 'Hello world!' }
 
-Observe the text here is formatted to ease code understanding. It is possible to
-write the cascade of messages in one line, but it reduces the
-readability of the code:
+@exercise{Capitalize number as words,capWordNumber,@emph{Print 2020 as
+words capitalized.}}
 
-@smalltalkExample{Transcript show: 'Hello World!'; newLine; show: 'I am Cuising'}
-
-The @class{Transcript} class is frequently helpful in presenting
-useful information when developing an application. As an alternative
-to the @kbd{Ctrl-d} shortcut, @kbd{Ctrl-p} (@emph{@b{P}rint it})
-executes the script and prints the result direcly in the Workspace.
-
-In the example, we have requested no special result.  Selecting the
-text and typing @kbd{Ctrl-p} results in the default, which is to
-return the object to which a message is sent, in this case the
-@class{Transcript}.
-
-
+@cindex string, concatenate
+Two strings are concatenated with the @msg{,} message:
+@smalltalkExample{Transcript show: 'Hello', ' ', 'my beloved', ' ', 'friend'
+@result{} 'Hello my beloved friend'}
 
 @subsection Fun with numbers
 @cindex number, integer
@@ -282,40 +269,6 @@ The reminder of the Euclidean division is computed with the message
 @smalltalkExample{15 \\\\ 4
 @result{} 3}
 
-@cindex number, odd
-@cindex number, even
-@cindex number, isPrime
-@cindex number, isDivisibleBy:
-@cuis{} knows some arithmetic operations to test if an integer is an
-odd, even or prime number. You just send the appropriate message to
-the number:
-
-@smalltalkExampleCaption{Testing on integer,integerBasicTest,
-25 odd @result{} true
-25 even @result{} false
-25 isPrime @result{} false
-23 isPrime @result{} true
-91 isDivisibleBy: 7 @result{} true
-117 isDivisibleBy: 7 @result{} false
-117 isDivisibleBy: 9 @result{} true}
-
-@cindex number, gcd:
-@cindex number, lcm:
-With specific @dfn{keyword messages} you compute the Least Common
-Multiple and Greatest Common Divisor. A keyword message is composed of
-one or several colon(s) ``:'' to insert argument(s):
-
-@smalltalkExample{12 lcm: 15 @result{} 60
-12 gcd: 15 @result{} 3}
-Integer can be printed in different forms:
-
-@cindex number, roman
-@cindex number, as words
-@cindex number, base
-@smalltalkExample{2020 printStringRoman @result{} 'MMXX' 
-2020 printStringWords  @result{} 'two thousand, twenty'
-"Number as the Maya did"
-2020 printStringBase: 20 @result{} '510'}
 
 @cindex number, literal
 @cindex literal, number
@@ -332,67 +285,6 @@ constant expressions. There are different syntax to write a number:
    @item @smalltalk{2.4e7}                      @tab exponential notation
 @end multitable
 
-
-
-@subsection Fun with text
-@cindex string
-A @dfn{String} is the way text is represented in a programming
-language, it is a collection of characters. We already met string with
-our first script, it is enclosed in single quotes: @smalltalk{'hello
-world!'}. We capitalize it with the @msg{capitalized} message:
-
-@cindex string, capitalized
-@smalltalkExample{'hello world!' capitalized
-@result{} 'Hello world!' }
-
-@exercise{Capitalize number as words,capWordNumber,@emph{Print 2020 as
-words capitalized.}}
-
-@cindex string, concatenate
-Two strings are concatenated with the @msg{,} message
-@smalltalkExample{'Hello', ' ', 'my beloved', ' ', 'friend'
-@result{} 'Hello my beloved friend'}
-
-@cindex string, character access
-Access to a character in a string is done with the keyword message
-@msg{at:} and its index position in the string:
-@smalltalkExample{'Hello' at: 1 @result{} $H
-'Hello' at: 5 @result{} $o}
-
-Observe how a character is prefixed with the ``$'' symbol.
-
-@strong{Caution.} The index position starts naturally from 1 to the
-string length.
-
-To change one character, use the companion two keywords message
-@msg{at:put:}. The argument must be noted as a character:
-@smalltalkExample{'Hello' at: 2 put: $a; yourself
-@result{} 'Hallo'}
-
-Observe the use of the cascade with the @msg{yourself} message. It is
-sent to the instance string to get it returned.
-
-@exercise{Hello to Belle,helloBelle, @emph{Replace each character of
-the string 'Hello' to become 'Belle'}}
-
-@cindex character, ascii
-Character can be converted to integer and integer to character:
-@smalltalkExample{$A asciiValue @result{} 65
-(65 + 25) asCharacter @result{} $Z}
-
-@cindex string, shuffled
-@cindex collection, shuffled
-Shuffling a string is funny but without much use. Nevertheless,
-shuffling apply to any kind of collection, not only to string, and it
-proves to be of some use as we may see later:
-@smalltalkExample{'hello world' shuffled
-@result{} 'wod llreohl'}
-
-@cindex string, sorted
-We can write the same about sorting a string:
-@smalltalkExample{'bonjour' sorted
-@result{}#($b $j $n $o $o $r $u)}
-
 @node Spacewar!
 @section Spacewar!
 The Spacewar! game was initially developed in 1962 by Steve Russell on
@@ -405,21 +297,7 @@ game cabinet was a clone of Spacewar!
 
 @figure{Spacewar! game on DEC PDP-1 minicomputer,Spacewar!-PDP,8}
 
-It is a top down view of a space combat simulation featuring:
-
-@enumerate
- @item a central star generating a gravity field,
-
- @item star field background,
-
- @item two space ships called @emph{the needle} and @emph{the wedge}
- controlled by two players.
-
- @item torpedoes fired by the players.
-
-@end enumerate
-
-Wikipedia describes very precisely its game play:
+Wikipedia describes very precisely this space combat simulation game:
 
 @quotation
 The gameplay of Spacewar! involves two monochrome spaceships called
@@ -450,3 +328,16 @@ probability of the ship exploding with each use.
 @author Wikipedia, @url{https://en.wikipedia.org/wiki/Spacewar!#Gameplay,Spacewar!,Spacewar!}
 @end quotation
 
+Therefore, the protagonists of the game are:
+
+@enumerate
+ @item a @strong{central star} generating a gravity field,
+
+ @item a @strong{star field} background,
+
+ @item two @strong{space ships} called @emph{the needle} and @emph{the
+ wedge} controlled by two players.
+
+ @item @strong{torpedoes} fired by the space ships.
+
+@end enumerate
