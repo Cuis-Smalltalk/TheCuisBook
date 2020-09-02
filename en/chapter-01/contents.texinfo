@@ -229,46 +229,17 @@ parenthesis. We will explain why later.}
 
 @exercise{Inverse sum,inverseSum, @emph{Write the code to compute the
 sum of the first four integer inverses.}}
-@cindex number, root
-@cindex number, sqrt
-@cindex number, squared
-All four arithmetic operations and mathematical functions are
-compatible with the rational number representation:
-@smalltalkExample {(15 / 14) * (21 / 5) @result{} 9 / 2
-(15 / 14) / ( 5 / 21) @result{} 9 /2 
-(3 / 4) squared @result{} 9 / 16
-(25 / 4) sqrt @result{} 5 / 2}
 
-@exercise{Sum of the squares,squaredSum,Write the code to compute the
-sum of the squares of the inverse of the first four integers.}
+Integer can be printed in different forms with the appropriate
+message:
 
-@cindex number, decimal division
-If @cuis{} divides integer as rational number, how to compute the
-decimal division? One option is to write a number as a @dfn{Float}, it
-is the decimal representation in programming language, the integer
-part and fractional parts are separated by a dot ``.'':
-@smalltalkExample{ 15.0 / 4 @result{}3.75
-15 / 4.0 @result{} 3.75}
-
-Another option is to convert an integer to a float with the
-@msg{asFloat} message. It is very useful when the integer is in a
-variable:
-
-@smalltalkExample{15 asFloat / 4
-@result{} 3.75}
-
-@cindex number, integer division
-Alternatively to the decimal division, you ask integer division with
-the message @msg{//}:
-@smalltalkExample{15 // 4
-@result{} 3}
-
-@cindex number, division reminder
-The reminder of the Euclidean division is computed with the message
-@msg{\\\\}:
-@smalltalkExample{15 \\\\ 4
-@result{} 3}
-
+@cindex number, roman
+@cindex number, as words
+@cindex number, base
+@smalltalkExample{2020 printStringRoman @result{} 'MMXX' 
+2020 printStringWords  @result{} 'two thousand, twenty'
+"Number as the Maya did"
+2020 printStringBase: 20 @result{} '510'}
 
 @cindex number, literal
 @cindex literal, number

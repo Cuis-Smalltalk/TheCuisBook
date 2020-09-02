@@ -15,18 +15,22 @@
 Smalltalk design is based on entites communicating with each other
 through messages. That's all, there is nothing more.
 
-When a given entity receives a message from another entity, it triggers
-a specific behavior.  The receiving entity of the message is called
-the @dfn{receiver} and the sending entity, the @dfn{sender}.
+When a given entity receives a message from another entity, it
+triggers a specific behavior.  The receiving entity of the message is
+called the @dfn{receiver} and the sending entity, the @dfn{sender}. In
+@cuis{} terminology, an entity is called an @dfn{instance of a class}
+or @dfn{class instannce}. A class is a kind of model for an entity.
 
 The behavior is defined internally in the receiver and it can be
-triggered from any entity. Again this behavior is described only with
-messages sending to other entities including the self entity.
+triggered from any instance. Again this behavior is described only
+with messages sending to other entities including the self entity. The
+behavior is defined in a class, it is called a @dfn{method}.
 
-It results in a huge cloud of entities communicating with each
-other. New entities are instantiated when needed then automatically
-garbage collected when not required anymore. On a fresh @cuis{}
-environment, the entities count is higher than 150'000.
+It results in a huge cloud of entities communicating with each other
+through message sending. New entities are instantiated when needed
+then automatically garbage collected when not required anymore. On a
+fresh @cuis{} environment, the instances class count is higher than
+150'000.
 
 @smalltalkExampleCaption{Counting the number of entities, entitiesCount,
 ProtoObject allSubclasses inject: 0 into: [:count :class |
@@ -179,6 +183,48 @@ We can write the same about sorting a string:
 
 @node Messages to number entities
 @section Messages to number entities
+@cindex number, root
+@cindex number, sqrt
+@cindex number, squared
+
+Earlier, we discussed how @cuis{} knows about rational number.  All
+four arithmetic operations and mathematical functions are compatible
+with the rational number representation:
+@smalltalkExample {(15 / 14) * (21 / 5) @result{} 9 / 2
+(15 / 14) / ( 5 / 21) @result{} 9 /2 
+(3 / 4) squared @result{} 9 / 16
+(25 / 4) sqrt @result{} 5 / 2}
+
+@exercise{Sum of the squares,squaredSum,Write the code to compute the
+sum of the squares of the inverse of the first four integers.}
+
+@cindex number, decimal division
+If @cuis{} divides integer as rational number, how to compute the
+decimal division? One option is to write a number as a @dfn{Float}, it
+is the decimal representation in programming language, the integer
+part and fractional parts are separated by a dot ``.'':
+@smalltalkExample{ 15.0 / 4 @result{}3.75
+15 / 4.0 @result{} 3.75}
+
+Another option is to convert an integer to a float with the
+@msg{asFloat} message. It is very useful when the integer is in a
+variable:
+
+@smalltalkExample{15 asFloat / 4
+@result{} 3.75}
+
+@cindex number, integer division
+Alternatively to the decimal division, you ask integer division with
+the message @msg{//}:
+@smalltalkExample{15 // 4
+@result{} 3}
+
+@cindex number, division reminder
+The reminder of the Euclidean division is computed with the message
+@msg{\\\\}:
+@smalltalkExample{15 \\\\ 4
+@result{} 3}
+
 @cindex number, odd
 @cindex number, even
 @cindex number, isPrime
@@ -205,14 +251,4 @@ one or several colon(s) ``:'' to insert argument(s):
 @smalltalkExample{12 lcm: 15 @result{} 60
 12 gcd: 15 @result{} 3}
 
-Integer can be printed in different forms with the appropriate
-message:
-
-@cindex number, roman
-@cindex number, as words
-@cindex number, base
-@smalltalkExample{2020 printStringRoman @result{} 'MMXX' 
-2020 printStringWords  @result{} 'two thousand, twenty'
-"Number as the Maya did"
-2020 printStringBase: 20 @result{} '510'}
 

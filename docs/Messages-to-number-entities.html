@@ -11,7 +11,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : September 1, 2020
+Compilation : September 2, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -92,6 +92,63 @@ Previous: <a href="Message-to-string-entities.html" accesskey="p" rel="prev">Mes
 </div>
 <hr>
 <span id="Messages-to-number-entities-1"></span><h3 class="section">2.4 Messages to number entities</h3>
+<span id="index-number_002c-root"></span>
+<span id="index-number_002c-sqrt"></span>
+<span id="index-number_002c-squared"></span>
+
+<p>Earlier, we discussed how Cuis-Smalltalk knows about rational number.  All
+four arithmetic operations and mathematical functions are compatible
+with the rational number representation:
+</p><div class="display">
+<pre class="display"><span class="sansserif">(15 / 14) * (21 / 5) &rArr; 9 / 2
+(15 / 14) / ( 5 / 21) &rArr; 9 /2 
+(3 / 4) squared &rArr; 9 / 16
+(25 / 4) sqrt &rArr; 5 / 2</span>
+</pre></div>
+
+<div class="float"><span id="squaredSum"></span>
+<blockquote class="indentedblock">
+<p>Write the code to compute the
+sum of the squares of the inverse of the first four integers.
+</p></blockquote>
+
+
+<div class="float-caption"><p><strong><em>Exercise</em> 2.2: </strong>Sum of the squares</p></div></div>
+<span id="index-number_002c-decimal-division"></span>
+<p>If Cuis-Smalltalk divides integer as rational number, how to compute the
+decimal division? One option is to write a number as a <em>Float</em>, it
+is the decimal representation in programming language, the integer
+part and fractional parts are separated by a dot &ldquo;.&rdquo;:
+</p><div class="display">
+<pre class="display"><span class="sansserif">15.0 / 4 &rArr;3.75
+15 / 4.0 &rArr; 3.75</span>
+</pre></div>
+
+<p>Another option is to convert an integer to a float with the
+<span class="sansserif">#asFloat</span> message. It is very useful when the integer is in a
+variable:
+</p>
+<div class="display">
+<pre class="display"><span class="sansserif">15 asFloat / 4
+&rArr; 3.75</span>
+</pre></div>
+
+<span id="index-number_002c-integer-division"></span>
+<p>Alternatively to the decimal division, you ask integer division with
+the message <span class="sansserif">#//</span>:
+</p><div class="display">
+<pre class="display"><span class="sansserif">15 // 4
+&rArr; 3</span>
+</pre></div>
+
+<span id="index-number_002c-division-reminder"></span>
+<p>The reminder of the Euclidean division is computed with the message
+<span class="sansserif">#\\</span>:
+</p><div class="display">
+<pre class="display"><span class="sansserif">15 \\ 4
+&rArr; 3</span>
+</pre></div>
+
 <span id="index-number_002c-odd"></span>
 <span id="index-number_002c-even"></span>
 <span id="index-number_002c-isPrime"></span>
@@ -123,19 +180,12 @@ one or several colon(s) &ldquo;:&rdquo; to insert argument(s):
 12 gcd: 15 &rArr; 3</span>
 </pre></div>
 
-<p>Integer can be printed in different forms with the appropriate
-message:
-</p>
-<span id="index-number_002c-roman"></span>
-<span id="index-number_002c-as-words"></span>
-<span id="index-number_002c-base"></span>
-<div class="display">
-<pre class="display"><span class="sansserif">2020 printStringRoman &rArr; &rsquo;MMXX&rsquo; 
-2020 printStringWords  &rArr; &rsquo;two thousand, twenty&rsquo;
-&quot;Number as the Maya did&quot;
-2020 printStringBase: 20 &rArr; &rsquo;510&rsquo;</span>
-</pre></div>
 
+<hr>
+<div class="header">
+<p>
+Previous: <a href="Message-to-string-entities.html" accesskey="p" rel="prev">Message to string entities</a>, Up: <a href="The-Message-Way-Of-Life.html" accesskey="u" rel="up">The Message Way Of Life</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
 
 
 

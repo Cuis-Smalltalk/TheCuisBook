@@ -53,7 +53,7 @@ The system returns the error @smalltalk{ZeroDivide}, division by zero.
 @subheading @ref{capWordNumber}
 Several messages can be sent one after the other:
 @example
-2020 printStringWords capitalized 
+Transcript show: 2020 printStringWords capitalized 
 @end example
 
 @subheading @ref{helloBelle}

@@ -11,7 +11,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : September 1, 2020
+Compilation : September 2, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -96,18 +96,22 @@ Next: <a href="Messages-sends-definition.html" accesskey="n" rel="next">Messages
 <p>Smalltalk design is based on entites communicating with each other
 through messages. That&rsquo;s all, there is nothing more.
 </p>
-<p>When a given entity receives a message from another entity, it triggers
-a specific behavior.  The receiving entity of the message is called
-the <em>receiver</em> and the sending entity, the <em>sender</em>.
+<p>When a given entity receives a message from another entity, it
+triggers a specific behavior.  The receiving entity of the message is
+called the <em>receiver</em> and the sending entity, the <em>sender</em>. In
+Cuis-Smalltalk terminology, an entity is called an <em>instance of a class</em>
+or <em>class instannce</em>. A class is a kind of model for an entity.
 </p>
 <p>The behavior is defined internally in the receiver and it can be
-triggered from any entity. Again this behavior is described only with
-messages sending to other entities including the self entity.
+triggered from any instance. Again this behavior is described only
+with messages sending to other entities including the self entity. The
+behavior is defined in a class, it is called a <em>method</em>.
 </p>
-<p>It results in a huge cloud of entities communicating with each
-other. New entities are instantiated when needed then automatically
-garbage collected when not required anymore. On a fresh Cuis-Smalltalk
-environment, the entities count is higher than 150&rsquo;000.
+<p>It results in a huge cloud of entities communicating with each other
+through message sending. New entities are instantiated when needed
+then automatically garbage collected when not required anymore. On a
+fresh Cuis-Smalltalk environment, the instances class count is higher than
+150&rsquo;000.
 </p>
 <div class="float"><span id="entitiesCount"></span>
 <div class="display">
