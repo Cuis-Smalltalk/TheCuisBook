@@ -256,6 +256,12 @@ constant expressions. There are different syntax to write a number:
    @item @smalltalk{2.4e7}                      @tab exponential notation
 @end multitable
 
+Depending on the value we need to use, we mix these literal
+representation:
+
+@smalltalkExample{16rA + 1 + 5e-1 + 6e-2
+@result{} 289/25}
+
 @node Spacewar!
 @section Spacewar!
 The Spacewar! game was initially developed in 1962 by Steve Russell on
@@ -266,7 +272,7 @@ several time to different hardware architectures and complemented with
 additional features. @emph{Computer Space}, the first arcade video
 game cabinet was a clone of Spacewar!
 
-@figure{Spacewar! game on DEC PDP-1 minicomputer,Spacewar!-PDP,8}
+@figure{Spacewar! game on DEC PDP-1 minicomputer,ch01-SpacewarPDP,8}
 
 Wikipedia describes very precisely this space combat simulation game:
 
@@ -299,6 +305,7 @@ probability of the ship exploding with each use.
 @author Wikipedia, @url{https://en.wikipedia.org/wiki/Spacewar!#Gameplay,Spacewar!,Spacewar!}
 @end quotation
 
+@page
 Therefore, the protagonists of the game are:
 
 @enumerate
@@ -312,3 +319,7 @@ Therefore, the protagonists of the game are:
  @item @strong{torpedoes} fired by the space ships.
 
 @end enumerate
+
+@figure{Spacewar! game play,ch01-SpacewarGameplay,8}
+
+

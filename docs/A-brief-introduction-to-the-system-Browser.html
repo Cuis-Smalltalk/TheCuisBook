@@ -1,0 +1,221 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This book is for Cuis-Smalltalk (5.0#4253), a free and modern
+implementation of the Smalltalk language and environment.
+
+Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
+
+
+
+
+
+
+
+Compilation : September 3, 2020
+
+Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
+
+
+
+The contents of this book are protected under Creative Commons
+Attribution-ShareAlike 4.0 International.
+
+You are free to:
+
+
+Share - copy and redistribute the material in any medium or
+format
+
+
+Adapt - remix, transform, and build upon the material for any
+purpose, even commercially.
+
+
+
+Under the following terms:
+
+
+Attribution. You must give appropriate credit, provide a link to
+the license, and indicate if changes were made. You may do so in any
+reasonable manner, but not in any way that suggests the licensor
+endorses you or your use.
+
+
+Share Alike. If you remix, transform, or build upon the material,
+you must distribute your contributions under the same license as the
+original.
+
+Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+ -->
+<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>A brief introduction to the system Browser (The Cuis-Smalltalk Book)</title>
+
+<meta name="description" content="A brief introduction to the system Browser (The Cuis-Smalltalk Book)">
+<meta name="keywords" content="A brief introduction to the system Browser (The Cuis-Smalltalk Book)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Indexes.html" rel="index" title="Indexes">
+<link href="The-Message-Way-Of-Life.html" rel="up" title="The Message Way Of Life">
+<link href="Spacewar_0021-models.html" rel="next" title="Spacewar! models">
+<link href="Messages-to-number-entities.html" rel="prev" title="Messages to number entities">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="style.css">
+
+
+</head>
+
+<body lang="en">
+<span id="A-brief-introduction-to-the-system-Browser"></span><div class="header">
+<p>
+Next: <a href="Spacewar_0021-models.html" accesskey="n" rel="next">Spacewar! models</a>, Previous: <a href="Messages-to-number-entities.html" accesskey="p" rel="prev">Messages to number entities</a>, Up: <a href="The-Message-Way-Of-Life.html" accesskey="u" rel="up">The Message Way Of Life</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="A-brief-introduction-to-the-system-Browser-1"></span><h3 class="section">2.5 A brief introduction to the system Browser</h3>
+<p>The <em>System Browser</em>, in short the <em>Browser</em>, is a tool to
+rule all the classes in Cuis-Smalltalk. It is both a tool to explore the
+classes (system or user ones) and to write new classes and methods.
+</p>
+<p>To access the tool, ...Background click &rarr;
+Open... &rarr; Browser...
+</p>
+<div class="float"><span id="ch02_002dbrowserDetailed"></span>
+<div align="center"><img src="ch02-browserDetailed.png" alt="ch02-browserDetailed">
+</div>
+<div class="float-caption"><p><strong><em>Figure</em> 2.1: </strong>The System Browser</p></div></div>
+<span id="index-Browser_002c-class-category"></span>
+<p>At the top left are the <em>class categories</em>, there are group of
+classes part of the same theme. It is also called <em>Package</em>, it is
+an organisational element to save code. In <a href="#ch02_002dbrowserDetailed"><em>Figure</em> 2.1</a>, the
+selected class category is <samp>Kernel-Numbers</samp>, a group of
+classes we already explored. The term <samp>Kernel-</samp> indicates it
+is part of fundamental categories, but it is only a convention. See
+the other categories as <samp>Kernel-Text</samp> and
+<samp>Kernel-Chronology</samp> related to text and date entities.
+</p>
+<span id="index-class_002c-declaration"></span>
+<p>Next to the right are the classes in the selected class category. They
+are nicely presented in a parent-child class hierarchy. When a class is
+first selected in this pane, its declaration appears in the large pane
+bellow, the <span class="sansserif">Number</span> class declaration is:
+</p>
+<div class="display">
+<pre class="display"><span class="sansserif">Magnitude subclass: #Number
+   instanceVariableNames: &rdquo;
+   classVariableNames: &rdquo;
+   poolDictionaries: &rdquo;
+   category: &rsquo;Kernel-Numbers&rsquo;</span>
+</pre></div>
+
+<p>Observe a few important points in this declaration:
+</p>
+<ul>
+<li> <span class="sansserif">Number</span> is a sub class of <span class="sansserif">Magnitude</span>. This means
+   <span class="sansserif">Number</span> is a kind of specialized <span class="sansserif">Magnitude</span>.
+
+</li><li> the declaration itself is Smalltalk code, indeed the message
+   <span class="sansserif">#subclass:instanceVariableNames:classVariableNames:poolDictionaries:
+   category:</span> is sent to <span class="sansserif">Magnitude</span>
+
+</li><li> the <span class="sansserif">subclass:</span> argument <span class="sansserif">Number</span> is prefixed
+   with &ldquo;#&rdquo;, it is a symbol, a kind of unique string. Indeed when
+   declaring the <span class="sansserif">Number</span> class, the system does not know it
+   yet, so it is named as a symbol.
+
+</li><li> The <span class="sansserif">instanceVariableNames:</span> argument is a string:
+   the instance variables of the class are declared by name separated
+   by a space. There is none in this class definition.
+
+</li></ul>
+
+<span id="index-class_002c-comment"></span>
+<p>To learn about the intend of a class, you <strong>must</strong> visit
+systematically its comment. Often a comment comes also with code
+examples to learn how to use the object; these code snippets can be
+selected and executed in place as done from a Workspace. In
+<a href="#ch02_002dbrowserDetailed"><em>Figure</em> 2.1</a>, see the <samp>comment</samp> button to read or
+to edit the comment of the selected class.
+</p>
+<p>Next to the right is the method categories panel. It is user defined
+method categories. A class can come with tenth of methods, grouping
+them by category ease the user access. As a reference, <span class="sansserif">Number</span>
+has more than 100 instance side methods implemented in
+itself<a id="DOCF4" href="#FOOT4"><sup>4</sup></a>; therefore clicking the <samp>arithmetic</samp> category
+directly gives access to related methods in the next and last pane at
+the right.
+</p>
+<div class="float"><span id="stringArith"></span>
+<blockquote class="indentedblock">
+<p><em>How many methods is there
+in the <samp>arithmetic</samp> method category of the <span class="sansserif">String</span>
+class?</em>
+</p></blockquote>
+
+
+<div class="float-caption"><p><strong><em>Exercise</em> 2.3: </strong>Count of methods</p></div></div>
+
+<span id="index-class_002c-instance-method"></span>
+<p>In the Browser, once a method is selected &ndash; in
+<a href="#ch02_002dbrowserDetailed"><em>Figure</em> 2.1</a>, <span class="sansserif">abs</span> method &ndash; the bottom part
+shows its source code, ready to be explored or edited. Again, often,
+you will read a small comment just after the method name, it is
+surrounded by double quote.
+</p>
+
+<span id="index-Browser_002c-invoke-from-Workspace"></span>
+<p>A last bit of advice,  in the workspace when requesting the
+class of an instance, <kbd>Ctrl-b</kbd> will invoke the Browser on the
+returned class:
+</p>
+<ul>
+<li> In the Workspace, on <span class="sansserif">1 class</span> execute and print
+   with <kbd>Ctrl-p</kbd>,
+
+</li><li> <span class="sansserif">SmallInteger</span> is printed and automatically selected by default,
+
+</li><li> Invoke the Browser on the selected <span class="sansserif">SmalltalkInteger</span>
+   class with <kbd>Ctrl-b</kbd>,
+
+</li><li> The Browser is open on the <span class="sansserif">SmalltalkInteger</span>, ready to
+   be explored.
+
+</li></ul>
+
+<div class="footnote">
+<hr>
+<h4 class="footnotes-heading">Footnotes</h4>
+
+<h5><a id="FOOT4" href="#DOCF4">(4)</a></h3>
+<p>When considering its parents, the count is greater
+than 300.</p>
+</div>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Spacewar_0021-models.html" accesskey="n" rel="next">Spacewar! models</a>, Previous: <a href="Messages-to-number-entities.html" accesskey="p" rel="prev">Messages to number entities</a>, Up: <a href="The-Message-Way-Of-Life.html" accesskey="u" rel="up">The Message Way Of Life</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

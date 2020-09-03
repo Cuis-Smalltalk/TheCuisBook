@@ -50,18 +50,18 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>The exercises (The Cuis-Smalltalk Book)</title>
+<title>Spacewar! models (The Cuis-Smalltalk Book)</title>
 
-<meta name="description" content="The exercises (The Cuis-Smalltalk Book)">
-<meta name="keywords" content="The exercises (The Cuis-Smalltalk Book)">
+<meta name="description" content="Spacewar! models (The Cuis-Smalltalk Book)">
+<meta name="keywords" content="Spacewar! models (The Cuis-Smalltalk Book)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
-<link href="index.html" rel="up" title="Top">
-<link href="Solutions-of-the-exercises.html" rel="next" title="Solutions of the exercises">
-<link href="Documents-copyright.html" rel="prev" title="Documents copyright">
+<link href="The-Message-Way-Of-Life.html" rel="up" title="The Message Way Of Life">
+<link href="Classes.html" rel="next" title="Classes">
+<link href="A-brief-introduction-to-the-system-Browser.html" rel="prev" title="A brief introduction to the system Browser">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -86,12 +86,34 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="The-exercises"></span><div class="header">
+<span id="Spacewar_0021-models"></span><div class="header">
 <p>
-Next: <a href="Solutions-of-the-exercises.html" accesskey="n" rel="next">Solutions of the exercises</a>, Previous: <a href="Documents-copyright.html" accesskey="p" rel="prev">Documents copyright</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Previous: <a href="A-brief-introduction-to-the-system-Browser.html" accesskey="p" rel="prev">A brief introduction to the system Browser</a>, Up: <a href="The-Message-Way-Of-Life.html" accesskey="u" rel="up">The Message Way Of Life</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Liste-des-exercices"></span><h2 class="appendix">Appendix B Liste des exercices</h2>
+<span id="Spacewar_0021-models-1"></span><h3 class="section">2.6 Spacewar! models</h3>
+<p>In the last chapter we listed the protagonists of the game. We make a
+first iteration of the game model with a set of class representing the
+involved entities:
+</p>
+<ol>
+<li> a central star &rArr; <span class="sansserif">CentralStar</span> class,
+
+</li><li> a star field &rArr; <span class="sansserif">StarField</span> class,
+
+</li><li> two space ships &rArr; <span class="sansserif">SpaceShip</span> class,
+
+</li><li> torpedoes &rArr; <span class="sansserif">Torpedo</span> class.
+
+</li></ol>
+
+<span id="index-Browser_002c-class-category-_0028new_0029"></span>
+<span id="index-package_002c-new"></span>
+<p>Before defining these classes in Cuis-Smalltalk, we want to create a class
+category (package) for our game:
+</p>
+
+
 
 
 

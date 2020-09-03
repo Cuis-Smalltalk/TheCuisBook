@@ -7,6 +7,8 @@
 * Messages sends definition::
 * Message to string entities::
 * Messages to number entities::
+* A brief introduction to the system Browser::
+* Spacewar! models::
 @end menu
 
 @node Smalltalk design
@@ -19,7 +21,7 @@ When a given entity receives a message from another entity, it
 triggers a specific behavior.  The receiving entity of the message is
 called the @dfn{receiver} and the sending entity, the @dfn{sender}. In
 @cuis{} terminology, an entity is called an @dfn{instance of a class}
-or @dfn{class instannce}. A class is a kind of model for an entity.
+or @dfn{class instance}. A class is a kind of model for an entity.
 
 The behavior is defined internally in the receiver and it can be
 triggered from any instance. Again this behavior is described only
@@ -81,7 +83,7 @@ with a lower case letter.
 Binary message selectors consist of one or more characters from the
 following set:
 
-@smalltalkExample{+ -- / \ * ∼ < > = @@ % | & ? ,}
+@smalltalkExample{+ -- / \ * ~ < > = @@ % | & ? ,}
 
 Keyword message selectors consist of a series of alphanumeric
 keywords, where each keyword starts with a lower-case letter and ends
@@ -252,3 +254,136 @@ one or several colon(s) ``:'' to insert argument(s):
 12 gcd: 15 @result{} 3}
 
 
+@cindex tools, system Browser
+@cindex Browser
+@node A brief introduction to the system Browser
+@section A brief introduction to the system Browser
+The @dfn{System Browser}, in short the @dfn{Browser}, is a tool to
+rule all the classes in @cuis{}. It is both a tool to explore the
+classes (system or user ones) and to write new classes and methods.
+
+To access the tool, ...@clicksequence{Background click @click{}
+Open... @click{} Browser}...
+
+@figure{The System Browser,ch02-browserDetailed,12}
+
+@cindex Browser, class category
+At the top left are the @dfn{class categories}, there are group of
+classes part of the same theme. It is also called @dfn{Package}, it is
+an organisational element to save code. In @ref{ch02-browserDetailed}, the
+selected class category is @option{Kernel-Numbers}, a group of
+classes we already explored. The term @option{Kernel-} indicates it
+is part of fundamental categories, but it is only a convention. See
+the other categories as @option{Kernel-Text} and
+@option{Kernel-Chronology} related to text and date entities.
+
+@cindex class, declaration
+Next to the right are the classes in the selected class category. They
+are nicely presented in a parent-child class hierarchy. When a class is
+first selected in this pane, its declaration appears in the large pane
+bellow, the @class{Number} class declaration is:
+
+@smalltalkExample{Magnitude subclass: #Number
+   instanceVariableNames: ''
+   classVariableNames: ''
+   poolDictionaries: ''
+   category: 'Kernel-Numbers'}
+
+Observe a few important points in this declaration:
+
+@itemize
+
+   @item @class{Number} is a sub class of @class{Magnitude}. This means
+   @class{Number} is a kind of specialized @class{Magnitude}.
+
+   @item the declaration itself is Smalltalk code, indeed the message
+   @msg{subclass:instanceVariableNames:classVariableNames:poolDictionaries:
+   category:} is sent to @class{Magnitude}
+
+   @item the @smalltalk{subclass:} argument @class{Number} is prefixed
+   with ``#'', it is a symbol, a kind of unique string. Indeed when
+   declaring the @class{Number} class, the system does not know it
+   yet, so it is named as a symbol.
+
+   @item The @smalltalk{instanceVariableNames:} argument is a string:
+   the instance variables of the class are declared by name separated
+   by a space. There is none in this class definition.
+
+@end itemize
+
+@cindex class, comment
+To learn about the intend of a class, you @strong{must} visit
+systematically its comment. Often a comment comes also with code
+examples to learn how to use the object; these code snippets can be
+selected and executed in place as done from a Workspace. In
+@ref{ch02-browserDetailed}, see the @option{comment} button to read or
+to edit the comment of the selected class.
+
+Next to the right is the method categories panel. It is user defined
+method categories. A class can come with tenth of methods, grouping
+them by category ease the user access. As a reference, @class{Number}
+has more than 100 instance side methods implemented in
+itself@footnote{When considering its parents, the count is greater
+than 300.}; therefore clicking the @option{arithmetic} category
+directly gives access to related methods in the next and last pane at
+the right.
+
+@exercise{Count of methods,stringArith,@emph{How many methods is there
+in the @option{arithmetic} method category of the @class{String}
+class?}}
+
+
+@cindex class, instance method
+In the Browser, once a method is selected -- in
+@ref{ch02-browserDetailed}, @method{abs} method -- the bottom part
+shows its source code, ready to be explored or edited. Again, often,
+you will read a small comment just after the method name, it is
+surrounded by double quote.
+
+
+@cindex Browser, invoke from Workspace
+A last bit of advice,  in the workspace when requesting the
+class of an instance, @kbd{Ctrl-b} will invoke the Browser on the
+returned class:
+
+@itemize
+
+   @item In the Workspace, on @smalltalk{1 class} execute and print
+   with @kbd{Ctrl-p},
+
+   @item @class{SmallInteger} is printed and automatically selected by default,
+
+   @item Invoke the Browser on the selected @class{SmalltalkInteger}
+   class with @kbd{Ctrl-b},
+
+   @item The Browser is open on the @class{SmalltalkInteger}, ready to
+   be explored.
+
+@end itemize
+
+@node Spacewar! models
+@section Spacewar! models
+In the last chapter we listed the protagonists of the game. We make a
+first iteration of the game model with a set of class representing the
+involved entities:
+
+@enumerate
+ @item a central star @result{} @class{CentralStar} class,
+
+ @item a star field @result{} @class{StarField} class,
+
+ @item two space ships @result{} @class{SpaceShip} class,
+
+ @item torpedoes @result{} @class{Torpedo} class.
+
+@end enumerate
+
+@cindex Browser, class category (new)
+@cindex package, new
+Before defining these classes in @cuis{}, we want to create a class
+category (package) for our game:
+
+
+
+@c create a Package/class category
+@c create Object subclass for each protagonist.
