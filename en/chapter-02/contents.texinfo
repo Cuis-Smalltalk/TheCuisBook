@@ -363,7 +363,7 @@ returned class:
 
 @node Spacewar! models
 @section Spacewar! models
-In the last chapter we listed the protagonists of the game. We make a
+In the last chapter we listed the protagonists of the game. Now, we make a
 first iteration of the game model with a set of class representing the
 involved entities:
 
@@ -381,8 +381,31 @@ involved entities:
 @cindex Browser, class category (new)
 @cindex package, new
 Before defining these classes in @cuis{}, we want to create a class
-category (package) for our game:
+category (package) for our game. In the class category pane of the browser
+-- the most left one -- do: ...@clicksequence{right mouse click
+@click{} add item}... then key in @option{Spacewar!}.
 
+
+@cindex class, create (new)
+Once our new category is set, the browser proposes a template to
+create a new class:
+
+@smalltalkExample{Object subclass: #NameOfSubclass
+   instanceVariableNames: ''
+   classVariableNames: ''
+   poolDictionaries: ''
+   category: 'Spacewar!'}
+
+We replace the symbol @smalltalk{#NameOfSubclass} with a symbol
+representing the name of the class we want to create,
+@smalltalk{#CentralStar}. To save, over the class declaration text do
+...@clicksequence{right mouse click @click{} Accept}... @cuis{}
+will ask your initial and name once. Alternatively, to save you can
+just do @kbd{Ctrl-s}.
+
+Then you repeat the process for each @smalltalk{#StarField},
+@smalltalk{#SpaceShip} and @smalltalk{#Torpedo}. If necessary, to get
+another template, click on our class category @option{Spaceship!}.
 
 
 @c create a Package/class category

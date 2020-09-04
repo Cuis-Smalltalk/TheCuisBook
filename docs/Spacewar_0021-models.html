@@ -11,7 +11,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : September 3, 2020
+Compilation : September 5, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -92,7 +92,7 @@ Previous: <a href="A-brief-introduction-to-the-system-Browser.html" accesskey="p
 </div>
 <hr>
 <span id="Spacewar_0021-models-1"></span><h3 class="section">2.6 Spacewar! models</h3>
-<p>In the last chapter we listed the protagonists of the game. We make a
+<p>In the last chapter we listed the protagonists of the game. Now, we make a
 first iteration of the game model with a set of class representing the
 involved entities:
 </p>
@@ -110,9 +110,34 @@ involved entities:
 <span id="index-Browser_002c-class-category-_0028new_0029"></span>
 <span id="index-package_002c-new"></span>
 <p>Before defining these classes in Cuis-Smalltalk, we want to create a class
-category (package) for our game:
+category (package) for our game. In the class category pane of the browser
+&ndash; the most left one &ndash; do: ...right mouse click
+&rarr; add item... then key in <samp>Spacewar!</samp>.
 </p>
 
+<span id="index-class_002c-create-_0028new_0029"></span>
+<p>Once our new category is set, the browser proposes a template to
+create a new class:
+</p>
+<div class="display">
+<pre class="display"><span class="sansserif">Object subclass: #NameOfSubclass
+   instanceVariableNames: &rdquo;
+   classVariableNames: &rdquo;
+   poolDictionaries: &rdquo;
+   category: &rsquo;Spacewar!&rsquo;</span>
+</pre></div>
+
+<p>We replace the symbol <span class="sansserif">#NameOfSubclass</span> with a symbol
+representing the name of the class we want to create,
+<span class="sansserif">#CentralStar</span>. To save, over the class declaration text do
+...right mouse click &rarr; Accept... Cuis-Smalltalk
+will ask your initial and name once. Alternatively, to save you can
+just do <kbd>Ctrl-s</kbd>.
+</p>
+<p>Then you repeat the process for each <span class="sansserif">#StarField</span>,
+<span class="sansserif">#SpaceShip</span> and <span class="sansserif">#Torpedo</span>. If necessary, to get
+another template, click on our class category <samp>Spaceship!</samp>.
+</p>
 
 
 
