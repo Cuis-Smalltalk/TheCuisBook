@@ -81,13 +81,13 @@ preferences.
 Once you read the instructions on the default windows, the next 
 thing you want to do is to adjust its visual properties to fit your
 preferences and needs. To do so, access the World menu
-...@clicksequence{Background click @click{} Preferences...} then
+...@clicksequence{Background click @click{} @label{Preferences...}} then
 select the pin on the top right of the menu to make it permanent. Here
 you have the most important options: the choice for the @strong{font
 size}, the @strong{themes} whenever your prefer light or dark
 colouring. There are other preferences you can explore by
 yourself. Once you are done, access again the World menu
-...@clicksequence{Background click @click{} Save}... to make your
+...@clicksequence{Background click @click{} @label{Save}}... to make your
 preferences permanent. In this book, we keep the default @cuis{}
 theme, we suggest you to do the same so your environment reflects the
 book screenshots.
@@ -99,7 +99,7 @@ book screenshots.
 The first tool to discover is the @dfn{Workspace} tool. It is a kind
 of text editor to key in Smalltalk code you can execute
 immediately. Do a ...@clicksequence{Background click @click{}
-Open... @click{} Workspace}...
+@label{Open...} @click{} @label{Workspace}}...
 
 Now we ask @cuis{} to make the windows placement: click the blue icon
 (top left) to access the window option and experiment with the white
@@ -108,11 +108,11 @@ environment.
 
 @figure{Window options,ch01-img1a,7}
 
-The @option{resize...} option even offers more freedom to place the
+The @label{resize...} option even offers more freedom to place the
 window. Resolve the following exercise:
 
 @exercise{Middle placement,exePlacement, @emph{Use the
-@option{resize...} option to place the Workspace centered on @cuis{}
+@label{resize...} option to place the Workspace centered on @cuis{}
 environment.}}
 
 @node Writing your first scripts
@@ -131,11 +131,13 @@ Transcript show: 'Hello World'}
 
 @cindex tools, transcript
 To execute this code, select it with the mouse and
-...@clicksequence{right mouse click @click{} Do it (d)}...  You may now see nothing
-happen! Indeed to see the output, you need a @dfn{Transcript} window to be visible.
-The @class{Transcript} is a place where programmer can send information for the user as we are
+...@clicksequence{right mouse click @click{} @label{Do it (d)}}...
+You may now see nothing happen! Indeed to see the output, you need a
+@dfn{Transcript} window to be visible.  The @class{Transcript} is a
+place where programmer can send information for the user as we are
 doing here. Do ...@clicksequence{Background click @click{}
-Open... @click{} Transcript}... and execute the code again.
+@label{Open...} @click{} @label{Transcript}}... and execute the code
+again.
 
 @figure{Transcript window with output,ch01-img2,3}
 
@@ -305,7 +307,6 @@ probability of the ship exploding with each use.
 @author Wikipedia, @url{https://en.wikipedia.org/wiki/Spacewar!#Gameplay,Spacewar!,Spacewar!}
 @end quotation
 
-@page
 Therefore, the protagonists of the game are:
 
 @enumerate

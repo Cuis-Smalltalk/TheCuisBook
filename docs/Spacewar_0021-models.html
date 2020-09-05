@@ -92,9 +92,9 @@ Previous: <a href="A-brief-introduction-to-the-system-Browser.html" accesskey="p
 </div>
 <hr>
 <span id="Spacewar_0021-models-1"></span><h3 class="section">2.6 Spacewar! models</h3>
-<p>In the last chapter we listed the protagonists of the game. Now, we make a
-first iteration of the game model with a set of class representing the
-involved entities:
+<p>In last chapter we listed the protagonists of the game. Now, we make a
+first iteration of the game model to declare a set of classes
+representing the involved entities:
 </p>
 <ol>
 <li> a central star &rArr; <span class="sansserif">CentralStar</span> class,
@@ -108,16 +108,19 @@ involved entities:
 </li></ol>
 
 <span id="index-Browser_002c-class-category-_0028new_0029"></span>
-<span id="index-package_002c-new"></span>
-<p>Before defining these classes in Cuis-Smalltalk, we want to create a class
-category (package) for our game. In the class category pane of the browser
-&ndash; the most left one &ndash; do: ...right mouse click
-&rarr; add item... then key in <samp>Spacewar!</samp>.
+<p>Before defining these classes in Cuis-Smalltalk, we want to create a
+dedicated class category to group them there.
+</p>
+<p>Over the class category pane of the Browser &ndash; the most left one &ndash;
+just do:
+</p>
+<p>...right mouse click &rarr; <code>add item</code>... then
+key in <em>Spacewar!</em>.
 </p>
 
 <span id="index-class_002c-create-_0028new_0029"></span>
-<p>Once our new category is set, the browser proposes a template to
-create a new class:
+<p>Once our new category is set, the Browser proposes a code template to
+create a new class there:
 </p>
 <div class="display">
 <pre class="display"><span class="sansserif">Object subclass: #NameOfSubclass
@@ -128,17 +131,62 @@ create a new class:
 </pre></div>
 
 <p>We replace the symbol <span class="sansserif">#NameOfSubclass</span> with a symbol
-representing the name of the class we want to create,
-<span class="sansserif">#CentralStar</span>. To save, over the class declaration text do
-...right mouse click &rarr; Accept... Cuis-Smalltalk
-will ask your initial and name once. Alternatively, to save you can
-just do <kbd>Ctrl-s</kbd>.
+representing the name of the class we want to create. Let&rsquo;s start with
+<span class="sansserif">#CentralStar</span>. To save the class, over the class
+declaration code do ...right mouse click &rarr;
+<code>Accept</code>... Cuis-Smalltalk will ask your initial and name once. Alternatively,
+to save you can just do <kbd>Ctrl-s</kbd>.
 </p>
-<p>Then you repeat the process for each <span class="sansserif">#StarField</span>,
+<p>Then you repeat the process for each of <span class="sansserif">#StarField</span>,
 <span class="sansserif">#SpaceShip</span> and <span class="sansserif">#Torpedo</span>. If necessary, to get
-another template, click on our class category <samp>Spaceship!</samp>.
+another code template, click the class category <em>Spaceship!</em>.
 </p>
+<p>Your class category should look like <a href="#ch02_002dspacewarClassCategory"><em>Figure</em> 2.2</a>.
+</p>
+<div class="float"><span id="ch02_002dspacewarClassCategory"></span>
+<div align="center"><img src="ch02-spacewarClassCategory.png" alt="ch02-spacewarClassCategory">
+</div>
+<div class="float-caption"><p><strong><em>Figure</em> 2.2: </strong>Spacewar! class category</p></div></div>
+<span id="index-package_002c-create-_0028new_0029"></span>
+<span id="index-package_002c-save"></span>
+<p>Another important use case of a class category is to define a package
+to save code on file.  A package saves the code of the classes held in
+a given class category. To create our <em>Spacewar!</em> package then
+save our game code:
+</p>
+<ol>
+<li> Do ...background click &rarr;
+  <code>Open...</code> &rarr; <code>Installed Packages</code>...
 
+</li><li> On the new window, do ...click <code>new</code>
+  button &rarr; Input Spacewar! &rarr; <tt class="key">Return</tt>..
+
+</li><li> Do ...select <code>Spacewar!</code> package &rarr;
+  <code>save</code> button...
+
+</li></ol>
+
+<span id="index-package_002c-load"></span>
+<p>A file <samp>Spacewar!.pck.st</samp> is created along the Cuis-Smalltalk image
+file.  Every time a package needs to be loaded in a fresh Cuis-Smalltalk
+environment, use the File List tool:
+</p>
+<ol>
+<li> Do ...background click &rarr;
+  <code>Open...</code> &rarr; <code>File List</code>...
+
+</li><li> Search for the file <samp>Spacewar!.pck.st</samp> and click the
+  <code>install package</code> button
+  
+
+</li></ol>
+
+
+<hr>
+<div class="header">
+<p>
+Previous: <a href="A-brief-introduction-to-the-system-Browser.html" accesskey="p" rel="prev">A brief introduction to the system Browser</a>, Up: <a href="The-Message-Way-Of-Life.html" accesskey="u" rel="up">The Message Way Of Life</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
 
 
 

@@ -263,7 +263,7 @@ rule all the classes in @cuis{}. It is both a tool to explore the
 classes (system or user ones) and to write new classes and methods.
 
 To access the tool, ...@clicksequence{Background click @click{}
-Open... @click{} Browser}...
+@label{Open...} @click{} @label{Browser}}...
 
 @figure{The System Browser,ch02-browserDetailed,12}
 
@@ -271,11 +271,11 @@ Open... @click{} Browser}...
 At the top left are the @dfn{class categories}, there are group of
 classes part of the same theme. It is also called @dfn{Package}, it is
 an organisational element to save code. In @ref{ch02-browserDetailed}, the
-selected class category is @option{Kernel-Numbers}, a group of
-classes we already explored. The term @option{Kernel-} indicates it
+selected class category is @label{Kernel-Numbers}, a group of
+classes we already explored. The term @label{Kernel-} indicates it
 is part of fundamental categories, but it is only a convention. See
-the other categories as @option{Kernel-Text} and
-@option{Kernel-Chronology} related to text and date entities.
+the other categories as @label{Kernel-Text} and
+@label{Kernel-Chronology} related to text and date entities.
 
 @cindex class, declaration
 Next to the right are the classes in the selected class category. They
@@ -316,7 +316,7 @@ To learn about the intend of a class, you @strong{must} visit
 systematically its comment. Often a comment comes also with code
 examples to learn how to use the object; these code snippets can be
 selected and executed in place as done from a Workspace. In
-@ref{ch02-browserDetailed}, see the @option{comment} button to read or
+@ref{ch02-browserDetailed}, see the @label{comment} button to read or
 to edit the comment of the selected class.
 
 Next to the right is the method categories panel. It is user defined
@@ -324,12 +324,12 @@ method categories. A class can come with tenth of methods, grouping
 them by category ease the user access. As a reference, @class{Number}
 has more than 100 instance side methods implemented in
 itself@footnote{When considering its parents, the count is greater
-than 300.}; therefore clicking the @option{arithmetic} category
+than 300.}; therefore clicking the @label{arithmetic} category
 directly gives access to related methods in the next and last pane at
 the right.
 
 @exercise{Count of methods,stringArith,@emph{How many methods is there
-in the @option{arithmetic} method category of the @class{String}
+in the @label{arithmetic} method category of the @class{String}
 class?}}
 
 
@@ -363,9 +363,9 @@ returned class:
 
 @node Spacewar! models
 @section Spacewar! models
-In the last chapter we listed the protagonists of the game. Now, we make a
-first iteration of the game model with a set of class representing the
-involved entities:
+In last chapter we listed the protagonists of the game. Now, we make a
+first iteration of the game model to declare a set of classes
+representing the involved entities:
 
 @enumerate
  @item a central star @result{} @class{CentralStar} class,
@@ -379,16 +379,19 @@ involved entities:
 @end enumerate
 
 @cindex Browser, class category (new)
-@cindex package, new
-Before defining these classes in @cuis{}, we want to create a class
-category (package) for our game. In the class category pane of the browser
--- the most left one -- do: ...@clicksequence{right mouse click
-@click{} add item}... then key in @option{Spacewar!}.
+Before defining these classes in @cuis{}, we want to create a
+dedicated class category to group them there.
+
+Over the class category pane of the Browser -- the most left one --
+just do:
+
+...@clicksequence{right mouse click @click{} @label{add item}}... then
+key in @emph{Spacewar!}.
 
 
 @cindex class, create (new)
-Once our new category is set, the browser proposes a template to
-create a new class:
+Once our new category is set, the Browser proposes a code template to
+create a new class there:
 
 @smalltalkExample{Object subclass: #NameOfSubclass
    instanceVariableNames: ''
@@ -397,15 +400,54 @@ create a new class:
    category: 'Spacewar!'}
 
 We replace the symbol @smalltalk{#NameOfSubclass} with a symbol
-representing the name of the class we want to create,
-@smalltalk{#CentralStar}. To save, over the class declaration text do
-...@clicksequence{right mouse click @click{} Accept}... @cuis{}
-will ask your initial and name once. Alternatively, to save you can
-just do @kbd{Ctrl-s}.
+representing the name of the class we want to create. Let's start with
+@smalltalk{#CentralStar}. To save the class, over the class
+declaration code do ...@clicksequence{right mouse click @click{}
+@label{Accept}}... @cuis{} will ask your initial and name once. Alternatively,
+to save you can just do @kbd{Ctrl-s}.
 
-Then you repeat the process for each @smalltalk{#StarField},
+Then you repeat the process for each of @smalltalk{#StarField},
 @smalltalk{#SpaceShip} and @smalltalk{#Torpedo}. If necessary, to get
-another template, click on our class category @option{Spaceship!}.
+another code template, click the class category @emph{Spaceship!}.
+
+Your class category should look like @ref{ch02-spacewarClassCategory}.
+
+@figure{Spacewar! class category,ch02-spacewarClassCategory,5}
+
+@cindex package, create (new)
+@cindex package, save
+Another important use case of a class category is to define a package
+to save code on file.  A package saves the code of the classes held in
+a given class category. To create our @emph{Spacewar!} package then
+save our game code:
+
+@enumerate
+  @item Do ...@clicksequence{background click @click{}
+  @label{Open...} @click{} @label{Installed Packages}}...
+
+  @item On the new window, do ...@clicksequence{click @label{new}
+  button @click{} Input Spacewar! @click{} @key{Return}}..
+
+  @item Do ...@clicksequence{select @label{Spacewar!} package @click{}
+  @label{save} button}...
+
+@end enumerate
+
+@cindex package, load
+A file @file{Spacewar!.pck.st} is created along the @cuis{} image
+file.  Every time a package needs to be loaded in a fresh @cuis{}
+environment, use the File List tool:
+
+@enumerate
+
+  @item Do ...@clicksequence{background click @click{}
+  @label{Open...} @click{} @label{File List}}...
+
+  @item Search for the file @file{Spacewar!.pck.st} and click the
+  @label{install package} button
+  
+
+@end enumerate
 
 
 @c create a Package/class category

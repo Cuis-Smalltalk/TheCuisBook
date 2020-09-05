@@ -28,6 +28,7 @@ K. Dickey, H. Fernandes, J. Vuletich
 @alias class=sansserif
 @alias smalltalk=sansserif
 @alias method=sansserif
+@alias label=command
 @macro msg{messageName}
 @sansserif{#\messageName\}
 @end macro
