@@ -363,8 +363,8 @@ returned class:
 
 @node Spacewar! models
 @section Spacewar! models
-In last chapter we listed the protagonists of the game. Now, we make a
-first iteration of the game model to declare a set of classes
+In last chapter we listed the protagonists of the game. Now, we
+propose a first implementation of the game model with a set of classes
 representing the involved entities:
 
 @enumerate
@@ -380,9 +380,8 @@ representing the involved entities:
 
 @cindex Browser, class category (new)
 Before defining these classes in @cuis{}, we want to create a
-dedicated class category to group them there.
-
-Over the class category pane of the Browser -- the most left one --
+dedicated class category to group them there. With the mouse pointer
+over the class category pane of the Browser -- the most left one --
 just do:
 
 ...@clicksequence{right mouse click @click{} @label{add item}}... then
@@ -390,8 +389,9 @@ key in @emph{Spacewar!}.
 
 
 @cindex class, create (new)
-Once our new category is set, the Browser proposes a code template to
-create a new class there:
+Once our new category is set, the Browser proposes on the method
+source code pane -- the bottom one -- a code template to create a new
+class in the @label{Spacewar!} category:
 
 @smalltalkExample{Object subclass: #NameOfSubclass
    instanceVariableNames: ''
@@ -403,14 +403,15 @@ We replace the symbol @smalltalk{#NameOfSubclass} with a symbol
 representing the name of the class we want to create. Let's start with
 @smalltalk{#CentralStar}. To save the class, over the class
 declaration code do ...@clicksequence{right mouse click @click{}
-@label{Accept}}... @cuis{} will ask your initial and name once. Alternatively,
-to save you can just do @kbd{Ctrl-s}.
+@label{Accept}}... @cuis{} will ask your initial and name
+once. Alternatively, you can just do @kbd{Ctrl-s}.
 
 Then you repeat the process for each of @smalltalk{#StarField},
 @smalltalk{#SpaceShip} and @smalltalk{#Torpedo}. If necessary, to get
-another code template, click the class category @emph{Spaceship!}.
+another code template, click the class category @label{Spaceship!}.
 
-Your class category should look like @ref{ch02-spacewarClassCategory}.
+When done, your class category should be filled with four classes as in
+@ref{ch02-spacewarClassCategory}.
 
 @figure{Spacewar! class category,ch02-spacewarClassCategory,5}
 
@@ -418,20 +419,23 @@ Your class category should look like @ref{ch02-spacewarClassCategory}.
 @cindex package, save
 Another important use case of a class category is to define a package
 to save code on file.  A package saves the code of the classes held in
-a given class category. To create our @emph{Spacewar!} package then
-save our game code:
+a given class category and a bit more, but more on that last point
+later. To create our @label{Spacewar!} package and save our game code:
 
 @enumerate
   @item Do ...@clicksequence{background click @click{}
   @label{Open...} @click{} @label{Installed Packages}}...
 
   @item On the new window, do ...@clicksequence{click @label{new}
-  button @click{} Input Spacewar! @click{} @key{Return}}..
+  button @click{} Input @emph{Spacewar!} @click{} @key{Return}}...
 
   @item Do ...@clicksequence{select @label{Spacewar!} package @click{}
   @label{save} button}...
 
 @end enumerate
+
+@figure{Installed Package window,ch02-InstalledPackages,8}
+
 
 @cindex package, load
 A file @file{Spacewar!.pck.st} is created along the @cuis{} image
@@ -444,11 +448,16 @@ environment, use the File List tool:
   @label{Open...} @click{} @label{File List}}...
 
   @item Search for the file @file{Spacewar!.pck.st} and click the
-  @label{install package} button
-  
+  @label{install package} button  
 
 @end enumerate
 
+Now, we have created and saved the package. Whenever you start with a
+fresh @cuis{} environment, you can load the game package.
+
+The classes we defined are empty shells with no state nor
+behavior. They will be complemented and refactored in the next
+chapters.
 
 @c create a Package/class category
 @c create Object subclass for each protagonist.
