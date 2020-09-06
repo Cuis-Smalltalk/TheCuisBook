@@ -5,6 +5,8 @@
 * Understanding Object Oriented Programming::
 * Explore OOP from the Browser::
 * @cuis{} system classes::
+* Kernel-Numbers::
+* Kernel-Text::
 @end menu
 
 @node Understanding Object Oriented Programming
@@ -410,6 +412,7 @@ are:
 @end itemize
 
 
+@node Kernel-Numbers
 @section Kernel-Numbers
 The top hierarchy @class{Number} class shows most of the behaviors
 inherited by the sub classes as @class{Float}, @class{Integer} and
@@ -513,7 +516,7 @@ bits left and right is equivalent to multiplying by 2 and dividing by
 the integer 360 by 1024@comma{} without using the multiplication operation?}}
 
 
-@heading Hiatus with decimal numbers
+@subheading Hiatus with decimal numbers
 @cindex number, decimal
 We saw decimal numbers are written with a dot ``.'' to separate the
 integer and the decimal parts: @smalltalk{1.5}, @smalltalk{1235.021}
@@ -577,3 +580,81 @@ it seems:
 @result{} 1.3}
 @smalltalkExample{(13/10) asFloat asFraction
 @result{} 5854679515581645/45035996273704}
+
+@node Kernel-Text
+@section Kernel-Text
+Notably, this category comes with @class{Character}, @class{String}
+and @class{Symbol}. @class{String} instance are collection of
+@class{Character} instances.
+
+@cindex character
+@strong{Character.} An individual character is written prefixed with a
+``$'': @smalltalk{$A}. It can be defined with the class side method
+@method{numericValue:} or converted from an integer instance with the
+@msg{asCharacter}:
+
+@smalltalkExample{Character numericValue: 65 @result{} $A
+65 asCharacter @result{} $A}
+
+There are class side methods for non printable characters:
+@smalltalk{Character tab}, @smalltalk{Character lf}, etc.
+
+As string are collection of characters, when enumerating a string we
+can use the @class{Character} instance methods:
+
+@smalltalkExampleCaption{Twelve apples,apples12,
+'There are 12 apples.' select: [:c |c isDigit].
+@result{} '12'}
+
+@exercise{Select apples,selectApples, @emph{Modify @ref{apples12} to
+reject the numeric characters.}}
+
+@cindex string
+@strong{String.} @class{String} is a very large class, it comes with
+more than 200 methods. Hopefully the methods are grouped in categories
+and it is very easy to experiment from a Workspace when you are
+looking for a specific behavior.
+
+Consider you need to search for a string in a string: when browsing
+the @class{String} class, search for method categories named like
+@label{finding...} or @label{accessing}. There you find a family of
+@method{findXXX} methods. Read the comments at the beginning of these
+methods:
+
+@smalltalkExample{findString: subString
+   "Answer the index of subString within the receiver, starting at
+   start. If the receiver does not contain subString, answer 0."
+   ^self findString: subString startingAt: 1.}
+
+Or:
+
+@smalltalkExample{findString: key startingAt: start caseSensitive: caseSensitive
+   "Answer the index in this String at which the substring key first
+   occurs, at or beyond start.  The match can be case-sensitive or
+   not.  If no match is found, zero will be returned."
+   ../..}
+
+Then experiment the potentially interesting messages in a workspace:
+
+@smalltalkExample{'I love apples' findString: 'love' @result{} 3 "find at position 3"
+'I love apples' findString: 'hate'
+@result{}  0 "no finding"
+'We humans, we all love apples' findString: 'we'
+@result{} 12 
+'We humans, we all love apples'
+   findString: 'we'
+   startingAt: 1
+   caseSensitive: false
+@result{} 1 
+'we humans, we all love apples' findString: 'we'
+@result{} 1 
+'we humans, we all love apples' findString: 'we' startingAt: 2
+@result{} 12}
+
+Following these paths will, most of the time, leads you to the answer
+you are looking for.
+
+@c an exercise to find a method given a behavior
+@exercise{Format a string, formatString, @emph{We want to format a
+string of the form 'Joe bought XX apples and YY oranges' to the form
+'Joe bought 5 apples and 4 oranges'. What message should be used?}}
