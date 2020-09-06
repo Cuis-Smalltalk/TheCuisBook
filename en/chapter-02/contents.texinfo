@@ -210,8 +210,8 @@ with binary messages understood by the rational number entities:
 (3 / 4) squared @result{} 9 / 16
 (25 / 4) sqrt @result{} 5 / 2}
 
-@exercise{Sum of the squares,squaredSum,Write the code to compute the
-sum of the squares of the inverse of the first four integers.}
+@exercise{Sum of the squares,squaredSum, @emph{Write the code to compute the
+sum of the squares of the inverse of the first four integers.}}
 
 @cindex number, decimal division
 If @cuis{} divides integer as rational number, how to compute the

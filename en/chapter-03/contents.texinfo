@@ -162,7 +162,7 @@ As the @msg{squared} message is sent to @class{Integer} and
 called an @dfn{instance method}. This method is defined in both the
 @class{Number} and @class{Fraction} classes.
 
-
+@cindex method, returned value (explicit)
 Let's examine this method in @class{Number}:
 @smalltalkExample{Number>>squared
 "Answer the receiver multiplied by itself."
@@ -215,6 +215,7 @@ This implementation will do just fine for the @class{Number}
 subclasses. Nevertheless, there are several classes overriding it for
 optimization purpose.
 
+@cindex method, returned value (default)
 For example, regarding large positive integer, @method{abs} is
 empty. Indeed, in the absence of explicitly returned value, the
 default returned value is the instance itself, in our situation the
@@ -671,16 +672,16 @@ our models:
 @itemize
 
  @item A @class{Torpedo} has @smalltalk{position},
- @smalltalk{direction} and @smalltalk{lifeSpan} states.
+ @smalltalk{velocity} and @smalltalk{lifeSpan} states.
 
- @item A @class{SpaceShip} has @smalltalk{name}, @smalltalk{position}, 
- @smalltalk{direction}, @smalltalk{fuel}, @smalltalk{torpedoes} and
- @smalltalk{mass} states.
+ @item A @class{SpaceShip} has @smalltalk{name}, @smalltalk{position},
+ @smalltalk{acceleration}, @smalltalk{velocity}, @smalltalk{fuel},
+ @smalltalk{torpedoes} and @smalltalk{mass} states.
 
  @item A @class{CentralStar} has a @smalltalk{mass} state. It is
  necessary to compute the gravity force applied to a given ship.
 
- @item A @class{StarField} has a @smalltalk{star} to set the number of
+ @item A @class{StarField} has a @smalltalk{stars} state to represent the
  stars in the background.
 
 @end itemize
@@ -693,7 +694,7 @@ character. Finally, save the updated class definition with
 @kbd{Ctrl-s} shortcut:
 
 @smalltalkExample{Object subclass: #Torpedo
-   instanceVariableNames: 'position direction lifeSpan'
+   instanceVariableNames: 'position velocity lifeSpan'
    classVariableNames: ''
    poolDictionaries: ''
    category: 'Spacewar!'}
@@ -718,5 +719,64 @@ Some of these states need to be accessed from other entities:
   
 @end itemize
 
- 
+To write these behaviors in the Browser, first select the class then
+the method category you want -- when none, pick up @label{-- all
+--}. In the code pane below appears a method template:
 
+@smalltalkExampleCaption{Method template, methodTemplate,
+messageSelectorAndArgumentNames
+   "comment stating purpose of message"
+   | temporary variable names |
+   statements}
+
+It describes itself as:
+
+@enumerate
+
+   @item @strong{Line 1.} It is a mandatory method name, the same as
+   the message.
+
+   @item @strong{Line 2.} An optional comment surrounded by double
+   quote.
+
+   @item @strong{Line 3.} An optional list of variables local to the
+   method, surrounded by pipe characters.
+
+   @item @strong{Line 4.} A subsequent list of message sendings and
+   assignments.
+
+@end enumerate
+
+The getter @method{mass} on @class{SpaceShip} is written as:
+
+@smalltalkExample{SpaceShip>>mass
+   ^ mass}
+
+The @smalltalk{SpaceShip>>} part is not valid code and should not be
+written in the Browser. It is a text convention to inform the reader
+the subsequent method is from the @class{SpaceShip} class.
+
+@exercise{Simple getters in Spacewar! models, spacewarSimpleGetters,
+@emph{Write the getter messages for @smalltalk{position}@comma{}
+@smalltalk{velocity} and @smalltalk{mass}.}}
+
+@cindex variable, assignment
+@cindex variable, :=
+@cindex variable, @U{2190}
+
+Some states require to be set from another entity, so a setter keyword
+message is necessary. To set the name of a space ship we add the
+following method:
+
+@smalltalkExample{SpaceShip>>name: aString
+   name @assign{} aString}
+
+The @assign{} character is an assignment, it means the
+@smalltalk{name} instance variable is bound to the @smalltalk{aString}
+string object. To type in this symbol type @key{_}, @cuis{} will turn
+it to left arrow symbol . Alternatively, you can write @smalltalk{name
+:= aString}.
+
+@exercise{Ship position setter, shipPositionSetter, @emph{Ship
+position will need to be set at game start up or when a ship jump in
+hyperspace, write a @method{position:} setter.}}

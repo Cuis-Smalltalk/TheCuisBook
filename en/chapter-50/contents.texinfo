@@ -2,7 +2,8 @@
 @node Solutions of the exercises
 @appendix Solutions of the exercises
 
-@unnumberedsec Installing and configuring @cuis{}
+@c Chapter 1
+@unnumberedsec Smallltalk Philosophy
 @subheading @ref{exePlacement}
 @figure{Placement,E-img1,8}
 
@@ -296,3 +297,27 @@ divisors value: 45
 @subheading @ref{implementingAndOr}
 Check the implementations in @class{Boolean}, @class{True} and
 @class{False}.
+
+@c Chapter 4
+@unnumberedsec Class, model of communicating entities
+
+@subheading @ref{spacewarSimpleGetters}
+@example
+CentralStar>>mass
+   ^ mass
+
+SpaceShip>>position
+   ^ position
+
+SpaceShip>>velocity
+   ^ position
+
+Torpedo>>position
+   ^ position
+@end example
+
+@subheading @ref{shipPositionSetter}
+@example
+SpaceShip>>position: aPoint
+   position @assign{} aPoint
+@end example

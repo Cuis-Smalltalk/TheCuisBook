@@ -93,7 +93,7 @@ Next: <a href="The-examples.html" accesskey="n" rel="next">The examples</a>, Pre
 <hr>
 <span id="Solutions-of-the-exercises-1"></span><h2 class="appendix">Appendix C Solutions of the exercises</h2>
 
-<span id="Installing-and-configuring-Cuis_002dSmalltalk-2"></span><h3 class="unnumberedsec">Installing and configuring Cuis-Smalltalk</h3>
+<span id="Smallltalk-Philosophy"></span><h3 class="unnumberedsec">Smallltalk Philosophy</h3>
 <span id="exePlacement-1"></span><h4 class="subheading"><a href="Installing-and-configuring-Cuis_002dSmalltalk.html#exePlacement"><em>Exercise</em> 1.1</a></h4>
 <div class="float"><span id="E_002dimg1"></span>
 <div align="center"><img src="E-img1.png" alt="E-img1">
@@ -389,7 +389,30 @@ divisors value: 45
 <span id="implementingAndOr"></span><h4 class="subheading">&lsquo;implementingAndOr&rsquo;</h4>
 <p>Check the implementations in <span class="sansserif">Boolean</span>, <span class="sansserif">True</span> and
 <span class="sansserif">False</span>.
-</p><hr>
+</p>
+<span id="Class_002c-model-of-communicating-entities-1"></span><h3 class="unnumberedsec">Class, model of communicating entities</h3>
+
+<span id="spacewarSimpleGetters-1"></span><h4 class="subheading"><a href="Spacewar_0021-states-and-simple-behaviors.html#spacewarSimpleGetters"><em>Exercise</em> 3.9</a></h4>
+<div class="example">
+<pre class="example">CentralStar&gt;&gt;mass
+   ^ mass
+
+SpaceShip&gt;&gt;position
+   ^ position
+
+SpaceShip&gt;&gt;velocity
+   ^ position
+
+Torpedo&gt;&gt;position
+   ^ position
+</pre></div>
+
+<span id="shipPositionSetter-1"></span><h4 class="subheading"><a href="Spacewar_0021-states-and-simple-behaviors.html#shipPositionSetter"><em>Exercise</em> 3.10</a></h4>
+<div class="example">
+<pre class="example">SpaceShip&gt;&gt;position: aPoint
+   position &#x2190; aPoint
+</pre></div>
+<hr>
 <div class="header">
 <p>
 Next: <a href="The-examples.html" accesskey="n" rel="next">The examples</a>, Previous: <a href="The-exercises.html" accesskey="p" rel="prev">The exercises</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>

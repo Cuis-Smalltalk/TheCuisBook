@@ -3,7 +3,7 @@
 @appendix Documents copyright
 
 @raggedright
-@subheading @ref{Spacewar!-PDP}
+@subheading @ref{ch01-SpacewarPDP}
 Spacewar running on PDP-1, Joi Ito, 12 May 2007 @*
 resized,
 https://www.flickr.com/photos/35034362831@@N01/494431001,
