@@ -61,7 +61,7 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="index.html" rel="up" title="Top">
 <link href="Control-Flow-Messaging.html" rel="next" title="Control Flow Messaging">
-<link href="Cuis_002dSmalltalk-system-classes.html" rel="prev" title="Cuis-Smalltalk system classes">
+<link href="Spacewar_0021-states-and-simple-behaviors.html" rel="prev" title="Spacewar! states and simple behaviors">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -93,104 +93,7 @@ Next: <a href="Control-Flow-Messaging.html" accesskey="n" rel="next">Control Flo
 <hr>
 <span id="The-Collection-Way-of-Life-1"></span><h2 class="chapter">4 The Collection Way of Life</h2>
 
-
-<span id="Kernel_002dText"></span><h3 class="section">4.1 Kernel-Text</h3>
-<p>Notably, this category comes with <span class="sansserif">Character</span>, <span class="sansserif">String</span>
-and <span class="sansserif">Symbol</span>. <span class="sansserif">String</span> instance are collection of
-<span class="sansserif">Character</span> instances.
-</p>
-<span id="index-character"></span>
-<p><strong>Character.</strong> An individual character is written prefixed with a
-&ldquo;$&rdquo;: <span class="sansserif">$A</span>. It can be defined with the class side method
-<span class="sansserif">numericValue:</span> or converted from an integer instance with the
-<span class="sansserif">#asCharacter</span>:
-</p>
-<div class="display">
-<pre class="display"><span class="sansserif">Character numericValue: 65 &rArr; $A
-65 asCharacter &rArr; $A</span>
-</pre></div>
-
-<p>There are class side methods for non printable characters:
-<span class="sansserif">Character tab</span>, <span class="sansserif">Character lf</span>, etc.
-</p>
-<p>As string are collection of characters, when enumerating a string we
-can use the <span class="sansserif">Character</span> instance methods:
-</p>
-<div class="float"><span id="apples12"></span>
-<div class="display">
-<pre class="display"><span class="sansserif">&rsquo;There are 12 apples.&rsquo; select: [:c |c isDigit].
-&rArr; &rsquo;12&rsquo;</span>
-</pre></div>
-
-<div class="float-caption"><p><strong><em>Example</em> 4.1: </strong>Twelve apples</p></div></div>
-<div class="float"><span id="selectApples"></span>
-<blockquote class="indentedblock">
-<p><em>Modify <a href="#apples12"><em>Example</em> 4.1</a> to
-reject the numeric characters.</em>
-</p></blockquote>
-
-
-<div class="float-caption"><p><strong><em>Exercise</em> 4.1: </strong>Select apples</p></div></div>
-<span id="index-string-1"></span>
-<p><strong>String.</strong> <span class="sansserif">String</span> is a very large class, it comes with
-more than 200 methods. Hopefully the methods are grouped in categories
-and it is very easy to experiment from a Workspace when you are
-looking for a specific behavior.
-</p>
-<p>Consider you need to search for a string in a string: when browsing
-the <span class="sansserif">String</span> class, search for method categories named like
-<code>finding...</code> or <code>accessing</code>. There you find a family of
-<span class="sansserif">findXXX</span> methods. Read the comments at the beginning of these
-methods:
-</p>
-<div class="display">
-<pre class="display"><span class="sansserif">findString: subString
-   &quot;Answer the index of subString within the receiver, starting at
-   start. If the receiver does not contain subString, answer 0.&quot;
-   ^self findString: subString startingAt: 1.</span>
-</pre></div>
-
-<p>Or:
-</p>
-<div class="display">
-<pre class="display"><span class="sansserif">findString: key startingAt: start caseSensitive: caseSensitive
-   &quot;Answer the index in this String at which the substring key first
-   occurs, at or beyond start.  The match can be case-sensitive or
-   not.  If no match is found, zero will be returned.&quot;
-   ../..</span>
-</pre></div>
-
-<p>Then experiment the potentially interesting messages in a workspace:
-</p>
-<div class="display">
-<pre class="display"><span class="sansserif">&rsquo;I love apples&rsquo; findString: &rsquo;love&rsquo; &rArr; 3 &quot;find at position 3&quot;
-&rsquo;I love apples&rsquo; findString: &rsquo;hate&rsquo;
-&rArr;  0 &quot;no finding&quot;
-&rsquo;We humans, we all love apples&rsquo; findString: &rsquo;we&rsquo;
-&rArr; 12 
-&rsquo;We humans, we all love apples&rsquo;
-   findString: &rsquo;we&rsquo;
-   startingAt: 1
-   caseSensitive: false
-&rArr; 1 
-&rsquo;we humans, we all love apples&rsquo; findString: &rsquo;we&rsquo;
-&rArr; 1 
-&rsquo;we humans, we all love apples&rsquo; findString: &rsquo;we&rsquo; startingAt: 2
-&rArr; 12</span>
-</pre></div>
-
-<p>Following these paths will, most of the time, leads you to the answer
-you are looking for.
-</p>
-<div class="float"><span id="formatString"></span>
-<blockquote class="indentedblock">
-<p><em>We want to format a
-string of the form &rsquo;Joe bought XX apples and YY oranges&rsquo; to the form
-&rsquo;Joe bought 5 apples and 4 oranges&rsquo;. What message should be used?</em>
-</p></blockquote>
-
-
-<div class="float-caption"><p><strong><em>Exercise</em> 4.2: </strong>Format a string</p></div></div>
+<span id="String_002c-a-particular-collection"></span><h3 class="section">4.1 String, a particular collection</h3>
 <span id="index-class_002c-inheritance-1"></span>
 <span id="index-class_002c-protocol"></span>
 <span id="index-protocol"></span>
@@ -282,7 +185,7 @@ method to transform &rsquo;Hello My Friend&rsquo; in &rsquo;My Friend&rsquo;?</e
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong><em>Exercise</em> 4.3: </strong>Cut a string</p></div></div>
+<div class="float-caption"><p><strong><em>Exercise</em> 4.1: </strong>Cut a string</p></div></div>
 <p>Beware, some messages in the <span class="sansserif">String</span> protocol may obviously not
 work. Observe bellow, the error is thrown on a <span class="sansserif">Character</span>
 instance:

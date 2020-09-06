@@ -7,6 +7,7 @@
 * @cuis{} system classes::
 * Kernel-Numbers::
 * Kernel-Text::
+* Spacewar! states and simple behaviors::
 @end menu
 
 @node Understanding Object Oriented Programming
@@ -41,9 +42,12 @@ are very likely to exist within @cuis{} -- think about the
 numbers. Therefore, entities are created -- @dfn{instantiated} --
 following a model, this model is called a @dfn{Class}.
 
-A specific class declares the internal variables and the behavior by
-implementing the methods. Let see how the @class{Fraction} class is
-declared:
+
+@cindex variable (instance)
+@cindex instance variable
+A given class declares its internal variables -- states -- and the
+behavior by implementing the methods. Let see how the @class{Fraction}
+class is declared:
 
 @smalltalkExample{Number subclass: #Fraction
    instanceVariableNames: 'numerator denominator'
@@ -658,3 +662,61 @@ you are looking for.
 @exercise{Format a string, formatString, @emph{We want to format a
 string of the form 'Joe bought XX apples and YY oranges' to the form
 'Joe bought 5 apples and 4 oranges'. What message should be used?}}
+
+@node Spacewar! states and simple behaviors
+@section Spacewar! states and simple behaviors
+At this stage of the game design, we can add some obvious states to
+our models:
+
+@itemize
+
+ @item A @class{Torpedo} has @smalltalk{position},
+ @smalltalk{direction} and @smalltalk{lifeSpan} states.
+
+ @item A @class{SpaceShip} has @smalltalk{name}, @smalltalk{position}, 
+ @smalltalk{direction}, @smalltalk{fuel}, @smalltalk{torpedoes} and
+ @smalltalk{mass} states.
+
+ @item A @class{CentralStar} has a @smalltalk{mass} state. It is
+ necessary to compute the gravity force applied to a given ship.
+
+ @item A @class{StarField} has a @smalltalk{star} to set the number of
+ stars in the background.
+
+@end itemize
+
+@c show on one class declaration how to put the variable
+To add the variables to the @class{Torpedo} class, from the Browser,
+select this class. Next, add the variable names to the
+@smalltalk{instanceVariableNames:} parameter, separated by one space
+character. Finally, save the updated class definition with
+@kbd{Ctrl-s} shortcut:
+
+@smalltalkExample{Object subclass: #Torpedo
+   instanceVariableNames: 'position direction lifeSpan'
+   classVariableNames: ''
+   poolDictionaries: ''
+   category: 'Spacewar!'}
+
+Do the same with the @class{SpaceShip}, @class{CentralStar} and
+@class{StarField} classes variable.
+
+
+@cindex message, setter
+@cindex message, getter
+Some of these states need to be accessed from other entities:
+
+@itemize
+
+  @item When initializing a space ship, we want to set its name
+  with a keyword message categorised as a @dfn{setter}:
+  @smalltalk{ship name: 'The needle'}.
+  
+  @item To compute the gravity force applied to an object owning a
+  mass, we want to get its value with an unary message categorised as
+  a @dfn{getter}: @smalltalk{star mass * ship mass}.
+  
+@end itemize
+
+ 
+
