@@ -11,7 +11,9 @@ K. Dickey, H. Fernandes, J. Vuletich
 @acronym{VM}
 @end macro
 
+@c Todo note, with an index entry to group them all
 @macro todo{note}
+@cindex TO BE WRITTEN, \note\
 @strong{TO BE WRITTEN:} \note\
 @end macro
 

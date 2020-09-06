@@ -3,7 +3,7 @@
 
 
 @menu
-* Smalltalk design::
+* Communicating entities::
 * Messages sends definition::
 * Message to string entities::
 * Messages to number entities::
@@ -11,12 +11,13 @@
 * Spacewar! models::
 @end menu
 
-@node Smalltalk design
-@section Smalltalk design
+@node Communicating entities
+@section Communicating entities
 
-Smalltalk design is based on entites communicating with each other
+Smalltalk design is based on entities communicating with each other
 through messages. That's all, there is nothing more.
-
+@cindex message, sender
+@cindex message, receiver
 When a given entity receives a message from another entity, it
 triggers a specific behavior.  The receiving entity of the message is
 called the @dfn{receiver} and the sending entity, the @dfn{sender}. In
@@ -34,18 +35,30 @@ then automatically garbage collected when not required anymore. On a
 fresh @cuis{} environment, the instances class count is higher than
 150'000.
 
-@smalltalkExampleCaption{Counting the number of entities, entitiesCount,
+@smalltalkExampleCaption{Calculating the number of entities, entitiesCount,
 ProtoObject allSubclasses inject: 0 into: [:count :class |
    count + class allInstances size] 
 @result{} 152058}
 
+The count of classes, the models for the entities -- class instances
+-- is higher than 1'000.
+
+@smalltalkExampleCaption{Calculating the number of classes, classesCount,
+ProtoObject allSubclasses size
+@result{} 1173}
+
 To be honest, in our previous chapter we skipped this important detail
-on Smalltalk design. We did not want to afraid you with this radical
-design. The scripts you read and write were all about entities
-communicating with each other through messages.
+on Smalltalk design. We wrote about message sending without explaining
+much, we wanted you to discover informally this design. Therefore, the scripts you
+read and wrote were all about entities communicating with each other
+through messages.
 
 
-@todo{SystemWindows. Text editor menus. Keyboard shortcuts.}
+@todo{SystemWindows.}
+
+@todo{Text editor menus.}
+
+@todo{Keyboard shortcuts.}
 
 @cindex message, send
 @cindex message, unary
@@ -189,9 +202,9 @@ We can write the same about sorting a string:
 @cindex number, sqrt
 @cindex number, squared
 
-Earlier, we discussed how @cuis{} knows about rational number.  All
-four arithmetic operations and mathematical functions are compatible
-with the rational number representation:
+Earlier, we discussed how @cuis{} knows about rational number.  The
+four arithmetic operations and mathematical functions are implemented
+with binary messages understood by the rational number entities:
 @smalltalkExample {(15 / 14) * (21 / 5) @result{} 9 / 2
 (15 / 14) / ( 5 / 21) @result{} 9 /2 
 (3 / 4) squared @result{} 9 / 16
@@ -459,5 +472,3 @@ The classes we defined are empty shells with no state nor
 behavior. They will be complemented and refactored in the next
 chapters.
 
-@c create a Package/class category
-@c create Object subclass for each protagonist.

@@ -1,0 +1,371 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This book is for Cuis-Smalltalk (5.0#4253), a free and modern
+implementation of the Smalltalk language and environment.
+
+Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
+
+
+
+
+
+
+
+Compilation : September 6, 2020
+
+Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
+
+
+
+The contents of this book are protected under Creative Commons
+Attribution-ShareAlike 4.0 International.
+
+You are free to:
+
+
+Share - copy and redistribute the material in any medium or
+format
+
+
+Adapt - remix, transform, and build upon the material for any
+purpose, even commercially.
+
+
+
+Under the following terms:
+
+
+Attribution. You must give appropriate credit, provide a link to
+the license, and indicate if changes were made. You may do so in any
+reasonable manner, but not in any way that suggests the licensor
+endorses you or your use.
+
+
+Share Alike. If you remix, transform, or build upon the material,
+you must distribute your contributions under the same license as the
+original.
+
+Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+ -->
+<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Cuis-Smalltalk system classes (The Cuis-Smalltalk Book)</title>
+
+<meta name="description" content="Cuis-Smalltalk system classes (The Cuis-Smalltalk Book)">
+<meta name="keywords" content="Cuis-Smalltalk system classes (The Cuis-Smalltalk Book)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Indexes.html" rel="index" title="Indexes">
+<link href="Class-_002d-model-of-communicating-entities.html" rel="up" title="Class - model of communicating entities">
+<link href="The-Collection-Way-of-Life.html" rel="next" title="The Collection Way of Life">
+<link href="Explore-OOP-from-the-Browser.html" rel="prev" title="Explore OOP from the Browser">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="style.css">
+
+
+</head>
+
+<body lang="en">
+<span id="Cuis_002dSmalltalk-system-classes"></span><div class="header">
+<p>
+Previous: <a href="Explore-OOP-from-the-Browser.html" accesskey="p" rel="prev">Explore OOP from the Browser</a>, Up: <a href="Class-_002d-model-of-communicating-entities.html" accesskey="u" rel="up">Class - model of communicating entities</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Cuis_002dSmalltalk-system-classes-1"></span><h3 class="section">3.3 Cuis-Smalltalk system classes</h3>
+<p>As we already wrote Cuis-Smalltalk is a pure object oriented environment. It
+means that every single entities you are dealing with are represented
+as instances of classes written in Cuis-Smalltalk itself. As a direct
+consequence, Cuis-Smalltalk is mostly written in itself.  In the previous
+section we read some details of the <span class="sansserif">Fraction</span> class and both
+instance and class side methods (<span class="sansserif">abs</span>, <span class="sansserif">squared</span> and
+<span class="sansserif">numerator:denominator:</span>).
+</p>
+<p>What we call system classes are models of fundamental objects. In
+other programming languages, it will be called standard library.
+</p>
+<p>To be honest, there is no such a distinction between system classes
+and user classes, but it will help us to draw a boundary around the
+most used objects. We will give a brief introduction to these classes
+and the most important methods.
+</p>
+<p>The classes are organised in hierarchy grouped in categories. To
+discover the most important classes, we use the browser to navigate
+these categories in the left pane. Important categories to start with
+are:
+</p>
+
+<ul>
+<li> <code>Kernel-Numbers</code>. Related to the different number
+   representations and calculated, including mathematics functions,
+   conversion, intervals and even iterations.
+   
+</li><li> <code>Kernel-Text</code>. Related to character and string as
+   collection of characters.
+   
+</li><li> <code>Collections-Abstract</code>,
+   <code>Collections-Unordered</code>, <code>Collections-Sequenceable</code>,
+   <code>Collections-Arrayed</code>. Related to Array, Dictionary, dynamic
+   collection as OrderedCollection and many more. It includes
+   accessing, enumerators, mathematics functions, sorting.
+
+</li></ul>
+
+
+<span id="Kernel_002dNumbers"></span><h3 class="section">3.4 Kernel-Numbers</h3>
+<p>The top hierarchy <span class="sansserif">Number</span> class shows most of the behaviors
+inherited by the sub classes as <span class="sansserif">Float</span>, <span class="sansserif">Integer</span> and
+<span class="sansserif">Fraction</span>. The Smalltalk way to learn about a behavior is to
+point the System Browser toward a top hierarchy class and to explore
+the method categories.
+</p>
+<p>Let&rsquo;s suppose we want to round a float number. In <span class="sansserif">Number</span>, we
+explore the <code>Truncation and round off</code> method category to
+discover several behaviors. The next things to do, is to test these
+messages in a Workspace to discover the one we are searching for:
+</p>
+<div class="float"><span id="roundingNumbers"></span>
+<div class="display">
+<pre class="display"><span class="sansserif">1.264 roundTo: 0.1 &rArr; 1.3 
+1.264 roundTo: 0.01 &rArr; 1.26 
+1.264 roundUpTo: 0.01 &rArr; 1.27
+1.264 roundTo: 0.001 &rArr; 1.264</span>
+</pre></div>
+
+<div class="float-caption"><p><strong><em>Example</em> 3.2: </strong>Rounding numbers, Workspace try out</p></div></div>
+
+<span id="index-loop_002c-for"></span>
+<span id="index-for-loop"></span>
+<p>Number is a very strange place to look for an indexed loop in a given
+interval. Nevertheless, an interval is defined by start and stop
+numbers. In the <span class="sansserif">Number</span> class, the method category
+<code>intervals</code> reveals related behaviors. These methods works
+indifferently with all kind of number:
+</p>
+<div class="float"><span id="intervalLoops"></span>
+<div class="display">
+<pre class="display"><span class="sansserif">1 to: 10 do: [:i | Transcript show: 1 / i; space]
+&rArr; 1 (1/2) (1/3) (1/4) (1/5) (1/6) (1/7) (1/8) (1/9) (1/10)
+
+1 to: 10 by: 2 do: [:i | Transcript show: 1 / i; space]
+&rArr; 1 (1/3) (1/5) (1/7) (1/9)
+
+1/10 to: 5/3 by: 1/2 do: [:i | Transcript show: i; space]
+&rArr; (1/10) (3/5) (11/10) (8/5) (1/10) (3/5) (11/10) (8/5) 
+
+Float pi to: 5 by: 1/3 do: [:i | Transcript show: (i roundTo: 0.01) ; space]
+&rArr; 3.14 3.47 3.81 4.14 4.47 4.81</span>
+</pre></div>
+
+<div class="float-caption"><p><strong><em>Example</em> 3.3: </strong>Interval loops (for-loop)</p></div></div>
+<span id="index-loop_002c-repeat"></span>
+<span id="index-repeat"></span>
+<p>Now, in the <span class="sansserif">Integer</span> class, explore the method category
+<code>enumerating</code>, here is the <span class="sansserif">timesRepeat:</span>. When a
+portion of code needs to be executed several times
+<a id="DOCF5" href="#FOOT5"><sup>5</sup></a>, without
+the need of an index, the <span class="sansserif">#timesRepeat:</span> message is sent to an
+integer. We already saw this variant in a previous section of this
+chapter.  Throwing 5 times a 6 faces dice can be simulated with
+integer:
+</p>
+<div class="float"><span id="playingDice"></span>
+<div class="display">
+<pre class="display"><span class="sansserif">5 timesRepeat: [Transcript show: 6 atRandom; space]
+&rArr; 1 2 4 6 2</span>
+</pre></div>
+
+<div class="float-caption"><p><strong><em>Example</em> 3.4: </strong>Throwing a dice 5 times</p></div></div>
+<div class="float"><span id="cosTable"></span>
+<blockquote class="indentedblock">
+<p><em>Compute the cosine values in
+the interval [0 ; 2PI], each 1/10. Output in the transcript.</em>
+</p></blockquote>
+
+
+<div class="float-caption"><p><strong><em>Exercise</em> 3.2: </strong>Cosine table</p></div></div>
+<span id="index-number_002c-base-1"></span>
+<p>Integer numbers are represented in different bases when prefixed with
+the base and &ldquo;r&rdquo;. When executing and printing <kbd>Ctrl-p</kbd> such a
+number, it is immediately printed in the decimal base:
+</p>
+<div class="float"><span id="integerBase"></span>
+<div class="display">
+<pre class="display"><span class="sansserif">2r1111 &rArr; 15
+16rF &rArr; 15
+8r17 &rArr; 15
+20rF &rArr; 15
+10r15 &rArr; 15</span>
+</pre></div>
+
+<div class="float-caption"><p><strong><em>Example</em> 3.5: </strong>Integer represented in different base</p></div></div>
+<p>Writing numbers as Mayans or Babylonians<a id="DOCF6" href="#FOOT6"><sup>6</sup></a>:
+</p>
+<div class="float"><span id="countingAncients"></span>
+<div class="display">
+<pre class="display"><span class="sansserif">&quot;The Babylonians&quot;
+60r10 &rArr; 60
+60r30 &rArr; 180
+60r60 &rArr; 360
+60r30 + 60r60 &rArr; 540 
+(60r30 + 60r60) printStringRadix: 60 &rArr; &rsquo;60r90&rsquo; 
+
+&quot;The Mayans&quot;
+20r10 &rArr; 20
+20r40 &rArr; 80 &quot;pronounced 4-twenties in some languages&quot;
+20r100 &rArr; 400</span>
+</pre></div>
+
+<div class="float-caption"><p><strong><em>Example</em> 3.6: </strong>Counting like the ancients</p></div></div>
+<span id="index-integer_002c-bits-shifting"></span>
+<p>Because of the nature of a number represented in base 2, shifting its
+bits left and right is equivalent to multiplying by 2 and dividing by
+2:
+</p>
+<div class="float"><span id="shiftBits"></span>
+<div class="display">
+<pre class="display"><span class="sansserif">(2r1111 &lt;&lt; 1) printStringBase: 2 &rArr; &rsquo;11110&rsquo;
+2r1111 &lt;&lt; 1 &rArr; 30
+(2r1111 &gt;&gt; 1) printStringBase: 2 &rArr; &rsquo;111&rsquo;
+2r1111 &gt;&gt; 1 &rArr; 7</span>
+</pre></div>
+
+<div class="float-caption"><p><strong><em>Example</em> 3.7: </strong>Shifting bits</p></div></div>
+<div class="float"><span id="multiplyBy1024"></span>
+<blockquote class="indentedblock">
+<p><em>How will you multiply
+the integer 360 by 1024, without using the multiplication operation?</em>
+</p></blockquote>
+
+
+<div class="float-caption"><p><strong><em>Exercise</em> 3.3: </strong>Multiply by 1024</p></div></div>
+
+<span id="Hiatus-with-decimal-numbers"></span><h3 class="heading">Hiatus with decimal numbers</h3>
+<span id="index-number_002c-decimal"></span>
+<p>We saw decimal numbers are written with a dot &ldquo;.&rdquo; to separate the
+integer and the decimal parts: <span class="sansserif">1.5</span>, <span class="sansserif">1235.021</span>
+or <span class="sansserif">0.5</span>. The number <span class="sansserif">0.00004</span> is more easily
+written <span class="sansserif">4e-5</span>; it means 4 preceded by 5 zeros or 4 as the
+fifth digit after the decimal dot.
+</p>
+<p><strong>Attention.</strong> Computer represents decimal number
+imprecisely. You need to be aware of that when doing computation and
+equality comparison. Most system hides these errors because there are
+very tiny errors. Cuis-Smalltalk does not hide these inaccuracy.
+</p>
+<div class="float"><span id="FloatPrecision"></span>
+<div class="display">
+<pre class="display"><span class="sansserif">0.1 + 0.2 - 0.3
+&rArr; 5.551115123125783e-17</span>
+</pre></div>
+
+<div class="float-caption"><p><strong><em>Example</em> 3.8: </strong>Computer dyscalculia!</p></div></div>
+<p>In <a href="#FloatPrecision"><em>Example</em> 3.8</a>, the returned value should be zero but it is
+not the case. The computer returns <span class="sansserif">5.55e-17</span>, or
+<span class="sansserif">0.0000000000000000555</span>, it is very close to zero, but there
+is an error.
+</p>
+<div class="float"><span id="exeFloatPrecision"></span>
+<blockquote class="indentedblock">
+<p><em>Give 3 calculations showing errors compared
+to the expected results.</em>
+</p></blockquote>
+
+
+<div class="float-caption"><p><strong><em>Exercise</em> 3.4: </strong>Miscellaneous calculation errors with decimal
+number</p></div></div>
+<p>When accuracy is absolutely mandatory use the Rational Numbers
+representation of Cuis-Smalltalk.
+</p>
+<span id="index-number_002c-rational"></span>
+<span id="index-number_002c-fraction"></span>
+<p>A rational number is written with the division symbol between two
+integers: do <kbd>Ctrl-p</kbd> on <span class="sansserif">5/2</span> &rArr;
+<span class="sansserif">5/2</span>. Cuis-Smalltalk returns a rational fraction, it does not compute a
+decimal.
+</p>
+<div class="float"><span id="exeZeroDivide"></span>
+<blockquote class="indentedblock">
+<p><em>What happen when
+executing this code</em> <span class="sansserif">5/0</span><em>?</em>
+</p></blockquote>
+
+
+<div class="float-caption"><p><strong><em>Exercise</em> 3.5: </strong>Toward the infinite</p></div></div>
+<p>Let&rsquo;s come back to our computer dyscalculia with decimal numbers. When
+using the rational numbers, the <a href="#FloatPrecision"><em>Example</em> 3.8</a> becomes:
+</p>
+<div class="float"><span id="FractionPrecision"></span>
+<div class="display">
+<pre class="display"><span class="sansserif">(1/10) + (2/10) - (3/10)
+&rArr; 0</span>
+</pre></div>
+
+<div class="float-caption"><p><strong><em>Example</em> 3.9: </strong>Right with fraction!</p></div></div>
+<p>This time we have the expected result. Underneath the computer only
+does the calculations with integers.
+</p>
+<div class="float"><span id="exeFractionPrecision"></span>
+<blockquote class="indentedblock">
+<p><em>Return to
+<a href="#exeFloatPrecision"><em>Exercise</em> 3.4</a> and use rational writing to represent decimal
+numbers. The errors are gone.</em>
+</p></blockquote>
+
+
+<div class="float-caption"><p><strong><em>Exercise</em> 3.6: </strong>Fix the errors</p></div></div>
+<p>Cuis-Smalltalk knows how to convert a decimal number as a fraction, by
+sending the message <span class="sansserif">#asFraction</span>. We already acknowledged the
+computer dyscalculia trouble with decimal number, this is why when
+asking for a fraction representation we have this strange answer. The
+internal computer represenation of <span class="sansserif">1.3</span> is not exactly as
+it seems:
+</p>
+<div class="display">
+<pre class="display"><span class="sansserif">(13/10) asFloat
+&rArr; 1.3</span>
+</pre></div>
+<div class="display">
+<pre class="display"><span class="sansserif">(13/10) asFloat asFraction
+&rArr; 5854679515581645/45035996273704</span>
+</pre></div>
+<div class="footnote">
+<hr>
+<h4 class="footnotes-heading">Footnotes</h4>
+
+<h5><a id="FOOT5" href="#DOCF5">(5)</a></h3>
+<p>Understand repeated an integer number of times.</p>
+<h5><a id="FOOT6" href="#DOCF6">(6)</a></h3>
+<p>Bases 20 and 60
+number representation are not exclusive to these civilisations,
+although there are the most documented use cases.</p>
+</div>
+<hr>
+<div class="header">
+<p>
+Previous: <a href="Explore-OOP-from-the-Browser.html" accesskey="p" rel="prev">Explore OOP from the Browser</a>, Up: <a href="Class-_002d-model-of-communicating-entities.html" accesskey="u" rel="up">Class - model of communicating entities</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

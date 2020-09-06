@@ -1,2 +1,2 @@
-@node Events
-@chapter Events
+@node Model And View
+@chapter Model And View

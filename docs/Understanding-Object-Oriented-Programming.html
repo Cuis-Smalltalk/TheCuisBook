@@ -1,0 +1,356 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This book is for Cuis-Smalltalk (5.0#4253), a free and modern
+implementation of the Smalltalk language and environment.
+
+Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
+
+
+
+
+
+
+
+Compilation : September 6, 2020
+
+Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
+
+
+
+The contents of this book are protected under Creative Commons
+Attribution-ShareAlike 4.0 International.
+
+You are free to:
+
+
+Share - copy and redistribute the material in any medium or
+format
+
+
+Adapt - remix, transform, and build upon the material for any
+purpose, even commercially.
+
+
+
+Under the following terms:
+
+
+Attribution. You must give appropriate credit, provide a link to
+the license, and indicate if changes were made. You may do so in any
+reasonable manner, but not in any way that suggests the licensor
+endorses you or your use.
+
+
+Share Alike. If you remix, transform, or build upon the material,
+you must distribute your contributions under the same license as the
+original.
+
+Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+ -->
+<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Understanding Object Oriented Programming (The Cuis-Smalltalk Book)</title>
+
+<meta name="description" content="Understanding Object Oriented Programming (The Cuis-Smalltalk Book)">
+<meta name="keywords" content="Understanding Object Oriented Programming (The Cuis-Smalltalk Book)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Indexes.html" rel="index" title="Indexes">
+<link href="Class-_002d-model-of-communicating-entities.html" rel="up" title="Class - model of communicating entities">
+<link href="Explore-OOP-from-the-Browser.html" rel="next" title="Explore OOP from the Browser">
+<link href="Class-_002d-model-of-communicating-entities.html" rel="prev" title="Class - model of communicating entities">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="style.css">
+
+
+</head>
+
+<body lang="en">
+<span id="Understanding-Object-Oriented-Programming"></span><div class="header">
+<p>
+Next: <a href="Explore-OOP-from-the-Browser.html" accesskey="n" rel="next">Explore OOP from the Browser</a>, Up: <a href="Class-_002d-model-of-communicating-entities.html" accesskey="u" rel="up">Class - model of communicating entities</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Understanding-Object-Oriented-Programming-1"></span><h3 class="section">3.1 Understanding Object Oriented Programming</h3>
+<p>Cuis-Smalltalk is a pure object oriented programming language (OOP): all the
+entities as integer, float, rational number, string and other like
+collection, block of code we have not yet learnt about are objects.
+</p>
+<p>But what is an object?  An object is an entity responding to two
+criteria:
+</p>
+<ul>
+<li> <strong>An internal state.</strong> It is embodied by variable(s)
+   known only by the object. A variable only visible within the object
+   is called <em>private</em>. As a consequence, it is impossible &ndash; if
+   the object decides so &ndash; to know the internal state of the object
+   from another object.
+
+</li><li> <strong>A behavior.</strong> It is modeled by message(s) &ndash; we
+   already used this vocabulary &ndash; sent to the object. When the object
+   receives a message it understands, it executes the code of an
+   internal method named as the message.
+
+</li></ul>
+<span id="index-class"></span>
+<span id="index-subclass"></span>
+<span id="index-instance"></span>
+
+<p>Several entities sharing the same variables and understanding the same messages
+are very likely to exist within Cuis-Smalltalk &ndash; think about the
+numbers. Therefore, entities are created &ndash; <em>instantiated</em> &ndash;
+following a model, this model is called a <em>Class</em>.
+</p>
+<p>A specific class declares the internal variables and the behavior by
+implementing the methods. Let see how the <span class="sansserif">Fraction</span> class is
+declared:
+</p>
+<div class="display">
+<pre class="display"><span class="sansserif">Number subclass: #Fraction
+   instanceVariableNames: &rsquo;numerator denominator&rsquo;
+   classVariableNames: &rdquo;
+   poolDictionaries: &rdquo;
+   category: &rsquo;Kernel-Numbers&rsquo;</span>
+</pre></div>
+
+<p>As expected there are two variables &ndash; named <em>instance variables</em>
+&ndash; to define the <span class="sansserif">numerator</span> and <span class="sansserif">denominator</span> of
+a fraction. From this declaration, we observe there is a hierarchy in
+the class definition: <span class="sansserif">Fraction</span> is a kind of
+<span class="sansserif">Number</span>. This means a fraction inherits the internal state &ndash;
+variables &ndash; and behavior &ndash; methods &ndash; defined in the <span class="sansserif">Number</span>
+class. <span class="sansserif">Fraction</span> is called a <em>subclass</em> of <span class="sansserif">Number</span>.
+</p>
+<span id="index-class_002c-inheritance"></span>
+<p>A Class specifies the behavior of all of its instances.  It is useful 
+to be able to say &quot;this object is like that object, but for these differences&quot;.  
+We do this in Smalltalk by a Class inheriting instance state and behavior from 
+its parent Class.  This child, or subclass then specifies just the
+instance state and behavior which is different from its parent.
+</p>
+<p>This aspect of object oriented programming is called
+<em>inheritance</em>. In Cuis-Smalltalk, each class inherits from one parent
+class.
+</p>
+<p>In Smalltalk, each object decides for itself how it reponds to a message.
+This is called <em>polymorphism</em>.
+The same message selector may be sent to objects of different Classes.  
+The &rsquo;shape&rsquo; (morph) of the computation is different depending on the specific 
+class of the &rsquo;many&rsquo; (poly) possible classes of the object receiving the message.
+</p>
+<p>We saw above that different kinds of objects
+all responded to the same #printString message in different,
+but appropriate ways.
+</p>
+<span id="index-instance_002c-creation"></span>
+<span id="index-class_002c-class-method"></span>
+<p>In the previous section, we already met fraction. Those fractions are
+objects called <em>instance</em> of the class <span class="sansserif">Fraction</span>. To create
+this instance we wrote <span class="sansserif">5 / 4</span>, the mechanism is based on
+message sending and polymorphism. The number <span class="sansserif">5</span> is an
+integer receiving the message <span class="sansserif">#/</span>, therefore looking at the method
+<span class="sansserif">/</span> in the <span class="sansserif">Integer</span> class explains how is instantiated
+the fraction. See part of this method:
+</p><div class="display">
+<pre class="display"><span class="sansserif">/ aNumber
+&quot;Refer to the comment in Number / &quot;
+| quoRem |
+aNumber isInteger ifTrue:
+../..
+   ifFalse: [^ (Fraction numerator: self denominator: aNumber) reduced]].
+../..</span>
+</pre></div>
+
+<p>From this source code, we learn that in some situation, the method
+returns a fraction, reduced. We can expect that in some other
+situation an integer is returned, for example <span class="sansserif">6 / 2</span>.
+</p>
+<p>In the example, we observe the message <span class="sansserif">#numerator:denominator:</span> is
+sent to the class <span class="sansserif">Fraction</span>, such a message refers to a
+<em>class method</em> understood only by the <span class="sansserif">Fraction</span> class. It
+is expected such a named method returns an instance of a
+<span class="sansserif">Fraction</span>.
+</p>
+<p>Try out in a workspace:
+</p><div class="display">
+<pre class="display"><span class="sansserif">Fraction numerator: 24 denominator: 21
+&rArr; 24/21</span>
+</pre></div>
+
+<p>Observe how the fraction is not reduced. Whereas it is, when
+instantiated with the <span class="sansserif">#/</span> message:
+</p>
+<div class="display">
+<pre class="display"><span class="sansserif">24 / 21
+&rArr; 8/7</span>
+</pre></div>
+
+<p>A class method is often used to create a new instance from a class. In
+&lsquo;forLoop&rsquo;, the message <span class="sansserif">#new</span> is sent to the class
+<span class="sansserif">OrderedCollection</span> to create a new empty collection;
+<span class="sansserif">new</span> is a class method.
+</p>
+<p>In &lsquo;repeatLoop&rsquo;, the <span class="sansserif">#newFrom:</span> message is sent to the class
+<span class="sansserif">OrdredCollection</span> to create a new collection filled with
+elements from the array given in argument; <span class="sansserif">newFrom:</span> is
+another class method.
+</p>
+<span id="index-class_002c-instance-method-1"></span>
+<span id="index-polymorphism"></span>
+<span id="index-number_002c-_0023squared"></span>
+<p>Now observe the hierarchy of the Number class:
+</p>
+<div class="format">
+<pre class="format"><span class="sansserif">Number</span>
+   <span class="sansserif">Float</span>
+      <span class="sansserif">BoxedFloat64</span>
+      <span class="sansserif">SmallFloat64</span>
+   <span class="sansserif">Fraction</span>
+   <span class="sansserif">Integer</span>
+      <span class="sansserif">LargePositiveInteger</span>
+         <span class="sansserif">LargeNegativeInteger</span>
+      <span class="sansserif">SmalltalkInteger</span>
+</pre></div>
+
+<p><span class="sansserif">Float</span>, <span class="sansserif">Integer</span> and <span class="sansserif">Fraction</span> are direct
+descendants of the <span class="sansserif">Number</span> class. We already learnt about the
+<span class="sansserif">#squared</span> message sent to integer and fraction instances:
+</p>
+<div class="display">
+<pre class="display"><span class="sansserif">16 squared &rArr; 256
+(2 / 3) squared &rArr; 4/9</span>
+</pre></div>
+
+<p>As the <span class="sansserif">#squared</span> message is sent to <span class="sansserif">Integer</span> and
+<span class="sansserif">Fraction</span> instances, the associated <span class="sansserif">squared</span> method is
+called an <em>instance method</em>. This method is defined in both the
+<span class="sansserif">Number</span> and <span class="sansserif">Fraction</span> classes.
+</p>
+
+<p>Let&rsquo;s examine this method in <span class="sansserif">Number</span>:
+</p><div class="display">
+<pre class="display"><span class="sansserif">Number&gt;&gt;squared
+&quot;Answer the receiver multiplied by itself.&quot;
+   ^self * self</span>
+</pre></div>
+
+<p>In an instance method source code, <span class="sansserif">self</span> refers to the
+object itself, here it is the value of the number. The <span class="sansserif">^</span>
+symbol indicates to return the following value <span class="sansserif">self *
+self</span>.
+</p>
+<p>Now let&rsquo;s examine this same method in <span class="sansserif">Fraction</span>:
+</p><div class="display">
+<pre class="display"><span class="sansserif">Fraction&gt;&gt;squared
+   ^ Fraction
+      numerator: numerator squared
+      denominator: denominator squared</span>
+</pre></div>
+
+<p>Here a new fraction is instantiated with numerator and denominator
+squared. This alternate <span class="sansserif">squared</span> method, ensure a fraction is
+returned.
+</p>
+<span id="index-method_002c-overriding"></span>
+<span id="index-overriding"></span>
+<p>When message <span class="sansserif">#squared</span> is sent to a number, different methods are
+executed depending on the number is a fraction or any other kind of
+number. This fundamental mechanism of oriented object programming is
+called <em>Polymorphism</em>. More precisely, the <span class="sansserif">Fraction</span> class
+is <em>overriding</em> the <span class="sansserif">squared</span> method, defined above in the
+class hierarchy.
+</p>
+<span id="index-number_002c-_0023abs"></span>
+<p>Still in the <span class="sansserif">Number</span> hierarchy, let&rsquo;s examine another example
+of polymorphism with the <span class="sansserif">#abs</span> message:
+</p>
+<div class="display">
+<pre class="display"><span class="sansserif">-10 abs &rArr; 10
+5.3 abs &rArr; 5.3
+(-5 / 3) abs &rArr; 5/3</span>
+</pre></div>
+
+<p>The implementation in <span class="sansserif">Number</span> does not need much
+explanation. There is the <span class="sansserif">#ifTrue:ifFalse:</span> we have not yet
+discussed so far, but the code is quite self-explanatory:
+</p>
+<div class="display">
+<pre class="display"><span class="sansserif">Number&gt;&gt;abs
+&quot;Answer a Number that is the absolute value (positive magnitude) of the 
+receiver.&quot;
+   self &lt; 0
+      ifTrue: [^self negated]
+      ifFalse: [^self]</span>
+</pre></div>
+
+<p>This implementation will do just fine for the <span class="sansserif">Number</span>
+subclasses. Nevertheless, there are several classes overriding it for
+optimization purpose.
+</p>
+<p>For example, regarding large positive integer, <span class="sansserif">abs</span> is
+empty. Indeed, in the absence of explicitly returned value, the
+default returned value is the instance itself, in our situation the
+<span class="sansserif">LargePositiveInteger</span> instance:
+</p>
+<div class="display">
+<pre class="display"><span class="sansserif">LargePositiveInteger&gt;&gt;abs</span>
+</pre></div>
+
+<p>The <span class="sansserif">LargeNegativeInteger</span> counter part compute the opposite
+with <span class="sansserif">#negated</span> message:
+</p>
+<div class="display">
+<pre class="display"><span class="sansserif">LargeNegativeInteger&gt;&gt;abs
+   ^ self negated</span>
+</pre></div>
+   
+<p>These two overriding methods are more efficient as they avoid test and
+ifTrue/ifFalse branches. Polymorphism is often used to avoid test and
+branching, it is done at the object level.
+</p>
+<p>As an object is modeled against a class, it is possible to ask its
+class with the <span class="sansserif">#class</span> message. Observe carefully the class
+returned in line 2 and 3:
+</p>
+<div class="float"><span id="askingClass"></span>
+<div class="display">
+<pre class="display"><span class="sansserif">1 class &rArr; SmallInteger 
+(1/3) class &rArr; Fraction 
+(6/2) class &rArr; SmallInteger 
+(1/3) asFloat class  &rArr; SmallFloat64 
+(1.0/3) class &rArr; SmallFloat64 
+&rsquo;Hello&rsquo; class &rArr; String 
+(&rsquo;Hello&rsquo; at: 1) class &rArr; Character</span>
+</pre></div>
+
+<div class="float-caption"><p><strong><em>Example</em> 3.1: </strong>Asking the class of an instance</p></div></div>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Explore-OOP-from-the-Browser.html" accesskey="n" rel="next">Explore OOP from the Browser</a>, Up: <a href="Class-_002d-model-of-communicating-entities.html" accesskey="u" rel="up">Class - model of communicating entities</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

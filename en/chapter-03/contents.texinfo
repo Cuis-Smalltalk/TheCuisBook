@@ -1,2 +1,579 @@
-@node Classes
-@chapter Classes
+@node Class - model of communicating entities
+@chapter Class, model of communicating entities
+
+@menu
+* Understanding Object Oriented Programming::
+* Explore OOP from the Browser::
+* @cuis{} system classes::
+@end menu
+
+@node Understanding Object Oriented Programming
+@section Understanding Object Oriented Programming
+@cuis{} is a pure object oriented programming language (OOP): all the
+entities as integer, float, rational number, string and other like
+collection, block of code we have not yet learnt about are objects.
+
+But what is an object?  An object is an entity responding to two
+criteria:
+
+@itemize
+
+   @item @strong{An internal state.} It is embodied by variable(s)
+   known only by the object. A variable only visible within the object
+   is called @dfn{private}. As a consequence, it is impossible -- if
+   the object decides so -- to know the internal state of the object
+   from another object.
+
+   @item @strong{A behavior.} It is modeled by message(s) -- we
+   already used this vocabulary -- sent to the object. When the object
+   receives a message it understands, it executes the code of an
+   internal method named as the message.
+
+@end itemize
+@cindex class
+@cindex subclass
+@cindex instance
+
+Several entities sharing the same variables and understanding the same messages
+are very likely to exist within @cuis{} -- think about the
+numbers. Therefore, entities are created -- @dfn{instantiated} --
+following a model, this model is called a @dfn{Class}.
+
+A specific class declares the internal variables and the behavior by
+implementing the methods. Let see how the @class{Fraction} class is
+declared:
+
+@smalltalkExample{Number subclass: #Fraction
+   instanceVariableNames: 'numerator denominator'
+   classVariableNames: ''
+   poolDictionaries: ''
+   category: 'Kernel-Numbers'}
+
+As expected there are two variables -- named @dfn{instance variables}
+-- to define the @smalltalk{numerator} and @smalltalk{denominator} of
+a fraction. From this declaration, we observe there is a hierarchy in
+the class definition: @class{Fraction} is a kind of
+@class{Number}. This means a fraction inherits the internal state --
+variables -- and behavior -- methods -- defined in the @class{Number}
+class. @class{Fraction} is called a @dfn{subclass} of @class{Number}.
+
+@cindex class, inheritance
+A Class specifies the behavior of all of its instances.  It is useful 
+to be able to say "this object is like that object, but for these differences".  
+We do this in Smalltalk by a Class inheriting instance state and behavior from 
+its parent Class.  This child, or subclass then specifies just the
+instance state and behavior which is different from its parent.
+
+This aspect of object oriented programming is called
+@dfn{inheritance}. In @cuis{}, each class inherits from one parent
+class.
+
+In Smalltalk, each object decides for itself how it reponds to a message.
+This is called @dfn{polymorphism}.
+The same message selector may be sent to objects of different Classes.  
+The 'shape' (morph) of the computation is different depending on the specific 
+class of the 'many' (poly) possible classes of the object receiving the message.
+
+We saw above that different kinds of objects
+all responded to the same #printString message in different,
+but appropriate ways.
+
+@c instance creation
+@cindex instance, creation
+@cindex class, class method
+In the previous section, we already met fraction. Those fractions are
+objects called @dfn{instance} of the class @class{Fraction}. To create
+this instance we wrote @smalltalk{5 / 4}, the mechanism is based on
+message sending and polymorphism. The number @smalltalk{5} is an
+integer receiving the message @msg{/}, therefore looking at the method
+@method{/} in the @class{Integer} class explains how is instantiated
+the fraction. See part of this method:
+@smalltalkExample{/ aNumber
+"Refer to the comment in Number / "
+| quoRem |
+aNumber isInteger ifTrue:
+../..
+   ifFalse: [^ (Fraction numerator: self denominator: aNumber) reduced]].
+../..}
+
+From this source code, we learn that in some situation, the method
+returns a fraction, reduced. We can expect that in some other
+situation an integer is returned, for example @smalltalk{6 / 2}.
+
+In the example, we observe the message @msg{numerator:denominator:} is
+sent to the class @class{Fraction}, such a message refers to a
+@dfn{class method} understood only by the @class{Fraction} class. It
+is expected such a named method returns an instance of a
+@class{Fraction}.
+
+Try out in a workspace:
+@smalltalkExample{Fraction numerator: 24 denominator: 21
+@result{} 24/21}
+
+Observe how the fraction is not reduced. Whereas it is, when
+instantiated with the @msg{/} message:
+
+@smalltalkExample{ 24 / 21
+@result{} 8/7}
+
+A class method is often used to create a new instance from a class. In
+@ref{forLoop}, the message @msg{new} is sent to the class
+@class{OrderedCollection} to create a new empty collection;
+@method{new} is a class method.
+
+In @ref{repeatLoop}, the @msg{newFrom:} message is sent to the class
+@class{OrdredCollection} to create a new collection filled with
+elements from the array given in argument; @method{newFrom:} is
+another class method.
+
+@c instance method
+@cindex class, instance method
+@cindex polymorphism
+@cindex number, @msg{squared}
+Now observe the hierarchy of the Number class:
+
+@format
+@class{Number}
+   @class{Float}
+      @class{BoxedFloat64}
+      @class{SmallFloat64}
+   @class{Fraction}
+   @class{Integer}
+      @class{LargePositiveInteger}
+         @class{LargeNegativeInteger}
+      @class{SmalltalkInteger}
+@end format
+
+@class{Float}, @class{Integer} and @class{Fraction} are direct
+descendants of the @class{Number} class. We already learnt about the
+@msg{squared} message sent to integer and fraction instances:
+
+@smalltalkExample{16 squared @result{} 256
+(2 / 3) squared @result{} 4/9}
+
+As the @msg{squared} message is sent to @class{Integer} and
+@class{Fraction} instances, the associated @method{squared} method is
+called an @dfn{instance method}. This method is defined in both the
+@class{Number} and @class{Fraction} classes.
+
+
+Let's examine this method in @class{Number}:
+@smalltalkExample{Number>>squared
+"Answer the receiver multiplied by itself."
+   ^self * self}
+
+In an instance method source code, @smalltalk{self} refers to the
+object itself, here it is the value of the number. The @smalltalk{^}
+symbol indicates to return the following value @smalltalk{self *
+self}.
+
+Now let's examine this same method in @class{Fraction}:
+@smalltalkExample{Fraction>>squared
+   ^ Fraction
+      numerator: numerator squared
+      denominator: denominator squared}
+
+Here a new fraction is instantiated with numerator and denominator
+squared. This alternate @method{squared} method, ensure a fraction is
+returned.
+
+@cindex method, overriding
+@cindex overriding
+When message @msg{squared} is sent to a number, different methods are
+executed depending on the number is a fraction or any other kind of
+number. This fundamental mechanism of oriented object programming is
+called @dfn{Polymorphism}. More precisely, the @class{Fraction} class
+is @dfn{overriding} the @method{squared} method, defined above in the
+class hierarchy.
+
+@cindex number, @msg{abs}
+Still in the @class{Number} hierarchy, let's examine another example
+of polymorphism with the @msg{abs} message:
+
+@smalltalkExample{-10 abs @result{} 10
+5.3 abs @result{} 5.3
+(-5 / 3) abs @result{} 5/3}
+
+The implementation in @class{Number} does not need much
+explanation. There is the @msg{ifTrue:ifFalse:} we have not yet
+discussed so far, but the code is quite self-explanatory:
+
+@smalltalkExample{Number>>abs
+"Answer a Number that is the absolute value (positive magnitude) of the 
+receiver."
+   self < 0
+      ifTrue: [^self negated]
+      ifFalse: [^self]}
+
+This implementation will do just fine for the @class{Number}
+subclasses. Nevertheless, there are several classes overriding it for
+optimization purpose.
+
+For example, regarding large positive integer, @method{abs} is
+empty. Indeed, in the absence of explicitly returned value, the
+default returned value is the instance itself, in our situation the
+@class{LargePositiveInteger} instance:
+
+@smalltalkExample{LargePositiveInteger>>abs}
+
+The @class{LargeNegativeInteger} counter part compute the opposite
+with @msg{negated} message:
+
+@smalltalkExample{LargeNegativeInteger>>abs
+   ^ self negated}
+   
+These two overriding methods are more efficient as they avoid test and
+ifTrue/ifFalse branches. Polymorphism is often used to avoid test and
+branching, it is done at the object level.
+
+As an object is modeled against a class, it is possible to ask its
+class with the @msg{class} message. Observe carefully the class
+returned in line 2 and 3:
+
+@smalltalkExampleCaption{Asking the class of an instance,askingClass,
+1 class @result{} SmallInteger 
+(1/3) class @result{} Fraction 
+(6/2) class @result{} SmallInteger 
+(1/3) asFloat class  @result{} SmallFloat64 
+(1.0/3) class @result{} SmallFloat64 
+'Hello' class @result{} String 
+('Hello' at: 1) class @result{} Character}
+
+@node Explore OOP from the Browser
+@section Explore OOP from the Browser
+@c explain mini panel | instance | ? | class |
+In @ref{ch02-browserDetailed} of the Browser, bellow the classes pane, there are three
+buttons:
+
+@itemize
+
+   @item @label{instance}: to access the @strong{instance methods} of
+   the selected class. For the recall, these methods are only
+   accessible from the instances of the class.
+
+   @item @label{?}: to access to documentation -- comment -- of the
+   selected class.
+
+   @item @label{class}: to access the @strong{class methods} of the
+   selected class. These methods are only accessible from the class
+   itself.
+
+@end itemize
+
+Below these three buttons, observe the wide text pane, it provides
+contextual information on the selected item.
+
+@exercise{Float class information, floatInfo, @emph{When the
+@class{Float} class is selected, what is the information provided by
+the text pane?}}
+
+It is important to distinguish instance methods and class
+methods. Let's consider the @class{Float} class as an example.
+
+@cindex class, class method
+@strong{Class Methods.} In @ref{ch03-floatClassSide} the methods listed are
+class side, in the browser the @label{class} button is pressed to see this
+list. From a Workspace, this methods are called with the message name
+sent directly to the class:
+
+@smalltalkExample{Float e
+@result{} 2.718281828459045
+Float epsilon
+@result{} 2.220446049250313e-16
+Float fmax
+@result{} 1.7976931348623157e308}
+
+Nevertheless, you can not send this message to instance of
+@class{Float}, it throws an error and opens the red debugger window.
+
+Just close the debug window for now to ignore the result.
+We will look into this in more detail later.
+
+@smalltalkExample{3.14 pi
+@result{} MessageNotUnderstood: SmallFloat64>>pi
+Float pi e
+@result{} MessageNotUnderstood: SmallFloat64>>e}
+
+Often these class methods are used to access constant value as seen in
+the previous example or to create a new instances:
+
+@smalltalkExample{OrderedCollection new
+@result{} Create a new empty ordered collection
+Fraction numerator: 1 denominator: 3
+@result{} 1/3 a fraction instance
+Float new
+@result{} 0.0
+Float readFrom: '001.200'
+@result{} 1.2 
+Integer primesUpTo: 20
+@result{} #(2 3 5 7 11 13 17 19) }
+
+@figure{Class methods in @class{Float},ch03-floatClassSide,5}
+
+@cindex class, instance method
+@strong{Instance methods.} In @ref{ch03-floatInstanceSide}, the methods
+listed are instance side, in the browser the @label{instance} button
+is pressed to see this list. In a Workspace, this methods are called
+with the message name sent directly to an instance:
+
+@smalltalkExample{-10.12 abs @result{} 10.12
+3.14 cos @result{} -0.9999987317275395
+-10.12 * 2 @result{} -20.24}
+
+Instance method message can not be sent directly to a class, you need
+to instantiate first an object:
+
+@smalltalkExample{Float cos
+@result{} MessageNotUnderstood: Float class>>cos
+Fraction squared
+@result{} MessageNotUnderstood: Fraction class>>squared
+OrderedCollection add: 10
+@result{} MessageNotUnderstood: OrderedCollection class>>add:}
+
+Of course you can mix both class and instance methods, as long as you
+send the message to the appropriate class or instance:
+
+@smalltalkExample{Float pi cos
+@result{} -1.0
+Float e ln
+@result{} 1.0 
+(Fraction numerator: 4 denominator: 5) squared
+@result{} 16/25
+OrderedCollection new add: Float pi; add: Float e; yourself
+@result{} an OrderedCollection(3.141592653589793 2.718281828459045) 
+}
+
+@figure{Instance methods in @class{Float},ch03-floatInstanceSide,7}
+
+@cindex browser, invoke from workspace
+A last bit of advice,  in the workspace when requesting the
+class of an instance, @kbd{Ctrl-b} will invoke the browser on the
+returned class:
+
+@itemize
+
+   @item In the workspace, on @smalltalk{1 class} execute and print
+   with @kbd{Ctrl-p},
+
+   @item @class{SmallInteger} is printed and automatically selected by default,
+
+   @item Invoke the browser on the selected @class{SmalltalkInteger}
+   class with @kbd{Ctrl-b},
+
+   @item The browser is open on the @class{SmalltalkInteger}, ready to
+   be explored.
+
+@end itemize
+
+With this brief introduction to the system browser, your are now
+equipped to explore the system classes.
+
+@node @cuis{} system classes
+@section @cuis{} system classes
+As we already wrote @cuis{} is a pure object oriented environment. It
+means that every single entities you are dealing with are represented
+as instances of classes written in @cuis{} itself. As a direct
+consequence, @cuis{} is mostly written in itself.  In the previous
+section we read some details of the @class{Fraction} class and both
+instance and class side methods (@method{abs}, @method{squared} and
+@method{numerator:denominator:}).
+
+What we call system classes are models of fundamental objects. In
+other programming languages, it will be called standard library.
+
+To be honest, there is no such a distinction between system classes
+and user classes, but it will help us to draw a boundary around the
+most used objects. We will give a brief introduction to these classes
+and the most important methods.
+
+The classes are organised in hierarchy grouped in categories. To
+discover the most important classes, we use the browser to navigate
+these categories in the left pane. Important categories to start with
+are:
+
+
+@itemize
+
+   @item @label{Kernel-Numbers}. Related to the different number
+   representations and calculated, including mathematics functions,
+   conversion, intervals and even iterations.
+   
+   @item @label{Kernel-Text}. Related to character and string as
+   collection of characters.
+   
+   @item @label{Collections-Abstract},
+   @label{Collections-Unordered}, @label{Collections-Sequenceable},
+   @label{Collections-Arrayed}. Related to Array, Dictionary, dynamic
+   collection as OrderedCollection and many more. It includes
+   accessing, enumerators, mathematics functions, sorting.
+
+@end itemize
+
+
+@section Kernel-Numbers
+The top hierarchy @class{Number} class shows most of the behaviors
+inherited by the sub classes as @class{Float}, @class{Integer} and
+@class{Fraction}. The Smalltalk way to learn about a behavior is to
+point the System Browser toward a top hierarchy class and to explore
+the method categories.
+
+Let's suppose we want to round a float number. In @class{Number}, we
+explore the @label{Truncation and round off} method category to
+discover several behaviors. The next things to do, is to test these
+messages in a Workspace to discover the one we are searching for:
+
+@smalltalkExampleCaption{Rounding numbers@comma{} Workspace try out, roundingNumbers,
+1.264 roundTo: 0.1 @result{} 1.3 
+1.264 roundTo: 0.01 @result{} 1.26 
+1.264 roundUpTo: 0.01 @result{} 1.27
+1.264 roundTo: 0.001 @result{} 1.264}
+
+
+@cindex loop, for
+@cindex for loop
+Number is a very strange place to look for an indexed loop in a given
+interval. Nevertheless, an interval is defined by start and stop
+numbers. In the @class{Number} class, the method category
+@label{intervals} reveals related behaviors. These methods works
+indifferently with all kind of number:
+
+@smalltalkExampleCaption{Interval loops (for-loop), intervalLoops,
+1 to: 10 do: [:i | Transcript show: 1 / i; space]
+@result{} 1 (1/2) (1/3) (1/4) (1/5) (1/6) (1/7) (1/8) (1/9) (1/10)
+
+1 to: 10 by: 2 do: [:i | Transcript show: 1 / i; space]
+@result{} 1 (1/3) (1/5) (1/7) (1/9)
+
+1/10 to: 5/3 by: 1/2 do: [:i | Transcript show: i; space]
+@result{} (1/10) (3/5) (11/10) (8/5) (1/10) (3/5) (11/10) (8/5) 
+
+Float pi to: 5 by: 1/3 do: [:i | Transcript show: (i roundTo: 0.01) ; space]
+@result{} 3.14 3.47 3.81 4.14 4.47 4.81}
+
+@cindex loop, repeat
+@cindex repeat
+Now, in the @class{Integer} class, explore the method category
+@label{enumerating}, here is the @method{timesRepeat:}. When a
+portion of code needs to be executed several times
+@footnote{Understand repeated an integer number of times.}, without
+the need of an index, the @msg{timesRepeat:} message is sent to an
+integer. We already saw this variant in a previous section of this
+chapter.  Throwing 5 times a 6 faces dice can be simulated with
+integer:
+
+@smalltalkExampleCaption{Throwing a dice 5 times, playingDice,
+5 timesRepeat: [Transcript show: 6 atRandom; space]
+@result{} 1 2 4 6 2}
+
+@exercise{Cosine table,cosTable, @emph{Compute the cosine values in
+the interval [0 ; 2PI]@comma{} each 1/10. Output in the transcript.}}
+
+@c Integer bits representation and manpulation
+@cindex number, base
+Integer numbers are represented in different bases when prefixed with
+the base and ``r''. When executing and printing @kbd{Ctrl-p} such a
+number, it is immediately printed in the decimal base:
+
+@smalltalkExampleCaption{Integer represented in different base,integerBase,
+2r1111 @result{} 15
+16rF @result{} 15
+8r17 @result{} 15
+20rF @result{} 15
+10r15 @result{} 15}
+
+Writing numbers as Mayans or Babylonians@footnote{Bases 20 and 60
+number representation are not exclusive to these civilisations,
+although there are the most documented use cases.}:
+
+@smalltalkExampleCaption{Counting like the ancients,countingAncients,
+"The Babylonians"
+60r10 @result{} 60
+60r30 @result{} 180
+60r60 @result{} 360
+60r30 + 60r60 @result{} 540 
+(60r30 + 60r60) printStringRadix: 60 @result{} '60r90' 
+
+"The Mayans"
+20r10 @result{} 20
+20r40 @result{} 80 "pronounced 4-twenties in some languages"
+20r100 @result{} 400}
+
+@cindex integer, bits shifting
+Because of the nature of a number represented in base 2, shifting its
+bits left and right is equivalent to multiplying by 2 and dividing by
+2:
+
+@smalltalkExampleCaption{Shifting bits, shiftBits,
+(2r1111 << 1) printStringBase: 2 @result{} '11110'
+2r1111 << 1 @result{} 30
+(2r1111 >> 1) printStringBase: 2 @result{} '111'
+2r1111 >> 1 @result{} 7}
+
+@exercise{Multiply by 1024,multiplyBy1024, @emph{How will you multiply
+the integer 360 by 1024@comma{} without using the multiplication operation?}}
+
+
+@heading Hiatus with decimal numbers
+@cindex number, decimal
+We saw decimal numbers are written with a dot ``.'' to separate the
+integer and the decimal parts: @smalltalk{1.5}, @smalltalk{1235.021}
+or @smalltalk{0.5}. The number @smalltalk{0.00004} is more easily
+written @smalltalk{4e-5}; it means 4 preceded by 5 zeros or 4 as the
+fifth digit after the decimal dot.
+
+@strong{Attention.} Computer represents decimal number
+imprecisely. You need to be aware of that when doing computation and
+equality comparison. Most system hides these errors because there are
+very tiny errors. @cuis{} does not hide these inaccuracy.
+
+@smalltalkExampleCaption{Computer dyscalculia!,FloatPrecision,
+0.1 + 0.2 - 0.3
+@result{} 5.551115123125783e-17}
+
+In @ref{FloatPrecision}, the returned value should be zero but it is
+not the case. The computer returns @smalltalk{5.55e-17}, or
+@smalltalk{0.0000000000000000555}, it is very close to zero, but there
+is an error.
+
+@exercise{Miscellaneous calculation errors with decimal
+number,exeFloatPrecision,@emph{Give 3 calculations showing errors compared
+to the expected results.}}
+
+When accuracy is absolutely mandatory use the Rational Numbers
+representation of @cuis{}.
+
+@cindex number, rational
+@cindex number, fraction
+A rational number is written with the division symbol between two
+integers: do @kbd{Ctrl-p} on @smalltalk{5/2} @result{}
+@smalltalk{5/2}. @cuis{} returns a rational fraction, it does not compute a
+decimal.
+
+@exercise{Toward the infinite,exeZeroDivide, @emph{What happen when
+executing this code} @smalltalk{5/0}@emph{?}}
+
+Let's come back to our computer dyscalculia with decimal numbers. When
+using the rational numbers, the @ref{FloatPrecision} becomes:
+
+@smalltalkExampleCaption{Right with fraction!,FractionPrecision,
+(1/10) + (2/10) - (3/10)
+@result{} 0}
+
+This time we have the expected result. Underneath the computer only
+does the calculations with integers.
+
+@exercise{Fix the errors,exeFractionPrecision, @emph{Return to
+@ref{exeFloatPrecision} and use rational writing to represent decimal
+numbers. The errors are gone.}}
+
+@cuis{} knows how to convert a decimal number as a fraction, by
+sending the message @msg{asFraction}. We already acknowledged the
+computer dyscalculia trouble with decimal number, this is why when
+asking for a fraction representation we have this strange answer. The
+internal computer represenation of @smalltalk{1.3} is not exactly as
+it seems:
+
+@smalltalkExample{(13/10) asFloat
+@result{} 1.3}
+@smalltalkExample{(13/10) asFloat asFraction
+@result{} 5854679515581645/45035996273704}
