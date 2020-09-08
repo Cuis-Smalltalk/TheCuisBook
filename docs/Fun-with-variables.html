@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This book is for Cuis-Smalltalk (5.0#4253), a free and modern
+implementation of the Smalltalk language and environment.
+
+Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
+
+
+
+
+
+
+
+Compilation : September 8, 2020
+
+Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
+
+
+
+The contents of this book are protected under Creative Commons
+Attribution-ShareAlike 4.0 International.
+
+You are free to:
+
+
+Share - copy and redistribute the material in any medium or
+format
+
+
+Adapt - remix, transform, and build upon the material for any
+purpose, even commercially.
+
+
+
+Under the following terms:
+
+
+Attribution. You must give appropriate credit, provide a link to
+the license, and indicate if changes were made. You may do so in any
+reasonable manner, but not in any way that suggests the licensor
+endorses you or your use.
+
+
+Share Alike. If you remix, transform, or build upon the material,
+you must distribute your contributions under the same license as the
+original.
+
+Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+ -->
+<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Fun with variables (The Cuis-Smalltalk Book)</title>
+
+<meta name="description" content="Fun with variables (The Cuis-Smalltalk Book)">
+<meta name="keywords" content="Fun with variables (The Cuis-Smalltalk Book)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Indexes.html" rel="index" title="Indexes">
+<link href="The-Collection-Way-of-Life.html" rel="up" title="The Collection Way of Life">
+<link href="Fun-with-collections.html" rel="next" title="Fun with collections">
+<link href="String.html" rel="prev" title="String">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="style.css">
+
+
+</head>
+
+<body lang="en">
+<span id="Fun-with-variables"></span><div class="header">
+<p>
+Next: <a href="Fun-with-collections.html" accesskey="n" rel="next">Fun with collections</a>, Previous: <a href="String.html" accesskey="p" rel="prev">String</a>, Up: <a href="The-Collection-Way-of-Life.html" accesskey="u" rel="up">The Collection Way of Life</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Fun-with-variables-1"></span><h3 class="section">4.2 Fun with variables</h3>
+<span id="index-variable"></span>
+<p>How a variable can be fun? With Cuis-Smalltalk, a variable is the name of a
+box that holds a value, that&rsquo;s it!
+</p>
+<p>A variable can hold a value of any class.  The value is strongly typed
+(we can always determine its Class), but the variable (box) is not
+restricted to holding a value of a single type.
+</p>
+<p>To declare a variable we name it at the beginning of the script
+and surround it by pipe charaters &ldquo;|&rdquo;.
+</p>
+<p>So far we sent messages directly to objects, we can send message to a
+variable bound to an object too.
+</p>
+<p>Any object responds to the message #printString.
+</p>
+<div class="display">
+<pre class="display"><span class="sansserif">| msg |
+msg := &rsquo;hello world!&rsquo;.
+Transcript show: msg capitalized printString, &rsquo; is a kind of &rsquo;.
+Transcript show: msg class printString; newLine.
+msg := 5.
+Transcript show: msg printString, &rsquo; is a kind of &rsquo;.
+Transcript show: msg class printString; newLine.</span>
+</pre></div>
+
+<p><strong>Caution.</strong> This ease of use has a drawback: when sending a
+message to a variable bound to an object, the system does not check
+that the object understands the message. Nevertheless there is a procedure
+to catch this kind of situation.
+</p>
+
+
+
+</body>
+</html>
