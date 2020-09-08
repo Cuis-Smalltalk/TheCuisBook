@@ -1,0 +1,124 @@
+@node The Collection Way of Life
+@chapter The Collection Way of Life
+
+@section String, a particular collection
+@c browse the hierarchy to find more inherited behavior, Should this
+@c be documented in browser section, or just there
+@cindex class, inheritance
+@cindex class, protocol
+@cindex protocol
+
+The @class{String} also inherits its behavior from its ancestors,
+parent classes. Indeed a @class{String} is a subclass of
+@class{ArrayedCollection}. The direct consequence is that when
+searching for some specific behavior, you may need to explore the
+parent classes too. The whole behavior of a class, defined in the
+class itself and its parents is named its @dfn{protocol}.
+
+@cindex browser, hierarchy
+@cindex browser, protocol
+Again the browser is helpful to explore a class protocol. You have two
+options:
+
+@enumerate
+
+   @item @strong{Explore the protocol.} In the class pane of the
+   browser, do ...@clicksequence{select @class{String} class @click{}
+   click the right mouse button @click{} in the menu select
+   @label{Browse protocol (p)}}... Alternatively, use the keyboard
+   shortcut @kbd{Ctrl-p}.
+
+   @figure{Browse @class{String} protocol,ch03-browseProtocol,8}
+
+   The new window is a protocol browser for the @class{String}
+   class. At the left, a hierarchy of the @class{String} ancestors;
+   selecting one class there only shows the protocol starting from
+   this class down to the @class{String} class. In the pane at the
+   right is the list of methods of the selected ancestry. The specific
+   protocol to @class{String} is bold; surrounded by parenthesis, the
+   class the method is implemented in.
+
+   In @ref{ch03-browseProtocol}, no specific class is selected,
+   therefore the whole @class{String} protocol is listed at the
+   right. The method @method{before:} implemented in
+   @class{SequenceableCollection} is selected and its source code is
+   displayed on the large bottom pane.
+
+   @item @strong{Explore the hierarchy.} In the class pane of the
+   browser, do ...@clicksequence{select @class{String} class @click{}
+   click the right mouse button @click{} in the menu select
+   @label{Browse hierarchy (h)}}... Alternatively, use the keyboard
+   shortcut @kbd{Ctrl-h} or the button @label{hierarchy} on the
+   system browser.
+
+   @figure{Browse the @class{String} hierarchy,ch03-browseHierarchy,8}
+
+   The hierarchy browser is very like the system browser with only two
+   differences:
+
+   @itemize
+
+      @item At the far left, the class categories pane is absent,
+      
+      @item In the classes pane, the hierarchy of @class{String} is
+      printed. It makes easy to browse @class{String} parents and
+      children class.
+
+   @end itemize
+
+@end enumerate
+
+The hierarchy browser is a general tool for exploration. Contrary to
+the protocol browser, it does not display at once the whole protocol
+of a class. In @ref{ch-browseHierarchy}, the class
+@class{SequenceableCollection} is selected as well as its method
+@method{before:}.
+
+This method extracts from a collection the element before a specified
+element. When inherited in @class{String}, those elements are
+@class{Character} instances:
+
+@smalltalkExample{'1 + 3i' before: $i
+@result{} $3 
+}
+
+Practice the tools and resolve the exercise bellow.
+
+@exercise{Cut a string, cutString,@emph{Find the appropriate
+method to transform 'Hello My Friend' in 'My Friend'?}}
+
+Beware, some messages in the @class{String} protocol may obviously not
+work. Observe bellow, the error is thrown on a @class{Character}
+instance:
+
+@smalltalkExample{'Hello My Friend' cos
+@result{} MesageNotUnderstood: Character>>cos}
+
+@cindex symbol
+@strong{Symbol.} A symbol is very like a string but it is unique and
+never duplicated. It is written as @smalltalk{#hello}, and often used
+as a constant. You already observe how in the book we noted messages
+as symbol, it is because each message is unique. You will use symbol
+when you need to name something uniquely.
+
+Observe in the example bellow, the strings are not identical once
+duplicated -- understand not the same memory location in the computer
+-- however symbols are identical even when duplicated@footnote{To be
+honest, copying a symbol just returns the original symbol.}:
+
+@smalltalkExample{'hello' == 'hello' copy
+@result{} false 
+#hello  == #hello copy
+@result{} true}
+
+Symbols can be written with space:
+
+@smalltalkExample{Symbol with space character,symbolSpace,
+#'hello my friend'
+'hello my friend' asSymbol}
+
+@class{Symbol} is a sub class of @class{String}, a lot of its behavior
+is inherited. It is helpful to make handy symbol:
+
+@smalltalkExample{'hello my friend' asCamelCase asSymbol 
+@result{} #helloMyFriend}
