@@ -172,7 +172,7 @@ language, it is a collection of characters. We already met string with
 our first script, it is enclosed in single quotes: @smalltalk{'hello
 world!'}. We capitalize it with the @msg{capitalized} message:
 
-@cindex string, capitalized
+@cindex string, @method{capitalized}
 @smalltalkExample{Transcript show: 'hello world!' capitalized
 @result{} 'Hello world!' }
 

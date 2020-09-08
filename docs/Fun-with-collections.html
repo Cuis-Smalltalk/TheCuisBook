@@ -135,7 +135,7 @@ arithmetic operations:
 #(1 2 3 4) / 10 &rArr; #(1/10 1/5 3/10 2/5)</span>
 </pre></div>
 
-<span id="index-collection_002c-_0023squared"></span>
+<span id="index-collection_002c-squared"></span>
 <p>Mathematics operations work as well:
 </p><div class="display">
 <pre class="display"><span class="sansserif">#(1 2 3 4) squared &rArr; #(1 4 9 16)
@@ -180,7 +180,7 @@ array of integer numbers ranging from -80 to 50.</em>
 <div class="float-caption"><p><strong><em>Exercise</em> 4.2: </strong>Negative integer numbers</p></div></div>
 <span id="index-collection_002c-dynamic"></span>
 <span id="index-collection_002c-OrderedCollection"></span>
-<span id="index-collection_002c-_0023add_003a"></span>
+<span id="index-collection_002c-add_003a"></span>
 <p>The size of an array is fixed size, it can not grow. An
 <span class="sansserif">OrderedCollection</span> is a dynamic, ordered collection, it grows
 when adding element with the <span class="sansserif">#add:</span> message:
@@ -197,9 +197,9 @@ fibo
 </pre></div>
 
 <div class="float-caption"><p><strong><em>Example</em> 4.1: </strong>Dynamic size collection</p></div></div>
-<span id="index-collection_002c-_0023at_003a"></span>
-<span id="index-collection_002c-_0023last"></span>
-<span id="index-collection_002c-_0023indexOf_003a"></span>
+<span id="index-collection_002c-at_003a"></span>
+<span id="index-collection_002c-last"></span>
+<span id="index-collection_002c-indexOf_003a"></span>
 <p>Index access to the elements of a collection is done with a variety of
 messages. The index naturally ranges from 1 to the collection size:
 </p><div class="display">
@@ -213,7 +213,7 @@ fibo at: fibo size &rArr; 21</span>
 
 <span id="Playing-with-enumerators"></span><h4 class="subheading">Playing with enumerators</h4>
 <p>The collection comes with a set of helpful methods named
-enumerators. They operate one each element of a collection.
+enumerators. They operate on each element of a collection.
 </p>
 <span id="index-collection_002c-set-operations-_0028union_002c-intersection_002c-difference_0029"></span>
 <p>Set operations between two collections are computed with the
@@ -244,7 +244,7 @@ comparing objects later.
 &rArr; #(3 &rsquo;e&rsquo;)</span>
 </pre></div>
 
-<span id="index-collection_002c-_0023select_003a"></span>
+<span id="index-collection_002c-select_003a"></span>
 <span id="index-collection_002c-enumerator-mechanism"></span>
 <span id="index-block"></span>
 <p>To select the prime numbers from 1 to 100, we use the <span class="sansserif">#select:</span>
@@ -336,7 +336,7 @@ collection of the odd integers in [1 ; 100] which are not prime.</em>
 
 
 <div class="float-caption"><p><strong><em>Exercise</em> 4.7: </strong>Odd and non prime integers</p></div></div>
-<span id="index-collection_002c-_0023collect_003a"></span>
+<span id="index-collection_002c-collect_003a"></span>
 <p>A sister enumerator to <span class="sansserif">#select:</span> is <span class="sansserif">#collect:</span>. It returns a
 new collection of the same size, with each element transformed by a
 block of code. When searching perfect cubic roots, it is useful to

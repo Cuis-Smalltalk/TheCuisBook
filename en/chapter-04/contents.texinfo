@@ -201,7 +201,7 @@ arithmetic operations:
 #(1 2 3 4) + 10 @result{} #(11 12 13 14)
 #(1 2 3 4) / 10 @result{} #(1/10 1/5 3/10 2/5)}
 
-@cindex collection, @msg{squared}
+@cindex collection, @method{squared}
 Mathematics operations work as well:
 @smalltalkExample{#(1 2 3 4) squared @result{} #(1 4 9 16)
 #(0 30 45 60) degreeCos
@@ -236,7 +236,7 @@ array of integer numbers ranging from -80 to 50.}}
 @c introduce ordered collection
 @cindex collection, dynamic
 @cindex collection, @class{OrderedCollection}
-@cindex collection, @msg{add:}
+@cindex collection, @method{add:}
 The size of an array is fixed size, it can not grow. An
 @class{OrderedCollection} is a dynamic, ordered collection, it grows
 when adding element with the @msg{add:} message:
@@ -250,9 +250,9 @@ fibo add: 5;
 fibo
 @result{} an OrderedCollection(1 1 2 3 5 8 13 21)}
 
-@cindex collection, @msg{at:}
-@cindex collection, @msg{last}
-@cindex collection, @msg{indexOf:}
+@cindex collection, @method{at:}
+@cindex collection, @method{last}
+@cindex collection, @method{indexOf:}
 Index access to the elements of a collection is done with a variety of
 messages. The index naturally ranges from 1 to the collection size:
 @smalltalkExample{fibo at:1 @result{} 1
@@ -264,7 +264,7 @@ fibo at: fibo size @result{} 21}
 
 @subheading Playing with enumerators
 The collection comes with a set of helpful methods named
-enumerators. They operate one each element of a collection.
+enumerators. They operate on each element of a collection.
 
 @cindex collection, set operations (union, intersection, difference)
 Set operations between two collections are computed with the
@@ -285,7 +285,7 @@ comparing objects later.
 @smalltalkExample{#(1 2 3 'e' 5) intersection: #(3.0 4 6 7 'e')
 @result{} #(3 'e')}
 
-@cindex collection, @msg{select:}
+@cindex collection, @method{select:}
 @cindex collection, enumerator mechanism
 @cindex block
 To select the prime numbers from 1 to 100, we use the @msg{select:}
@@ -349,7 +349,7 @@ multiples to 7 bellow 100}}
 @exercise{Odd and non prime integers,oddNonPrime,@emph{Build a
 collection of the odd integers in [1 ; 100] which are not prime.}}
 
-@cindex collection, @msg{collect:}
+@cindex collection, @method{collect:}
 A sister enumerator to @msg{select:} is @msg{collect:}. It returns a
 new collection of the same size, with each element transformed by a
 block of code. When searching perfect cubic roots, it is useful to

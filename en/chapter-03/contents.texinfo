@@ -135,7 +135,7 @@ another class method.
 @c instance method
 @cindex class, instance method
 @cindex polymorphism
-@cindex number, @msg{squared}
+@cindex number, @method{squared}
 Now observe the hierarchy of the Number class:
 
 @format
@@ -192,7 +192,7 @@ called @dfn{Polymorphism}. More precisely, the @class{Fraction} class
 is @dfn{overriding} the @method{squared} method, defined above in the
 class hierarchy.
 
-@cindex number, @msg{abs}
+@cindex number, @method{abs}
 Still in the @class{Number} hierarchy, let's examine another example
 of polymorphism with the @msg{abs} message:
 

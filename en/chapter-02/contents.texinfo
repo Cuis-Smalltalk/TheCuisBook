@@ -183,15 +183,15 @@ Character can be converted to integer and integer to character:
 @smalltalkExample{$A asciiValue @result{} 65
 (65 + 25) asCharacter @result{} $Z}
 
-@cindex string, shuffled
-@cindex collection, shuffled
+@cindex string, @method{shuffled}
+@cindex collection, @method{shuffled}
 Shuffling a string is funny but without much use. Nevertheless,
 shuffling apply to any kind of collection, not only to string, and it
 proves to be of some use as we may see later:
 @smalltalkExample{'hello world' shuffled
 @result{} 'wod llreohl'}
 
-@cindex string, sorted
+@cindex string, @method{sorted}
 We can write the same about sorting a string:
 @smalltalkExample{'bonjour' sorted
 @result{}#($b $j $n $o $o $r $u)}
@@ -199,8 +199,8 @@ We can write the same about sorting a string:
 @node Messages to number entities
 @section Messages to number entities
 @cindex number, root
-@cindex number, sqrt
-@cindex number, squared
+@cindex number, @method{sqrt}
+@cindex number, @method{squared}
 
 Earlier, we discussed how @cuis{} knows about rational number.  The
 four arithmetic operations and mathematical functions are implemented
@@ -240,10 +240,10 @@ The reminder of the Euclidean division is computed with the message
 @smalltalkExample{15 \\\\ 4
 @result{} 3}
 
-@cindex number, odd
-@cindex number, even
-@cindex number, isPrime
-@cindex number, isDivisibleBy:
+@cindex number, @method{odd}
+@cindex number, @method{even}
+@cindex number, @method{isPrime}
+@cindex number, @method{isDivisibleBy:}
 @cuis{} knows some arithmetic operations to test if an integer is an
 odd, even, prime number or divider. You just send the appropriate
 unary or keyword message to the number:
@@ -257,8 +257,8 @@ unary or keyword message to the number:
 117 isDivisibleBy: 7 @result{} false
 117 isDivisibleBy: 9 @result{} true}
 
-@cindex number, gcd:
-@cindex number, lcm:
+@cindex number, @method{gcd:}
+@cindex number, @method{lcm:}
 With specific @dfn{keyword messages} you compute the Least Common
 Multiple and Greatest Common Divisor. A keyword message is composed of
 one or several colon(s) ``:'' to insert argument(s):
@@ -267,8 +267,8 @@ one or several colon(s) ``:'' to insert argument(s):
 12 gcd: 15 @result{} 3}
 
 
-@cindex tools, system Browser
-@cindex Browser
+@cindex tools, system browser
+@cindex browser
 @node A brief introduction to the system Browser
 @section A brief introduction to the system Browser
 The @dfn{System Browser}, in short the @dfn{Browser}, is a tool to
@@ -280,7 +280,7 @@ To access the tool, ...@clicksequence{Background click @click{}
 
 @figure{The System Browser,ch02-browserDetailed,12}
 
-@cindex Browser, class category
+@cindex browser, class category
 At the top left are the @dfn{class categories}, there are group of
 classes part of the same theme. It is also called @dfn{Package}, it is
 an organisational element to save code. In @ref{ch02-browserDetailed}, the
@@ -354,7 +354,7 @@ you will read a small comment just after the method name, it is
 surrounded by double quote.
 
 
-@cindex Browser, invoke from Workspace
+@cindex browser, invoke from Workspace
 A last bit of advice,  in the workspace when requesting the
 class of an instance, @kbd{Ctrl-b} will invoke the Browser on the
 returned class:
@@ -391,7 +391,7 @@ representing the involved entities:
 
 @end enumerate
 
-@cindex Browser, class category (new)
+@cindex browser, class category (new)
 Before defining these classes in @cuis{}, we want to create a
 dedicated class category to group them there. With the mouse pointer
 over the class category pane of the Browser -- the most left one --
