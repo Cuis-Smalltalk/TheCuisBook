@@ -1,0 +1,212 @@
+@node Summary of syntax
+@appendix Summary of syntax
+
+@float 
+@multitable @columnfractions .49 0.01 .50
+@headitem Syntax @tab @tab What it represents
+   @item @smalltalk{startPoint}                 @tab @tab a variable name
+   @item @smalltalk{Transcript}                 @tab @tab a global variable name
+   @item @smalltalk{self}                       @tab @tab pseudo-variable
+   @item @tab @tab
+   @item @smalltalk{1}                          @tab @tab decimal integer
+   @item @smalltalk{2r101}                      @tab @tab binary integer
+   @item @smalltalk{1.5}                        @tab @tab floating point number
+   @item @smalltalk{2.4e7}                      @tab @tab exponential notation
+   @item @smalltalk{$a}                         @tab @tab the character ‘a’
+   @item @smalltalk{'Hello'}                    @tab @tab the string “Hello”
+   @item @smalltalk{#Hello}                     @tab @tab the symbol #Hello
+   @item @smalltalk{#(1 2 3)}                   @tab @tab a literal array
+   @item @smalltalk{@{1. 2. 1 + 2@}}            @tab @tab a dynamic array
+   @item @tab @tab
+   @item @smalltalk{"a comment"}                @tab @tab a comment
+   @item @tab
+   @item @smalltalk{|xy|}                       @tab @tab declaration of variables x and y
+   @item @smalltalk{x := 1}                     @tab @tab assign 1 to x
+   @item @smalltalk{[x + y]}                    @tab @tab a block that evaluates to x+y
+   @item @smalltalk{<primitive: 1>}             @tab @tab virtual machine primitive or annotation
+   @item @tab @tab
+   @item @smalltalk{3 factorial}                @tab @tab unary message
+   @item @smalltalk{3+4}                        @tab @tab binary messages
+   @item @smalltalk{2 raisedTo: 6 modulo: 10}   @tab @tab keyword message
+   @item @tab @tab
+   @item @smalltalk{^ true}                     @tab @tab return the value true
+   @item @smalltalk{Transcript show: 'hello'. Transcript cr} @tab @tab expression separator (.)
+   @item @smalltalk{Transcript show: 'hello'; cr} @tab @tab message cascade (;)
+@end multitable
+@end float
+
+
+@table @strong
+ @cindex variable, local
+ @item Local variables.
+
+ @smalltalk{startPoint} is a variable name, or identifier. By
+ convention, identifiers are composed of words in “camelCase” (i.e.,
+ each word except the first starting with an upper case letter). The
+ first letter of an instance variable, method or block argument, or
+ temporary variable must be lower case. This indicates to the reader
+ that the variable has a private scope.
+
+ @cindex variable, shared
+ @item Shared variables
+
+ Identifiers that start with upper case letters are global variables,
+ class variables, pool dictionaries or class
+ names. @smalltalk{Smalltalk} is a global variable, an instance of the
+ class @class{SystemDictionary}.
+
+ @cindex receiver
+ @item The receiver.
+
+ @smalltalk{self} is a keyword that refers to the object inside which
+ the current method is executing. We call it “the receiver” because
+ this object will normally have received the message that caused the
+ method to execute. self is called a “pseudo-variable” since we cannot
+ assign to it.
+
+ @cindex integer (see number)
+ @cindex number, integer
+ @item Integers.
+
+ In addition to ordinary decimal integers like @smalltalk{42}, @cuis{}
+ also provides a radix notation. @smalltalk{2r101} is 101 in radix 2
+ (i.e., binary), which is equal to decimal 5.
+
+ @cindex float (see number)
+ @cindex number, float
+ @item Float point numbers.
+
+ Floating point numbers can be specified with their base-ten exponent:
+ @smalltalk{2.4e7} is 2.4 × 10@sup{7}.
+
+ @cindex character
+ @item Characters.
+
+ A dollar sign introduces a literal character: @smalltalk{$a} is the
+ literal for ‘a’. Instances of non-printing characters can be obtained
+ by sending appropriately named messages to the @class{Character}
+ class, such as @smalltalk{Character space} and @smalltalk{Character
+ tab}.
+
+ @cindex string
+ @item Strings.
+
+ Single quotes are used to define a literal string. If you want a
+ string with a quote inside, just double the quote, as in
+ @smalltalk{'G''day'}.
+
+ @cindex symbol
+ @item Symbols.
+
+ Symbols are like Strings, in that they contain a sequence of
+ characters.  However, unlike a string, a literal symbol is guaranteed
+ to be globally unique. There is only one Symbol object
+ @smalltalk{#Hello} but there may be multiple String objects with the
+ value @smalltalk{'Hello'}.
+
+ @cindex array, static
+ @item Static arrays.
+
+ Static arrays or Compile-time arrays are defined by @smalltalk{#( )},
+ surrounding space-separated literals. Everything within the
+ parentheses must be a compile-time constant. For example,
+ @smalltalk{#(27 #(true false) abc)} is a literal array of three
+ elements: the integer @smalltalk{27}, the compile-time array containing the two
+ booleans, and the symbol @smalltalk{#abc}.
+
+ @cindex array, dynamic
+ @item Dynamic arrays.
+
+ Dynamic arrays or Run-time arrays. Curly braces @{ @} define a
+ (dynamic) array at run-time.  Elements are expressions separated by
+ periods. So @smalltalk{@{ 1. 2. 1+2 @}} defines an array with
+ elements @smalltalk{1}, @smalltalk{2}, and the result of evaluating
+ @smalltalk{1+2}. (The curly-brace notation is peculiar to the Squeak
+ family dialect of Smalltalk! In other Smalltalks you must build up
+ dynamic arrays explicitly.)
+
+ @cindex comment
+ @item Comments.
+
+ Comments are enclosed in double quotes. @smalltalk{"hello"} is a
+ comment, not a string, and is ignored by the @cuis{}
+ compiler. Comments may span multiple lines.
+
+ @cindex local variable, declaration
+ @item Local variable declarations.
+
+ Vertical bars | | enclose the declaration of one or more local
+ variables in a method (and also in a block).
+
+ @cindex assignment
+ @item Assignment.
+
+ @smalltalk{:=} assigns an object to a variable. Sometimes you will
+ see @assign{} used instead. Since this character is not present in the
+ keyboard, you key in with the underscore character key. So,
+ @smalltalk{x := 1} is the same as @smalltalk{x @assign{} 1} or
+ @smalltalk{x _ 1}.
+
+ @cindex block
+ @item Blocks.
+
+ Square brackets @smalltalk{[ ]} define a block, also known as a block
+ closure or a lexical closure, which is a first-class object
+ representing a function. As we shall see, blocks may take arguments
+ and can have local variables.
+
+ @cindex primitive
+ @item Primitives.
+
+ @smalltalk{<primitive: ...>} denotes an invocation of a virtual
+ machine primitive. (@smalltalk{<primitive: 1>} is the VM primitive
+ for @smalltalk{SmallInteger>>+}.) Any code following the primitive is
+ executed only if the primitive fails. The same syntax is also used
+ for method annotations.
+
+ @cindex message, unary
+ @item Unary messages.
+
+ Unary messages consist of a single word (like @msg{factorial})
+ sent to a receiver (like 3).
+
+ @cindex message, binary
+ @item Binary messages.
+
+ Binary messages are operators (like @smalltalk{+}) sent to a receiver
+ and taking a single argument. In @smalltalk{3 + 4}, the receiver is
+ @smalltalk{3} and the argument is @smalltalk{4}.
+
+ @cindex message, keyword
+ @item Keyword messages.
+
+ Keyword messages consist of multiple keywords (like
+ @msg{raisedTo:modulo:}), each ending with a colon and taking a single
+ argument. In the expression @smalltalk{2 raisedTo: 6 modulo: 10}, the
+ message selector @smalltalk{raisedTo:modulo:} takes the two arguments
+ 6 and 10, one following each colon. We send the message to the
+ receiver 2.
+
+ @cindex returned value
+ @item Method return.
+
+ @return{} is used to return a value from a method. (You must type ^ to obtain
+ the @return{} character.)
+
+ @cindex sequence
+ @item Sequences of statements.
+
+ A period or full-stop (.) is the statement separator.  Putting a
+ period between two expressions turns them into independent
+ statements.
+
+ @cindex cascade of messages
+ @item Cascades.
+
+ Semicolons can be used to send a cascade of messages to a single
+ receiver. In @smalltalk{Transcript show: 'hello'; cr} we first send
+ the keyword message @msg{show: 'hello'} to the receiver
+ @class{Transcript}, and then we send the unary message @msg{cr} to
+ the same receiver.
+
+@end table

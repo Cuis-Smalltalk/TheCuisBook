@@ -510,6 +510,7 @@ although there are the most documented use cases.}:
 20r100 @result{} 400}
 
 @cindex integer, bits shifting
+@cindex bits shifting
 Because of the nature of a number represented in base 2, shifting its
 bits left and right is equivalent to multiplying by 2 and dividing by
 2:

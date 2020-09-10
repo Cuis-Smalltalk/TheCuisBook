@@ -226,7 +226,7 @@ and collections, with blocks as arguments.
 
 @cindex control flow, test
 @cindex test
-@cindex Boolean
+@cindex boolean
 @subheading Test
 Conditionals are expressed by sending one of the messages
 @msg{ifTrue:}, @msg{ifFalse:} or @msg{ifTrue:ifFalse:} to the result

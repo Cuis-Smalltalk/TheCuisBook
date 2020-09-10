@@ -2,6 +2,15 @@
 @node Documents copyright
 @appendix Documents copyright
 
+
+@raggedright
+Part of the syntax chapter from the @emph{Squeak by Example} book was
+borrowed and edited in the present book.
+
+Copyright @copyright{} 2007, 2008, 2009 by Andrew P. Black,
+St@'{e}phane Ducasse, Oscar Nierstrasz and Damien Pollet.
+@end raggedright
+
 @raggedright
 @subheading @ref{ch01-SpacewarPDP}
 Spacewar running on PDP-1, Joi Ito, 12 May 2007 @*
