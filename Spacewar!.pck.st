@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4241] on 10 September 2020 at 7:31:40 pm'!
+'From Cuis 5.0 [latest update: #4241] on 10 September 2020 at 7:56:39 pm'!
 'Description '!
-!provides: 'Spacewar!!' 1 12!
+!provides: 'Spacewar!!' 1 15!
 SystemOrganization addCategory: #'Spacewar!!'!
 
 
@@ -158,10 +158,10 @@ normal
 	 ^ direction y negated @ direction x
 	! !
 
-!SpaceShip methodsFor: 'drawing' stamp: 'hlsf 9/10/2020 18:48:36'!
+!SpaceShip methodsFor: 'drawing' stamp: 'hlsf 9/10/2020 19:42:55'!
 drawOn: canvas
 	| m u n a b c |
-	m _ AffineTransformation withPointScale: 1 @ -1 position: owner morphExtent / 2.0.
+	m _ self transformation.
 	
 	u _ self direction * 30.
 	n _ self normal * 10.
@@ -178,14 +178,15 @@ drawOn: canvas
 
 	! !
 
-!SpaceShip methodsFor: 'as yet unclassified' stamp: 'hlsf 9/10/2020 19:27:03'!
+!SpaceShip methodsFor: 'drawing' stamp: 'hlsf 9/10/2020 19:42:42'!
+transformation
+	^ AffineTransformation withPointScale: 1 @ -1 position: owner morphExtent / 2.0.
+! !
+
+!SpaceShip methodsFor: 'as yet unclassified' stamp: 'hlsf 9/10/2020 19:31:57'!
 gravity
 "Compute the gravity acceleration vector"
-	| distance |
-	"distance to star"
-	distance _ position r.
-"	distance < 10 ifTrue: [distance _ 10]."
-	^ [-10 * mass * owner starMass / (distance raisedTo: 3) * position]
+	^ [-10 * mass * owner starMass / (position r raisedTo: 3) * position]
 		on: Error do: [0 @ 0]! !
 
 !SpaceShip methodsFor: 'as yet unclassified' stamp: 'hlsf 9/10/2020 18:34:43'!
@@ -206,7 +207,7 @@ unpush
 	"no accelaration boost"
 	acceleration _ 0! !
 
-!SpaceShip methodsFor: 'as yet unclassified' stamp: 'hlsf 9/10/2020 19:03:12'!
+!SpaceShip methodsFor: 'as yet unclassified' stamp: 'hlsf 9/10/2020 19:55:50'!
 update
 	| ai ag newVelocity t |
 	"acceleration vectors"
@@ -215,4 +216,8 @@ update
 	ag _ self gravity.
 	newVelocity _ (ai + ag) * t + velocity.
 	position _ (0.5 * (ai + ag) * t squared) + (velocity * t) + position.
-	velocity _ newVelocity ! !
+	velocity _ newVelocity .
+	
+	"Are we out of screen?"
+	((owner morphBounds expandBy: 30) containsPoint: (self transformation transform: position))
+		ifFalse: [position _ position negated / 1.5 ]! !
