@@ -11,7 +11,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : September 8, 2020
+Compilation : September 10, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -99,19 +99,70 @@ Next: <a href="The-examples.html" accesskey="n" rel="next">The examples</a>, Pre
 <div align="center"><img src="E-img1.png" alt="E-img1">
 </div>
 <div class="float-caption"><p><strong><em>Figure</em> C.1: </strong>Placement</p></div></div>
-<span id="Writing-your-first-scripts-2"></span><h3 class="unnumberedsec">Writing your first scripts</h3>
+<span id="capWordNumber-1"></span><h4 class="subheading"><a href="Writing-your-first-scripts.html#capWordNumber"><em>Exercise</em> 1.2</a></h4>
+<p>Several messages can be sent one after the other:
+</p><div class="example">
+<pre class="example">Transcript show: 2020 printStringWords capitalized 
+</pre></div>
 
-<span id="Fun-with-numbers-1"></span><h4 class="unnumberedsubsec">Fun with numbers</h4>
 <span id="inverseSum-1"></span><h4 class="subheading"><a href="Writing-your-first-scripts.html#inverseSum"><em>Exercise</em> 1.3</a></h4>
 <div class="example">
 <pre class="example">1 + (1/2) + (1/3) + (1/4)
 &rArr; 25/12 
 </pre></div>
 
+<span id="The-Message-Way-of-Life-2"></span><h3 class="unnumberedsec">The Message Way of Life</h3>
+<span id="helloBelle-1"></span><h4 class="subheading"><a href="Message-to-string-entities.html#helloBelle"><em>Exercise</em> 2.1</a></h4>
+<div class="example">
+<pre class="example">'Hello' 
+   at: 1 put: $B;
+   at: 2 put: $e;
+   at: 3 put: $l;
+   at: 4 put: $l;
+   at: 5 put: $e;
+   yourself
+</pre></div>
+
 <span id="squaredSum-1"></span><h4 class="subheading"><a href="Messages-to-number-entities.html#squaredSum"><em>Exercise</em> 2.2</a></h4>
 <div class="example">
 <pre class="example">1 + (1/2) squared + (1/3) squared + (1/4) squared
 &rArr;  205 / 144
+</pre></div>
+
+<span id="stringArith-1"></span><h4 class="subheading"><a href="A-brief-introduction-to-the-system-Browser.html#stringArith"><em>Exercise</em> 2.3</a></h4>
+<p>From a System Browser, do from the left panel to the
+right ...<samp>Kernel-Text</samp> &rarr; <span class="sansserif">String</span>
+&rarr; <span class="sansserif">arithmetic</span>... the count of methods in the last
+right panel is 6: <span class="sansserif">*</span>, <span class="sansserif">+</span>, <span class="sansserif">-</span>, <span class="sansserif">/</span>,
+<span class="sansserif">//</span> and <span class="sansserif">\\</span>.
+</p>
+<span id="Class_002c-model-of-communicating-entities-1"></span><h3 class="unnumberedsec">Class, model of communicating entities</h3>
+<span id="floatInfo-1"></span><h4 class="subheading"><a href="Explore-OOP-from-the-Browser.html#floatInfo"><em>Exercise</em> 3.1</a></h4>
+<p>When the <span class="sansserif">Float</span> is selected, the wide text pane prints: &ldquo;class
+definition for Float &deg; 92 instance methods &deg;
+34 class methods &deg; 1280 total lines of code&rdquo;
+</p>
+<span id="cosTable-1"></span><h4 class="subheading"><a href="Kernel_002dNumbers.html#cosTable"><em>Exercise</em> 3.2</a></h4>
+<div class="example">
+<pre class="example">0 to: Float twoPi by: 1/10 do: [:i |
+   Transcript show: i cos; cr]
+</pre></div>
+
+<span id="multiplyBy1024-1"></span><h4 class="subheading"><a href="Kernel_002dNumbers.html#multiplyBy1024"><em>Exercise</em> 3.3</a></h4>
+<p>1024 is not a random number. It is 2<sup>10</sup> then written in base 2 :
+10000000000, it is also <span class="sansserif">1 &lt;&lt; 10</span>:
+</p>
+<div class="example">
+<pre class="example">2^10 &rArr; 1024
+1024 printStringBase: 2 &rArr; '10000000000'
+1 &lt;&lt; 10 &rArr; 1024 
+</pre></div>
+
+<p>Therefore, to multiply an integer by 1024, we shift left of 10 its digits:
+</p>
+<div class="example">
+<pre class="example">360 &lt;&lt; 10 &rArr; 368640 
+360 * 1024 &rArr; 368640 
 </pre></div>
 
 <span id="exeFloatPrecision-1"></span><h4 class="subheading"><a href="Kernel_002dNumbers.html#exeFloatPrecision"><em>Exercise</em> 3.4</a></h4>
@@ -141,27 +192,65 @@ Next: <a href="The-examples.html" accesskey="n" rel="next">The examples</a>, Pre
 &rArr; 0
 </pre></div>
 
-
-<span id="Fun-with-text"></span><h4 class="unnumberedsubsec">Fun with text</h4>
-<span id="capWordNumber-1"></span><h4 class="subheading"><a href="Writing-your-first-scripts.html#capWordNumber"><em>Exercise</em> 1.2</a></h4>
-<p>Several messages can be sent one after the other:
+<span id="selectApples-1"></span><h4 class="subheading"><a href="Kernel_002dText.html#selectApples"><em>Exercise</em> 3.7</a></h4>
+<p>There are different options, with slightly different results:
 </p><div class="example">
-<pre class="example">Transcript show: 2020 printStringWords capitalized 
+<pre class="example">'There are 12 apples' select: [:i |i isLetter].
+&rArr; 'Thereareapples' 
 </pre></div>
 
-<span id="helloBelle-1"></span><h4 class="subheading"><a href="Message-to-string-entities.html#helloBelle"><em>Exercise</em> 2.1</a></h4>
+<p>Not really satisfying. So another option:
+</p><div class="example">
+<pre class="example">'There are 12 apples' select: [:i |i isDigit not].
+&rArr; 'There are  apples'
+</pre></div>
+
+<p>Or even a shorter option with the <span class="sansserif">#reject:</span> message:
+</p><div class="example">
+<pre class="example">'There are 12 apples' reject: [:i |i isDigit].
+&rArr; 'There are  apples' 
+</pre></div>
+
+<span id="formatString-1"></span><h4 class="subheading"><a href="Kernel_002dText.html#formatString"><em>Exercise</em> 3.8</a></h4>
+<p>In <span class="sansserif">String</span>, search for the method category <samp>format</samp>, there
+you find the <span class="sansserif">format:</span> method:
+</p><div class="example">
+<pre class="example">'Joe bought {1} apples and {2} oranges' format: #(5 4)
+&rArr;  'Joe bought 5 apples and 4 oranges' 
+</pre></div>
+
+<span id="spacewarSimpleGetters-1"></span><h4 class="subheading"><a href="Spacewar_0021-states-and-simple-behaviors.html#spacewarSimpleGetters"><em>Exercise</em> 3.9</a></h4>
 <div class="example">
-<pre class="example">'Hello' 
-   at: 1 put: $B;
-   at: 2 put: $e;
-   at: 3 put: $l;
-   at: 4 put: $l;
-   at: 5 put: $e;
-   yourself
+<pre class="example">CentralStar&gt;&gt;mass
+   ^ mass
+
+SpaceShip&gt;&gt;position
+   ^ position
+
+SpaceShip&gt;&gt;velocity
+   ^ position
+
+Torpedo&gt;&gt;position
+   ^ position
+</pre></div>
+
+<span id="shipPositionSetter-1"></span><h4 class="subheading"><a href="Spacewar_0021-states-and-simple-behaviors.html#shipPositionSetter"><em>Exercise</em> 3.10</a></h4>
+<div class="example">
+<pre class="example">SpaceShip&gt;&gt;position: aPoint
+   position &#x2190; aPoint
 </pre></div>
 
 
-<span id="Fun-with-collection"></span><h4 class="unnumberedsubsec">Fun with collection</h4>
+<span id="The-Collection-Way-of-Life-2"></span><h3 class="unnumberedsec">The Collection Way of Life</h3>
+<span id="cutString-1"></span><h4 class="subheading"><a href="String.html#cutString"><em>Exercise</em> 4.1</a></h4>
+<p>Open the protocol browser on the class <span class="sansserif">String</span>, search for the
+method <span class="sansserif">allButFirst:</span> implemented in
+<span class="sansserif">SequenceableCollection</span>. Read its comment in its source code.
+</p><div class="example">
+<pre class="example">'Hello My Friend' allButFirst: 6
+&rArr; 'My Friend'
+</pre></div>
+
 <span id="exeNegativeIntegers-1"></span><h4 class="subheading"><a href="Fun-with-collections.html#exeNegativeIntegers"><em>Exercise</em> 4.2</a></h4>
 <div class="example">
 <pre class="example">(-80 to: 50) asArray
@@ -191,7 +280,6 @@ Next: <a href="The-examples.html" accesskey="n" rel="next">The examples</a>, Pre
 <pre class="example">(1 to: 100) select:[:n | n isDivisibleBy: 7]
 &rArr; #(7 14 21 28 35 42 49 56 63 70 77 84 91 98) 
 </pre></div>
-
 
 <span id="oddNonPrime-1"></span><h4 class="subheading"><a href="Fun-with-collections.html#oddNonPrime"><em>Exercise</em> 4.7</a></h4>
 <p>This solution, based on set operations and multiple use of the
@@ -239,80 +327,6 @@ characters intervale with a string:
 <pre class="example">  'DOHDMDFWDHVW' collect: [:c |
     (c asciiValue - 65 - 3 \\ 26 + 65) asCharacter]
 &rArr; 'ALEAJACTAEST'
-</pre></div>
-
-<span id="Introduction-to-the-system-class"></span><h3 class="unnumberedsec">Introduction to the system class</h3>
-
-<span id="stringArith-1"></span><h4 class="subheading"><a href="A-brief-introduction-to-the-system-Browser.html#stringArith"><em>Exercise</em> 2.3</a></h4>
-<p>From a System Browser, do from the left panel to the
-right ...<samp>Kernel-Text</samp> &rarr; <span class="sansserif">String</span>
-&rarr; <span class="sansserif">arithmetic</span>... the count of methods in the last
-right panel is 6: <span class="sansserif">*</span>, <span class="sansserif">+</span>, <span class="sansserif">-</span>, <span class="sansserif">/</span>,
-<span class="sansserif">//</span> and <span class="sansserif">\\</span>.
-</p>
-<span id="floatInfo-1"></span><h4 class="subheading"><a href="Explore-OOP-from-the-Browser.html#floatInfo"><em>Exercise</em> 3.1</a></h4>
-<p>When the <span class="sansserif">Float</span> is selected, the wide text pane prints: &ldquo;class
-definition for Float &deg; 92 instance methods &deg;
-34 class methods &deg; 1280 total lines of code&rdquo;
-</p>
-<span id="cosTable-1"></span><h4 class="subheading"><a href="Kernel_002dNumbers.html#cosTable"><em>Exercise</em> 3.2</a></h4>
-<div class="example">
-<pre class="example">0 to: Float twoPi by: 1/10 do: [:i |
-   Transcript show: i cos; cr]
-</pre></div>
-
-<span id="multiplyBy1024-1"></span><h4 class="subheading"><a href="Kernel_002dNumbers.html#multiplyBy1024"><em>Exercise</em> 3.3</a></h4>
-<p>1024 is not a random number. It is 2<sup>10</sup> then written in base 2 :
-10000000000, it is also <span class="sansserif">1 &lt;&lt; 10</span>:
-</p>
-<div class="example">
-<pre class="example">2^10 &rArr; 1024
-1024 printStringBase: 2 &rArr; '10000000000'
-1 &lt;&lt; 10 &rArr; 1024 
-</pre></div>
-
-<p>Therefore, to multiply an integer by 1024, we shift left of 10 its digits:
-</p>
-<div class="example">
-<pre class="example">360 &lt;&lt; 10 &rArr; 368640 
-360 * 1024 &rArr; 368640 
-</pre></div>
-
-
-<span id="selectApples-1"></span><h4 class="subheading"><a href="Kernel_002dText.html#selectApples"><em>Exercise</em> 3.7</a></h4>
-<p>There are different options, with slightly different results:
-</p><div class="example">
-<pre class="example">'There are 12 apples' select: [:i |i isLetter].
-&rArr; 'Thereareapples' 
-</pre></div>
-
-<p>Not really satisfying. So another option:
-</p><div class="example">
-<pre class="example">'There are 12 apples' select: [:i |i isDigit not].
-&rArr; 'There are  apples'
-</pre></div>
-
-<p>Or even a shorter option with the <span class="sansserif">#reject:</span> message:
-</p><div class="example">
-<pre class="example">'There are 12 apples' reject: [:i |i isDigit].
-&rArr; 'There are  apples' 
-</pre></div>
-
-<span id="formatString-1"></span><h4 class="subheading"><a href="Kernel_002dText.html#formatString"><em>Exercise</em> 3.8</a></h4>
-<p>In <span class="sansserif">String</span>, search for the method category <samp>format</samp>, there
-you find the <span class="sansserif">format:</span> method:
-</p><div class="example">
-<pre class="example">'Joe bought {1} apples and {2} oranges' format: #(5 4)
-&rArr;  'Joe bought 5 apples and 4 oranges' 
-</pre></div>
-
-<span id="cutString-1"></span><h4 class="subheading"><a href="String.html#cutString"><em>Exercise</em> 4.1</a></h4>
-<p>Open the protocol browser on the class <span class="sansserif">String</span>, search for the
-method <span class="sansserif">allButFirst:</span> implemented in
-<span class="sansserif">SequenceableCollection</span>. Read its comment in its source code.
-</p><div class="example">
-<pre class="example">'Hello My Friend' allButFirst: 6
-&rArr; 'My Friend'
 </pre></div>
 
 <span id="collFirst-1"></span><h4 class="subheading"><a href="Collections-detailed.html#collFirst"><em>Exercise</em> 4.12</a></h4>
@@ -376,7 +390,8 @@ colors
 #yellow-&gt;'Yellow' ) 
 </pre></div>
 
-<span id="blockDivisor"></span><h4 class="subheading">&lsquo;blockDivisor&rsquo;</h4>
+<span id="Control-Flow-Messaging-2"></span><h3 class="unnumberedsec">Control Flow Messaging</h3>
+<span id="blockDivisor-1"></span><h4 class="subheading"><a href="Block-syntax.html#blockDivisor"><em>Exercise</em> 5.1</a></h4>
 <div class="example">
 <pre class="example">| divisors |
 divisors := [:x | (1 to: x) select: [:d | x \\ d = 0] ].
@@ -386,32 +401,10 @@ divisors value: 45
 &quot;&rArr; #(1 3 5 9 15 45)&quot;
 </pre></div>
 
-<span id="implementingAndOr"></span><h4 class="subheading">&lsquo;implementingAndOr&rsquo;</h4>
+<span id="implementingAndOr-1"></span><h4 class="subheading"><a href="Control-flow-with-block-and-message.html#implementingAndOr"><em>Exercise</em> 5.2</a></h4>
 <p>Check the implementations in <span class="sansserif">Boolean</span>, <span class="sansserif">True</span> and
 <span class="sansserif">False</span>.
 </p>
-<span id="Class_002c-model-of-communicating-entities-1"></span><h3 class="unnumberedsec">Class, model of communicating entities</h3>
-
-<span id="spacewarSimpleGetters-1"></span><h4 class="subheading"><a href="Spacewar_0021-states-and-simple-behaviors.html#spacewarSimpleGetters"><em>Exercise</em> 3.9</a></h4>
-<div class="example">
-<pre class="example">CentralStar&gt;&gt;mass
-   ^ mass
-
-SpaceShip&gt;&gt;position
-   ^ position
-
-SpaceShip&gt;&gt;velocity
-   ^ position
-
-Torpedo&gt;&gt;position
-   ^ position
-</pre></div>
-
-<span id="shipPositionSetter-1"></span><h4 class="subheading"><a href="Spacewar_0021-states-and-simple-behaviors.html#shipPositionSetter"><em>Exercise</em> 3.10</a></h4>
-<div class="example">
-<pre class="example">SpaceShip&gt;&gt;position: aPoint
-   position &#x2190; aPoint
-</pre></div>
 <hr>
 <div class="header">
 <p>

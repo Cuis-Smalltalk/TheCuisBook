@@ -1,6 +1,13 @@
 @node The Collection Way of Life
 @chapter The Collection Way of Life
 
+Since its introduction in the 70s, collections and its associated
+iterators are important programming elements of Smalltalk. Correctly
+used, it improves both code density and code understanding; two
+paradigms which may seem antagonist. Since then, these innovations
+percolated in many popular programming languages.
+
+@todo{historic context to collection/iterator}
 
 @menu
 * String::
@@ -17,8 +24,8 @@
 @cindex class, protocol
 @cindex protocol
 
-The @class{String} also inherits its behavior from its ancestors,
-parent classes. Indeed a @class{String} is a subclass of
+The @class{String} class also inherits its behavior from its
+ancestors, parent classes. Indeed a @class{String} is a subclass of
 @class{ArrayedCollection}. The direct consequence is that when
 searching for some specific behavior, you may need to explore the
 parent classes too. The whole behavior of a class, defined in the

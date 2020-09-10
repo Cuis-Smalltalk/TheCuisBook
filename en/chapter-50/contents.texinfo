@@ -7,19 +7,72 @@
 @subheading @ref{exePlacement}
 @figure{Placement,E-img1,8}
 
-@unnumberedsec Writing your first scripts
+@subheading @ref{capWordNumber}
+Several messages can be sent one after the other:
+@example
+Transcript show: 2020 printStringWords capitalized 
+@end example
 
-@unnumberedsubsec Fun with numbers
 @subheading @ref{inverseSum}
 @example
 1 + (1/2) + (1/3) + (1/4)
 @result{} 25/12 
 @end example
 
+@c Chapter 2
+@unnumberedsec The Message Way of Life
+@subheading @ref{helloBelle}
+@example
+'Hello' 
+   at: 1 put: $B;
+   at: 2 put: $e;
+   at: 3 put: $l;
+   at: 4 put: $l;
+   at: 5 put: $e;
+   yourself
+@end example
+
 @subheading @ref{squaredSum}
 @example
 1 + (1/2) squared + (1/3) squared + (1/4) squared
 @result{}  205 / 144
+@end example
+
+@subheading @ref{stringArith}
+From a System Browser, do from the left panel to the
+right ...@clicksequence{@option{Kernel-Text} @click{} @class{String}
+@click{} @smalltalk{arithmetic}}... the count of methods in the last
+right panel is 6: @method{*}, @method{+}, @method{-}, @method{/},
+@method{//} and @method{\\}.
+
+@c Chapter 3
+@unnumberedsec Class, model of communicating entities
+@subheading @ref{floatInfo}
+When the @class{Float} is selected, the wide text pane prints: ``class
+definition for Float @textdegree{} 92 instance methods @textdegree{}
+34 class methods @textdegree{} 1280 total lines of code''
+
+@subheading @ref{cosTable}
+@example
+0 to: Float twoPi by: 1/10 do: [:i |
+   Transcript show: i cos; cr]
+@end example
+
+@subheading @ref{multiplyBy1024}
+1024 is not a random number. It is 2@sup{10} then written in base 2 :
+10000000000, it is also @smalltalk{1 << 10}:
+
+@example
+2^10 @result{} 1024
+1024 printStringBase: 2 @result{} '10000000000'
+1 << 10 @result{} 1024 
+@end example
+
+Therefore, to multiply an integer by 1024, we shift left of 10 its digits:
+
+@example
+360 << 10 @result{} 368640 
+360 * 1024 @result{} 368640 
 @end example
 
 @subheading @ref{exeFloatPrecision}
@@ -49,27 +102,66 @@ The system returns the error @smalltalk{ZeroDivide}, division by zero.
 @result{} 0
 @end example
 
-
-@unnumberedsubsec Fun with text
-@subheading @ref{capWordNumber}
-Several messages can be sent one after the other:
+@subheading @ref{selectApples}
+There are different options, with slightly different results:
 @example
-Transcript show: 2020 printStringWords capitalized 
+'There are 12 apples' select: [:i |i isLetter].
+@result{} 'Thereareapples' 
 @end example
 
-@subheading @ref{helloBelle}
+Not really satisfying. So another option:
 @example
-'Hello' 
-   at: 1 put: $B;
-   at: 2 put: $e;
-   at: 3 put: $l;
-   at: 4 put: $l;
-   at: 5 put: $e;
-   yourself
+'There are 12 apples' select: [:i |i isDigit not].
+@result{} 'There are  apples'
+@end example
+
+Or even a shorter option with the @msg{reject:} message:
+@example
+'There are 12 apples' reject: [:i |i isDigit].
+@result{} 'There are  apples' 
+@end example
+
+@subheading @ref{formatString}
+In @class{String}, search for the method category @option{format}, there
+you find the @method{format:} method:
+@example
+'Joe bought @{1@} apples and @{2@} oranges' format: #(5 4)
+@result{}  'Joe bought 5 apples and 4 oranges' 
+@end example
+
+@subheading @ref{spacewarSimpleGetters}
+@example
+CentralStar>>mass
+   ^ mass
+
+SpaceShip>>position
+   ^ position
+
+SpaceShip>>velocity
+   ^ position
+
+Torpedo>>position
+   ^ position
+@end example
+
+@subheading @ref{shipPositionSetter}
+@example
+SpaceShip>>position: aPoint
+   position @assign{} aPoint
 @end example
 
 
-@unnumberedsubsec Fun with collection 
+@c Chapter 4
+@unnumberedsec The Collection Way of Life
+@subheading @ref{cutString}
+Open the protocol browser on the class @class{String}, search for the
+method @method{allButFirst:} implemented in
+@class{SequenceableCollection}. Read its comment in its source code.
+@example
+'Hello My Friend' allButFirst: 6
+@result{} 'My Friend'
+@end example
+
 @subheading @ref{exeNegativeIntegers}
 @example
 (-80 to: 50) asArray
@@ -99,7 +191,6 @@ Transcript show: 2020 printStringWords capitalized
 (1 to: 100) select:[:n | n isDivisibleBy: 7]
 @result{} #(7 14 21 28 35 42 49 56 63 70 77 84 91 98) 
 @end example
-
 
 @subheading @ref{oddNonPrime}
 This solution, based on set operations and multiple use of the
@@ -147,80 +238,6 @@ characters intervale with a string:
   'DOHDMDFWDHVW' collect: [:c |
     (c asciiValue - 65 - 3 \\ 26 + 65) asCharacter]
 @result{} 'ALEAJACTAEST'
-@end example
-
-@unnumberedsec Introduction to the system class
-
-@subheading @ref{stringArith}
-From a System Browser, do from the left panel to the
-right ...@clicksequence{@option{Kernel-Text} @click{} @class{String}
-@click{} @smalltalk{arithmetic}}... the count of methods in the last
-right panel is 6: @method{*}, @method{+}, @method{-}, @method{/},
-@method{//} and @method{\\}.
-
-@subheading @ref{floatInfo}
-When the @class{Float} is selected, the wide text pane prints: ``class
-definition for Float @textdegree{} 92 instance methods @textdegree{}
-34 class methods @textdegree{} 1280 total lines of code''
-
-@subheading @ref{cosTable}
-@example
-0 to: Float twoPi by: 1/10 do: [:i |
-   Transcript show: i cos; cr]
-@end example
-
-@subheading @ref{multiplyBy1024}
-1024 is not a random number. It is 2@sup{10} then written in base 2 :
-10000000000, it is also @smalltalk{1 << 10}:
-
-@example
-2^10 @result{} 1024
-1024 printStringBase: 2 @result{} '10000000000'
-1 << 10 @result{} 1024 
-@end example
-
-Therefore, to multiply an integer by 1024, we shift left of 10 its digits:
-
-@example
-360 << 10 @result{} 368640 
-360 * 1024 @result{} 368640 
-@end example
-
-
-@subheading @ref{selectApples}
-There are different options, with slightly different results:
-@example
-'There are 12 apples' select: [:i |i isLetter].
-@result{} 'Thereareapples' 
-@end example
-
-Not really satisfying. So another option:
-@example
-'There are 12 apples' select: [:i |i isDigit not].
-@result{} 'There are  apples'
-@end example
-
-Or even a shorter option with the @msg{reject:} message:
-@example
-'There are 12 apples' reject: [:i |i isDigit].
-@result{} 'There are  apples' 
-@end example
-
-@subheading @ref{formatString}
-In @class{String}, search for the method category @option{format}, there
-you find the @method{format:} method:
-@example
-'Joe bought @{1@} apples and @{2@} oranges' format: #(5 4)
-@result{}  'Joe bought 5 apples and 4 oranges' 
-@end example
-
-@subheading @ref{cutString}
-Open the protocol browser on the class @class{String}, search for the
-method @method{allButFirst:} implemented in
-@class{SequenceableCollection}. Read its comment in its source code.
-@example
-'Hello My Friend' allButFirst: 6
-@result{} 'My Friend'
 @end example
 
 @subheading @ref{collFirst}
@@ -284,6 +301,7 @@ colors
 #yellow->'Yellow' ) 
 @end example
 
+@unnumberedsec Control Flow Messaging
 @subheading @ref{blockDivisor}
 @example
 | divisors |
@@ -298,26 +316,4 @@ divisors value: 45
 Check the implementations in @class{Boolean}, @class{True} and
 @class{False}.
 
-@c Chapter 4
-@unnumberedsec Class, model of communicating entities
-
-@subheading @ref{spacewarSimpleGetters}
-@example
-CentralStar>>mass
-   ^ mass
-
-SpaceShip>>position
-   ^ position
-
-SpaceShip>>velocity
-   ^ position
-
-Torpedo>>position
-   ^ position
-@end example
-
-@subheading @ref{shipPositionSetter}
-@example
-SpaceShip>>position: aPoint
-   position @assign{} aPoint
-@end example
+@c Above

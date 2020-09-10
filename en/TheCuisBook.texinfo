@@ -1,7 +1,7 @@
 \input texinfo @c -*-texinfo-*-
 @c %**start of header
 @settitle The Cuis-Smalltalk Book
-@set timeStamp Time-stamp: <2020-09-06 11:39:31 hilaire>
+@set timeStamp Time-stamp: <2020-09-10 08:47:15 hilaire>
 @set cuisVersion 5.0#4253
 @set txicodequoteundirected ON 
 @setfilename TheCuisBook.info
@@ -89,7 +89,7 @@ Complete license: @url{https://creativecommons.org/licenses/by-sa/4.0/legalcode}
 @menu
 * Preface::
 * Smalltalk Philosophy::
-* The Message Way Of Life::
+* The Message Way of Life::
 * Class - model of communicating entities::
 * The Collection Way of Life::
 * Control Flow Messaging::

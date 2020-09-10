@@ -13,8 +13,8 @@ K. Dickey, H. Fernandes, J. Vuletich
 
 @c Todo note, with an index entry to group them all
 @macro todo{note}
-@cindex TO BE WRITTEN, \note\
-@strong{TO BE WRITTEN:} \note\
+@cindex to be written, \note\
+@strong{To be written.} \note\
 @end macro
 
 @c Smalltalk code in a text flow

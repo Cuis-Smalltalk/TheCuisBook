@@ -1,6 +1,12 @@
 @node Class - model of communicating entities
 @chapter Class, model of communicating entities
 
+@cuis{} is a pure object oriented programming language (OOP): all the
+entities as integer, float, rational number, string and other like
+collection, block of code we have not yet learnt about are objects.
+
+@todo{historic context of class}
+
 @menu
 * Understanding Object Oriented Programming::
 * Explore OOP from the Browser::
@@ -12,9 +18,6 @@
 
 @node Understanding Object Oriented Programming
 @section Understanding Object Oriented Programming
-@cuis{} is a pure object oriented programming language (OOP): all the
-entities as integer, float, rational number, string and other like
-collection, block of code we have not yet learnt about are objects.
 
 But what is an object?  An object is an entity responding to two
 criteria:

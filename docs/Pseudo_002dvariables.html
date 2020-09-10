@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This book is for Cuis-Smalltalk (5.0#4253), a free and modern
+implementation of the Smalltalk language and environment.
+
+Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
+
+
+
+
+
+
+
+Compilation : September 10, 2020
+
+Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
+
+
+
+The contents of this book are protected under Creative Commons
+Attribution-ShareAlike 4.0 International.
+
+You are free to:
+
+
+Share - copy and redistribute the material in any medium or
+format
+
+
+Adapt - remix, transform, and build upon the material for any
+purpose, even commercially.
+
+
+
+Under the following terms:
+
+
+Attribution. You must give appropriate credit, provide a link to
+the license, and indicate if changes were made. You may do so in any
+reasonable manner, but not in any way that suggests the licensor
+endorses you or your use.
+
+
+Share Alike. If you remix, transform, or build upon the material,
+you must distribute your contributions under the same license as the
+original.
+
+Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+ -->
+<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Pseudo-variables (The Cuis-Smalltalk Book)</title>
+
+<meta name="description" content="Pseudo-variables (The Cuis-Smalltalk Book)">
+<meta name="keywords" content="Pseudo-variables (The Cuis-Smalltalk Book)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Indexes.html" rel="index" title="Indexes">
+<link href="Control-Flow-Messaging.html" rel="up" title="Control Flow Messaging">
+<link href="Method-syntax.html" rel="next" title="Method syntax">
+<link href="Syntactic-elements.html" rel="prev" title="Syntactic elements">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="style.css">
+
+
+</head>
+
+<body lang="en">
+<span id="Pseudo_002dvariables"></span><div class="header">
+<p>
+Next: <a href="Method-syntax.html" accesskey="n" rel="next">Method syntax</a>, Previous: <a href="Syntactic-elements.html" accesskey="p" rel="prev">Syntactic elements</a>, Up: <a href="Control-Flow-Messaging.html" accesskey="u" rel="up">Control Flow Messaging</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Pseudo_002dvariables-1"></span><h3 class="section">5.2 Pseudo-variables</h3>
+<p>In Smalltalk, there are 6 reserved keywords, or pseudo-variables:
+</p>
+<blockquote class="indentedblock">
+<p><span class="sansserif">nil</span>, <span class="sansserif">true</span>, <span class="sansserif">false</span>,
+<span class="sansserif">self</span>, <span class="sansserif">super</span>, and <span class="sansserif">thisContext</span>.
+</p></blockquote>
+
+
+<p>They are called <em>pseudo-variables</em> because they are predefined and
+cannot be assigned to. <span class="sansserif">true</span>, <span class="sansserif">false</span>, and
+<span class="sansserif">nil</span> are constants while the values of <span class="sansserif">self</span>,
+<span class="sansserif">super</span>, and <span class="sansserif">thisContext</span> vary dynamically as
+code is executed.
+</p>
+
+<ul>
+<li> <span class="sansserif">true</span> and <span class="sansserif">false</span> are the unique
+   instances of the <span class="sansserif">Boolean</span> classes <span class="sansserif">True</span> and
+   <span class="sansserif">False</span>.
+   
+</li><li> <span class="sansserif">self</span> always refers to the receiver of the
+   currently executing method.
+   
+</li><li> <span class="sansserif">super</span> also refers to the receiver of the current
+   method, but when you send a message to <span class="sansserif">super</span>, the
+   method-lookup changes so that it starts from the superclass of the
+   class containing the method that uses super.
+   
+</li><li> <span class="sansserif">nil</span> is the undefined object. It is the unique
+   instance of the class <span class="sansserif">UndefinedObject</span>. Instance
+   variables, class variables and local variables are initialized to
+   <span class="sansserif">nil</span>.
+   
+</li><li> <span class="sansserif">thisContext</span> is a pseudo-variable that represents
+   the top frame of the run-time stack. In other words, it represents
+   the currently executing <span class="sansserif">MethodContext</span> or
+   <span class="sansserif">BlockContext</span>. <span class="sansserif">thisContext</span> is normally not
+   of interest to most programmers, but it is essential for
+   implementing development tools like the debugger and it is also
+   used to implement exception handling and continuations.
+
+</li></ul>
+
+<span id="index-method"></span>
+
+
+
+</body>
+</html>

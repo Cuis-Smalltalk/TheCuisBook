@@ -1,5 +1,8 @@
-@node The Message Way Of Life
-@chapter The Message Way Of Life
+@node The Message Way of Life
+@chapter The Message Way of Life
+
+Smalltalk design is based on entities communicating with each other
+through messages. That's all, there is nothing more.
 
 
 @menu
@@ -14,8 +17,6 @@
 @node Communicating entities
 @section Communicating entities
 
-Smalltalk design is based on entities communicating with each other
-through messages. That's all, there is nothing more.
 @cindex message, sender
 @cindex message, receiver
 When a given entity receives a message from another entity, it
