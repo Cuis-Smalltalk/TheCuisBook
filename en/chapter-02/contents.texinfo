@@ -32,9 +32,9 @@ behavior is defined in a class, it is called a @dfn{method}.
 
 It results in a huge cloud of entities communicating with each other
 through message sending. New entities are instantiated when needed
-then automatically garbage collected when not required anymore. On a
-fresh @cuis{} environment, the instances class count is higher than
-150'000.
+then automatically garbage collected when no longer required. On a
+fresh @cuis{} environment, the instances class count is more than
+150 thousand.
 
 @smalltalkExampleCaption{Calculating the number of entities, entitiesCount,
 ProtoObject allSubclasses inject: 0 into: [:count :class |
@@ -42,7 +42,7 @@ ProtoObject allSubclasses inject: 0 into: [:count :class |
 @result{} 152058}
 
 The count of classes, the models for the entities -- class instances
--- is higher than 1'000.
+-- is more than 1000.
 
 @smalltalkExampleCaption{Calculating the number of classes, classesCount,
 ProtoObject allSubclasses size
@@ -50,7 +50,8 @@ ProtoObject allSubclasses size
 
 To be honest, in our previous chapter we skipped this important detail
 on Smalltalk design. We wrote about message sending without explaining
-much, we wanted you to discover informally this design. Therefore, the scripts you
+much, we wanted you to discover informally this design.
+The scripts you
 read and wrote were all about entities communicating with each other
 through messages.
 
@@ -168,13 +169,15 @@ Observe how a character is prefixed with the ``$'' symbol.
 @strong{Caution.} The index position starts naturally from 1 to the
 string length.
 
-To change one character, use the companion two keywords message
+To change one character, use the companion two keyword message
 @msg{at:put:}. The argument must be noted as a character:
 @smalltalkExample{'Hello' at: 2 put: $a; yourself
 @result{} 'Hallo'}
 
-Observe the use of the cascade with the @msg{yourself} message. It is
-sent to the instance string to get it returned.
+Observe the use of the cascade with the @msg{yourself} message.
+A cascade sends following messages to the original receiver,
+so #yourself returns the updated string.
+Without the cascade, $a is returned as the result of the #at:put: message.
 
 @exercise{Hello to Belle,helloBelle, @emph{Replace each character of
 the string 'Hello' to become 'Belle'}}
@@ -307,7 +310,7 @@ Observe a few important points in this declaration:
 
 @itemize
 
-   @item @class{Number} is a sub class of @class{Magnitude}. This means
+   @item @class{Number} is a subclass of @class{Magnitude}. This means
    @class{Number} is a kind of specialized @class{Magnitude}.
 
    @item the declaration itself is Smalltalk code, indeed the message
@@ -326,19 +329,20 @@ Observe a few important points in this declaration:
 @end itemize
 
 @cindex class, comment
-To learn about the intend of a class, you @strong{must} visit
-systematically its comment. Often a comment comes also with code
+To learn about the intend of a class, it is good practice to @strong{always}
+visit the class comment. Often a comment comes also with code
 examples to learn how to use the object; these code snippets can be
 selected and executed in place as done from a Workspace. In
 @ref{ch02-browserDetailed}, see the @label{comment} button to read or
 to edit the comment of the selected class.
 
-Next to the right is the method categories panel. It is user defined
-method categories. A class can come with tenth of methods, grouping
-them by category ease the user access. As a reference, @class{Number}
+To the right of the class panel is the method categories panel.
+A class may have with tens of methods, so grouping
+them by category helps other users orient to find related methods.
+As a reference, @class{Number}
 has more than 100 instance side methods implemented in
-itself@footnote{When considering its parents, the count is greater
-than 300.}; therefore clicking the @label{arithmetic} category
+itself@footnote{When considering its parents, the cobined method count is
+more than 300.}. Clicking the @label{arithmetic} category
 directly gives access to related methods in the next and last pane at
 the right.
 
@@ -356,9 +360,8 @@ surrounded by double quote.
 
 
 @cindex browser, invoke from Workspace
-A last bit of advice,  in the workspace when requesting the
-class of an instance, @kbd{Ctrl-b} will invoke the Browser on the
-returned class:
+A usefule tip: in the workspace @kbd{Ctrl-b} on the class name
+will open a Browser on the named class:
 
 @itemize
 

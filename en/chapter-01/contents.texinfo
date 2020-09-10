@@ -41,8 +41,11 @@ and knowledge. Therefore, the ability to express ideas in this new
 medium would be the new literacy. Every person should learn to read
 and write in this medium, at least to the extent of their personal
 needs. He called his concept the "Dynabook" and described it in
-"Personal Dynamic Media" (1977). Another essential reading by Alan is
-"The Early History of Smalltalk".
+"Personal Dynamic Media" (1977)
+@footnote{@url{http://augmentingcognition.com/assets/Kay1977.pdf}}.
+Another essential reading by Alan is
+"The Early History of Smalltalk"
+@footnote{@url{http://worrydream.com/EarlyHistoryOfSmalltalk}}.
 
 Note the stark contrast with the mainstream point of view on
 programming, where programming is merely giving a computer a set of
@@ -76,12 +79,32 @@ professional developers: the kinds of media that are made available
 for users to create content include text, photographs and video, but
 not a more advanced way to express knowledge.
 
+We believe that everyone should have full access to the software that
+runs our systems.  Understanding and exploring computer systems requires
+writing software in ways that can be read and shared.
+
+Dan Ingalls, one of the early Smalltalk system developers, wrote an article
+in 1981 titled "Design Principles Behind Smalltalk" 
+@footnote{@url{http://www.cs.virginia.edu/~evans/cs655/readings/smalltalk.html}}
+which sets forth some principles that still guide us today.
+
+Among these:
+
+@cuisNote{Personal Mastery: If a system is to serve the creative spirit,
+it most be entirely comprehensible to a single individual.}
+
+@cuisNote{Reactive Principle: Every component accessible to the user should
+be able to present itself in a meaningful way for observation
+and manipulation.}
+
+This way of thinking about software systems is important to us.
+
 For this reason, Cuis is a Smalltalk system, and one that is rather
 close to Smalltalk-80. It is well adapted to modern hardware and
 operating environments, and includes many modern programming
 facilities.
 
-But we still believe that the best way to write programs is to capture
+We still believe that the best way to write programs is to capture
 a set of ideas and knowledge, that other people can understand, and
 that a computer can run. @cuis{} is meant to be used this way.
 
@@ -302,8 +325,9 @@ message:
 @cindex number, literal
 @cindex literal, number
 Integer and float numbers we have played with are @dfn{Numeric
-Literals}. There are building blocks of the language and considered as
-constant expressions. There are different syntax to write a number:
+Literals}. Literals are building blocks of the language and considered as
+constant expressions.  They literally are as the appear.
+There are different syntax variants to write a number:
 
 @multitable @columnfractions .45 .55
 @headitem Numeric literal @tab What it represents
