@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4373] on 11 September 2020 at 10:29:43 am'!
+'From Cuis 5.0 [latest update: #4360] on 11 September 2020 at 1:19:09 pm'!
 'Description '!
-!provides: 'Spacewar!!' 1 18!
+!provides: 'Spacewar!!' 1 21!
 SystemOrganization addCategory: #'Spacewar!!'!
 
 
@@ -118,10 +118,10 @@ gravity
 	^ [-10 * mass * owner starMass / (position r raisedTo: 3) * position]
 		on: Error do: [0 @ 0]! !
 
-!SpaceShip methodsFor: 'as yet unclassified' stamp: 'hlsf 9/11/2020 10:27:19'!
+!SpaceShip methodsFor: 'as yet unclassified' stamp: 'hlsf 9/11/2020 13:18:41'!
 isGoingOuterSpace
 "is the ship going crazy in the outer space"
-	^ position * velocity > 0 ! !
+	^ (position dotProduct: velocity) > 0 ! !
 
 !SpaceShip methodsFor: 'as yet unclassified' stamp: 'hlsf 9/11/2020 10:28:54'!
 isInOuterSpace
@@ -147,7 +147,7 @@ unpush
 	"no accelaration boost"
 	acceleration _ 0! !
 
-!SpaceShip methodsFor: 'as yet unclassified' stamp: 'hlsf 9/11/2020 10:29:41'!
+!SpaceShip methodsFor: 'as yet unclassified' stamp: 'hlsf 9/11/2020 13:16:13'!
 update
 	| ai ag newVelocity t |
 	"acceleration vectors"
@@ -160,8 +160,7 @@ update
 	
 	"Are we out of screen?"
 	(self isInOuterSpace and: [self isGoingOuterSpace])
-		ifTrue: [position _ position negated / 1.1.
-			velocity _ 0 @ 0]! !
+		ifTrue: [position _ position negated]! !
 
 !SpaceWar methodsFor: 'accessing' stamp: 'hlsf 9/10/2020 15:31:46'!
 ship
@@ -214,7 +213,7 @@ step
 	self ship unpush.
 	self redrawNeeded ! !
 
-!SpaceWar methodsFor: 'stepping' stamp: 'hlsf 9/10/2020 18:38:30'!
+!SpaceWar methodsFor: 'stepping' stamp: 'hlsf 9/11/2020 13:19:07'!
 stepTime
 "millisecond"
 	^ 20! !
