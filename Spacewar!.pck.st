@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4360] on 11 September 2020 at 1:19:09 pm'!
+'From Cuis 5.0 [latest update: #4360] on 11 September 2020 at 1:25:20 pm'!
 'Description '!
-!provides: 'Spacewar!!' 1 21!
+!provides: 'Spacewar!!' 1 22!
 SystemOrganization addCategory: #'Spacewar!!'!
 
 
@@ -123,10 +123,10 @@ isGoingOuterSpace
 "is the ship going crazy in the outer space"
 	^ (position dotProduct: velocity) > 0 ! !
 
-!SpaceShip methodsFor: 'as yet unclassified' stamp: 'hlsf 9/11/2020 10:28:54'!
+!SpaceShip methodsFor: 'as yet unclassified' stamp: 'hlsf 9/11/2020 13:23:05'!
 isInOuterSpace
 "Is the ship located in the outer space (outside of the game play"
-	^ (owner morphBounds expandBy: 30) containsPoint: (self transformation transform: position)
+	^ ((owner morphBounds expandBy: 10) containsPoint: (self transformation transform: position)) not
 		! !
 
 !SpaceShip methodsFor: 'as yet unclassified' stamp: 'hlsf 9/10/2020 18:34:43'!
@@ -147,7 +147,7 @@ unpush
 	"no accelaration boost"
 	acceleration _ 0! !
 
-!SpaceShip methodsFor: 'as yet unclassified' stamp: 'hlsf 9/11/2020 13:16:13'!
+!SpaceShip methodsFor: 'as yet unclassified' stamp: 'hlsf 9/11/2020 13:22:04'!
 update
 	| ai ag newVelocity t |
 	"acceleration vectors"
@@ -160,7 +160,8 @@ update
 	
 	"Are we out of screen?"
 	(self isInOuterSpace and: [self isGoingOuterSpace])
-		ifTrue: [position _ position negated]! !
+		ifTrue: [velocity _ velocity / 2.
+			position _ position negated]! !
 
 !SpaceWar methodsFor: 'accessing' stamp: 'hlsf 9/10/2020 15:31:46'!
 ship
