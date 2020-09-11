@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4360] on 11 September 2020 at 1:25:20 pm'!
+'From Cuis 5.0 [latest update: #4249] on 11 September 2020 at 7:37:58 pm'!
 'Description '!
-!provides: 'Spacewar!!' 1 22!
+!provides: 'Spacewar!!' 1 24!
 SystemOrganization addCategory: #'Spacewar!!'!
 
 
@@ -55,8 +55,15 @@ StarField class
 	instanceVariableNames: ''!
 
 
-!SpaceWar commentStamp: '<historical>' prior: 0!
-I am the game play view. My submorphs are the elements of the game.!
+!SpaceWar commentStamp: 'hlsf 9/11/2020 19:37:05' prior: 0!
+I am the game play view. My submorphs are the elements of the game.
+
+| game | 
+game _ SpaceWar new.
+game addMorph: SpaceShip new.
+game openInWorld
+
+Control with the left, up, right arrows!
 
 !CentralStar commentStamp: '<historical>' prior: 0!
 I am the central start of the game generating a gravity field.!
@@ -123,10 +130,10 @@ isGoingOuterSpace
 "is the ship going crazy in the outer space"
 	^ (position dotProduct: velocity) > 0 ! !
 
-!SpaceShip methodsFor: 'as yet unclassified' stamp: 'hlsf 9/11/2020 13:23:05'!
+!SpaceShip methodsFor: 'as yet unclassified' stamp: 'hlsf 9/11/2020 19:35:16'!
 isInOuterSpace
 "Is the ship located in the outer space (outside of the game play"
-	^ ((owner morphBounds expandBy: 10) containsPoint: (self transformation transform: position)) not
+	^ (((0@0 extent: owner morphExtent) expandBy: 20) containsPoint: (self transformation transform: position)) not
 		! !
 
 !SpaceShip methodsFor: 'as yet unclassified' stamp: 'hlsf 9/10/2020 18:34:43'!
@@ -167,9 +174,9 @@ update
 ship
 	^ submorphs first! !
 
-!SpaceWar methodsFor: 'accessing' stamp: 'hlsf 9/11/2020 10:15:37'!
+!SpaceWar methodsFor: 'accessing' stamp: 'hlsf 9/11/2020 19:35:45'!
 starMass
-	^ 5000! !
+	^ 8000! !
 
 !SpaceWar methodsFor: 'initialization' stamp: 'hlsf 9/10/2020 15:21:22'!
 defaultColor
