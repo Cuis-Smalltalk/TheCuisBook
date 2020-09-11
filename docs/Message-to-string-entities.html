@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : September 10, 2020
+Compilation : September 11, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -106,15 +106,17 @@ examples with the <kbd>Ctrl-p</kbd> shortcut:
 <p><strong>Caution.</strong> The index position starts naturally from 1 to the
 string length.
 </p>
-<p>To change one character, use the companion two keywords message
+<p>To change one character, use the companion two keyword message
 <span class="sansserif">#at:put:</span>. The argument must be noted as a character:
 </p><div class="display">
 <pre class="display"><span class="sansserif">&rsquo;Hello&rsquo; at: 2 put: $a; yourself
 &rArr; &rsquo;Hallo&rsquo;</span>
 </pre></div>
 
-<p>Observe the use of the cascade with the <span class="sansserif">#yourself</span> message. It is
-sent to the instance string to get it returned.
+<p>Observe the use of the cascade with the <span class="sansserif">#yourself</span> message.
+A cascade sends following messages to the original receiver,
+so #yourself returns the updated string.
+Without the cascade, $a is returned as the result of the #at:put: message.
 </p>
 <div class="float"><span id="helloBelle"></span>
 <blockquote class="indentedblock">
@@ -148,6 +150,11 @@ proves to be of some use as we may see later:
 &rArr;#($b $j $n $o $o $r $u)</span>
 </pre></div>
 
+<hr>
+<div class="header">
+<p>
+Next: <a href="Messages-to-number-entities.html" accesskey="n" rel="next">Messages to number entities</a>, Previous: <a href="Messages-sends-definition.html" accesskey="p" rel="prev">Messages sends definition</a>, Up: <a href="The-Message-Way-of-Life.html" accesskey="u" rel="up">The Message Way of Life</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
 
 
 

@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : September 10, 2020
+Compilation : September 11, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -107,9 +107,9 @@ behavior is defined in a class, it is called a <em>method</em>.
 </p>
 <p>It results in a huge cloud of entities communicating with each other
 through message sending. New entities are instantiated when needed
-then automatically garbage collected when not required anymore. On a
-fresh Cuis-Smalltalk environment, the instances class count is higher than
-150&rsquo;000.
+then automatically garbage collected when no longer required. On a
+fresh Cuis-Smalltalk environment, the instances class count is more than
+150 thousand.
 </p>
 <div class="float"><span id="entitiesCount"></span>
 <div class="display">
@@ -120,7 +120,7 @@ fresh Cuis-Smalltalk environment, the instances class count is higher than
 
 <div class="float-caption"><p><strong><em>Example</em> 2.1: </strong>Calculating the number of entities</p></div></div>
 <p>The count of classes, the models for the entities &ndash; class instances
-&ndash; is higher than 1&rsquo;000.
+&ndash; is more than 1000.
 </p>
 <div class="float"><span id="classesCount"></span>
 <div class="display">
@@ -131,7 +131,8 @@ fresh Cuis-Smalltalk environment, the instances class count is higher than
 <div class="float-caption"><p><strong><em>Example</em> 2.2: </strong>Calculating the number of classes</p></div></div>
 <p>To be honest, in our previous chapter we skipped this important detail
 on Smalltalk design. We wrote about message sending without explaining
-much, we wanted you to discover informally this design. Therefore, the scripts you
+much, we wanted you to discover informally this design.
+The scripts you
 read and wrote were all about entities communicating with each other
 through messages.
 </p>

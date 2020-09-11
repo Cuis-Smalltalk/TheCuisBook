@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : September 10, 2020
+Compilation : September 11, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -129,7 +129,7 @@ bellow, the <span class="sansserif">Number</span> class declaration is:
 <p>Observe a few important points in this declaration:
 </p>
 <ul>
-<li> <span class="sansserif">Number</span> is a sub class of <span class="sansserif">Magnitude</span>. This means
+<li> <span class="sansserif">Number</span> is a subclass of <span class="sansserif">Magnitude</span>. This means
    <span class="sansserif">Number</span> is a kind of specialized <span class="sansserif">Magnitude</span>.
 
 </li><li> the declaration itself is Smalltalk code, indeed the message
@@ -148,18 +148,19 @@ bellow, the <span class="sansserif">Number</span> class declaration is:
 </li></ul>
 
 <span id="index-class_002c-comment"></span>
-<p>To learn about the intend of a class, you <strong>must</strong> visit
-systematically its comment. Often a comment comes also with code
+<p>To learn about the intend of a class, it is good practice to <strong>always</strong>
+visit the class comment. Often a comment comes also with code
 examples to learn how to use the object; these code snippets can be
 selected and executed in place as done from a Workspace. In
 <a href="#ch02_002dbrowserDetailed"><em>Figure</em> 2.1</a>, see the <code>comment</code> button to read or
 to edit the comment of the selected class.
 </p>
-<p>Next to the right is the method categories panel. It is user defined
-method categories. A class can come with tenth of methods, grouping
-them by category ease the user access. As a reference, <span class="sansserif">Number</span>
+<p>To the right of the class panel is the method categories panel.
+A class may have with tens of methods, so grouping
+them by category helps other users orient to find related methods.
+As a reference, <span class="sansserif">Number</span>
 has more than 100 instance side methods implemented in
-itself<a id="DOCF7" href="#FOOT7"><sup>7</sup></a>; therefore clicking the <code>arithmetic</code> category
+itself<a id="DOCF7" href="#FOOT7"><sup>7</sup></a>. Clicking the <code>arithmetic</code> category
 directly gives access to related methods in the next and last pane at
 the right.
 </p>
@@ -182,9 +183,8 @@ surrounded by double quote.
 </p>
 
 <span id="index-browser_002c-invoke-from-Workspace"></span>
-<p>A last bit of advice,  in the workspace when requesting the
-class of an instance, <kbd>Ctrl-b</kbd> will invoke the Browser on the
-returned class:
+<p>A usefule tip: in the workspace <kbd>Ctrl-b</kbd> on the class name
+will open a Browser on the named class:
 </p>
 <ul>
 <li> In the Workspace, on <span class="sansserif">1 class</span> execute and print
@@ -205,8 +205,8 @@ returned class:
 <h4 class="footnotes-heading">Footnotes</h4>
 
 <h5><a id="FOOT7" href="#DOCF7">(7)</a></h3>
-<p>When considering its parents, the count is greater
-than 300.</p>
+<p>When considering its parents, the cobined method count is
+more than 300.</p>
 </div>
 <hr>
 <div class="header">

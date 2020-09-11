@@ -1,8 +1,18 @@
-'From Cuis 5.0 [latest update: #4241] on 10 September 2020 at 7:56:39 pm'!
+'From Cuis 5.0 [latest update: #4373] on 11 September 2020 at 10:29:43 am'!
 'Description '!
-!provides: 'Spacewar!!' 1 15!
+!provides: 'Spacewar!!' 1 18!
 SystemOrganization addCategory: #'Spacewar!!'!
 
+
+!classDefinition: #SpaceShip category: #'Spacewar!!'!
+RectangleLikeMorph subclass: #SpaceShip
+	instanceVariableNames: 'name position heading velocity fuel torpedoes mass acceleration'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Spacewar!!'!
+!classDefinition: 'SpaceShip class' category: #'Spacewar!!'!
+SpaceShip class
+	instanceVariableNames: ''!
 
 !classDefinition: #SpaceWar category: #'Spacewar!!'!
 RectangleLikeMorph subclass: #SpaceWar
@@ -22,16 +32,6 @@ Morph subclass: #CentralStar
 	category: 'Spacewar!!'!
 !classDefinition: 'CentralStar class' category: #'Spacewar!!'!
 CentralStar class
-	instanceVariableNames: ''!
-
-!classDefinition: #SpaceShip category: #'Spacewar!!'!
-Morph subclass: #SpaceShip
-	instanceVariableNames: 'name position heading velocity fuel torpedoes mass acceleration'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Spacewar!!'!
-!classDefinition: 'SpaceShip class' category: #'Spacewar!!'!
-SpaceShip class
 	instanceVariableNames: ''!
 
 !classDefinition: #Torpedo category: #'Spacewar!!'!
@@ -60,77 +60,6 @@ I am the game play view. My submorphs are the elements of the game.!
 
 !CentralStar commentStamp: '<historical>' prior: 0!
 I am the central start of the game generating a gravity field.!
-
-!SpaceWar methodsFor: 'accessing' stamp: 'hlsf 9/10/2020 15:31:46'!
-ship
-	^ submorphs first! !
-
-!SpaceWar methodsFor: 'accessing' stamp: 'hlsf 9/10/2020 19:27:55'!
-starMass
-	^ 5000! !
-
-!SpaceWar methodsFor: 'initialization' stamp: 'hlsf 9/10/2020 15:21:22'!
-defaultColor
-	^ `Color black`! !
-
-!SpaceWar methodsFor: 'initialization' stamp: 'hlsf 9/10/2020 18:42:23'!
-initialize
-	super initialize.
-	extent _ 300 @ 300.
-	self setProperty: #'handlesKeyboard' toValue: true.
-	self setProperty: #'handlesMouseOver:' toValue: true.
-	self startSteppingStepTime: self stepTime! !
-
-!SpaceWar methodsFor: 'events' stamp: 'hlsf 9/10/2020 19:17:33'!
-keyStroke: event
-	| key |
-	key _ event keyCharacter.
-	key = Character arrowUp ifTrue: [self ship push].
-	key = Character arrowRight ifTrue: [self ship right].
-	key = Character arrowLeft ifTrue: [self ship left]! !
-
-!SpaceWar methodsFor: 'events' stamp: 'hlsf 9/10/2020 16:04:27'!
-mouseEnter: evt
-    evt hand newKeyboardFocus: self.! !
-
-!SpaceWar methodsFor: 'events' stamp: 'hlsf 9/10/2020 16:00:35'!
-mouseLeave: evt
-    evt hand releaseKeyboardFocus: self! !
-
-!SpaceWar methodsFor: 'focus handling' stamp: 'hlsf 9/10/2020 16:04:35'!
-keyboardFocusChange: gotFocus
-	gotFocus 
-		ifTrue: [color _ self defaultColor ]
-		ifFalse: [color _ self defaultColor alpha: 0.5].
-	self redrawNeeded.! !
-
-!SpaceWar methodsFor: 'stepping' stamp: 'hlsf 9/10/2020 18:35:22'!
-step
-	self ship update.
-	self ship unpush.
-	self redrawNeeded ! !
-
-!SpaceWar methodsFor: 'stepping' stamp: 'hlsf 9/10/2020 18:38:30'!
-stepTime
-"millisecond"
-	^ 20! !
-
-!SpaceWar methodsFor: 'stepping' stamp: 'hlsf 9/10/2020 18:03:59'!
-wantsSteps
-	^ true! !
-
-!SpaceWar methodsFor: 'as yet unclassified' stamp: 'hlsf 9/10/2020 18:54:13'!
-drawOn: canvas
-	super drawOn: canvas.
-	canvas ellipseCenterX: extent x // 2 y:  extent y // 2 rx: 10 ry: 10 borderWidth: 2 borderColor: Color yellow muchDarker fillColor: Color yellow! !
-
-!CentralStar methodsFor: 'as yet unclassified' stamp: 'hlsf 9/10/2020 13:59:50'!
-mass
-	^ mass! !
-
-!CentralStar methodsFor: 'as yet unclassified' stamp: 'hlsf 9/10/2020 14:00:10'!
-mass: anInteger
-	mass _ anInteger ! !
 
 !SpaceShip methodsFor: 'initialization' stamp: 'hlsf 9/10/2020 19:16:16'!
 initialize
@@ -189,6 +118,17 @@ gravity
 	^ [-10 * mass * owner starMass / (position r raisedTo: 3) * position]
 		on: Error do: [0 @ 0]! !
 
+!SpaceShip methodsFor: 'as yet unclassified' stamp: 'hlsf 9/11/2020 10:27:19'!
+isGoingOuterSpace
+"is the ship going crazy in the outer space"
+	^ position * velocity > 0 ! !
+
+!SpaceShip methodsFor: 'as yet unclassified' stamp: 'hlsf 9/11/2020 10:28:54'!
+isInOuterSpace
+"Is the ship located in the outer space (outside of the game play"
+	^ (owner morphBounds expandBy: 30) containsPoint: (self transformation transform: position)
+		! !
+
 !SpaceShip methodsFor: 'as yet unclassified' stamp: 'hlsf 9/10/2020 18:34:43'!
 left
 	heading _ heading + 0.1.! !
@@ -207,7 +147,7 @@ unpush
 	"no accelaration boost"
 	acceleration _ 0! !
 
-!SpaceShip methodsFor: 'as yet unclassified' stamp: 'hlsf 9/10/2020 19:55:50'!
+!SpaceShip methodsFor: 'as yet unclassified' stamp: 'hlsf 9/11/2020 10:29:41'!
 update
 	| ai ag newVelocity t |
 	"acceleration vectors"
@@ -219,5 +159,79 @@ update
 	velocity _ newVelocity .
 	
 	"Are we out of screen?"
-	((owner morphBounds expandBy: 30) containsPoint: (self transformation transform: position))
-		ifFalse: [position _ position negated / 1.5 ]! !
+	(self isInOuterSpace and: [self isGoingOuterSpace])
+		ifTrue: [position _ position negated / 1.1.
+			velocity _ 0 @ 0]! !
+
+!SpaceWar methodsFor: 'accessing' stamp: 'hlsf 9/10/2020 15:31:46'!
+ship
+	^ submorphs first! !
+
+!SpaceWar methodsFor: 'accessing' stamp: 'hlsf 9/11/2020 10:15:37'!
+starMass
+	^ 5000! !
+
+!SpaceWar methodsFor: 'initialization' stamp: 'hlsf 9/10/2020 15:21:22'!
+defaultColor
+	^ `Color black`! !
+
+!SpaceWar methodsFor: 'initialization' stamp: 'hlsf 9/11/2020 10:17:13'!
+initialize
+	super initialize.
+	extent _ 500 @ 500.
+	self setProperty: #'handlesKeyboard' toValue: true.
+	self setProperty: #'handlesMouseOver:' toValue: true.
+	self startSteppingStepTime: self stepTime.! !
+
+!SpaceWar methodsFor: 'events' stamp: 'hlsf 9/10/2020 19:17:33'!
+keyStroke: event
+	| key |
+	key _ event keyCharacter.
+	key = Character arrowUp ifTrue: [self ship push].
+	key = Character arrowRight ifTrue: [self ship right].
+	key = Character arrowLeft ifTrue: [self ship left]! !
+
+!SpaceWar methodsFor: 'events' stamp: 'hlsf 9/11/2020 10:07:17'!
+mouseEnter: evt
+	evt hand newKeyboardFocus: self.	
+	self startStepping! !
+
+!SpaceWar methodsFor: 'events' stamp: 'hlsf 9/11/2020 10:07:22'!
+mouseLeave: evt
+	evt hand releaseKeyboardFocus: self.
+	self stopStepping! !
+
+!SpaceWar methodsFor: 'focus handling' stamp: 'hlsf 9/10/2020 16:04:35'!
+keyboardFocusChange: gotFocus
+	gotFocus 
+		ifTrue: [color _ self defaultColor ]
+		ifFalse: [color _ self defaultColor alpha: 0.5].
+	self redrawNeeded.! !
+
+!SpaceWar methodsFor: 'stepping' stamp: 'hlsf 9/10/2020 18:35:22'!
+step
+	self ship update.
+	self ship unpush.
+	self redrawNeeded ! !
+
+!SpaceWar methodsFor: 'stepping' stamp: 'hlsf 9/10/2020 18:38:30'!
+stepTime
+"millisecond"
+	^ 20! !
+
+!SpaceWar methodsFor: 'stepping' stamp: 'hlsf 9/10/2020 18:03:59'!
+wantsSteps
+	^ true! !
+
+!SpaceWar methodsFor: 'as yet unclassified' stamp: 'hlsf 9/10/2020 18:54:13'!
+drawOn: canvas
+	super drawOn: canvas.
+	canvas ellipseCenterX: extent x // 2 y:  extent y // 2 rx: 10 ry: 10 borderWidth: 2 borderColor: Color yellow muchDarker fillColor: Color yellow! !
+
+!CentralStar methodsFor: 'as yet unclassified' stamp: 'hlsf 9/10/2020 13:59:50'!
+mass
+	^ mass! !
+
+!CentralStar methodsFor: 'as yet unclassified' stamp: 'hlsf 9/10/2020 14:00:10'!
+mass: anInteger
+	mass _ anInteger ! !
