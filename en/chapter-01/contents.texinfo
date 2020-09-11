@@ -16,8 +16,11 @@ used. We can call this the Smalltalk philosophy of programming.
 @node Historical Context
 @section Historical Context
 
+Our focus is on part of the history of powerful ideas.
 These ideas are not new, but they are not the basis of mainstream
-approaches to software development. The first clear vision of an
+approaches to software development.
+
+The first clear vision of an
 automated information processor that would help people think and share
 knowledge in greately improved ways, was the Memex described by
 Vannevar Bush in "As We May Think", published in 1945
@@ -55,8 +58,8 @@ only as interesting as solving that problem. Furthermore, programming
 is left to a professional guild whose technical knowledge is how to
 write software.
 
-The Dynabook vision included two main parts: hardware and
-software. Their original development took place at the Xerox PARC
+The Dynamic Book, Dynabook, vision included two main parts: hardware and
+software. The original development took place at the Xerox PARC
 research center, in the 1970's. The first "interim Dynabook" hardware
 was the Xerox Alto, usually considered the first Personal
 Computer. The software part was Smalltalk. The design of both was
@@ -82,6 +85,12 @@ not a more advanced way to express knowledge.
 We believe that everyone should have full access to the software that
 runs our systems.  Understanding and exploring computer systems requires
 writing software in ways that can be read and shared.
+
+The pattern is not working in relative isolation to
+develop a piston assembly for an internal combustion engine,
+but working together in a small, mostly self sufficient village
+where people still know how to make their own clothing and tools
+and everyone knows where to get shoes, a nail, seeds, or a bag of salt.
 
 Dan Ingalls, one of the early Smalltalk system developers, wrote an article
 in 1981 titled "Design Principles Behind Smalltalk" 
