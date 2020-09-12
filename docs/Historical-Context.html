@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : September 11, 2020
+Compilation : September 12, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -92,103 +92,105 @@ Next: <a href="Installing-and-configuring-Cuis_002dSmalltalk.html" accesskey="n"
 <hr>
 <span id="Historical-Context-1"></span><h3 class="section">1.1 Historical Context</h3>
 
-<p>These ideas are not new, but they are not the basis of mainstream
-approaches to software development. The first clear vision of an
-automated information processor that would help people think and share
-knowledge in greately improved ways, was the Memex described by
-Vannevar Bush in &quot;As We May Think&quot;, published in 1945
-<a id="DOCF2" href="#FOOT2"><sup>2</sup></a>. This
-ideas inspired many later thinkers and inventors. The most
-straightforward development of this was the adoption of digital
-computers and networks as the substrate for Memex like
-systems. Notable milestones in this line of development were Ivan
-Sutherland&rsquo;s Sketchpad (1963), the RAND Tablet (1964), and Doug
-Engelbart&rsquo;s NLS (&quot;oN-Line System&quot;) (1968). Later developments include
-Ted Nelson&rsquo;s Xanadu, the Apple Macintosh, the World Wide Web, and
-Smartphones and Tablet computers.
-</p>
-<p>But, originally inspired by the Memex and the first wave of
-developments listed above, another completely different vision was
-developed. This vision was also influenced by the work on
-understanding how humans learn of J. Piaget, J. Brunner, O. K. Moore
-and S. Papert. Alan Kay conceived the idea that computer software and
-computer programming could become a new medium for expressing thoughts
-and knowledge. Therefore, the ability to express ideas in this new
-medium would be the new literacy. Every person should learn to read
-and write in this medium, at least to the extent of their personal
-needs. He called his concept the &quot;Dynabook&quot; and described it in
-&quot;Personal Dynamic Media&quot; (1977)
-<a id="DOCF3" href="#FOOT3"><sup>3</sup></a>.
-Another essential reading by Alan is
-&quot;The Early History of Smalltalk&quot;
-<a id="DOCF4" href="#FOOT4"><sup>4</sup></a>.
-</p>
-<p>Note the stark contrast with the mainstream point of view on
-programming, where programming is merely giving a computer a set of
-instructions so it can solve some problem. In this more common point
+<p>One major idea in software is that programming is merely giving a
+computer a set of instructions to solve some problem.  In this point
 of view, the only value of software is to solve a problem, and it is
-only as interesting as solving that problem. Furthermore, programming
-is left to a professional guild whose technical knowledge is how to
-write software.
+only as interesting as solving that problem. <span id="index-note_002c-Can-we-simplify_003f"></span>
+Solve is repeated 3 times.
+<strong>Note:</strong> <em>Can we simplify?
+Solve is repeated 3 times.</em> Furthermore, programming is left to a
+professional guild whose technical knowledge is how to write software.
 </p>
-<p>The Dynabook vision included two main parts: hardware and
-software. Their original development took place at the Xerox PARC
-research center, in the 1970&rsquo;s. The first &quot;interim Dynabook&quot; hardware
-was the Xerox Alto, usually considered the first Personal
-Computer. The software part was Smalltalk. The design of both was
-guided by the objectives of making &quot;Personal Dynamic Media&quot; and the
-Dynabook real. The final version of Smalltalk built at Xerox was
-Smalltalk-80.
+<p>Our focus is on one thread in the history of powerful ideas which give
+a different lens through which to explore software development than
+the <em>just solve a problem</em> view. We think they are worth
+revisiting. 
 </p>
-<p>Hardware has evolved a lot in the following decades. Smartphones,
-Tablets and Laptops have effectively reached the kind of capabilities
-a Dynabook was envisioned to have. However, the same hasn&rsquo;t happened
-for software. After Smalltalk-80, further development of Smalltalk
-only meant making it an appropriate tool for professional software
-developers to write software for end users. Little has been advanced
-in the idea of a new medium for people to express ideas.
+<p>The first clear vision of an automated information processor to assist
+people to think and to share knowledge in greatly improved ways was
+called Memex and described in Vannevar Bush essay &ldquo;As We May Think&rdquo;,
+1945 <a id="DOCF2" href="#FOOT2"><sup>2</sup></a>.
+His ideas inspired many later thinkers and inventors in the adoption
+of digital computers, networks and hypertext as the substrate for
+Memex-like systems.  <a id="DOCF3" href="#FOOT3"><sup>3</sup></a>
 </p>
-<p>The development of the World Wide Web, and modern applications for
-handhelds and laptops, and the disappearance of most &quot;end user
-programming&quot; tools, meant that software is only written by
-professional developers: the kinds of media that are made available
-for users to create content include text, photographs and video, but
-not a more advanced way to express knowledge.
+<p>Originally inspired by Memex, another vision was also developed with
+insights in understanding how humans learn.  <a id="DOCF4" href="#FOOT4"><sup>4</sup></a>  Alan Kay
+conceived the idea that computer software and computer programming
+could become a new medium for expressing thoughts and knowledge. The
+ability to express ideas in this new medium would be the new
+literacy. Every person should learn to read and write in this new
+medium, at least to the extent of their personal needs. He called his
+concept the <em>Dynabook</em> and described it in &ldquo;Personal Dynamic
+Media&rdquo;, 1977
+<a id="DOCF5" href="#FOOT5"><sup>5</sup></a>.
+Other useful insights shared by Kay can be gleaned from his paper
+&ldquo;The Early History of Smalltalk&rdquo;
+<a id="DOCF6" href="#FOOT6"><sup>6</sup></a>.
+</p>
+<p>The dynamic book vision &ndash; Dynabook &ndash; included two main parts:
+hardware and software. The original development took place at the
+Xerox PARC research center, in the 1970&rsquo;s. The first <em>interim
+Dynabook</em> hardware was the Xerox Alto, usually considered the first
+personal computer. The software part was Smalltalk. The design of both
+was guided by the objectives of making <em>Personal Dynamic Media</em>
+and the Dynabook real. The final version of Smalltalk built at Xerox
+was Smalltalk-80.
+</p>
+<p>Given the relatively weak capabilities of computer hardware at this
+time, implementing this vision presented real challenges, and much
+creativity was called for.  Today, smartphones, tablets and laptops
+have the hardware capabilities a Dynabook requires. However, the same
+advance hasn&rsquo;t happened for personal software. After Smalltalk-80,
+evolution was directed mostly toward making Smalltalk an appropriate
+tool for professional developers to write software for end users. Only
+a modest effort has been undertaken toward the idea of a new medium
+for people to express ideas.
+</p>
+<p>The development of the World Wide Web with modern applications for
+handhelds and laptops, along with the disappearance of most <em>end
+user programming</em> tools, meant that software is almost exclusively
+written by professional developers. The kinds of media that are made
+available for users to create content include text, photographs and
+video, but not a more advanced way to capture lessons learned, where
+the user can <em>see all the way to the bottom</em> of what is going on
+and be able to develop their own tools as required.
 </p>
 <p>We believe that everyone should have full access to the software that
-runs our systems.  Understanding and exploring computer systems requires
-writing software in ways that can be read and shared.
+runs our systems.  Understanding and exploring computer systems
+requires writing software in ways that can be read and shared.
 </p>
-<p>Dan Ingalls, one of the early Smalltalk system developers, wrote an article
-in 1981 titled &quot;Design Principles Behind Smalltalk&quot; 
-<a id="DOCF5" href="#FOOT5"><sup>5</sup></a>
-which sets forth some principles that still guide us today.
-</p>
-<p>Among these:
-</p>
-<blockquote class="indentedblock">
-<p>&nbsp;<img src="note.png" alt="note">
-Personal Mastery: If a system is to serve the creative spirit,
-it most be entirely comprehensible to a single individual.
-</p></blockquote>
 
-<blockquote class="indentedblock">
-<p>&nbsp;<img src="note.png" alt="note">
-Reactive Principle: Every component accessible to the user should
-be able to present itself in a meaningful way for observation
+<p>The thinking change in problem solving can shift from <em>What can I
+do here with what I am presented?</em> to asking <em>What tools do I
+need to be successful here?</em>  and then building them to be ever more
+successful.
+</p>
+<p>Dan Ingalls, one of the early Smalltalk inventors, wrote in his
+article &ldquo;Design Principles Behind Smalltalk&rdquo;, 1981
+<a id="DOCF7" href="#FOOT7"><sup>7</sup></a>
+a set of principles that still guide us today. Among these:
+</p><blockquote>
+<p><strong>Personal Mastery.</strong> If a system is to serve the creative
+spirit, it most be entirely comprehensible to a single individual.
+</p>
+<p><strong>Reactive Principle.</strong> Every component accessible to the user
+should be able to present itself in a meaningful way for observation
 and manipulation.
-</p></blockquote>
-
+</p>
+</blockquote>
+<div align="center">&mdash; <em>Dan Ingalls</em>
+</div>
 <p>This way of thinking about software systems is important to us.
 </p>
-<p>For this reason, Cuis is a Smalltalk system, and one that is rather
+<p>For this reason, Cuis is a Smalltalk system which is still rather
 close to Smalltalk-80. It is well adapted to modern hardware and
 operating environments, and includes many modern programming
 facilities.
 </p>
-<p>We still believe that the best way to write programs is to capture
-a set of ideas and knowledge, that other people can understand, and
-that a computer can run. Cuis-Smalltalk is meant to be used this way.
+<p>We believe the best way to write programs is to capture a set of ideas
+and knowledge other people can understand, and that a computer can
+run. Cuis-Smalltalk is meant to be used this way.
 </p>
 
 <div class="footnote">
@@ -198,10 +200,19 @@ that a computer can run. Cuis-Smalltalk is meant to be used this way.
 <h5><a id="FOOT2" href="#DOCF2">(2)</a></h3>
 <p><a href="https://en.wikipedia.org/wiki/As_We_May_Think">https://en.wikipedia.org/wiki/As_We_May_Think</a></p>
 <h5><a id="FOOT3" href="#DOCF3">(3)</a></h3>
-<p><a href="http://augmentingcognition.com/assets/Kay1977.pdf">http://augmentingcognition.com/assets/Kay1977.pdf</a></p>
+<p>Notable milestones in this line of
+development were Ivan Sutherland&rsquo;s Sketchpad (1963), the RAND tablet
+(1964), and Doug Engelbart&rsquo;s NLS (&quot;oN-Line System&quot;) (1968). Later
+developments include Ted Nelson&rsquo;s Xanadu, the Apple Macintosh, the
+World Wide Web, smartphones and tablet computers.</p>
 <h5><a id="FOOT4" href="#DOCF4">(4)</a></h3>
-<p><a href="http://worrydream.com/EarlyHistoryOfSmalltalk">http://worrydream.com/EarlyHistoryOfSmalltalk</a></p>
+<p>Early notables
+here are J. Piaget, J. Brunner, O. K. Moore, and S. Papert.</p>
 <h5><a id="FOOT5" href="#DOCF5">(5)</a></h3>
+<p><a href="http://augmentingcognition.com/assets/Kay1977.pdf">http://augmentingcognition.com/assets/Kay1977.pdf</a></p>
+<h5><a id="FOOT6" href="#DOCF6">(6)</a></h3>
+<p><a href="http://worrydream.com/EarlyHistoryOfSmalltalk">http://worrydream.com/EarlyHistoryOfSmalltalk</a></p>
+<h5><a id="FOOT7" href="#DOCF7">(7)</a></h3>
 <p><a href="http://www.cs.virginia.edu/~evans/cs655/readings/smalltalk.html">http://www.cs.virginia.edu/~evans/cs655/readings/smalltalk.html</a></p>
 </div>
 <hr>
