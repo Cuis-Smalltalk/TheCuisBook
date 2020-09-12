@@ -34,7 +34,7 @@ It results in a huge cloud of entities communicating with each other
 through message sending. New entities are instantiated when needed
 then automatically garbage collected when no longer required. On a
 fresh @cuis{} environment, the instances class count is more than
-150,000.
+150000.
 
 @cindex collection, @method{inject:into:}
 @smalltalkExampleCaption{Calculating the number of entities, entitiesCount,
@@ -280,6 +280,10 @@ one or several colon(s) ``:'' to insert argument(s):
 @cindex browser
 @node A brief introduction to the system Browser
 @section A brief introduction to the system Browser
+Smalltalk organizes instance behaviors using classes.  
+A class is an object which holds the methods which react to
+the messages which are their names.
+
 The @dfn{System Browser}, in short the @dfn{Browser}, is a tool to
 rule all the classes in @cuis{}. It is both a tool to explore the
 classes (system or user ones) and to write new classes and methods.
@@ -291,10 +295,12 @@ To access the tool, ...@clicksequence{Background click @click{}
 
 @cindex browser, class category
 At the top left are the @dfn{class categories}, there are group of
-classes part of the same theme. It is also called @dfn{Package}, it is
-an organisational element to save code. In @ref{ch02-browserDetailed}, the
+classes part of the same theme. A caregory can also be used to
+create a @dfn{Package}, which is
+an organisational element to save code in a file system.
+In @ref{ch02-browserDetailed}, the
 selected class category is @label{Kernel-Numbers}, a group of
-classes we already explored. The term @label{Kernel-} indicates it
+classes we already started using. The term @label{Kernel-} indicates it
 is part of fundamental categories, but it is only a convention. See
 the other categories as @label{Kernel-Text} and
 @label{Kernel-Chronology} related to text and date entities.
@@ -320,11 +326,11 @@ Observe a few important points in this declaration:
 
    @item the declaration itself is Smalltalk code, indeed the message
    @msg{subclass:instanceVariableNames:classVariableNames:poolDictionaries:
-   category:} is sent to @class{Magnitude}
+   category:} was sent to @class{Magnitude} to create this class.
 
    @item the @smalltalk{subclass:} argument @class{Number} is prefixed
    with ``#'', it is a symbol, a kind of unique string. Indeed when
-   declaring the @class{Number} class, the system does not know it
+   declaring the @class{Number} class, the system does not know about it
    yet, so it is named as a symbol.
 
    @item The @smalltalk{instanceVariableNames:} argument is a string:
@@ -332,6 +338,11 @@ Observe a few important points in this declaration:
    by a space. There is none in this class definition.
 
 @end itemize
+
+A subclass inherits behaviors from its parent superclass, and so only needs
+to describe what is different from its superclass.  An instance
+of @class{Number} adds methods (which define behaviors) unknown to an instance
+of @class{Magnitude}.  We will explore this in detail as we go forward.
 
 @cindex class, comment
 To learn about the intend of a class, it is good practice to @strong{always}
@@ -346,7 +357,7 @@ A class may have with tens of methods, so grouping
 them by category helps other users orient to find related methods.
 As a reference, @class{Number}
 has more than 100 instance side methods implemented in
-itself@footnote{When considering its parents, the cobined method count is
+itself@footnote{When considering its parents, the combined method count is
 more than 300.}. Clicking the @label{arithmetic} category
 directly gives access to related methods in the next and last pane at
 the right.
@@ -361,8 +372,9 @@ In the Browser, once a method is selected -- in
 @ref{ch02-browserDetailed}, @method{abs} method -- the bottom part
 shows its source code, ready to be explored or edited. Again, often,
 you will read a small comment just after the method name, it is
-surrounded by double quote.
+surrounded by double quotes.
 
+Every entity knows its class and answers it to the message @smalltalk{#class}.
 
 @cindex browser, invoke from Workspace
 A usefule tip: in the workspace @kbd{Ctrl-b} on the class name
@@ -370,15 +382,15 @@ will open a Browser on the named class:
 
 @itemize
 
-   @item In the Workspace, on @smalltalk{1 class} execute and print
+   @item In the Workspace, type @smalltalk{1 class} and print
    with @kbd{Ctrl-p},
 
-   @item @class{SmallInteger} is printed and automatically selected by default,
+   @item @class{SmallInteger} is printed and automatically highlighted as the current selection,
 
    @item Invoke the Browser on the selected @class{SmalltalkInteger}
    class with @kbd{Ctrl-b},
 
-   @item The Browser is open on the @class{SmalltalkInteger}, ready to
+   @item A new Browser instance opens on the @class{SmalltalkInteger}, ready to
    be explored.
 
 @end itemize
