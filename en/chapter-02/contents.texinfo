@@ -23,19 +23,20 @@ When a given entity receives a message from another entity, it
 triggers a specific behavior.  The receiving entity of the message is
 called the @dfn{receiver} and the sending entity, the @dfn{sender}. In
 @cuis{} terminology, an entity is called an @dfn{instance of a class}
-or @dfn{class instance}. A class is a kind of model for an entity.
+or @dfn{class instance}. A @dfn{class} is a kind of model for an entity.
 
 The behavior is defined internally in the receiver and it can be
 triggered from any instance. Again this behavior is described only
-with messages sending to other entities including the self entity. The
-behavior is defined in a class, it is called a @dfn{method}.
+with messages sent between entities.  An entity may send a message to
+itself. A behavior is defined in a class, and is called a @dfn{method}.
 
 It results in a huge cloud of entities communicating with each other
 through message sending. New entities are instantiated when needed
 then automatically garbage collected when no longer required. On a
 fresh @cuis{} environment, the instances class count is more than
-150 thousand.
+150,000.
 
+@cindex collection, @method{inject:into:}
 @smalltalkExampleCaption{Calculating the number of entities, entitiesCount,
 ProtoObject allSubclasses inject: 0 into: [:count :class |
    count + class allInstances size] 
@@ -146,7 +147,7 @@ readability of the code:
 
 The @class{Transcript} class is frequently helpful in presenting
 useful information when developing an application. As an alternative
-to the @kbd{Ctrl-d} shortcut, @kbd{Ctrl-p} (@emph{@b{P}rint it})
+to the @kbd{Ctrl-d} (@emph{@b{D}o it}) shortcut, @kbd{Ctrl-p} (@emph{@b{P}rint it})
 executes the script and prints the result direcly in the Workspace.
 
 In the example, we have requested no special result.  Selecting the
@@ -166,7 +167,7 @@ examples with the @kbd{Ctrl-p} shortcut:
 
 Observe how a character is prefixed with the ``$'' symbol.
 
-@strong{Caution.} The index position starts naturally from 1 to the
+@strong{Caution.} The index indicates position naturally from 1 to the
 string length.
 
 To change one character, use the companion two keyword message
@@ -194,11 +195,13 @@ shuffling apply to any kind of collection, not only to string, and it
 proves to be of some use as we may see later:
 @smalltalkExample{'hello world' shuffled
 @result{} 'wod llreohl'}
+Note that results of each shuffle are different.
 
 @cindex string, @method{sorted}
-We can write the same about sorting a string:
-@smalltalkExample{'bonjour' sorted
-@result{}#($b $j $n $o $o $r $u)}
+
+Similarly, we can ask a string to sort its characters:
+@smalltalkExample{'hello world' sort
+@result{}  ' dehllloorw'  }
 
 @node Messages to number entities
 @section Messages to number entities
@@ -206,9 +209,9 @@ We can write the same about sorting a string:
 @cindex number, @method{sqrt}
 @cindex number, @method{squared}
 
-Earlier, we discussed how @cuis{} knows about rational number.  The
+Earlier, we discussed how @cuis{} knows about rational fractions.  The
 four arithmetic operations and mathematical functions are implemented
-with binary messages understood by the rational number entities:
+with the binary messages understood by the rational numbers:
 @smalltalkExample {(15 / 14) * (21 / 5) @result{} 9 / 2
 (15 / 14) / ( 5 / 21) @result{} 9 /2 
 (3 / 4) squared @result{} 9 / 16
@@ -218,11 +221,12 @@ with binary messages understood by the rational number entities:
 sum of the squares of the inverse of the first four integers.}}
 
 @cindex number, decimal division
-If @cuis{} divides integer as rational number, how to compute the
-decimal division? One option is to write a number as a @dfn{Float}, it
-is the decimal representation in programming language, the integer
+If @cuis{} integer division returns a rational number, how do we find the
+result in decimal? One option is to write a number as a floating point literal,
+a @dfn{Float}.
+This kind of literal is written as the integer
 part and fractional parts are separated by a dot ``.'':
-@smalltalkExample{ 15.0 / 4 @result{}3.75
+@smalltalkExample{ 15.0 / 4 @result{} 3.75
 15 / 4.0 @result{} 3.75}
 
 Another option is to convert an integer to a float with the
@@ -233,13 +237,14 @@ variable:
 @result{} 3.75}
 
 @cindex number, integer division
-Alternatively to the decimal division, you ask integer division with
+You can also ask for division with truncation to
+get an integer result using 
 the message @msg{//}:
 @smalltalkExample{15 // 4
 @result{} 3}
 
 @cindex number, division reminder
-The reminder of the Euclidean division is computed with the message
+The modulo reminder of the Euclidean division is computed with the message
 @msg{\\\\}:
 @smalltalkExample{15 \\\\ 4
 @result{} 3}
