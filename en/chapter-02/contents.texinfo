@@ -377,8 +377,8 @@ surrounded by double quotes.
 Every entity knows its class and answers it to the message @smalltalk{#class}.
 
 @cindex browser, invoke from Workspace
-A usefule tip: in the workspace @kbd{Ctrl-b} on the class name
-will open a Browser on the named class:
+A usefule tip: in the workspace @kbd{Ctrl-b} (@emph{@b{B}rowse})
+on the class name will open a Browser on the named class:
 
 @itemize
 
@@ -414,7 +414,11 @@ representing the involved entities:
 
 @cindex browser, class category (new)
 Before defining these classes in @cuis{}, we want to create a
-dedicated class category to group them there. With the mouse pointer
+dedicated class category to group them there.
+
+In a Smalltalk window, right-click on a pane will typically bring up a menu
+of operations you can apply which are specific to that pane.
+With the mouse pointer
 over the class category pane of the Browser -- the most left one --
 just do:
 
@@ -438,7 +442,7 @@ representing the name of the class we want to create. Let's start with
 @smalltalk{#CentralStar}. To save the class, over the class
 declaration code do ...@clicksequence{right mouse click @click{}
 @label{Accept}}... @cuis{} will ask your initial and name
-once. Alternatively, you can just do @kbd{Ctrl-s}.
+once. Alternatively, you can just do @kbd{Ctrl-s} (@emph{@b{S}ave}).
 
 Then you repeat the process for each of @smalltalk{#StarField},
 @smalltalk{#SpaceShip} and @smalltalk{#Torpedo}. If necessary, to get
