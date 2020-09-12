@@ -138,7 +138,7 @@ host (GNU/Linux, Mac OS X, Windows, etc.). It is called the @dfn{Open
 Smalltalk Virtual Machine}, or Squeak @vm{} in short. There are
 different flavors of @vm{}, one for each combination of Operating
 System and CPU architecture. Therefore, one @vm{} compiled
-for Windows in Intel architecture will not work on Linux in
+for Windows on Intel architecture will not work in Linux on
 ARM architecture. You need the specific @vm{} compiled for
 the combination of Operating System and CPU architecture
 your computer is based on.
@@ -148,7 +148,7 @@ The image is a regular file feeding the @vm{} with all the objects
  classes, methods, instances of those classes as numbers, strings,
  windows, debuggers -- whatever existed when the state of the virtual
  computer was saved. An image file saved on a given Operating System
- and CPU architecture run identically on another system as
+ and CPU architecture will run identically on another system as
  long as the same @vm{} version is used.
 
 What makes @cuis{} special is the living entities in the image: its
@@ -251,15 +251,16 @@ This code comes in three parts:
 
 The action of printing takes place in the class
 @class{Transcript}. The code execution is invoked with keyboard
-shortcuts @kbd{Ctrl-A} then @kbd{Ctrl-D} (@emph{@b{D}o it}).
+shortcuts @kbd{Ctrl-A} (@emph{select @b{A}ll})
+then @kbd{Ctrl-D} (@emph{@b{D}o it}).
 
 @smalltalkExampleCaption{Multiple lines, hello2,
 Transcript show: 'Hello World!'.
 Transcript newLine.
 Transcript show: 'I am Cuising'}
 
-In this three lines script, observe how the line are separated by a
-dot ``.''. This period is a line separator not needed in the third line
+In this three line script, observe how the lines are separated by a
+dot ``.''. This period is a line separator so it is not needed in the third line
 nor in a one line script. The message @msg{newLine} has no argument.
 
 @cindex string
@@ -268,7 +269,7 @@ language, it is a collection of characters. We already met string with
 our first script, it is enclosed in single quotes: @smalltalk{'hello
 world!'}. We capitalize it with the @msg{capitalized} message:
 
-@cindex string, @method{capitalized}
+@cindex string, capitalized
 @smalltalkExample{Transcript show: 'hello world!' capitalized
 @result{} 'Hello world!' }
 
@@ -284,7 +285,7 @@ Two strings are concatenated with the @msg{,} message:
 @cindex number, integer
 
 In your Workspace, to compute a factorial execute the example bellow
-with @kbd{Ctrl-a} then @kbd{Ctrl-p}:
+with @kbd{Ctrl-a} then @kbd{Ctrl-p} (@emph{@b{P}rint it}):
 @smalltalkExample{100 factorial
 @result{}  9332621544394415268169923885626670049071596826438162146859
 29638952175999932299156089414639761565182862536979208272237582
@@ -322,13 +323,13 @@ numbers.
 
 @cuisNote{In the example, observe how the parenthesis are used
 although in arithmetic calculation the division is operated first. With
-@cuis{} you need to explicit the order of operation with
+@cuis{} you need to specify the order of operations with
 parenthesis. We will explain why later.}
 
 @exercise{Inverse sum,inverseSum, @emph{Write the code to compute the
 sum of the first four integer inverses.}}
 
-Integer can be printed in different forms with the appropriate
+Integers can be printed in different forms with the appropriate
 message:
 
 @cindex number, roman
