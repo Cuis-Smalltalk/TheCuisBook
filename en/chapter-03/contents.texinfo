@@ -2,8 +2,9 @@
 @chapter Class, model of communicating entities
 
 @cuis{} is a pure object oriented programming language (OOP): all the
-entities as integer, float, rational number, string and other like
-collection, block of code we have not yet learnt about are objects.
+entities in the language: integers, floats, rational numbers, strings, 
+collections, blocks of code and so forth -- every instance usable
+as a noun in Smalltalk -- is an object.
 
 @todo{historic context of class}
 
@@ -19,26 +20,32 @@ collection, block of code we have not yet learnt about are objects.
 @node Understanding Object Oriented Programming
 @section Understanding Object Oriented Programming
 
-But what is an object?  An object is an entity responding to two
-criteria:
+But just what is an object?
+
+An object is an entity responding to two criteria:
 
 @itemize
 
-   @item @strong{An internal state.} It is embodied by variable(s)
+   @item @strong{Internal state.} This is embodied by variable(s)
    known only by the object. A variable only visible within the object
    is called @dfn{private}. As a consequence, it is impossible -- if
    the object decides so -- to know the internal state of the object
    from another object.
 
-   @item @strong{A behavior.} It is modeled by message(s) -- we
-   already used this vocabulary -- sent to the object. When the object
-   receives a message it understands, it executes the code of an
-   internal method named as the message.
+   @item @strong{A repertoire of behaviors.} These are the message(s)
+   an object instance responds to. When the object
+   receives a message it understands, it invokes the code of a
+   named method in its class.
 
 @end itemize
 @cindex class
 @cindex subclass
 @cindex instance
+
+The method name is called a @dfn{selector} because it is used to select
+which behavior is invoked. For example, in @smalltalk{'hello' at: 1 put: $B},
+the method invoked has the selector @smalltalk{#at:put:} and the arguments
+@smalltalk{1} and @smalltalk{$B}.  All selectors are symbols.
 
 Several entities sharing the same variables and understanding the same messages
 are very likely to exist within @cuis{} -- think about the
@@ -154,7 +161,7 @@ Now observe the hierarchy of the Number class:
 @end format
 
 @class{Float}, @class{Integer} and @class{Fraction} are direct
-descendants of the @class{Number} class. We already learnt about the
+descendants of the @class{Number} class. We have already learned about the
 @msg{squared} message sent to integer and fraction instances:
 
 @smalltalkExample{16 squared @result{} 256
@@ -190,10 +197,12 @@ returned.
 @cindex overriding
 When message @msg{squared} is sent to a number, different methods are
 executed depending on the number is a fraction or any other kind of
-number. This fundamental mechanism of oriented object programming is
-called @dfn{Polymorphism}. More precisely, the @class{Fraction} class
+number. Polymorphism means that the Class of each instance decides
+how it will repond to a particular message.
+Here, the @class{Fraction} class
 is @dfn{overriding} the @method{squared} method, defined above in the
-class hierarchy.
+class hierarchy.  If a method is not overridden, an inherited method
+is invoked to respond to the message.
 
 @cindex number, @method{abs}
 Still in the @class{Number} hierarchy, let's examine another example
@@ -234,9 +243,17 @@ with @msg{negated} message:
    
 These two overriding methods are more efficient as they avoid test and
 ifTrue/ifFalse branches. Polymorphism is often used to avoid test and
-branching, it is done at the object level.
+branch.
 
-As an object is modeled against a class, it is possible to ask its
+Tip: If you select the text @smalltalk{abs} in a Browser or Workspace
+and right-click to get the context menu, you will find
+an entry ``Implementors of it''.
+You can select this or use @kbd{Ctrl-m} (@emph{i@b{M}plementors}) to
+see how various methods for @smalltalk{#abs} use polymorphism to
+specialize their answer to produce the naturally expected result.
+
+As an object instance is modeled by its class, it is possible to
+ask any object its
 class with the @msg{class} message. Observe carefully the class
 returned in line 2 and 3:
 
@@ -272,6 +289,13 @@ buttons:
 
 Below these three buttons, observe the wide text pane, it provides
 contextual information on the selected item.
+
+Again, Class methods apply to the Class itself.  Instance Methods apply to
+instances modeled by the class.  We saw above that the class @class{Fraction}
+has a method @msg{numerator:denominator:} which is used to get a new instance of
+a @smalltalk{Fraction}.  There is only one @class{Fraction} class object.
+Messages like @msg{squared} and @msg{abs} are sent to any @smalltalk{Fraction}
+instance, of which there are many.
 
 @exercise{Float class information, floatInfo, @emph{When the
 @class{Float} class is selected, what is the information provided by
