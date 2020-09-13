@@ -421,10 +421,10 @@ on the class name will open a Browser on the named class:
 
    @item @class{SmallInteger} is printed and automatically highlighted as the current selection,
 
-   @item Invoke the Browser on the selected @class{SmalltalkInteger}
+   @item Invoke the Browser on the selected @class{SmallInteger}
    class with @kbd{Ctrl-b},
 
-   @item A new Browser instance opens on the @class{SmalltalkInteger}, ready to
+   @item A new Browser instance opens on the @class{SmallInteger}, ready to
    be explored.
 
 @end itemize
