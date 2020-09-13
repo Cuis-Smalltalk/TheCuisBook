@@ -7,16 +7,22 @@
 @subheading @ref{exePlacement}
 @figure{Placement,E-img1,8}
 
-@subheading @ref{capWordNumber}
-Several messages can be sent one after the other:
+@subheading @ref{concatenateCapitalize}
 @example
-Transcript show: 2020 printStringWords capitalized 
+Transcript show: 'Hello ', 'my beloved ' capitalized, 'friend'
 @end example
+
 
 @subheading @ref{inverseSum}
 @example
 1 + (1/2) + (1/3) + (1/4)
 @result{} 25/12 
+@end example
+
+@subheading @ref{capWordNumber}
+Several messages can be sent one after the other:
+@example
+Transcript show: 2020 printStringWords capitalized 
 @end example
 
 @c Chapter 2

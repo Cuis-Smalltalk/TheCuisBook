@@ -278,13 +278,15 @@ world!'}. We capitalize it with the @msg{capitalized} message:
 @smalltalkExample{Transcript show: 'hello world!' capitalized
 @result{} 'Hello world!' }
 
-@exercise{Capitalize number as words,capWordNumber,@emph{Print 2020 as
-words capitalized.}}
-
 @cindex string, concatenate
 Two strings are concatenated with the @msg{,} message:
-@smalltalkExample{Transcript show: 'Hello', ' ', 'my beloved', ' ', 'friend'
+@smalltalkExampleCaption{Concatenate strings, concatenateStrings,
+Transcript show: 'Hello '@comma{} 'my beloved '@comma{} 'friend'
 @result{} 'Hello my beloved friend'}
+
+@exercise{Concatenate and capitalize, concatenateCapitalize,
+@emph{Add a message to modify @ref{concatenateStrings} to output
+'Hello MY BELOVED friends'}}
 
 @subsection Fun with numbers
 @cindex number, integer
@@ -344,6 +346,10 @@ message:
 2020 printStringWords  @result{} 'two thousand, twenty'
 "Number as the Maya did"
 2020 printStringBase: 20 @result{} '510'}
+
+@exercise{Capitalize number as words,capWordNumber,@emph{Print 2020 as
+words capitalized.}}
+
 
 @cindex number, literal
 @cindex literal, number
