@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : September 12, 2020
+Compilation : September 13, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -103,7 +103,7 @@ examples with the <kbd>Ctrl-p</kbd> shortcut:
 
 <p>Observe how a character is prefixed with the &ldquo;$&rdquo; symbol.
 </p>
-<p><strong>Caution.</strong> The index position starts naturally from 1 to the
+<p><strong>Caution.</strong> The index indicates position naturally from 1 to the
 string length.
 </p>
 <p>To change one character, use the companion two keyword message
@@ -142,12 +142,14 @@ proves to be of some use as we may see later:
 <pre class="display"><span class="sansserif">&rsquo;hello world&rsquo; shuffled
 &rArr; &rsquo;wod llreohl&rsquo;</span>
 </pre></div>
-
+<p>Note that results of each shuffle are different.
+</p>
 <span id="index-string_002c-sorted"></span>
-<p>We can write the same about sorting a string:
+
+<p>Similarly, we can ask a string to sort its characters:
 </p><div class="display">
-<pre class="display"><span class="sansserif">&rsquo;bonjour&rsquo; sorted
-&rArr;#($b $j $n $o $o $r $u)</span>
+<pre class="display"><span class="sansserif">&rsquo;hello world&rsquo; sort
+&rArr;  &rsquo; dehllloorw&rsquo;  </span>
 </pre></div>
 
 <hr>

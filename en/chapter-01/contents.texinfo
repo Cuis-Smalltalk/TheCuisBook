@@ -18,10 +18,11 @@ used. We can call this the Smalltalk philosophy of programming.
 
 One major idea in software is that programming is merely giving a
 computer a set of instructions to solve some problem.  In this point
-of view, the only value of software is to solve a problem, and it is
-only as interesting as solving that problem. @note{Can we simplify?
-Solve is repeated 3 times.} Furthermore, programming is left to a
-professional guild whose technical knowledge is how to write software.
+of view, the only value of software is to achieve a result, and it is
+only as interesting as solving that problem.  Furthermore, programming
+is left to a professional guild whose technical knowledge is how to
+write software.
+@note{Can we simplify? Solve is repeated 3 times.}
 
 Our focus is on one thread in the history of powerful ideas which give
 a different lens through which to explore software development than
@@ -82,6 +83,8 @@ available for users to create content include text, photographs and
 video, but not a more advanced way to capture lessons learned, where
 the user can @emph{see all the way to the bottom} of what is going on
 and be able to develop their own tools as required.
+@note{``capture lessons learned'' is too obscure. Elaborate}
+
 
 We believe that everyone should have full access to the software that
 runs our systems.  Understanding and exploring computer systems
@@ -120,10 +123,12 @@ For this reason, Cuis is a Smalltalk system which is still rather
 close to Smalltalk-80. It is well adapted to modern hardware and
 operating environments, and includes many modern programming
 facilities.
+@note{the latter statement is vague.}
 
 We believe the best way to write programs is to capture a set of ideas
 and knowledge other people can understand, and that a computer can
 run. @cuis{} is meant to be used this way.
+@note{it is very vague too.}
 
 
 @node Installing and configuring @cuis{}

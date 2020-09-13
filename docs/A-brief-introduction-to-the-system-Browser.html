@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : September 12, 2020
+Compilation : September 13, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -91,6 +91,10 @@ Next: <a href="Spacewar_0021-models.html" accesskey="n" rel="next">Spacewar! mod
 </div>
 <hr>
 <span id="A-brief-introduction-to-the-system-Browser-1"></span><h3 class="section">2.5 A brief introduction to the system Browser</h3>
+<p>Smalltalk organizes instance behaviors using classes.  
+A class is an object which holds the methods which react to
+the messages which are their names.
+</p>
 <p>The <em>System Browser</em>, in short the <em>Browser</em>, is a tool to
 rule all the classes in Cuis-Smalltalk. It is both a tool to explore the
 classes (system or user ones) and to write new classes and methods.
@@ -104,10 +108,12 @@ classes (system or user ones) and to write new classes and methods.
 <div class="float-caption"><p><strong><em>Figure</em> 2.1: </strong>The System Browser</p></div></div>
 <span id="index-browser_002c-class-category"></span>
 <p>At the top left are the <em>class categories</em>, there are group of
-classes part of the same theme. It is also called <em>Package</em>, it is
-an organisational element to save code. In <a href="#ch02_002dbrowserDetailed"><em>Figure</em> 2.1</a>, the
+classes part of the same theme. A caregory can also be used to
+create a <em>Package</em>, which is
+an organisational element to save code in a file system.
+In <a href="#ch02_002dbrowserDetailed"><em>Figure</em> 2.1</a>, the
 selected class category is <code>Kernel-Numbers</code>, a group of
-classes we already explored. The term <code>Kernel-</code> indicates it
+classes we already started using. The term <code>Kernel-</code> indicates it
 is part of fundamental categories, but it is only a convention. See
 the other categories as <code>Kernel-Text</code> and
 <code>Kernel-Chronology</code> related to text and date entities.
@@ -134,11 +140,11 @@ bellow, the <span class="sansserif">Number</span> class declaration is:
 
 </li><li> the declaration itself is Smalltalk code, indeed the message
    <span class="sansserif">#subclass:instanceVariableNames:classVariableNames:poolDictionaries:
-   category:</span> is sent to <span class="sansserif">Magnitude</span>
+   category:</span> was sent to <span class="sansserif">Magnitude</span> to create this class.
 
 </li><li> the <span class="sansserif">subclass:</span> argument <span class="sansserif">Number</span> is prefixed
    with &ldquo;#&rdquo;, it is a symbol, a kind of unique string. Indeed when
-   declaring the <span class="sansserif">Number</span> class, the system does not know it
+   declaring the <span class="sansserif">Number</span> class, the system does not know about it
    yet, so it is named as a symbol.
 
 </li><li> The <span class="sansserif">instanceVariableNames:</span> argument is a string:
@@ -147,6 +153,11 @@ bellow, the <span class="sansserif">Number</span> class declaration is:
 
 </li></ul>
 
+<p>A subclass inherits behaviors from its parent superclass, and so only needs
+to describe what is different from its superclass.  An instance
+of <span class="sansserif">Number</span> adds methods (which define behaviors) unknown to an instance
+of <span class="sansserif">Magnitude</span>.  We will explore this in detail as we go forward.
+</p>
 <span id="index-class_002c-comment"></span>
 <p>To learn about the intend of a class, it is good practice to <strong>always</strong>
 visit the class comment. Often a comment comes also with code
@@ -179,23 +190,24 @@ class?</em>
 <a href="#ch02_002dbrowserDetailed"><em>Figure</em> 2.1</a>, <span class="sansserif">abs</span> method &ndash; the bottom part
 shows its source code, ready to be explored or edited. Again, often,
 you will read a small comment just after the method name, it is
-surrounded by double quote.
+surrounded by double quotes.
 </p>
-
+<p>Every entity knows its class and answers it to the message <span class="sansserif">#class</span>.
+</p>
 <span id="index-browser_002c-invoke-from-Workspace"></span>
-<p>A usefule tip: in the workspace <kbd>Ctrl-b</kbd> on the class name
-will open a Browser on the named class:
+<p>A usefule tip: in the workspace <kbd>Ctrl-b</kbd> (<em><b>B</b>rowse</em>)
+on the class name will open a Browser on the named class:
 </p>
 <ul>
-<li> In the Workspace, on <span class="sansserif">1 class</span> execute and print
+<li> In the Workspace, type <span class="sansserif">1 class</span> and print
    with <kbd>Ctrl-p</kbd>,
 
-</li><li> <span class="sansserif">SmallInteger</span> is printed and automatically selected by default,
+</li><li> <span class="sansserif">SmallInteger</span> is printed and automatically highlighted as the current selection,
 
 </li><li> Invoke the Browser on the selected <span class="sansserif">SmalltalkInteger</span>
    class with <kbd>Ctrl-b</kbd>,
 
-</li><li> The Browser is open on the <span class="sansserif">SmalltalkInteger</span>, ready to
+</li><li> A new Browser instance opens on the <span class="sansserif">SmalltalkInteger</span>, ready to
    be explored.
 
 </li></ul>
@@ -205,7 +217,7 @@ will open a Browser on the named class:
 <h4 class="footnotes-heading">Footnotes</h4>
 
 <h5><a id="FOOT9" href="#DOCF9">(9)</a></h3>
-<p>When considering its parents, the cobined method count is
+<p>When considering its parents, the combined method count is
 more than 300.</p>
 </div>
 <hr>

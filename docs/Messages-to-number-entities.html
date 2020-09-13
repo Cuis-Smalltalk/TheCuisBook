@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : September 12, 2020
+Compilation : September 13, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -95,9 +95,9 @@ Next: <a href="A-brief-introduction-to-the-system-Browser.html" accesskey="n" re
 <span id="index-number_002c-sqrt"></span>
 <span id="index-number_002c-squared"></span>
 
-<p>Earlier, we discussed how Cuis-Smalltalk knows about rational number.  The
+<p>Earlier, we discussed how Cuis-Smalltalk knows about rational fractions.  The
 four arithmetic operations and mathematical functions are implemented
-with binary messages understood by the rational number entities:
+with the binary messages understood by the rational numbers:
 </p><div class="display">
 <pre class="display"><span class="sansserif">(15 / 14) * (21 / 5) &rArr; 9 / 2
 (15 / 14) / ( 5 / 21) &rArr; 9 /2 
@@ -114,12 +114,13 @@ sum of the squares of the inverse of the first four integers.</em>
 
 <div class="float-caption"><p><strong><em>Exercise</em> 2.2: </strong>Sum of the squares</p></div></div>
 <span id="index-number_002c-decimal-division"></span>
-<p>If Cuis-Smalltalk divides integer as rational number, how to compute the
-decimal division? One option is to write a number as a <em>Float</em>, it
-is the decimal representation in programming language, the integer
+<p>If Cuis-Smalltalk integer division returns a rational number, how do we find the
+result in decimal? One option is to write a number as a floating point literal,
+a <em>Float</em>.
+This kind of literal is written as the integer
 part and fractional parts are separated by a dot &ldquo;.&rdquo;:
 </p><div class="display">
-<pre class="display"><span class="sansserif">15.0 / 4 &rArr;3.75
+<pre class="display"><span class="sansserif">15.0 / 4 &rArr; 3.75
 15 / 4.0 &rArr; 3.75</span>
 </pre></div>
 
@@ -133,7 +134,8 @@ variable:
 </pre></div>
 
 <span id="index-number_002c-integer-division"></span>
-<p>Alternatively to the decimal division, you ask integer division with
+<p>You can also ask for division with truncation to
+get an integer result using 
 the message <span class="sansserif">#//</span>:
 </p><div class="display">
 <pre class="display"><span class="sansserif">15 // 4
@@ -141,7 +143,7 @@ the message <span class="sansserif">#//</span>:
 </pre></div>
 
 <span id="index-number_002c-division-reminder"></span>
-<p>The reminder of the Euclidean division is computed with the message
+<p>The modulo reminder of the Euclidean division is computed with the message
 <span class="sansserif">#\\</span>:
 </p><div class="display">
 <pre class="display"><span class="sansserif">15 \\ 4

@@ -1,6 +1,13 @@
 @node Preface
 @unnumbered Preface
 
+@quotation
+A language that doesn't affect the way you think about programming, is
+not worth knowing.
+@author Alan Perlis
+@end quotation
+
+@* @* @* @*
 
 @cuis{} ---in short, Cuis--- is a portable environment for doing, building and sharing software. Like any other tool, Cuis doesn't require having a particular mindset or following a particular process. However, Cuis is built with a specific view on what software is, and what it means to build software. As a consequence, Cuis is especially effective if these ideas resonate with you and, at least occasionally, you let then guide your thoughts and actions.
 

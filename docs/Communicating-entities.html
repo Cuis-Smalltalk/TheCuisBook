@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : September 12, 2020
+Compilation : September 13, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -98,19 +98,20 @@ Next: <a href="Messages-sends-definition.html" accesskey="n" rel="next">Messages
 triggers a specific behavior.  The receiving entity of the message is
 called the <em>receiver</em> and the sending entity, the <em>sender</em>. In
 Cuis-Smalltalk terminology, an entity is called an <em>instance of a class</em>
-or <em>class instance</em>. A class is a kind of model for an entity.
+or <em>class instance</em>. A <em>class</em> is a kind of model for an entity.
 </p>
 <p>The behavior is defined internally in the receiver and it can be
 triggered from any instance. Again this behavior is described only
-with messages sending to other entities including the self entity. The
-behavior is defined in a class, it is called a <em>method</em>.
+with messages sent between entities.  An entity may send a message to
+itself. A behavior is defined in a class, and is called a <em>method</em>.
 </p>
 <p>It results in a huge cloud of entities communicating with each other
 through message sending. New entities are instantiated when needed
 then automatically garbage collected when no longer required. On a
 fresh Cuis-Smalltalk environment, the instances class count is more than
-150 thousand.
+150000.
 </p>
+<span id="index-collection_002c-inject_003ainto_003a"></span>
 <div class="float"><span id="entitiesCount"></span>
 <div class="display">
 <pre class="display"><span class="sansserif">ProtoObject allSubclasses inject: 0 into: [:count :class |
