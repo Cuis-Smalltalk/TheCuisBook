@@ -22,7 +22,7 @@ as a noun in Smalltalk -- is an object.
 
 But just what is an object?
 
-An object is an entity responding to two criteria:
+At its simplest, an object has two components:
 
 @itemize
 
@@ -34,29 +34,39 @@ An object is an entity responding to two criteria:
 
    @item @strong{A repertoire of behaviors.} These are the message(s)
    an object instance responds to. When the object
-   receives a message it understands, it invokes the code of a
-   named method in its class.
+   receives a message it understands, it gets its behavior from a
+   method with that name known by its class or superclass.
 
 @end itemize
 @cindex class
 @cindex subclass
 @cindex instance
+@cindex selector
 
 The method name is called a @dfn{selector} because it is used to select
 which behavior is invoked. For example, in @smalltalk{'hello' at: 1 put: $B},
 the method invoked has the selector @smalltalk{#at:put:} and the arguments
 @smalltalk{1} and @smalltalk{$B}.  All selectors are symbols.
 
-Several entities sharing the same variables and understanding the same messages
-are very likely to exist within @cuis{} -- think about the
-numbers. Therefore, entities are created -- @dfn{instantiated} --
-following a model, this model is called a @dfn{Class}.
+Object instances are created -- @dfn{instantiated} --
+following a model or template. This model is known by its @dfn{Class}.
+All instances of a class share the same methods and so react in the same ways.
+
+For example, there is one class @class{Fraction} but many
+fractions (1/2, 1/3, 23/17, ...) which all behave the way
+we expect fractions to behave.  Class @class{Fraction}
+and the classes it inherits from define this common behavior,
+as we will now describe.
 
 
 @cindex variable (instance)
 @cindex instance variable
 A given class declares its internal variables -- states -- and the
-behavior by implementing the methods. Let see how the @class{Fraction}
+behavior by implementing the methods.  A variable is basically a named
+box which can hold any object.  Each instance of a class gets its own
+box with the common name.
+
+Let see how the @class{Fraction}
 class is declared:
 
 @smalltalkExample{Number subclass: #Fraction
@@ -67,15 +77,20 @@ class is declared:
 
 As expected there are two variables -- named @dfn{instance variables}
 -- to define the @smalltalk{numerator} and @smalltalk{denominator} of
-a fraction. From this declaration, we observe there is a hierarchy in
+a fraction.  Each instance of fraction has its own numerator and its
+own denominator.
+
+From this declaration, we observe there is a hierarchy in
 the class definition: @class{Fraction} is a kind of
 @class{Number}. This means a fraction inherits the internal state --
 variables -- and behavior -- methods -- defined in the @class{Number}
-class. @class{Fraction} is called a @dfn{subclass} of @class{Number}.
+class. @class{Fraction} is called a @dfn{subclass} of @class{Number},
+and so naturally we call @class{Number} a @dfn{superclass} of @class{Fraction}.
 
 @cindex class, inheritance
 A Class specifies the behavior of all of its instances.  It is useful 
-to be able to say "this object is like that object, but for these differences".  
+to be able to say "this object is like that object, but for
+these differences".  
 We do this in Smalltalk by a Class inheriting instance state and behavior from 
 its parent Class.  This child, or subclass then specifies just the
 instance state and behavior which is different from its parent.
@@ -84,7 +99,8 @@ This aspect of object oriented programming is called
 @dfn{inheritance}. In @cuis{}, each class inherits from one parent
 class.
 
-In Smalltalk, each object decides for itself how it reponds to a message.
+In Smalltalk, we say that each object decides for itself
+how it reponds to a message.
 This is called @dfn{polymorphism}.
 The same message selector may be sent to objects of different Classes.  
 The 'shape' (morph) of the computation is different depending on the specific 
@@ -97,10 +113,12 @@ but appropriate ways.
 @c instance creation
 @cindex instance, creation
 @cindex class, class method
-In the previous section, we already met fraction. Those fractions are
-objects called @dfn{instance} of the class @class{Fraction}. To create
-this instance we wrote @smalltalk{5 / 4}, the mechanism is based on
-message sending and polymorphism. The number @smalltalk{5} is an
+We have already met fractions. Those fractions are
+objects called @dfn{instance}s of the class @class{Fraction}. To create
+an instance we wrote @smalltalk{5 / 4}, the mechanism is based on
+message sending and polymorphism.  Let us look into how this works.
+
+The number @smalltalk{5} is an
 integer receiving the message @msg{/}, therefore looking at the method
 @method{/} in the @class{Integer} class explains how is instantiated
 the fraction. See part of this method:
@@ -112,7 +130,7 @@ aNumber isInteger ifTrue:
    ifFalse: [^ (Fraction numerator: self denominator: aNumber) reduced]].
 ../..}
 
-From this source code, we learn that in some situation, the method
+From this source code, we learn that in some situations, the method
 returns a fraction, reduced. We can expect that in some other
 situation an integer is returned, for example @smalltalk{6 / 2}.
 
@@ -225,7 +243,7 @@ receiver."
 
 This implementation will do just fine for the @class{Number}
 subclasses. Nevertheless, there are several classes overriding it for
-optimization purpose.
+specialized or optimized cases.
 
 @cindex method, returned value (default)
 For example, regarding large positive integer, @method{abs} is
@@ -269,21 +287,21 @@ returned in line 2 and 3:
 @node Explore OOP from the Browser
 @section Explore OOP from the Browser
 @c explain mini panel | instance | ? | class |
-In @ref{ch02-browserDetailed} of the Browser, bellow the classes pane, there are three
+In @ref{ch02-browserDetailed} of the Browser, below the classes pane, there are three
 buttons:
 
 @itemize
 
    @item @label{instance}: to access the @strong{instance methods} of
-   the selected class. For the recall, these methods are only
-   accessible from the instances of the class.
+   the selected class. These methods apply to each and every instance
+   of the class.  Each instance reacts to these.
 
    @item @label{?}: to access to documentation -- comment -- of the
    selected class.
 
    @item @label{class}: to access the @strong{class methods} of the
    selected class. These methods are only accessible from the class
-   itself.
+   itself.  Only the class reacts to class methods.
 
 @end itemize
 
@@ -291,7 +309,8 @@ Below these three buttons, observe the wide text pane, it provides
 contextual information on the selected item.
 
 Again, Class methods apply to the Class itself.  Instance Methods apply for 
-all instances modeled by the class.  We saw above that the class @class{Fraction}
+all instances modeled by the class.  We saw above that
+the class @class{Fraction}
 has a method @msg{numerator:denominator:} which is used to get a new instance of
 a @smalltalk{Fraction}.  There is only one @class{Fraction} class object.
 Messages like @msg{squared} and @msg{abs} are sent to any @smalltalk{Fraction}
@@ -306,7 +325,8 @@ From here our language will be more casual.
 @class{Float} class is selected, what is the information provided by
 the text pane?}}
 
-It is important to distinguish instance methods and class
+We have spent much time here because it is important to avoid
+confusion between instance methods and class
 methods. Let's consider the @class{Float} class as an example.
 
 @cindex class, class method
@@ -322,7 +342,18 @@ Float epsilon
 Float fmax
 @result{} 1.7976931348623157e308}
 
-Nevertheless, you can not send this message to instance of
+Tip: You have noticed that text typed into the Workspace is colored
+and highlighted based on what you type.  We will discuss this below
+when we get talk about the Smalltalk language, but the idea is to be helpful.
+If you start to type a word
+the Cuis Workspace knows about, you can press the @kbd{tab} key
+and get a set of choices for completion of the word.
+Try typing @smalltalk{Float epsi} and pressing @kbd{tab}.
+You can then press @kbd{enter}
+and should see @smalltalk{Float epsilon}.
+Click elsewhere on the Workspace to make this menu go away.
+
+Nevertheless, you can not send a class message to an instance of
 @class{Float}, it throws an error and opens the red debugger window.
 
 Just close the debug window for now to ignore the result.
@@ -339,7 +370,7 @@ the previous example or to create a new instances:
 @smalltalkExample{OrderedCollection new
 @result{} Create a new empty ordered collection
 Fraction numerator: 1 denominator: 3
-@result{} 1/3 a fraction instance
+@result{} 1/3 "a fraction instance"
 Float new
 @result{} 0.0
 Float readFrom: '001.200'
@@ -384,25 +415,6 @@ OrderedCollection new add: Float pi; add: Float e; yourself
 
 @figure{Instance methods in @class{Float},ch03-floatInstanceSide,7}
 
-@cindex browser, invoke from workspace
-A last bit of advice,  in the workspace when requesting the
-class of an instance, @kbd{Ctrl-b} will invoke the browser on the
-returned class:
-
-@itemize
-
-   @item In the workspace, on @smalltalk{1 class} execute and print
-   with @kbd{Ctrl-p},
-
-   @item @class{SmallInteger} is printed and automatically selected by default,
-
-   @item Invoke the browser on the selected @class{SmalltalkInteger}
-   class with @kbd{Ctrl-b},
-
-   @item The browser is open on the @class{SmalltalkInteger}, ready to
-   be explored.
-
-@end itemize
 
 With this brief introduction to the system browser, your are now
 equipped to explore the system classes.
@@ -410,25 +422,23 @@ equipped to explore the system classes.
 @node @cuis{} system classes
 @section @cuis{} system classes
 As we already wrote @cuis{} is a pure object oriented environment. It
-means that every single entities you are dealing with are represented
-as instances of classes written in @cuis{} itself. As a direct
-consequence, @cuis{} is mostly written in itself.  In the previous
-section we read some details of the @class{Fraction} class and both
-instance and class side methods (@method{abs}, @method{squared} and
-@method{numerator:denominator:}).
+means that every single entitiy you are dealing with is represented
+as an instances of a class written in @cuis{} itself. As a direct
+consequence, @cuis{} is mostly written in itself.  This means
+the entire system is open to you to learn and play with.
 
 What we call system classes are models of fundamental objects. In
 other programming languages, it will be called standard library.
 
 To be honest, there is no such a distinction between system classes
 and user classes, but it will help us to draw a boundary around the
-most used objects. We will give a brief introduction to these classes
-and the most important methods.
+most used objects. Let's have a brief introduction to classes of
+Smalltalk data and their most important methods.  Later we will cover
+graphics, files, networking, and the user interface objects called Morphs.
 
-The classes are organised in hierarchy grouped in categories. To
-discover the most important classes, we use the browser to navigate
-these categories in the left pane. Important categories to start with
-are:
+
+In the upper left pane of the Browser, Categories of classes important
+to start with are:
 
 
 @itemize
@@ -443,10 +453,11 @@ are:
    @item @label{Collections-Abstract},
    @label{Collections-Unordered}, @label{Collections-Sequenceable},
    @label{Collections-Arrayed}. Related to Array, Dictionary, dynamic
-   collection as OrderedCollection and many more. It includes
-   accessing, enumerators, mathematics functions, sorting.
+   collection as OrderedCollection and many more. This category includes
+   common accessing, enumeration, mathematical functions, and sorting.
 
 @end itemize
+
 
 
 @node Kernel-Numbers
