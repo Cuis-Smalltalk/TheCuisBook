@@ -175,7 +175,7 @@ Now observe the hierarchy of the Number class:
    @class{Integer}
       @class{LargePositiveInteger}
          @class{LargeNegativeInteger}
-      @class{SmalltalkInteger}
+      @class{SmallInteger}
 @end format
 
 @class{Float}, @class{Integer} and @class{Fraction} are direct
@@ -207,14 +207,15 @@ Now let's examine this same method in @class{Fraction}:
       numerator: numerator squared
       denominator: denominator squared}
 
-Here a new fraction is instantiated with numerator and denominator
-squared. This alternate @method{squared} method, ensure a fraction is
+Here a new fraction is instantiated with the original instance
+numerator and denominator being squared.
+This alternate @method{squared} method, ensures a fraction instance is
 returned.
 
 @cindex method, overriding
 @cindex overriding
 When message @msg{squared} is sent to a number, different methods are
-executed depending on the number is a fraction or any other kind of
+executed depending on the number is a fraction or another other kind of
 number. Polymorphism means that the Class of each instance decides
 how it will repond to a particular message.
 Here, the @class{Fraction} class
@@ -270,7 +271,7 @@ You can select this or use @kbd{Ctrl-m} (@emph{i@b{M}plementors}) to
 see how various methods for @smalltalk{#abs} use polymorphism to
 specialize their answer to produce the naturally expected result.
 
-As an object instance is modeled by its class, it is possible to
+s an object instance is modeled by its class, it is possible to
 ask any object its
 class with the @msg{class} message. Observe carefully the class
 returned in line 2 and 3:
@@ -421,19 +422,21 @@ equipped to explore the system classes.
 
 @node @cuis{} system classes
 @section @cuis{} system classes
-As we already wrote @cuis{} is a pure object oriented environment. It
+As we noted above, @cuis{} is a pure object oriented environment. This 
 means that every single entitiy you are dealing with is represented
 as an instances of a class written in @cuis{} itself. As a direct
 consequence, @cuis{} is mostly written in itself.  This means
 the entire system is open to you to learn and play with.
 
 What we call system classes are models of fundamental objects. In
-other programming languages, it will be called standard library.
+other programming languages, these would be implemented in
+that language's standard library.
 
-To be honest, there is no such a distinction between system classes
+In a truely open system, there is no such a distinction between system classes
 and user classes, but it will help us to draw a boundary around the
-most used objects. Let's have a brief introduction to classes of
-Smalltalk data and their most important methods.  Later we will cover
+most used objects. Let's have a brief introduction to some fundamental
+Smalltalk classes
+and their most important methods.  Later we will cover
 graphics, files, networking, and the user interface objects called Morphs.
 
 
@@ -450,10 +453,15 @@ to start with are:
    @item @label{Kernel-Text}. Related to character and string as
    collection of characters.
    
-   @item @label{Collections-Abstract},
-   @label{Collections-Unordered}, @label{Collections-Sequenceable},
-   @label{Collections-Arrayed}. Related to Array, Dictionary, dynamic
-   collection as OrderedCollection and many more. This category includes
+   @item The Collection classes:
+   @format
+   @label{Collections-Abstract},
+   @label{Collections-Unordered},
+   @label{Collections-Sequenceable},
+   @label{Collections-Arrayed}.
+   @end format
+   Related to Array, Dictionary, Set, OrderedCollection and many more.
+   This category includes
    common accessing, enumeration, mathematical functions, and sorting.
 
 @end itemize
@@ -463,7 +471,7 @@ to start with are:
 @node Kernel-Numbers
 @section Kernel-Numbers
 The top hierarchy @class{Number} class shows most of the behaviors
-inherited by the sub classes as @class{Float}, @class{Integer} and
+inherited by the subclasses as @class{Float}, @class{Integer} and
 @class{Fraction}. The Smalltalk way to learn about a behavior is to
 point the System Browser toward a top hierarchy class and to explore
 the method categories.
@@ -485,8 +493,8 @@ messages in a Workspace to discover the one we are searching for:
 Number is a very strange place to look for an indexed loop in a given
 interval. Nevertheless, an interval is defined by start and stop
 numbers. In the @class{Number} class, the method category
-@label{intervals} reveals related behaviors. These methods works
-indifferently with all kind of number:
+@label{intervals} reveals related behaviors. These methods work
+polymorphically with most kinds of number:
 
 @smalltalkExampleCaption{Interval loops (for-loop), intervalLoops,
 1 to: 10 do: [:i | Transcript show: 1 / i; space]
@@ -509,14 +517,16 @@ portion of code needs to be executed several times
 @footnote{Understand repeated an integer number of times.}, without
 the need of an index, the @msg{timesRepeat:} message is sent to an
 integer. We already saw this variant in a previous section of this
-chapter.  Throwing 5 times a 6 faces dice can be simulated with
-integer:
+chapter.  Throwing a 6 face die 5 times can be simulated with
+an integer:
 
 @smalltalkExampleCaption{Throwing a dice 5 times, playingDice,
 5 timesRepeat: [Transcript show: 6 atRandom; space]
 @result{} 1 2 4 6 2}
 
-@exercise{Cosine table,cosTable, @emph{Compute the cosine values in
+Note: Expect a different result each time.
+
+@exercise{Cosine table, cosTable, @emph{Compute the cosine values in
 the interval [0 ; 2PI]@comma{} each 1/10. Output in the transcript.}}
 
 @c Integer bits representation and manpulation
@@ -576,7 +586,8 @@ fifth digit after the decimal dot.
 @strong{Attention.} Computer represents decimal number
 imprecisely. You need to be aware of that when doing computation and
 equality comparison. Most system hides these errors because there are
-very tiny errors. @cuis{} does not hide these inaccuracy.
+very tiny errors. @cuis{} does not hide this inaccuracy.  There is
+good information about this in the class comment of @class{Float}.
 
 @smalltalkExampleCaption{Computer dyscalculia!,FloatPrecision,
 0.1 + 0.2 - 0.3
@@ -632,8 +643,8 @@ it seems:
 
 @node Kernel-Text
 @section Kernel-Text
-Notably, this category comes with @class{Character}, @class{String}
-and @class{Symbol}. @class{String} instance are collection of
+Notably, this category contains classes @class{Character}, @class{String}
+and @class{Symbol}. @class{String} instances are collections of
 @class{Character} instances.
 
 @cindex character
@@ -648,7 +659,7 @@ and @class{Symbol}. @class{String} instance are collection of
 There are class side methods for non printable characters:
 @smalltalk{Character tab}, @smalltalk{Character lf}, etc.
 
-As string are collection of characters, when enumerating a string we
+A each string is collection of characters, when enumerating a string we
 can use the @class{Character} instance methods:
 
 @smalltalkExampleCaption{Twelve apples,apples12,
@@ -660,11 +671,19 @@ reject the numeric characters.}}
 
 @cindex string
 @strong{String.} @class{String} is a very large class, it comes with
-more than 200 methods. Hopefully the methods are grouped in categories
-and it is very easy to experiment from a Workspace when you are
-looking for a specific behavior.
+more than 200 methods. It is useful to browse these method categories
+to see common ways to group methods.
 
-Consider you need to search for a string in a string: when browsing
+Sometimes you may not see a category which help right away.
+
+Tip: If you expect a method selector to start with a character,
+click-select the @label{-- all --} method category, then move the cursor
+over the pane listing the method names.
+Press this character, e.g. @smalltalk{$f}.  This will scroll to the method pane
+to the first method name starting with an ``f''.
+
+Consider the case where you need to search for a string in a
+string: when browsing
 the @class{String} class, search for method categories named like
 @label{finding...} or @label{accessing}. There you find a family of
 @method{findXXX} methods. Read the comments at the beginning of these
@@ -700,7 +719,7 @@ Then experiment the potentially interesting messages in a workspace:
 'we humans, we all love apples' findString: 'we' startingAt: 2
 @result{} 12}
 
-Following these paths will, most of the time, leads you to the answer
+Following these paths will, most of the time, lead you toward the answer
 you are looking for.
 
 @c an exercise to find a method given a behavior
@@ -764,7 +783,7 @@ Some of these states need to be accessed from other entities:
 @end itemize
 
 To write these behaviors in the Browser, first select the class then
-the method category you want -- when none, pick up @label{-- all
+the method category you want -- when none, select @label{-- all
 --}. In the code pane below appears a method template:
 
 @smalltalkExampleCaption{Method template, methodTemplate,
@@ -808,8 +827,9 @@ the subsequent method is from the @class{SpaceShip} class.
 @cindex variable, :=
 @cindex variable, @U{2190}
 
-Some states require to be set from another entity, so a setter keyword
-message is necessary. To set the name of a space ship we add the
+Some instance variables need to be set from another entity,
+so a @dfn{setter} keyword message is necessary.
+To set the name of a space ship we add the
 following method:
 
 @smalltalkExample{SpaceShip>>name: aString
@@ -820,6 +840,17 @@ The @assign{} character is an assignment, it means the
 string object. To type in this symbol type @key{_}, @cuis{} will turn
 it to left arrow symbol . Alternatively, you can write @smalltalk{name
 := aString}.
+
+Since @smalltalk{name} is an instance variable, each instance method
+knows to use the box for the name.  The meaning here is that we are
+placing the value of the @smalltalk{aString} argument into the instance's
+box called @smalltalk{name}.
+
+Since each instance variable box can hold an object of any class,
+we like to name the variable to show that we intend that the @smalltalk{name}
+variable should hold a string, an instance of the @class{String} class.
+
+A bit later, we will have more to say on intent in naming.
 
 @exercise{Ship position setter, shipPositionSetter, @emph{Ship
 position will need to be set at game start up or when a ship jump in
