@@ -80,6 +80,7 @@ As expected there are two variables -- named @dfn{instance variables}
 a fraction.  Each instance of fraction has its own numerator and its
 own denominator.
 
+@cindex superclass
 From this declaration, we observe there is a hierarchy in
 the class definition: @class{Fraction} is a kind of
 @class{Number}. This means a fraction inherits the internal state --
@@ -271,7 +272,7 @@ You can select this or use @kbd{Ctrl-m} (@emph{i@b{M}plementors}) to
 see how various methods for @smalltalk{#abs} use polymorphism to
 specialize their answer to produce the naturally expected result.
 
-s an object instance is modeled by its class, it is possible to
+As an object instance is modeled by its class, it is possible to
 ask any object its
 class with the @msg{class} message. Observe carefully the class
 returned in line 2 and 3:
