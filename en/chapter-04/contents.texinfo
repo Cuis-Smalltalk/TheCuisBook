@@ -1,11 +1,11 @@
 @node The Collection Way of Life
 @chapter The Collection Way of Life
 
-Since its introduction in the 70s, collections and its associated
+Since the concept's introduction in the 70s, collections and their associated
 iterators are important programming elements of Smalltalk. Correctly
-used, it improves both code density and code understanding; two
-paradigms which may seem antagonist. Since then, these innovations
-percolated in many popular programming languages.
+used, they improve both code compactness and code understanding; two
+paradigms which may seem antagonistic. Since then, these innovations
+have percolated into many popular programming languages.
 
 @todo{historic context to collection/iterator}
 
@@ -25,11 +25,11 @@ percolated in many popular programming languages.
 @cindex protocol
 
 The @class{String} class also inherits its behavior from its
-ancestors, parent classes. Indeed a @class{String} is a subclass of
+ancestor classes. Indeed @class{String} is a subclass of
 @class{ArrayedCollection}. The direct consequence is that when
 searching for some specific behavior, you may need to explore the
 parent classes too. The whole behavior of a class, defined in the
-class itself and its parents is named its @dfn{protocol}.
+class itself and its parents is called its @dfn{protocol}.
 
 @cindex browser, hierarchy
 @cindex browser, protocol
@@ -129,12 +129,12 @@ honest, copying a symbol just returns the original symbol.}:
 
 Symbols can be written with space:
 
-@smalltalkExample{Symbol with space character,symbolSpace,
+@smalltalkExample{A Symbol which includes space characters
 #'hello my friend'
 'hello my friend' asSymbol}
 
-@class{Symbol} is a sub class of @class{String}, a lot of its behavior
-is inherited. It is helpful to make handy symbol:
+@class{Symbol} is a subclass of @class{String}, a lot of its behavior
+is inherited. This makes symbols quite useful.
 
 @smalltalkExample{'hello my friend' asCamelCase asSymbol 
 @result{} #helloMyFriend}
@@ -150,10 +150,16 @@ A variable can hold a value of any class.  The value is strongly typed
 (we can always determine its Class), but the variable (box) is not
 restricted to holding a value of a single type.
 
-To declare a variable we name it at the beginning of the script
-and surround it by pipe charaters ``|''.
+To declare a method variable we name it at the beginning of the script
+and surround it by pipe characters ``|''.
 
-So far we sent messages directly to objects, we can send message to a
+A variable always holds a value.
+Until we place a different value into a variable, the variable
+holds the @smalltalk{nil} value.
+When we say that a value is @dfn{bound} to a
+variable we mean that the named box now holds that value.
+
+So far we sent messages directly to objects, but we can send message to a
 variable bound to an object too.
 
 Any object responds to the message #printString.
@@ -179,22 +185,28 @@ precisely a collection of characters.  Many kinds of Collection have
 similar behaviors.
 
 @cindex array
-@class{Array} is a fixed size collection, contrary to string it can
+An @class{Array} is a fixed size collection, and unlike a string it can
 contain any kind of literal enclosed in @smalltalk{#(@tie{})}:
 @smalltalkExample{"array of numbers"
 #(1 3 5 7 11 1.1)
 "array of mixed literals"
 #(1 'friend' $& 'al')}
 
-Using non literal expression in the array will not work as expected:
+An Array is constructed directly using well formed @emph{literal} elements.
+We will get to the meaning of this last statement when we discuss
+details of the Smalltalk language.
+
+For now, just note that using non-literal expressions to construct an
+array will not work as expected:
 @smalltalkExample{#(1 2/3)
 @result{} #(1 2 #/ 3)}
 
 @cindex array, dynamic
-Indeed, the ``/'' is interpreted as a literal symbol and
-@smalltalk{2/3} is not interpreted as a fraction. To get a fraction
+Indeed, the ``/'' is interpreted as a literal symbol and we get
+basic components of ``2 / 3'' but this text is not
+interpreted as a fraction. To get a fraction
 inserted in the array, you use a @dfn{run-time array} or @dfn{dynamic
-array}, its elements are expressions separated by dot and surrounded
+array}, whose elements @emph{are} expressions separated by dots and surrounded
 with @smalltalk{@{ @}}:
 
 @smalltalkExample{@{1 . 2/3 . 7.5@}
@@ -262,7 +274,7 @@ fibo
 @cindex collection, @method{indexOf:}
 Index access to the elements of a collection is done with a variety of
 messages. The index naturally ranges from 1 to the collection size:
-@smalltalkExample{fibo at:1 @result{} 1
+@smalltalkExample{fibo at: 1 @result{} 1
 fibo at: 6 @result{} 5
 fibo last @result{} 21
 fibo indexOf: 2 @result{} 3
@@ -300,14 +312,14 @@ enumerator. This message is sent to a collection, then it will select
 each element of the collection returning true to a test condition:
 
 @smalltalkExampleCaption{Select prime numbers between 1 and 100,prime100,
-(1 to: 100) select: [:n | n isPrime]
+(1 to: 100) select: [ :n | n isPrime ]
 @result{}  #(2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71
 73 79 83 89 97)}
 
 This example introduces the message @msg{select:} and block of code, a
-primordial constituting element of the @cuis{} model. A block of code,
+primordial constituent element of the @cuis{} model. A block of code,
 delimited by square brackets, is a piece of code for later
-execution(s). Let's explain how this script is executed:
+execution(s). Let's explain how this script is evaluated:
 
 @itemize
 
@@ -316,18 +328,37 @@ execution(s). Let's explain how this script is executed:
  @item the block of code @smalltalk{[:n | n isPrime]} is instantiated (created)
 
  @item the message @msg{select:} is sent to the interval with the
- block of code as argument
+ block of code as the argument
 
- @item for each integer of the interval, the block of code is executed
- with its parameter @smalltalk{n} set to the integer value. Then, each
+ @item for each integer of the interval, the block of code is invoked
+ with its parameter @smalltalk{n} set to the integer value.
+ A @dfn{block parameter} starts with a colon, ``:'', and is an
+ ordinary identifer @footnote{An @dfn{identifier} is just a word that starts
+ in a lower case letter and consists of upper and lower case letters
+ and decimal digits.  All variable names are identifiers}.
+ Then, each
  time @smalltalk{n isPrime} evaluates to true, the @smalltalk{n} value
  is added to a new collection answered when the @smalltalk{select:}
  method finished testing each element of the collection.
 
 @end itemize
 
-Enumerators are tremendously powerful to process collection without
-the need of index.
+A block of code can be saved in a variable, passed as a parameter, and
+can be used multiple times.
+@smalltalkExample{
+| add2 |
+ add2 := [:n| n + 2].
+ @{ add2 value: 2. add2 value: 7 @}.
+@result{}  #(4 9)
+}
+
+
+Enumerators implement tremendously powerful ways to process collections without
+the need of index.  By this we mean that they are simple to get right.
+We like simple!
+
+To get an idea of how useful enumerators are, take a browse at the
+@class{Collection} class in the method category @smalltalk{enumerating}.
 
 @exercise{Odd integers,oddNumbers,@emph{Select the odd number between
 -20 and 45.}}
@@ -363,7 +394,7 @@ block of code. When searching perfect cubic roots, it is useful to
 know about some cubes:
 
 @smalltalkExampleCaption{Collect cubes,cubesCollect,
-(1 to: 10) collect:[:n | n cubed]
+(1 to: 10) collect: [:n | n cubed]
 @result{} #(1 8 27 64 125 216 343 512 729 1000)}
 
 The collected elements can be of a different type. Bellow, a string is
@@ -459,15 +490,21 @@ there are 7 of them gathering 46 classes.
 The category @label{Collections-Abstract} groups classes which are
 said to be abstract. An @dfn{abstract} class cannot be instantiated,
 its behavior is declared but not completely implemented. It is the
-responsibility of its sub classes to implement the missing part of the
-behavior. Observe how the important @method{do:} method is declared
+responsibility of its subclasses to implement the missing part of the
+behavior.
+
+An abstract class is useful to establish a set of polymorphic methods
+which each of its concrete subclasses are expected to specialize.
+This captures and communicates our intent.
+
+Observe how the important @method{do:} method is declared
 but not implemented:
 
 @smalltalkExample{Collection>>do: aBlock 
 "Evaluate aBlock with each of the receiver's elements as the argument."
 self subclassResponsibility}
 
-Then observe how two different @class{Collection} sub classes
+Then observe how two different @class{Collection} subclasses
 implement it:
 
 @smalltalkExample{OrderedCollection>>do: aBlock 
@@ -489,7 +526,7 @@ fixed size and collection with a variable size.
 @strong{Collection of fixed size.}  Such collections are gathered in
 the category @label{Collections-Arrayed}. The most notable one is
 @class{Array}, its size -- the number of elements it can hold -- is
-set when creating the instance. Once instantiated, you can not add nor
+set when creating the instance. Once instantiated, you can neither add nor
 delete elements to an array.
 
 @cindex collection, instantiate array
@@ -512,7 +549,7 @@ instantiated at the execution time as @class{Fraction} or
 @class{Point} instances.
 
 @cindex collection, access element
-You can access element:
+You can access elements:
 @smalltalkExampleCaption{Collection access to elements,collectionAccess,
 array1 first @result{} 2
 array1 second @result{} 'Apple'
@@ -564,8 +601,8 @@ coll1 := @{2 . 'Apple' . 2@@1 . 1/3 @} asOrdredCollection
 coll2 := OrderedCollection with: 2 with: 'Apple' with: 2@@1 with: 1/3
 coll3 := OrderedCollection ofSize: 4}
 
-The access to its elements is identical to an @class{Array}
-instance. You can add and remove element, though:
+The access to elements is identical to an @class{Array}
+instance, but dynamic collections allow you to add and remove elements:
 
 @smalltalkExampleCaption{Adding@comma{} removing element from a
 dynamic array,remDelArray,
@@ -632,19 +669,19 @@ the sentences 'buenos d@'{@dotless{i}}as' and 'bonjour'?}}
 @cindex @class{Dictionary}
 @strong{Dictionary.} A dictionary is a list of associations between a
 key and an object. Of course a key is an object, but it must respond
-to the equality behavior. Most of the time, the used are symbol.
+to equality tests. Most of the time, symbols are used as keys.
 
 To compile a list of colors:
 
 @smalltalkExampleCaption{Dictionary of colors, colorDict,
 | colors |
-colors := Dictonary new.
+colors := Dictionary new.
 colors
    add: #red -> Color red;
    add: #blue -> Color blue;
    add: #green -> Color green}
 
-There are shorter writings:
+There are shorter descriptions:
 @smalltalkExample{colors := Dictionary newFrom:
    @{#red -> Color red . #blue -> Color blue . #green -> Color green@}.
 colors := @{#red -> Color red . #blue -> Color blue .
