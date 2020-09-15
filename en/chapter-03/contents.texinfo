@@ -265,7 +265,7 @@ These two overriding methods are more efficient as they avoid test and
 ifTrue/ifFalse branches. Polymorphism is often used to avoid test and
 branch.
 
-Tip: If you select the text @smalltalk{abs} in a Browser or Workspace
+@strong{Tip:} If you select the text @smalltalk{abs} in a Browser or Workspace
 and right-click to get the context menu, you will find
 an entry ``Implementors of it''.
 You can select this or use @kbd{Ctrl-m} (@emph{i@b{M}plementors}) to
@@ -344,7 +344,7 @@ Float epsilon
 Float fmax
 @result{} 1.7976931348623157e308}
 
-Tip: You have noticed that text typed into the Workspace is colored
+@strong{Tip:} You have noticed that text typed into the Workspace is colored
 and highlighted based on what you type.  We will discuss this below
 when we get talk about the Smalltalk language, but the idea is to be helpful.
 If you start to type a word
@@ -677,7 +677,7 @@ to see common ways to group methods.
 
 Sometimes you may not see a category which help right away.
 
-Tip: If you expect a method selector to start with a character,
+@strong{Tip:} If you expect a method selector to start with a character,
 click-select the @label{-- all --} method category, then move the cursor
 over the pane listing the method names.
 Press this character, e.g. @smalltalk{$f}.  This will scroll to the method pane

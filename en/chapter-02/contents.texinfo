@@ -395,7 +395,7 @@ the right.
 in the @label{arithmetic} method category of the @class{String}
 class?}}
 
-Tip: A @clicksequence{right click} on the Class Category pane brings up
+@strong{Tip:} A @clicksequence{right click} on the Class Category pane brings up
 its context menu.  You can select ``find class ..'' or, as the menu indictes,
 use @kbd{Ctrl-f} (@emph{@b{F}ind}), to get a fill-in panel and type part of
 a class name to match.  Try it with @smalltalk{String}.
@@ -411,7 +411,7 @@ surrounded by double quotes.
 Every entity knows its class and answers it to the message @smalltalk{#class}.
 
 @cindex browser, invoke from Workspace
-A useful tip: in the workspace @kbd{Ctrl-b} (@emph{@b{B}rowse})
+@strong{Tip:} in the workspace @kbd{Ctrl-b} (@emph{@b{B}rowse})
 on the class name will open a Browser on the named class:
 
 @itemize
