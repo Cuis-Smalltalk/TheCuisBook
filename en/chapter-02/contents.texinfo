@@ -436,9 +436,10 @@ propose a first implementation of the game model with a set of classes
 representing the involved entities:
 
 @enumerate
- @item a central star @result{} @class{CentralStar} class,
 
- @item a star field @result{} @class{StarField} class,
+ @item the game play @result{} @class{SpaceWar} class,
+
+ @item a central star @result{} @class{CentralStar} class,
 
  @item two space ships @result{} @class{SpaceShip} class,
 
@@ -473,18 +474,19 @@ class in the @label{Spacewar!} category:
 
 We replace the symbol @smalltalk{#NameOfSubclass} with a symbol
 representing the name of the class we want to create. Let's start with
-@smalltalk{#CentralStar}. To save the class, over the class
+@smalltalk{#SpaceWar}. To save the class, over the class
 declaration code do ...@clicksequence{right mouse click @click{}
 @label{Accept}}... @cuis{} will ask your initial and name
 once. Alternatively, you can just do @kbd{Ctrl-s} (@emph{@b{S}ave}).
 
 Then you repeat the process for each of @smalltalk{#StarField},
-@smalltalk{#SpaceShip} and @smalltalk{#Torpedo}. If necessary, to get
-another code template, click the class category @label{Spaceship!}.
+@smalltalk{#CentralStar} and @smalltalk{#Torpedo}. If necessary, to
+get another code template, click the class category @label{Spacewar!}.
 
 When done, your class category should be filled with four classes as in
 @ref{ch02-spacewarClassCategory}.
 
+@todo{update screenshot}
 @figure{Spacewar! class category,ch02-spacewarClassCategory,5}
 
 @cindex package, create (new)

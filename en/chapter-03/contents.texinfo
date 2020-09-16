@@ -735,20 +735,88 @@ our models:
 
 @itemize
 
- @item A @class{Torpedo} has @smalltalk{position},
- @smalltalk{velocity} and @smalltalk{lifeSpan} states.
-
- @item A @class{SpaceShip} has @smalltalk{name}, @smalltalk{position},
- @smalltalk{acceleration}, @smalltalk{velocity}, @smalltalk{fuel},
- @smalltalk{torpedoes} and @smalltalk{mass} states.
+ @item A @class{SpaceWar} instance representing the game play needs to
+ know about the @smalltalk{centralStar}, the @smalltalk{ships}
+ and the fired @smalltalk{torpedoes}.
 
  @item A @class{CentralStar} has a @smalltalk{mass} state. It is
  necessary to compute the gravity force applied to a given ship.
 
- @item A @class{StarField} has a @smalltalk{stars} state to represent the
- stars in the background.
+ @item A @class{SpaceShip} instance has a @smalltalk{name}, a
+ @smalltalk{position} coordinates, a @smalltalk{heading} angle, a
+ @smalltalk{velocity} vector, a @smalltalk{fuel} gauge, a count of the
+ available @smalltalk{torpedoes}, a @smalltalk{mass} and an
+ @smalltalk{acceleration} engine boost.
+
+ @item A @class{Torpedo} has @smalltalk{position},
+ @smalltalk{velocity} and @smalltalk{lifeSpan} states.
 
 @end itemize
+
+We need to explain the nature of these states, but we do not need to
+worry much about their computer type now, though.
+
+@heading @class{Spacewar}.
+This object is the entry into the game. We want a meaningful class
+name.
+
+@itemize
+
+  @item @smalltalk{centralStart} is a reference to the unique
+  @class{CentralStar} instance of the game play. We need to know about
+  it to request its mass.
+
+  @item @smalltalk{ships} is a collection holding a reference of the
+  two players ship. It can be an fixed sized collection as an
+  @class{Array} instance.
+  
+  @item @smalltalk{torpedoes} is a collection of the torpedoes fired
+  in the game play. Their quantity is variable, an
+  @class{OrderedCollection} instance will make sense.
+
+@end itemize
+
+@heading @class{CentralStar}
+
+Its unique state, @smalltalk{mass}, is a number and likely an
+@smalltalk{Integer}.
+
+@heading @class{SpaceShip}
+
+The space ship is the most complex object, some clarifications
+regarding its states are needed.
+
+
+@itemize
+
+  @item @smalltalk{name}
+  
+  @item @smalltalk{position} is a 2D screen coordinates. Smalltalk
+  proposes the @class{Point} class to represent such object. It
+  understands many mathematics operations as the vector operations;
+  very useful for mechanics calculus.
+
+  A point can be instantiated with the binary message @msg{@@} send to
+  a number with another number as its argument: @smalltalk{100 @@ 100}
+  creates a @class{Point} instance representing the coordinates
+  (100;100).
+  
+  @item @smalltalk{heading}
+  
+  @item @smalltalk{velocity}
+  
+  @item @smalltalk{fuel}
+  
+  @item @smalltalk{torpedoes}
+  
+  @item @smalltalk{mass}
+  
+  @item @smalltalk{acceleration}  
+
+@end itemize
+
+
+
 
 @c show on one class declaration how to put the variable
 To add the variables to the @class{Torpedo} class, from the Browser,

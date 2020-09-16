@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4249] on 11 September 2020 at 7:37:58 pm'!
+'From Cuis 5.0 [latest update: #4249] on 16 September 2020 at 4:42:25 pm'!
 'Description '!
-!provides: 'Spacewar!!' 1 24!
+!provides: 'Spacewar!!' 1 35!
 SystemOrganization addCategory: #'Spacewar!!'!
 
 
@@ -16,7 +16,7 @@ SpaceShip class
 
 !classDefinition: #SpaceWar category: #'Spacewar!!'!
 RectangleLikeMorph subclass: #SpaceWar
-	instanceVariableNames: ''
+	instanceVariableNames: 'ships torpedoes centralStar'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Spacewar!!'!
@@ -44,19 +44,9 @@ Morph subclass: #Torpedo
 Torpedo class
 	instanceVariableNames: ''!
 
-!classDefinition: #StarField category: #'Spacewar!!'!
-Object subclass: #StarField
-	instanceVariableNames: 'stars'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Spacewar!!'!
-!classDefinition: 'StarField class' category: #'Spacewar!!'!
-StarField class
-	instanceVariableNames: ''!
 
-
-!SpaceWar commentStamp: 'hlsf 9/11/2020 19:37:05' prior: 0!
-I am the game play view. My submorphs are the elements of the game.
+!SpaceWar commentStamp: 'hlsf 9/16/2020 15:06:56' prior: 0!
+I am the gameplay view. My submorphs are the elements of the game.
 
 | game | 
 game _ SpaceWar new.
@@ -77,18 +67,20 @@ initialize
 	acceleration _ 0.
 	mass _ 1.! !
 
-!SpaceShip methodsFor: 'accessing' stamp: 'hlsf 9/10/2020 17:44:22'!
+!SpaceShip methodsFor: 'accessing' stamp: 'hlsf 9/16/2020 15:05:55'!
 acceleration
+"The acceleration boost when the engine ship are on"
 	^ 2! !
 
-!SpaceShip methodsFor: 'accessing' stamp: 'hlsf 9/10/2020 14:16:54'!
+!SpaceShip methodsFor: 'accessing' stamp: 'hlsf 9/16/2020 15:04:45'!
 direction
+"I am an unit vector representing the noze direction of the ship"
 	 ^ heading cos @ heading sin
 	! !
 
-!SpaceShip methodsFor: 'accessing' stamp: 'hlsf 9/10/2020 14:21:29'!
+!SpaceShip methodsFor: 'accessing' stamp: 'hlsf 9/16/2020 15:05:10'!
 normal
-"It is already of norm 1"
+"A vector normal to the direction heading of the ship"
 	| direction |
 	direction _ self direction.
 	 ^ direction y negated @ direction x
@@ -114,48 +106,21 @@ drawOn: canvas
 
 	! !
 
-!SpaceShip methodsFor: 'drawing' stamp: 'hlsf 9/10/2020 19:42:42'!
+!SpaceShip methodsFor: 'drawing' stamp: 'hlsf 9/16/2020 15:07:02'!
 transformation
+"The transofmration matrix to compute the ship coordinates in the gameplay view"
 	^ AffineTransformation withPointScale: 1 @ -1 position: owner morphExtent / 2.0.
 ! !
 
-!SpaceShip methodsFor: 'as yet unclassified' stamp: 'hlsf 9/10/2020 19:31:57'!
+!SpaceShip methodsFor: 'computing' stamp: 'hlsf 9/10/2020 19:31:57'!
 gravity
 "Compute the gravity acceleration vector"
 	^ [-10 * mass * owner starMass / (position r raisedTo: 3) * position]
 		on: Error do: [0 @ 0]! !
 
-!SpaceShip methodsFor: 'as yet unclassified' stamp: 'hlsf 9/11/2020 13:18:41'!
-isGoingOuterSpace
-"is the ship going crazy in the outer space"
-	^ (position dotProduct: velocity) > 0 ! !
-
-!SpaceShip methodsFor: 'as yet unclassified' stamp: 'hlsf 9/11/2020 19:35:16'!
-isInOuterSpace
-"Is the ship located in the outer space (outside of the game play"
-	^ (((0@0 extent: owner morphExtent) expandBy: 20) containsPoint: (self transformation transform: position)) not
-		! !
-
-!SpaceShip methodsFor: 'as yet unclassified' stamp: 'hlsf 9/10/2020 18:34:43'!
-left
-	heading _ heading + 0.1.! !
-
-!SpaceShip methodsFor: 'as yet unclassified' stamp: 'hlsf 9/10/2020 18:49:49'!
-push
-	"an accelaration boost"
-	acceleration _ 10! !
-
-!SpaceShip methodsFor: 'as yet unclassified' stamp: 'hlsf 9/10/2020 18:34:36'!
-right
-	heading _ heading - 0.1.! !
-
-!SpaceShip methodsFor: 'as yet unclassified' stamp: 'hlsf 9/10/2020 17:53:38'!
-unpush
-	"no accelaration boost"
-	acceleration _ 0! !
-
-!SpaceShip methodsFor: 'as yet unclassified' stamp: 'hlsf 9/11/2020 13:22:04'!
+!SpaceShip methodsFor: 'computing' stamp: 'hlsf 9/16/2020 15:09:51'!
 update
+"Update the ship position and velocity "
 	| ai ag newVelocity t |
 	"acceleration vectors"
 	t _ owner stepTime / 1000.0.
@@ -165,30 +130,63 @@ update
 	position _ (0.5 * (ai + ag) * t squared) + (velocity * t) + position.
 	velocity _ newVelocity .
 	
-	"Are we out of screen?"
+	"Are we out of screen?
+	If so we move the ship to the other corner and slow it down by a factor of 2"
 	(self isInOuterSpace and: [self isGoingOuterSpace])
 		ifTrue: [velocity _ velocity / 2.
 			position _ position negated]! !
 
-!SpaceWar methodsFor: 'accessing' stamp: 'hlsf 9/10/2020 15:31:46'!
+!SpaceShip methodsFor: 'testing' stamp: 'hlsf 9/16/2020 15:07:18'!
+isGoingOuterSpace
+"is the ship going crazy in the outer space?"
+	^ (position dotProduct: velocity) > 0 ! !
+
+!SpaceShip methodsFor: 'testing' stamp: 'hlsf 9/16/2020 15:07:34'!
+isInOuterSpace
+"Is the ship located in the outer space? (outside of the game playarea)"
+	^ (((0@0 extent: owner morphExtent) expandBy: 20) containsPoint: (self transformation transform: position)) not
+		! !
+
+!SpaceShip methodsFor: 'control' stamp: 'hlsf 9/16/2020 15:07:51'!
+left
+"Rotate the ship to its left"
+	heading _ heading + 0.1.! !
+
+!SpaceShip methodsFor: 'control' stamp: 'hlsf 9/16/2020 15:08:10'!
+push
+"Init an accelaration boost"
+	acceleration _ 10! !
+
+!SpaceShip methodsFor: 'control' stamp: 'hlsf 9/16/2020 15:08:01'!
+right
+"Rotate the ship to its right"
+	heading _ heading - 0.1.! !
+
+!SpaceShip methodsFor: 'control' stamp: 'hlsf 9/16/2020 15:08:18'!
+unpush
+"Stop the accelaration boost"
+	acceleration _ 0! !
+
+!SpaceWar methodsFor: 'accessing' stamp: 'hlsf 9/16/2020 15:51:33'!
 ship
 	^ submorphs first! !
 
-!SpaceWar methodsFor: 'accessing' stamp: 'hlsf 9/11/2020 19:35:45'!
+!SpaceWar methodsFor: 'accessing' stamp: 'hlsf 9/16/2020 16:41:40'!
 starMass
-	^ 8000! !
+	^ centralStar mass! !
 
 !SpaceWar methodsFor: 'initialization' stamp: 'hlsf 9/10/2020 15:21:22'!
 defaultColor
 	^ `Color black`! !
 
-!SpaceWar methodsFor: 'initialization' stamp: 'hlsf 9/11/2020 10:17:13'!
+!SpaceWar methodsFor: 'initialization' stamp: 'hlsf 9/16/2020 16:41:16'!
 initialize
 	super initialize.
 	extent _ 500 @ 500.
 	self setProperty: #'handlesKeyboard' toValue: true.
 	self setProperty: #'handlesMouseOver:' toValue: true.
-	self startSteppingStepTime: self stepTime.! !
+	self startSteppingStepTime: self stepTime.
+	self addMorph: (centralStar _ CentralStar new).! !
 
 !SpaceWar methodsFor: 'events' stamp: 'hlsf 9/10/2020 19:17:33'!
 keyStroke: event
@@ -230,15 +228,25 @@ stepTime
 wantsSteps
 	^ true! !
 
-!SpaceWar methodsFor: 'as yet unclassified' stamp: 'hlsf 9/10/2020 18:54:13'!
-drawOn: canvas
-	super drawOn: canvas.
-	canvas ellipseCenterX: extent x // 2 y:  extent y // 2 rx: 10 ry: 10 borderWidth: 2 borderColor: Color yellow muchDarker fillColor: Color yellow! !
-
-!CentralStar methodsFor: 'as yet unclassified' stamp: 'hlsf 9/10/2020 13:59:50'!
+!CentralStar methodsFor: 'accessing' stamp: 'hlsf 9/10/2020 13:59:50'!
 mass
 	^ mass! !
 
-!CentralStar methodsFor: 'as yet unclassified' stamp: 'hlsf 9/10/2020 14:00:10'!
+!CentralStar methodsFor: 'accessing' stamp: 'hlsf 9/10/2020 14:00:10'!
 mass: anInteger
 	mass _ anInteger ! !
+
+!CentralStar methodsFor: 'drawing' stamp: 'hlsf 9/16/2020 16:05:41'!
+drawOn: canvas
+	canvas ellipseCenterX: owner morphExtent x // 2 
+		y:  owner morphExtent y // 2 
+		rx: 10 + (2 atRandom - 1)
+		ry: 10 + (2 atRandom - 1)
+		borderWidth: 2 
+		borderColor: Color orange 
+		fillColor: Color yellow ! !
+
+!CentralStar methodsFor: 'initialization' stamp: 'hlsf 9/16/2020 16:06:06'!
+initialize
+	super initialize.
+	mass _ 8000.! !
