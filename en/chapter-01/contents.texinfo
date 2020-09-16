@@ -108,7 +108,7 @@ article ``Design Principles Behind Smalltalk'', 1981
 a set of principles that still guide us today. Among these:
 @quotation
 @strong{Personal Mastery.} If a system is to serve the creative
-spirit, it most be entirely comprehensible to a single individual.
+spirit, it must be entirely comprehensible to a single individual.
 
 @strong{Reactive Principle.} Every component accessible to the user
 should be able to present itself in a meaningful way for observation
@@ -134,7 +134,7 @@ run. @cuis{} is meant to be used this way.
 @node Installing and configuring @cuis{}
 @section Installing and configuring @cuis{}
 @cuis{} is an environment and a programming language executed on a
-virtual computer. It is based on two major components:
+idealized virtual computer. It is based on two major components:
 the Smalltalk @dfn{virtual machine} conceptualizing this virtual
 computer and an @dfn{image} representing the state of this computer.
 
@@ -158,9 +158,10 @@ The image is a regular file feeding the @vm{} with all the objects
 
 What makes @cuis{} special is the living entities in the image: its
 class population and arrangement, how the classes inherit from each
-other. The @cuis{} moto is to be a tiny, coherent and human
-understandable Smalltalk environment; its class count is typically
-less than 600.
+other. The @cuis{} goal is to be a small, coherent Smalltalk
+development environment that, with study, is
+comprehensible to a single person;
+its class count is typically less than 600.
 
 To get you started easily, we provide three
 archives@footnote{@url{http://github.com/Cuis-Smalltalk/BookResources}}
@@ -168,9 +169,10 @@ for GNU/Linux, Mac OS X and Windows on Intel architecture. These
 archives come with the dedicated @vm{} and the image of @cuis{}
 @value{cuisVersion}. Into this image we pre-installed a few packages
 to make your life easier when you experience the examples and
-exercises of the book. At the reading time of this book, @cuis{} has
-likely evolved with a more recent version, nevertheless your learning
-is transferable to more recent version of @cuis{}.
+exercises of the book. By the time you read this book, @cuis{} will 
+likely have evolved to have a newer version.
+What you learn here should, however, should be easily
+transferable.
 
 To get @cuis{} running on your computer, follow the instructions in
 the @file{README} file accompanying the archive. Once you get @cuis{}

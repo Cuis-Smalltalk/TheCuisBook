@@ -46,8 +46,8 @@ The count of classes, the models for the entities -- class instances
 -- is more than 1000.
 
 @smalltalkExampleCaption{Calculating the number of classes, classesCount,
-ProtoObject allSubclasses size
-@result{} 1173}
+Smalltalk allClasses size
+@result{} 586}
 
 To be honest, in our previous chapter we skipped this important detail
 on Smalltalk design. We wrote about message sending without explaining
