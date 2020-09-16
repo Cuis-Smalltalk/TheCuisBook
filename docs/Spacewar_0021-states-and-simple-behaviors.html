@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : September 13, 2020
+Compilation : September 16, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -91,26 +91,117 @@ Previous: <a href="Kernel_002dText.html" accesskey="p" rel="prev">Kernel-Text</a
 </div>
 <hr>
 <span id="Spacewar_0021-states-and-simple-behaviors-1"></span><h3 class="section">3.6 Spacewar! states and simple behaviors</h3>
-<p>At this stage of the game design, we can add some obvious states to
-our models:
+
+<span id="The-game-states"></span><h4 class="subsection">3.6.1 The game states</h4>
+<p>After defining the class involved in the game design, we can now
+ define several states of these classes:
 </p>
 <ul>
-<li> A <span class="sansserif">Torpedo</span> has <span class="sansserif">position</span>,
- <span class="sansserif">velocity</span> and <span class="sansserif">lifeSpan</span> states.
-
-</li><li> A <span class="sansserif">SpaceShip</span> has <span class="sansserif">name</span>, <span class="sansserif">position</span>,
- <span class="sansserif">acceleration</span>, <span class="sansserif">velocity</span>, <span class="sansserif">fuel</span>,
- <span class="sansserif">torpedoes</span> and <span class="sansserif">mass</span> states.
+<li> A <span class="sansserif">SpaceWar</span> instance representing the game play needs to
+ know about the <span class="sansserif">centralStar</span>, the <span class="sansserif">ships</span>
+ and the fired <span class="sansserif">torpedoes</span>.
 
 </li><li> A <span class="sansserif">CentralStar</span> has a <span class="sansserif">mass</span> state. It is
  necessary to compute the gravity force applied to a given ship.
 
-</li><li> A <span class="sansserif">StarField</span> has a <span class="sansserif">stars</span> state to represent the
- stars in the background.
+</li><li> A <span class="sansserif">SpaceShip</span> instance has a <span class="sansserif">name</span>, a
+ <span class="sansserif">position</span> coordinates, a <span class="sansserif">heading</span> angle, a
+ <span class="sansserif">velocity</span> vector, a <span class="sansserif">fuel</span> gauge, a count of the
+ available <span class="sansserif">torpedoes</span>, a <span class="sansserif">mass</span> and an
+ <span class="sansserif">acceleration</span> engine boost.
+
+</li><li> A <span class="sansserif">Torpedo</span> has <span class="sansserif">position</span>,
+ <span class="sansserif">velocity</span> and <span class="sansserif">lifeSpan</span> states.
 
 </li></ul>
 
-<p>To add the variables to the <span class="sansserif">Torpedo</span> class, from the Browser,
+<p>We need to explain the mathematics nature of these states, then
+discuss their object representation in the instance variables of our
+classes.
+</p>
+<blockquote class="indentedblock">
+<p>&nbsp;<img src="note.png" alt="note">
+<br>
+<strong>Warning.</strong>
+In the following sections, to ease reading
+we will write &ldquo;the variable <span class="sansserif">myVar</span> is a <span class="sansserif">String</span>&rdquo;
+instead of the correct but cumbersome &ldquo;the instance variable
+<span class="sansserif">myVar</span> is a reference to a <span class="sansserif">String</span> instance&rdquo;.
+</p></blockquote>
+
+<span id="Spacewar"></span><h3 class="heading"><span class="sansserif">Spacewar</span></h3>
+<p>This object is the entry into the game. We want a meaningful class
+name. Its instance variables are the involved protagonist of the game:
+</p>
+<ul>
+<li> <span class="sansserif">centralStar</span> is the unique <span class="sansserif">CentralStar</span> of
+  the game play. We need to know about it to request its mass.
+
+</li><li> <span class="sansserif">ships</span> is a collection the two players ship. It can
+  be a fixed sized collection as an <span class="sansserif">Array</span> instance.
+  
+</li><li> <span class="sansserif">torpedoes</span> is a collection of the torpedoes fired
+  in the game play. Their quantity is variable, an
+  <span class="sansserif">OrderedCollection</span> instance makes sense.
+
+</li></ul>
+
+<span id="CentralStar"></span><h3 class="heading"><span class="sansserif">CentralStar</span></h3>
+
+<p>Its unique instance variable, <span class="sansserif">mass</span>, is a number and likely
+an <span class="sansserif">Integer</span>.
+</p>
+<span id="SpaceShip"></span><h3 class="heading"><span class="sansserif">SpaceShip</span></h3>
+
+<p>The space ship is the most complex object, some clarifications
+regarding its variables are needed.
+</p>
+<ul>
+<li> <span class="sansserif">name</span> is a string
+
+
+<span id="index-Point"></span>
+<span id="index-coordinates"></span>
+
+</li><li> <span class="sansserif">position</span> is a 2D screen coordinates. Smalltalk
+  proposes the <span class="sansserif">Point</span> class to represent such object. It
+  understands many mathematics operations as the vector operations;
+  very useful for mechanics calculus.
+
+<p>A point can be instantiated with the binary message <span class="sansserif">#@</span> send to
+  a number with another number as its argument: <span class="sansserif">100 @ 100</span>
+  creates a <span class="sansserif">Point</span> instance representing the coordinates
+  (100;100).
+</p>  
+</li><li> <span class="sansserif">heading</span> is an angle in radian, the direction where
+  the ship nose is pointing. It is therefore a <span class="sansserif">Float</span> number.
+  
+</li><li> <span class="sansserif">velocity</span> is the vector representing the
+  instantaneous speed of the ship. It is <span class="sansserif">Point</span> instance.
+  
+</li><li> <span class="sansserif">fuel</span> is the gauge, as long as it is not zero, the
+  player can ignite the ship engine for intrinsic acceleration to move
+  around and to counter the central star gravity pull. It is an
+  integer number.
+  
+</li><li> <span class="sansserif">torpedoes</span> is the quantity of available torpedoes
+  the play can fire. It is an integer number.
+  
+</li><li> <span class="sansserif">mass</span> is an integer representing the ship mass.
+  
+</li><li> <span class="sansserif">acceleration</span> is the intrinsic ship acceleration
+  norm provided when the ship engine are ignited. It is therefore an
+  integer number.
+
+</li></ul>
+
+<p>A few word regarding the coordinates: the origin of our orthonormal
+frame is the central star, its first vector is oriented toward the
+right of the screen, and the second one toward the top of the screen.
+</p>
+
+<p>In previous chapter
+To add the variables to the <span class="sansserif">Torpedo</span> class, from the Browser,
 select this class. Next, add the variable names to the
 <span class="sansserif">instanceVariableNames:</span> parameter, separated by one space
 character. Finally, save the updated class definition with
@@ -144,7 +235,7 @@ character. Finally, save the updated class definition with
 </li></ul>
 
 <p>To write these behaviors in the Browser, first select the class then
-the method category you want &ndash; when none, pick up <code>-- all
+the method category you want &ndash; when none, select <code>-- all
 --</code>. In the code pane below appears a method template:
 </p>
 <div class="float"><span id="methodTemplate"></span>
@@ -196,8 +287,9 @@ the subsequent method is from the <span class="sansserif">SpaceShip</span> class
 <span id="index-variable_002c-_003a_003d"></span>
 <span id="index-variable_002c-2190"></span>
 
-<p>Some states require to be set from another entity, so a setter keyword
-message is necessary. To set the name of a space ship we add the
+<p>Some instance variables need to be set from another entity,
+so a <em>setter</em> keyword message is necessary.
+To set the name of a space ship we add the
 following method:
 </p>
 <div class="display">
@@ -210,6 +302,17 @@ following method:
 string object. To type in this symbol type <tt class="key">_</tt>, Cuis-Smalltalk will turn
 it to left arrow symbol . Alternatively, you can write <span class="sansserif">name
 := aString</span>.
+</p>
+<p>Since <span class="sansserif">name</span> is an instance variable, each instance method
+knows to use the box for the name.  The meaning here is that we are
+placing the value of the <span class="sansserif">aString</span> argument into the instance&rsquo;s
+box called <span class="sansserif">name</span>.
+</p>
+<p>Since each instance variable box can hold an object of any class,
+we like to name the variable to show that we intend that the <span class="sansserif">name</span>
+variable should hold a string, an instance of the <span class="sansserif">String</span> class.
+</p>
+<p>A bit later, we will have more to say on intent in naming.
 </p>
 <div class="float"><span id="shipPositionSetter"></span>
 <blockquote class="indentedblock">

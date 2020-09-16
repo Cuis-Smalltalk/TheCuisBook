@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : September 13, 2020
+Compilation : September 16, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -91,26 +91,26 @@ Next: <a href="Kernel_002dNumbers.html" accesskey="n" rel="next">Kernel-Numbers<
 </div>
 <hr>
 <span id="Cuis_002dSmalltalk-system-classes-1"></span><h3 class="section">3.3 Cuis-Smalltalk system classes</h3>
-<p>As we already wrote Cuis-Smalltalk is a pure object oriented environment. It
-means that every single entities you are dealing with are represented
-as instances of classes written in Cuis-Smalltalk itself. As a direct
-consequence, Cuis-Smalltalk is mostly written in itself.  In the previous
-section we read some details of the <span class="sansserif">Fraction</span> class and both
-instance and class side methods (<span class="sansserif">abs</span>, <span class="sansserif">squared</span> and
-<span class="sansserif">numerator:denominator:</span>).
+<p>As we noted above, Cuis-Smalltalk is a pure object oriented environment. This 
+means that every single entitiy you are dealing with is represented
+as an instances of a class written in Cuis-Smalltalk itself. As a direct
+consequence, Cuis-Smalltalk is mostly written in itself.  This means
+the entire system is open to you to learn and play with.
 </p>
 <p>What we call system classes are models of fundamental objects. In
-other programming languages, it will be called standard library.
+other programming languages, these would be implemented in
+that language&rsquo;s standard library.
 </p>
-<p>To be honest, there is no such a distinction between system classes
+<p>In a truely open system, there is no such a distinction between system classes
 and user classes, but it will help us to draw a boundary around the
-most used objects. We will give a brief introduction to these classes
-and the most important methods.
+most used objects. Let&rsquo;s have a brief introduction to some fundamental
+Smalltalk classes
+and their most important methods.  Later we will cover
+graphics, files, networking, and the user interface objects called Morphs.
 </p>
-<p>The classes are organised in hierarchy grouped in categories. To
-discover the most important classes, we use the browser to navigate
-these categories in the left pane. Important categories to start with
-are:
+
+<p>In the upper left pane of the Browser, Categories of classes important
+to start with are:
 </p>
 
 <ul>
@@ -121,13 +121,19 @@ are:
 </li><li> <code>Kernel-Text</code>. Related to character and string as
    collection of characters.
    
-</li><li> <code>Collections-Abstract</code>,
-   <code>Collections-Unordered</code>, <code>Collections-Sequenceable</code>,
-   <code>Collections-Arrayed</code>. Related to Array, Dictionary, dynamic
-   collection as OrderedCollection and many more. It includes
-   accessing, enumerators, mathematics functions, sorting.
-
+</li><li> The Collection classes:
+   <div class="format">
+<pre class="format">   <code>Collections-Abstract</code>,
+   <code>Collections-Unordered</code>,
+   <code>Collections-Sequenceable</code>,
+   <code>Collections-Arrayed</code>.
+   </pre></div>
+<p>Related to Array, Dictionary, Set, OrderedCollection and many more.
+   This category includes
+   common accessing, enumeration, mathematical functions, and sorting.
+</p>
 </li></ul>
+
 
 
 

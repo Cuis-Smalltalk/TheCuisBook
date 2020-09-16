@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : September 13, 2020
+Compilation : September 16, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -92,36 +92,52 @@ Next: <a href="Explore-OOP-from-the-Browser.html" accesskey="n" rel="next">Explo
 <hr>
 <span id="Understanding-Object-Oriented-Programming-1"></span><h3 class="section">3.1 Understanding Object Oriented Programming</h3>
 
-<p>But what is an object?  An object is an entity responding to two
-criteria:
+<p>But just what is an object?
+</p>
+<p>At its simplest, an object has two components:
 </p>
 <ul>
-<li> <strong>An internal state.</strong> It is embodied by variable(s)
+<li> <strong>Internal state.</strong> This is embodied by variable(s)
    known only by the object. A variable only visible within the object
    is called <em>private</em>. As a consequence, it is impossible &ndash; if
    the object decides so &ndash; to know the internal state of the object
    from another object.
 
-</li><li> <strong>A behavior.</strong> It is modeled by message(s) &ndash; we
-   already used this vocabulary &ndash; sent to the object. When the object
-   receives a message it understands, it executes the code of an
-   internal method named as the message.
+</li><li> <strong>A repertoire of behaviors.</strong> These are the message(s)
+   an object instance responds to. When the object
+   receives a message it understands, it gets its behavior from a
+   method with that name known by its class or superclass.
 
 </li></ul>
 <span id="index-class"></span>
 <span id="index-subclass"></span>
 <span id="index-instance"></span>
+<span id="index-selector"></span>
 
-<p>Several entities sharing the same variables and understanding the same messages
-are very likely to exist within Cuis-Smalltalk &ndash; think about the
-numbers. Therefore, entities are created &ndash; <em>instantiated</em> &ndash;
-following a model, this model is called a <em>Class</em>.
+<p>The method name is called a <em>selector</em> because it is used to select
+which behavior is invoked. For example, in <span class="sansserif">&rsquo;hello&rsquo; at: 1 put: $B</span>,
+the method invoked has the selector <span class="sansserif">#at:put:</span> and the arguments
+<span class="sansserif">1</span> and <span class="sansserif">$B</span>.  All selectors are symbols.
+</p>
+<p>Object instances are created &ndash; <em>instantiated</em> &ndash;
+following a model or template. This model is known by its <em>Class</em>.
+All instances of a class share the same methods and so react in the same ways.
+</p>
+<p>For example, there is one class <span class="sansserif">Fraction</span> but many
+fractions (1/2, 1/3, 23/17, ...) which all behave the way
+we expect fractions to behave.  Class <span class="sansserif">Fraction</span>
+and the classes it inherits from define this common behavior,
+as we will now describe.
 </p>
 
 <span id="index-variable-_0028instance_0029"></span>
 <span id="index-instance-variable"></span>
 <p>A given class declares its internal variables &ndash; states &ndash; and the
-behavior by implementing the methods. Let see how the <span class="sansserif">Fraction</span>
+behavior by implementing the methods.  A variable is basically a named
+box which can hold any object.  Each instance of a class gets its own
+box with the common name.
+</p>
+<p>Let see how the <span class="sansserif">Fraction</span>
 class is declared:
 </p>
 <div class="display">
@@ -134,15 +150,21 @@ class is declared:
 
 <p>As expected there are two variables &ndash; named <em>instance variables</em>
 &ndash; to define the <span class="sansserif">numerator</span> and <span class="sansserif">denominator</span> of
-a fraction. From this declaration, we observe there is a hierarchy in
+a fraction.  Each instance of fraction has its own numerator and its
+own denominator.
+</p>
+<span id="index-superclass"></span>
+<p>From this declaration, we observe there is a hierarchy in
 the class definition: <span class="sansserif">Fraction</span> is a kind of
 <span class="sansserif">Number</span>. This means a fraction inherits the internal state &ndash;
 variables &ndash; and behavior &ndash; methods &ndash; defined in the <span class="sansserif">Number</span>
-class. <span class="sansserif">Fraction</span> is called a <em>subclass</em> of <span class="sansserif">Number</span>.
+class. <span class="sansserif">Fraction</span> is called a <em>subclass</em> of <span class="sansserif">Number</span>,
+and so naturally we call <span class="sansserif">Number</span> a <em>superclass</em> of <span class="sansserif">Fraction</span>.
 </p>
 <span id="index-class_002c-inheritance"></span>
 <p>A Class specifies the behavior of all of its instances.  It is useful 
-to be able to say &quot;this object is like that object, but for these differences&quot;.  
+to be able to say &quot;this object is like that object, but for
+these differences&quot;.  
 We do this in Smalltalk by a Class inheriting instance state and behavior from 
 its parent Class.  This child, or subclass then specifies just the
 instance state and behavior which is different from its parent.
@@ -151,7 +173,8 @@ instance state and behavior which is different from its parent.
 <em>inheritance</em>. In Cuis-Smalltalk, each class inherits from one parent
 class.
 </p>
-<p>In Smalltalk, each object decides for itself how it reponds to a message.
+<p>In Smalltalk, we say that each object decides for itself
+how it reponds to a message.
 This is called <em>polymorphism</em>.
 The same message selector may be sent to objects of different Classes.  
 The &rsquo;shape&rsquo; (morph) of the computation is different depending on the specific 
@@ -163,10 +186,12 @@ but appropriate ways.
 </p>
 <span id="index-instance_002c-creation"></span>
 <span id="index-class_002c-class-method"></span>
-<p>In the previous section, we already met fraction. Those fractions are
-objects called <em>instance</em> of the class <span class="sansserif">Fraction</span>. To create
-this instance we wrote <span class="sansserif">5 / 4</span>, the mechanism is based on
-message sending and polymorphism. The number <span class="sansserif">5</span> is an
+<p>We have already met fractions. Those fractions are
+objects called <em>instance</em>s of the class <span class="sansserif">Fraction</span>. To create
+an instance we wrote <span class="sansserif">5 / 4</span>, the mechanism is based on
+message sending and polymorphism.  Let us look into how this works.
+</p>
+<p>The number <span class="sansserif">5</span> is an
 integer receiving the message <span class="sansserif">#/</span>, therefore looking at the method
 <span class="sansserif">/</span> in the <span class="sansserif">Integer</span> class explains how is instantiated
 the fraction. See part of this method:
@@ -180,7 +205,7 @@ aNumber isInteger ifTrue:
 ../..</span>
 </pre></div>
 
-<p>From this source code, we learn that in some situation, the method
+<p>From this source code, we learn that in some situations, the method
 returns a fraction, reduced. We can expect that in some other
 situation an integer is returned, for example <span class="sansserif">6 / 2</span>.
 </p>
@@ -228,11 +253,11 @@ another class method.
    <span class="sansserif">Integer</span>
       <span class="sansserif">LargePositiveInteger</span>
          <span class="sansserif">LargeNegativeInteger</span>
-      <span class="sansserif">SmalltalkInteger</span>
+      <span class="sansserif">SmallInteger</span>
 </pre></div>
 
 <p><span class="sansserif">Float</span>, <span class="sansserif">Integer</span> and <span class="sansserif">Fraction</span> are direct
-descendants of the <span class="sansserif">Number</span> class. We already learnt about the
+descendants of the <span class="sansserif">Number</span> class. We have already learned about the
 <span class="sansserif">#squared</span> message sent to integer and fraction instances:
 </p>
 <div class="display">
@@ -266,18 +291,21 @@ self</span>.
       denominator: denominator squared</span>
 </pre></div>
 
-<p>Here a new fraction is instantiated with numerator and denominator
-squared. This alternate <span class="sansserif">squared</span> method, ensure a fraction is
+<p>Here a new fraction is instantiated with the original instance
+numerator and denominator being squared.
+This alternate <span class="sansserif">squared</span> method, ensures a fraction instance is
 returned.
 </p>
 <span id="index-method_002c-overriding"></span>
 <span id="index-overriding"></span>
 <p>When message <span class="sansserif">#squared</span> is sent to a number, different methods are
-executed depending on the number is a fraction or any other kind of
-number. This fundamental mechanism of oriented object programming is
-called <em>Polymorphism</em>. More precisely, the <span class="sansserif">Fraction</span> class
+executed depending on the number is a fraction or another other kind of
+number. Polymorphism means that the Class of each instance decides
+how it will repond to a particular message.
+Here, the <span class="sansserif">Fraction</span> class
 is <em>overriding</em> the <span class="sansserif">squared</span> method, defined above in the
-class hierarchy.
+class hierarchy.  If a method is not overridden, an inherited method
+is invoked to respond to the message.
 </p>
 <span id="index-number_002c-abs"></span>
 <p>Still in the <span class="sansserif">Number</span> hierarchy, let&rsquo;s examine another example
@@ -304,7 +332,7 @@ receiver.&quot;
 
 <p>This implementation will do just fine for the <span class="sansserif">Number</span>
 subclasses. Nevertheless, there are several classes overriding it for
-optimization purpose.
+specialized or optimized cases.
 </p>
 <span id="index-method_002c-returned-value-_0028default_0029"></span>
 <p>For example, regarding large positive integer, <span class="sansserif">abs</span> is
@@ -326,9 +354,17 @@ with <span class="sansserif">#negated</span> message:
    
 <p>These two overriding methods are more efficient as they avoid test and
 ifTrue/ifFalse branches. Polymorphism is often used to avoid test and
-branching, it is done at the object level.
+branch.
 </p>
-<p>As an object is modeled against a class, it is possible to ask its
+<p><strong>Tip:</strong> If you select the text <span class="sansserif">abs</span> in a Browser or Workspace
+and right-click to get the context menu, you will find
+an entry &ldquo;Implementors of it&rdquo;.
+You can select this or use <kbd>Ctrl-m</kbd> (<em>i<b>M</b>plementors</em>) to
+see how various methods for <span class="sansserif">#abs</span> use polymorphism to
+specialize their answer to produce the naturally expected result.
+</p>
+<p>As an object instance is modeled by its class, it is possible to
+ask any object its
 class with the <span class="sansserif">#class</span> message. Observe carefully the class
 returned in line 2 and 3:
 </p>

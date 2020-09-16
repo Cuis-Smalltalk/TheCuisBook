@@ -132,6 +132,7 @@ K. Dickey, H. Fernandes, J. Vuletich
 @end iftex
 @ifnotplaintext
 @tie{}@image{note,1cm}
+@*
 @end ifnotplaintext
 \aNote\
 @iftex

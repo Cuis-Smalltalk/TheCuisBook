@@ -730,8 +730,10 @@ string of the form 'Joe bought XX apples and YY oranges' to the form
 
 @node Spacewar! states and simple behaviors
 @section Spacewar! states and simple behaviors
-At this stage of the game design, we can add some obvious states to
-our models:
+
+@subsection The game states
+After defining the class involved in the game design, we can now
+ define several states of these classes:
 
 @itemize
 
@@ -753,44 +755,52 @@ our models:
 
 @end itemize
 
-We need to explain the nature of these states, but we do not need to
-worry much about their computer type now, though.
+We need to explain the mathematics nature of these states, then
+discuss their object representation in the instance variables of our
+classes.
 
-@heading @class{Spacewar}.
+@cuisNote{@strong{Warning.}
+In the following sections, to ease reading
+we will write ``the variable @smalltalk{myVar} is a @class{String}''
+instead of the correct but cumbersome ``the instance variable
+@smalltalk{myVar} is a reference to a @class{String} instance''.}
+
+@heading @class{Spacewar}
 This object is the entry into the game. We want a meaningful class
-name.
+name. Its instance variables are the involved protagonist of the game:
 
 @itemize
 
-  @item @smalltalk{centralStart} is a reference to the unique
-  @class{CentralStar} instance of the game play. We need to know about
-  it to request its mass.
+  @item @smalltalk{centralStar} is the unique @class{CentralStar} of
+  the game play. We need to know about it to request its mass.
 
-  @item @smalltalk{ships} is a collection holding a reference of the
-  two players ship. It can be an fixed sized collection as an
-  @class{Array} instance.
+  @item @smalltalk{ships} is a collection the two players ship. It can
+  be a fixed sized collection as an @class{Array} instance.
   
   @item @smalltalk{torpedoes} is a collection of the torpedoes fired
   in the game play. Their quantity is variable, an
-  @class{OrderedCollection} instance will make sense.
+  @class{OrderedCollection} instance makes sense.
 
 @end itemize
 
 @heading @class{CentralStar}
 
-Its unique state, @smalltalk{mass}, is a number and likely an
-@smalltalk{Integer}.
+Its unique instance variable, @smalltalk{mass}, is a number and likely
+an @smalltalk{Integer}.
 
 @heading @class{SpaceShip}
 
 The space ship is the most complex object, some clarifications
-regarding its states are needed.
-
+regarding its variables are needed.
 
 @itemize
 
-  @item @smalltalk{name}
-  
+  @item @smalltalk{name} is a string
+
+
+@cindex @class{Point}
+@cindex coordinates
+
   @item @smalltalk{position} is a 2D screen coordinates. Smalltalk
   proposes the @class{Point} class to represent such object. It
   understands many mathematics operations as the vector operations;
@@ -801,24 +811,35 @@ regarding its states are needed.
   creates a @class{Point} instance representing the coordinates
   (100;100).
   
-  @item @smalltalk{heading}
+  @item @smalltalk{heading} is an angle in radian, the direction where
+  the ship nose is pointing. It is therefore a @class{Float} number.
   
-  @item @smalltalk{velocity}
+  @item @smalltalk{velocity} is the vector representing the
+  instantaneous speed of the ship. It is @class{Point} instance.
   
-  @item @smalltalk{fuel}
+  @item @smalltalk{fuel} is the gauge, as long as it is not zero, the
+  player can ignite the ship engine for intrinsic acceleration to move
+  around and to counter the central star gravity pull. It is an
+  integer number.
   
-  @item @smalltalk{torpedoes}
+  @item @smalltalk{torpedoes} is the quantity of available torpedoes
+  the play can fire. It is an integer number.
   
-  @item @smalltalk{mass}
+  @item @smalltalk{mass} is an integer representing the ship mass.
   
-  @item @smalltalk{acceleration}  
+  @item @smalltalk{acceleration} is the intrinsic ship acceleration
+  norm provided when the ship engine are ignited. It is therefore an
+  integer number.
 
 @end itemize
 
-
+A few word regarding the coordinates: the origin of our orthonormal
+frame is the central star, its first vector is oriented toward the
+right of the screen, and the second one toward the top of the screen.
 
 
 @c show on one class declaration how to put the variable
+In previous chapter
 To add the variables to the @class{Torpedo} class, from the Browser,
 select this class. Next, add the variable names to the
 @smalltalk{instanceVariableNames:} parameter, separated by one space

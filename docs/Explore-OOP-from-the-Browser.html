@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : September 13, 2020
+Compilation : September 16, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -91,25 +91,38 @@ Next: <a href="Cuis_002dSmalltalk-system-classes.html" accesskey="n" rel="next">
 </div>
 <hr>
 <span id="Explore-OOP-from-the-Browser-1"></span><h3 class="section">3.2 Explore OOP from the Browser</h3>
-<p>In <a href="A-brief-introduction-to-the-system-Browser.html#ch02_002dbrowserDetailed"><em>Figure</em> 2.1</a> of the Browser, bellow the classes pane, there are three
+<p>In <a href="A-brief-introduction-to-the-system-Browser.html#ch02_002dbrowserDetailed"><em>Figure</em> 2.1</a> of the Browser, below the classes pane, there are three
 buttons:
 </p>
 <ul>
 <li> <code>instance</code>: to access the <strong>instance methods</strong> of
-   the selected class. For the recall, these methods are only
-   accessible from the instances of the class.
+   the selected class. These methods apply to each and every instance
+   of the class.  Each instance reacts to these.
 
 </li><li> <code>?</code>: to access to documentation &ndash; comment &ndash; of the
    selected class.
 
 </li><li> <code>class</code>: to access the <strong>class methods</strong> of the
    selected class. These methods are only accessible from the class
-   itself.
+   itself.  Only the class reacts to class methods.
 
 </li></ul>
 
 <p>Below these three buttons, observe the wide text pane, it provides
 contextual information on the selected item.
+</p>
+<p>Again, Class methods apply to the Class itself.  Instance Methods apply for 
+all instances modeled by the class.  We saw above that
+the class <span class="sansserif">Fraction</span>
+has a method <span class="sansserif">#numerator:denominator:</span> which is used to get a new instance of
+a <span class="sansserif">Fraction</span>.  There is only one <span class="sansserif">Fraction</span> class object.
+Messages like <span class="sansserif">#squared</span> and <span class="sansserif">#abs</span> are sent to any <span class="sansserif">Fraction</span>
+instance, of which there are many.
+</p>
+<p>Up to now we have attempted to be very careful with definitions, but 
+you know that when we say &ldquo;a fraction&rdquo; we
+mean &ldquo;an instance of the class <span class="sansserif">Fraction</span>&rdquo;.
+From here our language will be more casual.
 </p>
 <div class="float"><span id="floatInfo"></span>
 <blockquote class="indentedblock">
@@ -120,7 +133,8 @@ the text pane?</em>
 
 
 <div class="float-caption"><p><strong><em>Exercise</em> 3.1: </strong>Float class information</p></div></div>
-<p>It is important to distinguish instance methods and class
+<p>We have spent much time here because it is important to avoid
+confusion between instance methods and class
 methods. Let&rsquo;s consider the <span class="sansserif">Float</span> class as an example.
 </p>
 <span id="index-class_002c-class-method-1"></span>
@@ -138,7 +152,18 @@ Float fmax
 &rArr; 1.7976931348623157e308</span>
 </pre></div>
 
-<p>Nevertheless, you can not send this message to instance of
+<p><strong>Tip:</strong> You have noticed that text typed into the Workspace is colored
+and highlighted based on what you type.  We will discuss this below
+when we get talk about the Smalltalk language, but the idea is to be helpful.
+If you start to type a word
+the Cuis Workspace knows about, you can press the <kbd>tab</kbd> key
+and get a set of choices for completion of the word.
+Try typing <span class="sansserif">Float epsi</span> and pressing <kbd>tab</kbd>.
+You can then press <kbd>enter</kbd>
+and should see <span class="sansserif">Float epsilon</span>.
+Click elsewhere on the Workspace to make this menu go away.
+</p>
+<p>Nevertheless, you can not send a class message to an instance of
 <span class="sansserif">Float</span>, it throws an error and opens the red debugger window.
 </p>
 <p>Just close the debug window for now to ignore the result.
@@ -158,7 +183,7 @@ the previous example or to create a new instances:
 <pre class="display"><span class="sansserif">OrderedCollection new
 &rArr; Create a new empty ordered collection
 Fraction numerator: 1 denominator: 3
-&rArr; 1/3 a fraction instance
+&rArr; 1/3 &quot;a fraction instance&quot;
 Float new
 &rArr; 0.0
 Float readFrom: &rsquo;001.200&rsquo;
@@ -214,24 +239,6 @@ OrderedCollection new add: Float pi; add: Float e; yourself
 <div align="center"><img src="ch03-floatInstanceSide.png" alt="ch03-floatInstanceSide">
 </div>
 <div class="float-caption"><p><strong><em>Figure</em> 3.2: </strong>Instance methods in <span class="sansserif">Float</span></p></div></div>
-<span id="index-browser_002c-invoke-from-workspace"></span>
-<p>A last bit of advice,  in the workspace when requesting the
-class of an instance, <kbd>Ctrl-b</kbd> will invoke the browser on the
-returned class:
-</p>
-<ul>
-<li> In the workspace, on <span class="sansserif">1 class</span> execute and print
-   with <kbd>Ctrl-p</kbd>,
-
-</li><li> <span class="sansserif">SmallInteger</span> is printed and automatically selected by default,
-
-</li><li> Invoke the browser on the selected <span class="sansserif">SmalltalkInteger</span>
-   class with <kbd>Ctrl-b</kbd>,
-
-</li><li> The browser is open on the <span class="sansserif">SmalltalkInteger</span>, ready to
-   be explored.
-
-</li></ul>
 
 <p>With this brief introduction to the system browser, your are now
 equipped to explore the system classes.

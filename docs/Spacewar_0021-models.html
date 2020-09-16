@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : September 13, 2020
+Compilation : September 16, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -96,9 +96,9 @@ propose a first implementation of the game model with a set of classes
 representing the involved entities:
 </p>
 <ol>
-<li> a central star &rArr; <span class="sansserif">CentralStar</span> class,
+<li> the game play &rArr; <span class="sansserif">SpaceWar</span> class,
 
-</li><li> a star field &rArr; <span class="sansserif">StarField</span> class,
+</li><li> a central star &rArr; <span class="sansserif">CentralStar</span> class,
 
 </li><li> two space ships &rArr; <span class="sansserif">SpaceShip</span> class,
 
@@ -135,19 +135,21 @@ class in the <code>Spacewar!</code> category:
 
 <p>We replace the symbol <span class="sansserif">#NameOfSubclass</span> with a symbol
 representing the name of the class we want to create. Let&rsquo;s start with
-<span class="sansserif">#CentralStar</span>. To save the class, over the class
+<span class="sansserif">#SpaceWar</span>. To save the class, over the class
 declaration code do ...right mouse click &rarr;
 <code>Accept</code>... Cuis-Smalltalk will ask your initial and name
 once. Alternatively, you can just do <kbd>Ctrl-s</kbd> (<em><b>S</b>ave</em>).
 </p>
 <p>Then you repeat the process for each of <span class="sansserif">#StarField</span>,
-<span class="sansserif">#SpaceShip</span> and <span class="sansserif">#Torpedo</span>. If necessary, to get
-another code template, click the class category <code>Spaceship!</code>.
+<span class="sansserif">#CentralStar</span> and <span class="sansserif">#Torpedo</span>. If necessary, to
+get another code template, click the class category <code>Spacewar!</code>.
 </p>
 <p>When done, your class category should be filled with four classes as in
 <a href="#ch02_002dspacewarClassCategory"><em>Figure</em> 2.2</a>.
 </p>
-<div class="float"><span id="ch02_002dspacewarClassCategory"></span>
+<span id="index-to-be-written_002c-update-screenshot"></span>
+<p><strong>To be written.</strong> update screenshot
+ </p><div class="float"><span id="ch02_002dspacewarClassCategory"></span>
 <div align="center"><img src="ch02-spacewarClassCategory.png" alt="ch02-spacewarClassCategory">
 </div>
 <div class="float-caption"><p><strong><em>Figure</em> 2.2: </strong>Spacewar! class category</p></div></div>

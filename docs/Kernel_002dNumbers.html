@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : September 13, 2020
+Compilation : September 16, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -92,7 +92,7 @@ Next: <a href="Kernel_002dText.html" accesskey="n" rel="next">Kernel-Text</a>, P
 <hr>
 <span id="Kernel_002dNumbers-1"></span><h3 class="section">3.4 Kernel-Numbers</h3>
 <p>The top hierarchy <span class="sansserif">Number</span> class shows most of the behaviors
-inherited by the sub classes as <span class="sansserif">Float</span>, <span class="sansserif">Integer</span> and
+inherited by the subclasses as <span class="sansserif">Float</span>, <span class="sansserif">Integer</span> and
 <span class="sansserif">Fraction</span>. The Smalltalk way to learn about a behavior is to
 point the System Browser toward a top hierarchy class and to explore
 the method categories.
@@ -117,8 +117,8 @@ messages in a Workspace to discover the one we are searching for:
 <p>Number is a very strange place to look for an indexed loop in a given
 interval. Nevertheless, an interval is defined by start and stop
 numbers. In the <span class="sansserif">Number</span> class, the method category
-<code>intervals</code> reveals related behaviors. These methods works
-indifferently with all kind of number:
+<code>intervals</code> reveals related behaviors. These methods work
+polymorphically with most kinds of number:
 </p>
 <div class="float"><span id="intervalLoops"></span>
 <div class="display">
@@ -144,8 +144,8 @@ portion of code needs to be executed several times
 <a id="DOCF10" href="#FOOT10"><sup>10</sup></a>, without
 the need of an index, the <span class="sansserif">#timesRepeat:</span> message is sent to an
 integer. We already saw this variant in a previous section of this
-chapter.  Throwing 5 times a 6 faces dice can be simulated with
-integer:
+chapter.  Throwing a 6 face die 5 times can be simulated with
+an integer:
 </p>
 <div class="float"><span id="playingDice"></span>
 <div class="display">
@@ -154,6 +154,8 @@ integer:
 </pre></div>
 
 <div class="float-caption"><p><strong><em>Example</em> 3.4: </strong>Throwing a dice 5 times</p></div></div>
+<p>Note: Expect a different result each time.
+</p>
 <div class="float"><span id="cosTable"></span>
 <blockquote class="indentedblock">
 <p><em>Compute the cosine values in
@@ -230,7 +232,8 @@ fifth digit after the decimal dot.
 <p><strong>Attention.</strong> Computer represents decimal number
 imprecisely. You need to be aware of that when doing computation and
 equality comparison. Most system hides these errors because there are
-very tiny errors. Cuis-Smalltalk does not hide these inaccuracy.
+very tiny errors. Cuis-Smalltalk does not hide this inaccuracy.  There is
+good information about this in the class comment of <span class="sansserif">Float</span>.
 </p>
 <div class="float"><span id="FloatPrecision"></span>
 <div class="display">

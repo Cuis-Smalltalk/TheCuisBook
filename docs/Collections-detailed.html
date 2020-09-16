@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : September 13, 2020
+Compilation : September 16, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -99,8 +99,14 @@ there are 7 of them gathering 46 classes.
 <p>The category <code>Collections-Abstract</code> groups classes which are
 said to be abstract. An <em>abstract</em> class cannot be instantiated,
 its behavior is declared but not completely implemented. It is the
-responsibility of its sub classes to implement the missing part of the
-behavior. Observe how the important <span class="sansserif">do:</span> method is declared
+responsibility of its subclasses to implement the missing part of the
+behavior.
+</p>
+<p>An abstract class is useful to establish a set of polymorphic methods
+which each of its concrete subclasses are expected to specialize.
+This captures and communicates our intent.
+</p>
+<p>Observe how the important <span class="sansserif">do:</span> method is declared
 but not implemented:
 </p>
 <div class="display">
@@ -109,7 +115,7 @@ but not implemented:
 self subclassResponsibility</span>
 </pre></div>
 
-<p>Then observe how two different <span class="sansserif">Collection</span> sub classes
+<p>Then observe how two different <span class="sansserif">Collection</span> subclasses
 implement it:
 </p>
 <div class="display">
@@ -133,7 +139,7 @@ fixed size and collection with a variable size.
 <p><strong>Collection of fixed size.</strong>  Such collections are gathered in
 the category <code>Collections-Arrayed</code>. The most notable one is
 <span class="sansserif">Array</span>, its size &ndash; the number of elements it can hold &ndash; is
-set when creating the instance. Once instantiated, you can not add nor
+set when creating the instance. Once instantiated, you can neither add nor
 delete elements to an array.
 </p>
 <span id="index-collection_002c-instantiate-array"></span>
@@ -159,7 +165,7 @@ instantiated at the execution time as <span class="sansserif">Fraction</span> or
 <span class="sansserif">Point</span> instances.
 </p>
 <span id="index-collection_002c-access-element"></span>
-<p>You can access element:
+<p>You can access elements:
 </p><div class="float"><span id="collectionAccess"></span>
 <div class="display">
 <pre class="display"><span class="sansserif">array1 first &rArr; 2
@@ -213,7 +219,7 @@ several class categories: <code>Collections-Unordered</code>,
 collections.
 </p>
 <p><span class="sansserif">OrderedCollection</span> is a notable one. Its elements are ordered:
-elements are added one after the other one<a id="DOCF13" href="#FOOT13"><sup>13</sup></a>. Its size is
+elements are added one after the other one<a id="DOCF14" href="#FOOT14"><sup>14</sup></a>. Its size is
 variable depending on added or removed elements.
 </p>
 <span id="index-collection_002c-instantiate-variable-size-array"></span>
@@ -227,8 +233,8 @@ coll3 := OrderedCollection ofSize: 4</span>
 </pre></div>
 
 <div class="float-caption"><p><strong><em>Example</em> 4.11: </strong>Collection with a variable size</p></div></div>
-<p>The access to its elements is identical to an <span class="sansserif">Array</span>
-instance. You can add and remove element, though:
+<p>The access to elements is identical to an <span class="sansserif">Array</span>
+instance, but dynamic collections allow you to add and remove elements:
 </p>
 <div class="float"><span id="remDelArray"></span>
 <div class="display">
@@ -319,14 +325,14 @@ the sentences &rsquo;buenos d&iacute;as&rsquo; and &rsquo;bonjour&rsquo;?</em>
 <span id="index-Dictionary"></span>
 <p><strong>Dictionary.</strong> A dictionary is a list of associations between a
 key and an object. Of course a key is an object, but it must respond
-to the equality behavior. Most of the time, the used are symbol.
+to equality tests. Most of the time, symbols are used as keys.
 </p>
 <p>To compile a list of colors:
 </p>
 <div class="float"><span id="colorDict"></span>
 <div class="display">
 <pre class="display"><span class="sansserif">| colors |
-colors := Dictonary new.
+colors := Dictionary new.
 colors
    add: #red -&gt; Color red;
    add: #blue -&gt; Color blue;
@@ -334,7 +340,7 @@ colors
 </pre></div>
 
 <div class="float-caption"><p><strong><em>Example</em> 4.16: </strong>Dictionary of colors</p></div></div>
-<p>There are shorter writings:
+<p>There are shorter descriptions:
 </p><div class="display">
 <pre class="display"><span class="sansserif">colors := Dictionary newFrom:
    {#red -&gt; Color red . #blue -&gt; Color blue . #green -&gt; Color green}.
@@ -395,7 +401,7 @@ experiment with the workspace.
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h5><a id="FOOT13" href="#DOCF13">(13)</a></h3>
+<h5><a id="FOOT14" href="#DOCF14">(14)</a></h3>
 <p>Of course you can
 insert an element between two elements. However <span class="sansserif">LinkList</span>
 instance are more efficient for this use case scenario.</p>

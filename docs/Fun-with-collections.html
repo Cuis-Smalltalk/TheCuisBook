@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : September 13, 2020
+Compilation : September 16, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -97,7 +97,7 @@ precisely a collection of characters.  Many kinds of Collection have
 similar behaviors.
 </p>
 <span id="index-array"></span>
-<p><span class="sansserif">Array</span> is a fixed size collection, contrary to string it can
+<p>An <span class="sansserif">Array</span> is a fixed size collection, and unlike a string it can
 contain any kind of literal enclosed in <span class="sansserif">#(&nbsp;)</span>:
 </p><div class="display">
 <pre class="display"><span class="sansserif">&quot;array of numbers&quot;
@@ -106,17 +106,23 @@ contain any kind of literal enclosed in <span class="sansserif">#(&nbsp;)</span>
 #(1 &rsquo;friend&rsquo; $&amp; &rsquo;al&rsquo;)</span>
 </pre></div>
 
-<p>Using non literal expression in the array will not work as expected:
+<p>An Array is constructed directly using well formed <em>literal</em> elements.
+We will get to the meaning of this last statement when we discuss
+details of the Smalltalk language.
+</p>
+<p>For now, just note that using non-literal expressions to construct an
+array will not work as expected:
 </p><div class="display">
 <pre class="display"><span class="sansserif">#(1 2/3)
 &rArr; #(1 2 #/ 3)</span>
 </pre></div>
 
 <span id="index-array_002c-dynamic"></span>
-<p>Indeed, the &ldquo;/&rdquo; is interpreted as a literal symbol and
-<span class="sansserif">2/3</span> is not interpreted as a fraction. To get a fraction
+<p>Indeed, the &ldquo;/&rdquo; is interpreted as a literal symbol and we get
+basic components of &ldquo;2 / 3&rdquo; but this text is not
+interpreted as a fraction. To get a fraction
 inserted in the array, you use a <em>run-time array</em> or <em>dynamic
-array</em>, its elements are expressions separated by dot and surrounded
+array</em>, whose elements <em>are</em> expressions separated by dots and surrounded
 with <span class="sansserif">{ }</span>:
 </p>
 <div class="display">
@@ -202,7 +208,7 @@ fibo
 <p>Index access to the elements of a collection is done with a variety of
 messages. The index naturally ranges from 1 to the collection size:
 </p><div class="display">
-<pre class="display"><span class="sansserif">fibo at:1 &rArr; 1
+<pre class="display"><span class="sansserif">fibo at: 1 &rArr; 1
 fibo at: 6 &rArr; 5
 fibo last &rArr; 21
 fibo indexOf: 2 &rArr; 3
@@ -252,16 +258,16 @@ each element of the collection returning true to a test condition:
 </p>
 <div class="float"><span id="prime100"></span>
 <div class="display">
-<pre class="display"><span class="sansserif">(1 to: 100) select: [:n | n isPrime]
+<pre class="display"><span class="sansserif">(1 to: 100) select: [ :n | n isPrime ]
 &rArr;  #(2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71
 73 79 83 89 97)</span>
 </pre></div>
 
 <div class="float-caption"><p><strong><em>Example</em> 4.3: </strong>Select prime numbers between 1 and 100</p></div></div>
 <p>This example introduces the message <span class="sansserif">#select:</span> and block of code, a
-primordial constituting element of the Cuis-Smalltalk model. A block of code,
+primordial constituent element of the Cuis-Smalltalk model. A block of code,
 delimited by square brackets, is a piece of code for later
-execution(s). Let&rsquo;s explain how this script is executed:
+execution(s). Let&rsquo;s explain how this script is evaluated:
 </p>
 <ul>
 <li> <span class="sansserif">(1 to: 100)</span> is evaluated as an interval
@@ -269,18 +275,36 @@ execution(s). Let&rsquo;s explain how this script is executed:
 </li><li> the block of code <span class="sansserif">[:n | n isPrime]</span> is instantiated (created)
 
 </li><li> the message <span class="sansserif">#select:</span> is sent to the interval with the
- block of code as argument
+ block of code as the argument
 
-</li><li> for each integer of the interval, the block of code is executed
- with its parameter <span class="sansserif">n</span> set to the integer value. Then, each
+</li><li> for each integer of the interval, the block of code is invoked
+ with its parameter <span class="sansserif">n</span> set to the integer value.
+ A <em>block parameter</em> starts with a colon, &ldquo;:&rdquo;, and is an
+ ordinary identifer <a id="DOCF13" href="#FOOT13"><sup>13</sup></a>.
+ Then, each
  time <span class="sansserif">n isPrime</span> evaluates to true, the <span class="sansserif">n</span> value
  is added to a new collection answered when the <span class="sansserif">select:</span>
  method finished testing each element of the collection.
 
 </li></ul>
 
-<p>Enumerators are tremendously powerful to process collection without
-the need of index.
+<p>A block of code can be saved in a variable, passed as a parameter, and
+can be used multiple times.
+</p><div class="display">
+<pre class="display"><span class="sansserif">| add2 |
+ add2 := [:n| n + 2].
+ { add2 value: 2. add2 value: 7 }.
+&rArr;  #(4 9)
+</span>
+</pre></div>
+
+
+<p>Enumerators implement tremendously powerful ways to process collections without
+the need of index.  By this we mean that they are simple to get right.
+We like simple!
+</p>
+<p>To get an idea of how useful enumerators are, take a browse at the
+<span class="sansserif">Collection</span> class in the method category <span class="sansserif">enumerating</span>.
 </p>
 <div class="float"><span id="oddNumbers"></span>
 <blockquote class="indentedblock">
@@ -343,7 +367,7 @@ know about some cubes:
 </p>
 <div class="float"><span id="cubesCollect"></span>
 <div class="display">
-<pre class="display"><span class="sansserif">(1 to: 10) collect:[:n | n cubed]
+<pre class="display"><span class="sansserif">(1 to: 10) collect: [:n | n cubed]
 &rArr; #(1 8 27 64 125 216 343 512 729 1000)</span>
 </pre></div>
 
@@ -467,6 +491,15 @@ value:
 </pre></div>
 
 
+<div class="footnote">
+<hr>
+<h4 class="footnotes-heading">Footnotes</h4>
+
+<h5><a id="FOOT13" href="#DOCF13">(13)</a></h3>
+<p>An <em>identifier</em> is just a word that starts
+ in a lower case letter and consists of upper and lower case letters
+ and decimal digits.  All variable names are identifiers</p>
+</div>
 <hr>
 <div class="header">
 <p>

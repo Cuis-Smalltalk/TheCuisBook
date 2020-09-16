@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : September 13, 2020
+Compilation : September 16, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -91,8 +91,8 @@ Next: <a href="Spacewar_0021-states-and-simple-behaviors.html" accesskey="n" rel
 </div>
 <hr>
 <span id="Kernel_002dText-1"></span><h3 class="section">3.5 Kernel-Text</h3>
-<p>Notably, this category comes with <span class="sansserif">Character</span>, <span class="sansserif">String</span>
-and <span class="sansserif">Symbol</span>. <span class="sansserif">String</span> instance are collection of
+<p>Notably, this category contains classes <span class="sansserif">Character</span>, <span class="sansserif">String</span>
+and <span class="sansserif">Symbol</span>. <span class="sansserif">String</span> instances are collections of
 <span class="sansserif">Character</span> instances.
 </p>
 <span id="index-character"></span>
@@ -109,7 +109,7 @@ and <span class="sansserif">Symbol</span>. <span class="sansserif">String</span>
 <p>There are class side methods for non printable characters:
 <span class="sansserif">Character tab</span>, <span class="sansserif">Character lf</span>, etc.
 </p>
-<p>As string are collection of characters, when enumerating a string we
+<p>A each string is collection of characters, when enumerating a string we
 can use the <span class="sansserif">Character</span> instance methods:
 </p>
 <div class="float"><span id="apples12"></span>
@@ -129,11 +129,19 @@ reject the numeric characters.</em>
 <div class="float-caption"><p><strong><em>Exercise</em> 3.7: </strong>Select apples</p></div></div>
 <span id="index-string-1"></span>
 <p><strong>String.</strong> <span class="sansserif">String</span> is a very large class, it comes with
-more than 200 methods. Hopefully the methods are grouped in categories
-and it is very easy to experiment from a Workspace when you are
-looking for a specific behavior.
+more than 200 methods. It is useful to browse these method categories
+to see common ways to group methods.
 </p>
-<p>Consider you need to search for a string in a string: when browsing
+<p>Sometimes you may not see a category which help right away.
+</p>
+<p><strong>Tip:</strong> If you expect a method selector to start with a character,
+click-select the <code>-- all --</code> method category, then move the cursor
+over the pane listing the method names.
+Press this character, e.g. <span class="sansserif">$f</span>.  This will scroll to the method pane
+to the first method name starting with an &ldquo;f&rdquo;.
+</p>
+<p>Consider the case where you need to search for a string in a
+string: when browsing
 the <span class="sansserif">String</span> class, search for method categories named like
 <code>finding...</code> or <code>accessing</code>. There you find a family of
 <span class="sansserif">findXXX</span> methods. Read the comments at the beginning of these
@@ -175,7 +183,7 @@ methods:
 &rArr; 12</span>
 </pre></div>
 
-<p>Following these paths will, most of the time, leads you to the answer
+<p>Following these paths will, most of the time, lead you toward the answer
 you are looking for.
 </p>
 <div class="float"><span id="formatString"></span>

@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : September 13, 2020
+Compilation : September 16, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -106,6 +106,13 @@ examples with the <kbd>Ctrl-p</kbd> shortcut:
 <p><strong>Caution.</strong> The index indicates position naturally from 1 to the
 string length.
 </p>
+<span id="index-string_002c-indexOf_003a"></span>
+<div class="display">
+<pre class="display"><span class="sansserif">&rsquo;Hello&rsquo; indexOf: $e
+&rArr; 2</span>
+</pre></div>
+
+<span id="index-string_002c-at_003aput_003a"></span>
 <p>To change one character, use the companion two keyword message
 <span class="sansserif">#at:put:</span>. The argument must be noted as a character:
 </p><div class="display">
@@ -115,7 +122,7 @@ string length.
 
 <p>Observe the use of the cascade with the <span class="sansserif">#yourself</span> message.
 A cascade sends following messages to the original receiver,
-so #yourself returns the updated string.
+so <span class="sansserif">#yourself</span> returns the updated string.
 Without the cascade, $a is returned as the result of the #at:put: message.
 </p>
 <div class="float"><span id="helloBelle"></span>
@@ -136,7 +143,7 @@ the string &rsquo;Hello&rsquo; to become &rsquo;Belle&rsquo;</em>
 <span id="index-string_002c-shuffled"></span>
 <span id="index-collection_002c-shuffled"></span>
 <p>Shuffling a string is funny but without much use. Nevertheless,
-shuffling apply to any kind of collection, not only to string, and it
+shuffling can apply to any kind of collection, not only to string, and it
 proves to be of some use as we may see later:
 </p><div class="display">
 <pre class="display"><span class="sansserif">&rsquo;hello world&rsquo; shuffled
@@ -144,14 +151,42 @@ proves to be of some use as we may see later:
 </pre></div>
 <p>Note that results of each shuffle are different.
 </p>
-<span id="index-string_002c-sorted"></span>
+<span id="index-string_002c-asArray"></span>
+<p>Messages naturally compose.
+</p><div class="display">
+<pre class="display"><span class="sansserif">&rsquo;hello world&rsquo; shuffled asArray
+&rArr; #($h $d $l $  $o $w $e $l $l $o $r) </span>
+</pre></div>
 
+<p>An <span class="sansserif">Array</span> literal starts with a hash or sharp character, <span class="sansserif">$#</span>
+and parentheses surround the elements of the array.
+In this case the elements are <span class="sansserif">Character</span>s, but they can
+be instances of any class.
+</p>
+<span id="index-string_002c-sort"></span>
 <p>Similarly, we can ask a string to sort its characters:
 </p><div class="display">
 <pre class="display"><span class="sansserif">&rsquo;hello world&rsquo; sort
 &rArr;  &rsquo; dehllloorw&rsquo;  </span>
 </pre></div>
 
+<p>Like <span class="sansserif">#shuffled</span>, all collections answer to the message <span class="sansserif">#sorted</span>,
+which answers a sorted collection.
+<span id="index-string_002c-sorted"></span>
+</p><div class="display">
+<pre class="display"><span class="sansserif">&rsquo;hello world&rsquo; sorted
+&rArr;  #($  $d $e $h $l $l $l $o $o $r $w)  </span>
+</pre></div>
+
+<p>Note that this breaks patterns.  We get a <span class="sansserif">String</span> result when giving 
+a <span class="sansserif">String</span> the message <span class="sansserif">#shuffled</span> but get an <span class="sansserif">Array</span>
+instance when giving a <span class="sansserif">String</span> instance the message <span class="sansserif">#sorted</span>.
+</p>
+<p>We take much care in Smalltalk to give names which reduce surprise, but there
+are cases, as here, where something odd happens.  We will discuss this
+further when we look at different kinds of <span class="sansserif">Collection</span>s and
+discuss how we name instances and methods to show intent and reduce surprise.
+</p>
 <hr>
 <div class="header">
 <p>

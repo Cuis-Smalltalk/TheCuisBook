@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : September 13, 2020
+Compilation : September 16, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -95,11 +95,11 @@ ul.no-bullet {list-style: none}
 <span id="index-protocol"></span>
 
 <p>The <span class="sansserif">String</span> class also inherits its behavior from its
-ancestors, parent classes. Indeed a <span class="sansserif">String</span> is a subclass of
+ancestor classes. Indeed <span class="sansserif">String</span> is a subclass of
 <span class="sansserif">ArrayedCollection</span>. The direct consequence is that when
 searching for some specific behavior, you may need to explore the
 parent classes too. The whole behavior of a class, defined in the
-class itself and its parents is named its <em>protocol</em>.
+class itself and its parents is called its <em>protocol</em>.
 </p>
 <span id="index-browser_002c-hierarchy"></span>
 <span id="index-browser_002c-protocol"></span>
@@ -212,13 +212,13 @@ duplicated &ndash; understand not the same memory location in the computer
 <p>Symbols can be written with space:
 </p>
 <div class="display">
-<pre class="display"><span class="sansserif">Symbol with space character,symbolSpace,
+<pre class="display"><span class="sansserif">A Symbol which includes space characters
 #&rsquo;hello my friend&rsquo;
 &rsquo;hello my friend&rsquo; asSymbol</span>
 </pre></div>
 
-<p><span class="sansserif">Symbol</span> is a sub class of <span class="sansserif">String</span>, a lot of its behavior
-is inherited. It is helpful to make handy symbol:
+<p><span class="sansserif">Symbol</span> is a subclass of <span class="sansserif">String</span>, a lot of its behavior
+is inherited. This makes symbols quite useful.
 </p>
 <div class="display">
 <pre class="display"><span class="sansserif">&rsquo;hello my friend&rsquo; asCamelCase asSymbol 

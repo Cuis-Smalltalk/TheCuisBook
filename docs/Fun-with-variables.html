@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : September 13, 2020
+Compilation : September 16, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -99,10 +99,16 @@ box that holds a value, that&rsquo;s it!
 (we can always determine its Class), but the variable (box) is not
 restricted to holding a value of a single type.
 </p>
-<p>To declare a variable we name it at the beginning of the script
-and surround it by pipe charaters &ldquo;|&rdquo;.
+<p>To declare a method variable we name it at the beginning of the script
+and surround it by pipe characters &ldquo;|&rdquo;.
 </p>
-<p>So far we sent messages directly to objects, we can send message to a
+<p>A variable always holds a value.
+Until we place a different value into a variable, the variable
+holds the <span class="sansserif">nil</span> value.
+When we say that a value is <em>bound</em> to a
+variable we mean that the named box now holds that value.
+</p>
+<p>So far we sent messages directly to objects, but we can send message to a
 variable bound to an object too.
 </p>
 <p>Any object responds to the message #printString.
