@@ -169,10 +169,9 @@ for GNU/Linux, Mac OS X and Windows on Intel architecture. These
 archives come with the dedicated @vm{} and the image of @cuis{}
 @value{cuisVersion}. Into this image we pre-installed a few packages
 to make your life easier when you experience the examples and
-exercises of the book. By the time you read this book, @cuis{} will 
-likely have evolved to have a newer version.
-What you learn here should, however, should be easily
-transferable.
+exercises of the book. By the time you read this book, @cuis{} will
+likely have evolved to have a newer version.  What you learn here
+should, however, be easily transferable.
 
 To get @cuis{} running on your computer, follow the instructions in
 the @file{README} file accompanying the archive. Once you get @cuis{}
