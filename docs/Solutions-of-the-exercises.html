@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : September 16, 2020
+Compilation : September 17, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -224,7 +224,33 @@ you find the <span class="sansserif">format:</span> method:
 &rArr;  'Joe bought 5 apples and 4 oranges' 
 </pre></div>
 
-<span id="spacewarSimpleGetters-1"></span><h4 class="subheading"><a href="Spacewar_0021-states-and-simple-behaviors.html#spacewarSimpleGetters"><em>Exercise</em> 3.9</a></h4>
+
+
+<span id="spacewarVar-1"></span><h4 class="subheading"><a href="Spacewar_0021-states-and-simple-behaviors.html#spacewarVar"><em>Exercise</em> 3.9</a></h4>
+<p>The <span class="sansserif">SpaceWar</span>, <span class="sansserif">CentralStar</span> and <span class="sansserif">SpaceShip</span>
+definitions with their added instance variable should look like:
+</p><div class="example">
+<pre class="example">Object subclass: #SpaceWar
+   instanceVariableNames: 'centralStar ships torpedoes'
+   classVariableNames: ''
+   poolDictionaries: ''
+   category: 'Spacewar!'
+
+Object subclass: #CentralStar
+   instanceVariableNames: 'mass'
+   classVariableNames: ''
+   poolDictionaries: ''
+   category: 'Spacewar!'
+
+Object subclass: #SpaceShip
+   instanceVariableNames: 'name position heading velocity
+      fuel torpedoes mass acceleration'
+   classVariableNames: ''
+   poolDictionaries: ''
+   category: 'Spacewar!'
+</pre></div>
+
+<span id="spacewarSimpleGetters-1"></span><h4 class="subheading"><a href="Spacewar_0021-states-and-simple-behaviors.html#spacewarSimpleGetters"><em>Exercise</em> 3.10</a></h4>
 <div class="example">
 <pre class="example">CentralStar&gt;&gt;mass
    ^ mass
@@ -239,7 +265,7 @@ Torpedo&gt;&gt;position
    ^ position
 </pre></div>
 
-<span id="shipPositionSetter-1"></span><h4 class="subheading"><a href="Spacewar_0021-states-and-simple-behaviors.html#shipPositionSetter"><em>Exercise</em> 3.10</a></h4>
+<span id="shipPositionSetter-1"></span><h4 class="subheading"><a href="Spacewar_0021-states-and-simple-behaviors.html#shipPositionSetter"><em>Exercise</em> 3.11</a></h4>
 <div class="example">
 <pre class="example">SpaceShip&gt;&gt;position: aPoint
    position &#x2190; aPoint

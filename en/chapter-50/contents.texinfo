@@ -135,6 +135,32 @@ you find the @method{format:} method:
 @result{}  'Joe bought 5 apples and 4 oranges' 
 @end example
 
+
+
+@subheading @ref{spacewarVar}
+The @class{SpaceWar}, @class{CentralStar} and @class{SpaceShip}
+definitions with their added instance variable should look like:
+@example
+Object subclass: #SpaceWar
+   instanceVariableNames: 'centralStar ships torpedoes'
+   classVariableNames: ''
+   poolDictionaries: ''
+   category: 'Spacewar!'
+
+Object subclass: #CentralStar
+   instanceVariableNames: 'mass'
+   classVariableNames: ''
+   poolDictionaries: ''
+   category: 'Spacewar!'
+
+Object subclass: #SpaceShip
+   instanceVariableNames: 'name position heading velocity
+      fuel torpedoes mass acceleration'
+   classVariableNames: ''
+   poolDictionaries: ''
+   category: 'Spacewar!'
+@end example
+
 @subheading @ref{spacewarSimpleGetters}
 @example
 CentralStar>>mass

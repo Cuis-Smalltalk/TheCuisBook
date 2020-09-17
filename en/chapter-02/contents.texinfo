@@ -479,9 +479,10 @@ declaration code do ...@clicksequence{right mouse click @click{}
 @label{Accept}}... @cuis{} will ask your initial and name
 once. Alternatively, you can just do @kbd{Ctrl-s} (@emph{@b{S}ave}).
 
-Then you repeat the process for each of @smalltalk{#StarField},
+Then you repeat the process for each of @smalltalk{#StarShip},
 @smalltalk{#CentralStar} and @smalltalk{#Torpedo}. If necessary, to
-get another code template, click the class category @label{Spacewar!}.
+get another class code template, click the class category
+@label{Spacewar!}.
 
 When done, your class category should be filled with four classes as in
 @ref{ch02-spacewarClassCategory}.

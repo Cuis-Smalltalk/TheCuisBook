@@ -766,7 +766,7 @@ instead of the correct but cumbersome ``the instance variable
 @smalltalk{myVar} is a reference to a @class{String} instance''.}
 
 @heading @class{Spacewar}
-This object is the entry into the game. We want a meaningful class
+This object is the entry to the game. We want a meaningful class
 name. Its instance variables are the involved protagonist of the game:
 
 @itemize
@@ -774,8 +774,8 @@ name. Its instance variables are the involved protagonist of the game:
   @item @smalltalk{centralStar} is the unique @class{CentralStar} of
   the game play. We need to know about it to request its mass.
 
-  @item @smalltalk{ships} is a collection the two players ship. It can
-  be a fixed sized collection as an @class{Array} instance.
+  @item @smalltalk{ships} is a collection of the two player ships. It
+  can be a fixed sized collection as an @class{Array} instance.
   
   @item @smalltalk{torpedoes} is a collection of the torpedoes fired
   in the game play. Their quantity is variable, an
@@ -803,14 +803,19 @@ regarding its variables are needed.
 
   @item @smalltalk{position} is a 2D screen coordinates. Smalltalk
   proposes the @class{Point} class to represent such object. It
-  understands many mathematics operations as the vector operations;
+  understands many mathematics operations as operations on vectors;
   very useful for mechanics calculus.
 
   A point can be instantiated with the binary message @msg{@@} send to
   a number with another number as its argument: @smalltalk{100 @@ 100}
   creates a @class{Point} instance representing the coordinates
   (100;100).
-  
+
+  The ship's @smalltalk{position} is regularly recomputed according to
+  the law of the Galilean reference frame. The computation depends on
+  the ship velocity and the forces of the central star gravity pull
+  and engine boost.
+ 
   @item @smalltalk{heading} is an angle in radian, the direction where
   the ship nose is pointing. It is therefore a @class{Float} number.
   
@@ -833,15 +838,44 @@ regarding its variables are needed.
 
 @end itemize
 
-A few word regarding the coordinates: the origin of our orthonormal
-frame is the central star, its first vector is oriented toward the
-right of the screen, and the second one toward the top of the screen.
+A few word regarding the euclidean coordinates: the origin of our
+orthonormal frame is the central star, its first vector is oriented
+toward the right of the screen, and the second one toward the top of
+the screen. This choice ease the computation of the ship acceleration,
+velocity and position.
 
+@heading @class{Torpedo}
+A torpedo is mean to be fired from a ship with a velocity matching the
+ship heading. Once the torpedo fuel reserve reaches zero it is destroyed.
 
+@itemize
+
+  @item @smalltalk{position} is a 2D screen coordinates, a
+  @class{Point} instance. Contrary to the ship position it does not
+  depend on the gravity pull of the central star. Indeed, a torpedo
+  does not come with a mass state, we can suppose it is zero. Its
+  computation only depends on the torpedo velocity.
+
+  @item @smalltalk{velocity} is a vector representing the
+  instantaneous speed of the torpedo. It is constant over the torpedo
+  lifespan. Its direction matches the ship heading when fired. Again
+  it is a @class{Point} instance.
+
+  @item @smalltalk{lifeSpan} is an integer number counter, when it
+  reaches zero the torpedo self-destroy.
+
+@end itemize
+
+@subsection Instance variables
 @c show on one class declaration how to put the variable
-In previous chapter
-To add the variables to the @class{Torpedo} class, from the Browser,
-select this class. Next, add the variable names to the
+In the previous chapter, we explained how to define the four classes
+@class{SpaceWar}, @class{CentralStar}, @class{SpaceShip} and
+@class{Torpedo}. In this section, we will add to the these definitions
+the instance variables -- states -- discussed above.
+
+To add the
+variables to the @class{Torpedo} class, from the Browser, select this
+class. Next, add the variable names to the
 @smalltalk{instanceVariableNames:} parameter, separated by one space
 character. Finally, save the updated class definition with
 @kbd{Ctrl-s} shortcut:
@@ -852,10 +886,12 @@ character. Finally, save the updated class definition with
    poolDictionaries: ''
    category: 'Spacewar!'}
 
-Do the same with the @class{SpaceShip}, @class{CentralStar} and
-@class{StarField} classes variable.
+@exercise{Game instance variables, spacewarVar, @emph{Add the instance
+variables we discussed to the @class{SpaceWar}, @class{CentralStar}
+and @class{StarShip} classes.}}
 
 
+@subsection Behaviors
 @cindex message, setter
 @cindex message, getter
 Some of these states need to be accessed from other entities:
