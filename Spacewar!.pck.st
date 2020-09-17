@@ -1,12 +1,12 @@
-'From Cuis 5.0 [latest update: #4249] on 16 September 2020 at 4:42:25 pm'!
+'From Cuis 5.0 [latest update: #4249] on 17 September 2020 at 3:36:11 pm'!
 'Description '!
-!provides: 'Spacewar!!' 1 35!
+!provides: 'Spacewar!!' 1 37!
 SystemOrganization addCategory: #'Spacewar!!'!
 
 
 !classDefinition: #SpaceShip category: #'Spacewar!!'!
 RectangleLikeMorph subclass: #SpaceShip
-	instanceVariableNames: 'name position heading velocity fuel torpedoes mass acceleration'
+	instanceVariableNames: 'name position heading velocity fuel torpedoes acceleration'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Spacewar!!'!
@@ -58,25 +58,23 @@ Control with the left, up, right arrows!
 !CentralStar commentStamp: '<historical>' prior: 0!
 I am the central start of the game generating a gravity field.!
 
-!SpaceShip methodsFor: 'initialization' stamp: 'hlsf 9/10/2020 19:16:16'!
+!SpaceShip methodsFor: 'initialization' stamp: 'hlsf 9/17/2020 15:35:28'!
 initialize
 	super initialize.
 	heading _ Float halfPi.
 	velocity _ 0 @ 0.
 	position _ 100 @ 100.
-	acceleration _ 0.
-	mass _ 1.! !
-
-!SpaceShip methodsFor: 'accessing' stamp: 'hlsf 9/16/2020 15:05:55'!
-acceleration
-"The acceleration boost when the engine ship are on"
-	^ 2! !
+	acceleration _ 0.! !
 
 !SpaceShip methodsFor: 'accessing' stamp: 'hlsf 9/16/2020 15:04:45'!
 direction
 "I am an unit vector representing the noze direction of the ship"
 	 ^ heading cos @ heading sin
 	! !
+
+!SpaceShip methodsFor: 'accessing' stamp: 'hlsf 9/17/2020 15:35:21'!
+mass
+	^ 1! !
 
 !SpaceShip methodsFor: 'accessing' stamp: 'hlsf 9/16/2020 15:05:10'!
 normal
@@ -85,6 +83,14 @@ normal
 	direction _ self direction.
 	 ^ direction y negated @ direction x
 	! !
+
+!SpaceShip methodsFor: 'accessing' stamp: 'hlsf 9/17/2020 15:14:55'!
+position: aPoint
+	position _ aPoint ! !
+
+!SpaceShip methodsFor: 'accessing' stamp: 'hlsf 9/17/2020 15:15:21'!
+velocity: aPoint
+	velocity _ aPoint ! !
 
 !SpaceShip methodsFor: 'drawing' stamp: 'hlsf 9/10/2020 19:42:55'!
 drawOn: canvas
@@ -112,10 +118,10 @@ transformation
 	^ AffineTransformation withPointScale: 1 @ -1 position: owner morphExtent / 2.0.
 ! !
 
-!SpaceShip methodsFor: 'computing' stamp: 'hlsf 9/10/2020 19:31:57'!
+!SpaceShip methodsFor: 'computing' stamp: 'hlsf 9/17/2020 15:35:06'!
 gravity
 "Compute the gravity acceleration vector"
-	^ [-10 * mass * owner starMass / (position r raisedTo: 3) * position]
+	^ [-10 * self mass * owner starMass / (position r raisedTo: 3) * position]
 		on: Error do: [0 @ 0]! !
 
 !SpaceShip methodsFor: 'computing' stamp: 'hlsf 9/16/2020 15:09:51'!

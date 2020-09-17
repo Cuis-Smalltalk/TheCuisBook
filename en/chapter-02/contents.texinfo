@@ -487,8 +487,7 @@ get another class code template, click the class category
 When done, your class category should be filled with four classes as in
 @ref{ch02-spacewarClassCategory}.
 
-@todo{update screenshot}
-@figure{Spacewar! class category,ch02-spacewarClassCategory,5}
+@figure{Spacewar! class category,ch02-spacewarClassCategory,6}
 
 @cindex package, create (new)
 @cindex package, save

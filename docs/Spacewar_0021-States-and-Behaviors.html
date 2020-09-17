@@ -49,10 +49,10 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Spacewar! states and simple behaviors (The Cuis-Smalltalk Book)</title>
+<title>Spacewar! States and Behaviors (The Cuis-Smalltalk Book)</title>
 
-<meta name="description" content="Spacewar! states and simple behaviors (The Cuis-Smalltalk Book)">
-<meta name="keywords" content="Spacewar! states and simple behaviors (The Cuis-Smalltalk Book)">
+<meta name="description" content="Spacewar! States and Behaviors (The Cuis-Smalltalk Book)">
+<meta name="keywords" content="Spacewar! States and Behaviors (The Cuis-Smalltalk Book)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
@@ -85,12 +85,12 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Spacewar_0021-states-and-simple-behaviors"></span><div class="header">
+<span id="Spacewar_0021-States-and-Behaviors"></span><div class="header">
 <p>
 Previous: <a href="Kernel_002dText.html" accesskey="p" rel="prev">Kernel-Text</a>, Up: <a href="Class-_002d-model-of-communicating-entities.html" accesskey="u" rel="up">Class - model of communicating entities</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Spacewar_0021-states-and-simple-behaviors-1"></span><h3 class="section">3.6 Spacewar! states and simple behaviors</h3>
+<span id="Spacewar_0021-States-and-Behaviors-1"></span><h3 class="section">3.6 Spacewar! States and Behaviors</h3>
 
 <span id="The-game-states"></span><h4 class="subsection">3.6.1 The game states</h4>
 <p>After defining the class involved in the game design, we can now
@@ -250,12 +250,12 @@ character. Finally, save the updated class definition with
 
 <div class="float"><span id="spacewarVar"></span>
 <blockquote class="indentedblock">
-<p><em>Add the instance variables we discussed to the <span class="sansserif">SpaceWar</span>,
-<span class="sansserif">CentralStar</span> and <span class="sansserif">StarShip</span> classes.</em>
+<p><em>Add the instance variables we discussed earlier to the
+<span class="sansserif">SpaceWar</span>, <span class="sansserif">CentralStar</span> and <span class="sansserif">StarShip</span> classes.</em>
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong><em>Exercise</em> 3.9: </strong>Instance variables of Spacewar! protagonists</p></div></div>
+<div class="float-caption"><p><strong><em>Exercise</em> 3.9: </strong>Instance variables of the Spacewar! protagonists</p></div></div>
 
 <span id="Behaviors"></span><h4 class="subsection">3.6.3 Behaviors</h4>
 <span id="index-message_002c-setter"></span>
@@ -317,13 +317,13 @@ the subsequent method is from the <span class="sansserif">SpaceShip</span> class
 <div class="float"><span id="spaceShipGetters"></span>
 <blockquote class="indentedblock">
 <p><em>Write the
-<span class="sansserif">SpaceShip</span> getters messages for its
+<span class="sansserif">SpaceShip</span> getter messages for its
 <span class="sansserif">position</span>, <span class="sansserif">velocity</span> and <span class="sansserif">mass</span>
 attributes.</em>
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong><em>Exercise</em> 3.10: </strong>SpaceShip getters</p></div></div>
+<div class="float-caption"><p><strong><em>Exercise</em> 3.10: </strong>SpaceShip getter message</p></div></div>
 <span id="index-variable_002c-assignment"></span>
 <span id="index-variable_002c-_003a_003d"></span>
 <span id="index-variable_002c-2190"></span>
@@ -340,8 +340,8 @@ following method:
 
 <p>The &#x2190; character is an assignment, it means the
 <span class="sansserif">name</span> instance variable is bound to the <span class="sansserif">aString</span>
-string object. To type in this symbol type <tt class="key">_</tt>, Cuis-Smalltalk will turn
-it to left arrow symbol . Alternatively, you can write <span class="sansserif">name
+string object. To type in this symbol type <tt class="key">_</tt> then space, Cuis-Smalltalk
+will turn it to left arrow symbol. Alternatively write <span class="sansserif">name
 := aString</span>.
 </p>
 <p>Since <span class="sansserif">name</span> is an instance variable, each instance method
@@ -355,15 +355,28 @@ variable should hold a string, an instance of the <span class="sansserif">String
 </p>
 <p>A bit later, we will have more to say on intent in naming.
 </p>
-<div class="float"><span id="shipPositionSetter"></span>
+<div class="float"><span id="spaceShipSetters"></span>
 <blockquote class="indentedblock">
-<p><em>Ship
-position will need to be set at game start up or when a ship jump in
-hyperspace, write a <span class="sansserif">position:</span> setter.</em>
+<p><em>Ship <span class="sansserif">position</span> and <span class="sansserif">velocity</span> will need to
+be set at game start up or when a ship jumps in hyperspace.  Write the
+appropriate setters.</em>
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong><em>Exercise</em> 3.11: </strong>Ship position setter</p></div></div><hr>
+<div class="float-caption"><p><strong><em>Exercise</em> 3.11: </strong><span class="sansserif">SpaceShip</span> setter messages</p></div></div>
+<p>Observe how we do not have a setter message for the space ship
+<span class="sansserif">mass</span> attribute. Indeed, it does not make sense to change
+the mass of a ship from another object. In fact, if we consider both
+player ship to be of equal mass, we should remove the <span class="sansserif">mass</span>
+variable and edit the <span class="sansserif">mass</span> method to return a literal number:
+</p>
+<div class="float"><span id="methodConstant"></span>
+<div class="display">
+<pre class="display"><span class="sansserif">SpaceShip&gt;&gt;mass
+   ^ 1</span>
+</pre></div>
+
+<div class="float-caption"><p><strong><em>Example</em> 3.12: </strong>A method returning a constant</p></div></div><hr>
 <div class="header">
 <p>
 Previous: <a href="Kernel_002dText.html" accesskey="p" rel="prev">Kernel-Text</a>, Up: <a href="Class-_002d-model-of-communicating-entities.html" accesskey="u" rel="up">Class - model of communicating entities</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>

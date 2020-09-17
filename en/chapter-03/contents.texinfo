@@ -14,7 +14,7 @@ as a noun in Smalltalk -- is an object.
 * @cuis{} system classes::
 * Kernel-Numbers::
 * Kernel-Text::
-* Spacewar! states and simple behaviors::
+* Spacewar! States and Behaviors::
 @end menu
 
 @node Understanding Object Oriented Programming
@@ -728,8 +728,8 @@ you are looking for.
 string of the form 'Joe bought XX apples and YY oranges' to the form
 'Joe bought 5 apples and 4 oranges'. What message should be used?}}
 
-@node Spacewar! states and simple behaviors
-@section Spacewar! states and simple behaviors
+@node Spacewar! States and Behaviors
+@section Spacewar! States and Behaviors
 
 @subsection The game states
 After defining the class involved in the game design, we can now
@@ -886,9 +886,9 @@ character. Finally, save the updated class definition with
    poolDictionaries: ''
    category: 'Spacewar!'}
 
-@exercise{Game instance variables, spacewarVar, @emph{Add the instance
-variables we discussed to the @class{SpaceWar}, @class{CentralStar}
-and @class{StarShip} classes.}}
+@exercise{Instance variables of the Spacewar! protagonists, spacewarVar,
+@emph{Add the instance variables we discussed earlier to the
+@class{SpaceWar}, @class{CentralStar} and @class{StarShip} classes.}}
 
 
 @subsection Behaviors
@@ -945,9 +945,10 @@ The @smalltalk{SpaceShip>>} part is not valid code and should not be
 written in the Browser. It is a text convention to inform the reader
 the subsequent method is from the @class{SpaceShip} class.
 
-@exercise{Simple getters in Spacewar! models, spacewarSimpleGetters,
-@emph{Write the getter messages for @smalltalk{position}@comma{}
-@smalltalk{velocity} and @smalltalk{mass}.}}
+@exercise{SpaceShip getter message, spaceShipGetters, @emph{Write the
+@class{SpaceShip} getter messages for its
+@smalltalk{position}@comma{} @smalltalk{velocity} and @smalltalk{mass}
+attributes.}}
 
 @cindex variable, assignment
 @cindex variable, :=
@@ -963,8 +964,8 @@ following method:
 
 The @assign{} character is an assignment, it means the
 @smalltalk{name} instance variable is bound to the @smalltalk{aString}
-string object. To type in this symbol type @key{_}, @cuis{} will turn
-it to left arrow symbol . Alternatively, you can write @smalltalk{name
+string object. To type in this symbol type @key{_} then space, @cuis{}
+will turn it to left arrow symbol. Alternatively write @smalltalk{name
 := aString}.
 
 Since @smalltalk{name} is an instance variable, each instance method
@@ -978,6 +979,17 @@ variable should hold a string, an instance of the @class{String} class.
 
 A bit later, we will have more to say on intent in naming.
 
-@exercise{Ship position setter, shipPositionSetter, @emph{Ship
-position will need to be set at game start up or when a ship jump in
-hyperspace, write a @method{position:} setter.}}
+@exercise{@class{SpaceShip} setter messages, spaceShipSetters,
+@emph{Ship @smalltalk{position} and @smalltalk{velocity} will need to
+be set at game start up or when a ship jumps in hyperspace.  Write the
+appropriate setters.}}
+
+Observe how we do not have a setter message for the space ship
+@smalltalk{mass} attribute. Indeed, it does not make sense to change
+the mass of a ship from another object. In fact, if we consider both
+player ship to be of equal mass, we should remove the @smalltalk{mass}
+variable and edit the @method{mass} method to return a literal number:
+
+@smalltalkExampleCaption{A method returning a constant, methodConstant,
+SpaceShip>>mass
+   ^ 1}

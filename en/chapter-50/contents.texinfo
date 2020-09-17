@@ -161,25 +161,25 @@ Object subclass: #SpaceShip
    category: 'Spacewar!'
 @end example
 
-@subheading @ref{spacewarSimpleGetters}
+@subheading @ref{spaceShipGetters}
 @example
-CentralStar>>mass
-   ^ mass
-
 SpaceShip>>position
    ^ position
 
 SpaceShip>>velocity
    ^ position
 
-Torpedo>>position
-   ^ position
+SpaceShip>>mass
+   ^ mass
 @end example
 
-@subheading @ref{shipPositionSetter}
+@subheading @ref{spaceShipSetters}
 @example
 SpaceShip>>position: aPoint
    position @assign{} aPoint
+
+SpaceShip>>velocity: aPoint
+   velocity @assign{} aPoint
 @end example
 
 
