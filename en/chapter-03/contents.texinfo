@@ -675,15 +675,15 @@ reject the numeric characters.}}
 more than 200 methods. It is useful to browse these method categories
 to see common ways to group methods.
 
-Sometimes you may not see a category which help right away.
+Sometimes you may not see a category which helps right away.
 
 @strong{Tip:} If you expect a method selector to start with a character,
 click-select the @label{-- all --} method category, then move the cursor
 over the pane listing the method names.
-Press this character, e.g. @smalltalk{$f}.  This will scroll to the method pane
+Press this character, e.g. @smalltalk{$f}.  This will scroll the method pane
 to the first method name starting with an ``f''.
 
-Consider the case where you need to search for a string in a
+Consider the case where you need to search for a substring, a string within a
 string: when browsing
 the @class{String} class, search for method categories named like
 @label{finding...} or @label{accessing}. There you find a family of
