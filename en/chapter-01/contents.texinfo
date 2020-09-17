@@ -1,6 +1,6 @@
 @node Smalltalk Philosophy
 @chapter Smalltalk Philosophy
- 
+
 Before getting into the details of how to use the @cuis{} language and
 tools to build software, we need to understand the point of view,
 assumptions and intentions that shape how @cuis{} is meant to be
