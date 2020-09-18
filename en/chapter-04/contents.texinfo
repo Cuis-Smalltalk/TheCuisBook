@@ -52,6 +52,7 @@ options:
    At the right are the method selectors for strings and, in parenthesis,
    the class where they are defined.  Methods defined in class
    @class{String} are in bold type.
+
    Selecting one class there only shows the protocol starting from
    this class down to the @class{String} class. If you select
    @class{String} in the left panel, you see only method names defined in
