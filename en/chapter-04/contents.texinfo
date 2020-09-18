@@ -24,7 +24,7 @@ have percolated into many popular programming languages.
 @cindex class, protocol
 @cindex protocol
 
-The @class{String} class also inherits its behavior from its
+The @class{String} class also inherits behavior from its
 ancestor classes. Indeed @class{String} is a subclass of
 @class{ArrayedCollection}. The direct consequence is that when
 searching for some specific behavior, you may need to explore the
@@ -47,12 +47,15 @@ options:
    @figure{Browse @class{String} protocol,ch03-browseProtocol,8}
 
    The new window is a protocol browser for the @class{String}
-   class. At the left, a hierarchy of the @class{String} ancestors;
-   selecting one class there only shows the protocol starting from
-   this class down to the @class{String} class. In the pane at the
-   right is the list of methods of the selected ancestry. The specific
-   protocol to @class{String} is bold; surrounded by parenthesis, the
-   class the method is implemented in.
+   class. At the left, we see a hierarchy of the @class{String}'s ancestor
+   classes.
+   At the right are the method selectors for strings and, in parenthesis,
+   the class where they are defined.  Methods defined in class
+   @class{String} are in bold type.
+   Selecting one class there only shows the protocol starting from
+   this class down to the @class{String} class. If you select
+   @class{String} in the left panel, you see only method names defined in
+   the @class{String} class itself.
 
    In @ref{ch03-browseProtocol}, no specific class is selected,
    therefore the whole @class{String} protocol is listed at the
@@ -84,8 +87,8 @@ options:
 
 @end enumerate
 
-The hierarchy browser is a general tool for exploration. Contrary to
-the protocol browser, it does not display at once the whole protocol
+The hierarchy browser is a general tool for exploration. Unlike
+the protocol browser, it does not display the entire protocol
 of a class. In @ref{ch-browseHierarchy}, the class
 @class{SequenceableCollection} is selected as well as its method
 @method{before:}.
