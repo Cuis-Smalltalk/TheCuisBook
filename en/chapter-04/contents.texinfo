@@ -141,15 +141,19 @@ Now you know.  Strings can be duplicated or changed, symbols can't.
 
 Symbols can contain space characters:
 
-@smalltalkExample{A Symbol which includes space characters
-#'hello my friend'
-'hello my friend' asSymbol}
+@smalltalkExample{'hello my friend' asSymbol
+@result{} #'hello my friend'
+}
 
 @class{Symbol} is a subclass of @class{String} and much of its behavior
 is inherited. As we learn about @class{String}s we
 are also learning quite a bit about symbols.
 
-@smalltalkExample{'hello my friend' asCamelCase asSymbol 
+Note that many @class{String} methods are defined to return strings.
+
+@smalltalkExample{#'hello my friend' asCamelCase
+@result{} 'helloMyFriend'
+'hello my friend' asCamelCase asSymbol 
 @result{} #helloMyFriend}
 
 
