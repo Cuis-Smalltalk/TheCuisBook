@@ -151,9 +151,13 @@ are also learning quite a bit about symbols.
 
 Note that many @class{String} methods are defined to return strings.
 
-@smalltalkExample{#'hello my friend' asCamelCase
+@smalltalkExample{'hello my friend' class.
+@result{} String
+#'hello my friend' class.
+@result{} Symbol 
+#'hello my friend' asCamelCase
 @result{} 'helloMyFriend'
-'hello my friend' asCamelCase asSymbol 
+#'hello my friend' asCamelCase asSymbol 
 @result{} #helloMyFriend}
 
 
