@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : September 17, 2020
+Compilation : September 18, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -95,44 +95,54 @@ Next: <a href="Installing-and-configuring-Cuis_002dSmalltalk.html" accesskey="n"
 <p>One major idea in software is that programming is merely giving a
 computer a set of instructions to solve some problem.  In this point
 of view, the only value of software is to achieve a result, and it is
-only as interesting as solving that problem.  Furthermore, programming
-is left to a professional guild whose technical knowledge is how to
+only as interesting as finding the solution to that problem.
+Furthermore, programming
+is left to a professional guild with a specialized technical knowledge of how to
 write software.
-<span id="index-note_002c-Can-we-simplify_003f-Solve-is-repeated-3-times_002e"></span>
-<strong>Note:</strong> <em>Can we simplify? Solve is repeated 3 times.</em>
 </p>
 <p>Our focus is on one thread in the history of powerful ideas which give
-a different lens through which to explore software development than
-the <em>just solve a problem</em> view. We think they are worth
+a different lens through which to explore software development.
+The historical development of these ideas differs from 
+the <em>just solve a problem</em> view. We think this is worth
 revisiting. 
 </p>
-<p>The first clear vision of an automated information processor to assist
-people to think and to share knowledge in greatly improved ways was
-called Memex and described in Vannevar Bush essay &ldquo;As We May Think&rdquo;,
-1945 <a id="DOCF2" href="#FOOT2"><sup>2</sup></a>.
-His ideas inspired many later thinkers and inventors in the adoption
-of digital computers, networks and hypertext as the substrate for
-Memex-like systems.  <a id="DOCF3" href="#FOOT3"><sup>3</sup></a>
+<p>The first clear vision of an automated information processor to augment
+our collective memory, find and share knowledge &ndash; indeed to transform the 
+information explosion into a knowledge explosion &ndash; was
+called Memex and described in the Vannevar Bush essay &ldquo;As We May Think&rdquo; in 1945
+<a id="DOCF2" href="#FOOT2"><sup>2</sup></a>.
+Bush&rsquo;s description of the possibility of developing a Memex processing system
+to help individuals access, evolve and capture knowledge 
+for our collective benefit
+inspired many later thinkers and inventors in the development
+of personal computers, networks, hypertext, search engines, and
+knowledge repositories such as Wikipedia
+<a id="DOCF3" href="#FOOT3"><sup>3</sup></a>.
 </p>
-<p>Originally inspired by Memex, another vision was also developed with
-insights in understanding how humans learn.  <a id="DOCF4" href="#FOOT4"><sup>4</sup></a>  Alan Kay
+<p>As computational machinery evolved from large, single program at a time mainframes,
+into timesharing mainframes, and into minicomputers, another area of 
+insight was developing with models of how humans learn 
+<a id="DOCF4" href="#FOOT4"><sup>4</sup></a>.
+People began to talk of <em>human-computer symbiosis</em>.
+Alan Kay
 conceived the idea that computer software and computer programming
 could become a new medium for expressing thoughts and knowledge. The
 ability to express ideas in this new medium would be the new
 literacy. Every person should learn to read and write in this new
-medium, at least to the extent of their personal needs. He called his
-concept the <em>Dynabook</em> and described it in &ldquo;Personal Dynamic
-Media&rdquo;, 1977
-<a id="DOCF5" href="#FOOT5"><sup>5</sup></a>.
-Other useful insights shared by Kay can be gleaned from his paper
-&ldquo;The Early History of Smalltalk&rdquo;
-<a id="DOCF6" href="#FOOT6"><sup>6</sup></a>.
+digital medium, and would have available their own dynamic book, a <em>Dynabook</em>
+<a id="DOCF5" href="#FOOT5"><sup>5</sup></a>
+to accomplish this.
 </p>
-<p>The dynamic book vision &ndash; Dynabook &ndash; included two main parts:
+<p>A very readable account of developments up to this time is Alan Kay&rsquo;s paper
+&ldquo;The Early History of Smalltalk&rdquo;
+<a id="DOCF6" href="#FOOT6"><sup>6</sup></a>
+in which he notes <em>The best way to predict the future is to invent it</em>.
+Realizing the Dynabook vision required significant advances and
+mutually supporting development of
 hardware and software. The original development took place at the
-Xerox PARC research center, in the 1970&rsquo;s. The first <em>interim
+Xerox PARC research center in the 1970&rsquo;s. The first <em>interim
 Dynabook</em> hardware was the Xerox Alto, usually considered the first
-personal computer. The software part was Smalltalk. The design of both
+personal computer. The software system was Smalltalk. The design of both
 was guided by the objectives of making <em>Personal Dynamic Media</em>
 and the Dynabook real. The final version of Smalltalk built at Xerox
 was Smalltalk-80.
@@ -141,38 +151,12 @@ was Smalltalk-80.
 time, implementing this vision presented real challenges, and much
 creativity was called for.  Today, smartphones, tablets and laptops
 have the hardware capabilities a Dynabook requires. However, the same
-advance hasn&rsquo;t happened for personal software. After Smalltalk-80,
-evolution was directed mostly toward making Smalltalk an appropriate
-tool for professional developers to write software for end users. Only
-a modest effort has been undertaken toward the idea of a new medium
-for people to express ideas.
+advance hasn&rsquo;t happened for the medium of personal software. 
 </p>
-<p>The development of the World Wide Web with modern applications for
-handhelds and laptops, along with the disappearance of most <em>end
-user programming</em> tools, meant that software is almost exclusively
-written by professional developers. The kinds of media that are made
-available for users to create content include text, photographs and
-video, but not a more advanced way to capture lessons learned, where
-the user can <em>see all the way to the bottom</em> of what is going on
-and be able to develop their own tools as required.
-<span id="index-note_002c-_0060_0060capture-lessons-learned_0027_0027-is-too-obscure_002e-Elaborate"></span>
-<strong>Note:</strong> <em>&ldquo;capture lessons learned&rdquo; is too obscure. Elaborate</em>
-</p>
-
-<p>We believe that everyone should have full access to the software that
-runs our systems.  Understanding and exploring computer systems
-requires writing software in ways that can be read and shared.
-</p>
-
-<p>The thinking change in problem solving can shift from <em>What can I
-do here with what I am presented?</em> to asking <em>What tools do I
-need to be successful here?</em>  and then building them to be ever more
-successful.
-</p>
-<p>Dan Ingalls, one of the early Smalltalk inventors, wrote in his
-article &ldquo;Design Principles Behind Smalltalk&rdquo;, 1981
+<p>In 1981 Dan Ingalls, one of the early Smalltalk inventors, wrote in his
+article &ldquo;Design Principles Behind Smalltalk&rdquo;
 <a id="DOCF7" href="#FOOT7"><sup>7</sup></a>
-a set of principles that still guide us today. Among these:
+a number of principles that still guide us today. Among these:
 </p><blockquote>
 <p><strong>Personal Mastery.</strong> If a system is to serve the creative
 spirit, it must be entirely comprehensible to a single individual.
@@ -180,34 +164,62 @@ spirit, it must be entirely comprehensible to a single individual.
 <p><strong>Reactive Principle.</strong> Every component accessible to the user
 should be able to present itself in a meaningful way for observation
 and manipulation.
+</p></blockquote>
+
+<p>With the commercialization of software, the trend has been to give people
+&ldquo;shrink wrapped&rdquo; applications which are sealed off and written
+by professional software developers. One may customize an
+application by changing &ldquo;user settings&rdquo;, but there is no way
+to see into or change deep capabilities.
 </p>
-</blockquote>
-<div align="center">&mdash; <em>Dan Ingalls</em>
-</div>
+<p>In keeping with the ideal of personal media literacy,
+we believe that everyone should have full access to the software that
+runs our systems.  Understanding and exploring computer systems
+requires writing software in ways that can be read and shared.
+</p>
+<p>The thinking change in problem solving can shift from <em>What can I
+do here with what I am presented?</em> to asking <em>What tools do I
+need to be successful here?</em> and then building them to be ever more
+successful.
+</p>
 <p>This way of thinking about software systems is important to us.
 </p>
-<p>For this reason, Cuis is a Smalltalk system which is still rather
-close to Smalltalk-80. It is well adapted to modern hardware and
-operating environments, and includes many modern programming
-facilities.
-<span id="index-note_002c-the-latter-statement-is-vague_002e"></span>
-<strong>Note:</strong> <em>the latter statement is vague.</em>
+<p>For this reason, Cuis is a <em>kernel</em> Smalltalk system which is still rather
+close to Smalltalk-80. 
+The Cuis-Smalltalk goal is to be a small, coherent Smalltalk
+development environment that, with study, is
+comprehensible to a single person.
 </p>
-<p>We believe the best way to write programs is to capture a set of ideas
-and knowledge other people can understand, and that a computer can
-run. Cuis-Smalltalk is meant to be used this way.
-<span id="index-note_002c-it-is-very-vague-too_002e"></span>
-<strong>Note:</strong> <em>it is very vague too.</em>
+<p>As we experiment with and evolve Cuis, this goal is carried out by removing everything
+possible from the base system which is not necessary, and by having a
+composition strategy which allows one to write or add any features as 
+needed.  As one gains understanding of the software kernel or core, one only
+has to read and learn from each additional feature at a time to understand the whole.
 </p>
-
-<div class="footnote">
+<p>Modern, open software environments are highly complex.
+Cuis is an attempt to remain oriented and able to discover
+patterns without being lost in a large wealth of possibilities
+which one does not completely grasp.
+</p>
+<p>It is said that one understands the world by building it.  Developing fluency and depth in
+a new medium takes time and practice.
+</p>
+<p>We invite you to become fluent and look forward to sharing with us what you have built.
+</p>
+<p>First, however, we must start with some of the mechanics.
+</p>
+<p>As the saying goes &ldquo;A journey of a thousand miles begins with a single step&rdquo;
+<a id="DOCF8" href="#FOOT8"><sup>8</sup></a>.
+</p>
+<p>Let&rsquo;s step forward together.
+</p><div class="footnote">
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
 <h5><a id="FOOT2" href="#DOCF2">(2)</a></h3>
 <p><a href="https://en.wikipedia.org/wiki/As_We_May_Think">https://en.wikipedia.org/wiki/As_We_May_Think</a></p>
 <h5><a id="FOOT3" href="#DOCF3">(3)</a></h3>
-<p>Notable milestones in this line of
+<p>Notable early milestones in this line of
 development were Ivan Sutherland&rsquo;s Sketchpad (1963), the RAND tablet
 (1964), and Doug Engelbart&rsquo;s NLS (&quot;oN-Line System&quot;) (1968). Later
 developments include Ted Nelson&rsquo;s Xanadu, the Apple Macintosh, the
@@ -216,11 +228,14 @@ World Wide Web, smartphones and tablet computers.</p>
 <p>Early notables
 here are J. Piaget, J. Brunner, O. K. Moore, and S. Papert.</p>
 <h5><a id="FOOT5" href="#DOCF5">(5)</a></h3>
-<p><a href="http://augmentingcognition.com/assets/Kay1977.pdf">http://augmentingcognition.com/assets/Kay1977.pdf</a></p>
+<p>&ldquo;Personal Dynamic
+Media&rdquo;,1977 <a href="http://augmentingcognition.com/assets/Kay1977.pdf">http://augmentingcognition.com/assets/Kay1977.pdf</a></p>
 <h5><a id="FOOT6" href="#DOCF6">(6)</a></h3>
 <p><a href="http://worrydream.com/EarlyHistoryOfSmalltalk">http://worrydream.com/EarlyHistoryOfSmalltalk</a></p>
 <h5><a id="FOOT7" href="#DOCF7">(7)</a></h3>
 <p><a href="http://www.cs.virginia.edu/~evans/cs655/readings/smalltalk.html">http://www.cs.virginia.edu/~evans/cs655/readings/smalltalk.html</a></p>
+<h5><a id="FOOT8" href="#DOCF8">(8)</a></h3>
+<p><a href="https://en.wikipedia.org/wiki/A_journey_of_a_thousand_miles_begins_with_a_single_step">https://en.wikipedia.org/wiki/A_journey_of_a_thousand_miles_begins_with_a_single_step</a></p>
 </div>
 <hr>
 <div class="header">

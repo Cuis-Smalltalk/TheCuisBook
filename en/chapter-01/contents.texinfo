@@ -52,7 +52,7 @@ into timesharing mainframes, and into minicomputers, another area of
 insight was developing with models of how humans learn 
 @footnote{Early notables
 here are J. Piaget, J. Brunner, O. K. Moore, and S. Papert.}.
-People began to talk of @dfn{human-computer sybiosis}.
+People began to talk of @dfn{human-computer symbiosis}.
 Alan Kay
 conceived the idea that computer software and computer programming
 could become a new medium for expressing thoughts and knowledge. The
@@ -66,7 +66,7 @@ to accomplish this.
 A very readable account of developments up to this time is Alan Kay's paper
 ``The Early History of Smalltalk''
 @footnote{@url{http://worrydream.com/EarlyHistoryOfSmalltalk}}
-in which he notes ``The best way to predict the future is to invent it''.
+in which he notes @emph{The best way to predict the future is to invent it}.
 Realizing the Dynabook vision required significant advances and
 mutually supporting development of
 hardware and software. The original development took place at the
@@ -127,7 +127,7 @@ needed.  As one gains understanding of the software kernel or core, one only
 has to read and learn from each additional feature at a time to understand the whole.
 
 Modern, open software environments are highly complex.
-Cuis is an attempt is remain oriented and able to discover
+Cuis is an attempt to remain oriented and able to discover
 patterns without being lost in a large wealth of possibilities
 which one does not completely grasp.
 
