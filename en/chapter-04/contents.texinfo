@@ -81,8 +81,8 @@ options:
       @item At the far left, the class categories pane is absent,
       
       @item In the classes pane, the hierarchy of @class{String} is
-      printed. It makes easy to browse @class{String} parents and
-      children class.
+      printed. It makes easy to browse @class{String} parent and
+      child classes.
 
    @end itemize
 
@@ -116,13 +116,19 @@ instance:
 
 @cindex symbol
 @strong{Symbol.} A symbol is very like a string but it is unique and
-never duplicated. It is written as @smalltalk{#hello}, and often used
-as a constant. You already observe how in the book we noted messages
-as symbol, it is because each message is unique. You will use symbol
-when you need to name something uniquely.
+never duplicated.
+Two references to @smalltalk{'hello'} might be to two or only
+one object depending computational history.  Two references
+to @smalltalk{#hello} are guarenteed to always refer to the same object.
 
-Observe in the example bellow, the strings are not identical once
-duplicated -- understand not the same memory location in the computer
+Symbols got their name because they are used as @dfn{symbolic constants}.
+You already observed how in the book we wrote message selectors as a symbol.
+We use symbols because each message name must uniquely index
+the code for a method.
+You will use a symbol when you need to name something uniquely.
+
+In the example below, the strings are not identical once
+duplicated -- copying a string always results in a new string
 -- however symbols are identical even when duplicated@footnote{To be
 honest, copying a symbol just returns the original symbol.}:
 
@@ -131,14 +137,17 @@ honest, copying a symbol just returns the original symbol.}:
 #hello  == #hello copy
 @result{} true}
 
-Symbols can be written with space:
+Now you know.  Strings can be duplicated or changed, symbols can't.
+
+Symbols can contain space characters:
 
 @smalltalkExample{A Symbol which includes space characters
 #'hello my friend'
 'hello my friend' asSymbol}
 
-@class{Symbol} is a subclass of @class{String}, a lot of its behavior
-is inherited. This makes symbols quite useful.
+@class{Symbol} is a subclass of @class{String} and much of its behavior
+is inherited. As we learn about @class{String}s we
+are also learning quite a bit about symbols.
 
 @smalltalkExample{'hello my friend' asCamelCase asSymbol 
 @result{} #helloMyFriend}
