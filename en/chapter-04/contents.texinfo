@@ -223,7 +223,7 @@ array will not work as expected:
 @result{} #(1 2 #/ 3)}
 
 @cindex array, dynamic
-Indeed, the ``/'' is interpreted as a literal symbol and we get
+Indeed, the @smalltalk{$/} is interpreted as a literal symbol and we get
 basic components of ``2 / 3'' but this text is not
 interpreted as a fraction. To get a fraction
 inserted in the array, you use a @dfn{run-time array} or @dfn{dynamic
@@ -277,7 +277,7 @@ array of integer numbers ranging from -80 to 50.}}
 @cindex collection, dynamic
 @cindex collection, @class{OrderedCollection}
 @cindex collection, @method{add:}
-The size of an array is fixed size, it can not grow. An
+The size of an array is fixed, it can not grow. An
 @class{OrderedCollection} is a dynamic, ordered collection, it grows
 when adding element with the @msg{add:} message:
 @smalltalkExampleCaption{Dynamic size collection,dynamicSize,
@@ -303,8 +303,8 @@ fibo at: fibo size @result{} 21}
 
 
 @subheading Playing with enumerators
-The collection comes with a set of helpful methods named
-enumerators. They operate on each element of a collection.
+A collection comes with a set of helpful methods named
+enumerators. Enumerators operate on each element of a collection.
 
 @cindex collection, set operations (union, intersection, difference)
 Set operations between two collections are computed with the
@@ -320,7 +320,7 @@ Set operations between two collections are computed with the
 @exercise{Hole in a set,holeSet,@emph{Construct the array of the
 numbers 1@comma{}...@comma{}24@comma{}76@comma{}...@comma{}100.}}
 
-Set operation works with any kind of content. We will discuss
+Set operations work with any kind of object. We will discuss
 comparing objects later.
 @smalltalkExample{#(1 2 3 'e' 5) intersection: #(3.0 4 6 7 'e')
 @result{} #(3 'e')}
