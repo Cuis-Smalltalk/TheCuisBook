@@ -993,3 +993,22 @@ variable and edit the @method{mass} method to return a literal number:
 @smalltalkExampleCaption{A method returning a constant, methodConstant,
 SpaceShip>>mass
    ^ 1}
+
+@subsection Initializing
+@cindex @method{initialize}
+When an instance is created, for example @smalltalk{SpaceShip new}, it
+is automatically initialized: the message @msg{initialize} is sent to
+the newly created object and its matching @method{initialize} instance
+side method is called.
+
+The initializing process is useful to set the default values of the
+instance variables. When we create a new space ship object we want to
+set its default position, speed, acceleration:
+
+@smalltalkExampleCaption{Initialize the space ship,initSpaceShip,
+SpaceShip>>initialize
+   super initialize.
+   heading @assign{} Float halfPi.
+   velocity @assign{} 0 @ 0.
+   position @assign{} 100 @ 100.
+   acceleration @assign{} 0}

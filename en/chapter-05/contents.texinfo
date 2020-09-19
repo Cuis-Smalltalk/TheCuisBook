@@ -92,6 +92,9 @@ code is executed.
 @cindex method
 @node Method syntax
 @section Method syntax
+
+@todo{Section still needed?}
+
 Whereas expressions may be evaluated anywhere in @cuis{} (for example,
 in a workspace, in a debugger, or in a browser), methods are normally
 defined in a browser window, or in the debugger. (Methods can also be
@@ -108,6 +111,8 @@ Here is the method @method{lineCount} in the class
 @smalltalk{ClassName>>methodName}, so we call this method
 @smalltalk{String>>lineCount}.)
 
+
+@todo{Pickup another example}
 @smalltalkExampleCaption{Line count, lineCount,
 String>>lineCount
   "Answer the number of lines represented by the receiver@comma{}
