@@ -182,6 +182,36 @@ SpaceShip>>velocity: aPoint
    velocity @assign{} aPoint
 @end example
 
+@subheading @ref{shipHeading}
+@example
+SpaceShip>>left
+"Rotate the ship to its left"
+   heading @assign{} heading + 0.1
+
+SpaceShip>>right
+"Rotate the ship to its right"
+   heading @assign{} heading - 0.1
+@end example
+
+@subheading @ref{shipAcceleration}
+@example
+SpaceShip>>push
+"Init an accelaration boost"
+   acceleration @assign{} 10
+
+SpaceShip>>unpush
+"Stop the accelaration boost"
+   acceleration @assign{} 0
+@end example
+
+
+@subheading @ref{initCentralStar}
+@example
+CentralStar>>initialize
+   super initialize.
+   mass @assign{} 8000.
+@end example
+
 
 @c Chapter 4
 @unnumberedsec The Collection Way of Life
