@@ -42,7 +42,7 @@ Expressions are composed of the following building blocks:
 
 @end enumerate
 
-@cindex pseudo-variable
+@cindex pseudo-variables
 @node Pseudo-variables
 @section Pseudo-variables
 In Smalltalk, there are 6 reserved keywords, or pseudo-variables:
@@ -52,33 +52,45 @@ In Smalltalk, there are 6 reserved keywords, or pseudo-variables:
 @smalltalk{self}, @smalltalk{super}, and @smalltalk{thisContext}.
 @end indentedblock
 
-
 They are called @dfn{pseudo-variables} because they are predefined and
 cannot be assigned to. @smalltalk{true}, @smalltalk{false}, and
 @smalltalk{nil} are constants while the values of @smalltalk{self},
 @smalltalk{super}, and @smalltalk{thisContext} vary dynamically as
 code is executed.
 
-
 @itemize
 
+@cindex pseudo-variable, @smalltalk{true}
+@cindex pseudo-variable, @smalltalk{false}
+@cindex @smalltalk{true}
+@cindex @smalltalk{false}
    @item @smalltalk{true} and @smalltalk{false} are the unique
    instances of the @class{Boolean} classes @class{True} and
    @smalltalk{False}.
-   
+
+@cindex pseudo-variable, @smalltalk{self}
+@cindex @smalltalk{self}
+@cindex @smalltalk{self}
    @item @smalltalk{self} always refers to the receiver of the
    currently executing method.
-   
+
+@cindex pseudo-variable, @smalltalk{super}
+@cindex @smalltalk{super}
    @item @smalltalk{super} also refers to the receiver of the current
    method, but when you send a message to @smalltalk{super}, the
    method-lookup changes so that it starts from the superclass of the
-   class containing the method that uses super.
+   class containing the method that uses @smalltalk{super}.
    
+@cindex pseudo-variable, @smalltalk{nil}
+@cindex @smalltalk{nil}
    @item @smalltalk{nil} is the undefined object. It is the unique
    instance of the class @smalltalk{UndefinedObject}. Instance
    variables, class variables and local variables are initialized to
    @smalltalk{nil}.
-   
+
+
+@cindex pseudo-variable, @smalltalk{thisConstext}
+@cindex @smalltalk{thisConstext}
    @item @smalltalk{thisContext} is a pseudo-variable that represents
    the top frame of the run-time stack. In other words, it represents
    the currently executing @smalltalk{MethodContext} or

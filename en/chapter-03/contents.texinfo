@@ -1009,6 +1009,19 @@ set its default position, speed, acceleration:
 SpaceShip>>initialize
    super initialize.
    heading @assign{} Float halfPi.
-   velocity @assign{} 0 @ 0.
-   position @assign{} 100 @ 100.
+   velocity @assign{} 0 @@ 0.
+   position @assign{} 100 @@ 100.
    acceleration @assign{} 0}
+
+@cindex @smalltalk{super}
+In the method @ref{initSpaceShip}, observe the first line
+@smalltalk{super initialize}. When a message is sent to
+@smalltalk{super}, it refers to the superclass of the class's method
+using @smalltalk{super}. So far, the @class{SpaceShip} parent class is
+@class{Object}, therefore the @smalltalk{Object>>initialize} method is
+called first for initialization.
+
+When created, a space ship is positioned to the top and right of the
+central star. It has no velocity nor internal acceleration -- only the
+gravity pull of the central star.  Its nose points in direction of the
+top of the game display.
