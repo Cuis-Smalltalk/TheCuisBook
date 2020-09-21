@@ -14,6 +14,7 @@ have percolated into many popular programming languages.
 * Fun with variables::
 * Fun with collections::
 * Collections detailed ::
+* SpaceWar! collections::
 @end menu
 
 @node String, a particular collection
@@ -745,3 +746,22 @@ dictionary to replace its values with a nicely capitalized string?}}
 There are many more collections to explore. You now know enough to
 explore and to search by yourself with the system browser, and to
 experiment with the workspace.
+
+
+@node SpaceWar! collections
+@section SpaceWar! collections
+
+Whenever you need to deal with more than one element -- an object --
+of the same nature, it is a clue to use a collection. Moreover, when
+these elements are in a fixed quantity, it indicates more precisely
+you want to use an @class{Array} instance. With a variable quantity of
+these element, you want to use an @class{OrderedCollection} instance.
+
+The SpaceWar! is a two-players game, there will be always two players
+and two space ship. We use an @class{Array} instance to hold the space
+ship.
+
+Each player can fire several torpedoes; therefore the game play can
+hold zero or more torpedo -- hundreds if we decide so. The torpedoes
+quantity is variable, we want to use an @class{OrdredCollection}
+instance to keep track of them.

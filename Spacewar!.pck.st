@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4377] on 21 September 2020 at 1:47:09 pm'!
+'From Cuis 5.0 [latest update: #4377] on 21 September 2020 at 2:00:11 pm'!
 'Description '!
-!provides: 'Spacewar!!' 1 38!
+!provides: 'Spacewar!!' 1 43!
 SystemOrganization addCategory: #'Spacewar!!'!
 
 
@@ -115,7 +115,7 @@ position: aPoint
 velocity: aPoint
 	velocity _ aPoint ! !
 
-!SpaceShip methodsFor: 'drawing' stamp: 'hlsf 9/10/2020 19:42:55'!
+!SpaceShip methodsFor: 'drawing' stamp: 'hlsf 9/21/2020 13:51:26'!
 drawOn: canvas
 	| m u n a b c |
 	m _ self transformation.
@@ -125,9 +125,9 @@ drawOn: canvas
 	a _ m transform: position + n.
 	b _ m transform: position - n.
 	c _ m transform: position + u.
-	canvas line: a to: b width: 2 color: Color white.
-	canvas line: c to: b width: 2 color: Color white.
-	canvas line: a to: c width: 2 color: Color white.
+	canvas line: a to: b width: 2 color: color.
+	canvas line: c to: b width: 2 color: color.
+	canvas line: a to: c width: 2 color: color.
 	
 	"Draw gas exhaust"
 	acceleration ifNotZero: [
@@ -196,10 +196,6 @@ unpush
 "Stop the accelaration boost"
 	acceleration _ 0! !
 
-!SpaceWar methodsFor: 'accessing' stamp: 'hlsf 9/16/2020 15:51:33'!
-ship
-	^ submorphs first! !
-
 !SpaceWar methodsFor: 'accessing' stamp: 'hlsf 9/16/2020 16:41:40'!
 starMass
 	^ centralStar mass! !
@@ -208,22 +204,38 @@ starMass
 defaultColor
 	^ `Color black`! !
 
-!SpaceWar methodsFor: 'initialization' stamp: 'hlsf 9/16/2020 16:41:16'!
+!SpaceWar methodsFor: 'initialization' stamp: 'hlsf 9/21/2020 13:52:41'!
 initialize
 	super initialize.
 	extent _ 500 @ 500.
 	self setProperty: #'handlesKeyboard' toValue: true.
 	self setProperty: #'handlesMouseOver:' toValue: true.
 	self startSteppingStepTime: self stepTime.
-	self addMorph: (centralStar _ CentralStar new).! !
+	self initializeActors.! !
 
-!SpaceWar methodsFor: 'events' stamp: 'hlsf 9/10/2020 19:17:33'!
+!SpaceWar methodsFor: 'initialization' stamp: 'hlsf 9/21/2020 13:57:40'!
+initializeActors
+	centralStar _ CentralStar new.
+	ships _ Array 
+		with: SpaceShip new
+		with: SpaceShip new.
+	ships first 
+		color: Color white; 
+		position: 200 @ 200.
+	ships second
+		color: Color red;
+		position: -200 @ -200.
+		
+	self addAllMorphs: ships.
+	self addMorph: centralStar! !
+
+!SpaceWar methodsFor: 'events' stamp: 'hlsf 9/21/2020 14:00:04'!
 keyStroke: event
 	| key |
 	key _ event keyCharacter.
-	key = Character arrowUp ifTrue: [self ship push].
-	key = Character arrowRight ifTrue: [self ship right].
-	key = Character arrowLeft ifTrue: [self ship left]! !
+	key = Character arrowUp ifTrue: [ships first push].
+	key = Character arrowRight ifTrue: [ships first right].
+	key = Character arrowLeft ifTrue: [ships first left]! !
 
 !SpaceWar methodsFor: 'events' stamp: 'hlsf 9/11/2020 10:07:17'!
 mouseEnter: evt
@@ -242,10 +254,10 @@ keyboardFocusChange: gotFocus
 		ifFalse: [color _ self defaultColor alpha: 0.5].
 	self redrawNeeded.! !
 
-!SpaceWar methodsFor: 'stepping' stamp: 'hlsf 9/10/2020 18:35:22'!
+!SpaceWar methodsFor: 'stepping' stamp: 'hlsf 9/21/2020 13:59:14'!
 step
-	self ship update.
-	self ship unpush.
+	ships do: [:each | each update].
+	ships do: [:each | each unpush].
 	self redrawNeeded ! !
 
 !SpaceWar methodsFor: 'stepping' stamp: 'hlsf 9/11/2020 13:19:07'!
