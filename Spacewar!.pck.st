@@ -1,8 +1,18 @@
-'From Cuis 5.0 [latest update: #4249] on 17 September 2020 at 3:36:11 pm'!
+'From Cuis 5.0 [latest update: #4377] on 21 September 2020 at 1:47:09 pm'!
 'Description '!
-!provides: 'Spacewar!!' 1 37!
+!provides: 'Spacewar!!' 1 38!
 SystemOrganization addCategory: #'Spacewar!!'!
 
+
+!classDefinition: #CentralStar category: #'Spacewar!!'!
+RectangleLikeMorph subclass: #CentralStar
+	instanceVariableNames: 'mass'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Spacewar!!'!
+!classDefinition: 'CentralStar class' category: #'Spacewar!!'!
+CentralStar class
+	instanceVariableNames: ''!
 
 !classDefinition: #SpaceShip category: #'Spacewar!!'!
 RectangleLikeMorph subclass: #SpaceShip
@@ -24,16 +34,6 @@ RectangleLikeMorph subclass: #SpaceWar
 SpaceWar class
 	instanceVariableNames: ''!
 
-!classDefinition: #CentralStar category: #'Spacewar!!'!
-Morph subclass: #CentralStar
-	instanceVariableNames: 'mass'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Spacewar!!'!
-!classDefinition: 'CentralStar class' category: #'Spacewar!!'!
-CentralStar class
-	instanceVariableNames: ''!
-
 !classDefinition: #Torpedo category: #'Spacewar!!'!
 Morph subclass: #Torpedo
 	instanceVariableNames: 'position velocity lifeSpan'
@@ -45,6 +45,9 @@ Torpedo class
 	instanceVariableNames: ''!
 
 
+!CentralStar commentStamp: '<historical>' prior: 0!
+I am the central start of the game generating a gravity field.!
+
 !SpaceWar commentStamp: 'hlsf 9/16/2020 15:06:56' prior: 0!
 I am the gameplay view. My submorphs are the elements of the game.
 
@@ -55,8 +58,28 @@ game openInWorld
 
 Control with the left, up, right arrows!
 
-!CentralStar commentStamp: '<historical>' prior: 0!
-I am the central start of the game generating a gravity field.!
+!CentralStar methodsFor: 'accessing' stamp: 'hlsf 9/10/2020 13:59:50'!
+mass
+	^ mass! !
+
+!CentralStar methodsFor: 'accessing' stamp: 'hlsf 9/10/2020 14:00:10'!
+mass: anInteger
+	mass _ anInteger ! !
+
+!CentralStar methodsFor: 'drawing' stamp: 'hlsf 9/16/2020 16:05:41'!
+drawOn: canvas
+	canvas ellipseCenterX: owner morphExtent x // 2 
+		y:  owner morphExtent y // 2 
+		rx: 10 + (2 atRandom - 1)
+		ry: 10 + (2 atRandom - 1)
+		borderWidth: 2 
+		borderColor: Color orange 
+		fillColor: Color yellow ! !
+
+!CentralStar methodsFor: 'initialization' stamp: 'hlsf 9/16/2020 16:06:06'!
+initialize
+	super initialize.
+	mass _ 8000.! !
 
 !SpaceShip methodsFor: 'initialization' stamp: 'hlsf 9/17/2020 15:35:28'!
 initialize
@@ -233,26 +256,3 @@ stepTime
 !SpaceWar methodsFor: 'stepping' stamp: 'hlsf 9/10/2020 18:03:59'!
 wantsSteps
 	^ true! !
-
-!CentralStar methodsFor: 'accessing' stamp: 'hlsf 9/10/2020 13:59:50'!
-mass
-	^ mass! !
-
-!CentralStar methodsFor: 'accessing' stamp: 'hlsf 9/10/2020 14:00:10'!
-mass: anInteger
-	mass _ anInteger ! !
-
-!CentralStar methodsFor: 'drawing' stamp: 'hlsf 9/16/2020 16:05:41'!
-drawOn: canvas
-	canvas ellipseCenterX: owner morphExtent x // 2 
-		y:  owner morphExtent y // 2 
-		rx: 10 + (2 atRandom - 1)
-		ry: 10 + (2 atRandom - 1)
-		borderWidth: 2 
-		borderColor: Color orange 
-		fillColor: Color yellow ! !
-
-!CentralStar methodsFor: 'initialization' stamp: 'hlsf 9/16/2020 16:06:06'!
-initialize
-	super initialize.
-	mass _ 8000.! !
