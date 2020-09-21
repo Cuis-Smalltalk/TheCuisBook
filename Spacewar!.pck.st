@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4377] on 21 September 2020 at 2:00:11 pm'!
+'From Cuis 5.0 [latest update: #4249] on 21 September 2020 at 9:15:59 pm'!
 'Description '!
-!provides: 'Spacewar!!' 1 43!
+!provides: 'Spacewar!!' 1 47!
 SystemOrganization addCategory: #'Spacewar!!'!
 
 
@@ -26,17 +26,17 @@ SpaceShip class
 
 !classDefinition: #SpaceWar category: #'Spacewar!!'!
 RectangleLikeMorph subclass: #SpaceWar
-	instanceVariableNames: 'ships torpedoes centralStar'
+	instanceVariableNames: 'ships torpedoes centralStar timeLapse'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Spacewar!!'!
 !classDefinition: 'SpaceWar class' category: #'Spacewar!!'!
 SpaceWar class
-	instanceVariableNames: ''!
+	instanceVariableNames: 'timeLapse'!
 
 !classDefinition: #Torpedo category: #'Spacewar!!'!
-Morph subclass: #Torpedo
-	instanceVariableNames: 'position velocity lifeSpan'
+RectangleLikeMorph subclass: #Torpedo
+	instanceVariableNames: 'position velocity direction lifeSpan'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Spacewar!!'!
@@ -115,12 +115,12 @@ position: aPoint
 velocity: aPoint
 	velocity _ aPoint ! !
 
-!SpaceShip methodsFor: 'drawing' stamp: 'hlsf 9/21/2020 13:51:26'!
+!SpaceShip methodsFor: 'drawing' stamp: 'hlsf 9/21/2020 20:47:48'!
 drawOn: canvas
 	| m u n a b c |
 	m _ self transformation.
 	
-	u _ self direction * 30.
+	u _ self nose.
 	n _ self normal * 10.
 	a _ m transform: position + n.
 	b _ m transform: position - n.
@@ -135,6 +135,11 @@ drawOn: canvas
 
 	! !
 
+!SpaceShip methodsFor: 'drawing' stamp: 'hlsf 9/21/2020 20:47:48'!
+nose
+
+	^ self direction * 30! !
+
 !SpaceShip methodsFor: 'drawing' stamp: 'hlsf 9/16/2020 15:07:02'!
 transformation
 "The transofmration matrix to compute the ship coordinates in the gameplay view"
@@ -147,12 +152,12 @@ gravity
 	^ [-10 * self mass * owner starMass / (position r raisedTo: 3) * position]
 		on: Error do: [0 @ 0]! !
 
-!SpaceShip methodsFor: 'computing' stamp: 'hlsf 9/16/2020 15:09:51'!
+!SpaceShip methodsFor: 'computing' stamp: 'hlsf 9/21/2020 21:00:38'!
 update
 "Update the ship position and velocity "
 	| ai ag newVelocity t |
 	"acceleration vectors"
-	t _ owner stepTime / 1000.0.
+	t _ owner stepTimeInSecond.
 	ai _ acceleration * self direction.
 	ag _ self gravity.
 	newVelocity _ (ai + ag) * t + velocity.
@@ -175,6 +180,17 @@ isInOuterSpace
 "Is the ship located in the outer space? (outside of the game playarea)"
 	^ (((0@0 extent: owner morphExtent) expandBy: 20) containsPoint: (self transformation transform: position)) not
 		! !
+
+!SpaceShip methodsFor: 'control' stamp: 'hlsf 9/21/2020 21:14:16'!
+fireTorpedo
+"Fire a torpedo in the direction of the ship heading with a combined velocity"
+	| torpedo | 
+	torpedo _ Torpedo new.
+	torpedo 
+		position: position + self nose;
+		direction: self direction;
+		velocity: self direction * 50 + velocity.
+	owner addTorpedo: torpedo.! !
 
 !SpaceShip methodsFor: 'control' stamp: 'hlsf 9/16/2020 15:07:51'!
 left
@@ -213,9 +229,10 @@ initialize
 	self startSteppingStepTime: self stepTime.
 	self initializeActors.! !
 
-!SpaceWar methodsFor: 'initialization' stamp: 'hlsf 9/21/2020 13:57:40'!
+!SpaceWar methodsFor: 'initialization' stamp: 'hlsf 9/21/2020 21:12:07'!
 initializeActors
 	centralStar _ CentralStar new.
+	torpedoes _ OrderedCollection new.
 	ships _ Array 
 		with: SpaceShip new
 		with: SpaceShip new.
@@ -229,13 +246,24 @@ initializeActors
 	self addAllMorphs: ships.
 	self addMorph: centralStar! !
 
-!SpaceWar methodsFor: 'events' stamp: 'hlsf 9/21/2020 14:00:04'!
+!SpaceWar methodsFor: 'events' stamp: 'hlsf 9/21/2020 20:56:33'!
+addTorpedo: aTorpedo
+	torpedoes add: aTorpedo.
+	self addMorph: aTorpedo ! !
+
+!SpaceWar methodsFor: 'events' stamp: 'hlsf 9/21/2020 21:10:33'!
+destroyTorpedo: aTorpedo
+	aTorpedo delete.
+	torpedoes remove: aTorpedo ! !
+
+!SpaceWar methodsFor: 'events' stamp: 'hlsf 9/21/2020 20:41:20'!
 keyStroke: event
 	| key |
 	key _ event keyCharacter.
 	key = Character arrowUp ifTrue: [ships first push].
 	key = Character arrowRight ifTrue: [ships first right].
-	key = Character arrowLeft ifTrue: [ships first left]! !
+	key = Character arrowLeft ifTrue: [ships first left].
+	key = Character arrowDown ifTrue: [ships first fireTorpedo]! !
 
 !SpaceWar methodsFor: 'events' stamp: 'hlsf 9/11/2020 10:07:17'!
 mouseEnter: evt
@@ -254,10 +282,11 @@ keyboardFocusChange: gotFocus
 		ifFalse: [color _ self defaultColor alpha: 0.5].
 	self redrawNeeded.! !
 
-!SpaceWar methodsFor: 'stepping' stamp: 'hlsf 9/21/2020 13:59:14'!
+!SpaceWar methodsFor: 'stepping' stamp: 'hlsf 9/21/2020 20:57:11'!
 step
 	ships do: [:each | each update].
 	ships do: [:each | each unpush].
+	torpedoes do: [:each | each update].
 	self redrawNeeded ! !
 
 !SpaceWar methodsFor: 'stepping' stamp: 'hlsf 9/11/2020 13:19:07'!
@@ -265,6 +294,61 @@ stepTime
 "millisecond"
 	^ 20! !
 
+!SpaceWar methodsFor: 'stepping' stamp: 'hlsf 9/21/2020 21:00:27'!
+stepTimeInSecond
+	^ timeLapse ifNil: [timeLapse _ self stepTime / 1000]! !
+
 !SpaceWar methodsFor: 'stepping' stamp: 'hlsf 9/10/2020 18:03:59'!
 wantsSteps
 	^ true! !
+
+!Torpedo methodsFor: 'accessing' stamp: 'hlsf 9/21/2020 20:53:51'!
+direction: aVector
+	direction _ aVector ! !
+
+!Torpedo methodsFor: 'accessing' stamp: 'hlsf 9/21/2020 21:04:20'!
+normal
+"A vector normal to the direction heading of the ship"
+	^ direction y negated @ direction x
+	! !
+
+!Torpedo methodsFor: 'accessing' stamp: 'hlsf 9/21/2020 20:53:04'!
+position: aPoint
+	position _ aPoint ! !
+
+!Torpedo methodsFor: 'accessing' stamp: 'hlsf 9/21/2020 20:54:04'!
+velocity: aVector
+	velocity _ 	aVector ! !
+
+!Torpedo methodsFor: 'computing' stamp: 'hlsf 9/21/2020 21:10:36'!
+update
+"Update the torpedo position"
+	position _ (velocity * owner stepTimeInSecond) + position.
+	lifeSpan _ lifeSpan - 1.
+	lifeSpan isZero ifTrue: [owner destroyTorpedo: self]! !
+
+!Torpedo methodsFor: 'drawing' stamp: 'hlsf 9/21/2020 21:06:04'!
+drawOn: canvas
+	| m n a b c |
+	m _ self transformation.
+	
+	n _ self normal * 2.
+	a _ m transform: position + n.
+	b _ m transform: position - n.
+	c _ m transform: position + (direction * 8).
+	canvas line: a to: b width: 2 color: color.
+	canvas line: c to: b width: 2 color: color.
+	canvas line: a to: c width: 2 color: color.
+! !
+
+!Torpedo methodsFor: 'drawing' stamp: 'hlsf 9/21/2020 21:01:36'!
+transformation
+"The transofmration matrix to compute the ship coordinates in the gameplay view"
+	^ AffineTransformation withPointScale: 1 @ -1 position: owner morphExtent / 2.0.
+! !
+
+!Torpedo methodsFor: 'initialization' stamp: 'hlsf 9/21/2020 21:07:31'!
+initialize
+	super initialize.
+	color _ Color red.
+	lifeSpan _ 500.! !
