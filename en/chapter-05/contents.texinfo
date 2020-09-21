@@ -157,12 +157,12 @@ Syntactically, a method consists of:
 The evaluation of any expression preceded by a @return{} (typed as ^)
 will cause the method to exit at that point, returning the value of
 that expression. A method that terminates without explicitly returning
-some expression will implicitly return @smalltalk{self}.
+some expression will always return @smalltalk{self}.
 
 Arguments and local variables should always start with lower case
 letters. Names starting with upper-case letters are assumed to be
 global variables. Class names, like @class{Character}, for example,
-are simply global vari- ables referring to the object representing
+are simply global variables referring to the object representing
 that class.
 
 @cindex block
@@ -175,7 +175,7 @@ expression in its body, unless there is an explicit return (with
 @return{}), in which case it does not answer any value.
 
 @smalltalkExample{[ 1 + 2 ] value
-@return 3}
+@result{} 3}
 
 Blocks may take parameters, each of which is declared with a leading
 colon. A vertical bar separates the parameter declaration(s) from the
@@ -201,8 +201,13 @@ method. Locals are declared after any arguments:
 @smalltalkExample{[ :x :y | | z | z := x + y. z ] value: 1 value: 2
 @result{} 3}
 
-Blocks are actually lexical closures, since they can refer to
-variables of the surrounding environment. The following block refers
+Blocks can refer to
+variables of the surrounding environment.
+Blocks are said to ``close over'' their lexical environment, which
+is a fancy way to say that they remember and refer to variables in
+their surrounding lexical context -- those apparent in their enclosing text.
+
+The following block refers
 to the variable x of its enclosing environment:
 
 @smalltalkExample{|x|
@@ -237,8 +242,10 @@ rewrite @ref{computeDivisors} to avoid code duplication?}}
 @cindex control flow
 @node Control flow with block and message
 @section Control flow with block and message
-Smalltalk offers no special syntax for control constructs. Instead,
-these are typically expressed by sending messages to booleans, numbers
+Deciding to send this message instead of that one is called @dfn{control flow} --
+controlling the flow of a computation.
+Smalltalk offers no special constructs for control flow.
+Decision logic is expressed by sending messages to booleans, numbers
 and collections, with blocks as arguments.
 
 @cindex control flow, test
