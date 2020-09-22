@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : September 18, 2020
+Compilation : September 22, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -271,6 +271,36 @@ SpaceShip&gt;&gt;velocity: aPoint
    velocity &#x2190; aPoint
 </pre></div>
 
+<span id="shipHeading-1"></span><h4 class="subheading"><a href="Spacewar_0021-States-and-Behaviors.html#shipHeading"><em>Exercise</em> 3.12</a></h4>
+<div class="example">
+<pre class="example">SpaceShip&gt;&gt;left
+&quot;Rotate the ship to its left&quot;
+   heading &#x2190; heading + 0.1
+
+SpaceShip&gt;&gt;right
+&quot;Rotate the ship to its right&quot;
+   heading &#x2190; heading - 0.1
+</pre></div>
+
+<span id="shipAcceleration-1"></span><h4 class="subheading"><a href="Spacewar_0021-States-and-Behaviors.html#shipAcceleration"><em>Exercise</em> 3.13</a></h4>
+<div class="example">
+<pre class="example">SpaceShip&gt;&gt;push
+&quot;Init an accelaration boost&quot;
+   acceleration &#x2190; 10
+
+SpaceShip&gt;&gt;unpush
+&quot;Stop the accelaration boost&quot;
+   acceleration &#x2190; 0
+</pre></div>
+
+
+<span id="initCentralStar-1"></span><h4 class="subheading"><a href="Spacewar_0021-States-and-Behaviors.html#initCentralStar"><em>Exercise</em> 3.14</a></h4>
+<div class="example">
+<pre class="example">CentralStar&gt;&gt;initialize
+   super initialize.
+   mass &#x2190; 8000.
+</pre></div>
+
 
 <span id="The-Collection-Way-of-Life-2"></span><h3 class="unnumberedsec">The Collection Way of Life</h3>
 <span id="cutString-1"></span><h4 class="subheading"><a href="String.html#cutString"><em>Exercise</em> 4.1</a></h4>
@@ -420,6 +450,36 @@ colors
 &rArr; a Dictionary(#blue-&gt;'Blue' #green-&gt;'Green' #red-&gt;'Red'
 #yellow-&gt;'Yellow' ) 
 </pre></div>
+
+<span id="initActorsCollections-1"></span><h4 class="subheading"><a href="SpaceWar_0021-collections.html#initActorsCollections"><em>Exercise</em> 4.17</a></h4>
+<p>When the game starts there is no fired torpedoes, therefore
+<span class="sansserif">torpedoes</span> is an empty <span class="sansserif">OrderedCollection</span>,
+instantiated with the <span class="sansserif">#new</span> class message.
+</p>
+<p>In the other hand, the <span class="sansserif">ships</span> is an <span class="sansserif">Array</span>
+containing only two elements, the player ships. We use the
+<span class="sansserif">#with:with</span> class message to instantiate and populate the array
+with two ships created in the argument message.
+</p>
+<p>For the readability, we split the code in several lines with the
+appropriate indentation.
+</p>
+<div class="example">
+<pre class="example">   torpedoes &#x2190; OrderedCollection new.
+   ships &#x2190; Array 
+      with: SpaceShip new
+      with: SpaceShip new.
+</pre></div>
+
+<span id="updateShipsTorpedoes-1"></span><h4 class="subheading"><a href="SpaceWar_0021-collections.html#updateShipsTorpedoes"><em>Exercise</em> 4.18</a></h4>
+<div class="example">
+<pre class="example">SpaceWar&gt;&gt;step
+   ships do: [:each | each update].
+   ships do: [:each | each unpush].
+   torpedoes do: [:each | each update]
+</pre></div>
+
+
 
 <span id="Control-Flow-Messaging-2"></span><h3 class="unnumberedsec">Control Flow Messaging</h3>
 <span id="blockDivisor-1"></span><h4 class="subheading"><a href="Block-syntax.html#blockDivisor"><em>Exercise</em> 5.1</a></h4>

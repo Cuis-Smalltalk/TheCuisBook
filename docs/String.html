@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : September 18, 2020
+Compilation : September 22, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -94,7 +94,7 @@ ul.no-bullet {list-style: none}
 <span id="index-class_002c-protocol"></span>
 <span id="index-protocol"></span>
 
-<p>The <span class="sansserif">String</span> class also inherits its behavior from its
+<p>The <span class="sansserif">String</span> class also inherits behavior from its
 ancestor classes. Indeed <span class="sansserif">String</span> is a subclass of
 <span class="sansserif">ArrayedCollection</span>. The direct consequence is that when
 searching for some specific behavior, you may need to explore the
@@ -118,12 +118,16 @@ options:
 </div>
 <div class="float-caption"><p><strong><em>Figure</em> 4.1: </strong>Browse <span class="sansserif">String</span> protocol</p></div></div>
 <p>The new window is a protocol browser for the <span class="sansserif">String</span>
-   class. At the left, a hierarchy of the <span class="sansserif">String</span> ancestors;
-   selecting one class there only shows the protocol starting from
-   this class down to the <span class="sansserif">String</span> class. In the pane at the
-   right is the list of methods of the selected ancestry. The specific
-   protocol to <span class="sansserif">String</span> is bold; surrounded by parenthesis, the
-   class the method is implemented in.
+   class. At the left, we see a hierarchy of the <span class="sansserif">String</span>&rsquo;s ancestor
+   classes.
+   At the right are the method selectors for strings and, in parenthesis,
+   the class where they are defined.  Methods defined in class
+   <span class="sansserif">String</span> are in bold type.
+</p>
+<p>Selecting one class there only shows the protocol starting from
+   this class down to the <span class="sansserif">String</span> class. If you select
+   <span class="sansserif">String</span> in the left panel, you see only method names defined in
+   the <span class="sansserif">String</span> class itself.
 </p>
 <p>In <a href="#ch03_002dbrowseProtocol"><em>Figure</em> 4.1</a>, no specific class is selected,
    therefore the whole <span class="sansserif">String</span> protocol is listed at the
@@ -149,15 +153,15 @@ options:
 <li> At the far left, the class categories pane is absent,
       
 </li><li> In the classes pane, the hierarchy of <span class="sansserif">String</span> is
-      printed. It makes easy to browse <span class="sansserif">String</span> parents and
-      children class.
+      printed. It makes easy to browse <span class="sansserif">String</span> parent and
+      child classes.
 
 </li></ul>
 
 </li></ol>
 
-<p>The hierarchy browser is a general tool for exploration. Contrary to
-the protocol browser, it does not display at once the whole protocol
+<p>The hierarchy browser is a general tool for exploration. Unlike
+the protocol browser, it does not display the entire protocol
 of a class. In &lsquo;ch-browseHierarchy&rsquo;, the class
 <span class="sansserif">SequenceableCollection</span> is selected as well as its method
 <span class="sansserif">before:</span>.
@@ -193,14 +197,20 @@ instance:
 
 <span id="index-symbol"></span>
 <p><strong>Symbol.</strong> A symbol is very like a string but it is unique and
-never duplicated. It is written as <span class="sansserif">#hello</span>, and often used
-as a constant. You already observe how in the book we noted messages
-as symbol, it is because each message is unique. You will use symbol
-when you need to name something uniquely.
+never duplicated.
+Two references to <span class="sansserif">&rsquo;hello&rsquo;</span> might be to two or only
+one object depending computational history.  Two references
+to <span class="sansserif">#hello</span> are guarenteed to always refer to the same object.
 </p>
-<p>Observe in the example bellow, the strings are not identical once
-duplicated &ndash; understand not the same memory location in the computer
-&ndash; however symbols are identical even when duplicated<a id="DOCF13" href="#FOOT13"><sup>13</sup></a>:
+<p>Symbols got their name because they are used as <em>symbolic constants</em>.
+You already observed how in the book we wrote message selectors as a symbol.
+We use symbols because each message name must uniquely index
+the code for a method.
+You will use a symbol when you need to name something uniquely.
+</p>
+<p>In the example below, the strings are not identical once
+duplicated &ndash; copying a string always results in a new string
+&ndash; however symbols are identical even when duplicated<a id="DOCF14" href="#FOOT14"><sup>14</sup></a>:
 </p>
 <div class="display">
 <pre class="display"><span class="sansserif">&rsquo;hello&rsquo; == &rsquo;hello&rsquo; copy
@@ -209,19 +219,30 @@ duplicated &ndash; understand not the same memory location in the computer
 &rArr; true</span>
 </pre></div>
 
-<p>Symbols can be written with space:
+<p>Now you know.  Strings can be duplicated or changed, symbols can&rsquo;t.
+</p>
+<p>Symbols can contain space characters:
 </p>
 <div class="display">
-<pre class="display"><span class="sansserif">A Symbol which includes space characters
-#&rsquo;hello my friend&rsquo;
-&rsquo;hello my friend&rsquo; asSymbol</span>
+<pre class="display"><span class="sansserif">&rsquo;hello my friend&rsquo; asSymbol
+&rArr; #&rsquo;hello my friend&rsquo;
+</span>
 </pre></div>
 
-<p><span class="sansserif">Symbol</span> is a subclass of <span class="sansserif">String</span>, a lot of its behavior
-is inherited. This makes symbols quite useful.
+<p><span class="sansserif">Symbol</span> is a subclass of <span class="sansserif">String</span> and much of its behavior
+is inherited. As we learn about <span class="sansserif">String</span>s we
+are also learning quite a bit about symbols.
+</p>
+<p>Note that many <span class="sansserif">String</span> methods are defined to return strings.
 </p>
 <div class="display">
-<pre class="display"><span class="sansserif">&rsquo;hello my friend&rsquo; asCamelCase asSymbol 
+<pre class="display"><span class="sansserif">&rsquo;hello my friend&rsquo; class.
+&rArr; String
+#&rsquo;hello my friend&rsquo; class.
+&rArr; Symbol 
+#&rsquo;hello my friend&rsquo; asCamelCase
+&rArr; &rsquo;helloMyFriend&rsquo;
+#&rsquo;hello my friend&rsquo; asCamelCase asSymbol 
 &rArr; #helloMyFriend</span>
 </pre></div>
 
@@ -230,7 +251,7 @@ is inherited. This makes symbols quite useful.
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h5><a id="FOOT13" href="#DOCF13">(13)</a></h3>
+<h5><a id="FOOT14" href="#DOCF14">(14)</a></h3>
 <p>To be
 honest, copying a symbol just returns the original symbol.</p>
 </div>

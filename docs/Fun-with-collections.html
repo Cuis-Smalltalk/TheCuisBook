@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : September 18, 2020
+Compilation : September 22, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -118,7 +118,7 @@ array will not work as expected:
 </pre></div>
 
 <span id="index-array_002c-dynamic"></span>
-<p>Indeed, the &ldquo;/&rdquo; is interpreted as a literal symbol and we get
+<p>Indeed, the <span class="sansserif">$/</span> is interpreted as a literal symbol and we get
 basic components of &ldquo;2 / 3&rdquo; but this text is not
 interpreted as a fraction. To get a fraction
 inserted in the array, you use a <em>run-time array</em> or <em>dynamic
@@ -186,7 +186,7 @@ array of integer numbers ranging from -80 to 50.</em>
 <span id="index-collection_002c-dynamic"></span>
 <span id="index-collection_002c-OrderedCollection"></span>
 <span id="index-collection_002c-add_003a"></span>
-<p>The size of an array is fixed size, it can not grow. An
+<p>The size of an array is fixed, it can not grow. An
 <span class="sansserif">OrderedCollection</span> is a dynamic, ordered collection, it grows
 when adding element with the <span class="sansserif">#add:</span> message:
 </p><div class="float"><span id="dynamicSize"></span>
@@ -217,8 +217,8 @@ fibo at: fibo size &rArr; 21</span>
 
 
 <span id="Playing-with-enumerators"></span><h4 class="subheading">Playing with enumerators</h4>
-<p>The collection comes with a set of helpful methods named
-enumerators. They operate on each element of a collection.
+<p>A collection comes with a set of helpful methods named
+enumerators. Enumerators operate on each element of a collection.
 </p>
 <span id="index-collection_002c-set-operations-_0028union_002c-intersection_002c-difference_0029"></span>
 <p>Set operations between two collections are computed with the
@@ -242,7 +242,7 @@ numbers 1,...,24,76,...,100.</em>
 
 
 <div class="float-caption"><p><strong><em>Exercise</em> 4.3: </strong>Hole in a set</p></div></div>
-<p>Set operation works with any kind of content. We will discuss
+<p>Set operations work with any kind of object. We will discuss
 comparing objects later.
 </p><div class="display">
 <pre class="display"><span class="sansserif">#(1 2 3 &rsquo;e&rsquo; 5) intersection: #(3.0 4 6 7 &rsquo;e&rsquo;)
@@ -280,7 +280,7 @@ execution(s). Let&rsquo;s explain how this script is evaluated:
 </li><li> for each integer of the interval, the block of code is invoked
  with its parameter <span class="sansserif">n</span> set to the integer value.
  A <em>block parameter</em> starts with a colon, &ldquo;:&rdquo;, and is an
- ordinary identifer <a id="DOCF14" href="#FOOT14"><sup>14</sup></a>.
+ ordinary identifer <a id="DOCF15" href="#FOOT15"><sup>15</sup></a>.
  Then, each
  time <span class="sansserif">n isPrime</span> evaluates to true, the <span class="sansserif">n</span> value
  is added to a new collection answered when the <span class="sansserif">select:</span>
@@ -495,7 +495,7 @@ value:
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h5><a id="FOOT14" href="#DOCF14">(14)</a></h3>
+<h5><a id="FOOT15" href="#DOCF15">(15)</a></h3>
 <p>An <em>identifier</em> is just a word that starts
  in a lower case letter and consists of upper and lower case letters
  and decimal digits.  All variable names are identifiers</p>

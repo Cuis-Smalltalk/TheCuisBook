@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : September 18, 2020
+Compilation : September 22, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -99,7 +99,7 @@ expression in its body, unless there is an explicit return (with
 </p>
 <div class="display">
 <pre class="display"><span class="sansserif">[ 1 + 2 ] value
-&#x2191; 3</span>
+&rArr; 3</span>
 </pre></div>
 
 <p>Blocks may take parameters, each of which is declared with a leading
@@ -130,8 +130,13 @@ method. Locals are declared after any arguments:
 &rArr; 3</span>
 </pre></div>
 
-<p>Blocks are actually lexical closures, since they can refer to
-variables of the surrounding environment. The following block refers
+<p>Blocks can refer to
+variables of the surrounding environment.
+Blocks are said to &ldquo;close over&rdquo; their lexical environment, which
+is a fancy way to say that they remember and refer to variables in
+their surrounding lexical context &ndash; those apparent in their enclosing text.
+</p>
+<p>The following block refers
 to the variable x of its enclosing environment:
 </p>
 <div class="display">

@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : September 18, 2020
+Compilation : September 22, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -91,6 +91,10 @@ Next: <a href="Block-syntax.html" accesskey="n" rel="next">Block syntax</a>, Pre
 </div>
 <hr>
 <span id="Method-syntax-1"></span><h3 class="section">5.3 Method syntax</h3>
+
+<span id="index-to-be-written_002c-Section-still-needed_003f"></span>
+<p><strong>To be written.</strong> Section still needed?
+</p>
 <p>Whereas expressions may be evaluated anywhere in Cuis-Smalltalk (for example,
 in a workspace, in a debugger, or in a browser), methods are normally
 defined in a browser window, or in the debugger. (Methods can also be
@@ -107,7 +111,10 @@ for defining classes.)
 <span class="sansserif">ClassName&gt;&gt;methodName</span>, so we call this method
 <span class="sansserif">String&gt;&gt;lineCount</span>.)
 </p>
-<div class="float"><span id="lineCount"></span>
+
+<span id="index-to-be-written_002c-Pickup-another-example"></span>
+<p><strong>To be written.</strong> Pickup another example
+</p><div class="float"><span id="lineCount"></span>
 <div class="display">
 <pre class="display"><span class="sansserif">String&gt;&gt;lineCount
   &quot;Answer the number of lines represented by the receiver,
@@ -141,12 +148,12 @@ for defining classes.)
 <p>The evaluation of any expression preceded by a &#x2191; (typed as ^)
 will cause the method to exit at that point, returning the value of
 that expression. A method that terminates without explicitly returning
-some expression will implicitly return <span class="sansserif">self</span>.
+some expression will always return <span class="sansserif">self</span>.
 </p>
 <p>Arguments and local variables should always start with lower case
 letters. Names starting with upper-case letters are assumed to be
 global variables. Class names, like <span class="sansserif">Character</span>, for example,
-are simply global vari- ables referring to the object representing
+are simply global variables referring to the object representing
 that class.
 </p>
 <span id="index-block-1"></span>

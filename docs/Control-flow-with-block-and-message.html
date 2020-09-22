@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : September 18, 2020
+Compilation : September 22, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -91,8 +91,10 @@ Previous: <a href="Block-syntax.html" accesskey="p" rel="prev">Block syntax</a>,
 </div>
 <hr>
 <span id="Control-flow-with-block-and-message-1"></span><h3 class="section">5.5 Control flow with block and message</h3>
-<p>Smalltalk offers no special syntax for control constructs. Instead,
-these are typically expressed by sending messages to booleans, numbers
+<p>Deciding to send this message instead of that one is called <em>control flow</em> &ndash;
+controlling the flow of a computation.
+Smalltalk offers no special constructs for control flow.
+Decision logic is expressed by sending messages to booleans, numbers
 and collections, with blocks as arguments.
 </p>
 <span id="index-control-flow_002c-test"></span>
@@ -113,7 +115,7 @@ of a boolean expression:
 <p>The class <span class="sansserif">Boolean</span> offers a fascinating insight into how much
 of the Smalltalk language has been pushed into the class
 library. <span class="sansserif">Boolean</span> is the abstract superclass of the
-<em>Singleton</em> classes <span class="sansserif">True</span> and <span class="sansserif">False</span><a id="DOCF16" href="#FOOT16"><sup>16</sup></a>.
+<em>Singleton</em> classes <span class="sansserif">True</span> and <span class="sansserif">False</span><a id="DOCF17" href="#FOOT17"><sup>17</sup></a>.
 </p>
 <p>Most of the behaviour of <span class="sansserif">Boolean</span> instances can be understood
 by considering the method <span class="sansserif">ifTrue:ifFalse:</span>, which takes two
@@ -229,7 +231,7 @@ category of the class <span class="sansserif">Number</span>.
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h5><a id="FOOT16" href="#DOCF16">(16)</a></h3>
+<h5><a id="FOOT17" href="#DOCF17">(17)</a></h3>
 <p>A
 singleton class is designed to have only one instance. Each of
 <span class="sansserif">True</span> and <span class="sansserif">False</span> classes has one instance,
