@@ -1,0 +1,231 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This book is for Cuis-Smalltalk (5.0#4253), a free and modern
+implementation of the Smalltalk language and environment.
+
+Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
+
+
+
+
+
+
+Compilation : September 22, 2020
+
+Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
+
+
+
+The contents of this book are protected under Creative Commons
+Attribution-ShareAlike 4.0 International.
+
+You are free to:
+
+
+Share - copy and redistribute the material in any medium or
+format
+
+
+Adapt - remix, transform, and build upon the material for any
+purpose, even commercially.
+
+
+
+Under the following terms:
+
+
+Attribution. You must give appropriate credit, provide a link to
+the license, and indicate if changes were made. You may do so in any
+reasonable manner, but not in any way that suggests the licensor
+endorses you or your use.
+
+
+Share Alike. If you remix, transform, or build upon the material,
+you must distribute your contributions under the same license as the
+original.
+
+Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+ -->
+<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>SpaceWar! collections (The Cuis-Smalltalk Book)</title>
+
+<meta name="description" content="SpaceWar! collections (The Cuis-Smalltalk Book)">
+<meta name="keywords" content="SpaceWar! collections (The Cuis-Smalltalk Book)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Indexes.html" rel="index" title="Indexes">
+<link href="The-Collection-Way-of-Life.html" rel="up" title="The Collection Way of Life">
+<link href="Control-Flow-Messaging.html" rel="next" title="Control Flow Messaging">
+<link href="Collections-detailed.html" rel="prev" title="Collections detailed">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="style.css">
+
+
+</head>
+
+<body lang="en">
+<span id="SpaceWar_0021-collections"></span><div class="header">
+<p>
+Previous: <a href="Collections-detailed.html" accesskey="p" rel="prev">Collections detailed</a>, Up: <a href="The-Collection-Way-of-Life.html" accesskey="u" rel="up">The Collection Way of Life</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="SpaceWar_0021-collections-1"></span><h3 class="section">4.5 SpaceWar! collections</h3>
+
+<span id="Instantiate-collections"></span><h4 class="subsection">4.5.1 Instantiate collections</h4>
+<p>Whenever you need to deal with more than one element of the same
+nature &ndash; instances of the same class &ndash; it is a clue to use a
+collection to hold them. Moreover, when these elements are of fixed
+quantity, it indicates more precisely you want to use an <span class="sansserif">Array</span>
+instance. It is a collection of fixed size, an <span class="sansserif">Array</span> can not
+grow nor shrink.
+</p>
+<p>When this quantity is variable, you want to use an
+<span class="sansserif">OrderedCollection</span> instance. It is a collection of variable
+size, a <span class="sansserif">OrderedCollection</span> can grow or shrink.
+</p>
+<p>SpaceWar! is a two-players game, there will be always two players
+and two space ships. We use an <span class="sansserif">Array</span> instance to keep
+reference of each space ship.
+</p>
+<p>Each player can fire several torpedoes; therefore the game play can
+hold zero or more torpedoes &ndash; hundreds if we decide so. The torpedoes
+quantity is variable, we want to use an <span class="sansserif">OrdredCollection</span>
+instance to keep track of them.
+</p>
+<p>In the <span class="sansserif">SpaceWar</span> class, we already defined two instance
+variable <span class="sansserif">ships</span> and <span class="sansserif">torpedoes</span>. Now, we want an
+<span class="sansserif">initializeActors</span> method to set up the game with the involved
+actors &ndash; central star, ships, etc. Part of this initialization is to
+create the necessary collections.
+</p>
+<p>See below an incomplete implementation of this method:
+</p>
+<div class="float"><span id="initActors"></span>
+<div class="display">
+<pre class="display"><span class="sansserif">initializeActors
+   centralStar &#x2190; CentralStar new.
+   ../..
+   ships first 
+      color: Color white; 
+      position: 200 @ 200.
+   ships second
+      color: Color red;
+      position: -200 @ -200</span>
+</pre></div>
+
+<div class="float-caption"><p><strong><em>Example</em> 4.17: </strong>Incomplete game initialization</p></div></div>
+<div class="float"><span id="initActorsCollections"></span>
+<blockquote class="indentedblock">
+<p><em>The example above does not show the creation of the
+<span class="sansserif">ships</span> and <span class="sansserif">torpedoes</span> collections. Replace
+&ldquo;../..&rdquo; with lines of code where these collections are
+instantiated.</em>
+</p></blockquote>
+
+
+<div class="float-caption"><p><strong><em>Exercise</em> 4.17: </strong>Collections to hold the ships and torpedoes</p></div></div>
+
+<span id="Collections-in-action"></span><h4 class="subsection">4.5.2 Collections in action</h4>
+
+<p>The space ship and the torpedo objects are responsible of their
+internal states. They understand the <span class="sansserif">#update</span> message to recompute
+their position according to the mechanic laws.
+</p>
+<p>A fired torpedo has a constant velocity, no external forces is applied
+to it. Its position is linearly update according to the time lapse. In
+the method portion bellow, <span class="sansserif">owner</span> is the <span class="sansserif">SpaceWar</span>
+instance, representing the game display; the message
+<span class="sansserif">#stepTimeInSecond</span> ask for the time interval since the last update
+of the position.
+</p>
+<div class="float"><span id="torpedoMechanic"></span>
+<div class="display">
+<pre class="display"><span class="sansserif">Torpedo&gt;&gt;update
+&quot;Update the torpedo position&quot;
+   position &#x2190; (velocity * owner stepTimeInSecond) + position.
+   ../..</span>
+</pre></div>
+
+<div class="float-caption"><p><strong><em>Example</em> 4.18: </strong>Torpedo mechanic</p></div></div>
+<p>A space ship is put under the strain of the star&rsquo;s gravity pull and
+the acceleration of its engines. Therefore its velocity and position
+change accordingly to the laws of mechanic.
+</p>
+<div class="float"><span id="spaceShipMechanic"></span>
+<div class="display">
+<pre class="display"><span class="sansserif">SpaceShip&gt;&gt;update
+&quot;Update the ship position and velocity&quot;
+   | ai ag newVelocity t |
+   &quot;acceleration vectors&quot;
+   t &#x2190; owner stepTimeInSecond.
+   ai &#x2190; acceleration * self direction.
+   ag &#x2190; self gravity.
+   newVelocity &#x2190; (ai + ag) * t + velocity.
+   position &#x2190; (0.5 * (ai + ag) * t squared) + (velocity * t) + position.
+   velocity &#x2190; newVelocity.
+   ../..</span>
+</pre></div>
+
+<div class="float-caption"><p><strong><em>Example</em> 4.19: </strong>Space ship mechanic</p></div></div>
+<p>The game play is the responsibility of a <span class="sansserif">SpaceWar</span> instance. At
+a regular interval of time, it refreshes the states of the game
+actors. A <span class="sansserif">step</span> method is called at a regular interval of time
+determined by the <span class="sansserif">stepTime</span> method:
+</p>
+<div class="float"><span id="reflreshGamePlay"></span>
+<div class="display">
+<pre class="display"><span class="sansserif">SpaceWar&gt;&gt;stepTime
+&quot;millisecond&quot;
+   ^ 20
+
+SpaceWar&gt;&gt;step
+   ../..
+   ships do: [:each | each unpush].
+   ../..
+   self redrawNeeded</span>
+</pre></div>
+
+<div class="float-caption"><p><strong><em>Example</em> 4.20: </strong>Regular refresh of the game play</p></div></div>
+<p>In the <span class="sansserif">step</span> method, we left out intentionally the details to
+update the ships and the torpedoes positions. Note: each ship is sent
+regularly an <span class="sansserif">#unpush</span> message to reset its previous <span class="sansserif">#push</span>
+acceleration.
+</p>
+<div class="float"><span id="updateShipsTorpedoes"></span>
+<blockquote class="indentedblock">
+<p><em>Replace the two lines &ldquo;../..&rdquo; with code to update the ships
+and the torpedoes.</em>
+</p></blockquote>
+
+
+<div class="float-caption"><p><strong><em>Exercise</em> 4.18: </strong>Update all ships and torpedoes</p></div></div><hr>
+<div class="header">
+<p>
+Previous: <a href="Collections-detailed.html" accesskey="p" rel="prev">Collections detailed</a>, Up: <a href="The-Collection-Way-of-Life.html" accesskey="u" rel="up">The Collection Way of Life</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>
