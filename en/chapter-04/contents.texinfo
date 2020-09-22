@@ -751,17 +751,44 @@ experiment with the workspace.
 @node SpaceWar! collections
 @section SpaceWar! collections
 
-Whenever you need to deal with more than one element -- an object --
-of the same nature, it is a clue to use a collection. Moreover, when
-these elements are in a fixed quantity, it indicates more precisely
-you want to use an @class{Array} instance. With a variable quantity of
-these element, you want to use an @class{OrderedCollection} instance.
+Whenever you need to deal with more than one element of the same
+nature -- instances of the same class -- it is a clue to use a
+collection to keep their reference. Moreover, when these elements are
+in a fixed quantity, it indicates more precisely you want to use an
+@class{Array} instance. It represents collection of a fixed
+size, an @class{Array} can not grow nor shrink.
+
+When this quantity is variable, you want to use an
+@class{OrderedCollection} instance. It represents collection with a
+variable size, a @class{OrderedCollection} can grow or shrink.
 
 The SpaceWar! is a two-players game, there will be always two players
-and two space ship. We use an @class{Array} instance to hold the space
-ship.
+and two space ships. We use an @class{Array} instance to keep
+reference of each space ship.
 
 Each player can fire several torpedoes; therefore the game play can
-hold zero or more torpedo -- hundreds if we decide so. The torpedoes
+hold zero or more torpedoes -- hundreds if we decide so. The torpedoes
 quantity is variable, we want to use an @class{OrdredCollection}
 instance to keep track of them.
+
+In @class{SpaceWar} class, we define an @method{initializeActors}
+method to set up the game with the involved actors -- central star and
+ships. See below an implementation with the missing collections
+creation discussed above:
+
+@smalltalkExampleCaption{Incomplete game initialization, initActors,
+initializeActors
+   centralStar @assign{} CentralStar new.
+   ../..
+   ships first 
+      color: Color white; 
+      position: 200 @ 200.
+   ships second
+      color: Color red;
+      position: -200 @ -200.
+   self addAllMorphs: ships.
+   self addMorph: centralStar}
+
+
+@c exercise: write the missing part
+
