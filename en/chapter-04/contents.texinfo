@@ -751,6 +751,7 @@ experiment with the workspace.
 @node SpaceWar! collections
 @section SpaceWar! collections
 
+@subheading Instantiate collections
 Whenever you need to deal with more than one element of the same
 nature -- instances of the same class -- it is a clue to use a
 collection to hold them. Moreover, when these elements are of fixed
@@ -797,3 +798,40 @@ initializeActors
 @smalltalk{ships} and @smalltalk{torpedoes} collections. Replace
 ``../..'' with lines of code where these collections are
 instantiated.}}
+
+
+@subheading Collections in action
+@c Show the update code
+The space ship and the torpedo objects are responsible of their
+internal states. They understand the @msg{update} message to recompute
+their position according to the mechanic laws.
+
+@smalltalkExampleCaption{Torpedo mechanic, torpedoMechanic,
+Torpedo>>update
+"Update the torpedo position"
+   position @assign{} (velocity * owner stepTimeInSecond) + position.
+   lifeSpan @assign{} lifeSpan - 1.
+   lifeSpan isZero ifTrue: [owner destroyTorpedo: self]}
+
+@smalltalkExampleCaption{Space ship mechanic, spaceShipMechanic,
+SpaceShip>>update
+"Update the ship position and velocity "
+   | ai ag newVelocity t |
+   "acceleration vectors"
+   t @assign{} owner stepTimeInSecond.
+   ai @assign{} acceleration * self direction.
+   ag @assign{} self gravity.
+   newVelocity @assign{} (ai + ag) * t + velocity.
+   position @assign{} (0.5 * (ai + ag) * t squared) + (velocity * t) + position.
+   velocity @assign{} newVelocity .
+	
+"Are we out of screen and going in outer space?
+If so we move the ship to the other corner and slow it down by a factor of 2"
+  (self isInOuterSpace and: [self isGoingOuterSpace])
+     ifTrue: [
+        velocity @assign{} velocity / 2.
+        position @assign{} position negated]}
+
+@c Explain a bit the physics
+@c Explain the SpaceWar step method
+@c Ask the reader to write the code to update the ship and torpedo position
