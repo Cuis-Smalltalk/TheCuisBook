@@ -751,7 +751,7 @@ experiment with the workspace.
 @node SpaceWar! collections
 @section SpaceWar! collections
 
-@subheading Instantiate collections
+@subsection Instantiate collections
 Whenever you need to deal with more than one element of the same
 nature -- instances of the same class -- it is a clue to use a
 collection to hold them. Moreover, when these elements are of fixed
@@ -789,9 +789,7 @@ initializeActors
       position: 200 @@ 200.
    ships second
       color: Color red;
-      position: -200 @@ -200.
-   self addAllMorphs: ships.
-   self addMorph: centralStar}
+      position: -200 @@ -200}
 
 @exercise{Collections to hold the ships and torpedoes, initActorsCollections,
 @emph{The example above does not show the creation of the
@@ -800,14 +798,19 @@ initializeActors
 instantiated.}}
 
 
-@subheading Collections in action
-@c Show the update code
+@subsection Collections in action
+@c Show the update code, explain a bit the physics
+
 The space ship and the torpedo objects are responsible of their
 internal states. They understand the @msg{update} message to recompute
 their position according to the mechanic laws.
 
 A fired torpedo has a constant velocity, no external forces is applied
-to it. Its position is linearly update according to the time.
+to it. Its position is linearly update according to the time lapse. In
+the method portion bellow, @smalltalk{owner} is the @class{SpaceWar}
+instance, representing the game display; the message
+@msg{stepTimeInSecond} ask for the time interval since the last update
+of the position.
 
 @smalltalkExampleCaption{Torpedo mechanic, torpedoMechanic,
 Torpedo>>update
@@ -815,6 +818,9 @@ Torpedo>>update
    position @assign{} (velocity * owner stepTimeInSecond) + position.
    ../..}
 
+A space ship is put under the strain of the star's gravity pull and
+the acceleration of its engines. Therefore its velocity and position
+change accordingly to the laws of mechanic.
 
 @smalltalkExampleCaption{Space ship mechanic, spaceShipMechanic,
 SpaceShip>>update
@@ -826,9 +832,32 @@ SpaceShip>>update
    ag @assign{} self gravity.
    newVelocity @assign{} (ai + ag) * t + velocity.
    position @assign{} (0.5 * (ai + ag) * t squared) + (velocity * t) + position.
-   velocity @assign{} newVelocity .
+   velocity @assign{} newVelocity.
    ../..}
-   
-@c Explain a bit the physics
+
 @c Explain the SpaceWar step method
+The game play is the responsibility of a @class{SpaceWar} instance. At
+a regular interval of time, it refreshes the states of the game
+actors. A @method{step} method is called at a regular interval of time
+determined by the @method{stepTime} method:
+
+@smalltalkExampleCaption{Regular refresh of the game play, reflreshGamePlay,
+SpaceWar>>stepTime
+"millisecond"
+   ^ 20
+
+SpaceWar>>step
+   ../..
+   ships do: [:each | each unpush].
+   ../..
+   self redrawNeeded}
+
 @c Ask the reader to write the code to update the ship and torpedo position
+In the @method{step} method, we left out intentionally the details to
+update the ships and the torpedoes positions. Note: each ship is sent
+regularly an @msg{unpush} message to reset its previous @msg{push}
+acceleration.
+
+@exercise{Update all ships and torpedoes, updateShipsTorpedoes,
+@emph{Replace the two lines ``../..'' with code to update the ships
+and the torpedoes.}}

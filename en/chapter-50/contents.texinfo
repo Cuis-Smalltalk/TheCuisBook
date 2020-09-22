@@ -383,6 +383,14 @@ appropriate indentation.
       with: SpaceShip new.
 @end example
 
+@subheading @ref{updateShipsTorpedoes}
+@example
+SpaceWar>>step
+   ships do: [:each | each update].
+   ships do: [:each | each unpush].
+   torpedoes do: [:each | each update]
+@end example
+
 
 
 @c Chapter 5
