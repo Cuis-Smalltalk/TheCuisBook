@@ -806,16 +806,19 @@ The space ship and the torpedo objects are responsible of their
 internal states. They understand the @msg{update} message to recompute
 their position according to the mechanic laws.
 
+A fired torpedo has a constant velocity, no external forces is applied
+to it. Its position is linearly update according to the time.
+
 @smalltalkExampleCaption{Torpedo mechanic, torpedoMechanic,
 Torpedo>>update
 "Update the torpedo position"
    position @assign{} (velocity * owner stepTimeInSecond) + position.
-   lifeSpan @assign{} lifeSpan - 1.
-   lifeSpan isZero ifTrue: [owner destroyTorpedo: self]}
+   ../..}
+
 
 @smalltalkExampleCaption{Space ship mechanic, spaceShipMechanic,
 SpaceShip>>update
-"Update the ship position and velocity "
+"Update the ship position and velocity"
    | ai ag newVelocity t |
    "acceleration vectors"
    t @assign{} owner stepTimeInSecond.
@@ -824,14 +827,8 @@ SpaceShip>>update
    newVelocity @assign{} (ai + ag) * t + velocity.
    position @assign{} (0.5 * (ai + ag) * t squared) + (velocity * t) + position.
    velocity @assign{} newVelocity .
-	
-"Are we out of screen and going in outer space?
-If so we move the ship to the other corner and slow it down by a factor of 2"
-  (self isInOuterSpace and: [self isGoingOuterSpace])
-     ifTrue: [
-        velocity @assign{} velocity / 2.
-        position @assign{} position negated]}
-
+   ../..}
+   
 @c Explain a bit the physics
 @c Explain the SpaceWar step method
 @c Ask the reader to write the code to update the ship and torpedo position
