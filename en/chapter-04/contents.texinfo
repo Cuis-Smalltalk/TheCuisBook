@@ -753,16 +753,16 @@ experiment with the workspace.
 
 Whenever you need to deal with more than one element of the same
 nature -- instances of the same class -- it is a clue to use a
-collection to keep their reference. Moreover, when these elements are
-in a fixed quantity, it indicates more precisely you want to use an
-@class{Array} instance. It represents collection of a fixed
-size, an @class{Array} can not grow nor shrink.
+collection to hold them. Moreover, when these elements are of fixed
+quantity, it indicates more precisely you want to use an @class{Array}
+instance. It is a collection of fixed size, an @class{Array} can not
+grow nor shrink.
 
 When this quantity is variable, you want to use an
-@class{OrderedCollection} instance. It represents collection with a
-variable size, a @class{OrderedCollection} can grow or shrink.
+@class{OrderedCollection} instance. It is a collection of variable
+size, a @class{OrderedCollection} can grow or shrink.
 
-The SpaceWar! is a two-players game, there will be always two players
+SpaceWar! is a two-players game, there will be always two players
 and two space ships. We use an @class{Array} instance to keep
 reference of each space ship.
 
@@ -771,10 +771,13 @@ hold zero or more torpedoes -- hundreds if we decide so. The torpedoes
 quantity is variable, we want to use an @class{OrdredCollection}
 instance to keep track of them.
 
-In @class{SpaceWar} class, we define an @method{initializeActors}
-method to set up the game with the involved actors -- central star and
-ships. See below an implementation with the missing collections
-creation discussed above:
+In the @class{SpaceWar} class, we already defined two instance
+variable @smalltalk{ships} and @smalltalk{torpedoes}. Now, we want an
+@method{initializeActors} method to set up the game with the involved
+actors -- central star, ships, etc. Part of this initialization is to
+create the necessary collections.
+
+See below an incomplete implementation of this method:
 
 @smalltalkExampleCaption{Incomplete game initialization, initActors,
 initializeActors
@@ -782,13 +785,15 @@ initializeActors
    ../..
    ships first 
       color: Color white; 
-      position: 200 @ 200.
+      position: 200 @@ 200.
    ships second
       color: Color red;
-      position: -200 @ -200.
+      position: -200 @@ -200.
    self addAllMorphs: ships.
    self addMorph: centralStar}
 
-
-@c exercise: write the missing part
-
+@exercise{Collections to hold the ships and torpedoes, initActorsCollections,
+@emph{The example above does not show the creation of the
+@smalltalk{ships} and @smalltalk{torpedoes} collections. Replace
+``../..'' with lines of code where these collections are
+instantiated.}}

@@ -363,6 +363,29 @@ colors
 #yellow->'Yellow' ) 
 @end example
 
+@subheading @ref{initActorsCollections}
+When the game starts there is no fired torpedoes, therefore
+@smalltalk{torpedoes} is an empty @class{OrderedCollection},
+instantiated with the @msg{new} class message.
+
+In the other hand, the @smalltalk{ships} is an @class{Array}
+containing only two elements, the player ships. We use the
+@msg{with:with} class message to instantiate and populate the array
+with two ships created in the argument message.
+
+For the readability, we split the code in several lines with the
+appropriate indentation.
+
+@example
+   torpedoes @assign{} OrderedCollection new.
+   ships @assign{} Array 
+      with: SpaceShip new
+      with: SpaceShip new.
+@end example
+
+
+
+@c Chapter 5
 @unnumberedsec Control Flow Messaging
 @subheading @ref{blockDivisor}
 @example
