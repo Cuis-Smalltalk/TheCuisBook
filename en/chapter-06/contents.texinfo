@@ -1,2 +1,14 @@
 @node Visual With Morph
 @chapter Visual With Morph
+
+Every object you see in @cuis{} is a @class{Morph} or is composed
+of @class{Morph}s.  Basically, a @class{Morph} is an object with
+state and behavior that can also depict itself on a computer
+display screen.
+
+Because Morphs are useful you can look at
+class @class{Morph} in a Hierarchy Browser, and you will
+see a large number of methods and many subclasses.
+But the basic ideas are quite simple.
+
+@ref{01EllipseMorphFromMenu.png}
