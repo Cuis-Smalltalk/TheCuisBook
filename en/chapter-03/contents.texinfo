@@ -468,7 +468,7 @@ to start with are:
 @end itemize
 
 
-
+@cindex method, category
 @node Kernel-Numbers
 @section Kernel-Numbers
 The top hierarchy @class{Number} class shows most of the behaviors
@@ -670,6 +670,7 @@ can use the @class{Character} instance methods:
 @exercise{Select apples,selectApples, @emph{Modify @ref{apples12} to
 reject the numeric characters.}}
 
+@cindex method, category
 @cindex string
 @strong{String.} @class{String} is a very large class, it comes with
 more than 200 methods. It is useful to browse these method categories
