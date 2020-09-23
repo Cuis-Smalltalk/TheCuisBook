@@ -796,7 +796,7 @@ initializeActors
 @emph{The example above does not show the creation of the
 @smalltalk{ships} and @smalltalk{torpedoes} collections. Replace
 ``../..'' with lines of code where these collections are
-instantiated.}}
+instantiated and if necessary populated.}}
 
 
 @subsection Collections in action
