@@ -45,8 +45,6 @@ ProtoObject allSubclasses inject: 0 into: [:count :class |
 The count of classes, the models for the entities -- class instances
 -- is less than 600.
 
-@note{I am not sure about class instances, it confuses me}
-
 @smalltalkExampleCaption{Calculating the number of classes, classesCount,
 Smalltalk allClasses size
 @result{} 586}
