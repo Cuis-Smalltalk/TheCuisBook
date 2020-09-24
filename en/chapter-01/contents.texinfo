@@ -18,11 +18,11 @@ used. We can call this the Smalltalk philosophy of programming.
 
 One major idea in software is that programming is merely giving a
 computer a set of instructions to solve some problem.  In this point
-of view, the only value of software is to achieve a result, and it is
-only as interesting as finding the solution to that problem.
-Furthermore, programming
+of view, the only value of software is to achieve a result, and therefore, a piece
+of software is only as interesting as having that problem solved.
+Furthermore, as programming is not insteresting by itself, it
 is left to a professional guild with a specialized technical knowledge of how to
-write software.
+write software, and the rest of the world just ignores it.
 
 Our focus is on one thread in the history of powerful ideas which give
 a different lens through which to explore software development.
@@ -31,9 +31,10 @@ the @emph{just solve a problem} view. We think this is worth
 revisiting. 
 
 The first clear vision of an automated information processor to augment
-our collective memory, find and share knowledge -- indeed to transform the 
-information explosion into a knowledge explosion -- was
-called Memex and described in the Vannevar Bush essay ``As We May Think'' in 1945
+our collective memory, to find and share knowledge -- indeed to transform the 
+data explosion into an information explosion, and then into a knowledge and 
+understanding explosion -- was called Memex and described in the Vannevar Bush 
+essay ``As We May Think'' in 1945
 @footnote{@url{https://en.wikipedia.org/wiki/As_We_May_Think}}.
 Bush's description of the possibility of developing a Memex processing system
 to help individuals access, evolve and capture knowledge 
@@ -71,7 +72,7 @@ Realizing the Dynabook vision required significant advances and
 mutually supporting development of
 hardware and software. The original development took place at the
 Xerox PARC research center in the 1970's. The first @emph{interim
-Dynabook} hardware was the Xerox Alto, usually considered the first
+Dynabook} hardware was the Xerox Alto, generally considered the first
 personal computer. The software system was Smalltalk. The design of both
 was guided by the objectives of making @emph{Personal Dynamic Media}
 and the Dynabook real. The final version of Smalltalk built at Xerox
