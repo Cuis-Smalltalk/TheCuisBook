@@ -11,19 +11,19 @@ class @class{Morph} in a Hierarchy Browser, and you will
 see a large number of methods and many subclasses.
 But the basic ideas are quite simple.
 
-@figure{Select EllipseMorph from a Menu,01EllipseMorphFromMenu,12}
-@figure{Drag Ellipse onto Desktop,02DragEllipseToDesktop,12}
-@figure{Drag Construction Handle to Change Size,02DragToEnlarge,12}
-@figure{A Larger Ellipse,04Enlarged,12}
-@figure{Obtain a RectangleLikeMorph,05AddRectangle,12}
-@figure{Make the Rect a Submorph of the Ellipse,06EmbedRectIntoEllipse,12}
-@figure{Right-Click for COnstruction Handles,07RightClickRect,12}
-@figure{Right-Click again to descend into Submorphs,08-2ndRtClickToSubmorph,12}
-@figure{Move Submorph within its Parent,09-Move-Within,12}
-@figure{Pick a Submorph out of its Parent,10-PickUp-2-MoveOut,12}
-@figure{Inspector from Ellipse,11-Debug-Inspect,12}
-@figure{Inspect instance variables of the Ellipse,12-InspectEllipse,12}
-@figure{Use Inspector to set borderWidth,13-SetBorderWidth,12}
-@figure{Use Inspector to set borderColor,14-SetBorderColor,12}
-@figure{Obtain ColorClickEllipse,15-ColorClickEllipse,12}
+@figure{Select EllipseMorph from a Menu,ch06-01-EllipseMorphFromMenu,12}
+@figure{Drag Ellipse onto Desktop,ch06-02-DragEllipseToDesktop,12}
+@figure{Drag Construction Handle to Change Size,ch06-03-DragToEnlarge,12}
+@figure{A Larger Ellipse,ch06-04-Enlarged,12}
+@figure{Obtain a RectangleLikeMorph,ch06-05-AddRectangle,12}
+@figure{Make the Rect a Submorph of the Ellipse,ch06-06-EmbedRectIntoEllipse,12}
+@figure{Right-Click for COnstruction Handles,ch06-07-RightClickRect,12}
+@figure{Right-Click again to descend into Submorphs,ch06-08-2ndRtClickToSubmorph,12}
+@figure{Move Submorph within its Parent,ch06-09-Move-Within,12}
+@figure{Pick a Submorph out of its Parent,ch06-10-PickUp-2-MoveOut,12}
+@figure{Inspector from Ellipse,ch06-11-Debug-Inspect,12}
+@figure{Inspect instance variables of the Ellipse,ch06-12-InspectEllipse,12}
+@figure{Use Inspector to set borderWidth,ch06-13-SetBorderWidth,12}
+@figure{Use Inspector to set borderColor,ch06-14-SetBorderColor,12}
+@figure{Obtain ColorClickEllipse,ch06-15-ColorClickEllipse,12}
 
