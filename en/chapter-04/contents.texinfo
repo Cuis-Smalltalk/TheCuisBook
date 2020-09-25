@@ -92,11 +92,12 @@ options:
 
 The hierarchy browser is a general tool for exploration. Unlike
 the protocol browser, it does not display the entire protocol
-of a class. In @ref{ch-browseHierarchy}, the class
+of a class.  No inherited methods are shown, only those
+defined directly in the selected class. In @ref{ch03-browseHierarchy}, the class
 @class{SequenceableCollection} is selected as well as its method
 @method{before:}.
 
-This method extracts from a collection the element before a specified
+The @method{before:} method extracts from a collection the element before a specified
 element. When inherited in @class{String}, those elements are
 @class{Character} instances:
 
