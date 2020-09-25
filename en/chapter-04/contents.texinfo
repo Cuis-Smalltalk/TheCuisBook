@@ -92,11 +92,12 @@ options:
 
 The hierarchy browser is a general tool for exploration. Unlike
 the protocol browser, it does not display the entire protocol
-of a class. In @ref{ch-browseHierarchy}, the class
+of a class.  No inherited methods are shown, only those
+defined directly in the selected class. In @ref{ch03-browseHierarchy}, the class
 @class{SequenceableCollection} is selected as well as its method
 @method{before:}.
 
-This method extracts from a collection the element before a specified
+The @method{before:} method extracts from a collection the element before a specified
 element. When inherited in @class{String}, those elements are
 @class{Character} instances:
 
@@ -386,7 +387,7 @@ To get an idea of how useful enumerators are, take a browse at the
 @exercise{Odd integers,oddNumbers,@emph{Select the odd number between
 -20 and 45.}}
 
-You want to know the quantity of prime numbers under 100.  Just send
+You want to know the number of prime numbers under 100.  Just send
 the message @msg{size} to the answered collection at
 @ref{prime100}. The parenthesis are mandatory to ensure the @msg{size}
 is sent last to the resulting collection:
@@ -611,7 +612,7 @@ several class categories: @label{Collections-Unordered},
 collections.
 
 @class{OrderedCollection} is a notable one. Its elements are ordered:
-elements are added one after the other one@footnote{Of course you can
+elements are added one after the other in sequence@footnote{Of course you can
 insert an element between two elements. However @class{LinkList}
 instance are more efficient for this use case scenario.}. Its size is
 variable depending on added or removed elements.
@@ -804,13 +805,13 @@ instantiated and if necessary populated.}}
 
 The space ship and the torpedo objects are responsible of their
 internal states. They understand the @msg{update} message to recompute
-their position according to the mechanic laws.
+their position according to the mechanical laws.
 
 A fired torpedo has a constant velocity, no external forces is applied
-to it. Its position is linearly update according to the time lapse. In
+to it. Its position is linearly updated according to the time elapsed. In
 the method portion bellow, @smalltalk{owner} is the @class{SpaceWar}
 instance, representing the game display; the message
-@msg{stepTimeInSecond} ask for the time interval since the last update
+@msg{stepTimeInSecond} asks for the time interval since the last update
 of the position.
 
 @smalltalkExampleCaption{Torpedo mechanic, torpedoMechanic,
@@ -821,9 +822,9 @@ Torpedo>>update
 
 A space ship is put under the strain of the star's gravity pull and
 the acceleration of its engines. Therefore its velocity and position
-change accordingly to the laws of mechanic.
+change accordingly to the mechanical laws of physics.
 
-@smalltalkExampleCaption{Space ship mechanic, spaceShipMechanic,
+@smalltalkExampleCaption{Space ship mechanics, spaceShipMechanic,
 SpaceShip>>update
 "Update the ship position and velocity"
    | ai ag newVelocity t |

@@ -4,11 +4,11 @@
 @cuis{} syntax is minimal. Essentially there is syntax only for
 sending messages (i.e., expressions) . Expressions are built up from a
 very small number of primitive elements. There are only 6 keywords,
-and @strong{there is no syntax for control structures} or declaring
+and @strong{there is no syntax for control structures} or for declaring
 new classes. Instead, nearly everything is achieved by sending
 messages to objects. For instance, instead of an if-then-else control
 structure, Smalltalk sends messages like @msg{ifTrue:} to
-@class{Boolean} objects. As we already know, new (sub-)classes are
+@class{Boolean} objects. As we already know, new (sub)classes are
 created by sending a message to their superclass.
 
 @menu
@@ -157,7 +157,8 @@ Syntactically, a method consists of:
 The evaluation of any expression preceded by a @return{} (typed as ^)
 will cause the method to exit at that point, returning the value of
 that expression. A method that terminates without explicitly returning
-some expression will always return @smalltalk{self}.
+the value of some expression will always return the current
+value of @smalltalk{self}.
 
 Arguments and local variables should always start with lower case
 letters. Names starting with upper-case letters are assumed to be
@@ -165,12 +166,17 @@ global variables. Class names, like @class{Character}, for example,
 are simply global variables referring to the object representing
 that class.
 
+As you might suspect from @ref{classesCount}, @smalltalk{Smalltalk allClasses size} just
+sends the @msg{allClasses} method to a dictionary named @smalltalk{Smalltalk}.
+As with any other object, you can inspect this dictionary.  You can note a case of
+self-reference here: the value of @smalltalk{Smalltalk at: #Smalltalk} is @smalltalk{Smalltalk}.
+
 @cindex block
 @node Block syntax
 @section Block syntax
 Blocks provide a mechanism to defer the evaluation of expressions. A
 block is essentially an anonymous function. A block is evaluated by
-sending it the message value. The block answers the value of the last
+sending it the message @msg{value}. The block answers the value of the last
 expression in its body, unless there is an explicit return (with
 @return{}), in which case it does not answer any value.
 
@@ -357,3 +363,7 @@ result @result{} '1 2 3 4 5 6 7 8 9 10 '}
 
 You can check all the alternatives in the @label{intervals} method
 category of the class @class{Number}.
+
+@strong{Tip:} If the exit condition of method like @method{whileTrue:} is never satisfied, you may have
+implemented an @dfn{infinite loop}.  Just type @kbd{Cmd-period} to get a debugger.  We will learn about
+how to handle this condition in the section on debugging, below.
