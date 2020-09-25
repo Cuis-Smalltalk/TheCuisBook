@@ -6,24 +6,169 @@ of @class{Morph}s.  Basically, a @class{Morph} is an object with
 state and behavior that can also depict itself on a computer
 display screen.
 
-Because Morphs are useful you can look at
-class @class{Morph} in a Hierarchy Browser, and you will
+Because Morphs are useful, when you look at
+class @class{Morph} in a Hierarchy Browser you will
 see a large number of methods and many subclasses.
 But the basic ideas are quite simple.
 
+Let's start with one of the basic morphs, an @class{EllipseMorph}.
+You could write @smalltalk{EllipseMorph new openInWorld} and Do-It, but
+we are doing visual things for now, so let's get a World Menu and select
+from @strong{New Morph...} Basics submenu and drag onto the desktop.
+
 @figure{Select EllipseMorph from a Menu,ch06-01-EllipseMorphFromMenu,12}
+
+Every time one obtains a morph from the @strong{New Morph...} menu, one gets
+a different morph but made to a standard style.
+
 @figure{Drag Ellipse onto Desktop,ch06-02-DragEllipseToDesktop,12}
+
+The basic challenge of @dfn{user interface design} is to communicate visibility and
+control.  Where am I?  What can I do here?
+
+One of the balance points in design is how to eliminate clutter.  A particular
+strategy is to reveal capabilities in context as they are needed.
+
+In the case of Cuis, you have to know some basics because helpful tools are
+there but stay out of the way.  At any time you can Right-Click on the desktop
+to get the World Menu.  You can also Middle-Click on any @class{Morph} to get
+a @dfn{halo} of @dfn{construction handles}, which show up as small colored circular
+icons.  If you pause the cursor over one of these, you get a @dfn{tool tip}, a
+temporary text popup who's name should give a clue to its usage.
+
+If you click elsewhere the construction handles leave, but you can get them back
+at any time with a mouse click.
+
 @figure{Drag Construction Handle to Change Size,ch06-03-DragToEnlarge,12}
+
+Now that you know this, move the yellow lower right handle with tool tip @strong{Change size}
+via @dfn{Click-Drag}.  Just hold down the left mouse button while the cursor
+is over the handle, move the cursor to the right and down, and release the mouse button.
+
 @figure{A Larger Ellipse,ch06-04-Enlarged,12}
+
+Morphs can contain other morphs.  These interior morphs are called @dfn{submorph}s of their
+containing morph.
+
+Again, you can do this by writing the software ``code'', but let's do it directly with a
+@class{RectangleLikeMorph}.
+
+First we obtain a RectangleLikeMorph from the @strong{New morph...} submenus.
+
 @figure{Obtain a RectangleLikeMorph,ch06-05-AddRectangle,12}
+
+Now drag the rect over the ellipse and Middle-Click on the rect and click on
+the blue construction handle to gets the rect's @dfn{Morph Menu}.
+Use the menu selection @strong{embed into...} and select the ellipse as
+its new parent.
+
 @figure{Make the Rect a Submorph of the Ellipse,ch06-06-EmbedRectIntoEllipse,12}
-@figure{Right-Click for COnstruction Handles,ch06-07-RightClickRect,12}
-@figure{Right-Click again to descend into Submorphs,ch06-08-2ndRtClickToSubmorph,12}
+
+Now when you click-drag the ellipse, or use the @strong{Pick up} or @strong{Move}
+construction handles, the rect is just a decoration for the ellipse.
+
+Indeed, the rect seems to have fused into the ellipse.  Using the mouse where the
+rect shows itself is just using the mouse on the ellipse.  This rect does not have many
+interesting behaviors.
+
+Let's add one to just this @class{Morph}.
+
+To get the construction halo for an interior morph, just Middle-Click multiple times to ``drill down''
+through the submorph hierarchy.
+
+@figure{Middle-Click for Construction Handles,ch06-07-MiddleClickRect,12}
+
+@figure{Middle-Click again to descend into Submorphs,ch06-08-2ndMidClckToSubmorph,12}
+
+There is an orange handle on the right, just under the green @strong{Duplicate} handle.
+Left-click this to get the @strong{Debug} menu.
+Use this menu to get an @dfn{Inspector} for the rectangle.
+
+@section A brief introduction to Inspectors
+
+On the left we have a pane for self, all inst vars, and the individual instance variables.  Clicking to select ``all inst vars''
+and the values pane on the right shows that the owner of the rect is the ellipse and rect currently has no submorphs.
+
+The lower pane is a Smalltalk code editor, basically a workspace, where @strong{self} is bound to the object we are inspecting.
+
+Inspectors work for every object by the way, not just morphs.
+
+@figure{Add Instance Specific Behavior,ch06-11aColorClickOnRect,12}
+
+To add a behavior to all instances of a class, we create an instance method.  Here we are going
+to create a behavior for ``just this one RectangleLikeMorph instance''.
+
+In addition to instance variables, a morph can have any number of named @dfn{properties}.
+We add two properties here.
+
+@smalltalkExample{
+self setProperty: #handlesMouseDown: toValue: true.
+self setProperty: #mouseButton1UpLlocalPosition:
+     toValue: [:ignoredEvent :ignoredPosition| self color: Color random]
+}
+
+These peoperties are special to the user interface.
+
+After selecting the text and Do-It, each time you left-click on the rect it changes color!
+
+Note that you can no longer move the ellipse by mouse-down on the rect,
+because the rect now takes the mouse event.  More on this below.
+
+One quick note on @strong{Move} versis @strong{Pick up}.  @strong{Move} moves a submorph
+within its parent. 
+
 @figure{Move Submorph within its Parent,ch06-09-Move-Within,12}
+
+@strong{Pick up} grabs a morph out of its parent. 
+
 @figure{Pick a Submorph out of its Parent,ch06-10-PickUp-2-MoveOut,12}
-@figure{Inspector from Ellipse,ch06-11-Debug-Inspect,12}
+
+Before we go on, let's use an inspector on the ellipse to change values of a couple
+of its instance variables.
+
 @figure{Inspect instance variables of the Ellipse,ch06-12-InspectEllipse,12}
+
+Set the borderWidth.
+
 @figure{Use Inspector to set borderWidth,ch06-13-SetBorderWidth,12}
+
+Set the borderColor.
+
 @figure{Use Inspector to set borderColor,ch06-14-SetBorderColor,12}
+
+In the typical case one wants to refine or change behaviors for all instances of a class.
+
+Let's make a simple subclass which changes color when left-clicked.
+Create a new class just as we did with SpaceWar! but subclass EllipseMorph with #ColorClickEllipse.
+
+@smalltalkExample{
+EllipseMorph subclass: #ColorClickEllipse
+             instanceVariableNames: ''
+             classVariableNames: ''
+             poolDictionaries: ''
+             category: 'Spacewar!!'}
+
+Right-Click on the @strong{Message Category} pane and select @strong{new category...}.
+This brings up a number of selections and allows us to create new ones.
+Select ``event handling testing''.  Then add the method @smalltalk{ColorClickEllipse>>handlesMouseDown:}.
+
+@smalltalkExample{
+handlesMouseDown: aMouseButtonEvent
+  "Answer that I do handle mouseDown events''
+  ^true
+}
+
+Likewise, add a new catagory ``event handing'' and add the other method we need.
+
+@smalltalkExample{
+mouseButton1Up: aMouseButtonEvent localPosition: localEventPosition
+   "I ignore the mouseEvent information and change my color."
+   self color: Color random}
+
+Now, you have created a new Morph class and can select a ColorClickEllipse
+from the World Menu @strong{New Morph..} and try it out.
+These are fun to left-click on.  Make as many as you want!
+
 @figure{Obtain ColorClickEllipse,ch06-15-ColorClickEllipse,12}
 
+Now you know how to specialize an individual morph, or make a whole new class of them!
