@@ -28,7 +28,7 @@ or @dfn{class instance}. A @dfn{class} is a kind of model for an entity.
 The behavior is defined internally in the receiver and it can be
 triggered from any instance. Again this behavior is described only
 with messages sent between entities.  An entity may send a message to
-itself. A behavior is defined in a class, and is called a @dfn{method}.
+itself. A behavior is defined in a class and is called a @dfn{method}.
 
 It results in a huge cloud of entities communicating with each other
 through message sending. New entities are instantiated when needed
@@ -146,8 +146,8 @@ readability of the code:
 @smalltalkExample{Transcript show: 'Hello World!'; newLine; show: 'I am Cuising'}
 
 The @class{Transcript} class is frequently helpful in presenting
-useful information when developing an application. As an alternative
-to the @kbd{Ctrl-d} (@emph{@b{D}o it}) shortcut, @kbd{Ctrl-p} (@emph{@b{P}rint it})
+useful information when developing an application. An alternative
+to the @kbd{Ctrl-d} (@emph{@b{D}o it}) shortcut is @kbd{Ctrl-p} (@emph{@b{P}rint it}), which 
 executes the script and prints the result direcly in the Workspace.
 
 In the example, we have requested no special result.  Selecting the
@@ -365,7 +365,7 @@ Observe a few important points in this declaration:
 
    @item The @smalltalk{instanceVariableNames:} argument is a string:
    the instance variables of the class are declared by name separated
-   by a space. There is none in this class definition.
+   by a space. There are none in this class definition.
 
 @end itemize
 
@@ -419,7 +419,7 @@ on the class name will open a Browser on the named class:
 
 @itemize
 
-   @item In the Workspace, type @smalltalk{1 class} and print
+   @item In the Workspace, type @smalltalk{2 class} and print
    with @kbd{Ctrl-p},
 
    @item @class{SmallInteger} is printed and automatically highlighted as the current selection,
