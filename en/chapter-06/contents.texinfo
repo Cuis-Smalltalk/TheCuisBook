@@ -8,25 +8,23 @@ display screen.
 
 Because Morphs are useful, when you look at
 class @class{Morph} in a Hierarchy Browser you will
-see a large number of methods and many subclasses.
+see a large number of methods and many, many subclasses.
 But the basic ideas are quite simple.
 
 Let's start with one of the basic morphs, an @class{EllipseMorph}.
-You could write @smalltalk{EllipseMorph new openInWorld} and @emph{@b{D}o it}, but
+You could write @smalltalk{EllipseMorph new openInWorld} and @emph{@b{D}o-it}, but
 we are doing visual things for now, so let's get a World Menu and select
 from @strong{New Morph...} @strong{Basic} submenu and drag onto the desktop.
-
-@figure{Select EllipseMorph from a Menu,ch06-01-EllipseMorphFromMenu,8}
 
 Every time one obtains a morph from a @strong{New Morph...} submenu, one gets
 a different morph but made to a standard style.
 
-@figure{Drag Ellipse onto Desktop,ch06-02-DragEllipseToDesktop,8}
+@figure{Select EllipseMorph from a Menu,ch06-01-EllipseMorphFromMenu,8}
 
 The basic challenge of @dfn{user interface design} is to communicate visibility and
 control.  Where am I?  What can I do here?
 
-One of the balance points in design is how to eliminate clutter.  A particular
+One of the balance points in design is how to eliminate clutter.  One useful 
 strategy is to reveal capabilities in context as they are needed.
 
 In the case of Cuis, you have to know some basics because helpful tools are
@@ -98,7 +96,9 @@ Inspectors work for every object by the way, not just morphs.
 To add a behavior to all instances of a class, we create an instance method.  Here we are going
 to create a behavior for ``just this one RectangleLikeMorph instance''.
 
-In addition to instance variables, a morph can have any number of named @dfn{properties}.
+In addition to instance variables, a morph can have any number of
+named @dfn{properties} which can be different for each morph.
+
 We add two properties here.
 
 @smalltalkExample{
@@ -107,19 +107,18 @@ self setProperty: #mouseButton1UpLlocalPosition:
      toValue: [:ignoredEvent :ignoredPosition| self color: Color random]
 }
 
-These peoperties are special to the user interface.
+These properties are special to the user interface.
+You can find methods with these names in the @class{Morph} class to see what they do.
 
-After selecting the text and Do-It, each time you @kbd{Left-Click} on the rect it changes color!
+After selecting the text and @emph{@b{D}o-it}, each time you @kbd{Left-Click} on the rect it changes color!
 
 Note that you can no longer move the ellipse by mouse-down on the rect,
-because the rect now takes the mouse event.  More on this below.
+because the rect now takes the mouse event.  You have to mouse-down on the Ellipse.  More on this below.
 
 One quick note on @strong{Move} versis @strong{Pick up}.  @strong{Move} moves a submorph
-within its parent. 
+``within'' its parent.  @strong{Pick up} grabs a morph ``out'' of its parent. 
 
 @figure{Move Submorph within its Parent,ch06-09-Move-Within,8}
-
-@strong{Pick up} grabs a morph out of its parent. 
 
 @figure{Pick a Submorph out of its Parent,ch06-10-PickUp-2-MoveOut,8}
 
@@ -130,8 +129,6 @@ of its instance variables.
 
 Set the borderWidth.
 
-@figure{Use Inspector to set borderWidth,ch06-13-SetBorderWidth,12}
-
 Set the borderColor.
 
 @figure{Use Inspector to set borderColor,ch06-14-SetBorderColor,12}
@@ -139,7 +136,7 @@ Set the borderColor.
 In the typical case one wants to refine or change behaviors for all instances of a class.
 
 Let's make a simple subclass which changes color when @kbd{Left-Click}ed.
-Create a new class just as we did with SpaceWar! but subclass EllipseMorph with #ColorClickEllipse.
+Create a new class just as we did with Spacewar! but subclass EllipseMorph with #ColorClickEllipse.
 
 @smalltalkExample{
 EllipseMorph subclass: #ColorClickEllipse
