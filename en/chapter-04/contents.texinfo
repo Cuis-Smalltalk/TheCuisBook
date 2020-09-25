@@ -387,7 +387,7 @@ To get an idea of how useful enumerators are, take a browse at the
 @exercise{Odd integers,oddNumbers,@emph{Select the odd number between
 -20 and 45.}}
 
-You want to know the quantity of prime numbers under 100.  Just send
+You want to know the number of prime numbers under 100.  Just send
 the message @msg{size} to the answered collection at
 @ref{prime100}. The parenthesis are mandatory to ensure the @msg{size}
 is sent last to the resulting collection:
@@ -612,7 +612,7 @@ several class categories: @label{Collections-Unordered},
 collections.
 
 @class{OrderedCollection} is a notable one. Its elements are ordered:
-elements are added one after the other one@footnote{Of course you can
+elements are added one after the other in sequence@footnote{Of course you can
 insert an element between two elements. However @class{LinkList}
 instance are more efficient for this use case scenario.}. Its size is
 variable depending on added or removed elements.
