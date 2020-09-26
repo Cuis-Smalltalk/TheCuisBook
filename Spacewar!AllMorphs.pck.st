@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4249] on 26 September 2020 at 4:39:51 pm'!
+'From Cuis 5.0 [latest update: #4249] on 26 September 2020 at 4:59:37 pm'!
 'Description '!
-!provides: 'Spacewar!!AllMorphs' 1 0!
+!provides: 'Spacewar!!AllMorphs' 1 2!
 SystemOrganization addCategory: #'Spacewar!!AllMorphs'!
 
 
@@ -36,7 +36,7 @@ Torpedo class
 
 !classDefinition: #SpaceWar category: #'Spacewar!!AllMorphs'!
 RectangleLikeMorph subclass: #SpaceWar
-	instanceVariableNames: 'ships torpedoes centralStar timeLapse'
+	instanceVariableNames: 'ships torpedoes centralStar'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Spacewar!!AllMorphs'!
@@ -254,9 +254,9 @@ wantsSteps
 direction: aVector
 	heading _ aVector y arcTan: aVector x! !
 
-!Torpedo methodsFor: 'accessing' stamp: 'hlsf 9/26/2020 15:58:07'!
+!Torpedo methodsFor: 'accessing' stamp: 'hlsf 9/26/2020 16:58:11'!
 mass
-	^ 0.5! !
+	^ 1! !
 
 !Torpedo methodsFor: 'accessing' stamp: 'hlsf 9/21/2020 20:53:04'!
 position: aPoint
@@ -283,11 +283,11 @@ drawOn: canvas
 	canvas line: shape first to: shape third width: 2 color: color.
 ! !
 
-!Torpedo methodsFor: 'initialization' stamp: 'hlsf 9/26/2020 16:29:19'!
+!Torpedo methodsFor: 'initialization' stamp: 'hlsf 9/26/2020 16:54:36'!
 initialize
 	super initialize.
 	color _ Color red.
-	lifeSpan _ 500.
+	lifeSpan _ 100.
 	acceleration _ 1000.
 	shape _ Array new: 3 withAll: 0@0! !
 
@@ -346,11 +346,12 @@ addTorpedo: aTorpedo
 	self addMorph: aTorpedo.
 	aTorpedo startStepping! !
 
-!SpaceWar methodsFor: 'events' stamp: 'hlsf 9/26/2020 16:20:29'!
+!SpaceWar methodsFor: 'events' stamp: 'hlsf 9/26/2020 16:59:13'!
 destroyTorpedo: aTorpedo
-	aTorpedo delete.
 	torpedoes remove: aTorpedo.
-	self removeMorph: aTorpedo.
+	aTorpedo stopStepping. 
+	aTorpedo delete.
+	
 	! !
 
 !SpaceWar methodsFor: 'events' stamp: 'hlsf 9/21/2020 20:41:20'!
