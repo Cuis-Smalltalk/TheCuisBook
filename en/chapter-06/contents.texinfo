@@ -37,13 +37,13 @@ temporary text popup who's name should give a clue to its usage.
 If you click elsewhere the construction handles leave, but you can get them back
 at any time with a mouse click.
 
-@figure{Drag Construction Handle to Change Size,ch06-03-DragToEnlarge,8}
+@figure{Drag Construction Handle to Change Size,ch06-03-DragToEnlarge,4}
 
 Now that you know this, move the yellow lower right handle with tool tip @strong{Change size}
 via @dfn{Click-Drag}.  Just hold down the left mouse button while the cursor
 is over the handle, move the cursor to the right and down, and release the mouse button.
 
-@figure{A Larger Ellipse,ch06-04-Enlarged,8}
+@figure{A Larger Ellipse,ch06-04-Enlarged,4}
 
 Morphs can contain other morphs.  These interior morphs are called @dfn{submorph}s of their
 containing morph.
@@ -53,14 +53,14 @@ Again, you can do this by writing the software ``code'', but let's do it directl
 
 First we obtain a RectangleLikeMorph from the @strong{New morph...} submenus.
 
-@figure{Obtain a RectangleLikeMorph,ch06-05-AddRectangle,8}
+@figure{Obtain a RectangleLikeMorph,ch06-05-AddRectangle,5}
 
 Now drag the rect over the ellipse and @kbd{Middle-Click} on the rect and click on
 the blue construction handle to gets the rect's @dfn{Morph Menu}.
 Use the menu selection @strong{embed into...} and select the ellipse as
 its new parent.
 
-@figure{Make the Rect a Submorph of the Ellipse,ch06-06-EmbedRectIntoEllipse,8}
+@figure{Make the Rect a Submorph of the Ellipse,ch06-06-EmbedRectIntoEllipse,5}
 
 Now when you click-drag the ellipse, or use the @strong{Pick up} or @strong{Move}
 construction handles, the rect is just a decoration for the ellipse.
@@ -74,9 +74,9 @@ Let's add a behavior to just this one @class{RectangleLikeMorph}.
 To get the construction halo for an interior morph, just @kbd{Middle-Click} multiple times to ``drill down''
 through the submorph hierarchy.
 
-@figure{Middle-Click for Construction Handles,ch06-07-MiddleClickRect,8}
+@figure{Middle-Click for Construction Handles,ch06-07-MiddleClickRect,4.5}
 
-@figure{Middle-Click again to descend into Submorphs,ch06-08-2ndMidClckToSubmorph,8}
+@figure{Middle-Click again to descend into Submorphs,ch06-08-2ndMidClckToSubmorph,4.5}
 
 There is an orange handle on the right, just under the green @strong{Duplicate} handle.
 @kbd{Left-Click} this to get the @strong{Debug} menu.
@@ -91,7 +91,7 @@ The lower pane is a Smalltalk code editor, basically a workspace, where @strong{
 
 Inspectors work for every object by the way, not just morphs.
 
-@figure{Add Instance Specific Behavior,ch06-11aColorClickOnRect,12}
+@figure{Add Instance Specific Behavior,ch06-11aColorClickOnRect,8}
 
 To add a behavior to all instances of a class, we create an instance method.  Here we are going
 to create a behavior for ``just this one RectangleLikeMorph instance''.
@@ -118,9 +118,9 @@ because the rect now takes the mouse event.  You have to mouse-down on the Ellip
 One quick note on @strong{Move} versis @strong{Pick up}.  @strong{Move} moves a submorph
 ``within'' its parent.  @strong{Pick up} grabs a morph ``out'' of its parent. 
 
-@figure{Move Submorph within its Parent,ch06-09-Move-Within,8}
+@figure{Move Submorph within its Parent,ch06-09-Move-Within,4}
 
-@figure{Pick a Submorph out of its Parent,ch06-10-PickUp-2-MoveOut,8}
+@figure{Pick a Submorph out of its Parent,ch06-10-PickUp-2-MoveOut,4}
 
 Before we go on, let's use an inspector on the ellipse to change values of a couple
 of its instance variables.
@@ -131,7 +131,7 @@ Set the borderWidth.
 
 Set the borderColor.
 
-@figure{Use Inspector to set borderColor,ch06-14-SetBorderColor,12}
+@figure{Use Inspector to set borderColor,ch06-14-SetBorderColor,8}
 
 In the typical case one wants to refine or change behaviors for all instances of a class.
 
@@ -166,6 +166,6 @@ Now, you have created a new Morph class and can select a ColorClickEllipse
 from the World Menu @strong{New Morph..} and try it out.
 These are fun to @kbd{Left-Click} on.  Make as many as you want!
 
-@figure{Obtain ColorClickEllipse,ch06-15-ColorClickEllipse,12}
+@figure{Obtain ColorClickEllipse,ch06-15-ColorClickEllipse,8}
 
 Now you know how to specialize an individual morph, or make a whole new class of them!
