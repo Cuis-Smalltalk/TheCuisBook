@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4249] on 27 September 2020 at 2:32:24 pm'!
+'From Cuis 5.0 [latest update: #4249] on 27 September 2020 at 2:51:28 pm'!
 'Description '!
-!provides: 'Spacewar!!AllMorphs' 1 21!
+!provides: 'Spacewar!!AllMorphs' 1 24!
 SystemOrganization addCategory: #'Spacewar!!AllMorphs'!
 
 
@@ -36,7 +36,7 @@ GamePlay class
 
 !classDefinition: #SpaceShip category: #'Spacewar!!AllMorphs'!
 RectangleLikeMorph subclass: #SpaceShip
-	instanceVariableNames: 'name shape position heading velocity fuel torpedoes acceleration'
+	instanceVariableNames: 'name shape position heading velocity fuel torpedoes acceleration shipBounds'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Spacewar!!AllMorphs'!
@@ -188,12 +188,12 @@ keyboardFocusChange: gotFocus
 		ifFalse: [color _ self defaultColor alpha: 0.5].
 	self redrawNeeded.! !
 
-!GamePlay methodsFor: 'stepping' stamp: 'hlsf 9/27/2020 14:32:22'!
+!GamePlay methodsFor: 'stepping' stamp: 'hlsf 9/27/2020 14:47:28'!
 step
 	"self redrawNeeded "
 	| shipsBound starBound |
 	"Precompute the actors bounds for efficiency" 
-	shipsBound _ ships collect: [:ship | Array with: (ship morphBounds expandBy: -10) with: ship].
+	shipsBound _ ships collect: [:ship | Array with: ship shipBounds with: ship].
 	starBound _ centralStar morphBounds expandBy: -5.
 	"Collision between torpedos and the central star then the ships" 
 	torpedoes do: [:torpedo | | torpedoBound |
@@ -229,14 +229,15 @@ stepTime
 wantsSteps
 	^ true! !
 
-!SpaceShip methodsFor: 'initialization' stamp: 'hlsf 9/26/2020 14:02:06'!
+!SpaceShip methodsFor: 'initialization' stamp: 'hlsf 9/27/2020 14:47:09'!
 initialize
 	super initialize.
 	heading _ Float halfPi.
 	velocity _ 0 @ 0.
 	position _ 100 @ 100.
 	acceleration _ 0.
-	shape _ Array new: 5 withAll: 0@0! !
+	shape _ Array new: 5 withAll: 0@0.
+	shipBounds _ 0@0 corner: 0@0! !
 
 !SpaceShip methodsFor: 'accessing' stamp: 'hlsf 9/16/2020 15:04:45'!
 direction
@@ -264,6 +265,10 @@ nose
 !SpaceShip methodsFor: 'accessing' stamp: 'hlsf 9/17/2020 15:14:55'!
 position: aPoint
 	position _ aPoint ! !
+
+!SpaceShip methodsFor: 'accessing' stamp: 'hlsf 9/27/2020 14:46:52'!
+shipBounds
+	^ shipBounds! !
 
 !SpaceShip methodsFor: 'accessing' stamp: 'hlsf 9/16/2020 15:07:02'!
 transformation
@@ -355,7 +360,7 @@ unpush
 "Stop the accelaration boost"
 	acceleration _ 0! !
 
-!SpaceShip methodsFor: 'stepping' stamp: 'hlsf 9/26/2020 16:30:04'!
+!SpaceShip methodsFor: 'stepping' stamp: 'hlsf 9/27/2020 14:48:13'!
 step
 	| m u n |
 	"Apply the mechanic laws"
@@ -369,9 +374,10 @@ step
 	shape at: 2 put: (m transform: position - n).
 	shape at: 3 put: (m transform: position + u).
 	"tail of the engine gas exhaust, if any"
-	shape at: 4 put: (m transform: position).
+	shape at: 4 put: (m transform: position).	
 	shape at: 5 put: (m transform: position - u).
-	self updateBounds: ((Rectangle encompassing: shape) expandBy: 6).	! !
+	shipBounds _ Rectangle encompassing: (shape first: 3).
+	self updateBounds: ((Rectangle encompassing: shape) expandBy: 6)! !
 
 !SpaceShip methodsFor: 'stepping' stamp: 'hlsf 9/26/2020 13:31:14'!
 stepTime
