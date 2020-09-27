@@ -103,7 +103,7 @@ We add two properties here.
 
 @smalltalkExample{
 self setProperty: #handlesMouseDown: toValue: true.
-self setProperty: #mouseButton1UpLlocalPosition:
+self setProperty: #mouseButton1UpLocalPosition:
      toValue: [:ignoredEvent :ignoredPosition| self color: Color random]
 }
 
