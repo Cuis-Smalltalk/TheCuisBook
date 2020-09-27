@@ -20,7 +20,7 @@ One major idea in software is that programming is merely giving a
 computer a set of instructions to solve some problem.  In this point
 of view, the only value of software is to achieve a result, and therefore, a piece
 of software is only as interesting as having that problem solved.
-Furthermore, as programming is not insteresting by itself, it
+Furthermore, as programming is not interesting by itself, it
 is left to a professional guild with a specialized technical knowledge of how to
 write software, and the rest of the world just ignores it.
 
@@ -164,9 +164,13 @@ The image is a regular file feeding the @vm{} with all the objects
  defining the state of the virtual computer. These objects are
  classes, methods, instances of those classes as numbers, strings,
  windows, debuggers -- whatever existed when the state of the virtual
- computer was saved. An image file saved on a given Operating System
- and CPU architecture will run identically on another system as
- long as the same @vm{} version is used.
+ computer was saved. An @dfn{image file} saved on a given Operating System
+ and CPU architecture @strong{will run identically on another system} as
+ long as the same @vm{} generation is used.
+
+The @vm{} allows an image to be restarted with windows in the same locations
+between different operating systems and different CPU architectures
+without recompilation.  This is what @dfn{portability} means to us.
 
 What makes @cuis{} special is the living entities in the image: its
 class population and arrangement, how the classes inherit from each
