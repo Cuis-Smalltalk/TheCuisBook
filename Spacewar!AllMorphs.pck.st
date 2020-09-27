@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4249] on 26 September 2020 at 4:59:37 pm'!
+'From Cuis 5.0 [latest update: #4249] on 27 September 2020 at 12:37:07 pm'!
 'Description '!
-!provides: 'Spacewar!!AllMorphs' 1 2!
+!provides: 'Spacewar!!AllMorphs' 1 20!
 SystemOrganization addCategory: #'Spacewar!!AllMorphs'!
 
 
@@ -13,6 +13,26 @@ EllipseMorph subclass: #CentralStar
 !classDefinition: 'CentralStar class' category: #'Spacewar!!AllMorphs'!
 CentralStar class
 	instanceVariableNames: ''!
+
+!classDefinition: #SpaceWar category: #'Spacewar!!AllMorphs'!
+SystemWindow subclass: #SpaceWar
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Spacewar!!AllMorphs'!
+!classDefinition: 'SpaceWar class' category: #'Spacewar!!AllMorphs'!
+SpaceWar class
+	instanceVariableNames: ''!
+
+!classDefinition: #GamePlay category: #'Spacewar!!AllMorphs'!
+RectangleLikeMorph subclass: #GamePlay
+	instanceVariableNames: 'ships torpedoes centralStar'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Spacewar!!AllMorphs'!
+!classDefinition: 'GamePlay class' category: #'Spacewar!!AllMorphs'!
+GamePlay class
+	instanceVariableNames: 'timeLapse'!
 
 !classDefinition: #SpaceShip category: #'Spacewar!!AllMorphs'!
 RectangleLikeMorph subclass: #SpaceShip
@@ -34,21 +54,11 @@ SpaceShip subclass: #Torpedo
 Torpedo class
 	instanceVariableNames: ''!
 
-!classDefinition: #SpaceWar category: #'Spacewar!!AllMorphs'!
-RectangleLikeMorph subclass: #SpaceWar
-	instanceVariableNames: 'ships torpedoes centralStar'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Spacewar!!AllMorphs'!
-!classDefinition: 'SpaceWar class' category: #'Spacewar!!AllMorphs'!
-SpaceWar class
-	instanceVariableNames: 'timeLapse'!
-
 
 !CentralStar commentStamp: '<historical>' prior: 0!
 I am the central start of the game generating a gravity field.!
 
-!SpaceWar commentStamp: 'hlsf 9/16/2020 15:06:56' prior: 0!
+!GamePlay commentStamp: 'hlsf 9/16/2020 15:06:56' prior: 0!
 I am the gameplay view. My submorphs are the elements of the game.
 
 | game | 
@@ -66,13 +76,13 @@ mass
 mass: anInteger
 	mass _ anInteger ! !
 
-!CentralStar methodsFor: 'initialization' stamp: 'hlsf 9/26/2020 13:44:37'!
+!CentralStar methodsFor: 'initialization' stamp: 'hlsf 9/26/2020 17:08:38'!
 initialize
 	super initialize.
 	color _ Color yellow.
 	borderColor _ Color orange.
 	borderWidth _ 2.
-	mass _ 8000.! !
+	mass _ 10000.! !
 
 !CentralStar methodsFor: 'stepping' stamp: 'hlsf 9/26/2020 11:29:05'!
 step
@@ -84,6 +94,136 @@ stepTime
 	^ 100! !
 
 !CentralStar methodsFor: 'stepping' stamp: 'hlsf 9/26/2020 13:43:14'!
+wantsSteps
+	^ true! !
+
+!SpaceWar methodsFor: 'as yet unclassified' stamp: 'hlsf 9/27/2020 12:36:36'!
+initialize
+	super initialize.
+	self setLabel: 'Spacewar!!'.
+	self addMorph: GamePlay new layoutSpec: LayoutSpec useAll! !
+
+!GamePlay methodsFor: 'accessing' stamp: 'hlsf 9/16/2020 16:41:40'!
+starMass
+	^ centralStar mass! !
+
+!GamePlay methodsFor: 'initialization' stamp: 'hlsf 9/10/2020 15:21:22'!
+defaultColor
+	^ `Color black`! !
+
+!GamePlay methodsFor: 'initialization' stamp: 'hlsf 9/21/2020 13:52:41'!
+initialize
+	super initialize.
+	extent _ 500 @ 500.
+	self setProperty: #'handlesKeyboard' toValue: true.
+	self setProperty: #'handlesMouseOver:' toValue: true.
+	self startSteppingStepTime: self stepTime.
+	self initializeActors.! !
+
+!GamePlay methodsFor: 'initialization' stamp: 'hlsf 9/26/2020 16:28:07'!
+initializeActors
+	centralStar _ CentralStar new.
+	torpedoes _ OrderedCollection new.
+	ships _ Array 
+		with: SpaceShip new
+		with: SpaceShip new.
+	ships first 
+		color: Color white; 
+		position: 200 @ 200.
+	ships second
+		color: Color red;
+		position: -200 @ -200.
+		
+	self addAllMorphs: ships.
+	self addMorph: centralStar.! !
+
+!GamePlay methodsFor: 'events' stamp: 'hlsf 9/26/2020 16:23:03'!
+addTorpedo: aTorpedo
+	torpedoes add: aTorpedo.
+	self addMorph: aTorpedo.
+	aTorpedo startStepping! !
+
+!GamePlay methodsFor: 'events' stamp: 'hlsf 9/27/2020 10:46:17'!
+destroyTorpedo: aTorpedo
+	torpedoes remove: aTorpedo.
+	aTorpedo dismissMorph. 
+	! !
+
+!GamePlay methodsFor: 'events' stamp: 'hlsf 9/21/2020 20:41:20'!
+keyStroke: event
+	| key |
+	key _ event keyCharacter.
+	key = Character arrowUp ifTrue: [ships first push].
+	key = Character arrowRight ifTrue: [ships first right].
+	key = Character arrowLeft ifTrue: [ships first left].
+	key = Character arrowDown ifTrue: [ships first fireTorpedo]! !
+
+!GamePlay methodsFor: 'events' stamp: 'hlsf 9/26/2020 14:03:37'!
+mouseEnter: evt
+	evt hand newKeyboardFocus: self.	
+	self startStepping.
+	submorphs do: [:each | each startStepping]! !
+
+!GamePlay methodsFor: 'events' stamp: 'hlsf 9/26/2020 14:03:27'!
+mouseLeave: evt
+	evt hand releaseKeyboardFocus: self.
+	self stopStepping.
+	submorphs do: [:each | each stopStepping].
+! !
+
+!GamePlay methodsFor: 'events' stamp: 'hlsf 9/27/2020 12:32:18'!
+teleport: aShip
+"Teleport a ship at a random location"
+	| area |
+	area _ extent - 40.
+	aShip 
+		velocity: 0@0;
+		position: (aShip transformation 
+			inverseTransform: (area x asInteger atRandom + 20) @ (area y asInteger atRandom + 20))! !
+
+!GamePlay methodsFor: 'focus handling' stamp: 'hlsf 9/10/2020 16:04:35'!
+keyboardFocusChange: gotFocus
+	gotFocus 
+		ifTrue: [color _ self defaultColor ]
+		ifFalse: [color _ self defaultColor alpha: 0.5].
+	self redrawNeeded.! !
+
+!GamePlay methodsFor: 'stepping' stamp: 'hlsf 9/27/2020 12:20:47'!
+step
+	"self redrawNeeded "
+	| shipsBound starBound |
+	"Precompute the actors bounds for efficiency" 
+	shipsBound _ ships collect: [:ship | Array with: (ship morphBounds expandBy: -10) with: ship].
+	starBound _ centralStar morphBounds expandBy: -5.
+	"Collision between torpedos and the central star then the ships" 
+	torpedoes do: [:torpedo | | torpedoBound |
+		torpedoBound _ torpedo morphBounds expandBy: -3.
+		(torpedoBound intersects: starBound) 
+			ifTrue: [
+				torpedo flashWith: Color red.
+				self destroyTorpedo: torpedo]
+			ifFalse: [
+				shipsBound do: [:shipData |
+					(torpedoBound intersects: shipData first) ifTrue: [
+						shipData second flashWith: shipData second color.
+						self destroyTorpedo: torpedo			]
+					]
+			]
+		].
+	"Collision between central star and ships"
+	shipsBound do: [:shipData |
+		(shipData first intersects: starBound) ifTrue: [
+			shipData second flashWith: shipData second color.
+			self teleport: shipData second]].
+	"Collision between ships"
+		(shipsBound first first intersects: shipsBound second first) ifTrue: [
+			ships do: [:ship | ship flashWith: ship color]			]! !
+
+!GamePlay methodsFor: 'stepping' stamp: 'hlsf 9/27/2020 11:17:13'!
+stepTime
+	^ 100! !
+
+!GamePlay methodsFor: 'stepping' stamp: 'hlsf 9/27/2020 11:16:20'!
 wantsSteps
 	^ true! !
 
@@ -114,9 +254,20 @@ normal
 	 ^ direction y negated @ direction x
 	! !
 
+!SpaceShip methodsFor: 'accessing' stamp: 'hlsf 9/21/2020 20:47:48'!
+nose
+
+	^ self direction * 30! !
+
 !SpaceShip methodsFor: 'accessing' stamp: 'hlsf 9/17/2020 15:14:55'!
 position: aPoint
 	position _ aPoint ! !
+
+!SpaceShip methodsFor: 'accessing' stamp: 'hlsf 9/16/2020 15:07:02'!
+transformation
+"The transofmration matrix to compute the ship coordinates in the gameplay view"
+	^ AffineTransformation withPointScale: 1 @ -1 position: owner morphExtent / 2.0.
+! !
 
 !SpaceShip methodsFor: 'accessing' stamp: 'hlsf 9/17/2020 15:15:21'!
 velocity: aPoint
@@ -132,17 +283,6 @@ drawOn: canvas
 		canvas line: shape fourth to: shape fifth width: 1 color: Color gray]
 
 	! !
-
-!SpaceShip methodsFor: 'drawing' stamp: 'hlsf 9/21/2020 20:47:48'!
-nose
-
-	^ self direction * 30! !
-
-!SpaceShip methodsFor: 'drawing' stamp: 'hlsf 9/16/2020 15:07:02'!
-transformation
-"The transofmration matrix to compute the ship coordinates in the gameplay view"
-	^ AffineTransformation withPointScale: 1 @ -1 position: owner morphExtent / 2.0.
-! !
 
 !SpaceShip methodsFor: 'computing' stamp: 'hlsf 9/17/2020 15:35:06'!
 gravity
@@ -182,7 +322,7 @@ isInOuterSpace
 	^ (((0@0 extent: owner morphExtent) expandBy: 20) containsPoint: (self transformation transform: position)) not
 		! !
 
-!SpaceShip methodsFor: 'control' stamp: 'hlsf 9/21/2020 21:14:16'!
+!SpaceShip methodsFor: 'control' stamp: 'hlsf 9/27/2020 10:53:53'!
 fireTorpedo
 "Fire a torpedo in the direction of the ship heading with a combined velocity"
 	| torpedo | 
@@ -190,7 +330,7 @@ fireTorpedo
 	torpedo 
 		position: position + self nose;
 		direction: self direction;
-		velocity: self direction * 50 + velocity.
+		velocity: self direction * 100 + velocity.
 	owner addTorpedo: torpedo.! !
 
 !SpaceShip methodsFor: 'control' stamp: 'hlsf 9/16/2020 15:07:51'!
@@ -266,15 +406,13 @@ position: aPoint
 updateOuterSpace
 "just let the torpedo goes outerspace"! !
 
-!Torpedo methodsFor: 'computing' stamp: 'hlsf 9/26/2020 16:30:04'!
+!Torpedo methodsFor: 'computing' stamp: 'hlsf 9/27/2020 10:56:05'!
 updatePosition
 "Update the torpedo position"
 	super updatePosition.
 	"update the heading, so we have a torpedo following the heading"
 	self direction: velocity.
-	lifeSpan _ lifeSpan - 1.
-	acceleration > 0 ifTrue: [acceleration _ acceleration - 100].
-	lifeSpan isZero ifTrue: [owner destroyTorpedo: self]! !
+	acceleration > 0 ifTrue: [acceleration _ acceleration - 200].! !
 
 !Torpedo methodsFor: 'drawing' stamp: 'hlsf 9/26/2020 15:54:45'!
 drawOn: canvas
@@ -283,15 +421,15 @@ drawOn: canvas
 	canvas line: shape first to: shape third width: 2 color: color.
 ! !
 
-!Torpedo methodsFor: 'initialization' stamp: 'hlsf 9/26/2020 16:54:36'!
+!Torpedo methodsFor: 'initialization' stamp: 'hlsf 9/27/2020 10:55:57'!
 initialize
 	super initialize.
 	color _ Color red.
-	lifeSpan _ 100.
+	lifeSpan _ 500.
 	acceleration _ 1000.
 	shape _ Array new: 3 withAll: 0@0! !
 
-!Torpedo methodsFor: 'stepping' stamp: 'hlsf 9/26/2020 16:30:04'!
+!Torpedo methodsFor: 'stepping' stamp: 'hlsf 9/27/2020 10:49:49'!
 step
 	| m n |
 	self updatePosition.
@@ -300,85 +438,10 @@ step
 	shape at: 1 put: (m transform: position + n).
 	shape at: 2 put: (m transform: position - n).
 	shape at: 3 put: (m transform: position + (self direction * 8)).
-	self updateBounds: ((Rectangle encompassing: (shape first: 3)) expandBy: 3).	! !
+	self updateBounds: ((Rectangle encompassing: (shape first: 3)) expandBy: 3).	
+	lifeSpan _ lifeSpan - 1.
+	lifeSpan isZero ifTrue: [owner destroyTorpedo: self]! !
 
 !Torpedo methodsFor: 'stepping' stamp: 'hlsf 9/26/2020 16:22:32'!
 wantsSteps
 	^ false! !
-
-!SpaceWar methodsFor: 'accessing' stamp: 'hlsf 9/16/2020 16:41:40'!
-starMass
-	^ centralStar mass! !
-
-!SpaceWar methodsFor: 'initialization' stamp: 'hlsf 9/10/2020 15:21:22'!
-defaultColor
-	^ `Color black`! !
-
-!SpaceWar methodsFor: 'initialization' stamp: 'hlsf 9/21/2020 13:52:41'!
-initialize
-	super initialize.
-	extent _ 500 @ 500.
-	self setProperty: #'handlesKeyboard' toValue: true.
-	self setProperty: #'handlesMouseOver:' toValue: true.
-	self startSteppingStepTime: self stepTime.
-	self initializeActors.! !
-
-!SpaceWar methodsFor: 'initialization' stamp: 'hlsf 9/26/2020 16:28:07'!
-initializeActors
-	centralStar _ CentralStar new.
-	torpedoes _ OrderedCollection new.
-	ships _ Array 
-		with: SpaceShip new
-		with: SpaceShip new.
-	ships first 
-		color: Color white; 
-		position: 200 @ 200.
-	ships second
-		color: Color red;
-		position: -200 @ -200.
-		
-	self addAllMorphs: ships.
-	self addMorph: centralStar.! !
-
-!SpaceWar methodsFor: 'events' stamp: 'hlsf 9/26/2020 16:23:03'!
-addTorpedo: aTorpedo
-	torpedoes add: aTorpedo.
-	self addMorph: aTorpedo.
-	aTorpedo startStepping! !
-
-!SpaceWar methodsFor: 'events' stamp: 'hlsf 9/26/2020 16:59:13'!
-destroyTorpedo: aTorpedo
-	torpedoes remove: aTorpedo.
-	aTorpedo stopStepping. 
-	aTorpedo delete.
-	
-	! !
-
-!SpaceWar methodsFor: 'events' stamp: 'hlsf 9/21/2020 20:41:20'!
-keyStroke: event
-	| key |
-	key _ event keyCharacter.
-	key = Character arrowUp ifTrue: [ships first push].
-	key = Character arrowRight ifTrue: [ships first right].
-	key = Character arrowLeft ifTrue: [ships first left].
-	key = Character arrowDown ifTrue: [ships first fireTorpedo]! !
-
-!SpaceWar methodsFor: 'events' stamp: 'hlsf 9/26/2020 14:03:37'!
-mouseEnter: evt
-	evt hand newKeyboardFocus: self.	
-	self startStepping.
-	submorphs do: [:each | each startStepping]! !
-
-!SpaceWar methodsFor: 'events' stamp: 'hlsf 9/26/2020 14:03:27'!
-mouseLeave: evt
-	evt hand releaseKeyboardFocus: self.
-	self stopStepping.
-	submorphs do: [:each | each stopStepping].
-! !
-
-!SpaceWar methodsFor: 'focus handling' stamp: 'hlsf 9/10/2020 16:04:35'!
-keyboardFocusChange: gotFocus
-	gotFocus 
-		ifTrue: [color _ self defaultColor ]
-		ifFalse: [color _ self defaultColor alpha: 0.5].
-	self redrawNeeded.! !
