@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4249] on 27 September 2020 at 12:37:07 pm'!
+'From Cuis 5.0 [latest update: #4249] on 27 September 2020 at 2:32:24 pm'!
 'Description '!
-!provides: 'Spacewar!!AllMorphs' 1 20!
+!provides: 'Spacewar!!AllMorphs' 1 21!
 SystemOrganization addCategory: #'Spacewar!!AllMorphs'!
 
 
@@ -188,7 +188,7 @@ keyboardFocusChange: gotFocus
 		ifFalse: [color _ self defaultColor alpha: 0.5].
 	self redrawNeeded.! !
 
-!GamePlay methodsFor: 'stepping' stamp: 'hlsf 9/27/2020 12:20:47'!
+!GamePlay methodsFor: 'stepping' stamp: 'hlsf 9/27/2020 14:32:22'!
 step
 	"self redrawNeeded "
 	| shipsBound starBound |
@@ -217,7 +217,9 @@ step
 			self teleport: shipData second]].
 	"Collision between ships"
 		(shipsBound first first intersects: shipsBound second first) ifTrue: [
-			ships do: [:ship | ship flashWith: ship color]			]! !
+			ships do: [:ship | 
+				ship flashWith: ship color.
+				self teleport: ship]			]! !
 
 !GamePlay methodsFor: 'stepping' stamp: 'hlsf 9/27/2020 11:17:13'!
 stepTime
