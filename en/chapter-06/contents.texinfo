@@ -11,6 +11,7 @@ class @class{Morph} in a Hierarchy Browser you will
 see a large number of methods and many, many subclasses.
 But the basic ideas are quite simple.
 
+@cindex morph, ellipse
 Let's start with one of the basic morphs, an @class{EllipseMorph}.
 You could write @smalltalk{EllipseMorph new openInWorld} and @emph{@b{D}o-it}, but
 we are doing visual things for now, so let's get a World Menu and select
@@ -27,6 +28,7 @@ control.  Where am I?  What can I do here?
 One of the balance points in design is how to eliminate clutter.  One useful 
 strategy is to reveal capabilities in context as they are needed.
 
+@cindex morph, halo
 In the case of Cuis, you have to know some basics because helpful tools are
 there but stay out of the way.  At any time you can @kbd{Right-Click} on the desktop
 to get the World Menu.  You can also @kbd{Middle-Click} on any @class{Morph} to get
@@ -45,9 +47,11 @@ is over the handle, move the cursor to the right and down, and release the mouse
 
 @figure{A Larger Ellipse,ch06-04-Enlarged,4}
 
+@cindex morph, submorph
 Morphs can contain other morphs.  These interior morphs are called @dfn{submorph}s of their
 containing morph.
 
+@cindex morph, rectangle
 Again, you can do this by writing the software ``code'', but let's do it directly with a
 @class{RectangleLikeMorph}.
 
@@ -71,8 +75,9 @@ interesting behaviors.
 
 Let's add a behavior to just this one @class{RectangleLikeMorph}.
 
-To get the construction halo for an interior morph, just @kbd{Middle-Click} multiple times to ``drill down''
-through the submorph hierarchy.
+To get the construction halo for an interior morph, just
+@kbd{Middle-Click} multiple times to ``drill down'' through the
+submorph hierarchy.
 
 @figure{Middle-Click for Construction Handles,ch06-07-MiddleClickRect,4.5}
 
@@ -83,7 +88,7 @@ There is an orange handle on the right, just under the green @strong{Duplicate} 
 Use this menu to get an @dfn{Inspector} for the rectangle.
 
 @section A brief introduction to Inspectors
-
+@cindex tools, inspector
 Observe @ref{ch06-11aColorClickOnRect}, on the left we have a pane for
 self, all inst vars, and the individual instance variables.  Clicking
 to select ``all inst vars'' and the values pane on the right shows
@@ -100,6 +105,7 @@ Inspectors work for every object by the way, not just morphs.
 To add a behavior to all instances of a class, we create an instance method.  Here we are going
 to create a behavior for ``just this one RectangleLikeMorph instance''.
 
+@cindex morph, properties
 In addition to instance variables, a morph can have any number of
 named @dfn{properties} which can be different for each morph.
 
@@ -119,7 +125,8 @@ After selecting the text and @emph{@b{D}o-it}, each time you @kbd{Left-Click} on
 Note that you can no longer move the ellipse by mouse-down on the rect,
 because the rect now takes the mouse event.  You have to mouse-down on the Ellipse.  More on this below.
 
-One quick note on @strong{Move} versis @strong{Pick up}.  @strong{Move} moves a submorph
+@cindex morph, move/pick up
+One quick note on @strong{Move} versus @strong{Pick up}.  @strong{Move} moves a submorph
 ``within'' its parent.  @strong{Pick up} grabs a morph ``out'' of its parent. 
 
 @figure{Move Submorph within its Parent,ch06-09-Move-Within,4}
