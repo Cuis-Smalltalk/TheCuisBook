@@ -126,16 +126,18 @@ One quick note on @strong{Move} versis @strong{Pick up}.  @strong{Move} moves a 
 
 @figure{Pick a Submorph out of its Parent,ch06-10-PickUp-2-MoveOut,4}
 
-Before we go on, let's use an inspector on the ellipse to change values of a couple
-of its instance variables.
+@page
+Before we go on, let's use an inspector on the ellipse to change
+values of a couple of its instance variables.
 
-@figure{Inspect instance variables of the Ellipse,ch06-12-InspectEllipse,8}
+@figure{Inspect instance variables of the Ellipse,ch06-12-InspectEllipse,7}
 
-Set the borderWidth.
+Observe @ref{ch06-14-SetBorderColor}. In the lower pane of the
+inspector, code can be executed in the context of the inspected
+object. @smalltalk{self} refers to the instance. Here the pane
+contains code to set the borderWidth and the borderColor.
 
-Set the borderColor.
-
-@figure{Use Inspector to set borderColor,ch06-14-SetBorderColor,8}
+@figure{Use Inspector to set borderColor and borderWidth,ch06-14-SetBorderColor,7}
 
 In the typical case one wants to refine or change behaviors for all instances of a class.
 
