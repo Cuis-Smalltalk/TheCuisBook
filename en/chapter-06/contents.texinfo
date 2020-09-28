@@ -84,10 +84,14 @@ Use this menu to get an @dfn{Inspector} for the rectangle.
 
 @section A brief introduction to Inspectors
 
-On the left we have a pane for self, all inst vars, and the individual instance variables.  Clicking to select ``all inst vars''
-and the values pane on the right shows that the owner of the rect is the ellipse and rect currently has no submorphs.
+Observe @ref{ch06-11aColorClickOnRect}, on the left we have a pane for
+self, all inst vars, and the individual instance variables.  Clicking
+to select ``all inst vars'' and the values pane on the right shows
+that the owner of the rect is the ellipse and rect currently has no
+submorphs.
 
-The lower pane is a Smalltalk code editor, basically a workspace, where @strong{self} is bound to the object we are inspecting.
+The lower pane is a Smalltalk code editor, basically a workspace,
+where @strong{self} is bound to the object we are inspecting.
 
 Inspectors work for every object by the way, not just morphs.
 
