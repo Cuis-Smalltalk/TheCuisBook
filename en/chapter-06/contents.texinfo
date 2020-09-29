@@ -11,6 +11,7 @@ class @class{Morph} in a Hierarchy Browser you will
 see a large number of methods and many, many subclasses.
 But the basic ideas are quite simple.
 
+@section Ellipse Morph
 @cindex morph, ellipse
 Let's start with one of the basic morphs, an @class{EllipseMorph}.
 You could write @smalltalk{EllipseMorph new openInWorld} and @emph{@b{D}o-it}, but
@@ -20,7 +21,7 @@ from @strong{New Morph...} @strong{Basic} submenu and drag onto the desktop.
 Every time one obtains a morph from a @strong{New Morph...} submenu, one gets
 a different morph but made to a standard style.
 
-@figure{Select EllipseMorph from a Menu,ch06-01-EllipseMorphFromMenu,8}
+@figure{Select @class{EllipseMorph} from a Menu,ch06-01-EllipseMorphFromMenu,8}
 
 The basic challenge of @dfn{user interface design} is to communicate visibility and
 control.  Where am I?  What can I do here?
@@ -47,14 +48,15 @@ is over the handle, move the cursor to the right and down, and release the mouse
 
 @figure{A Larger Ellipse,ch06-04-Enlarged,4}
 
+@section Submorph
 @cindex morph, submorph
-Morphs can contain other morphs.  These interior morphs are called @dfn{submorph}s of their
-containing morph.
-
 @cindex morph, rectangle
-Again, you can do this by writing the software ``code'', but let's do it directly with a
+Morphs can contain other morphs.  These interior morphs are called
+@dfn{submorph}s of their containing morph. Again, you can do this by
+writing the software ``code'', but let's do it directly with a
 @class{RectangleLikeMorph}.
 
+@page
 First we obtain a RectangleLikeMorph from the @strong{New morph...} submenus.
 
 @figure{Obtain a RectangleLikeMorph,ch06-05-AddRectangle,5}
@@ -75,6 +77,7 @@ interesting behaviors.
 
 Let's add a behavior to just this one @class{RectangleLikeMorph}.
 
+@section A brief introduction to Inspectors
 To get the construction halo for an interior morph, just
 @kbd{Middle-Click} multiple times to ``drill down'' through the
 submorph hierarchy.
@@ -87,7 +90,6 @@ There is an orange handle on the right, just under the green @strong{Duplicate} 
 @kbd{Left-Click} this to get the @strong{Debug} menu.
 Use this menu to get an @dfn{Inspector} for the rectangle.
 
-@section A brief introduction to Inspectors
 @cindex tools, inspector
 Observe @ref{ch06-11aColorClickOnRect}, on the left we have a pane for
 self, all inst vars, and the individual instance variables.  Clicking
@@ -148,6 +150,8 @@ contains code to set the borderWidth and the borderColor.
 
 In the typical case one wants to refine or change behaviors for all instances of a class.
 
+@section Building your specialized Morph
+@cindex morph, subclass
 Let's make a simple subclass which changes color when @kbd{Left-Click}ed.
 Create a new class just as we did with Spacewar! but subclass EllipseMorph with #ColorClickEllipse.
 
@@ -182,3 +186,7 @@ These are fun to @kbd{Left-Click} on.  Make as many as you want!
 @figure{Obtain ColorClickEllipse,ch06-15-ColorClickEllipse,8}
 
 Now you know how to specialize an individual morph, or make a whole new class of them!
+
+
+@section Spacewar!'s Morphs
+
