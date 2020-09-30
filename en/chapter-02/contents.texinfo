@@ -434,6 +434,8 @@ on the class name will open a Browser on the named class:
 
 @node Spacewar! models
 @section Spacewar! models
+
+@subsection First classes
 In last chapter we listed the protagonists of the game. Now, we
 propose a first implementation of the game model with a set of classes
 representing the involved entities:
@@ -493,6 +495,8 @@ When done, your class category should be filled with four classes as in
 
 @figure{Spacewar! class category,ch02-spacewarClassCategory,6}
 
+
+@subsection Spacewar! package
 @cindex package, create (new)
 @cindex package, save
 Another important use case of a class category is to define a package
@@ -537,3 +541,15 @@ The classes we defined are empty shells with no state nor
 behavior. They will be complemented and refactored in the next
 chapters.
 
+@subsection The Newtonian model
+For an enjoyable game experience, the player ships and torpedoes must
+follow the Newton laws of mechanic. Acceleration, speed and position
+are computed according to these laws. The ship and torpedo are put
+under two forces: the acceleration from the gravity pull of the
+central star and an inner acceleration coming from the ship and
+torpedo engines.
+
+Later, we will learn how these equations are easily converted to
+computer calculus.
+
+@figure{Equation of the accelerations@comma{} speed and position,motionEquations,13}
