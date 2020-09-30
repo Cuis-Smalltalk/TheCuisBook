@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : September 22, 2020
+Compilation : September 30, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -344,8 +344,8 @@ default returned value is the instance itself, in our situation the
 <pre class="display"><span class="sansserif">LargePositiveInteger&gt;&gt;abs</span>
 </pre></div>
 
-<p>The <span class="sansserif">LargeNegativeInteger</span> counter part compute the opposite
-with <span class="sansserif">#negated</span> message:
+<p>The <span class="sansserif">LargeNegativeInteger</span> knows it is negative and its absolute value must be 
+itself but with its sign reversed, that is <span class="sansserif">negated</span>:
 </p>
 <div class="display">
 <pre class="display"><span class="sansserif">LargeNegativeInteger&gt;&gt;abs

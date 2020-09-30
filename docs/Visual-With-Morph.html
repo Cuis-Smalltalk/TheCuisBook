@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : September 22, 2020
+Compilation : September 30, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -91,6 +91,229 @@ Next: <a href="Model-And-View.html" accesskey="n" rel="next">Model And View</a>,
 </div>
 <hr>
 <span id="Visual-With-Morph-1"></span><h2 class="chapter">6 Visual With Morph</h2>
+
+<p>Every object you see in Cuis-Smalltalk is a <span class="sansserif">Morph</span> or is composed
+of <span class="sansserif">Morph</span>s.  Basically, a <span class="sansserif">Morph</span> is an object with
+state and behavior that can also depict itself on a computer
+display screen.
+</p>
+<p>Because Morphs are useful, when you look at
+class <span class="sansserif">Morph</span> in a Hierarchy Browser you will
+see a large number of methods and many, many subclasses.
+But the basic ideas are quite simple.
+</p>
+<span id="Ellipse-Morph"></span><h3 class="section">6.1 Ellipse Morph</h3>
+<span id="index-morph_002c-ellipse"></span>
+<p>Let&rsquo;s start with one of the basic morphs, an <span class="sansserif">EllipseMorph</span>.
+You could write <span class="sansserif">EllipseMorph new openInWorld</span> and <em><b>D</b>o-it</em>, but
+we are doing visual things for now, so let&rsquo;s get a World Menu and select
+from <strong>New Morph...</strong> <strong>Basic</strong> submenu and drag onto the desktop.
+</p>
+<p>Every time one obtains a morph from a <strong>New Morph...</strong> submenu, one gets
+a different morph but made to a standard style.
+</p>
+<div class="float"><span id="ch06_002d01_002dEllipseMorphFromMenu"></span>
+<div align="center"><img src="ch06-01-EllipseMorphFromMenu.png" alt="ch06-01-EllipseMorphFromMenu">
+</div>
+<div class="float-caption"><p><strong><em>Figure</em> 6.1: </strong>Select <span class="sansserif">EllipseMorph</span> from a Menu</p></div></div>
+<p>The basic challenge of <em>user interface design</em> is to communicate visibility and
+control.  Where am I?  What can I do here?
+</p>
+<p>One of the balance points in design is how to eliminate clutter.  One useful 
+strategy is to reveal capabilities in context as they are needed.
+</p>
+<span id="index-morph_002c-halo"></span>
+<p>In the case of Cuis, you have to know some basics because helpful tools are
+there but stay out of the way.  At any time you can <kbd>Right-Click</kbd> on the desktop
+to get the World Menu.  You can also <kbd>Middle-Click</kbd> on any <span class="sansserif">Morph</span> to get
+a <em>halo</em> of <em>construction handles</em>, which show up as small colored circular
+icons.  If you pause the cursor over one of these, you get a <em>tool tip</em>, a
+temporary text popup who&rsquo;s name should give a clue to its usage.
+</p>
+<p>If you click elsewhere the construction handles leave, but you can get them back
+at any time with a mouse click.
+</p>
+<div class="float"><span id="ch06_002d03_002dDragToEnlarge"></span>
+<div align="center"><img src="ch06-03-DragToEnlarge.png" alt="ch06-03-DragToEnlarge">
+</div>
+<div class="float-caption"><p><strong><em>Figure</em> 6.2: </strong>Drag Construction Handle to Change Size</p></div></div>
+<p>Now that you know this, move the yellow lower right handle with tool tip <strong>Change size</strong>
+via <em>Click-Drag</em>.  Just hold down the left mouse button while the cursor
+is over the handle, move the cursor to the right and down, and release the mouse button.
+</p>
+<div class="float"><span id="ch06_002d04_002dEnlarged"></span>
+<div align="center"><img src="ch06-04-Enlarged.png" alt="ch06-04-Enlarged">
+</div>
+<div class="float-caption"><p><strong><em>Figure</em> 6.3: </strong>A Larger Ellipse</p></div></div>
+<span id="Submorph"></span><h3 class="section">6.2 Submorph</h3>
+<span id="index-morph_002c-submorph"></span>
+<span id="index-morph_002c-rectangle"></span>
+<p>Morphs can contain other morphs.  These interior morphs are called
+<em>submorph</em>s of their containing morph. Again, you can do this by
+writing the software &ldquo;code&rdquo;, but let&rsquo;s do it directly with a
+<span class="sansserif">RectangleLikeMorph</span>.
+</p>
+<p>First we obtain a RectangleLikeMorph from the <strong>New morph...</strong> submenus.
+</p>
+<div class="float"><span id="ch06_002d05_002dAddRectangle"></span>
+<div align="center"><img src="ch06-05-AddRectangle.png" alt="ch06-05-AddRectangle">
+</div>
+<div class="float-caption"><p><strong><em>Figure</em> 6.4: </strong>Obtain a RectangleLikeMorph</p></div></div>
+<p>Now drag the rect over the ellipse and <kbd>Middle-Click</kbd> on the rect and click on
+the blue construction handle to gets the rect&rsquo;s <em>Morph Menu</em>.
+Use the menu selection <strong>embed into...</strong> and select the ellipse as
+its new parent.
+</p>
+<div class="float"><span id="ch06_002d06_002dEmbedRectIntoEllipse"></span>
+<div align="center"><img src="ch06-06-EmbedRectIntoEllipse.png" alt="ch06-06-EmbedRectIntoEllipse">
+</div>
+<div class="float-caption"><p><strong><em>Figure</em> 6.5: </strong>Make the Rect a Submorph of the Ellipse</p></div></div>
+<p>Now when you click-drag the ellipse, or use the <strong>Pick up</strong> or <strong>Move</strong>
+construction handles, the rect is just a decoration for the ellipse.
+</p>
+<p>Indeed, the rect seems to have fused into the ellipse.  Using the mouse where the
+rect shows itself is just using the mouse on the ellipse.  This rect does not have many
+interesting behaviors.
+</p>
+<p>Let&rsquo;s add a behavior to just this one <span class="sansserif">RectangleLikeMorph</span>.
+</p>
+<span id="A-brief-introduction-to-Inspectors"></span><h3 class="section">6.3 A brief introduction to Inspectors</h3>
+<p>To get the construction halo for an interior morph, just
+<kbd>Middle-Click</kbd> multiple times to &ldquo;drill down&rdquo; through the
+submorph hierarchy.
+</p>
+<div class="float"><span id="ch06_002d07_002dMiddleClickRect"></span>
+<div align="center"><img src="ch06-07-MiddleClickRect.png" alt="ch06-07-MiddleClickRect">
+</div>
+<div class="float-caption"><p><strong><em>Figure</em> 6.6: </strong>Middle-Click for Construction Handles</p></div></div>
+<div class="float"><span id="ch06_002d08_002d2ndMidClckToSubmorph"></span>
+<div align="center"><img src="ch06-08-2ndMidClckToSubmorph.png" alt="ch06-08-2ndMidClckToSubmorph">
+</div>
+<div class="float-caption"><p><strong><em>Figure</em> 6.7: </strong>Middle-Click again to descend into Submorphs</p></div></div>
+<p>There is an orange handle on the right, just under the green <strong>Duplicate</strong> handle.
+<kbd>Left-Click</kbd> this to get the <strong>Debug</strong> menu.
+Use this menu to get an <em>Inspector</em> for the rectangle.
+</p>
+<span id="index-tools_002c-inspector"></span>
+<p>Observe <a href="#ch06_002d11aColorClickOnRect"><em>Figure</em> 6.8</a>, on the left we have a pane for
+self, all inst vars, and the individual instance variables.  Clicking
+to select &ldquo;all inst vars&rdquo; and the values pane on the right shows
+that the owner of the rect is the ellipse and rect currently has no
+submorphs.
+</p>
+<p>The lower pane is a Smalltalk code editor, basically a workspace,
+where <strong>self</strong> is bound to the object we are inspecting.
+</p>
+<p>Inspectors work for every object by the way, not just morphs.
+</p>
+<div class="float"><span id="ch06_002d11aColorClickOnRect"></span>
+<div align="center"><img src="ch06-11aColorClickOnRect.png" alt="ch06-11aColorClickOnRect">
+</div>
+<div class="float-caption"><p><strong><em>Figure</em> 6.8: </strong>Add Instance Specific Behavior</p></div></div>
+<p>To add a behavior to all instances of a class, we create an instance method.  Here we are going
+to create a behavior for &ldquo;just this one RectangleLikeMorph instance&rdquo;.
+</p>
+<span id="index-morph_002c-properties"></span>
+<p>In addition to instance variables, a morph can have any number of
+named <em>properties</em> which can be different for each morph.
+</p>
+<p>We add two properties here.
+</p>
+<div class="display">
+<pre class="display"><span class="sansserif">self setProperty: #handlesMouseDown: toValue: true.
+self setProperty: #mouseButton1UpLocalPosition:
+     toValue: [:ignoredEvent :ignoredPosition| self color: Color random]
+</span>
+</pre></div>
+
+<p>These properties are special to the user interface.
+You can find methods with these names in the <span class="sansserif">Morph</span> class to see what they do.
+</p>
+<p>After selecting the text and <em><b>D</b>o-it</em>, each time you <kbd>Left-Click</kbd> on the rect it changes color!
+</p>
+<p>Note that you can no longer move the ellipse by mouse-down on the rect,
+because the rect now takes the mouse event.  You have to mouse-down on the Ellipse.  More on this below.
+</p>
+<span id="index-morph_002c-move_002fpick-up"></span>
+<p>One quick note on <strong>Move</strong> versus <strong>Pick up</strong>.  <strong>Move</strong> moves a submorph
+&ldquo;within&rdquo; its parent.  <strong>Pick up</strong> grabs a morph &ldquo;out&rdquo; of its parent. 
+</p>
+<div class="float"><span id="ch06_002d09_002dMove_002dWithin"></span>
+<div align="center"><img src="ch06-09-Move-Within.png" alt="ch06-09-Move-Within">
+</div>
+<div class="float-caption"><p><strong><em>Figure</em> 6.9: </strong>Move Submorph within its Parent</p></div></div>
+<div class="float"><span id="ch06_002d10_002dPickUp_002d2_002dMoveOut"></span>
+<div align="center"><img src="ch06-10-PickUp-2-MoveOut.png" alt="ch06-10-PickUp-2-MoveOut">
+</div>
+<div class="float-caption"><p><strong><em>Figure</em> 6.10: </strong>Pick a Submorph out of its Parent</p></div></div>
+<p>Before we go on, let&rsquo;s use an inspector on the ellipse to change
+values of a couple of its instance variables.
+</p>
+<div class="float"><span id="ch06_002d12_002dInspectEllipse"></span>
+<div align="center"><img src="ch06-12-InspectEllipse.png" alt="ch06-12-InspectEllipse">
+</div>
+<div class="float-caption"><p><strong><em>Figure</em> 6.11: </strong>Inspect instance variables of the Ellipse</p></div></div>
+<p>Observe <a href="#ch06_002d14_002dSetBorderColor"><em>Figure</em> 6.12</a>. In the lower pane of the
+inspector, code can be executed in the context of the inspected
+object. <span class="sansserif">self</span> refers to the instance. Here the pane
+contains code to set the borderWidth and the borderColor.
+</p>
+<div class="float"><span id="ch06_002d14_002dSetBorderColor"></span>
+<div align="center"><img src="ch06-14-SetBorderColor.png" alt="ch06-14-SetBorderColor">
+</div>
+<div class="float-caption"><p><strong><em>Figure</em> 6.12: </strong>Use Inspector to set borderColor and borderWidth</p></div></div>
+<p>In the typical case one wants to refine or change behaviors for all instances of a class.
+</p>
+<span id="Building-your-specialized-Morph"></span><h3 class="section">6.4 Building your specialized Morph</h3>
+<span id="index-morph_002c-subclass"></span>
+<p>Let&rsquo;s make a simple subclass which changes color when <kbd>Left-Click</kbd>ed.
+Create a new class just as we did with Spacewar! but subclass EllipseMorph with #ColorClickEllipse.
+</p>
+<div class="display">
+<pre class="display"><span class="sansserif">EllipseMorph subclass: #ColorClickEllipse
+             instanceVariableNames: &rdquo;
+             classVariableNames: &rdquo;
+             poolDictionaries: &rdquo;
+             category: &rsquo;Spacewar!!&rsquo;</span>
+</pre></div>
+
+<p><kbd>Right-Click</kbd> on the <strong>Message Category</strong> pane and select <strong>new category...</strong>.
+This brings up a number of selections and allows us to create new ones.
+Select &ldquo;event handling testing&rdquo;.  Then add the method <span class="sansserif">ColorClickEllipse&gt;&gt;handlesMouseDown:</span>.
+</p>
+<div class="display">
+<pre class="display"><span class="sansserif">handlesMouseDown: aMouseButtonEvent
+  &quot;Answer that I do handle mouseDown events&rdquo;
+  ^true
+</span>
+</pre></div>
+
+<p>Likewise, add a new catagory &ldquo;event handing&rdquo; and add the other method we need.
+</p>
+<div class="display">
+<pre class="display"><span class="sansserif">mouseButton1Up: aMouseButtonEvent localPosition: localEventPosition
+   &quot;I ignore the mouseEvent information and change my color.&quot;
+   self color: Color random</span>
+</pre></div>
+
+<p>Now, you have created a new Morph class and can select a ColorClickEllipse
+from the World Menu <strong>New Morph..</strong> and try it out.
+These are fun to <kbd>Left-Click</kbd> on.  Make as many as you want!
+</p>
+<div class="float"><span id="ch06_002d15_002dColorClickEllipse"></span>
+<div align="center"><img src="ch06-15-ColorClickEllipse.png" alt="ch06-15-ColorClickEllipse">
+</div>
+<div class="float-caption"><p><strong><em>Figure</em> 6.13: </strong>Obtain ColorClickEllipse</p></div></div>
+<p>Now you know how to specialize an individual morph, or make a whole new class of them!
+</p>
+
+<span id="Spacewar_0021_0027s-Morphs"></span><h3 class="section">6.5 Spacewar!&rsquo;s Morphs</h3>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Model-And-View.html" accesskey="n" rel="next">Model And View</a>, Previous: <a href="Control-Flow-Messaging.html" accesskey="p" rel="prev">Control Flow Messaging</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
 
 
 

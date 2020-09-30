@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : September 22, 2020
+Compilation : September 30, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -229,9 +229,9 @@ or <span class="sansserif">0.5</span>. The number <span class="sansserif">0.0000
 written <span class="sansserif">4e-5</span>; it means 4 preceded by 5 zeros or 4 as the
 fifth digit after the decimal dot.
 </p>
-<p><strong>Attention.</strong> Computer represents decimal number
+<p><strong>Attention.</strong> Computers encode and store decimal numbers
 imprecisely. You need to be aware of that when doing computation and
-equality comparison. Most system hides these errors because there are
+equality comparison. Many systems hide these errors because there are
 very tiny errors. Cuis-Smalltalk does not hide this inaccuracy.  There is
 good information about this in the class comment of <span class="sansserif">Float</span>.
 </p>
@@ -283,9 +283,9 @@ using the rational numbers, the <a href="#FloatPrecision"><em>Example</em> 3.8</
 &rArr; 0</span>
 </pre></div>
 
-<div class="float-caption"><p><strong><em>Example</em> 3.9: </strong>Right with fraction!</p></div></div>
-<p>This time we have the expected result. Underneath the computer only
-does the calculations with integers.
+<div class="float-caption"><p><strong><em>Example</em> 3.9: </strong>Calculation is correct using rational fractions!</p></div></div>
+<p>This time we have the expected result. Under the covers the computer only
+does the calculations with integer components so no roundoff results.
 </p>
 <div class="float"><span id="exeFractionPrecision"></span>
 <blockquote class="indentedblock">

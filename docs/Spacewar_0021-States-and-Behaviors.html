@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : September 22, 2020
+Compilation : September 30, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -163,10 +163,10 @@ regarding its variables are needed.
 <span id="index-Point"></span>
 <span id="index-coordinates"></span>
 
-</li><li> <span class="sansserif">position</span> is a 2D screen coordinates. Smalltalk
+</li><li> <span class="sansserif">position</span> is a 2D screen coordinate, a location. Smalltalk
   proposes the <span class="sansserif">Point</span> class to represent such object. It
   understands many mathematics operations as operations on vectors;
-  very useful for mechanics calculus.
+  very useful for mechanical calculations.
 
 <p>A point can be instantiated with the binary message <span class="sansserif">#@</span> send to
   a number with another number as its argument: <span class="sansserif">100 @ 100</span>
@@ -178,15 +178,15 @@ regarding its variables are needed.
   the ship velocity and the forces of the central star gravity pull
   and engine boost.
 </p> 
-</li><li> <span class="sansserif">heading</span> is an angle in radian, the direction where
+</li><li> <span class="sansserif">heading</span> is an angle in radians, the direction where
   the ship nose is pointing. It is therefore a <span class="sansserif">Float</span> number.
   
 </li><li> <span class="sansserif">velocity</span> is the vector representing the
   instantaneous speed of the ship. It is <span class="sansserif">Point</span> instance.
   
 </li><li> <span class="sansserif">fuel</span> is the gauge, as long as it is not zero, the
-  player can ignite the ship engine for intrinsic acceleration to move
-  around and to counter the central star gravity pull. It is an
+  player can ignite the ship&rsquo;s rocket engine to provide acceleration to move
+  around and to counter the central star&rsquo;s gravity pull. It is an
   integer number.
   
 </li><li> <span class="sansserif">torpedoes</span> is the quantity of available torpedoes
@@ -195,7 +195,7 @@ regarding its variables are needed.
 </li><li> <span class="sansserif">mass</span> is an integer representing the ship mass.
   
 </li><li> <span class="sansserif">acceleration</span> is the intrinsic ship acceleration
-  norm provided when the ship engine are ignited. It is therefore an
+  norm provided when the ship&rsquo;s rockets are ignited. It is therefore an
   integer number.
 
 </li></ul>
@@ -207,23 +207,23 @@ the screen. This choice ease the computation of the ship acceleration,
 velocity and position.
 </p>
 <span id="Torpedo"></span><h3 class="heading"><span class="sansserif">Torpedo</span></h3>
-<p>A torpedo is mean to be fired from a ship with a velocity matching the
+<p>A torpedo is launched or &ldquo;fired&rdquo; from a ship with an initial velocity matching the
 ship heading. Once the torpedo fuel reserve reaches zero it is destroyed.
 </p>
 <ul>
-<li> <span class="sansserif">position</span> is a 2D screen coordinates, a
-  <span class="sansserif">Point</span> instance. Contrary to the ship position it does not
-  depend on the gravity pull of the central star. Indeed, a torpedo
-  does not come with a mass state, we can suppose it is zero. Its
-  computation only depends on the torpedo velocity.
+<li> <span class="sansserif">position</span> is a 2D screen coordinate, a
+  <span class="sansserif">Point</span> instance. Unlike the ship it does not accelerate based 
+  on the gravity pull of the central star. Indeed, a torpedo
+  does not come with a mass state.  For our purposes it is essentially zero. Its
+  position over time only depends on the torpedo velocity.
 
 </li><li> <span class="sansserif">velocity</span> is a vector representing the
   instantaneous speed of the torpedo. It is constant over the torpedo
   lifespan. Its direction matches the ship heading when fired. Again
-  it is a <span class="sansserif">Point</span> instance.
+  velocity is kept as a <span class="sansserif">Point</span> instance.
 
 </li><li> <span class="sansserif">lifeSpan</span> is an integer number counter, when it
-  reaches zero the torpedo self-destroy.
+  reaches zero the torpedo self-destructs.
 
 </li></ul>
 

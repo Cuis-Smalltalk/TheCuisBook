@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : September 22, 2020
+Compilation : September 30, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -91,6 +91,8 @@ Previous: <a href="A-brief-introduction-to-the-system-Browser.html" accesskey="p
 </div>
 <hr>
 <span id="Spacewar_0021-models-1"></span><h3 class="section">2.6 Spacewar! models</h3>
+
+<span id="First-classes"></span><h4 class="subsection">2.6.1 First classes</h4>
 <p>In last chapter we listed the protagonists of the game. Now, we
 propose a first implementation of the game model with a set of classes
 representing the involved entities:
@@ -107,6 +109,7 @@ representing the involved entities:
 </li></ol>
 
 <span id="index-browser_002c-class-category-_0028new_0029"></span>
+<span id="index-class_002c-category-_0028new_0029"></span>
 <p>Before defining these classes in Cuis-Smalltalk, we want to create a
 dedicated class category to group them there.
 </p>
@@ -152,6 +155,8 @@ get another class code template, click the class category
 <div align="center"><img src="ch02-spacewarClassCategory.png" alt="ch02-spacewarClassCategory">
 </div>
 <div class="float-caption"><p><strong><em>Figure</em> 2.2: </strong>Spacewar! class category</p></div></div>
+
+<span id="Spacewar_0021-package"></span><h4 class="subsection">2.6.2 Spacewar! package</h4>
 <span id="index-package_002c-create-_0028new_0029"></span>
 <span id="index-package_002c-save"></span>
 <p>Another important use case of a class category is to define a package
@@ -197,7 +202,21 @@ fresh Cuis-Smalltalk environment, you can load the game package.
 behavior. They will be complemented and refactored in the next
 chapters.
 </p>
-<hr>
+<span id="The-Newtonian-model"></span><h4 class="subsection">2.6.3 The Newtonian model</h4>
+<p>For an enjoyable game experience, the player ships and torpedoes must
+follow the Newton laws of mechanic. Acceleration, speed and position
+are computed according to these laws. The ship and torpedo are put
+under two forces: the acceleration from the gravity pull of the
+central star and an inner acceleration coming from the ship and
+torpedo engines.
+</p>
+<p>Later, we will learn how these equations are easily converted to
+computer calculus.
+</p>
+<div class="float"><span id="motionEquations"></span>
+<div align="center"><img src="motionEquations.png" alt="motionEquations">
+</div>
+<div class="float-caption"><p><strong><em>Figure</em> 2.4: </strong>Equation of the accelerations, speed and position</p></div></div><hr>
 <div class="header">
 <p>
 Previous: <a href="A-brief-introduction-to-the-system-Browser.html" accesskey="p" rel="prev">A brief introduction to the system Browser</a>, Up: <a href="The-Message-Way-of-Life.html" accesskey="u" rel="up">The Message Way of Life</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
