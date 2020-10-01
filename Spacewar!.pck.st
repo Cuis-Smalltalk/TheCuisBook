@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4390] on 1 October 2020 at 3:35:41 pm'!
+'From Cuis 5.0 [latest update: #4390] on 1 October 2020 at 3:45:56 pm'!
 'Description '!
-!provides: 'Spacewar!!' 1 59!
+!provides: 'Spacewar!!' 1 60!
 SystemOrganization addCategory: #'Spacewar!!'!
 
 
@@ -72,17 +72,13 @@ Control with the left, up, right arrows!
 mass
 	^ mass! !
 
-!CentralStar methodsFor: 'accessing' stamp: 'hlsf 9/10/2020 14:00:10'!
-mass: anInteger
-	mass _ anInteger ! !
-
-!CentralStar methodsFor: 'drawing' stamp: 'hlsf 9/16/2020 16:05:41'!
+!CentralStar methodsFor: 'drawing' stamp: 'hlsf 10/1/2020 15:43:23'!
 drawOn: canvas
 	canvas ellipseCenterX: 0
 		y:  0
-		rx: 10 + (2 atRandom - 1)
-		ry: 10 + (2 atRandom - 1)
-		borderWidth: 2 
+		rx: 15 + (2 atRandom - 1)
+		ry: 15 + (2 atRandom - 1)
+		borderWidth: 3 
 		borderColor: Color orange 
 		fillColor: Color yellow ! !
 
@@ -286,9 +282,8 @@ initializeActors
 
 	torpedoes _ OrderedCollection new.! !
 
-!SpaceWar methodsFor: 'drawing' stamp: 'jmv 9/28/2020 10:44:12'!
+!SpaceWar methodsFor: 'drawing' stamp: 'hlsf 10/1/2020 15:45:54'!
 drawOn: aCanvas
-
 	aCanvas
 		fillRectangle: self morphLocalBounds
 		color: color! !
@@ -339,45 +334,6 @@ keyboardFocusChange: gotFocus
 		ifFalse: [color _ self defaultColor alpha: 0.5].
 	self redrawNeeded.! !
 
-!SpaceWar methodsFor: 'stepping' stamp: 'hlsf 10/1/2020 15:04:27'!
-collisions
-	self collisionsShipsStar.
-	self collisionsTorpedoesStar.
-	self collisionsShipsTorpedoes.
-	self collisionsShips ! !
-
-!SpaceWar methodsFor: 'stepping' stamp: 'hlsf 10/1/2020 15:07:19'!
-collisionsShips
-	(ships first morphPosition dist: ships second morphPosition) < 25 		ifTrue: [
-		ships do: [:each |
-			each flashWith: Color red.
-			self teleport: each]		]! !
-
-!SpaceWar methodsFor: 'stepping' stamp: 'hlsf 10/1/2020 14:54:07'!
-collisionsShipsStar
-	ships do: [:aShip | 
-		(aShip morphPosition dist: centralStar morphPosition) < 20 		ifTrue: [
-			aShip flashWith: Color red.
-			self teleport: aShip]]! !
-
-!SpaceWar methodsFor: 'stepping' stamp: 'hlsf 10/1/2020 14:58:09'!
-collisionsShipsTorpedoes
-	ships do: [:aShip | 
-		torpedoes do: [:aTorpedo |
-		(aShip morphPosition dist: aTorpedo morphPosition) < 15 		ifTrue: [
-			aShip flashWith: Color red.
-			aTorpedo flashWith: Color orange.
-			self destroyTorpedo: aTorpedo.
-			self teleport: aShip]]
-	]! !
-
-!SpaceWar methodsFor: 'stepping' stamp: 'hlsf 10/1/2020 14:57:03'!
-collisionsTorpedoesStar
-	torpedoes do: [:each | 
-		(each morphPosition dist: centralStar morphPosition) < 8 		ifTrue: [
-			each flashWith: Color orange.
-			self destroyTorpedo: each]]! !
-
 !SpaceWar methodsFor: 'stepping' stamp: 'hlsf 10/1/2020 14:38:36'!
 stepAt: millisecondSinceLast
 	ships do: [:each | each update: millisecondSinceLast / 1000 ].
@@ -398,3 +354,42 @@ wantsSteps
 !SpaceWar methodsFor: 'geometry testing' stamp: 'jmv 9/28/2020 14:35:47'!
 requiresVectorCanvas
 	^false! !
+
+!SpaceWar methodsFor: 'collisions' stamp: 'hlsf 10/1/2020 15:04:27'!
+collisions
+	self collisionsShipsStar.
+	self collisionsTorpedoesStar.
+	self collisionsShipsTorpedoes.
+	self collisionsShips ! !
+
+!SpaceWar methodsFor: 'collisions' stamp: 'hlsf 10/1/2020 15:07:19'!
+collisionsShips
+	(ships first morphPosition dist: ships second morphPosition) < 25 		ifTrue: [
+		ships do: [:each |
+			each flashWith: Color red.
+			self teleport: each]		]! !
+
+!SpaceWar methodsFor: 'collisions' stamp: 'hlsf 10/1/2020 14:54:07'!
+collisionsShipsStar
+	ships do: [:aShip | 
+		(aShip morphPosition dist: centralStar morphPosition) < 20 		ifTrue: [
+			aShip flashWith: Color red.
+			self teleport: aShip]]! !
+
+!SpaceWar methodsFor: 'collisions' stamp: 'hlsf 10/1/2020 14:58:09'!
+collisionsShipsTorpedoes
+	ships do: [:aShip | 
+		torpedoes do: [:aTorpedo |
+		(aShip morphPosition dist: aTorpedo morphPosition) < 15 		ifTrue: [
+			aShip flashWith: Color red.
+			aTorpedo flashWith: Color orange.
+			self destroyTorpedo: aTorpedo.
+			self teleport: aShip]]
+	]! !
+
+!SpaceWar methodsFor: 'collisions' stamp: 'hlsf 10/1/2020 14:57:03'!
+collisionsTorpedoesStar
+	torpedoes do: [:each | 
+		(each morphPosition dist: centralStar morphPosition) < 8 		ifTrue: [
+			each flashWith: Color orange.
+			self destroyTorpedo: each]]! !
