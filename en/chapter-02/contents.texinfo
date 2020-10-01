@@ -126,6 +126,14 @@ is not 7. Parentheses must be used to alter the order of evaluation:
 @smalltalkExample{1 + (2 * 3)
 @result{} 7}
 
+
+However, for mathematics clarity we may want to use parenthesis even
+when not needed. In the example bellow, the parenthesis are
+superfluous:
+
+@smalltalkExampleCaption{Ship velocity,updateShipVelocity,
+newVelocity @assign{} (ai + ag) * t + velocity}
+
 @cindex cascade of messages
 In the @ref{hello2} example, the message @msg{show:} and @msg{newLine}
 are sent to the same @class{Transcript} entity. In such circumstance,
@@ -138,6 +146,13 @@ Transcript
    show: 'Hello World!';
    newLine;
    show: 'I am Cuising'}
+
+Another example from the Spacewar! game:
+
+@smalltalkExampleCaption{Stop and teleport spaceship at a random position, teleportShip,
+aShip 
+   velocity: 0 @@ 0;
+   morphPosition: randomCoordinate value @@ randomCoordinate value}
 
 Observe the text here is formatted to ease code understanding. It is possible to
 write the cascade of messages in one line, but it reduces the
