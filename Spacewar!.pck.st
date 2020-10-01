@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4390] on 1 October 2020 at 5:35:41 pm'!
+'From Cuis 5.0 [latest update: #4390] on 1 October 2020 at 6:12:00 pm'!
 'Description '!
-!provides: 'Spacewar!!' 1 61!
+!provides: 'Spacewar!!' 1 62!
 SystemOrganization addCategory: #'Spacewar!!'!
 
 
@@ -163,20 +163,22 @@ morphExtent
 
 	^60@60! !
 
-!SpaceShip methodsFor: 'drawing' stamp: 'jmv 9/28/2020 15:59:20'!
+!SpaceShip methodsFor: 'drawing' stamp: 'hlsf 10/1/2020 18:11:26'!
 drawOn: canvas
 
-	| a b c |
+	| a b c d |
 	a _ 0@ -30.
 	b _ -10@0.
-	c _ 10@0.
+	c _ 0@ -5.
+	d _ 10@0.
 	canvas line: a to: b width: 2 color: color.
-	canvas line: c to: b width: 2 color: color.
-	canvas line: a to: c width: 2 color: color.
+	canvas line: b to: c width: 2 color: color.
+	canvas line: c to: d width: 2 color: color.
+	canvas line: d to: a width: 2 color: color.
 
 	"Draw gas exhaust"
 	acceleration ifNotZero: [
-		canvas line: 0@0 to: 0@30 width: 1 color: Color gray].! !
+		canvas line: c to: 0@20 width: 1 color: Color gray].! !
 
 !SpaceShip methodsFor: 'drawing' stamp: 'hlsf 9/21/2020 20:47:48'!
 nose
