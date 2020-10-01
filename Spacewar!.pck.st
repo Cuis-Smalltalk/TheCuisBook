@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4390] on 1 October 2020 at 9:25:25 am'!
+'From Cuis 5.0 [latest update: #4390] on 1 October 2020 at 3:07:35 pm'!
 'Description '!
-!provides: 'Spacewar!!' 1 51!
+!provides: 'Spacewar!!' 1 58!
 SystemOrganization addCategory: #'Spacewar!!'!
 
 
@@ -111,6 +111,10 @@ direction
 mass
 	^ 1! !
 
+!Mobile methodsFor: 'accessing' stamp: 'hlsf 10/1/2020 12:18:54'!
+velocity: aVector
+	velocity _ 	aVector ! !
+
 !Mobile methodsFor: 'computing' stamp: 'hlsf 10/1/2020 08:34:37'!
 gravity
 "Compute the gravity acceleration vector"
@@ -158,10 +162,10 @@ initialize
 	velocity _ 0 @ 0.
 	acceleration _ 0.! !
 
-!SpaceShip methodsFor: 'accessing' stamp: 'jmv 9/28/2020 11:21:58'!
+!SpaceShip methodsFor: 'accessing' stamp: 'hlsf 10/1/2020 14:51:37'!
 morphExtent
 
-	^100@100! !
+	^60@60! !
 
 !SpaceShip methodsFor: 'drawing' stamp: 'jmv 9/28/2020 15:59:20'!
 drawOn: canvas
@@ -183,7 +187,7 @@ nose
 
 	^ self direction * 30! !
 
-!SpaceShip methodsFor: 'control' stamp: 'hlsf 10/1/2020 09:09:48'!
+!SpaceShip methodsFor: 'control' stamp: 'hlsf 10/1/2020 14:46:25'!
 fireTorpedo
 "Fire a torpedo in the direction of the ship heading with a combined velocity"
 	| torpedo | 
@@ -192,7 +196,7 @@ fireTorpedo
 		morphPosition: self morphPosition + self nose;
 		rotateBy: location radians;
 		velocity: velocity;
-		color: color muchDarker.
+		color: color muchLighter .
 	owner addTorpedo: torpedo.! !
 
 !SpaceShip methodsFor: 'control' stamp: 'hlsf 9/16/2020 15:07:51'!
@@ -215,14 +219,12 @@ unpush
 "Stop the accelaration boost"
 	acceleration _ 0! !
 
-!Torpedo methodsFor: 'computing' stamp: 'hlsf 10/1/2020 09:24:59'!
+!Torpedo methodsFor: 'computing' stamp: 'hlsf 10/1/2020 11:59:34'!
 update: t
 "Update the torpedo position"
 	super update: t.
 	"orientate the torpedo in its velocity direction, nicer effect while inaccurate"
 	"self rotateBy: ((velocity y arcTan: velocity x) + Float halfPi) - location radians."
-	"A rotateTo: will be more than useful"
-	self rotateBy: (velocity y arcTan: velocity x).
 	lifeSpan _ lifeSpan - 1.
 	lifeSpan isZero ifTrue: [owner destroyTorpedo: self].
 	acceleration > 0 ifTrue: [acceleration _ acceleration - 1000].! !
@@ -238,15 +240,15 @@ drawOn: canvas
 	canvas line: c to: b width: 2 color: color.
 	canvas line: a to: c width: 2 color: color.! !
 
-!Torpedo methodsFor: 'accessing' stamp: 'hlsf 10/1/2020 08:35:42'!
-velocity: aVector
-	velocity _ 	aVector ! !
-
 !Torpedo methodsFor: 'initialization' stamp: 'hlsf 10/1/2020 08:57:33'!
 initialize
 	super initialize.
 	lifeSpan _ 500.
 	acceleration _ 4000! !
+
+!Torpedo methodsFor: 'geometry' stamp: 'hlsf 10/1/2020 14:52:01'!
+morphExtent
+	^ 8 @ 8! !
 
 !SpaceWar methodsFor: 'accessing' stamp: 'jmv 9/28/2020 10:41:48'!
 morphExtent
@@ -269,15 +271,15 @@ initialize
 	self startSteppingStepTime: self stepTime.
 	self initializeActors.! !
 
-!SpaceWar methodsFor: 'initialization' stamp: 'jmv 9/28/2020 14:45:29'!
+!SpaceWar methodsFor: 'initialization' stamp: 'hlsf 10/1/2020 14:46:05'!
 initializeActors
 	centralStar _ CentralStar new.
 	self addMorph: centralStar.
 	centralStar morphPosition: 0@0.
 
 	ships _ Array 
-		with: (SpaceShip new color: Color white)
-		with: (SpaceShip new color: Color red).
+		with: (SpaceShip new color: Color green darker)
+		with: (SpaceShip new color: Color red darker).
 	self addAllMorphs: ships.
 	ships first morphPosition: 200 @ -200.
 	ships second morphPosition: -200 @ 200.
@@ -320,6 +322,16 @@ mouseLeave: evt
 	evt hand releaseKeyboardFocus: self.
 	self stopStepping! !
 
+!SpaceWar methodsFor: 'events' stamp: 'hlsf 10/1/2020 14:41:18'!
+teleport: aShip
+"Teleport a ship at a random location"
+	| area randomCoordinate |
+	area _ self morphLocalBounds insetBy: 20.
+	randomCoordinate _ [(area left to: area right) atRandom].
+	aShip 
+		velocity: 0@0;
+		morphPosition: randomCoordinate value @ randomCoordinate value! !
+
 !SpaceWar methodsFor: 'focus handling' stamp: 'hlsf 9/10/2020 16:04:35'!
 keyboardFocusChange: gotFocus
 	gotFocus 
@@ -327,11 +339,51 @@ keyboardFocusChange: gotFocus
 		ifFalse: [color _ self defaultColor alpha: 0.5].
 	self redrawNeeded.! !
 
-!SpaceWar methodsFor: 'stepping' stamp: 'jmv 9/28/2020 15:16:03'!
+!SpaceWar methodsFor: 'stepping' stamp: 'hlsf 10/1/2020 15:04:27'!
+collisions
+	self collisionsShipsStar.
+	self collisionsTorpedoesStar.
+	self collisionsShipsTorpedoes.
+	self collisionsShips ! !
+
+!SpaceWar methodsFor: 'stepping' stamp: 'hlsf 10/1/2020 15:07:19'!
+collisionsShips
+	(ships first morphPosition dist: ships second morphPosition) < 25 		ifTrue: [
+		ships do: [:each |
+			each flashWith: Color red.
+			self teleport: each]		]! !
+
+!SpaceWar methodsFor: 'stepping' stamp: 'hlsf 10/1/2020 14:54:07'!
+collisionsShipsStar
+	ships do: [:aShip | 
+		(aShip morphPosition dist: centralStar morphPosition) < 20 		ifTrue: [
+			aShip flashWith: Color red.
+			self teleport: aShip]]! !
+
+!SpaceWar methodsFor: 'stepping' stamp: 'hlsf 10/1/2020 14:58:09'!
+collisionsShipsTorpedoes
+	ships do: [:aShip | 
+		torpedoes do: [:aTorpedo |
+		(aShip morphPosition dist: aTorpedo morphPosition) < 15 		ifTrue: [
+			aShip flashWith: Color red.
+			aTorpedo flashWith: Color orange.
+			self destroyTorpedo: aTorpedo.
+			self teleport: aShip]]
+	]! !
+
+!SpaceWar methodsFor: 'stepping' stamp: 'hlsf 10/1/2020 14:57:03'!
+collisionsTorpedoesStar
+	torpedoes do: [:each | 
+		(each morphPosition dist: centralStar morphPosition) < 8 		ifTrue: [
+			each flashWith: Color orange.
+			self destroyTorpedo: each]]! !
+
+!SpaceWar methodsFor: 'stepping' stamp: 'hlsf 10/1/2020 14:38:36'!
 stepAt: millisecondSinceLast
 	ships do: [:each | each update: millisecondSinceLast / 1000 ].
 	ships do: [:each | each unpush ].
 	torpedoes do: [:each | each update: millisecondSinceLast / 1000 ].
+	self collisions.
 	self redrawNeeded ! !
 
 !SpaceWar methodsFor: 'stepping' stamp: 'hlsf 9/11/2020 13:19:07'!
