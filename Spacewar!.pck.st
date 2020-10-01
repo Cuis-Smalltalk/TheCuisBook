@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4390] on 1 October 2020 at 3:07:35 pm'!
+'From Cuis 5.0 [latest update: #4390] on 1 October 2020 at 3:35:41 pm'!
 'Description '!
-!provides: 'Spacewar!!' 1 58!
+!provides: 'Spacewar!!' 1 59!
 SystemOrganization addCategory: #'Spacewar!!'!
 
 
@@ -219,12 +219,12 @@ unpush
 "Stop the accelaration boost"
 	acceleration _ 0! !
 
-!Torpedo methodsFor: 'computing' stamp: 'hlsf 10/1/2020 11:59:34'!
+!Torpedo methodsFor: 'computing' stamp: 'hlsf 10/1/2020 15:35:39'!
 update: t
 "Update the torpedo position"
 	super update: t.
 	"orientate the torpedo in its velocity direction, nicer effect while inaccurate"
-	"self rotateBy: ((velocity y arcTan: velocity x) + Float halfPi) - location radians."
+	self rotation: (velocity y arcTan: velocity x) + Float halfPi scale: 1.
 	lifeSpan _ lifeSpan - 1.
 	lifeSpan isZero ifTrue: [owner destroyTorpedo: self].
 	acceleration > 0 ifTrue: [acceleration _ acceleration - 1000].! !
