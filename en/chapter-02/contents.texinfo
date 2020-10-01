@@ -319,6 +319,17 @@ one or several colon(s) ``:'' to insert argument(s):
 @smalltalkExample{12 lcm: 15 @result{} 60
 12 gcd: 15 @result{} 3}
 
+In the Spacewar! game, the central star is the source of a gravity
+field. According to the Newton's law of universal gravitation, any
+object with a mass -- a spaceship or a torpedo in the game -- is
+subjected to the gravitational force. We compute it as a vector to
+account its direction and magnitude. The game code extract bellow
+shows mixed scalar and vector calculus done with messages sending (See
+@ref{motionEquations}):
+
+@smalltalkExampleCaption{Compute the gravity force vector,gravityVector,
+-10 * self mass * owner starMass / (position r raisedTo: 3) * position}
+
 
 @cindex tools, system browser
 @cindex browser
