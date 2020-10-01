@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4390] on 1 October 2020 at 3:45:56 pm'!
+'From Cuis 5.0 [latest update: #4390] on 1 October 2020 at 5:35:41 pm'!
 'Description '!
-!provides: 'Spacewar!!' 1 60!
+!provides: 'Spacewar!!' 1 61!
 SystemOrganization addCategory: #'Spacewar!!'!
 
 
@@ -183,10 +183,12 @@ nose
 
 	^ self direction * 30! !
 
-!SpaceShip methodsFor: 'control' stamp: 'hlsf 10/1/2020 14:46:25'!
+!SpaceShip methodsFor: 'control' stamp: 'hlsf 10/1/2020 17:25:38'!
 fireTorpedo
 "Fire a torpedo in the direction of the ship heading with a combined velocity"
 	| torpedo | 
+	torpedoes isZero ifTrue: [ ^ self].
+	torpedoes _ torpedoes - 1.
 	torpedo _ Torpedo new.
 	torpedo 
 		morphPosition: self morphPosition + self nose;
@@ -200,9 +202,11 @@ left
 "Rotate the ship to its left"
 	self rotateBy: -0.1.! !
 
-!SpaceShip methodsFor: 'control' stamp: 'hlsf 9/30/2020 17:57:35'!
+!SpaceShip methodsFor: 'control' stamp: 'hlsf 10/1/2020 17:26:59'!
 push
 "Init an accelaration boost"
+	fuel isZero ifTrue: [^ self].
+	fuel _ fuel - 1.
 	acceleration _ 50! !
 
 !SpaceShip methodsFor: 'control' stamp: 'hlsf 9/16/2020 15:08:01'!
@@ -214,6 +218,16 @@ right
 unpush
 "Stop the accelaration boost"
 	acceleration _ 0! !
+
+!SpaceShip methodsFor: 'initialization' stamp: 'hlsf 10/1/2020 17:24:19'!
+initialize
+	super initialize.
+	self resupply! !
+
+!SpaceShip methodsFor: 'initialization' stamp: 'hlsf 10/1/2020 17:30:57'!
+resupply
+	fuel _ 500.
+	torpedoes _ 20! !
 
 !Torpedo methodsFor: 'computing' stamp: 'hlsf 10/1/2020 15:35:39'!
 update: t
@@ -317,10 +331,11 @@ mouseLeave: evt
 	evt hand releaseKeyboardFocus: self.
 	self stopStepping! !
 
-!SpaceWar methodsFor: 'events' stamp: 'hlsf 10/1/2020 14:41:18'!
+!SpaceWar methodsFor: 'events' stamp: 'hlsf 10/1/2020 17:29:37'!
 teleport: aShip
 "Teleport a ship at a random location"
 	| area randomCoordinate |
+	aShip resupply.
 	area _ self morphLocalBounds insetBy: 20.
 	randomCoordinate _ [(area left to: area right) atRandom].
 	aShip 
