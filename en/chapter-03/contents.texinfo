@@ -418,6 +418,13 @@ OrderedCollection new add: Float pi; add: Float e; yourself
 @figure{Instance methods in @class{Float},ch03-floatInstanceSide,7}
 
 
+Here another example from Spacewar! mixing class and instance
+methods. This portion of code update the orientation of a torpedo
+according to its velocity vector:
+
+@smalltalkExampleCaption{Orienting a torpedo to its velocity direction,torpedoOrientation,
+self rotation: (velocity y arcTan: velocity x) + Float halfPi scale: 1}
+
 With this brief introduction to the system browser, your are now
 equipped to explore the system classes.
 
