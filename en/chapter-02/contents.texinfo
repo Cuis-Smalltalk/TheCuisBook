@@ -128,8 +128,8 @@ is not 7. Parentheses must be used to alter the order of evaluation:
 
 
 However, for mathematics clarity we may want to use parenthesis even
-when not needed. In the example bellow, the parenthesis are
-superfluous:
+when not needed. In the Spacewar! code snippet bellow, the parenthesis
+are superfluous but improve understanding:
 
 @smalltalkExampleCaption{Ship velocity,updateShipVelocity,
 newVelocity @assign{} (ai + ag) * t + velocity}
@@ -570,8 +570,8 @@ chapters.
 @subsection The Newtonian model
 For an enjoyable game experience, the player ships and torpedoes must
 follow the Newton laws of mechanic. Acceleration, speed and position
-are computed according to these laws. The ship and torpedo are put
-under two forces: the acceleration from the gravity pull of the
+are computed according to these laws. The ship and torpedo are
+subjected to two forces: the acceleration from the gravity pull of the
 central star and an inner acceleration coming from the ship and
 torpedo engines.
 

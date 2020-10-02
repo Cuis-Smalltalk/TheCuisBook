@@ -419,10 +419,10 @@ OrderedCollection new add: Float pi; add: Float e; yourself
 
 
 Here another example from Spacewar! mixing class and instance
-methods. This portion of code update the orientation of a torpedo
+methods. This portion of code updates the orientation of a torpedo
 according to its velocity vector:
 
-@smalltalkExampleCaption{Orienting a torpedo to its velocity direction,torpedoOrientation,
+@smalltalkExampleCaption{Aligning a torpedo with its velocity direction,torpedoOrientation,
 self rotation: (velocity y arcTan: velocity x) + Float halfPi scale: 1}
 
 With this brief introduction to the system browser, your are now
@@ -533,6 +533,44 @@ an integer:
 @result{} 1 2 4 6 2}
 
 Note: Expect a different result each time.
+
+@cindex @class{Interval}
+@cindex number, interval
+Interval of numbers can be defined on their own, for future use:
+
+@smalltalkExampleCaption{Interval,interval,
+1 to: 10
+@result{} (1 to: 10)
+
+1 to: 10 by: 2
+@result{} (1 to: 9 by: 2)}
+
+Interval works with other object as character:
+@smalltalkExample{$d to: $h
+@result{} #($d $e $f $g $h)}
+
+In fact, an interval is an object of its own. It is a sort of
+collection:
+
+@smalltalkExample{(1 to: 10) class
+@result{} Interval
+
+(1 to: 10 by: 2) squared
+@result{} #(1 9 25 49 81)
+
+(1 to: 10) atRandom
+@result{} 4 "different result each time"}
+
+In Spacewar!, when a ship is destroyed it is kind of teleported to a
+random position in the area. Interval are handy to pick up random
+coordinates:
+
+@smalltalkExampleCaption{Teleport ship, teleportShipInterval,
+randomCoordinate @assign{} [(area left to: area right) atRandom].
+aShip
+   velocity: 0 @@ 0;
+   morphPosition: randomCoordinate value @@ randomCoordinate value}
+
 
 @exercise{Cosine table, cosTable, @emph{Compute the cosine values in
 the interval [0 ; 2PI]@comma{} each 1/10. Output in the transcript.}}
