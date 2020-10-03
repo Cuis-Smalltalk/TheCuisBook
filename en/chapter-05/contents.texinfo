@@ -105,52 +105,47 @@ code is executed.
 @node Method syntax
 @section Method syntax
 
-@todo{Section still needed?}
-
 Whereas expressions may be evaluated anywhere in @cuis{} (for example,
 in a workspace, in a debugger, or in a browser), methods are normally
-defined in a browser window, or in the debugger. (Methods can also be
+defined in a browser window, or in the debugger. Methods can also be
 filed in from an external medium, but this is not the usual way to
-program in @cuis{}.)
+program in @cuis{}.
 
 Programs are developed one method at a time, in the context of a given
-class. (A class is defined by sending a message to an existing class,
+class. A class is defined by sending a message to an existing class,
 asking it to create a subclass, so there is no special syntax required
-for defining classes.)
+for defining classes.
 
-Here is the method @method{lineCount} in the class
-@class{String}. (The usual convention is to refer to methods as
+Here is the method @method{keyStroke:} in the class
+@class{SpaceWar}. The usual convention is to refer to methods as
 @smalltalk{ClassName>>methodName}, so we call this method
-@smalltalk{String>>lineCount}.)
+@smalltalk{SpaceWar>>keyStroke:})
 
-
-@todo{Pickup another example}
-@smalltalkExampleCaption{Line count, lineCount,
-String>>lineCount
-  "Answer the number of lines represented by the receiver@comma{}
-  where every cr adds one line."
-  | cr count |
-  cr := Character cr.
-  count := 1 min: self size.
-  self do:
-     [:c | c == cr ifTrue: [count := count + 1]].
-  ^ count}
+@smalltalkExampleCaption{SpaceWar! key stroke,spacewarKeyStroke,
+SpaceWar>>keyStroke: event
+"Check for any keyboard stroke@comma{} and take action accordingly"
+| key |
+key @assign{} event keyCharacter.
+key = Character arrowUp ifTrue: [@return{} ships first push].
+key = Character arrowRight ifTrue: [@return{} ships first right].
+key = Character arrowLeft ifTrue: [@return{} ships first left].
+key = Character arrowDown ifTrue: [@return{} ships first fireTorpedo]}
 
 Syntactically, a method consists of:
 
 @itemize
 
  @item the method pattern, containing the name (@emph{i.e.},
- @method{lineCount}) and any arguments (none in this example),
+ @method{keyStroke:}) and any arguments, here @smalltalk{event} a
+ keyboard event,
 
  @item comments (these may occur anywhere, but the convention is to
  put one at the top that explains what the method does),
  
- @item declarations of local variables (@emph{i.e.}, @smalltalk{cr}
- and @smalltalk{count}),
+ @item declarations of local variables (@emph{i.e.}, @smalltalk{key}),
 
  @item and any number of expressions separated by dots; here there are
- four.
+ 5.
 
 @end itemize
 
@@ -243,6 +238,21 @@ computation and assigning it to a variable:
 @exercise{Block to compute divisors,blockDivisor, @emph{How will you
 rewrite @ref{computeDivisors} to avoid code duplication?}}
 
+The @smalltalk{SpaceWar>>teleport:} method contains a nice example
+using a block to avoid code duplication to generate random abscissa
+and ordinate coordinates. Each time a new coordinate is needed, the
+message @msg{value} is sent to the block of code:
+
+@smalltalkExampleCaption{@method{teleport:} method, teleportMethod,
+SpaceWar>>teleport: aShip
+"Teleport a ship at a random location"
+| area randomCoordinate |
+aShip resupply.
+area @assign{} self morphLocalBounds insetBy: 20.
+randomCoordinate @assign{} [(area left to: area right) atRandom].
+aShip 
+  velocity: 0 @@ 0;
+  morphPosition: randomCoordinate value @@ randomCoordinate value}
 
 
 @cindex control flow
@@ -324,6 +334,31 @@ the second and third examples, only the first is evaluated, since
 
 @exercise{Implementing @method{and:} and @method{or:}, implementingAndOr,
 @emph{Try to imagine how @method{and:} and @method{or:} are  implemented.}}
+
+
+In the code fragment of @ref{shipLost}, we test if a ship is lost in
+deep space. It depends on two conditions:
+@enumerate
+
+  @item the ship is out of the game play area, tested with the
+  @msg{isInOuterSpace} message,
+
+  @item the ship takes the direction of deep space, tested with the
+  @msg{isGoingOuterSpace} message.
+
+@end enumerate
+
+Of course, the condition #2 is only tested when condition #1 is true.
+
+@smalltalkExampleCaption{Ship lost in space,shipLost,
+"Are we out of screen?
+If so we move the mobile to the other corner
+and slow it down by a factor of 2"
+(self isInOuterSpace and: [self isGoingOuterSpace])
+  ifTrue: [
+     velocity @assign{} velocity / 2.
+     self morphPosition: self morphPosition negated]}
+
 
 @cindex control flow, loop
 @cindex loop
