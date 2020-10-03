@@ -385,10 +385,10 @@ appropriate indentation.
 
 @subheading @ref{updateShipsTorpedoes}
 @example
-SpaceWar>>step
-   ships do: [:each | each update].
-   ships do: [:each | each unpush].
-   torpedoes do: [:each | each update]
+SpaceWar>>stepAt: millisecondSinceLast
+   ships do: [:each | each update: millisecondSinceLast / 1000 ].
+   ships do: [:each | each unpush ].
+   torpedoes do: [:each | each update: millisecondSinceLast / 1000 ].
 @end example
 
 

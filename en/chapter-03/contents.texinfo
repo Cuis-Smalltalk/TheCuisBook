@@ -561,9 +561,12 @@ collection:
 (1 to: 10) atRandom
 @result{} 4 "different result each time"}
 
-In Spacewar!, when a ship is destroyed it is kind of teleported to a
-random position in the area. Interval are handy to pick up random
-coordinates:
+In Spacewar!, when a ship is destroyed it is teleported to a random
+position in the game play area. Interval are handy to pick up random
+coordinates. In the example bellow, the variable
+@smalltalk{randomCoordinate} holds a bloc of code -- called anonymous
+function in other languages; it picks up a random value in the interval
+consisting of the game play area left and right extents:
 
 @smalltalkExampleCaption{Teleport ship, teleportShipInterval,
 randomCoordinate @assign{} [(area left to: area right) atRandom].

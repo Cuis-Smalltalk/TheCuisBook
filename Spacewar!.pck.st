@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4390] on 1 October 2020 at 6:12:00 pm'!
+'From Cuis 5.0 [latest update: #4390] on 3 October 2020 at 11:45:40 am'!
 'Description '!
-!provides: 'Spacewar!!' 1 62!
+!provides: 'Spacewar!!' 1 63!
 SystemOrganization addCategory: #'Spacewar!!'!
 
 
@@ -163,6 +163,16 @@ morphExtent
 
 	^60@60! !
 
+!SpaceShip methodsFor: 'initialization' stamp: 'hlsf 10/1/2020 17:24:19'!
+initialize
+	super initialize.
+	self resupply! !
+
+!SpaceShip methodsFor: 'initialization' stamp: 'hlsf 10/1/2020 17:30:57'!
+resupply
+	fuel _ 500.
+	torpedoes _ 20! !
+
 !SpaceShip methodsFor: 'drawing' stamp: 'hlsf 10/1/2020 18:11:26'!
 drawOn: canvas
 
@@ -221,17 +231,7 @@ unpush
 "Stop the accelaration boost"
 	acceleration _ 0! !
 
-!SpaceShip methodsFor: 'initialization' stamp: 'hlsf 10/1/2020 17:24:19'!
-initialize
-	super initialize.
-	self resupply! !
-
-!SpaceShip methodsFor: 'initialization' stamp: 'hlsf 10/1/2020 17:30:57'!
-resupply
-	fuel _ 500.
-	torpedoes _ 20! !
-
-!Torpedo methodsFor: 'computing' stamp: 'hlsf 10/1/2020 15:35:39'!
+!Torpedo methodsFor: 'computing' stamp: 'hlsf 10/2/2020 21:15:54'!
 update: t
 "Update the torpedo position"
 	super update: t.
@@ -283,20 +283,20 @@ initialize
 	self startSteppingStepTime: self stepTime.
 	self initializeActors.! !
 
-!SpaceWar methodsFor: 'initialization' stamp: 'hlsf 10/1/2020 14:46:05'!
+!SpaceWar methodsFor: 'initialization' stamp: 'hlsf 10/3/2020 11:45:38'!
 initializeActors
 	centralStar _ CentralStar new.
 	self addMorph: centralStar.
 	centralStar morphPosition: 0@0.
-
-	ships _ Array 
-		with: (SpaceShip new color: Color green darker)
-		with: (SpaceShip new color: Color red darker).
+	torpedoes _ OrderedCollection new.
+	ships _ Array 		with: SpaceShip new 		with: SpaceShip new.
 	self addAllMorphs: ships.
-	ships first morphPosition: 200 @ -200.
-	ships second morphPosition: -200 @ 200.
-
-	torpedoes _ OrderedCollection new.! !
+	ships first 
+		morphPosition: 200 @ -200;
+		color: Color green darker.
+	ships second 
+		morphPosition: -200 @ 200;
+		color: Color red darker.! !
 
 !SpaceWar methodsFor: 'drawing' stamp: 'hlsf 10/1/2020 15:45:54'!
 drawOn: aCanvas
