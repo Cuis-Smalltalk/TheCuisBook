@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : September 30, 2020
+Compilation : October 3, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -240,6 +240,16 @@ OrderedCollection new add: Float pi; add: Float e; yourself
 </div>
 <div class="float-caption"><p><strong><em>Figure</em> 3.2: </strong>Instance methods in <span class="sansserif">Float</span></p></div></div>
 
+<p>Here another example from Spacewar! mixing class and instance
+methods. This portion of code updates the orientation of a torpedo
+according to its velocity vector:
+</p>
+<div class="float"><span id="torpedoOrientation"></span>
+<div class="display">
+<pre class="display"><span class="sansserif">self rotation: (velocity y arcTan: velocity x) + Float halfPi scale: 1</span>
+</pre></div>
+
+<div class="float-caption"><p><strong><em>Example</em> 3.2: </strong>Aligning a torpedo with its velocity direction</p></div></div>
 <p>With this brief introduction to the system browser, your are now
 equipped to explore the system classes.
 </p>

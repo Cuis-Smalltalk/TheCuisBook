@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : September 30, 2020
+Compilation : October 3, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -127,7 +127,7 @@ create the necessary collections.
    centralStar &#x2190; CentralStar new.
    ../..
    ships first 
-      color: Color white; 
+      color: Color green; 
       position: 200 @ 200.
    ships second
       color: Color red;
@@ -149,21 +149,19 @@ instantiated and if necessary populated.</em>
 <span id="Collections-in-action"></span><h4 class="subsection">4.5.2 Collections in action</h4>
 
 <p>The space ship and the torpedo objects are responsible of their
-internal states. They understand the <span class="sansserif">#update</span> message to recompute
+internal states. They understand the <span class="sansserif">#update:</span> message to recompute
 their position according to the mechanical laws.
 </p>
 <p>A fired torpedo has a constant velocity, no external forces is applied
-to it. Its position is linearly updated according to the time elapsed. In
-the method portion bellow, <span class="sansserif">owner</span> is the <span class="sansserif">SpaceWar</span>
-instance, representing the game display; the message
-<span class="sansserif">#stepTimeInSecond</span> asks for the time interval since the last update
-of the position.
+to it. Its position is linearly updated according to the time
+elapsed. The <span class="sansserif">t</span> parameter in the <span class="sansserif">#update:</span> message
+gives this time interval.
 </p>
 <div class="float"><span id="torpedoMechanic"></span>
 <div class="display">
-<pre class="display"><span class="sansserif">Torpedo&gt;&gt;update
+<pre class="display"><span class="sansserif">Torpedo&gt;&gt;update: t
 &quot;Update the torpedo position&quot;
-   position &#x2190; (velocity * owner stepTimeInSecond) + position.
+   position &#x2190; velocity * t + position.
    ../..</span>
 </pre></div>
 
@@ -174,11 +172,10 @@ change accordingly to the mechanical laws of physics.
 </p>
 <div class="float"><span id="spaceShipMechanic"></span>
 <div class="display">
-<pre class="display"><span class="sansserif">SpaceShip&gt;&gt;update
+<pre class="display"><span class="sansserif">SpaceShip&gt;&gt;update: t
 &quot;Update the ship position and velocity&quot;
    | ai ag newVelocity t |
    &quot;acceleration vectors&quot;
-   t &#x2190; owner stepTimeInSecond.
    ai &#x2190; acceleration * self direction.
    ag &#x2190; self gravity.
    newVelocity &#x2190; (ai + ag) * t + velocity.
@@ -188,9 +185,20 @@ change accordingly to the mechanical laws of physics.
 </pre></div>
 
 <div class="float-caption"><p><strong><em>Example</em> 4.19: </strong>Space ship mechanics</p></div></div>
+<blockquote class="indentedblock">
+<p>&nbsp;<img src="note.png" alt="note">
+<br>
+Remember, regarding arithmetic operators Cuis-Smalltalk does not follow
+the mathematics precedence. There are ordinary binary messages whose
+precedence are from the left to the right when there is no
+parenthesis. For example, in the code fragment <span class="sansserif">...(velocity
+* t)...</span>, the parenthesis are mandatory to get the expected
+computation.
+</p></blockquote>
+
 <p>The game play is the responsibility of a <span class="sansserif">SpaceWar</span> instance. At
 a regular interval of time, it refreshes the states of the game
-actors. A <span class="sansserif">step</span> method is called at a regular interval of time
+actors. A <span class="sansserif">stepAt:</span> method is called at a regular interval of time
 determined by the <span class="sansserif">stepTime</span> method:
 </p>
 <div class="float"><span id="reflreshGamePlay"></span>
@@ -199,15 +207,14 @@ determined by the <span class="sansserif">stepTime</span> method:
 &quot;millisecond&quot;
    ^ 20
 
-SpaceWar&gt;&gt;step
+SpaceWar&gt;&gt;stepAt: millisecondSinceLast
    ../..
    ships do: [:each | each unpush].
-   ../..
-   self redrawNeeded</span>
+   ../..</span>
 </pre></div>
 
 <div class="float-caption"><p><strong><em>Example</em> 4.20: </strong>Regular refresh of the game play</p></div></div>
-<p>In the <span class="sansserif">step</span> method, we left out intentionally the details to
+<p>In the <span class="sansserif">stepAt:</span> method, we left out intentionally the details to
 update the ships and the torpedoes positions. Note: each ship is sent
 regularly an <span class="sansserif">#unpush</span> message to reset its previous <span class="sansserif">#push</span>
 acceleration.
@@ -215,7 +222,7 @@ acceleration.
 <div class="float"><span id="updateShipsTorpedoes"></span>
 <blockquote class="indentedblock">
 <p><em>Replace the two lines &ldquo;../..&rdquo; with code to update the ships
-and the torpedoes.</em>
+and the torpedoes positions and velocities.</em>
 </p></blockquote>
 
 

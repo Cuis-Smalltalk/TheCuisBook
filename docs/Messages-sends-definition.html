@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : September 30, 2020
+Compilation : October 3, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -155,6 +155,17 @@ finally keyword messages, so:
 &rArr; 7</span>
 </pre></div>
 
+
+<p>However, for mathematics clarity we may want to use parenthesis even
+when not needed. In the Spacewar! code snippet bellow, the parenthesis
+are superfluous but improve understanding:
+</p>
+<div class="float"><span id="updateShipVelocity"></span>
+<div class="display">
+<pre class="display"><span class="sansserif">newVelocity &#x2190; (ai + ag) * t + velocity</span>
+</pre></div>
+
+<div class="float-caption"><p><strong><em>Example</em> 2.3: </strong>Ship velocity</p></div></div>
 <span id="index-cascade-of-messages"></span>
 <p>In the <a href="Writing-your-first-scripts.html#hello2"><em>Example</em> 1.2</a> example, the message <span class="sansserif">#show:</span> and <span class="sansserif">#newLine</span>
 are sent to the same <span class="sansserif">Transcript</span> entity. In such circumstance,
@@ -170,7 +181,17 @@ separated by semicolon:
    show: &rsquo;I am Cuising&rsquo;</span>
 </pre></div>
 
-<div class="float-caption"><p><strong><em>Example</em> 2.3: </strong>Cascade of message</p></div></div>
+<div class="float-caption"><p><strong><em>Example</em> 2.4: </strong>Cascade of message</p></div></div>
+<p>Another example from the Spacewar! game:
+</p>
+<div class="float"><span id="teleportShip"></span>
+<div class="display">
+<pre class="display"><span class="sansserif">aShip 
+   velocity: 0 @ 0;
+   morphPosition: randomCoordinate value @ randomCoordinate value</span>
+</pre></div>
+
+<div class="float-caption"><p><strong><em>Example</em> 2.5: </strong>Stop and teleport spaceship at a random position</p></div></div>
 <p>Observe the text here is formatted to ease code understanding. It is possible to
 write the cascade of messages in one line, but it reduces the
 readability of the code:

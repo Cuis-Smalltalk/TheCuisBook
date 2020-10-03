@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : September 30, 2020
+Compilation : October 3, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -110,7 +110,7 @@ messages in a Workspace to discover the one we are searching for:
 1.264 roundTo: 0.001 &rArr; 1.264</span>
 </pre></div>
 
-<div class="float-caption"><p><strong><em>Example</em> 3.2: </strong>Rounding numbers, Workspace try out</p></div></div>
+<div class="float-caption"><p><strong><em>Example</em> 3.3: </strong>Rounding numbers, Workspace try out</p></div></div>
 
 <span id="index-loop_002c-for"></span>
 <span id="index-for-loop"></span>
@@ -135,7 +135,7 @@ Float pi to: 5 by: 1/3 do: [:i | Transcript show: (i roundTo: 0.01) ; space]
 &rArr; 3.14 3.47 3.81 4.14 4.47 4.81</span>
 </pre></div>
 
-<div class="float-caption"><p><strong><em>Example</em> 3.3: </strong>Interval loops (for-loop)</p></div></div>
+<div class="float-caption"><p><strong><em>Example</em> 3.4: </strong>Interval loops (for-loop)</p></div></div>
 <span id="index-loop_002c-repeat"></span>
 <span id="index-repeat"></span>
 <p>Now, in the <span class="sansserif">Integer</span> class, explore the method category
@@ -153,9 +153,60 @@ an integer:
 &rArr; 1 2 4 6 2</span>
 </pre></div>
 
-<div class="float-caption"><p><strong><em>Example</em> 3.4: </strong>Throwing a dice 5 times</p></div></div>
+<div class="float-caption"><p><strong><em>Example</em> 3.5: </strong>Throwing a dice 5 times</p></div></div>
 <p>Note: Expect a different result each time.
 </p>
+<span id="index-Interval"></span>
+<span id="index-number_002c-interval"></span>
+<p>Interval of numbers can be defined on their own, for future use:
+</p>
+<div class="float"><span id="interval"></span>
+<div class="display">
+<pre class="display"><span class="sansserif">1 to: 10
+&rArr; (1 to: 10)
+
+1 to: 10 by: 2
+&rArr; (1 to: 9 by: 2)</span>
+</pre></div>
+
+<div class="float-caption"><p><strong><em>Example</em> 3.6: </strong>Interval</p></div></div>
+<p>Interval works with other object as character:
+</p><div class="display">
+<pre class="display"><span class="sansserif">$d to: $h
+&rArr; #($d $e $f $g $h)</span>
+</pre></div>
+
+<p>In fact, an interval is an object of its own. It is a sort of
+collection:
+</p>
+<div class="display">
+<pre class="display"><span class="sansserif">(1 to: 10) class
+&rArr; Interval
+
+(1 to: 10 by: 2) squared
+&rArr; #(1 9 25 49 81)
+
+(1 to: 10) atRandom
+&rArr; 4 &quot;different result each time&quot;</span>
+</pre></div>
+
+<p>In Spacewar!, when a ship is destroyed it is teleported to a random
+position in the game play area. Interval are handy to pick up random
+coordinates. In the example bellow, the variable
+<span class="sansserif">randomCoordinate</span> holds a bloc of code &ndash; called anonymous
+function in other languages; it picks up a random value in the interval
+consisting of the game play area left and right extents:
+</p>
+<div class="float"><span id="teleportShipInterval"></span>
+<div class="display">
+<pre class="display"><span class="sansserif">randomCoordinate &#x2190; [(area left to: area right) atRandom].
+aShip
+   velocity: 0 @ 0;
+   morphPosition: randomCoordinate value @ randomCoordinate value</span>
+</pre></div>
+
+<div class="float-caption"><p><strong><em>Example</em> 3.7: </strong>Teleport ship</p></div></div>
+
 <div class="float"><span id="cosTable"></span>
 <blockquote class="indentedblock">
 <p><em>Compute the cosine values in
@@ -178,7 +229,7 @@ number, it is immediately printed in the decimal base:
 10r15 &rArr; 15</span>
 </pre></div>
 
-<div class="float-caption"><p><strong><em>Example</em> 3.5: </strong>Integer represented in different base</p></div></div>
+<div class="float-caption"><p><strong><em>Example</em> 3.8: </strong>Integer represented in different base</p></div></div>
 <p>Writing numbers as Mayans or Babylonians<a id="DOCF12" href="#FOOT12"><sup>12</sup></a>:
 </p>
 <div class="float"><span id="countingAncients"></span>
@@ -196,7 +247,7 @@ number, it is immediately printed in the decimal base:
 20r100 &rArr; 400</span>
 </pre></div>
 
-<div class="float-caption"><p><strong><em>Example</em> 3.6: </strong>Counting like the ancients</p></div></div>
+<div class="float-caption"><p><strong><em>Example</em> 3.9: </strong>Counting like the ancients</p></div></div>
 <span id="index-integer_002c-bits-shifting"></span>
 <span id="index-bits-shifting"></span>
 <p>Because of the nature of a number represented in base 2, shifting its
@@ -211,7 +262,7 @@ bits left and right is equivalent to multiplying by 2 and dividing by
 2r1111 &gt;&gt; 1 &rArr; 7</span>
 </pre></div>
 
-<div class="float-caption"><p><strong><em>Example</em> 3.7: </strong>Shifting bits</p></div></div>
+<div class="float-caption"><p><strong><em>Example</em> 3.10: </strong>Shifting bits</p></div></div>
 <div class="float"><span id="multiplyBy1024"></span>
 <blockquote class="indentedblock">
 <p><em>How will you multiply
@@ -241,8 +292,8 @@ good information about this in the class comment of <span class="sansserif">Floa
 &rArr; 5.551115123125783e-17</span>
 </pre></div>
 
-<div class="float-caption"><p><strong><em>Example</em> 3.8: </strong>Computer dyscalculia!</p></div></div>
-<p>In <a href="#FloatPrecision"><em>Example</em> 3.8</a>, the returned value should be zero but it is
+<div class="float-caption"><p><strong><em>Example</em> 3.11: </strong>Computer dyscalculia!</p></div></div>
+<p>In <a href="#FloatPrecision"><em>Example</em> 3.11</a>, the returned value should be zero but it is
 not the case. The computer returns <span class="sansserif">5.55e-17</span>, or
 <span class="sansserif">0.0000000000000000555</span>, it is very close to zero, but there
 is an error.
@@ -275,7 +326,7 @@ executing this code</em> <span class="sansserif">5/0</span><em>?</em>
 
 <div class="float-caption"><p><strong><em>Exercise</em> 3.5: </strong>Toward the infinite</p></div></div>
 <p>Let&rsquo;s come back to our computer dyscalculia with decimal numbers. When
-using the rational numbers, the <a href="#FloatPrecision"><em>Example</em> 3.8</a> becomes:
+using the rational numbers, the <a href="#FloatPrecision"><em>Example</em> 3.11</a> becomes:
 </p>
 <div class="float"><span id="FractionPrecision"></span>
 <div class="display">
@@ -283,7 +334,7 @@ using the rational numbers, the <a href="#FloatPrecision"><em>Example</em> 3.8</
 &rArr; 0</span>
 </pre></div>
 
-<div class="float-caption"><p><strong><em>Example</em> 3.9: </strong>Calculation is correct using rational fractions!</p></div></div>
+<div class="float-caption"><p><strong><em>Example</em> 3.12: </strong>Calculation is correct using rational fractions!</p></div></div>
 <p>This time we have the expected result. Under the covers the computer only
 does the calculations with integer components so no roundoff results.
 </p>

@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : September 30, 2020
+Compilation : October 3, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -473,10 +473,10 @@ appropriate indentation.
 
 <span id="updateShipsTorpedoes-1"></span><h4 class="subheading"><a href="SpaceWar_0021-collections.html#updateShipsTorpedoes"><em>Exercise</em> 4.18</a></h4>
 <div class="example">
-<pre class="example">SpaceWar&gt;&gt;step
-   ships do: [:each | each update].
-   ships do: [:each | each unpush].
-   torpedoes do: [:each | each update]
+<pre class="example">SpaceWar&gt;&gt;stepAt: millisecondSinceLast
+   ships do: [:each | each update: millisecondSinceLast / 1000 ].
+   ships do: [:each | each unpush ].
+   torpedoes do: [:each | each update: millisecondSinceLast / 1000 ].
 </pre></div>
 
 
