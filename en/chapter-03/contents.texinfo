@@ -1100,5 +1100,6 @@ gravity pull of the central star.  Its nose points in direction of the
 top of the game display.
 
 
-@exercise{Initialize central star, initCentralStar, @emph{Initialize
-the central star with 8000 units of mass.}}
+@exercise{Initialize central star, initCentralStar, @emph{How will
+your write the method to initialize the central star with 8000 units
+of mass?.}}

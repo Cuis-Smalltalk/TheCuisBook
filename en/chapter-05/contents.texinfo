@@ -245,14 +245,14 @@ message @msg{value} is sent to the block of code:
 
 @smalltalkExampleCaption{@method{teleport:} method, teleportMethod,
 SpaceWar>>teleport: aShip
-"Teleport a ship at a random location"
-| area randomCoordinate |
-aShip resupply.
-area @assign{} self morphLocalBounds insetBy: 20.
-randomCoordinate @assign{} [(area left to: area right) atRandom].
-aShip 
-  velocity: 0 @@ 0;
-  morphPosition: randomCoordinate value @@ randomCoordinate value}
+  "Teleport a ship at a random location"
+  | area randomCoordinate |
+  aShip resupply.
+  area @assign{} self morphLocalBounds insetBy: 20.
+  randomCoordinate @assign{} [(area left to: area right) atRandom].
+  aShip 
+    velocity: 0 @@ 0;
+    morphPosition: randomCoordinate value @@ randomCoordinate value}
 
 
 @cindex control flow
@@ -399,6 +399,125 @@ result @result{} '1 2 3 4 5 6 7 8 9 10 '}
 You can check all the alternatives in the @label{intervals} method
 category of the class @class{Number}.
 
-@strong{Tip:} If the exit condition of method like @method{whileTrue:} is never satisfied, you may have
-implemented an @dfn{infinite loop}.  Just type @kbd{Cmd-period} to get a debugger.  We will learn about
-how to handle this condition in the section on debugging, below.
+@strong{Tip:} If the exit condition of method like @method{whileTrue:}
+is never satisfied, you may have implemented an @dfn{infinite loop}.
+Just type @kbd{Cmd-period} to get a debugger.  We will learn about how
+to handle this condition in the section on debugging, below.
+
+@section SpaceWar!'s methods
+So far we show a lot of code examples, sometime complete method source
+code, but we never explain how you a add method to a class. We will
+use the Browser to do so.
+
+@subsection Writing your first method
+Let's say we want to add the @method{initialize} method to our
+@class{SpaceWar} class. Of course we need to use the System Browser:
+...@clicksequence{Background click @click{} @label{Open...} @click{}
+@label{Browser}}...
+
+Observe @ref{ch02-browserDetailed} and proceed as follow:
+
+@enumerate
+
+ @item In the @label{Class Category} pane at the far left, scroll down
+ to the @label{Spacewar!} category, then select it.
+
+ @item In the @label{Class} pane, select the class @class{SpaceWar}.
+
+ @item Bellow, click the @label{instance} button to expose the
+ instance side methods of the @class{SpaceWar} class. It is the
+ default behavior of the browser anyway, so you can skip this step as
+ long as you have not clicked on the @label{class} button.
+
+ @item In the @label{Method Category} pane, select the category
+ @label{-- all --}. A method source code template shows up in the pane
+ bellow:
+@smalltalkExample{messageSelectorAndArgumentNames
+  "comment stating purpose of message"
+  | temporary variable names |
+  statements}
+
+  The template comes in four lines: the method name, a comment, local
+  variable declaration and statements. You can select all and delete
+  it or edit each line of the template as needed.
+
+  In our case, we select it all and replace it with the
+  @method{SpaceWar>>initialize} source code:
+
+
+  @smalltalkExampleCaption{Initialize @class{SpaceWar}, initSpacewar,SpaceWar>>initialize
+  "We want to capture keyboard and mouse events@comma{} 
+  start the game loop(step) and initialize the actors."
+  super initialize.
+  color @assign{} self defaultColor.
+  self setProperty: #'handlesKeyboard' toValue: true.
+  self setProperty: #'handlesMouseOver:' toValue: true.
+  self startSteppingStepTime: self stepTime.
+  self initializeActors}
+
+  @item Once edited, save-it with @kbd{Ctrl-S} or
+  ...@clicksequence{right click @click{} @label{Accept (s)}}...
+
+@end enumerate
+
+The newly created method shows up the @label{Method} pane. You can get
+  it categorized automatically too: over the @label{Method Category}
+  ...@clicksequence{right click @click{} @label{categorize all
+  uncategorized (c)}}..
+
+@exercise{Categorize a method,categorizeTeleport, @emph{In the
+@class{SpaceWar} class, add the @method{teleport:} method as defined
+in @ref{teleportMethod} then categorize it in the @label{events}
+method category.}}
+
+@subsection Space ship controls
+In the @class{SpaceShip} class, add its control methods:
+
+@smalltalkExampleCaption{Ship controls, shipControls,SpaceShip>>push
+  "Init an accelaration boost"
+  fuel isZero ifTrue: [@return{} self].
+  fuel @assign{} fuel - 1.
+  acceleration @assign{} 50
+
+SpaceShip>>unpush
+  "Stop the accelaration boost"
+  acceleration @assign{} 0
+
+SpaceShip>>right
+  "Rotate the ship to its right"
+  self rotateBy: 0.1
+  
+SpaceShip>>left
+  "Rotate the ship to its left"
+  self rotateBy: -0.1}
+
+@exercise{Categorize control methods,categorizeControls,
+@emph{Categorize the control methods in a newly created method
+category named @label{control}.}}
+
+Control will not be complete without the method to fire a torpedo. It
+is more complex as a torpedo must be correctly initialized,
+though. Indeed a space ship is most of the time in motion, and last
+but not the least, its heading and velocity direction are most of the
+time different. Therefore the torpedo must be set up according to the
+space ship position, heading and velocity before being fired.
+
+@smalltalkExampleCaption{Firing a torpedo from a space ship in motion,fireTorpedo,
+SpaceShip>>fireTorpedo
+  "Fire a torpedo in the direction of
+  the ship heading with its velocity"
+  | torpedo | 
+  torpedoes isZero ifTrue: [ @return{} self].
+  torpedoes @assign{} torpedoes - 1.
+  torpedo @assign{} Torpedo new.
+  torpedo 
+    morphPosition: self morphPosition + self nose;
+    rotateBy: location radians;
+    velocity: velocity;
+    color: color muchLighter.
+  owner addTorpedo: torpedo}
+
+
+@figure{Spacewar! torpedoes around,ch05-SpacewarGamePlay,8}
+
+

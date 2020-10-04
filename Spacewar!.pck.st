@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4390] on 3 October 2020 at 11:45:40 am'!
+'From Cuis 5.0 [latest update: #4390] on 4 October 2020 at 4:32:15 pm'!
 'Description '!
-!provides: 'Spacewar!!' 1 63!
+!provides: 'Spacewar!!' 1 65!
 SystemOrganization addCategory: #'Spacewar!!'!
 
 
@@ -274,8 +274,10 @@ starMass
 defaultColor
 	^ `Color black`! !
 
-!SpaceWar methodsFor: 'initialization' stamp: 'jmv 9/28/2020 11:49:13'!
+!SpaceWar methodsFor: 'initialization' stamp: 'hlsf 10/4/2020 15:36:42'!
 initialize
+"We want to capture keyboard and mouse events, 
+start the game loop(step) and initialize the actors." 
 	super initialize.
 	color _ self defaultColor.
 	self setProperty: #'handlesKeyboard' toValue: true.
@@ -314,14 +316,14 @@ destroyTorpedo: aTorpedo
 	aTorpedo delete.
 	torpedoes remove: aTorpedo ! !
 
-!SpaceWar methodsFor: 'events' stamp: 'hlsf 9/21/2020 20:41:20'!
+!SpaceWar methodsFor: 'events' stamp: 'hlsf 10/3/2020 15:22:00'!
 keyStroke: event
 	| key |
 	key _ event keyCharacter.
-	key = Character arrowUp ifTrue: [ships first push].
-	key = Character arrowRight ifTrue: [ships first right].
-	key = Character arrowLeft ifTrue: [ships first left].
-	key = Character arrowDown ifTrue: [ships first fireTorpedo]! !
+	key = Character arrowUp ifTrue: [^ ships first push].
+	key = Character arrowRight ifTrue: [^ ships first right].
+	key = Character arrowLeft ifTrue: [^ ships first left].
+	key = Character arrowDown ifTrue: [^ ships first fireTorpedo]! !
 
 !SpaceWar methodsFor: 'events' stamp: 'hlsf 9/11/2020 10:07:17'!
 mouseEnter: evt
