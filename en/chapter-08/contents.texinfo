@@ -7,7 +7,8 @@ We talked above about control flow, how one makes decisions about
 what to do in making calculations.
 We talked about this like the entire computer processing resource
 was dedicated to this task.
-But it isn't so.  Computers may be fast at some calculations, but they are only
+But it isn't so.  Computers may be fast at some calculations,
+but they are only
 so fast, and when there are many things to do, one shares and takes turns.
 
 So aside from ``do this and then do that'', @dfn{event}s can happen.
@@ -17,4 +18,64 @@ What does it do then?  When a processor ``goes to sleep'',
 how do we get its attention?
 
 You are reading the right chapter to know.
+
+There are two basic kinds of system events.
+
+Modern integrated @dfn{System On a Chip} (@dfn{SOC}) hardware
+has many circuits which are active at the same time.  So one kind
+of event is sensing something happening in the world.
+Class @class{EventSensor} handles
+keyboard key press and mouse @dfn{hardware interrupts}, translating
+between hardware signals and software event objects.  For us, 
+the class @class{MorphicEvent} and its subclasses are quite important.
+Basically, morphs ``raise their hand'' and say what events, if any, they
+are interested in receiving and implement methods which
+get event objects which hold the information that the events capture.
+
+The second kind of event is quite similar, but
+is used to march time forward.  We are interested in 
+timer alarms and in particular @dfn{steps} which is used to
+coordinate updates to the display and manage processing of queued
+input events. 
+There is a class @class{StepMessage},
+and you can look at the ``stepping'' method category
+in the @class{Morph} class.  These timed clock events are used
+to @dfn{time slice} long running tasks and do housekeeping
+which we will describe in the next chapter on processes.
+
+Events are critical to understanding how the user interface works.
+In brief, there is a @class{PasteUpMorph} which is the screen background
+graphic and the associated @dfn{World State}.  When you @kbd{Right-Click}
+on this morph, it is the one which brings up the World Menu.
+The World State tracks the cursor, which is a @class{HandMorph} and
+as Morphs change position and appearance, also keeps
+a @class{DamageRecorder} to track what parts of the display have changed
+so that only the ``damaged'' areas need be redrawn.
+
+As @class{MouseMoveEvent}s are generated, the @class{HandMorph} adjusts
+its screen position.  When mouse and keystroke events arrive,
+the @class{HandMorph} coordinates the ``dispatch'' of events to
+the proper morph under the hand as well as displaying tool tips
+and carrying morphs in transit during drag operations.
+
+As we saw above with @class{ColorClickEllipse}, any morph may
+override default @class{Morph} methods to assert that it handles
+various user events and the methods which take the
+associated event objects when events arrive.
+
+Basically, user input events are generated, a @class{HandMorph}
+reflects any cursor movement, morphs react to events, each long running
+task gets a time slice and makes some progress,
+any display changes are updated on the screen, and the next step
+happens.  Time marches forward a step.
+
+This happens over and over and over,
+keeping the juggler's illusion that all balls
+in the air are moving at once.  Underneath, the balls are each moving
+just a bit, in sequence.
+
+
+
+
+
 
