@@ -132,7 +132,7 @@
  comment, not a string, and is ignored by the @cuis{}
  compiler. Comments may span multiple lines.
 
- @cindex local variable, declaration
+ @cindex variable (local), declaration
  @item Local variable declarations.
 
  Vertical bars | | enclose the declaration of one or more local

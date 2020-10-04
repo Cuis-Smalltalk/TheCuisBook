@@ -411,6 +411,7 @@ So far we show a lot of code examples, sometime complete method source
 code, but we never explain how you a add method to a class. We will
 use the Browser to do so.
 
+@cindex method, creating
 @subsection Writing your first method
 Let's say we want to add the @method{initialize} method to our
 @class{SpaceWar} class. Of course we need to use the System Browser:
