@@ -11,6 +11,16 @@ class @class{Morph} in a Hierarchy Browser you will
 see a large number of methods and many, many subclasses.
 But the basic ideas are quite simple.
 
+
+@menu
+* Ellipse Morph::
+* Submorph::
+* A brief introduction to Inspectors::
+* Building your specialized Morph::
+* Spacewar!'s Morphs::
+@end menu
+
+@node Ellipse Morph
 @section Ellipse Morph
 @cindex morph, ellipse
 Let's start with one of the basic morphs, an @class{EllipseMorph}.
@@ -48,6 +58,7 @@ is over the handle, move the cursor to the right and down, and release the mouse
 
 @figure{A Larger Ellipse,ch06-04-Enlarged,4}
 
+@node Submorph
 @section Submorph
 @cindex morph, submorph
 @cindex morph, rectangle
@@ -77,6 +88,7 @@ interesting behaviors.
 
 Let's add a behavior to just this one @class{RectangleLikeMorph}.
 
+@node A brief introduction to Inspectors
 @section A brief introduction to Inspectors
 To get the construction halo for an interior morph, just
 @kbd{Middle-Click} multiple times to ``drill down'' through the
@@ -150,6 +162,7 @@ contains code to set the borderWidth and the borderColor.
 
 In the typical case one wants to refine or change behaviors for all instances of a class.
 
+@node Building your specialized Morph
 @section Building your specialized Morph
 @cindex morph, subclass
 Let's make a simple subclass which changes color when @kbd{Left-Click}ed.
@@ -188,5 +201,6 @@ These are fun to @kbd{Left-Click} on.  Make as many as you want!
 Now you know how to specialize an individual morph, or make a whole new class of them!
 
 
+@node Spacewar!'s Morphs
 @section Spacewar!'s Morphs
 

@@ -59,7 +59,7 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="Control-Flow-Messaging.html" rel="up" title="Control Flow Messaging">
-<link href="Visual-With-Morph.html" rel="next" title="Visual With Morph">
+<link href="Spacewar_0021_0027s-methods.html" rel="next" title="Spacewar!'s methods">
 <link href="Block-syntax.html" rel="prev" title="Block syntax">
 <style type="text/css">
 <!--
@@ -87,7 +87,7 @@ ul.no-bullet {list-style: none}
 <body lang="en">
 <span id="Control-flow-with-block-and-message"></span><div class="header">
 <p>
-Previous: <a href="Block-syntax.html" accesskey="p" rel="prev">Block syntax</a>, Up: <a href="Control-Flow-Messaging.html" accesskey="u" rel="up">Control Flow Messaging</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Spacewar_0021_0027s-methods.html" accesskey="n" rel="next">Spacewar!'s methods</a>, Previous: <a href="Block-syntax.html" accesskey="p" rel="prev">Block syntax</a>, Up: <a href="Control-Flow-Messaging.html" accesskey="u" rel="up">Control Flow Messaging</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <span id="Control-flow-with-block-and-message-1"></span><h3 class="section">5.5 Control flow with block and message</h3>
@@ -260,146 +260,6 @@ is never satisfied, you may have implemented an <em>infinite loop</em>.
 Just type <kbd>Cmd-period</kbd> to get a debugger.  We will learn about how
 to handle this condition in the section on debugging, below.
 </p>
-<span id="SpaceWar_0021_0027s-methods"></span><h3 class="section">5.6 SpaceWar!&rsquo;s methods</h3>
-<p>So far we show a lot of code examples, sometime complete method source
-code, but we never explain how you a add method to a class. We will
-use the Browser to do so.
-</p>
-<span id="Writing-your-first-method"></span><h4 class="subsection">5.6.1 Writing your first method</h4>
-<p>Let&rsquo;s say we want to add the <span class="sansserif">initialize</span> method to our
-<span class="sansserif">SpaceWar</span> class. Of course we need to use the System Browser:
-...Background click &rarr; <code>Open...</code> &rarr;
-<code>Browser</code>...
-</p>
-<p>Observe <a href="A-brief-introduction-to-the-system-Browser.html#ch02_002dbrowserDetailed"><em>Figure</em> 2.1</a> and proceed as follow:
-</p>
-<ol>
-<li> In the <code>Class Category</code> pane at the far left, scroll down
- to the <code>Spacewar!</code> category, then select it.
-
-</li><li> In the <code>Class</code> pane, select the class <span class="sansserif">SpaceWar</span>.
-
-</li><li> Bellow, click the <code>instance</code> button to expose the
- instance side methods of the <span class="sansserif">SpaceWar</span> class. It is the
- default behavior of the browser anyway, so you can skip this step as
- long as you have not clicked on the <code>class</code> button.
-
-</li><li> In the <code>Method Category</code> pane, select the category
- <code>-- all --</code>. A method source code template shows up in the pane
- bellow:
-<div class="display">
-<pre class="display"><span class="sansserif">messageSelectorAndArgumentNames
-  &quot;comment stating purpose of message&quot;
-  | temporary variable names |
-  statements</span>
-</pre></div>
-
-<p>The template comes in four lines: the method name, a comment, local
-  variable declaration and statements. You can select all and delete
-  it or edit each line of the template as needed.
-</p>
-<p>In our case, we select it all and replace it with the
-  <span class="sansserif">SpaceWar&gt;&gt;initialize</span> source code:
-</p>
-
-<div class="float"><span id="initSpacewar"></span>
-<div class="display">
-<pre class="display"><span class="sansserif">SpaceWar&gt;&gt;initialize
-  &quot;We want to capture keyboard and mouse events, 
-  start the game loop(step) and initialize the actors.&quot;
-  super initialize.
-  color &#x2190; self defaultColor.
-  self setProperty: #&rsquo;handlesKeyboard&rsquo; toValue: true.
-  self setProperty: #&rsquo;handlesMouseOver:&rsquo; toValue: true.
-  self startSteppingStepTime: self stepTime.
-  self initializeActors</span>
-</pre></div>
-
-<div class="float-caption"><p><strong><em>Example</em> 5.7: </strong>Initialize <span class="sansserif">SpaceWar</span></p></div></div>
-</li><li> Once edited, save-it with <kbd>Ctrl-S</kbd> or
-  ...right click &rarr; <code>Accept (s)</code>...
-
-</li></ol>
-
-<p>The newly created method shows up the <code>Method</code> pane. You can get
-  it categorized automatically too: over the <code>Method Category</code>
-  ...right click &rarr; <code>categorize all
-  uncategorized (c)</code>..
-</p>
-<div class="float"><span id="categorizeTeleport"></span>
-<blockquote class="indentedblock">
-<p><em>In the
-<span class="sansserif">SpaceWar</span> class, add the <span class="sansserif">teleport:</span> method as defined
-in <a href="Block-syntax.html#teleportMethod"><em>Example</em> 5.3</a> then categorize it in the <code>events</code>
-method category.</em>
-</p></blockquote>
-
-
-<div class="float-caption"><p><strong><em>Exercise</em> 5.3: </strong>Categorize a method</p></div></div>
-<span id="Space-ship-controls"></span><h4 class="subsection">5.6.2 Space ship controls</h4>
-<p>In the <span class="sansserif">SpaceShip</span> class, add its control methods:
-</p>
-<div class="float"><span id="shipControls"></span>
-<div class="display">
-<pre class="display"><span class="sansserif">SpaceShip&gt;&gt;push
-  &quot;Init an accelaration boost&quot;
-  fuel isZero ifTrue: [&#x2191; self].
-  fuel &#x2190; fuel - 1.
-  acceleration &#x2190; 50
-
-SpaceShip&gt;&gt;unpush
-  &quot;Stop the accelaration boost&quot;
-  acceleration &#x2190; 0
-
-SpaceShip&gt;&gt;right
-  &quot;Rotate the ship to its right&quot;
-  self rotateBy: 0.1
-  
-SpaceShip&gt;&gt;left
-  &quot;Rotate the ship to its left&quot;
-  self rotateBy: -0.1</span>
-</pre></div>
-
-<div class="float-caption"><p><strong><em>Example</em> 5.8: </strong>Ship controls</p></div></div>
-<div class="float"><span id="categorizeControls"></span>
-<blockquote class="indentedblock">
-<p><em>Categorize the control methods in a newly created method
-category named <code>control</code>.</em>
-</p></blockquote>
-
-
-<div class="float-caption"><p><strong><em>Exercise</em> 5.4: </strong>Categorize control methods</p></div></div>
-<p>Control will not be complete without the method to fire a torpedo. It
-is more complex as a torpedo must be correctly initialized,
-though. Indeed a space ship is most of the time in motion, and last
-but not the least, its heading and velocity direction are most of the
-time different. Therefore the torpedo must be set up according to the
-space ship position, heading and velocity before being fired.
-</p>
-<div class="float"><span id="fireTorpedo"></span>
-<div class="display">
-<pre class="display"><span class="sansserif">SpaceShip&gt;&gt;fireTorpedo
-  &quot;Fire a torpedo in the direction of
-  the ship heading with its velocity&quot;
-  | torpedo | 
-  torpedoes isZero ifTrue: [ &#x2191; self].
-  torpedoes &#x2190; torpedoes - 1.
-  torpedo &#x2190; Torpedo new.
-  torpedo 
-    morphPosition: self morphPosition + self nose;
-    rotateBy: location radians;
-    velocity: velocity;
-    color: color muchLighter.
-  owner addTorpedo: torpedo</span>
-</pre></div>
-
-<div class="float-caption"><p><strong><em>Example</em> 5.9: </strong>Firing a torpedo from a space ship in motion</p></div></div>
-
-<div class="float"><span id="ch05_002dSpacewarGamePlay"></span>
-<div align="center"><img src="ch05-SpacewarGamePlay.png" alt="ch05-SpacewarGamePlay">
-</div>
-<div class="float-caption"><p><strong><em>Figure</em> 5.1: </strong>Spacewar! torpedoes around</p></div></div>
-
 <div class="footnote">
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
@@ -413,7 +273,7 @@ singleton class is designed to have only one instance. Each of
 <hr>
 <div class="header">
 <p>
-Previous: <a href="Block-syntax.html" accesskey="p" rel="prev">Block syntax</a>, Up: <a href="Control-Flow-Messaging.html" accesskey="u" rel="up">Control Flow Messaging</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Spacewar_0021_0027s-methods.html" accesskey="n" rel="next">Spacewar!'s methods</a>, Previous: <a href="Block-syntax.html" accesskey="p" rel="prev">Block syntax</a>, Up: <a href="Control-Flow-Messaging.html" accesskey="u" rel="up">Control Flow Messaging</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

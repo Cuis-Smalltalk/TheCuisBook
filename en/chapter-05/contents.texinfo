@@ -17,6 +17,7 @@ created by sending a message to their superclass.
 * Method syntax::
 * Block syntax::
 * Control flow with block and message::
+* Spacewar!'s methods::
 @end menu
 
 @node Syntactic elements
@@ -404,7 +405,8 @@ is never satisfied, you may have implemented an @dfn{infinite loop}.
 Just type @kbd{Cmd-period} to get a debugger.  We will learn about how
 to handle this condition in the section on debugging, below.
 
-@section SpaceWar!'s methods
+@node Spacewar!'s methods
+@section Spacewar!'s methods
 So far we show a lot of code examples, sometime complete method source
 code, but we never explain how you a add method to a class. We will
 use the Browser to do so.
@@ -460,10 +462,10 @@ Observe @ref{ch02-browserDetailed} and proceed as follow:
 
 @end enumerate
 
-The newly created method shows up the @label{Method} pane. You can get
-  it categorized automatically too: over the @label{Method Category}
-  ...@clicksequence{right click @click{} @label{categorize all
-  uncategorized (c)}}..
+The newly created method shows up in the @label{Method} pane. You can
+  get it categorized automatically too: over the @label{Method
+  Category} ...@clicksequence{right click @click{} @label{categorize
+  all uncategorized (c)}}..
 
 @exercise{Categorize a method,categorizeTeleport, @emph{In the
 @class{SpaceWar} class, add the @method{teleport:} method as defined
