@@ -1,2 +1,20 @@
 @node Events
 @chapter Events
+
+@strong{What just happened?}
+
+We talked above about control flow, how one makes decisions about
+what to do in making calculations.
+We talked about this like the entire computer processing resource
+was dedicated to this task.
+But it isn't so.  Computers may be fast at some calculations, but they are only
+so fast, and when there are many things to do, one shares and takes turns.
+
+So aside from ``do this and then do that'', @dfn{event}s can happen.
+
+Also, a computer may be fast enough that it literally has ``nothing'' to do.
+What does it do then?  When a processor ``goes to sleep'',
+how do we get its attention?
+
+You are reading the right chapter to know.
+
