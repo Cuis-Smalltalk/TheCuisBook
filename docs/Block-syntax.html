@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : October 3, 2020
+Compilation : October 4, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -177,7 +177,25 @@ rewrite <a href="#computeDivisors"><em>Example</em> 5.2</a> to avoid code duplic
 
 
 <div class="float-caption"><p><strong><em>Exercise</em> 5.1: </strong>Block to compute divisors</p></div></div>
+<p>The <span class="sansserif">SpaceWar&gt;&gt;teleport:</span> method contains a nice example
+using a block to avoid code duplication to generate random abscissa
+and ordinate coordinates. Each time a new coordinate is needed, the
+message <span class="sansserif">#value</span> is sent to the block of code:
+</p>
+<div class="float"><span id="teleportMethod"></span>
+<div class="display">
+<pre class="display"><span class="sansserif">SpaceWar&gt;&gt;teleport: aShip
+  &quot;Teleport a ship at a random location&quot;
+  | area randomCoordinate |
+  aShip resupply.
+  area &#x2190; self morphLocalBounds insetBy: 20.
+  randomCoordinate &#x2190; [(area left to: area right) atRandom].
+  aShip 
+    velocity: 0 @ 0;
+    morphPosition: randomCoordinate value @ randomCoordinate value</span>
+</pre></div>
 
+<div class="float-caption"><p><strong><em>Example</em> 5.3: </strong><span class="sansserif">teleport:</span> method</p></div></div>
 
 <span id="index-control-flow"></span>
 <hr>

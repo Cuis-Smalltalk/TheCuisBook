@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : October 3, 2020
+Compilation : October 4, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -92,56 +92,49 @@ Next: <a href="Block-syntax.html" accesskey="n" rel="next">Block syntax</a>, Pre
 <hr>
 <span id="Method-syntax-1"></span><h3 class="section">5.3 Method syntax</h3>
 
-<span id="index-to-be-written_002c-Section-still-needed_003f"></span>
-<p><strong>To be written.</strong> Section still needed?
-</p>
 <p>Whereas expressions may be evaluated anywhere in Cuis-Smalltalk (for example,
 in a workspace, in a debugger, or in a browser), methods are normally
-defined in a browser window, or in the debugger. (Methods can also be
+defined in a browser window, or in the debugger. Methods can also be
 filed in from an external medium, but this is not the usual way to
-program in Cuis-Smalltalk.)
+program in Cuis-Smalltalk.
 </p>
 <p>Programs are developed one method at a time, in the context of a given
-class. (A class is defined by sending a message to an existing class,
+class. A class is defined by sending a message to an existing class,
 asking it to create a subclass, so there is no special syntax required
-for defining classes.)
+for defining classes.
 </p>
-<p>Here is the method <span class="sansserif">lineCount</span> in the class
-<span class="sansserif">String</span>. (The usual convention is to refer to methods as
+<p>Here is the method <span class="sansserif">keyStroke:</span> in the class
+<span class="sansserif">SpaceWar</span>. The usual convention is to refer to methods as
 <span class="sansserif">ClassName&gt;&gt;methodName</span>, so we call this method
-<span class="sansserif">String&gt;&gt;lineCount</span>.)
+<span class="sansserif">SpaceWar&gt;&gt;keyStroke:</span>)
 </p>
-
-<span id="index-to-be-written_002c-Pickup-another-example"></span>
-<p><strong>To be written.</strong> Pickup another example
-</p><div class="float"><span id="lineCount"></span>
+<div class="float"><span id="spacewarKeyStroke"></span>
 <div class="display">
-<pre class="display"><span class="sansserif">String&gt;&gt;lineCount
-  &quot;Answer the number of lines represented by the receiver,
-  where every cr adds one line.&quot;
-  | cr count |
-  cr := Character cr.
-  count := 1 min: self size.
-  self do:
-     [:c | c == cr ifTrue: [count := count + 1]].
-  ^ count</span>
+<pre class="display"><span class="sansserif">SpaceWar&gt;&gt;keyStroke: event
+&quot;Check for any keyboard stroke, and take action accordingly&quot;
+| key |
+key &#x2190; event keyCharacter.
+key = Character arrowUp ifTrue: [&#x2191; ships first push].
+key = Character arrowRight ifTrue: [&#x2191; ships first right].
+key = Character arrowLeft ifTrue: [&#x2191; ships first left].
+key = Character arrowDown ifTrue: [&#x2191; ships first fireTorpedo]</span>
 </pre></div>
 
-<div class="float-caption"><p><strong><em>Example</em> 5.1: </strong>Line count</p></div></div>
+<div class="float-caption"><p><strong><em>Example</em> 5.1: </strong>SpaceWar! key stroke</p></div></div>
 <p>Syntactically, a method consists of:
 </p>
 <ul>
 <li> the method pattern, containing the name (<em>i.e.</em>,
- <span class="sansserif">lineCount</span>) and any arguments (none in this example),
+ <span class="sansserif">keyStroke:</span>) and any arguments, here <span class="sansserif">event</span> a
+ keyboard event,
 
 </li><li> comments (these may occur anywhere, but the convention is to
  put one at the top that explains what the method does),
  
-</li><li> declarations of local variables (<em>i.e.</em>, <span class="sansserif">cr</span>
- and <span class="sansserif">count</span>),
+</li><li> declarations of local variables (<em>i.e.</em>, <span class="sansserif">key</span>),
 
 </li><li> and any number of expressions separated by dots; here there are
- four.
+ 5.
 
 </li></ul>
 
