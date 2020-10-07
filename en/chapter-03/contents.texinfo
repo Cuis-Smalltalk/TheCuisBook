@@ -929,7 +929,8 @@ class. Next, add the variable names to the
 character. Finally, save the updated class definition with
 @kbd{Ctrl-s} shortcut:
 
-@smalltalkExample{Object subclass: #Torpedo
+@smalltalkExampleCaption{@class{Torpedo} class with its instance variables,torpedoClassVariables,
+Object subclass: #Torpedo
    instanceVariableNames: 'position velocity lifeSpan'
    classVariableNames: ''
    poolDictionaries: ''

@@ -204,3 +204,50 @@ Now you know how to specialize an individual morph, or make a whole new class of
 @node Spacewar!'s Morphs
 @section Spacewar!'s Morphs
 
+Previously we defined the actors of the game as subclasses of the very
+general @class{Object} class (See
+@ref{torpedoClassVariables}). However the game play, the central star,
+the ships and the torpedoes are visual objects, each with a dedicated
+graphic shape:
+
+@itemize
+
+  @item the game play is a simple rectangular area filled with the
+  black color,
+
+  @item the central star is a fluctuating yellow disk with an orange
+  aura,
+
+  @item the ships are rotating quadrangles each one painted with a
+  different color,
+
+  @item a torpedo is a rotating triangle we can decide to paint with
+  a different color depending on the firing ship.
+  
+@end itemize
+
+Therefore it makes sense to turn these actors as kind of
+@class{Morph}s, the visual entity of @cuis{}. To do so, point a System
+Browser to the class definition of each actor, replace the parent
+class @class{Object} by @class{Morph}, then save the class definition
+with @kbd{Ctrl-s}.
+
+For example, the torpedo class as seen in @ref{torpedoClassVariables}
+is edited as:
+
+@smalltalkExample{Morph subclass: #Torpedo
+   instanceVariableNames: 'position velocity lifeSpan'
+   classVariableNames: ''
+   poolDictionaries: ''
+   category: 'Spacewar!'}
+
+Moreover, as you may have guessed, a Morph already knows about its
+position on screen -- it can be moved around in the screen with the
+mouse cursor. Therefore the @smalltalk{position} instance variable is
+redundant and should be removed. For now we keep it, it we be will
+removed later when we will know how to replace each of its use case
+with its appropriate Morph counter part.
+
+@exercise{Make all Morph, allActorsMorph, @emph{Edit
+@smalltalk{SpaceWar}@comma{} @class{CentralStar} and @class{SpaceShip}
+as subclasses of the @class{Morph} class.}}

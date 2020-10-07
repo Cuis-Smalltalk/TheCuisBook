@@ -458,7 +458,7 @@ Observe @ref{ch02-browserDetailed} and proceed as follow:
   self startSteppingStepTime: self stepTime.
   self initializeActors}
 
-  @item Once edited, save-it with @kbd{Ctrl-S} or
+  @item Once edited, save-it with @kbd{Ctrl-s} or
   ...@clicksequence{right click @click{} @label{Accept (s)}}...
 
 @end enumerate
