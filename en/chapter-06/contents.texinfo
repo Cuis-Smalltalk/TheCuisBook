@@ -244,7 +244,7 @@ is edited as:
 Moreover, as you may have guessed, a Morph already knows about its
 position on screen -- it can be moved around in the screen with the
 mouse cursor. Therefore the @smalltalk{position} instance variable is
-redundant and should be removed. For now we keep it, it we be will
+redundant and should be removed. For now we keep it, it will be
 removed later when we will know how to replace each of its use case
 with its appropriate Morph counter part.
 
