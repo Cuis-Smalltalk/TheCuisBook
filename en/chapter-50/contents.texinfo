@@ -424,4 +424,46 @@ then do ...@clicksequence{right click @click{} @label{more...}
 To categorized the remaining uncategorized control methods, repeat but
 select @label{control} at the last step as this category now exists.
 
-@c Above
+
+@unnumberedsec Visual With Morph
+
+@subheading @ref{allActorsMorph}
+Just replace all @class{Object} occurrences with @class{Morph}:
+
+@example
+Morph subclass: #SpaceWar
+   instanceVariableNames: 'centralStar ships torpedoes'
+   classVariableNames: ''
+   poolDictionaries: ''
+   category: 'Spacewar!'
+
+Morph subclass: #CentralStar
+   instanceVariableNames: 'mass'
+   classVariableNames: ''
+   poolDictionaries: ''
+   category: 'Spacewar!'
+
+Morph subclass: #SpaceShip
+   instanceVariableNames: 'name position heading velocity
+      fuel torpedoes mass acceleration'
+   classVariableNames: ''
+   poolDictionaries: ''
+   category: 'Spacewar!'
+@end example
+
+
+@subheading @ref{refactoryShipTorpedo}
+
+@example
+Mobile subclass: #SpaceShip
+   instanceVariableNames: 'name heading fuel torpedoes'
+   classVariableNames: ''
+   poolDictionaries: ''
+   category: 'Spacewar!'
+
+Mobile subclass: #Torpedo
+   instanceVariableNames: 'lifeSpan'
+   classVariableNames: ''
+   poolDictionaries: ''
+   category: 'Spacewar!'
+@end example

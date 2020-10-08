@@ -784,7 +784,7 @@ create the necessary collections.
 See below an incomplete implementation of this method:
 
 @smalltalkExampleCaption{Incomplete game initialization, initActors,
-initializeActors
+SpaceWar>>initializeActors
    centralStar @assign{} CentralStar new.
    ../..
    ships first 

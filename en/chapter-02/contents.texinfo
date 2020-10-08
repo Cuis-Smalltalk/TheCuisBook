@@ -568,14 +568,14 @@ behavior. They will be complemented and refactored in the next
 chapters.
 
 @subsection The Newtonian model
-For an enjoyable game experience, the player ships and torpedoes must
-follow the Newton laws of mechanic. Acceleration, speed and position
-are computed according to these laws. The ship and torpedo are
-subjected to two forces: the acceleration from the gravity pull of the
-central star and an inner acceleration coming from the ship and
-torpedo engines.
+@anchor{newtonModel}
+For an enjoyable game experience, the player ships must follow the
+Newton laws of mechanic. Acceleration, speed and position are computed
+according to these laws. The ships are subjected to two forces: the
+acceleration from the gravity pull of the central star and an inner
+acceleration coming from the ship engines.
 
 Later, we will learn how these equations are easily converted to
 computer calculus.
 
-@figure{Equation of the accelerations@comma{} speed and position,motionEquations,13}
+@figure{Equations of the accelerations@comma{} speed and position,motionEquations,13}

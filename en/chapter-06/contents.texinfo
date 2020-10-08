@@ -123,10 +123,9 @@ to create a behavior for ``just this one RectangleLikeMorph instance''.
 In addition to instance variables, a morph can have any number of
 named @dfn{properties} which can be different for each morph.
 
-We add two properties here.
+We add two properties here:
 
-@smalltalkExample{
-self setProperty: #handlesMouseDown: toValue: true.
+@smalltalkExample{self setProperty: #handlesMouseDown: toValue: true.
 self setProperty: #mouseButton1UpLocalPosition:
      toValue: [:ignoredEvent :ignoredPosition| self color: Color random]
 }
@@ -168,8 +167,7 @@ In the typical case one wants to refine or change behaviors for all instances of
 Let's make a simple subclass which changes color when @kbd{Left-Click}ed.
 Create a new class just as we did with Spacewar! but subclass EllipseMorph with #ColorClickEllipse.
 
-@smalltalkExample{
-EllipseMorph subclass: #ColorClickEllipse
+@smalltalkExample{EllipseMorph subclass: #ColorClickEllipse
              instanceVariableNames: ''
              classVariableNames: ''
              poolDictionaries: ''
@@ -179,16 +177,14 @@ EllipseMorph subclass: #ColorClickEllipse
 This brings up a number of selections and allows us to create new ones.
 Select ``event handling testing''.  Then add the method @smalltalk{ColorClickEllipse>>handlesMouseDown:}.
 
-@smalltalkExample{
-handlesMouseDown: aMouseButtonEvent
+@smalltalkExample{handlesMouseDown: aMouseButtonEvent
   "Answer that I do handle mouseDown events''
   ^true
 }
 
 Likewise, add a new catagory ``event handing'' and add the other method we need.
 
-@smalltalkExample{
-mouseButton1Up: aMouseButtonEvent localPosition: localEventPosition
+@smalltalkExample{mouseButton1Up: aMouseButtonEvent localPosition: localEventPosition
    "I ignore the mouseEvent information and change my color."
    self color: Color random}
 
@@ -201,9 +197,10 @@ These are fun to @kbd{Left-Click} on.  Make as many as you want!
 Now you know how to specialize an individual morph, or make a whole new class of them!
 
 
-@node Spacewar!'s Morphs
-@section Spacewar!'s Morphs
+@node Spacewar! graphics
+@section Spacewar! graphics
 
+@subsection All Morphs
 Previously we defined the actors of the game as subclasses of the very
 general @class{Object} class (See
 @ref{torpedoClassVariables}). However the game play, the central star,
@@ -251,3 +248,165 @@ with its appropriate Morph counter part.
 @exercise{Make all Morph, allActorsMorph, @emph{Edit
 @smalltalk{SpaceWar}@comma{} @class{CentralStar} and @class{SpaceShip}
 as subclasses of the @class{Morph} class.}}
+
+As explained in the previous sections of this chapter, a morph can be
+embedded in another game. In Spacewar!, a @class{SpaceWar} morph
+instance representing the game play is the @emph{owner} of the central
+star, space ship and torpedo morphs. Put in other words, the central
+star, space ships and torpedoes are @emph{sub morphs} of a
+@class{SpaceWar} morph instance.
+
+The @method{SpaceWar>>initializeActors} in @ref{initActors} is not
+complete without adding and positioning the central star and space
+ships as sub morphs of the Spacewar! game play:
+
+@smalltalkExampleCaption{Complete code to initialize the Spacewar! actors, initFullActors,
+SpaceWar>>initializeActors
+   centralStar @assign{} CentralStar new.
+   self addMorph: centralStar.
+   centralStar morphPosition: 0 @@ 0.
+   ships @assign{} Array 
+      with: (SpaceShip new color: Color white)
+      with: (SpaceShip new color: Color red).
+   self addAllMorphs: ships.
+   ships first morphPosition: 200 @@ -200.
+   ships second morphPosition: -200 @@ 200.
+   torpedoes @assign OrderedCollection new}
+
+There are two important messages: @msg{addMorph:} and
+@msg{morphPosition:}. The former asks to the receiver morph to embed
+its morph argument as a sub morph, the later asks to set the receiver
+coordinates in its owner reference frame. From reading the code, you
+can deduce the origin of the owner reference frame is its middle,
+indeed our central star is in the middle of the game play.
+
+There is a third message not written here, @msg{morphPosition}, to ask
+the coordinates of the receiver in its owner reference frame.
+
+Remember our discussion about the @smalltalk{position} instance
+variable. Now you clearly understand it is redundant and we can remove
+it from the @class{SpaceShip} and @class{Torpedo} definitions. Each
+time we need to access the position, we just write @smalltalk{self
+morphPosition} and each time we need to modify the position we write
+@smalltalk{self morphPosition: newPosition}. More on that later.
+
+
+@c refactor ship and torpedo as mobile entity
+@cindex refactoring
+@subsection The art of refactoring
+In our @ref{newtonModel,, newtonian model} we explained the
+space ships are subjected to the engine acceleration and the gravity
+pull of the central star. The equations are described in
+@ref{motionEquations}.
+
+Based on these mathematics, we wrote the @smalltalk{SpaceShip>>update:}
+method to update the ship position according to the elapsed time --
+see @ref{spaceShipMechanic}.
+
+So far in our model, a torpedo is not subjected to the central start
+gravity pull nor its engine acceleration. It is supposing its mass is
+zero which is unlikely. Of course the @smalltalk{Torpedo>>update:}
+method is simpler than the space ship counter part -- see
+@ref{torpedoMechanic}. Nevertheless, it is more accurate and even more
+fun that the torpedoes are subjected to the gravity pull@footnote{So a
+torpedo should come with a mass.} and its engine acceleration; an
+agile space ship pilot could use gravity assist to accelerate a
+torpedo fired close to the central star.
+
+What are the impacts of these considerations on the torpedo and space
+ship entities?
+
+Firstly, they will share @emph{common states} as the mass, the
+position, the velocity and the acceleration.
+
+Secondly, they will share @emph{common behaviors} as the computation
+to update the position and velocity.
+
+Thirdly, they will have @emph{different states}: a torpedo has a life
+span state while a space ship has fuel tank capacity and torpedoes
+stock states.
+
+Fourthly, they will have @emph{different behaviors}: a torpedo is self
+destroyed when its life span expires, a space ship fires torpedoes and
+accelerates as long as its fuel tank and its torpedoes count are not
+zero.
+
+Sharing states and behaviors along different states and behaviors are
+a strong indication that the @class{SpaceShip} and @class{Torpedo}
+classes should share a common ancestor more specialized than the
+@class{Morph} class.
+
+Doing such analysis on the computer model of the game is part of the
+@dfn{refactoring} effort to avoid behavior and state duplication while
+making more obvious common logic in the entities. The general idea of
+code refactoring is to rework existing code to make it more elegant,
+understandable and logic.
+
+To do so, we want to introduce a @class{Mobile} class, kind of
+ @class{Morph} with behaviors specific to a mobile subjected to
+ accelerations. Its states are the mass, position, velocity and
+ acceleration. Well, as we are discussing refactoring, the mass state
+ does not really makes sense in our game, indeed our mobile's mass is
+ constant. So we just need a method returning a literal number and we
+ remove the @smalltalk{mobile} instance variable.
+
+It results in this @class{Mobile} definition:
+
+@smalltalkExampleCaption{Mobile in the game play,mobileClass,Morph subclass: #Mobile
+   instanceVariableNames: 'velocity acceleration'
+   classVariableNames: ''
+   poolDictionaries: ''
+   category: 'Spacewar!'}
+
+@exercise{Refactoring @class{SpaceShip} and @class{Torpedo},refactoryShipTorpedo,
+@emph{What should be the refactored definitions of the
+@class{SpaceShip} and @class{Torpedo} classes?}}
+
+The first behaviors we add to our @class{Mobile} are its initialization and
+its mass:
+
+@smalltalkExample{Mobile>>initialize
+  super initialize.
+  velocity @assign{} 0 @ 0.
+  acceleration @assign{} 0
+        
+Mobile>>mass
+  ^ 1}
+
+The next method we want to add is the gravity acceleration calculus:
+
+@smalltalkExampleCaption{Calculate the gravity force,gravityForce,
+Mobile>>gravity
+"Compute the gravity acceleration vector"
+   | position |
+   position @assign{} self morphPosition.
+   @return{} -10 * self mass * owner starMass / (position r raisedTo: 3) * position}
+
+A few comments:
+@itemize
+
+  @item @smalltalk{self morphPosition} returns a @class{Point}
+  instance, the position of the mobile in the owner reference frame,
+
+  @item @smalltalk{owner} is the @class{SpaceWar} instance
+  representing the game play. It is the owner -- parent morph -- of
+  the mobile. When asking @msg{starMass}, it interrogates its central
+  star mass and return its value:
+
+  @smalltalkExample{SpaceWar>>starMass
+   @return{} centralStar mass}
+
+  @item In @smalltalk{position r}, the @msg{r} message asks the radius
+  attribute of a point considered in polar coordinates. It is just its
+  length, norm. It is the distance between the mobile and the
+  central star.
+
+  @item @smalltalk{* position} really means multiply the previous
+  scalar value with a point. Thus the returned value is a point, a
+  vector in this context of gravity vector.
+
+@end itemize
+
+
+
+@c refactoring central star, no need for mass only a behavior
