@@ -373,7 +373,8 @@ its mass:
 Mobile>>mass
   ^ 1}
 
-The next method we want to add is the gravity acceleration calculus:
+The next methods to add are the ones relative to the mechanics
+calculus. First, the gravity acceleration calculus:
 
 @smalltalkExampleCaption{Calculate the gravity force,gravityForce,
 Mobile>>gravity
@@ -382,7 +383,7 @@ Mobile>>gravity
    position @assign{} self morphPosition.
    @return{} -10 * self mass * owner starMass / (position r raisedTo: 3) * position}
 
-A few comments:
+It deserves a few comments:
 @itemize
 
   @item @smalltalk{self morphPosition} returns a @class{Point}
@@ -407,6 +408,53 @@ A few comments:
 
 @end itemize
 
+The method to update the mobile position and velocity is mostly the
+same as in @ref{spaceShipMechanic}. Of course the
+@smalltalk{SpaceShip>>update:} and @smalltalk{Torpedo>>update:}
+version must be both deleted. Below the complete version with the
+morph way to access the mobile's position:
 
+@smalltalkExampleCaption{@class{Mobile}'s @method{update:} method,mobileUpdate,
+Mobile>>update: t
+"Update the mobile position and velocity"
+  | ai ag newVelocity |
+  "acceleration vectors"
+  ai @assign{} acceleration * self direction.
+  ag @assign{} self gravity.
+  newVelocity @assign{} (ai + ag) * t + velocity.
+  self morphPosition: (0.5 * (ai + ag) * t squared) + (velocity * t) + self morphPosition.
+  velocity @assign{} newVelocity.	
+  "Are we out of screen? If so we move the mobile to the other corner
+  and slow it down by a factor of 2"  
+  (self isInOuterSpace and: [self isGoingOuterSpace]) ifTrue: [
+     velocity @assign{} velocity / 2.
+     self morphPosition: self morphPosition negated]}
+
+Now we should add the two methods to detect when a mobile is heading
+in deep space:
+
+@smalltalkExampleCaption{Test when a mobile is going deep space,mobileDeepSpace,
+Mobile>>isInOuterSpace
+"Is the mobile located in the outer space? (outside of the game
+play area)"
+   @return{} (owner morphContainsPoint: self morphPosition) not
+
+Mobile>>isGoingOuterSpace
+"is the mobile going crazy in the direction of the outer space?"
+   @return{} (self morphPosition dotProduct: velocity) > 0}
+
+As you see, these test methods are simple and short. When writing
+@cuis{} code, this is something we appreciate a lot and we do not
+hesitate to cut a long method in several small methods. It improves
+readability and code reuse. The @msg{morphContainsPoint:} asks the
+receiver morph whether the point in argument is inside its shape.
+
+@c Overriden method, the update: case (and initialize too)
+@c - mobile update: method
+@c - space ship and torpedo overriding to add specific behaviours
+@c Different behaviours
+@c - space ship control and resupply message
+@c - torpedo not much (morph extent)
+@c - drawing method
 
 @c refactoring central star, no need for mass only a behavior

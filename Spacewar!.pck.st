@@ -1,12 +1,12 @@
-'From Cuis 5.0 [latest update: #4390] on 4 October 2020 at 4:32:15 pm'!
+'From Cuis 5.0 [latest update: #4390] on 8 October 2020 at 10:31:25 pm'!
 'Description '!
-!provides: 'Spacewar!!' 1 65!
+!provides: 'Spacewar!!' 1 67!
 SystemOrganization addCategory: #'Spacewar!!'!
 
 
 !classDefinition: #CentralStar category: #'Spacewar!!'!
 Morph subclass: #CentralStar
-	instanceVariableNames: 'mass'
+	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Spacewar!!'!
@@ -68,9 +68,9 @@ game openInWorld
 
 Control with the left, up, right arrows!
 
-!CentralStar methodsFor: 'accessing' stamp: 'hlsf 9/10/2020 13:59:50'!
+!CentralStar methodsFor: 'accessing' stamp: 'hlsf 10/8/2020 22:20:17'!
 mass
-	^ mass! !
+	^ 8000! !
 
 !CentralStar methodsFor: 'drawing' stamp: 'hlsf 10/1/2020 15:43:23'!
 drawOn: canvas
@@ -81,11 +81,6 @@ drawOn: canvas
 		borderWidth: 3 
 		borderColor: Color orange 
 		fillColor: Color yellow ! !
-
-!CentralStar methodsFor: 'initialization' stamp: 'hlsf 9/16/2020 16:06:06'!
-initialize
-	super initialize.
-	mass _ 8000.! !
 
 !CentralStar methodsFor: 'geometry testing' stamp: 'jmv 9/28/2020 14:35:30'!
 requiresVectorCanvas
@@ -141,14 +136,14 @@ update: t
 requiresVectorCanvas
 	^false! !
 
-!Mobile methodsFor: 'testing' stamp: 'hlsf 10/1/2020 09:11:27'!
+!Mobile methodsFor: 'testing' stamp: 'hlsf 10/8/2020 22:21:33'!
 isGoingOuterSpace
-"is the mobile going crazy in the outer space?"
+"is the mobile going crazy in direction of the outer space?"
 	^ (self morphPosition dotProduct: velocity) > 0 ! !
 
-!Mobile methodsFor: 'testing' stamp: 'hlsf 10/1/2020 09:11:35'!
+!Mobile methodsFor: 'testing' stamp: 'hlsf 10/8/2020 22:21:40'!
 isInOuterSpace
-"Is the mobile located in the outer space? (outside of the game playarea)"
+"Is the mobile located in the outer space? (outside of the game play area)"
 	^(owner morphContainsPoint: self morphPosition) not! !
 
 !Mobile methodsFor: 'initialization' stamp: 'hlsf 10/1/2020 08:37:29'!
