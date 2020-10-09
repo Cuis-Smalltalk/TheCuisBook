@@ -47,8 +47,8 @@ a @dfn{halo} of @dfn{construction handles}, which show up as small colored circu
 icons.  If you pause the cursor over one of these, you get a @dfn{tool tip}, a
 temporary text popup who's name should give a clue to its usage.
 
-If you click elsewhere the construction handles leave, but you can get them back
-at any time with a mouse click.
+If you click elsewhere the construction handles leave, you get them
+back at any time with a mouse click.
 
 @figure{Drag Construction Handle to Change Size,ch06-03-DragToEnlarge,4}
 
@@ -130,13 +130,16 @@ self setProperty: #mouseButton1UpLocalPosition:
      toValue: [:ignoredEvent :ignoredPosition| self color: Color random]
 }
 
-These properties are special to the user interface.
-You can find methods with these names in the @class{Morph} class to see what they do.
+These properties are special to the user interface.  You can find
+methods with these names in the @class{Morph} class to see what they
+do.
 
-After selecting the text and @emph{@b{D}o-it}, each time you @kbd{Left-Click} on the rect it changes color!
+After selecting the text and @emph{@b{D}o-it}, each time you
+@kbd{Left-Click} on the rect it changes color!
 
-Note that you can no longer move the ellipse by mouse-down on the rect,
-because the rect now takes the mouse event.  You have to mouse-down on the Ellipse.  More on this below.
+Note that you can no longer move the ellipse by mouse-down on the
+rect, because the rect now takes the mouse event.  You have to
+mouse-down on the Ellipse.  More on this below.
 
 @cindex morph, move/pick up
 One quick note on @strong{Move} versus @strong{Pick up}.  @strong{Move} moves a submorph
@@ -188,9 +191,9 @@ Likewise, add a new catagory ``event handing'' and add the other method we need.
    "I ignore the mouseEvent information and change my color."
    self color: Color random}
 
-Now, you have created a new Morph class and can select a ColorClickEllipse
-from the World Menu @strong{New Morph..} and try it out.
-These are fun to @kbd{Left-Click} on.  Make as many as you want!
+Now, you have created a new Morph class and can select a
+ColorClickEllipse from the World Menu @strong{New Morph..} and try it
+out.  These are fun to @kbd{Left-Click} on.  Make as many as you want!
 
 @figure{Obtain ColorClickEllipse,ch06-15-ColorClickEllipse,8}
 
@@ -218,8 +221,8 @@ graphic shape:
   @item the ships are rotating quadrangles each one painted with a
   different color,
 
-  @item a torpedo is a rotating triangle we can decide to paint with
-  a different color depending on the firing ship.
+  @item a torpedo is a rotating triangle to paint with a different
+  color depending on the firing ship.
   
 @end itemize
 
@@ -239,7 +242,7 @@ is edited as:
    category: 'Spacewar!'}
 
 Moreover, as you may have guessed, a Morph already knows about its
-position on screen -- it can be moved around in the screen with the
+position on screen -- it is movable around in the screen with the
 mouse cursor. Therefore the @smalltalk{position} instance variable is
 redundant and should be removed. For now we keep it, it will be
 removed later when we will know how to replace each of its use case
@@ -277,16 +280,16 @@ There are two important messages: @msg{addMorph:} and
 @msg{morphPosition:}. The former asks to the receiver morph to embed
 its morph argument as a sub morph, the later asks to set the receiver
 coordinates in its owner reference frame. From reading the code, you
-can deduce the origin of the owner reference frame is its middle,
+deduce the origin of the owner reference frame is its middle,
 indeed our central star is in the middle of the game play.
 
 There is a third message not written here, @msg{morphPosition}, to ask
 the coordinates of the receiver in its owner reference frame.
 
 Remember our discussion about the @smalltalk{position} instance
-variable. Now you clearly understand it is redundant and we can remove
-it from the @class{SpaceShip} and @class{Torpedo} definitions. Each
-time we need to access the position, we just write @smalltalk{self
+variable. Now you clearly understand it is redundant and we remove it
+from the @class{SpaceShip} and @class{Torpedo} definitions. Each time
+we need to access the position, we just write @smalltalk{self
 morphPosition} and each time we need to modify the position we write
 @smalltalk{self morphPosition: newPosition}. More on that later.
 
@@ -475,8 +478,19 @@ what does @smalltalk{super update: t}. We already discussed about
 method in @class{Torpedo}'s parent class, and so on until the method
 is found, and if not a @emph{Message Not Understood} error is thrown.
 
-@c Overriden method, the update: case (and initialize too)
-@c - mobile update: method
+Among the specific added behaviors, the torpedo orientation along its
+velocity vector, it is inaccurate but nice looking; the life span
+control and the self destruction sequence; the engine acceleration
+handling. When a torpedo is just fired, its engine acceleration is
+huge then it decreases quickly.
+
+With the System Browser on @method{Torpedo>>update:}, the
+@option{inheritence} button is green light, it indicates the message
+is sent to @smalltalk{super} too. It is a reminder it is a specialized
+behavior. The button tool tip tells us about the other coloring
+meanings. When pressing this button, you browse the implementation of
+the @method{upate:} method.
+
 @c - space ship and torpedo overriding to add specific behaviours
 @c Different behaviours
 @c - space ship control and resupply message
