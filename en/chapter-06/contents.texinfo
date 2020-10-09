@@ -446,8 +446,34 @@ Mobile>>isGoingOuterSpace
 As you see, these test methods are simple and short. When writing
 @cuis{} code, this is something we appreciate a lot and we do not
 hesitate to cut a long method in several small methods. It improves
-readability and code reuse. The @msg{morphContainsPoint:} asks the
-receiver morph whether the point in argument is inside its shape.
+readability and code reuse. The @msg{morphContainsPoint:} message asks
+the receiver morph whether the point in argument is inside its shape.
+
+@cindex overriding
+When a mobile is updated, its position and velocity is
+updated. However the @class{Mobile} subclasses @class{SpaceShip} or a
+@class{Torpedo} may need more specific update. In object oriented
+programming there is this special mechanism named
+@dfn{overriding}. See the @class{Torpedo>>update:} definition:
+
+@smalltalkExample{Torpedo>>update: t
+   "Update the torpedo position"
+   super update: t.
+   "orientate the torpedo in its velocity direction, nicer effect
+   while inaccurate"
+   self rotation: (velocity y arcTan: velocity x) + Float halfPi scale: 1.
+   lifeSpan @assign{} lifeSpan - 1.
+   ifeSpan isZero ifTrue: [owner destroyTorpedo: self].
+   acceleration > 0 ifTrue: [acceleration @assign{} acceleration - 1000]}
+
+Here the @method{update:} method is specialized to the torpedo
+specific needs. The mechanic calculus done in @method{Mobile>>update:}
+is still used to update the torpedo position and velocity: this is
+what does @smalltalk{super update: t}. We already discussed about
+@smalltalk{super} previously, in the context of the
+@method{Torpedo>>update:}, this means search for an @method{update:}
+method in @class{Torpedo}'s parent class, and so on until the method
+is found, and if not a @emph{Message Not Understood} error is thrown.
 
 @c Overriden method, the update: case (and initialize too)
 @c - mobile update: method
