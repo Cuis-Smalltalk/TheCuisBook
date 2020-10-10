@@ -280,11 +280,15 @@ pre.menu-comment
     font-family: Arial,sans-serif;
 }
 
+
+tt.key{
+    font-size: 120%;
+}
 code
 {
     font-size: 120%;
     background-color: #900;
-    color: black;
+    color: white;
 }
 
 kbd
