@@ -265,7 +265,7 @@ These two overriding methods are more efficient as they avoid test and
 ifTrue/ifFalse branches. Polymorphism is often used to avoid test and
 branch.
 
-@strong{Tip:} If you select the text @smalltalk{abs} in a Browser or Workspace
+@strong{Tip.} If you select the text @smalltalk{abs} in a Browser or Workspace
 and right-click to get the context menu, you will find
 an entry ``Implementors of it''.
 You can select this or use @kbd{Ctrl-m} (@emph{i@b{M}plementors}) to

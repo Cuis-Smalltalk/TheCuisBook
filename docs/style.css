@@ -90,7 +90,7 @@ margin: 0;
 
 pre.display
 {
-border: 1px solid black;
+border: 1px solid #a3cef9;
 padding: 1em;
 color: black;
 background: #E6F0FA;
@@ -101,16 +101,16 @@ font-family: serif;
 pre.format
 {
 font-family: serif;
-border: 1px solid black;
+border: 1px solid #f7f700 ;
 padding: 1em;
 color: black;
-background: #C2E0C2;
+background: rgba(248, 248, 2, 0.16);
 border-radius: 4px;
 }
 
 blockquote
 {
-border: 1px solid #900;
+border: 1px solid #f7f700 ;
 margin: 1em 3em 1em 3em;
 background: rgba(248, 248, 2, 0.16);
 border-radius: 4px;
@@ -145,9 +145,19 @@ h2.section, h3.section, h3.heading, h3.subsection, h2.appendix
 margin-top: 1em;
 }
 
-div.footnote h3
+div.footnote h4
 {
-font-size: 90%;
+    font-size: 90%;
+}
+
+div.footnote h5
+{
+    font-size: 80%;
+    margin-bottom: -10px;
+}
+div.footnote p
+{
+    font-size: 90%;
 }
 
 .subheading
@@ -272,7 +282,7 @@ pre.menu-comment
 
 code
 {
-    font-size: 110%;
+    font-size: 120%;
     color: #900;
 }
 
@@ -291,6 +301,7 @@ kbd
 samp
 {
     color: #046370;
+    font-size: 120%;
 }
 
 var
