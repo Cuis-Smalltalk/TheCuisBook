@@ -684,8 +684,9 @@ internal computer represenation of @smalltalk{1.3} is not exactly as
 it seems:
 
 @smalltalkExample{(13/10) asFloat
-@result{} 1.3}
-@smalltalkExample{(13/10) asFloat asFraction
+@result{} 1.3
+
+(13/10) asFloat asFraction
 @result{} 5854679515581645/45035996273704}
 
 @node Kernel-Text
