@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : October 4, 2020
+Compilation : October 10, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -130,7 +130,7 @@ to create a behavior for &ldquo;just this one RectangleLikeMorph instance&rdquo;
 <p>In addition to instance variables, a morph can have any number of
 named <em>properties</em> which can be different for each morph.
 </p>
-<p>We add two properties here.
+<p>We add two properties here:
 </p>
 <div class="display">
 <pre class="display"><span class="sansserif">self setProperty: #handlesMouseDown: toValue: true.
@@ -139,13 +139,16 @@ self setProperty: #mouseButton1UpLocalPosition:
 </span>
 </pre></div>
 
-<p>These properties are special to the user interface.
-You can find methods with these names in the <span class="sansserif">Morph</span> class to see what they do.
+<p>These properties are special to the user interface.  You can find
+methods with these names in the <span class="sansserif">Morph</span> class to see what they
+do.
 </p>
-<p>After selecting the text and <em><b>D</b>o-it</em>, each time you <kbd>Left-Click</kbd> on the rect it changes color!
+<p>After selecting the text and <em><b>D</b>o-it</em>, each time you
+<kbd>Left-Click</kbd> on the rect it changes color!
 </p>
-<p>Note that you can no longer move the ellipse by mouse-down on the rect,
-because the rect now takes the mouse event.  You have to mouse-down on the Ellipse.  More on this below.
+<p>Note that you can no longer move the ellipse by mouse-down on the
+rect, because the rect now takes the mouse event.  You have to
+mouse-down on the Ellipse.  More on this below.
 </p>
 <span id="index-morph_002c-move_002fpick-up"></span>
 <p>One quick note on <strong>Move</strong> versus <strong>Pick up</strong>.  <strong>Move</strong> moves a submorph

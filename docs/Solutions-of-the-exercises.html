@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : October 4, 2020
+Compilation : October 10, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -511,6 +511,49 @@ then do ...right click &rarr; <code>more...</code>
 <p>To categorized the remaining uncategorized control methods, repeat but
 select <code>control</code> at the last step as this category now exists.
 </p>
+
+<span id="Visual-With-Morph-2"></span><h3 class="unnumberedsec">Visual With Morph</h3>
+
+<span id="allActorsMorph-1"></span><h4 class="subheading"><a href="Spacewar_0021-graphics.html#allActorsMorph"><em>Exercise</em> 6.1</a></h4>
+<p>Just replace all <span class="sansserif">Object</span> occurrences with <span class="sansserif">Morph</span>:
+</p>
+<div class="example">
+<pre class="example">Morph subclass: #SpaceWar
+   instanceVariableNames: 'centralStar ships torpedoes'
+   classVariableNames: ''
+   poolDictionaries: ''
+   category: 'Spacewar!'
+
+Morph subclass: #CentralStar
+   instanceVariableNames: 'mass'
+   classVariableNames: ''
+   poolDictionaries: ''
+   category: 'Spacewar!'
+
+Morph subclass: #SpaceShip
+   instanceVariableNames: 'name position heading velocity
+      fuel torpedoes mass acceleration'
+   classVariableNames: ''
+   poolDictionaries: ''
+   category: 'Spacewar!'
+</pre></div>
+
+
+<span id="refactoryShipTorpedo-1"></span><h4 class="subheading"><a href="Spacewar_0021-graphics.html#refactoryShipTorpedo"><em>Exercise</em> 6.2</a></h4>
+
+<div class="example">
+<pre class="example">Mobile subclass: #SpaceShip
+   instanceVariableNames: 'name heading fuel torpedoes'
+   classVariableNames: ''
+   poolDictionaries: ''
+   category: 'Spacewar!'
+
+Mobile subclass: #Torpedo
+   instanceVariableNames: 'lifeSpan'
+   classVariableNames: ''
+   poolDictionaries: ''
+   category: 'Spacewar!'
+</pre></div>
 <hr>
 <div class="header">
 <p>

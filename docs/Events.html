@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : October 4, 2020
+Compilation : October 10, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -98,7 +98,8 @@ Next: <a href="Process.html" accesskey="n" rel="next">Process</a>, Previous: <a 
 what to do in making calculations.
 We talked about this like the entire computer processing resource
 was dedicated to this task.
-But it isn&rsquo;t so.  Computers may be fast at some calculations, but they are only
+But it isn&rsquo;t so.  Computers may be fast at some calculations,
+but they are only
 so fast, and when there are many things to do, one shares and takes turns.
 </p>
 <p>So aside from &ldquo;do this and then do that&rdquo;, <em>event</em>s can happen.
@@ -109,6 +110,71 @@ how do we get its attention?
 </p>
 <p>You are reading the right chapter to know.
 </p>
+<p>There are two basic kinds of system events.
+</p>
+<p>Modern integrated <em>System On a Chip</em> (<em>SOC</em>) hardware
+has many circuits which are active at the same time.  So one kind
+of event is sensing something happening in the world.
+Class <span class="sansserif">EventSensor</span> handles
+keyboard key press and mouse <em>hardware interrupts</em>, translating
+between hardware signals and software event objects.  For us, 
+the class <span class="sansserif">MorphicEvent</span> and its subclasses are quite important.
+Basically, morphs &ldquo;raise their hand&rdquo; and say what events, if any, they
+are interested in receiving and implement methods which
+get event objects which hold the information that the events capture.
+</p>
+<p>The second kind of event is quite similar, but
+is used to march time forward.  We are interested in 
+timer alarms and in particular <em>steps</em> which is used to
+coordinate updates to the display and manage processing of queued
+input events. 
+There is a class <span class="sansserif">StepMessage</span>,
+and you can look at the &ldquo;stepping&rdquo; method category
+in the <span class="sansserif">Morph</span> class.  These timed clock events are used
+to <em>time slice</em> long running tasks and do housekeeping
+which we will describe in the next chapter on processes.
+</p>
+<p>Events are critical to understanding how the user interface works.
+In brief, there is a <span class="sansserif">PasteUpMorph</span> which is the screen background
+graphic and the associated <em>World State</em>.  When you <kbd>Right-Click</kbd>
+on this morph, it is the one which brings up the World Menu.
+The World State tracks the cursor, which is a <span class="sansserif">HandMorph</span> and
+as Morphs change position and appearance, also keeps
+a <span class="sansserif">DamageRecorder</span> to track what parts of the display have changed
+so that only the &ldquo;damaged&rdquo; areas need be redrawn.
+</p>
+<p>As <span class="sansserif">MouseMoveEvent</span>s are generated, the <span class="sansserif">HandMorph</span> adjusts
+its screen position.  When mouse and keystroke events arrive,
+the <span class="sansserif">HandMorph</span> coordinates the &ldquo;dispatch&rdquo; of events to
+the proper morph under the hand as well as displaying tool tips
+and carrying morphs in transit during drag operations.
+</p>
+<p>As we saw above with <span class="sansserif">ColorClickEllipse</span>, any morph may
+override default <span class="sansserif">Morph</span> methods to assert that it handles
+various user events and the methods which take the
+associated event objects when events arrive.
+</p>
+<p>Basically, user input events are generated, a <span class="sansserif">HandMorph</span>
+reflects any cursor movement, morphs react to events, each long running
+task gets a time slice and makes some progress,
+any display changes are updated on the screen, and the next step
+happens.  Time marches forward a step.
+</p>
+<p>This happens over and over and over,
+keeping the juggler&rsquo;s illusion that all balls
+in the air are moving at once.  Underneath, the balls are each moving
+just a bit, in sequence.
+</p>
+
+
+
+
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Process.html" accesskey="n" rel="next">Process</a>, Previous: <a href="Model-And-View.html" accesskey="p" rel="prev">Model And View</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
 
 
 

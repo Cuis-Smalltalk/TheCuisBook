@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : October 4, 2020
+Compilation : October 10, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -240,6 +240,7 @@ class. Next, add the variable names to the
 character. Finally, save the updated class definition with
 <kbd>Ctrl-s</kbd> shortcut:
 </p>
+<div class="float"><span id="torpedoClassVariables"></span>
 <div class="display">
 <pre class="display"><span class="sansserif">Object subclass: #Torpedo
    instanceVariableNames: &rsquo;position velocity lifeSpan&rsquo;
@@ -248,6 +249,7 @@ character. Finally, save the updated class definition with
    category: &rsquo;Spacewar!&rsquo;</span>
 </pre></div>
 
+<div class="float-caption"><p><strong><em>Example</em> 3.14: </strong><span class="sansserif">Torpedo</span> class with its instance variables</p></div></div>
 <div class="float"><span id="spacewarVar"></span>
 <blockquote class="indentedblock">
 <p><em>Add the instance variables we discussed earlier to the
@@ -285,7 +287,7 @@ the method category you want &ndash; when none, select <code>-- all
    statements</span>
 </pre></div>
 
-<div class="float-caption"><p><strong><em>Example</em> 3.14: </strong>Method template</p></div></div>
+<div class="float-caption"><p><strong><em>Example</em> 3.15: </strong>Method template</p></div></div>
 <p>It describes itself as:
 </p>
 <ol>
@@ -376,7 +378,7 @@ variable and edit the <span class="sansserif">mass</span> method to return a lit
    ^ 1</span>
 </pre></div>
 
-<div class="float-caption"><p><strong><em>Example</em> 3.15: </strong>A method returning a constant</p></div></div>
+<div class="float-caption"><p><strong><em>Example</em> 3.16: </strong>A method returning a constant</p></div></div>
 <span id="Control"></span><h4 class="subsubheading">Control</h4>
 <p>A space ship controlled by the player understands messages to adjust
 its direction and acceleration<a id="DOCF13" href="#FOOT13"><sup>13</sup></a>:
@@ -430,9 +432,9 @@ set its default position, speed, acceleration:
    acceleration &#x2190; 0</span>
 </pre></div>
 
-<div class="float-caption"><p><strong><em>Example</em> 3.16: </strong>Initialize the space ship</p></div></div>
+<div class="float-caption"><p><strong><em>Example</em> 3.17: </strong>Initialize the space ship</p></div></div>
 <span id="index-super"></span>
-<p>In the method <a href="#initSpaceShip"><em>Example</em> 3.16</a>, observe the first line
+<p>In the method <a href="#initSpaceShip"><em>Example</em> 3.17</a>, observe the first line
 <span class="sansserif">super initialize</span>. When a message is sent to
 <span class="sansserif">super</span>, it refers to the superclass of the class&rsquo;s method
 using <span class="sansserif">super</span>. So far, the <span class="sansserif">SpaceShip</span> parent class is
