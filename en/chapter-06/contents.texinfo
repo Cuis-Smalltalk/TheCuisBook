@@ -493,7 +493,8 @@ the @method{upate:} method.
 
 We already met an example of overriding when initializing a space ship
 instance -- see @ref{initSpaceShip}. In the context of our class
-hierarchy refactoring, the initialize overriding looks like this:
+hierarchy refactoring, the initialize overriding is refactored to span
+over the @class{Mobile} hierarchy:
 
 @smalltalkExampleCaption{Initialize overriding in the @class{Mobile}
 hierarchy,initMobileHierarchy,Mobile>>initialize
@@ -529,12 +530,14 @@ initialization:
 
 @end enumerate
 
+The behaviors specific to each mobile is set with additional
+methods. The @class{SpaceShip} comes with its control methods we
+already described previously in @ref{shipControls} and
+@ref{fireTorpedo}, of course there is none for a
+@class{Torpedo}.
 
-
-
-@c Different behaviours
-@c - space ship control and resupply message
-@c - torpedo not much (morph extent)
-@c - drawing method
+Another important specific behavior is how each kind of @class{Mobile}
+is drawn in the game play, this will be discussed in a next chapter on
+the fundamentals of Morph.
 
 @c refactoring central star, no need for mass only a behavior
