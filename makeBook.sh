@@ -48,7 +48,8 @@ function doHtml {
     prepareDestination $htmlDest
     cp style.css $lang/$htmlDest
     cd $lang
-    texi2any --no-validate -I $imgPath --output=$htmlDest/ --html --css-ref=style.css $masterDoc
+#    texi2any --no-validate -I $imgPath --output=$htmlDest/ --html --css-ref=style.css $masterDoc
+    texi2any -I $imgPath --output=$htmlDest/ --html --css-ref=style.css $masterDoc
     cd -
     # copy to docs for git hub publishing
     cp -a $lang/$htmlDest/* docs/

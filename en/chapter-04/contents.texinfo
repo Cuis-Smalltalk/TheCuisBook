@@ -10,15 +10,15 @@ have percolated into many popular programming languages.
 @todo{historic context to collection/iterator}
 
 @menu
-* String::
+* String -- a particular collection::
 * Fun with variables::
 * Fun with collections::
 * Collections detailed ::
 * SpaceWar! collections::
 @end menu
 
-@node String, a particular collection
-@section String, a particular collection
+@node String -- a particular collection
+@section String -- a particular collection
 @c browse the hierarchy to find more inherited behavior, Should this
 @c be documented in browser section, or just there
 @cindex class, inheritance

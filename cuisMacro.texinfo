@@ -58,7 +58,7 @@ K. Dickey, H. Fernandes, J. Vuletich
 
 @c Smalltalk example with caption
 @macro smalltalkExampleCaption{caption,label,example}
-@float @emph{Example},\label\
+@float Example,\label\
 @iftex
 @c   @cartouche
 @end iftex
@@ -77,7 +77,7 @@ K. Dickey, H. Fernandes, J. Vuletich
 
 @c Exercise with caption
 @macro exercise{caption,label,text}
-@float @emph{Exercise},\label\
+@float Exercise,\label\
 @iftex
    @cartouche
 @end iftex
@@ -98,7 +98,7 @@ K. Dickey, H. Fernandes, J. Vuletich
 @c Figure with caption
 @macro figure{caption,file,width}
 @ifnotplaintext
- @float @emph{Figure},\file\
+ @float Figure,\file\
  @center @image{\file\,\width\cm}
  @caption{\caption\}
  @end float

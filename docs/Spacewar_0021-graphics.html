@@ -95,7 +95,7 @@ Previous: <a href="Building-your-specialized-Morph.html" accesskey="p" rel="prev
 <span id="All-Morphs"></span><h4 class="subsection">6.5.1 All Morphs</h4>
 <p>Previously we defined the actors of the game as subclasses of the very
 general <span class="sansserif">Object</span> class (See
-<a href="Spacewar_0021-States-and-Behaviors.html#torpedoClassVariables"><em>Example</em> 3.14</a>). However the game play, the central star,
+<a href="Spacewar_0021-States-and-Behaviors.html#torpedoClassVariables">Example 3.14</a>). However the game play, the central star,
 the ships and the torpedoes are visual objects, each with a dedicated
 graphic shape:
 </p>
@@ -120,7 +120,7 @@ Browser to the class definition of each actor, replace the parent
 class <span class="sansserif">Object</span> by <span class="sansserif">Morph</span>, then save the class definition
 with <kbd>Ctrl-s</kbd>.
 </p>
-<p>For example, the torpedo class as seen in <a href="Spacewar_0021-States-and-Behaviors.html#torpedoClassVariables"><em>Example</em> 3.14</a>
+<p>For example, the torpedo class as seen in <a href="Spacewar_0021-States-and-Behaviors.html#torpedoClassVariables">Example 3.14</a>
 is edited as:
 </p>
 <div class="display">
@@ -146,7 +146,7 @@ as subclasses of the <span class="sansserif">Morph</span> class.</em>
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong><em>Exercise</em> 6.1: </strong>Make all Morph</p></div></div>
+<div class="float-caption"><p><strong>Exercise 6.1: </strong>Make all Morph</p></div></div>
 <p>As explained in the previous sections of this chapter, a morph can be
 embedded in another game. In Spacewar!, a <span class="sansserif">SpaceWar</span> morph
 instance representing the game play is the <em>owner</em> of the central
@@ -154,7 +154,7 @@ star, space ship and torpedo morphs. Put in other words, the central
 star, space ships and torpedoes are <em>sub morphs</em> of a
 <span class="sansserif">SpaceWar</span> morph instance.
 </p>
-<p>The <span class="sansserif">SpaceWar&gt;&gt;initializeActors</span> in <a href="SpaceWar_0021-collections.html#initActors"><em>Example</em> 4.17</a> is not
+<p>The <span class="sansserif">SpaceWar&gt;&gt;initializeActors</span> in <a href="SpaceWar_0021-collections.html#initActors">Example 4.17</a> is not
 complete without adding and positioning the central star and space
 ships as sub morphs of the Spacewar! game play:
 </p>
@@ -173,7 +173,7 @@ ships as sub morphs of the Spacewar! game play:
    torpedoes &#x2190; OrderedCollection new</span>
 </pre></div>
 
-<div class="float-caption"><p><strong><em>Example</em> 6.1: </strong>Complete code to initialize the Spacewar! actors</p></div></div>
+<div class="float-caption"><p><strong>Example 6.1: </strong>Complete code to initialize the Spacewar! actors</p></div></div>
 <p>There are two important messages: <span class="sansserif">#addMorph:</span> and
 <span class="sansserif">#morphPosition:</span>. The former asks to the receiver morph to embed
 its morph argument as a sub morph, the later asks to set the receiver
@@ -197,17 +197,17 @@ morphPosition</span> and each time we need to modify the position we write
 <p>In our <a href="Spacewar_0021-models.html#newtonModel">newtonian model</a> we explained the
 space ships are subjected to the engine acceleration and the gravity
 pull of the central star. The equations are described in
-<a href="Spacewar_0021-models.html#motionEquations"><em>Figure</em> 2.4</a>.
+<a href="Spacewar_0021-models.html#motionEquations">Figure 2.4</a>.
 </p>
 <p>Based on these mathematics, we wrote the <span class="sansserif">SpaceShip&gt;&gt;update:</span>
 method to update the ship position according to the elapsed time &ndash;
-see <a href="SpaceWar_0021-collections.html#spaceShipMechanic"><em>Example</em> 4.19</a>.
+see <a href="SpaceWar_0021-collections.html#spaceShipMechanic">Example 4.19</a>.
 </p>
 <p>So far in our model, a torpedo is not subjected to the central start
 gravity pull nor its engine acceleration. It is supposing its mass is
 zero which is unlikely. Of course the <span class="sansserif">Torpedo&gt;&gt;update:</span>
 method is simpler than the space ship counter part &ndash; see
-<a href="SpaceWar_0021-collections.html#torpedoMechanic"><em>Example</em> 4.18</a>. Nevertheless, it is more accurate and even more
+<a href="SpaceWar_0021-collections.html#torpedoMechanic">Example 4.18</a>. Nevertheless, it is more accurate and even more
 fun that the torpedoes are subjected to the gravity pull<a id="DOCF18" href="#FOOT18"><sup>18</sup></a> and its engine acceleration; an
 agile space ship pilot could use gravity assist to accelerate a
 torpedo fired close to the central star.
@@ -260,7 +260,7 @@ understandable and logic.
    category: &rsquo;Spacewar!&rsquo;</span>
 </pre></div>
 
-<div class="float-caption"><p><strong><em>Example</em> 6.2: </strong>Mobile in the game play</p></div></div>
+<div class="float-caption"><p><strong>Example 6.2: </strong>Mobile in the game play</p></div></div>
 <div class="float"><span id="refactoryShipTorpedo"></span>
 <blockquote class="indentedblock">
 <p><em>What should be the refactored definitions of the
@@ -268,7 +268,7 @@ understandable and logic.
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong><em>Exercise</em> 6.2: </strong>Refactoring <span class="sansserif">SpaceShip</span> and <span class="sansserif">Torpedo</span></p></div></div>
+<div class="float-caption"><p><strong>Exercise 6.2: </strong>Refactoring <span class="sansserif">SpaceShip</span> and <span class="sansserif">Torpedo</span></p></div></div>
 <p>The first behaviors we add to our <span class="sansserif">Mobile</span> are its initialization and
 its mass:
 </p>
@@ -294,7 +294,7 @@ calculus. First, the gravity acceleration calculus:
    &#x2191; -10 * self mass * owner starMass / (position r raisedTo: 3) * position</span>
 </pre></div>
 
-<div class="float-caption"><p><strong><em>Example</em> 6.3: </strong>Calculate the gravity force</p></div></div>
+<div class="float-caption"><p><strong>Example 6.3: </strong>Calculate the gravity force</p></div></div>
 <p>It deserves a few comments:
 </p><ul>
 <li> <span class="sansserif">self morphPosition</span> returns a <span class="sansserif">Point</span>
@@ -323,7 +323,7 @@ calculus. First, the gravity acceleration calculus:
 </li></ul>
 
 <p>The method to update the mobile position and velocity is mostly the
-same as in <a href="SpaceWar_0021-collections.html#spaceShipMechanic"><em>Example</em> 4.19</a>. Of course the
+same as in <a href="SpaceWar_0021-collections.html#spaceShipMechanic">Example 4.19</a>. Of course the
 <span class="sansserif">SpaceShip&gt;&gt;update:</span> and <span class="sansserif">Torpedo&gt;&gt;update:</span>
 version must be both deleted. Below the complete version with the
 morph way to access the mobile&rsquo;s position:
@@ -349,7 +349,7 @@ morph way to access the mobile&rsquo;s position:
      self morphPosition: self morphPosition negated]</span>
 </pre></div>
 
-<div class="float-caption"><p><strong><em>Example</em> 6.4: </strong><span class="sansserif">Mobile</span>&rsquo;s <span class="sansserif">update:</span> method</p></div></div>
+<div class="float-caption"><p><strong>Example 6.4: </strong><span class="sansserif">Mobile</span>&rsquo;s <span class="sansserif">update:</span> method</p></div></div>
 <p>Now we should add the two methods to detect when a mobile is heading
 in deep space:
 </p>
@@ -365,7 +365,7 @@ Mobile&gt;&gt;isGoingOuterSpace
    &#x2191; (self morphPosition dotProduct: velocity) &gt; 0</span>
 </pre></div>
 
-<div class="float-caption"><p><strong><em>Example</em> 6.5: </strong>Test when a mobile is going deep space</p></div></div>
+<div class="float-caption"><p><strong>Example 6.5: </strong>Test when a mobile is going deep space</p></div></div>
 <p>As you see, these test methods are simple and short. When writing
 Cuis-Smalltalk code, this is something we appreciate a lot and we do not
 hesitate to cut a long method in several small methods. It improves
@@ -416,7 +416,7 @@ the other coloring meanings. When pressing this button, you browse the
 implementation of the <span class="sansserif">upate:</span> method.
 </p>
 <p>We already met an example of overriding when initializing a space ship
-instance &ndash; see <a href="Spacewar_0021-States-and-Behaviors.html#initSpaceShip"><em>Example</em> 3.17</a>. In the context of our class
+instance &ndash; see <a href="Spacewar_0021-States-and-Behaviors.html#initSpaceShip">Example 3.17</a>. In the context of our class
 hierarchy refactoring, the initialize overriding is refactored to span
 over the whole <span class="sansserif">Mobile</span> hierarchy:
 </p>
@@ -438,7 +438,7 @@ Torpedo&gt;&gt;initialize
    acceleration &#x2190; 4000</span>
 </pre></div>
 
-<div class="float-caption"><p><strong><em>Example</em> 6.6: </strong>Initialize overriding in the <span class="sansserif">Mobile</span>
+<div class="float-caption"><p><strong>Example 6.6: </strong>Initialize overriding in the <span class="sansserif">Mobile</span>
 hierarchy</p></div></div>
 <p>Observe how each class is only responsible of its specific state
 initialization:
@@ -461,8 +461,8 @@ initialization:
 
 <p>The behaviors specific to each mobile is set with additional
 methods. The <span class="sansserif">SpaceShip</span> comes with its control methods we
-already described previously in <a href="Spacewar_0021_0027s-methods.html#shipControls"><em>Example</em> 5.8</a> and
-<a href="Spacewar_0021_0027s-methods.html#fireTorpedo"><em>Example</em> 5.9</a>, of course there is none for a
+already described previously in <a href="Spacewar_0021_0027s-methods.html#shipControls">Example 5.8</a> and
+<a href="Spacewar_0021_0027s-methods.html#fireTorpedo">Example 5.9</a>, of course there is none for a
 <span class="sansserif">Torpedo</span>.
 </p>
 <p>Another important specific behavior is how each kind of <span class="sansserif">Mobile</span>
