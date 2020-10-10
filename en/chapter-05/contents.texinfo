@@ -400,7 +400,7 @@ result @result{} '1 2 3 4 5 6 7 8 9 10 '}
 You can check all the alternatives in the @label{intervals} method
 category of the class @class{Number}.
 
-@strong{Tip:} If the exit condition of method like @method{whileTrue:}
+@strong{Tip.} If the exit condition of method like @method{whileTrue:}
 is never satisfied, you may have implemented an @dfn{infinite loop}.
 Just type @kbd{Cmd-period} to get a debugger.  We will learn about how
 to handle this condition in the section on debugging, below.
