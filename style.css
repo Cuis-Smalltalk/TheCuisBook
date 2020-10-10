@@ -178,6 +178,11 @@ table.header a, div.header p a
     border-bottom: none;
 }
 
+div.header
+{
+    font-size: 90%;
+}
+
 table.header
 {
     margin: .5em 0em .5em 0em;
