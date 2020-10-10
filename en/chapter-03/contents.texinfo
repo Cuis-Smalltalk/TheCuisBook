@@ -460,17 +460,15 @@ to start with are:
    
    @item @label{Kernel-Text}. Related to character and string as
    collection of characters.
-   
-   @item The Collection classes:
-   @format
-   @label{Collections-Abstract},
-   @label{Collections-Unordered},
-   @label{Collections-Sequenceable},
-   @label{Collections-Arrayed}.
-   @end format
+
+   @item
+@raggedright
+   @label{Collections-Abstract}, @label{Collections-Unordered},
+   @label{Collections-Sequenceable}, @label{Collections-Arrayed}.
    Related to Array, Dictionary, Set, OrderedCollection and many more.
-   This category includes
-   common accessing, enumeration, mathematical functions, and sorting.
+   This category includes common accessing, enumeration, mathematical
+   functions, and sorting.
+@end raggedright
 
 @end itemize
 
