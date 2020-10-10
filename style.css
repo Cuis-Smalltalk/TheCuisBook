@@ -283,7 +283,8 @@ pre.menu-comment
 code
 {
     font-size: 120%;
-    color: #900;
+    background-color: #900;
+    color: black;
 }
 
 kbd
