@@ -11,7 +11,7 @@ as a noun in Smalltalk -- is an object.
 @menu
 * Understanding Object Oriented Programming::
 * Explore OOP from the Browser::
-* @cuis{} system classes::
+* Cuis system classes::
 * Kernel-Numbers::
 * Kernel-Text::
 * Spacewar! States and Behaviors::
@@ -428,8 +428,8 @@ self rotation: (velocity y arcTan: velocity x) + Float halfPi scale: 1}
 With this brief introduction to the system browser, your are now
 equipped to explore the system classes.
 
-@node @cuis{} system classes
-@section @cuis{} system classes
+@node Cuis system classes
+@section Cuis system classes
 As we noted above, @cuis{} is a pure object oriented environment. This 
 means that every single entitiy you are dealing with is represented
 as an instances of a class written in @cuis{} itself. As a direct
