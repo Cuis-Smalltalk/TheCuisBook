@@ -491,7 +491,47 @@ behavior. The button tool tip tells us about the other coloring
 meanings. When pressing this button, you browse the implementation of
 the @method{upate:} method.
 
-@c - space ship and torpedo overriding to add specific behaviours
+We already met an example of overriding when initializing a space ship
+instance -- see @ref{initSpaceShip}. In the context of our class
+hierarchy refactoring, the initialize overriding looks like this:
+
+@smalltalkExampleCaption{Initialize overriding in the @class{Mobile}
+hierarchy,initMobileHierarchy,Mobile>>initialize
+   super initialize.
+   color @assign{} Color gray.
+   velocity @assign{} 0 @@ 0.
+   acceleration @assign{} 0
+
+SpaceShip>>initialize
+   super initialize.
+   self resupply
+
+Torpedo>>initialize
+   super initialize.
+   lifeSpan @assign{} 500.
+   acceleration @assign{} 4000}
+
+Observe how each class is only responsible of its specific state
+initialization:
+
+@enumerate
+
+ @item @strong{SpaceShip.} Its mechanic states is set with the
+ @smalltalk{super initialize}; the ship is resupplied with fuel and torpedo.
+
+ @smalltalkExample{SpaceShip>>resupply
+   fuel @assign{} 500.
+   torpedoes @assign{} 20}
+
+ @item @strong{Torpedo.} Mechanic states initialized; self destroy
+ sequence initialized, acceleration modified to mimic the torpedo boost at
+ fire up.
+
+@end enumerate
+
+
+
+
 @c Different behaviours
 @c - space ship control and resupply message
 @c - torpedo not much (morph extent)
