@@ -370,7 +370,7 @@ its mass:
 
 @smalltalkExample{Mobile>>initialize
   super initialize.
-  velocity @assign{} 0 @ 0.
+  velocity @assign{} 0 @@ 0.
   acceleration @assign{} 0
         
 Mobile>>mass
@@ -406,8 +406,9 @@ It deserves a few comments:
   central star.
 
   @item @smalltalk{* position} really means multiply the previous
-  scalar value with a point. Thus the returned value is a point, a
-  vector in this context of gravity vector.
+  scalar value with a @class{Point}, hence a vector. Thus the returned
+  value is a @class{Point}, a vector in this context, the gravity
+  vector.
 
 @end itemize
 
@@ -425,7 +426,10 @@ Mobile>>update: t
   ai @assign{} acceleration * self direction.
   ag @assign{} self gravity.
   newVelocity @assign{} (ai + ag) * t + velocity.
-  self morphPosition: (0.5 * (ai + ag) * t squared) + (velocity * t) + self morphPosition.
+  self morphPosition:
+     (0.5 * (ai + ag) * t squared)
+     + (velocity * t)
+     + self morphPosition.
   velocity @assign{} newVelocity.	
   "Are we out of screen? If so we move the mobile to the other corner
   and slow it down by a factor of 2"  
@@ -454,10 +458,12 @@ the receiver morph whether the point in argument is inside its shape.
 
 @cindex overriding
 When a mobile is updated, its position and velocity is
-updated. However the @class{Mobile} subclasses @class{SpaceShip} or a
-@class{Torpedo} may need more specific update. In object oriented
-programming there is this special mechanism named
-@dfn{overriding}. See the @class{Torpedo>>update:} definition:
+updated. However the @class{Mobile} subclasses @class{SpaceShip} or
+@class{Torpedo} may need additional specific update. In object
+oriented programming there is this special mechanism named
+@dfn{overriding} to achieve this.
+
+See the @class{Torpedo>>update:} definition:
 
 @smalltalkExample{Torpedo>>update: t
    "Update the torpedo position"
@@ -472,11 +478,11 @@ programming there is this special mechanism named
 Here the @method{update:} method is specialized to the torpedo
 specific needs. The mechanic calculus done in @method{Mobile>>update:}
 is still used to update the torpedo position and velocity: this is
-what does @smalltalk{super update: t}. We already discussed about
-@smalltalk{super} previously, in the context of the
-@method{Torpedo>>update:}, this means search for an @method{update:}
-method in @class{Torpedo}'s parent class, and so on until the method
-is found, and if not a @emph{Message Not Understood} error is thrown.
+what does @smalltalk{super update: t}. We already discussed
+@smalltalk{super} previously. In the context of
+@method{Torpedo>>update:} it means search for an @method{update:}
+method in @class{Torpedo}'s parent class; and so on until the method
+is found, if not a @emph{Message Not Understood} error is thrown.
 
 Among the specific added behaviors, the torpedo orientation along its
 velocity vector, it is inaccurate but nice looking; the life span
@@ -484,17 +490,17 @@ control and the self destruction sequence; the engine acceleration
 handling. When a torpedo is just fired, its engine acceleration is
 huge then it decreases quickly.
 
-With the System Browser on @method{Torpedo>>update:}, the
-@option{inheritence} button is green light, it indicates the message
-is sent to @smalltalk{super} too. It is a reminder it is a specialized
-behavior. The button tool tip tells us about the other coloring
-meanings. When pressing this button, you browse the implementation of
-the @method{upate:} method.
+With the System Browser pointed to the @method{Torpedo>>update:}
+method, observe the @option{inheritence} button, it is green light, it
+indicates the message is sent to @smalltalk{super} too. It is a
+reminder it is a specialized behavior. The button tool tip explains
+the other coloring meanings. When pressing this button, you browse the
+implementation of the @method{upate:} method.
 
 We already met an example of overriding when initializing a space ship
 instance -- see @ref{initSpaceShip}. In the context of our class
 hierarchy refactoring, the initialize overriding is refactored to span
-over the @class{Mobile} hierarchy:
+over the whole @class{Mobile} hierarchy:
 
 @smalltalkExampleCaption{Initialize overriding in the @class{Mobile}
 hierarchy,initMobileHierarchy,Mobile>>initialize
@@ -518,15 +524,15 @@ initialization:
 @enumerate
 
  @item @strong{SpaceShip.} Its mechanic states is set with the
- @smalltalk{super initialize}; the ship is resupplied with fuel and torpedo.
+ @smalltalk{super initialize}; the ship is resupplied with fuel and torpedo:
 
  @smalltalkExample{SpaceShip>>resupply
    fuel @assign{} 500.
    torpedoes @assign{} 20}
 
  @item @strong{Torpedo.} Mechanic states initialized; self destroy
- sequence initialized, acceleration modified to mimic the torpedo boost at
- fire up.
+ sequence initialized and acceleration adjusted to mimic the torpedo
+ boost at fire up.
 
 @end enumerate
 
