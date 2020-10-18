@@ -22,15 +22,16 @@ through messages. That's all, there is nothing more.
 When a given entity receives a message from another entity, it
 triggers a specific behavior.  The receiving entity of the message is
 called the @dfn{receiver} and the sending entity, the @dfn{sender}. In
-@cuis{} terminology, an entity is called an @dfn{instance of a class}
-or @dfn{class instance}. A @dfn{class} is a kind of model for an entity.
+@cuis{} terminology, an entity is called an @dfn{instance of a class}, a @dfn{class instance}, or simply an @dfn{instance}.
+A @dfn{class} is a kind of model for an entity.
 
 The behavior is defined internally in the receiver and it can be
-triggered from any instance. Again this behavior is described only
-with messages sent between entities.  An entity may send a message to
+triggered from any instance.
+@strong{Behaviors are invoked only by messages sent between entities}.
+An entity may send a message to
 itself. A behavior is defined in a class and is called a @dfn{method}.
 
-It results in a huge cloud of entities communicating with each other
+This results in a huge cloud of entities communicating with each other
 through message sending. New entities are instantiated when needed
 then automatically garbage collected when no longer required. On a
 fresh @cuis{} environment, the instances class count is more than
@@ -75,18 +76,21 @@ There are three kinds of messages in @cuis{}:
 
  @item @strong{Unary messages} take no argument.
  @*
- @smalltalk{1 factorial} sends the message @msg{factorial} to the object
+@emph{ @smalltalk{1 factorial}}
+ sends the message @msg{factorial} to the object
  @smalltalk{1},
 
  @item @strong{Binary messages} take exactly one argument.
  @*
- @smalltalk{1 + 2} sends the message @msg{+} with argument
+@emph{ @smalltalk{1 + 2}}
+ sends the message @msg{+} with argument
  @smalltalk{2} to the object @smalltalk{1}.
 
  @item @strong{Keyword messages} take an arbitrary number of
  arguments.
  @*
- @smalltalk{2 raisedTo: 6 modulo: 10} sends the message
+@emph{ @smalltalk{2 raisedTo: 6 modulo: 10}}
+ sends the message
  consisting of the message selector @msg{raisedTo:modulo:} and the
  arguments @smalltalk{6} and @smalltalk{10} to the object
  @smalltalk{2}.
