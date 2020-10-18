@@ -24,17 +24,18 @@ But the basic ideas are quite simple.
 @section Ellipse Morph
 @cindex morph, ellipse
 Let's start with one of the basic morphs, an @class{EllipseMorph}.
-You could write @smalltalk{EllipseMorph new openInWorld} and @emph{@b{D}o-it}, but
+You could write @emph{@smalltalk{EllipseMorph new openInWorld}} and @emph{@b{D}o-it}, but
 we are doing visual things for now, so let's get a World Menu and select
-from @strong{New Morph...} @strong{Basic} submenu and drag onto the desktop.
+from @label{New Morph...} @label{Basic} submenu and drag onto the desktop.
 
 Every time one obtains a morph from a @strong{New Morph...} submenu, one gets
 a different morph but made to a standard style.
 
 @figure{Select @class{EllipseMorph} from a Menu,ch06-01-EllipseMorphFromMenu,8}
 
-The basic challenge of @dfn{user interface design} is to communicate visibility and
-control.  Where am I?  What can I do here?
+The basic challenge of @dfn{user interface design} is
+to communicate visibility and control.
+Where am I?  What can I do here?
 
 One of the balance points in design is how to eliminate clutter.  One useful 
 strategy is to reveal capabilities in context as they are needed.
@@ -65,12 +66,12 @@ is over the handle, move the cursor to the right and down, and release the mouse
 Morphs can contain other morphs.  These interior morphs are called
 @dfn{submorph}s of their containing morph. Again, you can do this by
 writing the software ``code'', but let's do it directly with a
-@class{RectangleLikeMorph}.
+@class{WidgetMorph}.
 
 @page
-First we obtain a RectangleLikeMorph from the @strong{New morph...} submenus.
+First we obtain a WidgetMorph from the @strong{New morph...} submenus.
 
-@figure{Obtain a RectangleLikeMorph,ch06-05-AddRectangle,5}
+@figure{Obtain a WidgetMorph,ch06-05-AddRectangle,5}
 
 Now drag the rect over the ellipse and @kbd{Middle-Click} on the rect and click on
 the blue construction handle to gets the rect's @dfn{Morph Menu}.
@@ -86,7 +87,7 @@ Indeed, the rect seems to have fused into the ellipse.  Using the mouse where th
 rect shows itself is just using the mouse on the ellipse.  This rect does not have many
 interesting behaviors.
 
-Let's add a behavior to just this one @class{RectangleLikeMorph}.
+Let's add a behavior to just this one @class{WidgetMorph}.
 
 @node A brief introduction to Inspectors
 @section A brief introduction to Inspectors
@@ -117,7 +118,7 @@ Inspectors work for every object by the way, not just morphs.
 @figure{Add Instance Specific Behavior,ch06-11aColorClickOnRect,8}
 
 To add a behavior to all instances of a class, we create an instance method.  Here we are going
-to create a behavior for ``just this one RectangleLikeMorph instance''.
+to create a behavior for ``just this one WidgetMorph instance''.
 
 @cindex morph, properties
 In addition to instance variables, a morph can have any number of
