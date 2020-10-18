@@ -116,9 +116,9 @@ finally keyword messages, so:
 @smalltalkExample{2 raisedTo: 1 + 3 factorial
 @result{} 128}
 
-First we send @smalltalk{factorial} to @smalltalk{3}, then we send
-@smalltalk{+ 6} to @smalltalk{1}, and finally we send
-@smalltalk{raisedTo: 7} to @smalltalk{2}.
+First we send @emph{@smalltalk{factorial}} to @emph{@smalltalk{3}}, then we send
+@emph{@smalltalk{+ 6}} to @emph{@smalltalk{1}}, and finally we send
+@emph{@smalltalk{raisedTo: 7}} to @emph{@smalltalk{2}}.
 
 Precedence aside, evaluation is strictly from left to right, so
 
@@ -354,16 +354,16 @@ To access the tool, ...@clicksequence{Background click @click{}
 
 @cindex browser, class category
 @cindex class, category
-At the top left are the @dfn{class categories}, there are group of
-classes part of the same theme. A caregory can also be used to
+At the top left are the @dfn{class categories}, groups of
+classes with of the same theme. A category can also be used to
 create a @dfn{Package}, which is
 an organisational element to save code in a file system.
 In @ref{ch02-browserDetailed}, the
-selected class category is @label{Kernel-Numbers}, a group of
-classes we already started using. The term @label{Kernel-} indicates it
+selected class category is @strong{Kernel-Numbers}, a group of
+classes we already started using. The term @strong{Kernel-} indicates it
 is part of fundamental categories, but it is only a convention. See
-the other categories as @label{Kernel-Text} and
-@label{Kernel-Chronology} related to text and date entities.
+the other categories as @strong{Kernel-Text} and
+@strong{Kernel-Chronology} related to text and date entities.
 
 @cindex class, declaration
 Next to the right are the classes in the selected class category. They
@@ -377,16 +377,17 @@ bellow, the @class{Number} class declaration is:
    poolDictionaries: ''
    category: 'Kernel-Numbers'}
 
-Observe a few important points in this declaration:
+A few important points in this declaration:
 
 @itemize
 
-   @item @class{Number} is a subclass of @class{Magnitude}. This means
+   @item @emph{@class{Number}} is a subclass of @emph{@class{Magnitude}}.
+   This means
    @class{Number} is a kind of specialized @class{Magnitude}.
 
    @item the declaration itself is Smalltalk code, indeed the message
-   @msg{subclass:instanceVariableNames:classVariableNames:poolDictionaries:
-   category:} was sent to @class{Magnitude} to create this class.
+   @msg{subclass:instanceVariableNames:classVariableNames:poolDictionaries:category:}
+   was sent to @class{Magnitude} to create this class.
 
    @item the @smalltalk{subclass:} argument @class{Number} is prefixed
    with ``#'', it is a symbol, a kind of unique string. Indeed when
@@ -424,12 +425,13 @@ directly gives access to related methods in the next and last pane at
 the right.
 
 @exercise{Count of methods,stringArith,@emph{How many methods is there
-in the @label{arithmetic} method category of the @class{String}
+in the @strong{arithmetic} method category of the @class{String}
 class?}}
 
 @cindex class, category
 @strong{Tip.} A @clicksequence{right click} on the Class Category pane brings up
-its context menu.  You can select ``find class ..'' or, as the menu indictes,
+its context menu.  You can select @label{find class ..} or,
+as the menu indictes,
 use @kbd{Ctrl-f} (@emph{@b{F}ind}), to get a fill-in panel and type part of
 a class name to match.  Try it with @smalltalk{String}.
 
@@ -449,7 +451,7 @@ on the class name will open a Browser on the named class:
 
 @itemize
 
-   @item In the Workspace, type @smalltalk{2 class} and print
+   @item In the Workspace, type @emph{@smalltalk{2 class}} and print
    with @kbd{Ctrl-p},
 
    @item @class{SmallInteger} is printed and automatically highlighted as the current selection,
@@ -538,8 +540,8 @@ later. To create our @label{Spacewar!} package and save our game code:
   @item Do ...@clicksequence{background click @click{}
   @label{Open...} @click{} @label{Installed Packages}}...
 
-  @item On the new window, do ...@clicksequence{click @label{new}
-  button @click{} Input @emph{Spacewar!} @click{} @key{Return}}...
+  @item On the Installed Packages window, do ...@clicksequence{click @label{new}
+  button @click{} Input @emph{Spacewar!} @click{} @kbd{Return}}...
 
   @item Do ...@clicksequence{select @label{Spacewar!} package @click{}
   @label{save} button}...
@@ -567,8 +569,8 @@ environment, use the File List tool:
 Now, we have created and saved the package. Whenever you start with a
 fresh @cuis{} environment, you can load the game package.
 
-The classes we defined are empty shells with no state nor
-behavior. They will be complemented and refactored in the next
+The classes we defined are empty shells with neither state nor
+behavior. These will be filled in and refactored in the next
 chapters.
 
 @subsection The Newtonian model
@@ -580,6 +582,6 @@ acceleration from the gravity pull of the central star and an inner
 acceleration coming from the ship engines.
 
 Later, we will learn how these equations are easily converted to
-computer calculus.
+computer calculations.
 
 @figure{Equations of the accelerations@comma{} speed and position,motionEquations,13}
