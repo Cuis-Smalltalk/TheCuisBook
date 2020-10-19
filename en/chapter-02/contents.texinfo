@@ -446,7 +446,7 @@ surrounded by double quotes.
 Every entity knows its class and answers it to the message @smalltalk{#class}.
 
 @cindex browser, invoke from Workspace
-@strong{Tip.} in the workspace @kbd{Ctrl-b} (@emph{@b{B}rowse})
+@strong{Tip.} In the workspace @kbd{Ctrl-b} (@emph{@b{B}rowse})
 on the class name will open a Browser on the named class:
 
 @itemize
