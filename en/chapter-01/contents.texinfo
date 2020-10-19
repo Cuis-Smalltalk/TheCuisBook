@@ -216,7 +216,7 @@ of text editor to key in Smalltalk code you can execute
 immediately. Do a ...@clicksequence{Background click @click{}
 @label{Open...} @click{} @label{Workspace}}...
 
-Now we ask @cuis{} to make the windows placement: click the blue icon
+Now we ask @cuis{} to make the window's placement: click the blue icon
 (top left) to access the window option and experiment with the white
 area to place the Workspace window at the half left of the @cuis{}
 environment.
@@ -327,7 +327,7 @@ As we are discussing division, you may not get the result you expect:
 @smalltalkExample{15 / 4
 @result{} 15/4}
 
-It looks like @cuis{} is lazy because it does not respond the decimal
+It looks like @cuis{} is lazy because it does not answer the decimal
 number @smalltalk{3.75} as we were expecting. In fact @cuis{} wants to
 be as accurate as possible, and its answer is a rational fraction! After
 all, fractions are just division we are too lazy -- because it
@@ -370,6 +370,7 @@ words capitalized.}}
 Integer and float numbers we have played with are @dfn{Numeric
 Literals}. Literals are building blocks of the language and considered as
 constant expressions.  They literally are as the appear.
+
 There are different syntax variants to write a number:
 
 @multitable @columnfractions .45 .55
@@ -378,11 +379,11 @@ There are different syntax variants to write a number:
    @item @smalltalk{2r101}                      @tab binary integer
    @item @smalltalk{16rFF}                      @tab hexadecimal integer
    @item @smalltalk{1.5}                        @tab floating point number
-   @item @smalltalk{2.4e7}                      @tab exponential notation
+   @item @smalltalk{2.4e7}                      @tab floating pont exponential notation
 @end multitable
 
 Depending on the value we need to use, we mix these literal
-representation:
+representations:
 
 @smalltalkExample{16rA + 1 + 5e-1 + 6e-2
 @result{} 289/25}

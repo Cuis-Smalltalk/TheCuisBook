@@ -44,9 +44,9 @@ At its simplest, an object has two components:
 @cindex selector
 
 The method name is called a @dfn{selector} because it is used to select
-which behavior is invoked. For example, in @smalltalk{'hello' at: 1 put: $B},
-the method invoked has the selector @smalltalk{#at:put:} and the arguments
-@smalltalk{1} and @smalltalk{$B}.  All selectors are symbols.
+which behavior is invoked. For example, in @emph{@smalltalk{'hello' at: 1 put: $B}},
+the method invoked has the selector @emph{@smalltalk{#at:put:}} and the arguments
+@emph{@smalltalk{1}} and @emph{@smalltalk{$B}}.  All selectors are symbols.
 
 Object instances are created -- @dfn{instantiated} --
 following a model or template. This model is known by its @dfn{Class}.
@@ -154,11 +154,11 @@ instantiated with the @msg{/} message:
 A class method is often used to create a new instance from a class. In
 @ref{forLoop}, the message @msg{new} is sent to the class
 @class{OrderedCollection} to create a new empty collection;
-@method{new} is a class method.
+@emph{@method{new}} is a class method.
 
 In @ref{repeatLoop}, the @msg{newFrom:} message is sent to the class
-@class{OrdredCollection} to create a new collection filled with
-elements from the array given in argument; @method{newFrom:} is
+@class{OrderedCollection} to create a new collection filled with
+elements from the array given in argument; @emph{@method{newFrom:}} is
 another class method.
 
 @c instance method
@@ -249,8 +249,8 @@ specialized or optimized cases.
 
 @cindex method, returned value (default)
 For example, regarding large positive integer, @method{abs} is
-empty. Indeed, in the absence of explicitly returned value, the
-default returned value is the instance itself, in our situation the
+empty. Indeed, @strong{in the absence of explicitly returned value, the
+default returned value is the instance itself}, in our situation the
 @class{LargePositiveInteger} instance:
 
 @smalltalkExample{LargePositiveInteger>>abs}
@@ -265,9 +265,10 @@ These two overriding methods are more efficient as they avoid test and
 ifTrue/ifFalse branches. Polymorphism is often used to avoid test and
 branch.
 
-@strong{Tip.} If you select the text @smalltalk{abs} in a Browser or Workspace
+@strong{Tip.} If you select the text @emph{@smalltalk{abs}}
+in a Browser or Workspace
 and right-click to get the context menu, you will find
-an entry ``Implementors of it''.
+an entry @label{Implementors of it}.
 You can select this or use @kbd{Ctrl-m} (@emph{i@b{M}plementors}) to
 see how various methods for @smalltalk{#abs} use polymorphism to
 specialize their answer to produce the naturally expected result.
@@ -440,7 +441,7 @@ What we call system classes are models of fundamental objects. In
 other programming languages, these would be implemented in
 that language's standard library.
 
-In a truely open system, there is no such a distinction between system classes
+In a truely open system, there is no real distinction between system classes
 and user classes, but it will help us to draw a boundary around the
 most used objects. Let's have a brief introduction to some fundamental
 Smalltalk classes
@@ -454,17 +455,17 @@ to start with are:
 
 @itemize
 
-   @item @label{Kernel-Numbers}. Related to the different number
+   @item @strong{Kernel-Numbers}. Related to the different number
    representations and calculations, including mathematics functions,
    conversion, intervals and even iterations.
    
-   @item @label{Kernel-Text}. Related to character and string as
+   @item @strong{Kernel-Text}. Related to character and string as
    collection of characters.
 
    @item
 @raggedright
-   @label{Collections-Abstract}, @label{Collections-Unordered},
-   @label{Collections-Sequenceable}, @label{Collections-Arrayed}.
+   @strong{Collections-Abstract}, @strong{Collections-Unordered},
+   @strong{Collections-Sequenceable}, @strong{Collections-Arrayed}.
    Related to Array, Dictionary, Set, OrderedCollection and many more.
    This category includes common accessing, enumeration, mathematical
    functions, and sorting.
@@ -483,7 +484,7 @@ point the System Browser toward a top hierarchy class and to explore
 the method categories.
 
 Let's suppose we want to round a float number. In @class{Number}, we
-explore the @label{Truncation and round off} method category to
+explore the @strong{Truncation and round off} method category to
 discover several behaviors. The next things to do, is to test these
 messages in a Workspace to discover the one we are searching for:
 
@@ -499,7 +500,7 @@ messages in a Workspace to discover the one we are searching for:
 Number is a very strange place to look for an indexed loop in a given
 interval. Nevertheless, an interval is defined by start and stop
 numbers. In the @class{Number} class, the method category
-@label{intervals} reveals related behaviors. These methods work
+@strong{intervals} reveals related behaviors. These methods work
 polymorphically with most kinds of number:
 
 @smalltalkExampleCaption{Interval loops (for-loop), intervalLoops,
@@ -697,7 +698,7 @@ and @class{Symbol}. @class{String} instances are collections of
 
 @cindex character
 @strong{Character.} An individual character is written prefixed with a
-``$'': @smalltalk{$A}. It can be defined with the class side method
+``$'', for example: @smalltalk{$A}. It can be defined with the class side method
 @method{numericValue:} or converted from an integer instance with the
 @msg{asCharacter}:
 
@@ -707,7 +708,7 @@ and @class{Symbol}. @class{String} instances are collections of
 There are class side methods for non printable characters:
 @smalltalk{Character tab}, @smalltalk{Character lf}, etc.
 
-A each string is collection of characters, when enumerating a string we
+As each string is collection of characters, when enumerating a string we
 can use the @class{Character} instance methods:
 
 @smalltalkExampleCaption{Twelve apples,apples12,
@@ -734,7 +735,7 @@ to the first method name starting with an ``f''.
 Consider the case where you need to search for a substring, a string within a
 string: when browsing
 the @class{String} class, search for method categories named like
-@label{finding...} or @label{accessing}. There you find a family of
+@strong{finding...} or @strong{accessing}. There you find a family of
 @method{findXXX} methods. Read the comments at the beginning of these
 methods:
 
@@ -753,9 +754,9 @@ Or:
 
 Then experiment with the potentially interesting messages in a workspace:
 
-@smalltalkExample{'I love apples' findString: 'love' @result{} 3 "find at position 3"
+@smalltalkExample{'I love apples' findString: 'love' @result{} 3 "match starts at position 3"
 'I love apples' findString: 'hate'
-@result{}  0 "no finding"
+@result{}  0 "not found"
 'We humans, we all love apples' findString: 'we'
 @result{} 12 
 'We humans, we all love apples'
@@ -792,7 +793,7 @@ After defining the class involved in the game design, we can now
  @item A @class{CentralStar} has a @smalltalk{mass} state. It is
  necessary to compute the gravity force applied to a given ship.
 
- @item A @class{SpaceShip} instance has a @smalltalk{name}, a
+ @item A @class{SpaceShip} instance has a @smalltalk{name},
  @smalltalk{position} coordinates, a @smalltalk{heading} angle, a
  @smalltalk{velocity} vector, a @smalltalk{fuel} gauge, a count of the
  available @smalltalk{torpedoes}, a @smalltalk{mass} and an
@@ -803,7 +804,7 @@ After defining the class involved in the game design, we can now
 
 @end itemize
 
-We need to explain the mathematics nature of these states, then
+We need to explain the mathematical nature of these states, then
 discuss their object representation in the instance variables of our
 classes.
 
@@ -819,13 +820,13 @@ name. Its instance variables are the involved protagonist of the game:
 
 @itemize
 
-  @item @smalltalk{centralStar} is the unique @class{CentralStar} of
+  @item @emph{@smalltalk{centralStar}} is the unique @class{CentralStar} of
   the game play. We need to know about it to request its mass.
 
-  @item @smalltalk{ships} is a collection of the two player ships. It
+  @item @emph{@smalltalk{ships}} is a collection of the two player ships. It
   can be a fixed sized collection as an @class{Array} instance.
   
-  @item @smalltalk{torpedoes} is a collection of the torpedoes fired
+  @item @emph{@smalltalk{torpedoes}} is a collection of the torpedoes fired
   in the game play. Their quantity is variable, an
   @class{OrderedCollection} instance makes sense.
 
@@ -843,13 +844,13 @@ regarding its variables are needed.
 
 @itemize
 
-  @item @smalltalk{name} is a string
+  @item @emph{@smalltalk{name}} is a string
 
 
 @cindex @class{Point}
 @cindex coordinates
 
-  @item @smalltalk{position} is a 2D screen coordinate, a location. Smalltalk
+  @item @emph{@smalltalk{position}} is a 2D screen coordinate, a location. Smalltalk
   proposes the @class{Point} class to represent such object. It
   understands many mathematics operations as operations on vectors;
   very useful for mechanical calculations.
@@ -864,23 +865,23 @@ regarding its variables are needed.
   the ship velocity and the forces of the central star gravity pull
   and engine boost.
  
-  @item @smalltalk{heading} is an angle in radians, the direction where
+  @item @emph{@smalltalk{heading}} is an angle in radians, the direction where
   the ship nose is pointing. It is therefore a @class{Float} number.
   
-  @item @smalltalk{velocity} is the vector representing the
+  @item @emph{@smalltalk{velocity}} is the vector representing the
   instantaneous speed of the ship. It is @class{Point} instance.
   
-  @item @smalltalk{fuel} is the gauge, as long as it is not zero, the
+  @item @emph{@smalltalk{fuel}} is the gauge, as long as it is not zero, the
   player can ignite the ship's rocket engine to provide acceleration to move
   around and to counter the central star's gravity pull. It is an
   integer number.
   
-  @item @smalltalk{torpedoes} is the quantity of available torpedoes
+  @item @emph{@smalltalk{torpedoes}} is the quantity of available torpedoes
   the play can fire. It is an integer number.
   
-  @item @smalltalk{mass} is an integer representing the ship mass.
+  @item @emph{@smalltalk{mass}} is an integer representing the ship mass.
   
-  @item @smalltalk{acceleration} is the intrinsic ship acceleration
+  @item @emph{@smalltalk{acceleration}} is the intrinsic ship acceleration
   norm provided when the ship's rockets are ignited. It is therefore an
   integer number.
 
@@ -894,22 +895,22 @@ velocity and position.
 
 @heading @class{Torpedo}
 A torpedo is launched or ``fired'' from a ship with an initial velocity matching the
-ship heading. Once the torpedo fuel reserve reaches zero it is destroyed.
+ship heading. Once the torpedo fuel reserve reaches zero it self destructs.
 
 @itemize
 
-  @item @smalltalk{position} is a 2D screen coordinate, a
+  @item @emph{@smalltalk{position}} is a 2D screen coordinate, a
   @class{Point} instance. Unlike the ship it does not accelerate based 
   on the gravity pull of the central star. Indeed, a torpedo
   does not come with a mass state.  For our purposes it is essentially zero. Its
   position over time only depends on the torpedo velocity.
 
-  @item @smalltalk{velocity} is a vector representing the
+  @item @emph{@smalltalk{velocity}} is a vector representing the
   instantaneous speed of the torpedo. It is constant over the torpedo
   lifespan. Its direction matches the ship heading when fired. Again
   velocity is kept as a @class{Point} instance.
 
-  @item @smalltalk{lifeSpan} is an integer number counter, when it
+  @item @emph{@smalltalk{lifeSpan}} is an integer number counter, when it
   reaches zero the torpedo self-destructs.
 
 @end itemize
@@ -990,7 +991,7 @@ The getter @method{mass} on @class{SpaceShip} is written as:
 @smalltalkExample{SpaceShip>>mass
    ^ mass}
 
-The @smalltalk{SpaceShip>>} part is not valid code and should not be
+The @emph{@smalltalk{SpaceShip>>}} part is not valid code and should not be
 written in the Browser. It is a text convention to inform the reader
 the subsequent method is from the @class{SpaceShip} class.
 
@@ -1012,15 +1013,16 @@ following method:
    name @assign{} aString}
 
 The @assign{} character is an assignment, it means the
-@smalltalk{name} instance variable is bound to the @smalltalk{aString}
+@emph{@smalltalk{name}} instance variable
+is bound to the @emph{@smalltalk{aString}}
 string object. To type in this symbol type @key{_} then space, @cuis{}
-will turn it to left arrow symbol. Alternatively write @smalltalk{name
-:= aString}.
+will turn it to left arrow symbol.
+Alternatively write @emph{@smalltalk{name := aString}}.
 
-Since @smalltalk{name} is an instance variable, each instance method
+Since @emph{@smalltalk{name}} is an instance variable, each instance method
 knows to use the box for the name.  The meaning here is that we are
-placing the value of the @smalltalk{aString} argument into the instance's
-box called @smalltalk{name}.
+placing the value of the @emph{@smalltalk{aString}} argument into the instance's
+box called @emph{@smalltalk{name}}.
 
 Since each instance variable box can hold an object of any class,
 we like to name the variable to show that we intend that the @smalltalk{name}
@@ -1069,7 +1071,7 @@ of the accelerations applied to the space ship.}:
 
 @subsection Initializing
 @cindex @method{initialize}
-When an instance is created, for example @smalltalk{SpaceShip new}, it
+When an instance is created, for example @emph{@smalltalk{SpaceShip new}}, it
 is automatically initialized: the message @msg{initialize} is sent to
 the newly created object and its matching @method{initialize} instance
 side method is called.
