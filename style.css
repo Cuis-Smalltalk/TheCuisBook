@@ -292,8 +292,8 @@ tt.key{
 code
 {
     font-size: 120%;
-    background-color: #900;
-    color: white;
+    color: #900;
+    font-weight: bold;
 }
 
 kbd

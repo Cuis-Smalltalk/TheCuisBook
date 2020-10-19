@@ -316,6 +316,8 @@ torpedo should come with a mass.} and its engine acceleration; an
 agile space ship pilot could use gravity assist to accelerate a
 torpedo fired close to the central star.
 
+@todo{It will be nice to have a dotted track of a torpedo using gravity assist.}
+
 What are the impacts of these considerations on the torpedo and space
 ship entities?
 

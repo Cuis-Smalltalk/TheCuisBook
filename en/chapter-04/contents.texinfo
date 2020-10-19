@@ -764,14 +764,14 @@ grow nor shrink.
 
 When this quantity is variable, you want to use an
 @class{OrderedCollection} instance. It is a collection of variable
-size, a @class{OrderedCollection} can grow or shrink.
+size, it can grow or shrink.
 
 SpaceWar! is a two-players game, there will be always two players
 and two space ships. We use an @class{Array} instance to keep
 reference of each space ship.
 
-Each player can fire several torpedoes; therefore the game play can
-hold zero or more torpedoes -- hundreds if we decide so. The torpedoes
+Each player can fire several torpedoes; therefore the game play holds
+zero or more torpedoes -- hundreds if we decide so. The torpedoes
 quantity is variable, we want to use an @class{OrdredCollection}
 instance to keep track of them.
 

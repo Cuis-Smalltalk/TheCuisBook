@@ -9,6 +9,8 @@ not worth knowing.
 
 @* @* @* @*
 
+@c We should write Cuis is easily discoverable, one can learn by looking at Cuis code
+
 @cuis{} ---in short, Cuis--- is a portable environment for doing, building and sharing software. Like any other tool, Cuis doesn't require having a particular mindset or following a particular process. However, Cuis is built with a specific view on what software is, and what it means to build software. As a consequence, Cuis is especially effective if these ideas resonate with you and, at least occasionally, you let them guide your thoughts and actions.
 
 In this book, we will go along with you as you explore, discover and learn about Cuis and Smalltalk.
