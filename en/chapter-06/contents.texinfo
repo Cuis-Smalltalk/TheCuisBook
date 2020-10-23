@@ -243,26 +243,26 @@ is edited as:
    category: 'Spacewar!'}
 
 Moreover, as you may have guessed, a Morph already knows about its
-position on screen -- it is movable around in the screen with the
-mouse cursor. Therefore the @smalltalk{position} instance variable is
+position on screen -- it can be dragged in the screen with the mouse
+cursor. Therefore the @smalltalk{position} instance variable is
 redundant and should be removed. For now we keep it, it will be
 removed later when we will know how to replace each of its use case
 with its appropriate Morph counter part.
 
-@exercise{Make all Morph, allActorsMorph, @emph{Edit
+@exercise{Make all Morphs, allActorsMorph, @emph{Edit
 @smalltalk{SpaceWar}@comma{} @class{CentralStar} and @class{SpaceShip}
 as subclasses of the @class{Morph} class.}}
 
 As explained in the previous sections of this chapter, a morph can be
 embedded in another game. In Spacewar!, a @class{SpaceWar} morph
-instance representing the game play is the @emph{owner} of the central
+instance representing the game play, it is the @emph{owner} of the central
 star, space ship and torpedo morphs. Put in other words, the central
 star, space ships and torpedoes are @emph{sub morphs} of a
 @class{SpaceWar} morph instance.
 
-The @method{SpaceWar>>initializeActors} in @ref{initActors} is not
-complete without adding and positioning the central star and space
-ships as sub morphs of the Spacewar! game play:
+The @method{SpaceWar>>initializeActors} code in @ref{initActors} is
+ not complete without adding and positioning the central star and
+ space ships as sub morphs of the Spacewar! game play:
 
 @smalltalkExampleCaption{Complete code to initialize the Spacewar! actors, initFullActors,
 SpaceWar>>initializeActors
@@ -315,7 +315,7 @@ method is simpler than the space ship counter part -- see
 fun that the torpedoes are subjected to the gravity pull@footnote{So a
 torpedo should come with a mass.} and its engine acceleration; an
 agile space ship pilot could use gravity assist to accelerate a
-torpedo fired close to the central star.
+torpedo fired with a path close to the central star.
 
 @todo{It will be nice to have a dotted track of a torpedo using gravity assist.}
 
@@ -339,11 +339,11 @@ zero.
 
 Sharing states and behaviors along different states and behaviors are
 a strong indication that the @class{SpaceShip} and @class{Torpedo}
-classes should share a common ancestor more specialized than the
-@class{Morph} class.
+classes should share a common ancestor class; one more specialized
+than the @class{Morph} class they currently share.
 
 Doing such analysis on the computer model of the game is part of the
-@dfn{refactoring} effort to avoid behavior and state duplication while
+@dfn{refactoring} effort to avoid behavior and state duplications while
 making more obvious common logic in the entities. The general idea of
 code refactoring is to rework existing code to make it more elegant,
 understandable and logic.
@@ -441,7 +441,7 @@ Mobile>>update: t
      self morphPosition: self morphPosition negated]}
 
 Now we should add the two methods to detect when a mobile is heading
-in deep space:
+to deep space:
 
 @smalltalkExampleCaption{Test when a mobile is going deep space,mobileDeepSpace,
 Mobile>>isInOuterSpace
@@ -460,7 +460,7 @@ readability and code reuse. The @msg{morphContainsPoint:} message asks
 the receiver morph whether the point in argument is inside its shape.
 
 @cindex overriding
-When a mobile is updated, its position and velocity is
+When a mobile is updated, its position and velocity are
 updated. However the @class{Mobile} subclasses @class{SpaceShip} or
 @class{Torpedo} may need additional specific update. In object
 oriented programming there is this special mechanism named
@@ -494,11 +494,13 @@ handling. When a torpedo is just fired, its engine acceleration is
 huge then it decreases quickly.
 
 With the System Browser pointed to the @method{Torpedo>>update:}
-method, observe the @option{inheritence} button, it is green light, it
+method, observe the @option{inheritance} button, it is green light, it
 indicates the message is sent to @smalltalk{super} too. It is a
 reminder it is a specialized behavior. The button tool tip explains
 the other coloring meanings. When pressing this button, you browse the
-implementation of the @method{upate:} method.
+implementations of the @method{upate:} method.
+
+@figure{Update's inheritance button,ch06-20-TorpedoUpdateInheritance,9}
 
 We already met an example of overriding when initializing a space ship
 instance -- see @ref{initSpaceShip}. In the context of our class
