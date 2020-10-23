@@ -44,9 +44,9 @@ At its simplest, an object has two components:
 @cindex selector
 
 The method name is called a @dfn{selector} because it is used to select
-which behavior is invoked. For example, in @emph{@smalltalk{'hello' at: 1 put: $B}},
-the method invoked has the selector @emph{@smalltalk{#at:put:}} and the arguments
-@emph{@smalltalk{1}} and @emph{@smalltalk{$B}}.  All selectors are symbols.
+which behavior is invoked. For example, in @smalltalk{'hello' at: 1 put: $B},
+the method invoked has the selector @smalltalk{#at:put:} and the arguments
+@smalltalk{1} and @smalltalk{$B}.  All selectors are symbols.
 
 Object instances are created -- @dfn{instantiated} --
 following a model or template. This model is known by its @dfn{Class}.
@@ -265,7 +265,7 @@ These two overriding methods are more efficient as they avoid test and
 ifTrue/ifFalse branches. Polymorphism is often used to avoid test and
 branch.
 
-@strong{Tip.} If you select the text @emph{@smalltalk{abs}}
+@strong{Tip.} If you select the text @smalltalk{abs}
 in a Browser or Workspace
 and right-click to get the context menu, you will find
 an entry @label{Implementors of it}.
@@ -820,13 +820,13 @@ name. Its instance variables are the involved protagonist of the game:
 
 @itemize
 
-  @item @emph{@smalltalk{centralStar}} is the unique @class{CentralStar} of
+  @item @smalltalk{centralStar} is the unique @class{CentralStar} of
   the game play. We need to know about it to request its mass.
 
-  @item @emph{@smalltalk{ships}} is a collection of the two player ships. It
+  @item @smalltalk{ships} is a collection of the two player ships. It
   can be a fixed sized collection as an @class{Array} instance.
   
-  @item @emph{@smalltalk{torpedoes}} is a collection of the torpedoes fired
+  @item @smalltalk{torpedoes} is a collection of the torpedoes fired
   in the game play. Their quantity is variable, an
   @class{OrderedCollection} instance makes sense.
 
@@ -844,13 +844,13 @@ regarding its variables are needed.
 
 @itemize
 
-  @item @emph{@smalltalk{name}} is a string
+  @item @smalltalk{name} is a string
 
 
 @cindex @class{Point}
 @cindex coordinates
 
-  @item @emph{@smalltalk{position}} is a 2D screen coordinate, a location. Smalltalk
+  @item @smalltalk{position} is a 2D screen coordinate, a location. Smalltalk
   proposes the @class{Point} class to represent such object. It
   understands many mathematics operations as operations on vectors;
   very useful for mechanical calculations.
@@ -865,23 +865,23 @@ regarding its variables are needed.
   the ship velocity and the forces of the central star gravity pull
   and engine boost.
  
-  @item @emph{@smalltalk{heading}} is an angle in radians, the direction where
+  @item @smalltalk{heading} is an angle in radians, the direction where
   the ship nose is pointing. It is therefore a @class{Float} number.
   
-  @item @emph{@smalltalk{velocity}} is the vector representing the
+  @item @smalltalk{velocity} is the vector representing the
   instantaneous speed of the ship. It is @class{Point} instance.
   
-  @item @emph{@smalltalk{fuel}} is the gauge, as long as it is not zero, the
+  @item @smalltalk{fuel} is the gauge, as long as it is not zero, the
   player can ignite the ship's rocket engine to provide acceleration to move
   around and to counter the central star's gravity pull. It is an
   integer number.
   
-  @item @emph{@smalltalk{torpedoes}} is the quantity of available torpedoes
+  @item @smalltalk{torpedoes} is the quantity of available torpedoes
   the play can fire. It is an integer number.
   
-  @item @emph{@smalltalk{mass}} is an integer representing the ship mass.
+  @item @smalltalk{mass} is an integer representing the ship mass.
   
-  @item @emph{@smalltalk{acceleration}} is the intrinsic ship acceleration
+  @item @smalltalk{acceleration} is the intrinsic ship acceleration
   norm provided when the ship's rockets are ignited. It is therefore an
   integer number.
 
@@ -899,18 +899,18 @@ ship heading. Once the torpedo fuel reserve reaches zero it self destructs.
 
 @itemize
 
-  @item @emph{@smalltalk{position}} is a 2D screen coordinate, a
+  @item @smalltalk{position} is a 2D screen coordinate, a
   @class{Point} instance. Unlike the ship it does not accelerate based 
   on the gravity pull of the central star. Indeed, a torpedo
   does not come with a mass state.  For our purposes it is essentially zero. Its
   position over time only depends on the torpedo velocity.
 
-  @item @emph{@smalltalk{velocity}} is a vector representing the
+  @item @smalltalk{velocity} is a vector representing the
   instantaneous speed of the torpedo. It is constant over the torpedo
   lifespan. Its direction matches the ship heading when fired. Again
   velocity is kept as a @class{Point} instance.
 
-  @item @emph{@smalltalk{lifeSpan}} is an integer number counter, when it
+  @item @smalltalk{lifeSpan} is an integer number counter, when it
   reaches zero the torpedo self-destructs.
 
 @end itemize
@@ -991,7 +991,7 @@ The getter @method{mass} on @class{SpaceShip} is written as:
 @smalltalkExample{SpaceShip>>mass
    ^ mass}
 
-The @emph{@smalltalk{SpaceShip>>}} part is not valid code and should not be
+The @smalltalk{SpaceShip>>} part is not valid code and should not be
 written in the Browser. It is a text convention to inform the reader
 the subsequent method is from the @class{SpaceShip} class.
 
@@ -1013,16 +1013,16 @@ following method:
    name @assign{} aString}
 
 The @assign{} character is an assignment, it means the
-@emph{@smalltalk{name}} instance variable
-is bound to the @emph{@smalltalk{aString}}
+@smalltalk{name} instance variable
+is bound to the @smalltalk{aString}
 string object. To type in this symbol type @key{_} then space, @cuis{}
 will turn it to left arrow symbol.
-Alternatively write @emph{@smalltalk{name := aString}}.
+Alternatively write @smalltalk{name := aString}.
 
-Since @emph{@smalltalk{name}} is an instance variable, each instance method
+Since @smalltalk{name} is an instance variable, each instance method
 knows to use the box for the name.  The meaning here is that we are
-placing the value of the @emph{@smalltalk{aString}} argument into the instance's
-box called @emph{@smalltalk{name}}.
+placing the value of the @smalltalk{aString} argument into the instance's
+box called @smalltalk{name}.
 
 Since each instance variable box can hold an object of any class,
 we like to name the variable to show that we intend that the @smalltalk{name}
@@ -1071,7 +1071,7 @@ of the accelerations applied to the space ship.}:
 
 @subsection Initializing
 @cindex @method{initialize}
-When an instance is created, for example @emph{@smalltalk{SpaceShip new}}, it
+When an instance is created, for example @smalltalk{SpaceShip new}, it
 is automatically initialized: the message @msg{initialize} is sent to
 the newly created object and its matching @method{initialize} instance
 side method is called.

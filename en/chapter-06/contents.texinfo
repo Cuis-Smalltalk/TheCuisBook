@@ -24,7 +24,7 @@ But the basic ideas are quite simple.
 @section Ellipse Morph
 @cindex morph, ellipse
 Let's start with one of the basic morphs, an @class{EllipseMorph}.
-You could write @emph{@smalltalk{EllipseMorph new openInWorld}} and @emph{@b{D}o-it}, but
+You could write @smalltalk{EllipseMorph new openInWorld} and @emph{@b{D}o-it}, but
 we are doing visual things for now, so let's get a World Menu and select
 from @label{New Morph...} @label{Basic} submenu and drag onto the desktop.
 

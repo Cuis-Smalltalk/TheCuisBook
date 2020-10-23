@@ -76,20 +76,20 @@ There are three kinds of messages in @cuis{}:
 
  @item @strong{Unary messages} take no argument.
  @*
-@emph{ @smalltalk{1 factorial}}
+ @smalltalk{1 factorial}
  sends the message @msg{factorial} to the object
  @smalltalk{1},
 
  @item @strong{Binary messages} take exactly one argument.
  @*
-@emph{ @smalltalk{1 + 2}}
+ @smalltalk{1 + 2}
  sends the message @msg{+} with argument
  @smalltalk{2} to the object @smalltalk{1}.
 
  @item @strong{Keyword messages} take an arbitrary number of
  arguments.
  @*
-@emph{ @smalltalk{2 raisedTo: 6 modulo: 10}}
+ @smalltalk{2 raisedTo: 6 modulo: 10}
  sends the message
  consisting of the message selector @msg{raisedTo:modulo:} and the
  arguments @smalltalk{6} and @smalltalk{10} to the object
@@ -116,9 +116,9 @@ finally keyword messages, so:
 @smalltalkExample{2 raisedTo: 1 + 3 factorial
 @result{} 128}
 
-First we send @emph{@smalltalk{factorial}} to @emph{@smalltalk{3}}, then we send
-@emph{@smalltalk{+ 6}} to @emph{@smalltalk{1}}, and finally we send
-@emph{@smalltalk{raisedTo: 7}} to @emph{@smalltalk{2}}.
+First we send @smalltalk{factorial} to @smalltalk{3}, then we send
+@smalltalk{+ 6} to @smalltalk{1}, and finally we send
+@smalltalk{raisedTo: 7} to @smalltalk{2}.
 
 Precedence aside, evaluation is strictly from left to right, so
 
@@ -451,7 +451,7 @@ on the class name will open a Browser on the named class:
 
 @itemize
 
-   @item In the Workspace, type @emph{@smalltalk{2 class}} and print
+   @item In the Workspace, type @smalltalk{2 class} and print
    with @kbd{Ctrl-p},
 
    @item @class{SmallInteger} is printed and automatically highlighted as the current selection,

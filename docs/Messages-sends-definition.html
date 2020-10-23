@@ -96,20 +96,20 @@ Next: <a href="Message-to-string-entities.html" accesskey="n" rel="next">Message
 <ul>
 <li> <strong>Unary messages</strong> take no argument.
  <br>
-<em> <code>1 factorial</code></em>
+ <code>1 factorial</code>
  sends the message <code>#factorial</code> to the object
  <code>1</code>,
 
 </li><li> <strong>Binary messages</strong> take exactly one argument.
  <br>
-<em> <code>1 + 2</code></em>
+ <code>1 + 2</code>
  sends the message <code>#+</code> with argument
  <code>2</code> to the object <code>1</code>.
 
 </li><li> <strong>Keyword messages</strong> take an arbitrary number of
  arguments.
  <br>
-<em> <code>2 raisedTo: 6 modulo: 10</code></em>
+ <code>2 raisedTo: 6 modulo: 10</code>
  sends the message
  consisting of the message selector <code>#raisedTo:modulo:</code> and the
  arguments <code>6</code> and <code>10</code> to the object
@@ -140,9 +140,9 @@ finally keyword messages, so:
 &rArr; 128</span>
 </pre></div>
 
-<p>First we send <em><code>factorial</code></em> to <em><code>3</code></em>, then we send
-<em><code>+ 6</code></em> to <em><code>1</code></em>, and finally we send
-<em><code>raisedTo: 7</code></em> to <em><code>2</code></em>.
+<p>First we send <code>factorial</code> to <code>3</code>, then we send
+<code>+ 6</code> to <code>1</code>, and finally we send
+<code>raisedTo: 7</code> to <code>2</code>.
 </p>
 <p>Precedence aside, evaluation is strictly from left to right, so
 </p>

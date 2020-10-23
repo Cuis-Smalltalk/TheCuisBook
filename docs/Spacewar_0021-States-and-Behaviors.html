@@ -134,13 +134,13 @@ instead of the correct but cumbersome &ldquo;the instance variable
 name. Its instance variables are the involved protagonist of the game:
 </p>
 <ul>
-<li> <em><code>centralStar</code></em> is the unique <code>CentralStar</code> of
+<li> <code>centralStar</code> is the unique <code>CentralStar</code> of
   the game play. We need to know about it to request its mass.
 
-</li><li> <em><code>ships</code></em> is a collection of the two player ships. It
+</li><li> <code>ships</code> is a collection of the two player ships. It
   can be a fixed sized collection as an <code>Array</code> instance.
   
-</li><li> <em><code>torpedoes</code></em> is a collection of the torpedoes fired
+</li><li> <code>torpedoes</code> is a collection of the torpedoes fired
   in the game play. Their quantity is variable, an
   <code>OrderedCollection</code> instance makes sense.
 
@@ -157,13 +157,13 @@ an <code>Integer</code>.
 regarding its variables are needed.
 </p>
 <ul>
-<li> <em><code>name</code></em> is a string
+<li> <code>name</code> is a string
 
 
 <span id="index-Point"></span>
 <span id="index-coordinates"></span>
 
-</li><li> <em><code>position</code></em> is a 2D screen coordinate, a location. Smalltalk
+</li><li> <code>position</code> is a 2D screen coordinate, a location. Smalltalk
   proposes the <code>Point</code> class to represent such object. It
   understands many mathematics operations as operations on vectors;
   very useful for mechanical calculations.
@@ -178,23 +178,23 @@ regarding its variables are needed.
   the ship velocity and the forces of the central star gravity pull
   and engine boost.
 </p> 
-</li><li> <em><code>heading</code></em> is an angle in radians, the direction where
+</li><li> <code>heading</code> is an angle in radians, the direction where
   the ship nose is pointing. It is therefore a <code>Float</code> number.
   
-</li><li> <em><code>velocity</code></em> is the vector representing the
+</li><li> <code>velocity</code> is the vector representing the
   instantaneous speed of the ship. It is <code>Point</code> instance.
   
-</li><li> <em><code>fuel</code></em> is the gauge, as long as it is not zero, the
+</li><li> <code>fuel</code> is the gauge, as long as it is not zero, the
   player can ignite the ship&rsquo;s rocket engine to provide acceleration to move
   around and to counter the central star&rsquo;s gravity pull. It is an
   integer number.
   
-</li><li> <em><code>torpedoes</code></em> is the quantity of available torpedoes
+</li><li> <code>torpedoes</code> is the quantity of available torpedoes
   the play can fire. It is an integer number.
   
-</li><li> <em><code>mass</code></em> is an integer representing the ship mass.
+</li><li> <code>mass</code> is an integer representing the ship mass.
   
-</li><li> <em><code>acceleration</code></em> is the intrinsic ship acceleration
+</li><li> <code>acceleration</code> is the intrinsic ship acceleration
   norm provided when the ship&rsquo;s rockets are ignited. It is therefore an
   integer number.
 
@@ -211,18 +211,18 @@ velocity and position.
 ship heading. Once the torpedo fuel reserve reaches zero it self destructs.
 </p>
 <ul>
-<li> <em><code>position</code></em> is a 2D screen coordinate, a
+<li> <code>position</code> is a 2D screen coordinate, a
   <code>Point</code> instance. Unlike the ship it does not accelerate based 
   on the gravity pull of the central star. Indeed, a torpedo
   does not come with a mass state.  For our purposes it is essentially zero. Its
   position over time only depends on the torpedo velocity.
 
-</li><li> <em><code>velocity</code></em> is a vector representing the
+</li><li> <code>velocity</code> is a vector representing the
   instantaneous speed of the torpedo. It is constant over the torpedo
   lifespan. Its direction matches the ship heading when fired. Again
   velocity is kept as a <code>Point</code> instance.
 
-</li><li> <em><code>lifeSpan</code></em> is an integer number counter, when it
+</li><li> <code>lifeSpan</code> is an integer number counter, when it
   reaches zero the torpedo self-destructs.
 
 </li></ul>
@@ -312,7 +312,7 @@ the method category you want &ndash; when none, select <code>-- all
    ^ mass</span>
 </pre></div>
 
-<p>The <em><code>SpaceShip&gt;&gt;</code></em> part is not valid code and should not be
+<p>The <code>SpaceShip&gt;&gt;</code> part is not valid code and should not be
 written in the Browser. It is a text convention to inform the reader
 the subsequent method is from the <code>SpaceShip</code> class.
 </p>
@@ -341,16 +341,16 @@ following method:
 </pre></div>
 
 <p>The &#x2190; character is an assignment, it means the
-<em><code>name</code></em> instance variable
-is bound to the <em><code>aString</code></em>
+<code>name</code> instance variable
+is bound to the <code>aString</code>
 string object. To type in this symbol type <tt class="key">_</tt> then space, Cuis-Smalltalk
 will turn it to left arrow symbol.
-Alternatively write <em><code>name := aString</code></em>.
+Alternatively write <code>name := aString</code>.
 </p>
-<p>Since <em><code>name</code></em> is an instance variable, each instance method
+<p>Since <code>name</code> is an instance variable, each instance method
 knows to use the box for the name.  The meaning here is that we are
-placing the value of the <em><code>aString</code></em> argument into the instance&rsquo;s
-box called <em><code>name</code></em>.
+placing the value of the <code>aString</code> argument into the instance&rsquo;s
+box called <code>name</code>.
 </p>
 <p>Since each instance variable box can hold an object of any class,
 we like to name the variable to show that we intend that the <code>name</code>
@@ -414,7 +414,7 @@ its direction and acceleration<a id="DOCF15" href="#FOOT15"><sup>15</sup></a>:
 
 <span id="Initializing"></span><h4 class="subsection">3.6.4 Initializing</h4>
 <span id="index-initialize"></span>
-<p>When an instance is created, for example <em><code>SpaceShip new</code></em>, it
+<p>When an instance is created, for example <code>SpaceShip new</code>, it
 is automatically initialized: the message <code>#initialize</code> is sent to
 the newly created object and its matching <code>initialize</code> instance
 side method is called.
