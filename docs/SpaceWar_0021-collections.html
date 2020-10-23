@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : October 10, 2020
+Compilation : October 23, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -102,19 +102,19 @@ grow nor shrink.
 </p>
 <p>When this quantity is variable, you want to use an
 <span class="sansserif">OrderedCollection</span> instance. It is a collection of variable
-size, a <span class="sansserif">OrderedCollection</span> can grow or shrink.
+size, it can grow or shrink.
 </p>
 <p>SpaceWar! is a two-players game, there will be always two players
 and two space ships. We use an <span class="sansserif">Array</span> instance to keep
 reference of each space ship.
 </p>
-<p>Each player can fire several torpedoes; therefore the game play can
-hold zero or more torpedoes &ndash; hundreds if we decide so. The torpedoes
+<p>Each player can fire several torpedoes; therefore the game play holds
+zero or more torpedoes &ndash; hundreds if we decide so. The torpedoes
 quantity is variable, we want to use an <span class="sansserif">OrdredCollection</span>
 instance to keep track of them.
 </p>
 <p>In the <span class="sansserif">SpaceWar</span> class, we already defined two instance
-variable <span class="sansserif">ships</span> and <span class="sansserif">torpedoes</span>. Now, we want an
+variable <code>ships</code> and <code>torpedoes</code>. Now, we want an
 <span class="sansserif">initializeActors</span> method to set up the game with the involved
 actors &ndash; central star, ships, etc. Part of this initialization is to
 create the necessary collections.
@@ -138,7 +138,7 @@ create the necessary collections.
 <div class="float"><span id="initActorsCollections"></span>
 <blockquote class="indentedblock">
 <p><em>The example above does not show the creation of the
-<span class="sansserif">ships</span> and <span class="sansserif">torpedoes</span> collections. Replace
+<code>ships</code> and <code>torpedoes</code> collections. Replace
 &ldquo;../..&rdquo; with lines of code where these collections are
 instantiated and if necessary populated.</em>
 </p></blockquote>
@@ -154,7 +154,7 @@ their position according to the mechanical laws.
 </p>
 <p>A fired torpedo has a constant velocity, no external forces is applied
 to it. Its position is linearly updated according to the time
-elapsed. The <span class="sansserif">t</span> parameter in the <span class="sansserif">#update:</span> message
+elapsed. The <code>t</code> parameter in the <span class="sansserif">#update:</span> message
 gives this time interval.
 </p>
 <div class="float"><span id="torpedoMechanic"></span>
@@ -191,8 +191,8 @@ change accordingly to the mechanical laws of physics.
 Remember, regarding arithmetic operators Cuis-Smalltalk does not follow
 the mathematics precedence. There are ordinary binary messages whose
 precedence are from the left to the right when there is no
-parenthesis. For example, in the code fragment <span class="sansserif">...(velocity
-* t)...</span>, the parenthesis are mandatory to get the expected
+parenthesis. For example, in the code fragment <code>...(velocity
+* t)...</code>, the parenthesis are mandatory to get the expected
 computation.
 </p></blockquote>
 

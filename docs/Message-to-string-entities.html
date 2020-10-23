@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : October 10, 2020
+Compilation : October 23, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -122,7 +122,7 @@ string length.
 
 <p>Observe the use of the cascade with the <span class="sansserif">#yourself</span> message.
 A cascade sends following messages to the original receiver,
-so <span class="sansserif">#yourself</span> returns the updated string.
+so <code>#yourself</code> returns the updated string.
 Without the cascade, $a is returned as the result of the #at:put: message.
 </p>
 <div class="float"><span id="helloBelle"></span>
@@ -158,7 +158,7 @@ proves to be of some use as we may see later:
 &rArr; #($h $d $l $  $o $w $e $l $l $o $r) </span>
 </pre></div>
 
-<p>An <span class="sansserif">Array</span> literal starts with a hash or sharp character, <span class="sansserif">$#</span>
+<p>An <span class="sansserif">Array</span> literal starts with a hash or sharp character, <code>$#</code>
 and parentheses surround the elements of the array.
 In this case the elements are <span class="sansserif">Character</span>s, but they can
 be instances of any class.
@@ -170,7 +170,7 @@ be instances of any class.
 &rArr;  &rsquo; dehllloorw&rsquo;  </span>
 </pre></div>
 
-<p>Like <span class="sansserif">#shuffled</span>, all collections answer to the message <span class="sansserif">#sorted</span>,
+<p>Like <code>#shuffled</code>, all collections answer to the message <code>#sorted</code>,
 which answers a sorted collection.
 <span id="index-string_002c-sorted"></span>
 </p><div class="display">
@@ -179,8 +179,8 @@ which answers a sorted collection.
 </pre></div>
 
 <p>Note that this breaks patterns.  We get a <span class="sansserif">String</span> result when giving 
-a <span class="sansserif">String</span> the message <span class="sansserif">#shuffled</span> but get an <span class="sansserif">Array</span>
-instance when giving a <span class="sansserif">String</span> instance the message <span class="sansserif">#sorted</span>.
+a <span class="sansserif">String</span> the message <code>#shuffled</code> but get an <span class="sansserif">Array</span>
+instance when giving a <span class="sansserif">String</span> instance the message <code>#sorted</code>.
 </p>
 <p>We take much care in Smalltalk to give names which reduce surprise, but there
 are cases, as here, where something odd happens.  We will discuss this

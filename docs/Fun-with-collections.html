@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : October 10, 2020
+Compilation : October 23, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -98,7 +98,7 @@ similar behaviors.
 </p>
 <span id="index-array"></span>
 <p>An <span class="sansserif">Array</span> is a fixed size collection, and unlike a string it can
-contain any kind of literal enclosed in <span class="sansserif">#(&nbsp;)</span>:
+contain any kind of literal enclosed in <code>#(&nbsp;)</code>:
 </p><div class="display">
 <pre class="display"><span class="sansserif">&quot;array of numbers&quot;
 #(1 3 5 7 11 1.1)
@@ -118,12 +118,12 @@ array will not work as expected:
 </pre></div>
 
 <span id="index-array_002c-dynamic"></span>
-<p>Indeed, the <span class="sansserif">$/</span> is interpreted as a literal symbol and we get
+<p>Indeed, the <code>$/</code> is interpreted as a literal symbol and we get
 basic components of &ldquo;2 / 3&rdquo; but this text is not
 interpreted as a fraction. To get a fraction
 inserted in the array, you use a <em>run-time array</em> or <em>dynamic
 array</em>, whose elements <em>are</em> expressions separated by dots and surrounded
-with <span class="sansserif">{ }</span>:
+with <code>{ }</code>:
 </p>
 <div class="display">
 <pre class="display"><span class="sansserif">{1 . 2/3 . 7.5}
@@ -171,8 +171,8 @@ message <span class="sansserif">#to:</span>
 92 93 94 95 96 97 98 99 100)</span>
 </pre></div>
 
-<p>In this line of code, the message <span class="sansserif">#to:</span> is sent to <span class="sansserif">1</span>
-with the argument <span class="sansserif">100</span>. It returns an interval object. The
+<p>In this line of code, the message <span class="sansserif">#to:</span> is sent to <code>1</code>
+with the argument <code>100</code>. It returns an interval object. The
 message <span class="sansserif">#asArray</span> sent to the interval returns an array.
 </p>
 <div class="float"><span id="exeNegativeIntegers"></span>
@@ -270,20 +270,20 @@ delimited by square brackets, is a piece of code for later
 execution(s). Let&rsquo;s explain how this script is evaluated:
 </p>
 <ul>
-<li> <span class="sansserif">(1 to: 100)</span> is evaluated as an interval
+<li> <code>(1 to: 100)</code> is evaluated as an interval
 
-</li><li> the block of code <span class="sansserif">[:n | n isPrime]</span> is instantiated (created)
+</li><li> the block of code <code>[:n | n isPrime]</code> is instantiated (created)
 
 </li><li> the message <span class="sansserif">#select:</span> is sent to the interval with the
  block of code as the argument
 
 </li><li> for each integer of the interval, the block of code is invoked
- with its parameter <span class="sansserif">n</span> set to the integer value.
+ with its parameter <code>n</code> set to the integer value.
  A <em>block parameter</em> starts with a colon, &ldquo;:&rdquo;, and is an
- ordinary identifer <a id="DOCF15" href="#FOOT15"><sup>15</sup></a>.
+ ordinary identifer <a id="DOCF17" href="#FOOT17"><sup>17</sup></a>.
  Then, each
- time <span class="sansserif">n isPrime</span> evaluates to true, the <span class="sansserif">n</span> value
- is added to a new collection answered when the <span class="sansserif">select:</span>
+ time <code>n isPrime</code> evaluates to true, the <code>n</code> value
+ is added to a new collection answered when the <code>select:</code>
  method finished testing each element of the collection.
 
 </li></ul>
@@ -304,7 +304,7 @@ the need of index.  By this we mean that they are simple to get right.
 We like simple!
 </p>
 <p>To get an idea of how useful enumerators are, take a browse at the
-<span class="sansserif">Collection</span> class in the method category <span class="sansserif">enumerating</span>.
+<span class="sansserif">Collection</span> class in the method category <code>enumerating</code>.
 </p>
 <div class="float"><span id="oddNumbers"></span>
 <blockquote class="indentedblock">
@@ -326,7 +326,7 @@ is sent last to the resulting collection:
 
 <div class="float-caption"><p><strong>Example 4.4: </strong>Number of prime numbers between 1 and
 100</p></div></div>
-<p>For more clarity, we use a variable named <span class="sansserif">primeNumbers</span> to
+<p>For more clarity, we use a variable named <code>primeNumbers</code> to
 remembers about the prime numbers list we build:
 </p><div class="display">
 <pre class="display"><span class="sansserif">| primeNumbers |
@@ -495,7 +495,7 @@ value:
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h5><a id="FOOT15" href="#DOCF15">(15)</a></h3>
+<h5><a id="FOOT17" href="#DOCF17">(17)</a></h3>
 <p>An <em>identifier</em> is just a word that starts
  in a lower case letter and consists of upper and lower case letters
  and decimal digits.  All variable names are identifiers</p>

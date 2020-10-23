@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : October 10, 2020
+Compilation : October 23, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -105,8 +105,8 @@ for defining classes.
 </p>
 <p>Here is the method <span class="sansserif">keyStroke:</span> in the class
 <span class="sansserif">SpaceWar</span>. The usual convention is to refer to methods as
-<span class="sansserif">ClassName&gt;&gt;methodName</span>, so we call this method
-<span class="sansserif">SpaceWar&gt;&gt;keyStroke:</span>)
+<code>ClassName&gt;&gt;methodName</code>, so we call this method
+<code>SpaceWar&gt;&gt;keyStroke:</code>)
 </p>
 <div class="float"><span id="spacewarKeyStroke"></span>
 <div class="display">
@@ -125,13 +125,13 @@ key = Character arrowDown ifTrue: [&#x2191; ships first fireTorpedo]</span>
 </p>
 <ul>
 <li> the method pattern, containing the name (<em>i.e.</em>,
- <span class="sansserif">keyStroke:</span>) and any arguments, here <span class="sansserif">event</span> a
+ <span class="sansserif">keyStroke:</span>) and any arguments, here <code>event</code> a
  keyboard event,
 
 </li><li> comments (these may occur anywhere, but the convention is to
  put one at the top that explains what the method does),
  
-</li><li> declarations of local variables (<em>i.e.</em>, <span class="sansserif">key</span>),
+</li><li> declarations of local variables (<em>i.e.</em>, <code>key</code>),
 
 </li><li> and any number of expressions separated by dots; here there are
  5.
@@ -142,7 +142,7 @@ key = Character arrowDown ifTrue: [&#x2191; ships first fireTorpedo]</span>
 will cause the method to exit at that point, returning the value of
 that expression. A method that terminates without explicitly returning
 the value of some expression will always return the current
-value of <span class="sansserif">self</span>.
+value of <code>self</code>.
 </p>
 <p>Arguments and local variables should always start with lower case
 letters. Names starting with upper-case letters are assumed to be
@@ -150,10 +150,10 @@ global variables. Class names, like <span class="sansserif">Character</span>, fo
 are simply global variables referring to the object representing
 that class.
 </p>
-<p>As you might suspect from <a href="Communicating-entities.html#classesCount">Example 2.2</a>, <span class="sansserif">Smalltalk allClasses size</span> just
-sends the <span class="sansserif">#allClasses</span> method to a dictionary named <span class="sansserif">Smalltalk</span>.
+<p>As you might suspect from <a href="Communicating-entities.html#classesCount">Example 2.2</a>, <code>Smalltalk allClasses size</code> just
+sends the <span class="sansserif">#allClasses</span> method to a dictionary named <code>Smalltalk</code>.
 As with any other object, you can inspect this dictionary.  You can note a case of
-self-reference here: the value of <span class="sansserif">Smalltalk at: #Smalltalk</span> is <span class="sansserif">Smalltalk</span>.
+self-reference here: the value of <code>Smalltalk at: #Smalltalk</code> is <code>Smalltalk</code>.
 </p>
 <span id="index-block-1"></span>
 <hr>

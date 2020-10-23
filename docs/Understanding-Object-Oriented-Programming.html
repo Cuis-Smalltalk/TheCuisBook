@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : October 10, 2020
+Compilation : October 23, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -115,9 +115,9 @@ Next: <a href="Explore-OOP-from-the-Browser.html" accesskey="n" rel="next">Explo
 <span id="index-selector"></span>
 
 <p>The method name is called a <em>selector</em> because it is used to select
-which behavior is invoked. For example, in <span class="sansserif">&rsquo;hello&rsquo; at: 1 put: $B</span>,
-the method invoked has the selector <span class="sansserif">#at:put:</span> and the arguments
-<span class="sansserif">1</span> and <span class="sansserif">$B</span>.  All selectors are symbols.
+which behavior is invoked. For example, in <em><code>'hello' at: 1 put: $B</code></em>,
+the method invoked has the selector <em><code>#at:put:</code></em> and the arguments
+<em><code>1</code></em> and <em><code>$B</code></em>.  All selectors are symbols.
 </p>
 <p>Object instances are created &ndash; <em>instantiated</em> &ndash;
 following a model or template. This model is known by its <em>Class</em>.
@@ -149,7 +149,7 @@ class is declared:
 </pre></div>
 
 <p>As expected there are two variables &ndash; named <em>instance variables</em>
-&ndash; to define the <span class="sansserif">numerator</span> and <span class="sansserif">denominator</span> of
+&ndash; to define the <code>numerator</code> and <code>denominator</code> of
 a fraction.  Each instance of fraction has its own numerator and its
 own denominator.
 </p>
@@ -188,10 +188,10 @@ but appropriate ways.
 <span id="index-class_002c-class-method"></span>
 <p>We have already met fractions. Those fractions are
 objects called <em>instance</em>s of the class <span class="sansserif">Fraction</span>. To create
-an instance we wrote <span class="sansserif">5 / 4</span>, the mechanism is based on
+an instance we wrote <code>5 / 4</code>, the mechanism is based on
 message sending and polymorphism.  Let us look into how this works.
 </p>
-<p>The number <span class="sansserif">5</span> is an
+<p>The number <code>5</code> is an
 integer receiving the message <span class="sansserif">#/</span>, therefore looking at the method
 <span class="sansserif">/</span> in the <span class="sansserif">Integer</span> class explains how is instantiated
 the fraction. See part of this method:
@@ -207,7 +207,7 @@ aNumber isInteger ifTrue:
 
 <p>From this source code, we learn that in some situations, the method
 returns a fraction, reduced. We can expect that in some other
-situation an integer is returned, for example <span class="sansserif">6 / 2</span>.
+situation an integer is returned, for example <code>6 / 2</code>.
 </p>
 <p>In the example, we observe the message <span class="sansserif">#numerator:denominator:</span> is
 sent to the class <span class="sansserif">Fraction</span>, such a message refers to a
@@ -232,11 +232,11 @@ instantiated with the <span class="sansserif">#/</span> message:
 <p>A class method is often used to create a new instance from a class. In
 <a href="Fun-with-collections.html#forLoop">Example 4.7</a>, the message <span class="sansserif">#new</span> is sent to the class
 <span class="sansserif">OrderedCollection</span> to create a new empty collection;
-<span class="sansserif">new</span> is a class method.
+<em><span class="sansserif">new</span></em> is a class method.
 </p>
 <p>In <a href="Fun-with-collections.html#repeatLoop">Example 4.8</a>, the <span class="sansserif">#newFrom:</span> message is sent to the class
-<span class="sansserif">OrdredCollection</span> to create a new collection filled with
-elements from the array given in argument; <span class="sansserif">newFrom:</span> is
+<span class="sansserif">OrderedCollection</span> to create a new collection filled with
+elements from the array given in argument; <em><span class="sansserif">newFrom:</span></em> is
 another class method.
 </p>
 <span id="index-class_002c-instance-method-1"></span>
@@ -278,10 +278,10 @@ called an <em>instance method</em>. This method is defined in both the
    ^self * self</span>
 </pre></div>
 
-<p>In an instance method source code, <span class="sansserif">self</span> refers to the
-object itself, here it is the value of the number. The <span class="sansserif">^</span>
-symbol indicates to return the following value <span class="sansserif">self *
-self</span>.
+<p>In an instance method source code, <code>self</code> refers to the
+object itself, here it is the value of the number. The <code>^</code>
+symbol indicates to return the following value <code>self *
+self</code>.
 </p>
 <p>Now let&rsquo;s examine this same method in <span class="sansserif">Fraction</span>:
 </p><div class="display">
@@ -336,8 +336,8 @@ specialized or optimized cases.
 </p>
 <span id="index-method_002c-returned-value-_0028default_0029"></span>
 <p>For example, regarding large positive integer, <span class="sansserif">abs</span> is
-empty. Indeed, in the absence of explicitly returned value, the
-default returned value is the instance itself, in our situation the
+empty. Indeed, <strong>in the absence of explicitly returned value, the
+default returned value is the instance itself</strong>, in our situation the
 <span class="sansserif">LargePositiveInteger</span> instance:
 </p>
 <div class="display">
@@ -356,11 +356,12 @@ itself but with its sign reversed, that is <span class="sansserif">negated</span
 ifTrue/ifFalse branches. Polymorphism is often used to avoid test and
 branch.
 </p>
-<p><strong>Tip.</strong> If you select the text <span class="sansserif">abs</span> in a Browser or Workspace
+<p><strong>Tip.</strong> If you select the text <em><code>abs</code></em>
+in a Browser or Workspace
 and right-click to get the context menu, you will find
-an entry &ldquo;Implementors of it&rdquo;.
+an entry <code>Implementors of it</code>.
 You can select this or use <kbd>Ctrl-m</kbd> (<em>i<b>M</b>plementors</em>) to
-see how various methods for <span class="sansserif">#abs</span> use polymorphism to
+see how various methods for <code>#abs</code> use polymorphism to
 specialize their answer to produce the naturally expected result.
 </p>
 <p>As an object instance is modeled by its class, it is possible to

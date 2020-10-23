@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : October 10, 2020
+Compilation : October 23, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -201,9 +201,9 @@ instance:
 <span id="index-symbol"></span>
 <p><strong>Symbol.</strong> A symbol is very like a string but it is unique and
 never duplicated.
-Two references to <span class="sansserif">&rsquo;hello&rsquo;</span> might be to two or only
+Two references to <code>'hello'</code> might be to two or only
 one object depending computational history.  Two references
-to <span class="sansserif">#hello</span> are guarenteed to always refer to the same object.
+to <code>#hello</code> are guarenteed to always refer to the same object.
 </p>
 <p>Symbols got their name because they are used as <em>symbolic constants</em>.
 You already observed how in the book we wrote message selectors as a symbol.
@@ -213,7 +213,7 @@ You will use a symbol when you need to name something uniquely.
 </p>
 <p>In the example below, the strings are not identical once
 duplicated &ndash; copying a string always results in a new string
-&ndash; however symbols are identical even when duplicated<a id="DOCF14" href="#FOOT14"><sup>14</sup></a>:
+&ndash; however symbols are identical even when duplicated<a id="DOCF16" href="#FOOT16"><sup>16</sup></a>:
 </p>
 <div class="display">
 <pre class="display"><span class="sansserif">&rsquo;hello&rsquo; == &rsquo;hello&rsquo; copy
@@ -254,7 +254,7 @@ are also learning quite a bit about symbols.
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h5><a id="FOOT14" href="#DOCF14">(14)</a></h3>
+<h5><a id="FOOT16" href="#DOCF16">(16)</a></h3>
 <p>To be
 honest, copying a symbol just returns the original symbol.</p>
 </div>

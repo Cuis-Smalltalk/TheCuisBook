@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : October 10, 2020
+Compilation : October 23, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -137,7 +137,7 @@ Next: <a href="The-Examples.html" accesskey="n" rel="next">The Examples</a>, Pre
 <span id="stringArith-1"></span><h4 class="subheading"><a href="A-brief-introduction-to-the-system-Browser.html#stringArith">Exercise 2.3</a></h4>
 <p>From a System Browser, do from the left panel to the
 right ...<samp>Kernel-Text</samp> &rarr; <span class="sansserif">String</span>
-&rarr; <span class="sansserif">arithmetic</span>... the count of methods in the last
+&rarr; <code>arithmetic</code>... the count of methods in the last
 right panel is 6: <span class="sansserif">*</span>, <span class="sansserif">+</span>, <span class="sansserif">-</span>, <span class="sansserif">/</span>,
 <span class="sansserif">//</span> and <span class="sansserif">\\</span>.
 </p>
@@ -155,7 +155,7 @@ definition for Float &deg; 92 instance methods &deg;
 
 <span id="multiplyBy1024-1"></span><h4 class="subheading"><a href="Kernel_002dNumbers.html#multiplyBy1024">Exercise 3.3</a></h4>
 <p>1024 is not a random number. It is 2<sup>10</sup> then written in base 2 :
-10000000000, it is also <span class="sansserif">1 &lt;&lt; 10</span>:
+10000000000, it is also <code>1 &lt;&lt; 10</code>:
 </p>
 <div class="example">
 <pre class="example">2^10 &rArr; 1024
@@ -183,7 +183,7 @@ definition for Float &deg; 92 instance methods &deg;
 </pre></div>
 
 <span id="exeZeroDivide-1"></span><h4 class="subheading"><a href="Kernel_002dNumbers.html#exeZeroDivide">Exercise 3.5</a></h4>
-<p>The system returns the error <span class="sansserif">ZeroDivide</span>, division by zero.
+<p>The system returns the error <code>ZeroDivide</code>, division by zero.
 </p>
 <span id="exeFractionPrecision-1"></span><h4 class="subheading"><a href="Kernel_002dNumbers.html#exeFractionPrecision">Exercise 3.6</a></h4>
 <div class="example">
@@ -453,10 +453,10 @@ colors
 
 <span id="initActorsCollections-1"></span><h4 class="subheading"><a href="SpaceWar_0021-collections.html#initActorsCollections">Exercise 4.17</a></h4>
 <p>When the game starts there is no fired torpedoes, therefore
-<span class="sansserif">torpedoes</span> is an empty <span class="sansserif">OrderedCollection</span>,
+<code>torpedoes</code> is an empty <span class="sansserif">OrderedCollection</span>,
 instantiated with the <span class="sansserif">#new</span> class message.
 </p>
-<p>In the other hand, the <span class="sansserif">ships</span> is an <span class="sansserif">Array</span>
+<p>In the other hand, the <code>ships</code> is an <span class="sansserif">Array</span>
 containing only two elements, the player ships. We use the
 <span class="sansserif">#with:with</span> class message to instantiate and populate the array
 with two ships created in the argument message.

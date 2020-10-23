@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : October 10, 2020
+Compilation : October 23, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -132,8 +132,8 @@ is edited as:
 </pre></div>
 
 <p>Moreover, as you may have guessed, a Morph already knows about its
-position on screen &ndash; it is movable around in the screen with the
-mouse cursor. Therefore the <span class="sansserif">position</span> instance variable is
+position on screen &ndash; it can be dragged in the screen with the mouse
+cursor. Therefore the <code>position</code> instance variable is
 redundant and should be removed. For now we keep it, it will be
 removed later when we will know how to replace each of its use case
 with its appropriate Morph counter part.
@@ -141,22 +141,22 @@ with its appropriate Morph counter part.
 <div class="float"><span id="allActorsMorph"></span>
 <blockquote class="indentedblock">
 <p><em>Edit
-<span class="sansserif">SpaceWar</span>, <span class="sansserif">CentralStar</span> and <span class="sansserif">SpaceShip</span>
+<code>SpaceWar</code>, <span class="sansserif">CentralStar</span> and <span class="sansserif">SpaceShip</span>
 as subclasses of the <span class="sansserif">Morph</span> class.</em>
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong>Exercise 6.1: </strong>Make all Morph</p></div></div>
+<div class="float-caption"><p><strong>Exercise 6.1: </strong>Make all Morphs</p></div></div>
 <p>As explained in the previous sections of this chapter, a morph can be
 embedded in another game. In Spacewar!, a <span class="sansserif">SpaceWar</span> morph
-instance representing the game play is the <em>owner</em> of the central
+instance representing the game play, it is the <em>owner</em> of the central
 star, space ship and torpedo morphs. Put in other words, the central
 star, space ships and torpedoes are <em>sub morphs</em> of a
 <span class="sansserif">SpaceWar</span> morph instance.
 </p>
-<p>The <span class="sansserif">SpaceWar&gt;&gt;initializeActors</span> in <a href="SpaceWar_0021-collections.html#initActors">Example 4.17</a> is not
-complete without adding and positioning the central star and space
-ships as sub morphs of the Spacewar! game play:
+<p>The <span class="sansserif">SpaceWar&gt;&gt;initializeActors</span> code in <a href="SpaceWar_0021-collections.html#initActors">Example 4.17</a> is
+ not complete without adding and positioning the central star and
+ space ships as sub morphs of the Spacewar! game play:
 </p>
 <div class="float"><span id="initFullActors"></span>
 <div class="display">
@@ -184,12 +184,12 @@ indeed our central star is in the middle of the game play.
 <p>There is a third message not written here, <span class="sansserif">#morphPosition</span>, to ask
 the coordinates of the receiver in its owner reference frame.
 </p>
-<p>Remember our discussion about the <span class="sansserif">position</span> instance
+<p>Remember our discussion about the <code>position</code> instance
 variable. Now you clearly understand it is redundant and we remove it
 from the <span class="sansserif">SpaceShip</span> and <span class="sansserif">Torpedo</span> definitions. Each time
-we need to access the position, we just write <span class="sansserif">self
-morphPosition</span> and each time we need to modify the position we write
-<span class="sansserif">self morphPosition: newPosition</span>. More on that later.
+we need to access the position, we just write <code>self
+morphPosition</code> and each time we need to modify the position we write
+<code>self morphPosition: newPosition</code>. More on that later.
 </p>
 
 <span id="index-refactoring"></span>
@@ -199,18 +199,21 @@ space ships are subjected to the engine acceleration and the gravity
 pull of the central star. The equations are described in
 <a href="Spacewar_0021-models.html#motionEquations">Figure 2.4</a>.
 </p>
-<p>Based on these mathematics, we wrote the <span class="sansserif">SpaceShip&gt;&gt;update:</span>
+<p>Based on these mathematics, we wrote the <code>SpaceShip&gt;&gt;update:</code>
 method to update the ship position according to the elapsed time &ndash;
 see <a href="SpaceWar_0021-collections.html#spaceShipMechanic">Example 4.19</a>.
 </p>
 <p>So far in our model, a torpedo is not subjected to the central start
 gravity pull nor its engine acceleration. It is supposing its mass is
-zero which is unlikely. Of course the <span class="sansserif">Torpedo&gt;&gt;update:</span>
+zero which is unlikely. Of course the <code>Torpedo&gt;&gt;update:</code>
 method is simpler than the space ship counter part &ndash; see
 <a href="SpaceWar_0021-collections.html#torpedoMechanic">Example 4.18</a>. Nevertheless, it is more accurate and even more
-fun that the torpedoes are subjected to the gravity pull<a id="DOCF18" href="#FOOT18"><sup>18</sup></a> and its engine acceleration; an
+fun that the torpedoes are subjected to the gravity pull<a id="DOCF20" href="#FOOT20"><sup>20</sup></a> and its engine acceleration; an
 agile space ship pilot could use gravity assist to accelerate a
-torpedo fired close to the central star.
+torpedo fired with a path close to the central star.
+</p>
+<span id="index-to-be-written_002c-It-will-be-nice-to-have-a-dotted-track-of-a-torpedo-using-gravity-assist_002e"></span>
+<p><strong>To be written.</strong> It will be nice to have a dotted track of a torpedo using gravity assist.
 </p>
 <p>What are the impacts of these considerations on the torpedo and space
 ship entities?
@@ -232,11 +235,11 @@ zero.
 </p>
 <p>Sharing states and behaviors along different states and behaviors are
 a strong indication that the <span class="sansserif">SpaceShip</span> and <span class="sansserif">Torpedo</span>
-classes should share a common ancestor more specialized than the
-<span class="sansserif">Morph</span> class.
+classes should share a common ancestor class; one more specialized
+than the <span class="sansserif">Morph</span> class they currently share.
 </p>
 <p>Doing such analysis on the computer model of the game is part of the
-<em>refactoring</em> effort to avoid behavior and state duplication while
+<em>refactoring</em> effort to avoid behavior and state duplications while
 making more obvious common logic in the entities. The general idea of
 code refactoring is to rework existing code to make it more elegant,
 understandable and logic.
@@ -247,7 +250,7 @@ understandable and logic.
  acceleration. Well, as we are discussing refactoring, the mass state
  does not really makes sense in our game, indeed our mobile&rsquo;s mass is
  constant. So we just need a method returning a literal number and we
- remove the <span class="sansserif">mobile</span> instance variable.
+ remove the <code>mobile</code> instance variable.
 </p>
 <p>It results in this <span class="sansserif">Mobile</span> definition:
 </p>
@@ -297,10 +300,10 @@ calculus. First, the gravity acceleration calculus:
 <div class="float-caption"><p><strong>Example 6.3: </strong>Calculate the gravity force</p></div></div>
 <p>It deserves a few comments:
 </p><ul>
-<li> <span class="sansserif">self morphPosition</span> returns a <span class="sansserif">Point</span>
+<li> <code>self morphPosition</code> returns a <span class="sansserif">Point</span>
   instance, the position of the mobile in the owner reference frame,
 
-</li><li> <span class="sansserif">owner</span> is the <span class="sansserif">SpaceWar</span> instance
+</li><li> <code>owner</code> is the <span class="sansserif">SpaceWar</span> instance
   representing the game play. It is the owner &ndash; parent morph &ndash; of
   the mobile. When asking <span class="sansserif">#starMass</span>, it interrogates its central
   star mass and return its value:
@@ -310,12 +313,12 @@ calculus. First, the gravity acceleration calculus:
    &#x2191; centralStar mass</span>
 </pre></div>
 
-</li><li> In <span class="sansserif">position r</span>, the <span class="sansserif">#r</span> message asks the radius
+</li><li> In <code>position r</code>, the <span class="sansserif">#r</span> message asks the radius
   attribute of a point considered in polar coordinates. It is just its
   length, norm. It is the distance between the mobile and the
   central star.
 
-</li><li> <span class="sansserif">* position</span> really means multiply the previous
+</li><li> <code>* position</code> really means multiply the previous
   scalar value with a <span class="sansserif">Point</span>, hence a vector. Thus the returned
   value is a <span class="sansserif">Point</span>, a vector in this context, the gravity
   vector.
@@ -324,7 +327,7 @@ calculus. First, the gravity acceleration calculus:
 
 <p>The method to update the mobile position and velocity is mostly the
 same as in <a href="SpaceWar_0021-collections.html#spaceShipMechanic">Example 4.19</a>. Of course the
-<span class="sansserif">SpaceShip&gt;&gt;update:</span> and <span class="sansserif">Torpedo&gt;&gt;update:</span>
+<code>SpaceShip&gt;&gt;update:</code> and <code>Torpedo&gt;&gt;update:</code>
 version must be both deleted. Below the complete version with the
 morph way to access the mobile&rsquo;s position:
 </p>
@@ -351,7 +354,7 @@ morph way to access the mobile&rsquo;s position:
 
 <div class="float-caption"><p><strong>Example 6.4: </strong><span class="sansserif">Mobile</span>&rsquo;s <span class="sansserif">update:</span> method</p></div></div>
 <p>Now we should add the two methods to detect when a mobile is heading
-in deep space:
+to deep space:
 </p>
 <div class="float"><span id="mobileDeepSpace"></span>
 <div class="display">
@@ -373,7 +376,7 @@ readability and code reuse. The <span class="sansserif">#morphContainsPoint:</sp
 the receiver morph whether the point in argument is inside its shape.
 </p>
 <span id="index-overriding-1"></span>
-<p>When a mobile is updated, its position and velocity is
+<p>When a mobile is updated, its position and velocity are
 updated. However the <span class="sansserif">Mobile</span> subclasses <span class="sansserif">SpaceShip</span> or
 <span class="sansserif">Torpedo</span> may need additional specific update. In object
 oriented programming there is this special mechanism named
@@ -396,8 +399,8 @@ oriented programming there is this special mechanism named
 <p>Here the <span class="sansserif">update:</span> method is specialized to the torpedo
 specific needs. The mechanic calculus done in <span class="sansserif">Mobile&gt;&gt;update:</span>
 is still used to update the torpedo position and velocity: this is
-what does <span class="sansserif">super update: t</span>. We already discussed
-<span class="sansserif">super</span> previously. In the context of
+what does <code>super update: t</code>. We already discussed
+<code>super</code> previously. In the context of
 <span class="sansserif">Torpedo&gt;&gt;update:</span> it means search for an <span class="sansserif">update:</span>
 method in <span class="sansserif">Torpedo</span>&rsquo;s parent class; and so on until the method
 is found, if not a <em>Message Not Understood</em> error is thrown.
@@ -409,12 +412,16 @@ handling. When a torpedo is just fired, its engine acceleration is
 huge then it decreases quickly.
 </p>
 <p>With the System Browser pointed to the <span class="sansserif">Torpedo&gt;&gt;update:</span>
-method, observe the <samp>inheritence</samp> button, it is green light, it
-indicates the message is sent to <span class="sansserif">super</span> too. It is a
+method, observe the <samp>inheritance</samp> button, it is green light, it
+indicates the message is sent to <code>super</code> too. It is a
 reminder it is a specialized behavior. The button tool tip explains
 the other coloring meanings. When pressing this button, you browse the
-implementation of the <span class="sansserif">upate:</span> method.
+implementations of the <span class="sansserif">upate:</span> method.
 </p>
+<div class="float"><span id="ch06_002d20_002dTorpedoUpdateInheritance"></span>
+<div align="center"><img src="ch06-20-TorpedoUpdateInheritance.png" alt="ch06-20-TorpedoUpdateInheritance">
+</div>
+<div class="float-caption"><p><strong>Figure 6.14: </strong>Update&rsquo;s inheritance button</p></div></div>
 <p>We already met an example of overriding when initializing a space ship
 instance &ndash; see <a href="Spacewar_0021-States-and-Behaviors.html#initSpaceShip">Example 3.17</a>. In the context of our class
 hierarchy refactoring, the initialize overriding is refactored to span
@@ -445,7 +452,7 @@ initialization:
 </p>
 <ol>
 <li> <strong>SpaceShip.</strong> Its mechanic states is set with the
- <span class="sansserif">super initialize</span>; the ship is resupplied with fuel and torpedo:
+ <code>super initialize</code>; the ship is resupplied with fuel and torpedo:
 
 <div class="display">
 <pre class="display"><span class="sansserif">SpaceShip&gt;&gt;resupply
@@ -473,7 +480,7 @@ the fundamentals of Morph.
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h5><a id="FOOT18" href="#DOCF18">(18)</a></h3>
+<h5><a id="FOOT20" href="#DOCF20">(20)</a></h3>
 <p>So a
 torpedo should come with a mass.</p>
 </div>

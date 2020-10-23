@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : October 10, 2020
+Compilation : October 23, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -95,34 +95,34 @@ Next: <a href="The-Exercises.html" accesskey="n" rel="next">The Exercises</a>, P
 <div class="float">
 <table>
 <thead><tr><th width="49%">Syntax</th><th width="1%"></th><th width="50%">What it represents</th></tr></thead>
-<tr><td width="49%"><span class="sansserif">startPoint</span></td><td width="1%"></td><td width="50%">a variable name</td></tr>
-<tr><td width="49%"><span class="sansserif">Transcript</span></td><td width="1%"></td><td width="50%">a global variable name</td></tr>
-<tr><td width="49%"><span class="sansserif">self</span></td><td width="1%"></td><td width="50%">pseudo-variable</td></tr>
+<tr><td width="49%"><code>startPoint</code></td><td width="1%"></td><td width="50%">a variable name</td></tr>
+<tr><td width="49%"><code>Transcript</code></td><td width="1%"></td><td width="50%">a global variable name</td></tr>
+<tr><td width="49%"><code>self</code></td><td width="1%"></td><td width="50%">pseudo-variable</td></tr>
 <tr><td width="49%"></td><td width="1%"></td><td width="50%"></td></tr>
-<tr><td width="49%"><span class="sansserif">1</span></td><td width="1%"></td><td width="50%">decimal integer</td></tr>
-<tr><td width="49%"><span class="sansserif">2r101</span></td><td width="1%"></td><td width="50%">binary integer</td></tr>
-<tr><td width="49%"><span class="sansserif">1.5</span></td><td width="1%"></td><td width="50%">floating point number</td></tr>
-<tr><td width="49%"><span class="sansserif">2.4e7</span></td><td width="1%"></td><td width="50%">exponential notation</td></tr>
-<tr><td width="49%"><span class="sansserif">$a</span></td><td width="1%"></td><td width="50%">the character ‘a’</td></tr>
-<tr><td width="49%"><span class="sansserif">&rsquo;Hello&rsquo;</span></td><td width="1%"></td><td width="50%">the string “Hello”</td></tr>
-<tr><td width="49%"><span class="sansserif">#Hello</span></td><td width="1%"></td><td width="50%">the symbol #Hello</td></tr>
-<tr><td width="49%"><span class="sansserif">#(1 2 3)</span></td><td width="1%"></td><td width="50%">a literal array</td></tr>
-<tr><td width="49%"><span class="sansserif">{1. 2. 1 + 2}</span></td><td width="1%"></td><td width="50%">a dynamic array</td></tr>
+<tr><td width="49%"><code>1</code></td><td width="1%"></td><td width="50%">decimal integer</td></tr>
+<tr><td width="49%"><code>2r101</code></td><td width="1%"></td><td width="50%">binary integer</td></tr>
+<tr><td width="49%"><code>1.5</code></td><td width="1%"></td><td width="50%">floating point number</td></tr>
+<tr><td width="49%"><code>2.4e7</code></td><td width="1%"></td><td width="50%">exponential notation</td></tr>
+<tr><td width="49%"><code>$a</code></td><td width="1%"></td><td width="50%">the character ‘a’</td></tr>
+<tr><td width="49%"><code>'Hello'</code></td><td width="1%"></td><td width="50%">the string “Hello”</td></tr>
+<tr><td width="49%"><code>#Hello</code></td><td width="1%"></td><td width="50%">the symbol #Hello</td></tr>
+<tr><td width="49%"><code>#(1 2 3)</code></td><td width="1%"></td><td width="50%">a literal array</td></tr>
+<tr><td width="49%"><code>{1. 2. 1 + 2}</code></td><td width="1%"></td><td width="50%">a dynamic array</td></tr>
 <tr><td width="49%"></td><td width="1%"></td><td width="50%"></td></tr>
-<tr><td width="49%"><span class="sansserif">&quot;a comment&quot;</span></td><td width="1%"></td><td width="50%">a comment</td></tr>
+<tr><td width="49%"><code>&quot;a comment&quot;</code></td><td width="1%"></td><td width="50%">a comment</td></tr>
 <tr><td width="49%"></td><td width="1%"></td></tr>
-<tr><td width="49%"><span class="sansserif">|xy|</span></td><td width="1%"></td><td width="50%">declaration of variables x and y</td></tr>
-<tr><td width="49%"><span class="sansserif">x := 1</span></td><td width="1%"></td><td width="50%">assign 1 to x</td></tr>
-<tr><td width="49%"><span class="sansserif">[x + y]</span></td><td width="1%"></td><td width="50%">a block that evaluates to x+y</td></tr>
-<tr><td width="49%"><span class="sansserif">&lt;primitive: 1&gt;</span></td><td width="1%"></td><td width="50%">virtual machine primitive or annotation</td></tr>
+<tr><td width="49%"><code>|xy|</code></td><td width="1%"></td><td width="50%">declaration of variables x and y</td></tr>
+<tr><td width="49%"><code>x := 1</code></td><td width="1%"></td><td width="50%">assign 1 to x</td></tr>
+<tr><td width="49%"><code>[x + y]</code></td><td width="1%"></td><td width="50%">a block that evaluates to x+y</td></tr>
+<tr><td width="49%"><code>&lt;primitive: 1&gt;</code></td><td width="1%"></td><td width="50%">virtual machine primitive or annotation</td></tr>
 <tr><td width="49%"></td><td width="1%"></td><td width="50%"></td></tr>
-<tr><td width="49%"><span class="sansserif">3 factorial</span></td><td width="1%"></td><td width="50%">unary message</td></tr>
-<tr><td width="49%"><span class="sansserif">3+4</span></td><td width="1%"></td><td width="50%">binary messages</td></tr>
-<tr><td width="49%"><span class="sansserif">2 raisedTo: 6 modulo: 10</span></td><td width="1%"></td><td width="50%">keyword message</td></tr>
+<tr><td width="49%"><code>3 factorial</code></td><td width="1%"></td><td width="50%">unary message</td></tr>
+<tr><td width="49%"><code>3+4</code></td><td width="1%"></td><td width="50%">binary messages</td></tr>
+<tr><td width="49%"><code>2 raisedTo: 6 modulo: 10</code></td><td width="1%"></td><td width="50%">keyword message</td></tr>
 <tr><td width="49%"></td><td width="1%"></td><td width="50%"></td></tr>
-<tr><td width="49%"><span class="sansserif">^ true</span></td><td width="1%"></td><td width="50%">return the value true</td></tr>
-<tr><td width="49%"><span class="sansserif">Transcript show: &rsquo;hello&rsquo;. Transcript cr</span></td><td width="1%"></td><td width="50%">expression separator (.)</td></tr>
-<tr><td width="49%"><span class="sansserif">Transcript show: &rsquo;hello&rsquo;; cr</span></td><td width="1%"></td><td width="50%">message cascade (;)</td></tr>
+<tr><td width="49%"><code>^ true</code></td><td width="1%"></td><td width="50%">return the value true</td></tr>
+<tr><td width="49%"><code>Transcript show: 'hello'. Transcript cr</code></td><td width="1%"></td><td width="50%">expression separator (.)</td></tr>
+<tr><td width="49%"><code>Transcript show: 'hello'; cr</code></td><td width="1%"></td><td width="50%">message cascade (;)</td></tr>
 </table>
 </div>
 
@@ -131,7 +131,7 @@ Next: <a href="The-Exercises.html" accesskey="n" rel="next">The Exercises</a>, P
 </dd>
 <dt><strong>Local variables.</strong></dt>
 <dd>
-<p><span class="sansserif">startPoint</span> is a variable name, or identifier. By
+<p><code>startPoint</code> is a variable name, or identifier. By
  convention, identifiers are composed of words in “camelCase” (i.e.,
  each word except the first starting with an upper case letter). The
  first letter of an instance variable, method or block argument, or
@@ -144,14 +144,14 @@ Next: <a href="The-Exercises.html" accesskey="n" rel="next">The Exercises</a>, P
 <dd>
 <p>Identifiers that start with upper case letters are global variables,
  class variables, pool dictionaries or class
- names. <span class="sansserif">Smalltalk</span> is a global variable, an instance of the
+ names. <code>Smalltalk</code> is a global variable, an instance of the
  class <span class="sansserif">SystemDictionary</span>.
 </p>
 <span id="index-receiver"></span>
 </dd>
 <dt><strong>The receiver.</strong></dt>
 <dd>
-<p><span class="sansserif">self</span> is a keyword that refers to the object inside which
+<p><code>self</code> is a keyword that refers to the object inside which
  the current method is executing. We call it “the receiver” because
  this object will normally have received the message that caused the
  method to execute. self is called a “pseudo-variable” since we cannot
@@ -162,8 +162,8 @@ Next: <a href="The-Exercises.html" accesskey="n" rel="next">The Exercises</a>, P
 </dd>
 <dt><strong>Integers.</strong></dt>
 <dd>
-<p>In addition to ordinary decimal integers like <span class="sansserif">42</span>, Cuis-Smalltalk
- also provides a radix notation. <span class="sansserif">2r101</span> is 101 in radix 2
+<p>In addition to ordinary decimal integers like <code>42</code>, Cuis-Smalltalk
+ also provides a radix notation. <code>2r101</code> is 101 in radix 2
  (i.e., binary), which is equal to decimal 5.
 </p>
 <span id="index-float-_0028see-number_0029"></span>
@@ -172,17 +172,17 @@ Next: <a href="The-Exercises.html" accesskey="n" rel="next">The Exercises</a>, P
 <dt><strong>Float point numbers.</strong></dt>
 <dd>
 <p>Floating point numbers can be specified with their base-ten exponent:
- <span class="sansserif">2.4e7</span> is 2.4 × 10<sup>7</sup>.
+ <code>2.4e7</code> is 2.4 × 10<sup>7</sup>.
 </p>
 <span id="index-character-1"></span>
 </dd>
 <dt><strong>Characters.</strong></dt>
 <dd>
-<p>A dollar sign introduces a literal character: <span class="sansserif">$a</span> is the
+<p>A dollar sign introduces a literal character: <code>$a</code> is the
  literal for ‘a’. Instances of non-printing characters can be obtained
  by sending appropriately named messages to the <span class="sansserif">Character</span>
- class, such as <span class="sansserif">Character space</span> and <span class="sansserif">Character
- tab</span>.
+ class, such as <code>Character space</code> and <code>Character
+ tab</code>.
 </p>
 <span id="index-string-2"></span>
 </dd>
@@ -190,7 +190,7 @@ Next: <a href="The-Exercises.html" accesskey="n" rel="next">The Exercises</a>, P
 <dd>
 <p>Single quotes are used to define a literal string. If you want a
  string with a quote inside, just double the quote, as in
- <span class="sansserif">&rsquo;G&rdquo;day&rsquo;</span>.
+ <code>'G''day'</code>.
 </p>
 <span id="index-symbol-1"></span>
 </dd>
@@ -199,19 +199,19 @@ Next: <a href="The-Exercises.html" accesskey="n" rel="next">The Exercises</a>, P
 <p>Symbols are like Strings, in that they contain a sequence of
  characters.  However, unlike a string, a literal symbol is guaranteed
  to be globally unique. There is only one Symbol object
- <span class="sansserif">#Hello</span> but there may be multiple String objects with the
- value <span class="sansserif">&rsquo;Hello&rsquo;</span>.
+ <code>#Hello</code> but there may be multiple String objects with the
+ value <code>'Hello'</code>.
 </p>
 <span id="index-array_002c-static"></span>
 </dd>
 <dt><strong>Static arrays.</strong></dt>
 <dd>
-<p>Static arrays or Compile-time arrays are defined by <span class="sansserif">#( )</span>,
+<p>Static arrays or Compile-time arrays are defined by <code>#( )</code>,
  surrounding space-separated literals. Everything within the
  parentheses must be a compile-time constant. For example,
- <span class="sansserif">#(27 #(true false) abc)</span> is a literal array of three
- elements: the integer <span class="sansserif">27</span>, the compile-time array containing the two
- booleans, and the symbol <span class="sansserif">#abc</span>.
+ <code>#(27 #(true false) abc)</code> is a literal array of three
+ elements: the integer <code>27</code>, the compile-time array containing the two
+ booleans, and the symbol <code>#abc</code>.
 </p>
 <span id="index-array_002c-dynamic-1"></span>
 </dd>
@@ -219,9 +219,9 @@ Next: <a href="The-Exercises.html" accesskey="n" rel="next">The Exercises</a>, P
 <dd>
 <p>Dynamic arrays or Run-time arrays. Curly braces { } define a
  (dynamic) array at run-time.  Elements are expressions separated by
- periods. So <span class="sansserif">{ 1. 2. 1+2 }</span> defines an array with
- elements <span class="sansserif">1</span>, <span class="sansserif">2</span>, and the result of evaluating
- <span class="sansserif">1+2</span>. (The curly-brace notation is peculiar to the Squeak
+ periods. So <code>{ 1. 2. 1+2 }</code> defines an array with
+ elements <code>1</code>, <code>2</code>, and the result of evaluating
+ <code>1+2</code>. (The curly-brace notation is peculiar to the Squeak
  family dialect of Smalltalk! In other Smalltalks you must build up
  dynamic arrays explicitly.)
 </p>
@@ -229,7 +229,7 @@ Next: <a href="The-Exercises.html" accesskey="n" rel="next">The Exercises</a>, P
 </dd>
 <dt><strong>Comments.</strong></dt>
 <dd>
-<p>Comments are enclosed in double quotes. <span class="sansserif">&quot;hello&quot;</span> is a
+<p>Comments are enclosed in double quotes. <code>&quot;hello&quot;</code> is a
  comment, not a string, and is ignored by the Cuis-Smalltalk
  compiler. Comments may span multiple lines.
 </p>
@@ -244,17 +244,17 @@ Next: <a href="The-Exercises.html" accesskey="n" rel="next">The Exercises</a>, P
 </dd>
 <dt><strong>Assignment.</strong></dt>
 <dd>
-<p><span class="sansserif">:=</span> assigns an object to a variable. Sometimes you will
+<p><code>:=</code> assigns an object to a variable. Sometimes you will
  see &#x2190; used instead. Since this character is not present in the
  keyboard, you key in with the underscore character key. So,
- <span class="sansserif">x := 1</span> is the same as <span class="sansserif">x &#x2190; 1</span> or
- <span class="sansserif">x _ 1</span>.
+ <code>x := 1</code> is the same as <code>x &#x2190; 1</code> or
+ <code>x _ 1</code>.
 </p>
 <span id="index-block-2"></span>
 </dd>
 <dt><strong>Blocks.</strong></dt>
 <dd>
-<p>Square brackets <span class="sansserif">[ ]</span> define a block, also known as a block
+<p>Square brackets <code>[ ]</code> define a block, also known as a block
  closure or a lexical closure, which is a first-class object
  representing a function. As we shall see, blocks may take arguments
  and can have local variables.
@@ -263,9 +263,9 @@ Next: <a href="The-Exercises.html" accesskey="n" rel="next">The Exercises</a>, P
 </dd>
 <dt><strong>Primitives.</strong></dt>
 <dd>
-<p><span class="sansserif">&lt;primitive: ...&gt;</span> denotes an invocation of a virtual
- machine primitive. (<span class="sansserif">&lt;primitive: 1&gt;</span> is the VM primitive
- for <span class="sansserif">SmallInteger&gt;&gt;+</span>.) Any code following the primitive is
+<p><code>&lt;primitive: ...&gt;</code> denotes an invocation of a virtual
+ machine primitive. (<code>&lt;primitive: 1&gt;</code> is the VM primitive
+ for <code>SmallInteger&gt;&gt;+</code>.) Any code following the primitive is
  executed only if the primitive fails. The same syntax is also used
  for method annotations.
 </p>
@@ -280,9 +280,9 @@ Next: <a href="The-Exercises.html" accesskey="n" rel="next">The Exercises</a>, P
 </dd>
 <dt><strong>Binary messages.</strong></dt>
 <dd>
-<p>Binary messages are operators (like <span class="sansserif">+</span>) sent to a receiver
- and taking a single argument. In <span class="sansserif">3 + 4</span>, the receiver is
- <span class="sansserif">3</span> and the argument is <span class="sansserif">4</span>.
+<p>Binary messages are operators (like <code>+</code>) sent to a receiver
+ and taking a single argument. In <code>3 + 4</code>, the receiver is
+ <code>3</code> and the argument is <code>4</code>.
 </p>
 <span id="index-message_002c-keyword-1"></span>
 </dd>
@@ -290,8 +290,8 @@ Next: <a href="The-Exercises.html" accesskey="n" rel="next">The Exercises</a>, P
 <dd>
 <p>Keyword messages consist of multiple keywords (like
  <span class="sansserif">#raisedTo:modulo:</span>), each ending with a colon and taking a single
- argument. In the expression <span class="sansserif">2 raisedTo: 6 modulo: 10</span>, the
- message selector <span class="sansserif">raisedTo:modulo:</span> takes the two arguments
+ argument. In the expression <code>2 raisedTo: 6 modulo: 10</code>, the
+ message selector <code>raisedTo:modulo:</code> takes the two arguments
  6 and 10, one following each colon. We send the message to the
  receiver 2.
 </p>
@@ -315,7 +315,7 @@ Next: <a href="The-Exercises.html" accesskey="n" rel="next">The Exercises</a>, P
 <dt><strong>Cascades.</strong></dt>
 <dd>
 <p>Semicolons can be used to send a cascade of messages to a single
- receiver. In <span class="sansserif">Transcript show: &rsquo;hello&rsquo;; cr</span> we first send
+ receiver. In <code>Transcript show: 'hello'; cr</code> we first send
  the keyword message <span class="sansserif">#show: &rsquo;hello&rsquo;</span> to the receiver
  <span class="sansserif">Transcript</span>, and then we send the unary message <span class="sansserif">#cr</span> to
  the same receiver.

@@ -35,7 +35,7 @@ K. Dickey, H. Fernandes, J. Vuletich
 @U{2190}
 @end macro
 @alias class=sansserif
-@alias smalltalk=sansserif
+@alias smalltalk=code
 @alias method=sansserif
 @alias label=command
 @macro msg{messageName}

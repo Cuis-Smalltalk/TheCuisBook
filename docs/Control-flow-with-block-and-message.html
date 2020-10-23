@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : October 10, 2020
+Compilation : October 23, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -115,7 +115,7 @@ of a boolean expression:
 <p>The class <span class="sansserif">Boolean</span> offers a fascinating insight into how much
 of the Smalltalk language has been pushed into the class
 library. <span class="sansserif">Boolean</span> is the abstract superclass of the
-<em>Singleton</em> classes <span class="sansserif">True</span> and <span class="sansserif">False</span><a id="DOCF17" href="#FOOT17"><sup>17</sup></a>.
+<em>Singleton</em> classes <span class="sansserif">True</span> and <span class="sansserif">False</span><a id="DOCF19" href="#FOOT19"><sup>19</sup></a>.
 </p>
 <p>Most of the behaviour of <span class="sansserif">Boolean</span> instances can be understood
 by considering the method <span class="sansserif">ifTrue:ifFalse:</span>, which takes two
@@ -169,7 +169,7 @@ have the choice between eager and lazy conjunctions and disjunctions:
 </pre></div>
 
 <p>In the first example, both <span class="sansserif">Boolean</span> subexpressions are
-evaluated, since <span class="sansserif">&amp;</span> takes a <span class="sansserif">Boolean</span> argument. In
+evaluated, since <code>&amp;</code> takes a <span class="sansserif">Boolean</span> argument. In
 the second and third examples, only the first is evaluated, since
 <span class="sansserif">and:</span> expects a <span class="sansserif">Block</span> as its argument. The
 <span class="sansserif">Block</span> is evaluated only if the first argument is true.
@@ -264,11 +264,11 @@ to handle this condition in the section on debugging, below.
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h5><a id="FOOT17" href="#DOCF17">(17)</a></h3>
+<h5><a id="FOOT19" href="#DOCF19">(19)</a></h3>
 <p>A
 singleton class is designed to have only one instance. Each of
 <span class="sansserif">True</span> and <span class="sansserif">False</span> classes has one instance,
-<span class="sansserif">true</span> and <span class="sansserif">false</span>.</p>
+<code>true</code> and <code>false</code>.</p>
 </div>
 <hr>
 <div class="header">

@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : October 10, 2020
+Compilation : October 23, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -98,7 +98,7 @@ point the System Browser toward a top hierarchy class and to explore
 the method categories.
 </p>
 <p>Let&rsquo;s suppose we want to round a float number. In <span class="sansserif">Number</span>, we
-explore the <code>Truncation and round off</code> method category to
+explore the <strong>Truncation and round off</strong> method category to
 discover several behaviors. The next things to do, is to test these
 messages in a Workspace to discover the one we are searching for:
 </p>
@@ -117,7 +117,7 @@ messages in a Workspace to discover the one we are searching for:
 <p>Number is a very strange place to look for an indexed loop in a given
 interval. Nevertheless, an interval is defined by start and stop
 numbers. In the <span class="sansserif">Number</span> class, the method category
-<code>intervals</code> reveals related behaviors. These methods work
+<strong>intervals</strong> reveals related behaviors. These methods work
 polymorphically with most kinds of number:
 </p>
 <div class="float"><span id="intervalLoops"></span>
@@ -141,7 +141,7 @@ Float pi to: 5 by: 1/3 do: [:i | Transcript show: (i roundTo: 0.01) ; space]
 <p>Now, in the <span class="sansserif">Integer</span> class, explore the method category
 <code>enumerating</code>, here is the <span class="sansserif">timesRepeat:</span>. When a
 portion of code needs to be executed several times
-<a id="DOCF11" href="#FOOT11"><sup>11</sup></a>, without
+<a id="DOCF13" href="#FOOT13"><sup>13</sup></a>, without
 the need of an index, the <span class="sansserif">#timesRepeat:</span> message is sent to an
 integer. We already saw this variant in a previous section of this
 chapter.  Throwing a 6 face die 5 times can be simulated with
@@ -193,7 +193,7 @@ collection:
 <p>In Spacewar!, when a ship is destroyed it is teleported to a random
 position in the game play area. Interval are handy to pick up random
 coordinates. In the example bellow, the variable
-<span class="sansserif">randomCoordinate</span> holds a bloc of code &ndash; called anonymous
+<code>randomCoordinate</code> holds a bloc of code &ndash; called anonymous
 function in other languages; it picks up a random value in the interval
 consisting of the game play area left and right extents:
 </p>
@@ -230,7 +230,7 @@ number, it is immediately printed in the decimal base:
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 3.8: </strong>Integer represented in different base</p></div></div>
-<p>Writing numbers as Mayans or Babylonians<a id="DOCF12" href="#FOOT12"><sup>12</sup></a>:
+<p>Writing numbers as Mayans or Babylonians<a id="DOCF14" href="#FOOT14"><sup>14</sup></a>:
 </p>
 <div class="float"><span id="countingAncients"></span>
 <div class="display">
@@ -275,9 +275,9 @@ the integer 360 by 1024, without using the multiplication operation?</em>
 <span id="Hiatus-with-decimal-numbers"></span><h4 class="subheading">Hiatus with decimal numbers</h4>
 <span id="index-number_002c-decimal"></span>
 <p>We saw decimal numbers are written with a dot &ldquo;.&rdquo; to separate the
-integer and the decimal parts: <span class="sansserif">1.5</span>, <span class="sansserif">1235.021</span>
-or <span class="sansserif">0.5</span>. The number <span class="sansserif">0.00004</span> is more easily
-written <span class="sansserif">4e-5</span>; it means 4 preceded by 5 zeros or 4 as the
+integer and the decimal parts: <code>1.5</code>, <code>1235.021</code>
+or <code>0.5</code>. The number <code>0.00004</code> is more easily
+written <code>4e-5</code>; it means 4 preceded by 5 zeros or 4 as the
 fifth digit after the decimal dot.
 </p>
 <p><strong>Attention.</strong> Computers encode and store decimal numbers
@@ -294,8 +294,8 @@ good information about this in the class comment of <span class="sansserif">Floa
 
 <div class="float-caption"><p><strong>Example 3.11: </strong>Computer dyscalculia!</p></div></div>
 <p>In <a href="#FloatPrecision">Example 3.11</a>, the returned value should be zero but it is
-not the case. The computer returns <span class="sansserif">5.55e-17</span>, or
-<span class="sansserif">0.0000000000000000555</span>, it is very close to zero, but there
+not the case. The computer returns <code>5.55e-17</code>, or
+<code>0.0000000000000000555</code>, it is very close to zero, but there
 is an error.
 </p>
 <div class="float"><span id="exeFloatPrecision"></span>
@@ -313,14 +313,14 @@ representation of Cuis-Smalltalk.
 <span id="index-number_002c-rational"></span>
 <span id="index-number_002c-fraction"></span>
 <p>A rational number is written with the division symbol between two
-integers: do <kbd>Ctrl-p</kbd> on <span class="sansserif">5/2</span> &rArr;
-<span class="sansserif">5/2</span>. Cuis-Smalltalk returns a rational fraction, it does not compute a
+integers: do <kbd>Ctrl-p</kbd> on <code>5/2</code> &rArr;
+<code>5/2</code>. Cuis-Smalltalk returns a rational fraction, it does not compute a
 decimal.
 </p>
 <div class="float"><span id="exeZeroDivide"></span>
 <blockquote class="indentedblock">
 <p><em>What happen when
-executing this code</em> <span class="sansserif">5/0</span><em>?</em>
+executing this code</em> <code>5/0</code><em>?</em>
 </p></blockquote>
 
 
@@ -351,7 +351,7 @@ numbers. The errors are gone.</em>
 sending the message <span class="sansserif">#asFraction</span>. We already acknowledged the
 computer dyscalculia trouble with decimal number, this is why when
 asking for a fraction representation we have this strange answer. The
-internal computer represenation of <span class="sansserif">1.3</span> is not exactly as
+internal computer represenation of <code>1.3</code> is not exactly as
 it seems:
 </p>
 <div class="display">
@@ -366,9 +366,9 @@ it seems:
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h5><a id="FOOT11" href="#DOCF11">(11)</a></h3>
+<h5><a id="FOOT13" href="#DOCF13">(13)</a></h3>
 <p>Understand repeated an integer number of times.</p>
-<h5><a id="FOOT12" href="#DOCF12">(12)</a></h3>
+<h5><a id="FOOT14" href="#DOCF14">(14)</a></h3>
 <p>Bases 20 and 60
 number representation are not exclusive to these civilisations,
 although there are the most documented use cases.</p>

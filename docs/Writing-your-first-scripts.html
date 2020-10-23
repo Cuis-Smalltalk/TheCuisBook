@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : October 10, 2020
+Compilation : October 23, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -123,9 +123,9 @@ again.
 <p>This code comes in three parts:
 </p>
 <ul>
-<li> the string literal <span class="sansserif">&rsquo;Hello World!&rsquo;</span>  
+<li> the string literal <code>'Hello World!'</code>  
 
-</li><li> the message <span class="sansserif">#show:</span> with its argument <span class="sansserif">&rsquo;Hello World!&rsquo;</span>
+</li><li> the message <span class="sansserif">#show:</span> with its argument <code>'Hello World!'</code>
 
 </li><li> the class <span class="sansserif">Transcript</span> receiving the message <span class="sansserif">#show:</span> with its argument
 
@@ -151,8 +151,8 @@ nor in a one line script. The message <span class="sansserif">#newLine</span> ha
 <span id="index-string"></span>
 <p>A <em>String</em> is the way text is represented in a programming
 language, it is a collection of characters. We already met string with
-our first script, it is enclosed in single quotes: <span class="sansserif">&rsquo;hello
-world!&rsquo;</span>. We capitalize it with the <span class="sansserif">#capitalized</span> message:
+our first script, it is enclosed in single quotes: <code>'hello
+world!'</code>. We capitalize it with the <span class="sansserif">#capitalized</span> message:
 </p>
 <span id="index-string_002c-capitalized"></span>
 <div class="display">
@@ -196,8 +196,8 @@ special type or method. To convince yourelf try the example bellow:
 &rArr; 10000</span>
 </pre></div>
 
-<p>If you execute and print with <kbd>Ctrl-p</kbd> the code: <span class="sansserif">10000
-factorial</span>, you realize it takes far more time to print one factorial result 
+<p>If you execute and print with <kbd>Ctrl-p</kbd> the code: <code>10000
+factorial</code>, you realize it takes far more time to print one factorial result 
 than to compute two factorials and divide them. The result is an integer
 as expected, not a decimal number answer as many computer languages
 will return.
@@ -208,8 +208,8 @@ will return.
 &rArr; 15/4</span>
 </pre></div>
 
-<p>It looks like Cuis-Smalltalk is lazy because it does not respond the decimal
-number <span class="sansserif">3.75</span> as we were expecting. In fact Cuis-Smalltalk wants to
+<p>It looks like Cuis-Smalltalk is lazy because it does not answer the decimal
+number <code>3.75</code> as we were expecting. In fact Cuis-Smalltalk wants to
 be as accurate as possible, and its answer is a rational fraction! After
 all, fractions are just division we are too lazy &ndash; because it
 is troublesome &ndash; to compute, Cuis-Smalltalk does just that!
@@ -269,19 +269,20 @@ words capitalized.</em>
 <p>Integer and float numbers we have played with are <em>Numeric
 Literals</em>. Literals are building blocks of the language and considered as
 constant expressions.  They literally are as the appear.
-There are different syntax variants to write a number:
+</p>
+<p>There are different syntax variants to write a number:
 </p>
 <table>
 <thead><tr><th width="45%">Numeric literal</th><th width="55%">What it represents</th></tr></thead>
-<tr><td width="45%"><span class="sansserif">1</span></td><td width="55%">decimal integer</td></tr>
-<tr><td width="45%"><span class="sansserif">2r101</span></td><td width="55%">binary integer</td></tr>
-<tr><td width="45%"><span class="sansserif">16rFF</span></td><td width="55%">hexadecimal integer</td></tr>
-<tr><td width="45%"><span class="sansserif">1.5</span></td><td width="55%">floating point number</td></tr>
-<tr><td width="45%"><span class="sansserif">2.4e7</span></td><td width="55%">exponential notation</td></tr>
+<tr><td width="45%"><code>1</code></td><td width="55%">decimal integer</td></tr>
+<tr><td width="45%"><code>2r101</code></td><td width="55%">binary integer</td></tr>
+<tr><td width="45%"><code>16rFF</code></td><td width="55%">hexadecimal integer</td></tr>
+<tr><td width="45%"><code>1.5</code></td><td width="55%">floating point number</td></tr>
+<tr><td width="45%"><code>2.4e7</code></td><td width="55%">floating pont exponential notation</td></tr>
 </table>
 
 <p>Depending on the value we need to use, we mix these literal
-representation:
+representations:
 </p>
 <div class="display">
 <pre class="display"><span class="sansserif">16rA + 1 + 5e-1 + 6e-2

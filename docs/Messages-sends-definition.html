@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : October 10, 2020
+Compilation : October 23, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -96,21 +96,24 @@ Next: <a href="Message-to-string-entities.html" accesskey="n" rel="next">Message
 <ul>
 <li> <strong>Unary messages</strong> take no argument.
  <br>
- <span class="sansserif">1 factorial</span> sends the message <span class="sansserif">#factorial</span> to the object
- <span class="sansserif">1</span>,
+<em> <code>1 factorial</code></em>
+ sends the message <span class="sansserif">#factorial</span> to the object
+ <code>1</code>,
 
 </li><li> <strong>Binary messages</strong> take exactly one argument.
  <br>
- <span class="sansserif">1 + 2</span> sends the message <span class="sansserif">#+</span> with argument
- <span class="sansserif">2</span> to the object <span class="sansserif">1</span>.
+<em> <code>1 + 2</code></em>
+ sends the message <span class="sansserif">#+</span> with argument
+ <code>2</code> to the object <code>1</code>.
 
 </li><li> <strong>Keyword messages</strong> take an arbitrary number of
  arguments.
  <br>
- <span class="sansserif">2 raisedTo: 6 modulo: 10</span> sends the message
+<em> <code>2 raisedTo: 6 modulo: 10</code></em>
+ sends the message
  consisting of the message selector <span class="sansserif">#raisedTo:modulo:</span> and the
- arguments <span class="sansserif">6</span> and <span class="sansserif">10</span> to the object
- <span class="sansserif">2</span>.
+ arguments <code>6</code> and <code>10</code> to the object
+ <code>2</code>.
 
 </li></ul>
 
@@ -137,9 +140,9 @@ finally keyword messages, so:
 &rArr; 128</span>
 </pre></div>
 
-<p>First we send <span class="sansserif">factorial</span> to <span class="sansserif">3</span>, then we send
-<span class="sansserif">+ 6</span> to <span class="sansserif">1</span>, and finally we send
-<span class="sansserif">raisedTo: 7</span> to <span class="sansserif">2</span>.
+<p>First we send <em><code>factorial</code></em> to <em><code>3</code></em>, then we send
+<em><code>+ 6</code></em> to <em><code>1</code></em>, and finally we send
+<em><code>raisedTo: 7</code></em> to <em><code>2</code></em>.
 </p>
 <p>Precedence aside, evaluation is strictly from left to right, so
 </p>

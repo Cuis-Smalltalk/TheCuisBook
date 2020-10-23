@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : October 10, 2020
+Compilation : October 23, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -156,7 +156,7 @@ array3 := Array ofSize: 4 &quot;an empty array with a 4 elements capacity&quot;<
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 4.9: </strong>Collection with a fixed size</p></div></div>
-<p>Array <span class="sansserif">array1</span> and <span class="sansserif">array1b</span> are bit
+<p>Array <code>array1</code> and <code>array1b</code> are bit
 different. The former one is created and filled with its contents at
 compile time of the code, the consequence is it can only be filled
 with literal elements as integer, float, string. The later one is
@@ -188,7 +188,7 @@ of a collection.
 <blockquote class="indentedblock">
 <p><em>What is the
 appropriate message to access the first 2 elements of the
-<span class="sansserif">array1</span> collection?</em>
+<code>array1</code> collection?</em>
 </p></blockquote>
 
 
@@ -207,7 +207,7 @@ array1 remove: &rsquo;Apple&rsquo;
 <div class="float"><span id="fillArray"></span>
 <blockquote class="indentedblock">
 <p><em>How will you fill at once
-<span class="sansserif">array4</span> with &rsquo;kiwi&rsquo;?</em>
+<code>array4</code> with &rsquo;kiwi&rsquo;?</em>
 </p></blockquote>
 
 
@@ -219,7 +219,7 @@ several class categories: <code>Collections-Unordered</code>,
 collections.
 </p>
 <p><span class="sansserif">OrderedCollection</span> is a notable one. Its elements are ordered:
-elements are added one after the other in sequence<a id="DOCF16" href="#FOOT16"><sup>16</sup></a>. Its size is
+elements are added one after the other in sequence<a id="DOCF18" href="#FOOT18"><sup>18</sup></a>. Its size is
 variable depending on added or removed elements.
 </p>
 <span id="index-collection_002c-instantiate-variable-size-array"></span>
@@ -249,7 +249,7 @@ dynamic array</p></div></div>
 <div class="float"><span id="addAfter"></span>
 <blockquote class="indentedblock">
 <p><em>How to add &rsquo;Orange&rsquo; after
-&rsquo;Apple&rsquo; in <span class="sansserif">coll1</span>?</em>
+&rsquo;Apple&rsquo; in <code>coll1</code>?</em>
 </p></blockquote>
 
 
@@ -269,7 +269,7 @@ set add: 1; add: Float pi; yourself
 
 <div class="float-caption"><p><strong>Example 4.13: </strong>Set collection</p></div></div>
 <p>Non duplicate are guaranteed at best, even with number of different
-types. Observe how <span class="sansserif">1</span>, <span class="sansserif">3/3</span> and <span class="sansserif">1.0</span>
+types. Observe how <code>1</code>, <code>3/3</code> and <code>1.0</code>
 are considered equal and not duplicated in the set:
 </p>
 <div class="float"><span id="setWithoutDuplicates"></span>
@@ -388,7 +388,7 @@ dictionary:
 <div class="float"><span id="nameColor"></span>
 <blockquote class="indentedblock">
 <p><em>With an appropriate
-enumerator, how will you edit the contents of the <span class="sansserif">colors</span>
+enumerator, how will you edit the contents of the <code>colors</code>
 dictionary to replace its values with a nicely capitalized string?</em>
 </p></blockquote>
 
@@ -403,7 +403,7 @@ experiment with the workspace.
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h5><a id="FOOT16" href="#DOCF16">(16)</a></h3>
+<h5><a id="FOOT18" href="#DOCF18">(18)</a></h3>
 <p>Of course you can
 insert an element between two elements. However <span class="sansserif">LinkList</span>
 instance are more efficient for this use case scenario.</p>

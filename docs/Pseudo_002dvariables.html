@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : October 10, 2020
+Compilation : October 23, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -94,14 +94,14 @@ Next: <a href="Method-syntax.html" accesskey="n" rel="next">Method syntax</a>, P
 <p>In Smalltalk, there are 6 reserved keywords, or pseudo-variables:
 </p>
 <blockquote class="indentedblock">
-<p><span class="sansserif">nil</span>, <span class="sansserif">true</span>, <span class="sansserif">false</span>,
-<span class="sansserif">self</span>, <span class="sansserif">super</span>, and <span class="sansserif">thisContext</span>.
+<p><code>nil</code>, <code>true</code>, <code>false</code>,
+<code>self</code>, <code>super</code>, and <code>thisContext</code>.
 </p></blockquote>
 
 <p>They are called <em>pseudo-variables</em> because they are predefined and
-cannot be assigned to. <span class="sansserif">true</span>, <span class="sansserif">false</span>, and
-<span class="sansserif">nil</span> are constants while the values of <span class="sansserif">self</span>,
-<span class="sansserif">super</span>, and <span class="sansserif">thisContext</span> vary dynamically as
+cannot be assigned to. <code>true</code>, <code>false</code>, and
+<code>nil</code> are constants while the values of <code>self</code>,
+<code>super</code>, and <code>thisContext</code> vary dynamically as
 code is executed.
 </p>
 <ul>
@@ -110,37 +110,37 @@ code is executed.
 <span id="index-pseudo_002dvariable_002c-false"></span>
 <span id="index-true"></span>
 <span id="index-false"></span>
-</li><li> <span class="sansserif">true</span> and <span class="sansserif">false</span> are the unique
+</li><li> <code>true</code> and <code>false</code> are the unique
    instances of the <span class="sansserif">Boolean</span> classes <span class="sansserif">True</span> and
-   <span class="sansserif">False</span>.
+   <code>False</code>.
 
 <span id="index-pseudo_002dvariable_002c-self"></span>
 <span id="index-self"></span>
 <span id="index-self-1"></span>
-</li><li> <span class="sansserif">self</span> always refers to the receiver of the
+</li><li> <code>self</code> always refers to the receiver of the
    currently executing method.
 
 <span id="index-pseudo_002dvariable_002c-super"></span>
 <span id="index-super-1"></span>
-</li><li> <span class="sansserif">super</span> also refers to the receiver of the current
-   method, but when you send a message to <span class="sansserif">super</span>, the
+</li><li> <code>super</code> also refers to the receiver of the current
+   method, but when you send a message to <code>super</code>, the
    method-lookup changes so that it starts from the superclass of the
-   class containing the method that uses <span class="sansserif">super</span>.
+   class containing the method that uses <code>super</code>.
    
 <span id="index-pseudo_002dvariable_002c-nil"></span>
 <span id="index-nil"></span>
-</li><li> <span class="sansserif">nil</span> is the undefined object. It is the unique
-   instance of the class <span class="sansserif">UndefinedObject</span>. Instance
+</li><li> <code>nil</code> is the undefined object. It is the unique
+   instance of the class <code>UndefinedObject</code>. Instance
    variables, class variables and local variables are initialized to
-   <span class="sansserif">nil</span>.
+   <code>nil</code>.
 
 
 <span id="index-pseudo_002dvariable_002c-thisConstext"></span>
 <span id="index-thisConstext"></span>
-</li><li> <span class="sansserif">thisContext</span> is a pseudo-variable that represents
+</li><li> <code>thisContext</code> is a pseudo-variable that represents
    the top frame of the run-time stack. In other words, it represents
-   the currently executing <span class="sansserif">MethodContext</span> or
-   <span class="sansserif">BlockContext</span>. <span class="sansserif">thisContext</span> is normally not
+   the currently executing <code>MethodContext</code> or
+   <code>BlockContext</code>. <code>thisContext</code> is normally not
    of interest to most programmers, but it is essential for
    implementing development tools like the debugger and it is also
    used to implement exception handling and continuations.
