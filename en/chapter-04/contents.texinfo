@@ -102,8 +102,7 @@ element. When inherited in @class{String}, those elements are
 @class{Character} instances:
 
 @smalltalkExample{'1 + 3i' before: $i
-@result{} $3 
-}
+@result{} $3}
 
 Practice the tools and resolve the exercise bellow.
 
@@ -145,8 +144,7 @@ Now you know.  Strings can be duplicated or changed, symbols can't.
 Symbols can contain space characters:
 
 @smalltalkExample{'hello my friend' asSymbol
-@result{} #'hello my friend'
-}
+@result{} #'hello my friend'}
 
 @class{Symbol} is a subclass of @class{String} and much of its behavior
 is inherited. As we learn about @class{String}s we
@@ -374,8 +372,7 @@ can be used multiple times.
 | add2 |
  add2 := [:n| n + 2].
  @{ add2 value: 2. add2 value: 7 @}.
-@result{}  #(4 9)
-}
+@result{}  #(4 9)}
 
 
 Enumerators implement tremendously powerful ways to process collections without
@@ -685,7 +682,7 @@ To compile the divisors list of 30 and 45 (not the common divisors):
    addAll: #(1 2 3 5 6 10 15 30) ; 
    addAll: #(1 3 5 9 15 45) ; 
    yourself. 
-@result{} a Set(5 10 15 1 6 30 45 2 3 9) }
+@result{} a Set(5 10 15 1 6 30 45 2 3 9)}
 
 @exercise{Letters, setLetters, @emph{How will you compile the letters in
 the sentences 'buenos d@'{@dotless{i}}as' and 'bonjour'?}}
@@ -726,7 +723,7 @@ There are different way to access a dictionary contents:
 @smalltalkExample{colors keys.
 @result{} #(#red #green #blue) 
 colors keyAtValue: Color green
-@result{} #green }
+@result{} #green}
 
 @strong{Beware.} The classic enumerators iterate the values of the
 dictionary:
@@ -737,7 +734,7 @@ dictionary:
 Sometimes, you really need to iterated the whole key-value association:
 
 @smalltalkExample{colors associationsDo: [:assoc | 
-   Transcript show: assoc key; space; assoc value; cr ] }
+   Transcript show: assoc key; space; assoc value; cr ]}
 
 There are other variants to explore by yourself.
 
