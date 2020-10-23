@@ -136,14 +136,14 @@ Next: <a href="The-Examples.html" accesskey="n" rel="next">The Examples</a>, Pre
 
 <span id="stringArith-1"></span><h4 class="subheading"><a href="A-brief-introduction-to-the-system-Browser.html#stringArith">Exercise 2.3</a></h4>
 <p>From a System Browser, do from the left panel to the
-right ...<samp>Kernel-Text</samp> &rarr; <span class="sansserif">String</span>
+right ...<samp>Kernel-Text</samp> &rarr; <code>String</code>
 &rarr; <code>arithmetic</code>... the count of methods in the last
-right panel is 6: <span class="sansserif">*</span>, <span class="sansserif">+</span>, <span class="sansserif">-</span>, <span class="sansserif">/</span>,
-<span class="sansserif">//</span> and <span class="sansserif">\\</span>.
+right panel is 6: <code>*</code>, <code>+</code>, <code>-</code>, <code>/</code>,
+<code>//</code> and <code>\\</code>.
 </p>
 <span id="Class_002c-model-of-communicating-entities-1"></span><h3 class="unnumberedsec">Class, model of communicating entities</h3>
 <span id="floatInfo-1"></span><h4 class="subheading"><a href="Explore-OOP-from-the-Browser.html#floatInfo">Exercise 3.1</a></h4>
-<p>When the <span class="sansserif">Float</span> is selected, the wide text pane prints: &ldquo;class
+<p>When the <code>Float</code> is selected, the wide text pane prints: &ldquo;class
 definition for Float &deg; 92 instance methods &deg;
 34 class methods &deg; 1280 total lines of code&rdquo;
 </p>
@@ -210,15 +210,15 @@ definition for Float &deg; 92 instance methods &deg;
 &rArr; 'There are  apples'
 </pre></div>
 
-<p>Or even a shorter option with the <span class="sansserif">#reject:</span> message:
+<p>Or even a shorter option with the <code>#reject:</code> message:
 </p><div class="example">
 <pre class="example">'There are 12 apples' reject: [:i |i isDigit].
 &rArr; 'There are  apples' 
 </pre></div>
 
 <span id="formatString-1"></span><h4 class="subheading"><a href="Kernel_002dText.html#formatString">Exercise 3.8</a></h4>
-<p>In <span class="sansserif">String</span>, search for the method category <samp>format</samp>, there
-you find the <span class="sansserif">format:</span> method:
+<p>In <code>String</code>, search for the method category <samp>format</samp>, there
+you find the <code>format:</code> method:
 </p><div class="example">
 <pre class="example">'Joe bought {1} apples and {2} oranges' format: #(5 4)
 &rArr;  'Joe bought 5 apples and 4 oranges' 
@@ -227,7 +227,7 @@ you find the <span class="sansserif">format:</span> method:
 
 
 <span id="spacewarVar-1"></span><h4 class="subheading"><a href="Spacewar_0021-States-and-Behaviors.html#spacewarVar">Exercise 3.9</a></h4>
-<p>The <span class="sansserif">SpaceWar</span>, <span class="sansserif">CentralStar</span> and <span class="sansserif">SpaceShip</span>
+<p>The <code>SpaceWar</code>, <code>CentralStar</code> and <code>SpaceShip</code>
 definitions with their added instance variable should look like:
 </p><div class="example">
 <pre class="example">Object subclass: #SpaceWar
@@ -304,9 +304,9 @@ SpaceShip&gt;&gt;unpush
 
 <span id="The-Collection-Way-of-Life-2"></span><h3 class="unnumberedsec">The Collection Way of Life</h3>
 <span id="cutString-1"></span><h4 class="subheading"><a href="String-_002d_002d-a-particular-collection.html#cutString">Exercise 4.1</a></h4>
-<p>Open the protocol browser on the class <span class="sansserif">String</span>, search for the
-method <span class="sansserif">allButFirst:</span> implemented in
-<span class="sansserif">SequenceableCollection</span>. Read its comment in its source code.
+<p>Open the protocol browser on the class <code>String</code>, search for the
+method <code>allButFirst:</code> implemented in
+<code>SequenceableCollection</code>. Read its comment in its source code.
 </p><div class="example">
 <pre class="example">'Hello My Friend' allButFirst: 6
 &rArr; 'My Friend'
@@ -344,7 +344,7 @@ method <span class="sansserif">allButFirst:</span> implemented in
 
 <span id="oddNonPrime-1"></span><h4 class="subheading"><a href="Fun-with-collections.html#oddNonPrime">Exercise 4.7</a></h4>
 <p>This solution, based on set operations and multiple use of the
-<span class="sansserif">#select:</span> message, is mostly compatible with the knowledge
+<code>#select:</code> message, is mostly compatible with the knowledge
 acquired at this point of the book.
 </p><div class="example">
 <pre class="example">| primeNumbers nonPrimeNumbers |
@@ -391,9 +391,9 @@ characters intervale with a string:
 </pre></div>
 
 <span id="collFirst-1"></span><h4 class="subheading"><a href="Collections-detailed.html#collFirst">Exercise 4.12</a></h4>
-<p>The appropriate message is <span class="sansserif">#first:</span>, defined in the parent
-class <span class="sansserif">SequenceableCollection</span>. You need to use the protocol or
-hierarchy browser on <span class="sansserif">Array</span> to discover it:
+<p>The appropriate message is <code>#first:</code>, defined in the parent
+class <code>SequenceableCollection</code>. You need to use the protocol or
+hierarchy browser on <code>Array</code> to discover it:
 </p>
 <div class="example">
 <pre class="example">array1 first: 2
@@ -417,7 +417,7 @@ array4 at: 4 put: 'kiwi'.
    array4 at: index put: 'kiwi']
 </pre></div>
 
-<p>But if you search for carefully the <span class="sansserif">Array</span> protocol, you can
+<p>But if you search for carefully the <code>Array</code> protocol, you can
 just do:
 </p>
 <div class="example">
@@ -425,8 +425,8 @@ just do:
 </pre></div>
 
 <span id="addAfter-1"></span><h4 class="subheading"><a href="Collections-detailed.html#addAfter">Exercise 4.14</a></h4>
-<p>In the <span class="sansserif">OrderedCollection</span> protocol search for the method
-<span class="sansserif">add:after:</span>.
+<p>In the <code>OrderedCollection</code> protocol search for the method
+<code>add:after:</code>.
 </p><div class="example">
 <pre class="example">coll1 := {2 . 'Apple' . 2@1 . 1/3 } asOrderedCollection .		
 coll1 add: 'Orange' after: 'Apple'; yourself.
@@ -453,12 +453,12 @@ colors
 
 <span id="initActorsCollections-1"></span><h4 class="subheading"><a href="SpaceWar_0021-collections.html#initActorsCollections">Exercise 4.17</a></h4>
 <p>When the game starts there is no fired torpedoes, therefore
-<code>torpedoes</code> is an empty <span class="sansserif">OrderedCollection</span>,
-instantiated with the <span class="sansserif">#new</span> class message.
+<code>torpedoes</code> is an empty <code>OrderedCollection</code>,
+instantiated with the <code>#new</code> class message.
 </p>
-<p>In the other hand, the <code>ships</code> is an <span class="sansserif">Array</span>
+<p>In the other hand, the <code>ships</code> is an <code>Array</code>
 containing only two elements, the player ships. We use the
-<span class="sansserif">#with:with</span> class message to instantiate and populate the array
+<code>#with:with</code> class message to instantiate and populate the array
 with two ships created in the argument message.
 </p>
 <p>For the readability, we split the code in several lines with the
@@ -493,8 +493,8 @@ divisors value: 45
 </pre></div>
 
 <span id="implementingAndOr-1"></span><h4 class="subheading"><a href="Control-flow-with-block-and-message.html#implementingAndOr">Exercise 5.2</a></h4>
-<p>Check the implementations in <span class="sansserif">Boolean</span>, <span class="sansserif">True</span> and
-<span class="sansserif">False</span>.
+<p>Check the implementations in <code>Boolean</code>, <code>True</code> and
+<code>False</code>.
 </p>
 <span id="categorizeTeleport-1"></span><h4 class="subheading"><a href="Spacewar_0021_0027s-methods.html#categorizeTeleport">Exercise 5.3</a></h4>
 <p>Once the method is edited and saved, in the <code>Method</code> pane select
@@ -515,7 +515,7 @@ select <code>control</code> at the last step as this category now exists.
 <span id="Visual-With-Morph-2"></span><h3 class="unnumberedsec">Visual With Morph</h3>
 
 <span id="allActorsMorph-1"></span><h4 class="subheading"><a href="Spacewar_0021-graphics.html#allActorsMorph">Exercise 6.1</a></h4>
-<p>Just replace all <span class="sansserif">Object</span> occurrences with <span class="sansserif">Morph</span>:
+<p>Just replace all <code>Object</code> occurrences with <code>Morph</code>:
 </p>
 <div class="example">
 <pre class="example">Morph subclass: #SpaceWar

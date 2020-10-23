@@ -110,7 +110,7 @@ in Smalltalk:
 <p>To execute this code, select it with the mouse and
 ...right mouse click &rarr; <code>Do it (d)</code>...
 You may now see nothing happen! Indeed to see the output, you need a
-<em>Transcript</em> window to be visible.  The <span class="sansserif">Transcript</span> is a
+<em>Transcript</em> window to be visible.  The <code>Transcript</code> is a
 place where programmer can send information for the user as we are
 doing here. Do ...Background click &rarr;
 <code>Open...</code> &rarr; <code>Transcript</code>... and execute the code
@@ -125,14 +125,14 @@ again.
 <ul>
 <li> the string literal <code>'Hello World!'</code>  
 
-</li><li> the message <span class="sansserif">#show:</span> with its argument <code>'Hello World!'</code>
+</li><li> the message <code>#show:</code> with its argument <code>'Hello World!'</code>
 
-</li><li> the class <span class="sansserif">Transcript</span> receiving the message <span class="sansserif">#show:</span> with its argument
+</li><li> the class <code>Transcript</code> receiving the message <code>#show:</code> with its argument
 
 </li></ul>
 
 <p>The action of printing takes place in the class
-<span class="sansserif">Transcript</span>. The code execution is invoked with keyboard
+<code>Transcript</code>. The code execution is invoked with keyboard
 shortcuts <kbd>Ctrl-A</kbd> (<em>select <b>A</b>ll</em>)
 then <kbd>Ctrl-D</kbd> (<em><b>D</b>o it</em>).
 </p>
@@ -146,13 +146,13 @@ Transcript show: &rsquo;I am Cuising&rsquo;</span>
 <div class="float-caption"><p><strong>Example 1.2: </strong>Multiple lines</p></div></div>
 <p>In this three line script, observe how the lines are separated by a
 dot &ldquo;.&rdquo;. This period is a line separator so it is not needed in the third line
-nor in a one line script. The message <span class="sansserif">#newLine</span> has no argument.
+nor in a one line script. The message <code>#newLine</code> has no argument.
 </p>
 <span id="index-string"></span>
 <p>A <em>String</em> is the way text is represented in a programming
 language, it is a collection of characters. We already met string with
 our first script, it is enclosed in single quotes: <code>'hello
-world!'</code>. We capitalize it with the <span class="sansserif">#capitalized</span> message:
+world!'</code>. We capitalize it with the <code>#capitalized</code> message:
 </p>
 <span id="index-string_002c-capitalized"></span>
 <div class="display">
@@ -161,7 +161,7 @@ world!'</code>. We capitalize it with the <span class="sansserif">#capitalized</
 </pre></div>
 
 <span id="index-string_002c-concatenate"></span>
-<p>Two strings are concatenated with the <span class="sansserif">#,</span> message:
+<p>Two strings are concatenated with the <code>#,</code> message:
 </p><div class="float"><span id="concatenateStrings"></span>
 <div class="display">
 <pre class="display"><span class="sansserif">Transcript show: &rsquo;Hello &rsquo;, &rsquo;my beloved &rsquo;, &rsquo;friend&rsquo;

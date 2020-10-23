@@ -97,20 +97,20 @@ Previous: <a href="Kernel_002dText.html" accesskey="p" rel="prev">Kernel-Text</a
  define several states of these classes:
 </p>
 <ul>
-<li> A <span class="sansserif">SpaceWar</span> instance representing the game play needs to
+<li> A <code>SpaceWar</code> instance representing the game play needs to
  know about the <code>centralStar</code>, the <code>ships</code>
  and the fired <code>torpedoes</code>.
 
-</li><li> A <span class="sansserif">CentralStar</span> has a <code>mass</code> state. It is
+</li><li> A <code>CentralStar</code> has a <code>mass</code> state. It is
  necessary to compute the gravity force applied to a given ship.
 
-</li><li> A <span class="sansserif">SpaceShip</span> instance has a <code>name</code>,
+</li><li> A <code>SpaceShip</code> instance has a <code>name</code>,
  <code>position</code> coordinates, a <code>heading</code> angle, a
  <code>velocity</code> vector, a <code>fuel</code> gauge, a count of the
  available <code>torpedoes</code>, a <code>mass</code> and an
  <code>acceleration</code> engine boost.
 
-</li><li> A <span class="sansserif">Torpedo</span> has <code>position</code>,
+</li><li> A <code>Torpedo</code> has <code>position</code>,
  <code>velocity</code> and <code>lifeSpan</code> states.
 
 </li></ul>
@@ -124,34 +124,34 @@ classes.
 <br>
 <strong>Warning.</strong>
 In the following sections, to ease reading
-we will write &ldquo;the variable <code>myVar</code> is a <span class="sansserif">String</span>&rdquo;
+we will write &ldquo;the variable <code>myVar</code> is a <code>String</code>&rdquo;
 instead of the correct but cumbersome &ldquo;the instance variable
-<code>myVar</code> is a reference to a <span class="sansserif">String</span> instance&rdquo;.
+<code>myVar</code> is a reference to a <code>String</code> instance&rdquo;.
 </p></blockquote>
 
-<span id="Spacewar"></span><h3 class="heading"><span class="sansserif">Spacewar</span></h3>
+<span id="Spacewar"></span><h3 class="heading"><code>Spacewar</code></h3>
 <p>This object is the entry to the game. We want a meaningful class
 name. Its instance variables are the involved protagonist of the game:
 </p>
 <ul>
-<li> <em><code>centralStar</code></em> is the unique <span class="sansserif">CentralStar</span> of
+<li> <em><code>centralStar</code></em> is the unique <code>CentralStar</code> of
   the game play. We need to know about it to request its mass.
 
 </li><li> <em><code>ships</code></em> is a collection of the two player ships. It
-  can be a fixed sized collection as an <span class="sansserif">Array</span> instance.
+  can be a fixed sized collection as an <code>Array</code> instance.
   
 </li><li> <em><code>torpedoes</code></em> is a collection of the torpedoes fired
   in the game play. Their quantity is variable, an
-  <span class="sansserif">OrderedCollection</span> instance makes sense.
+  <code>OrderedCollection</code> instance makes sense.
 
 </li></ul>
 
-<span id="CentralStar"></span><h3 class="heading"><span class="sansserif">CentralStar</span></h3>
+<span id="CentralStar"></span><h3 class="heading"><code>CentralStar</code></h3>
 
 <p>Its unique instance variable, <code>mass</code>, is a number and likely
 an <code>Integer</code>.
 </p>
-<span id="SpaceShip"></span><h3 class="heading"><span class="sansserif">SpaceShip</span></h3>
+<span id="SpaceShip"></span><h3 class="heading"><code>SpaceShip</code></h3>
 
 <p>The space ship is the most complex object, some clarifications
 regarding its variables are needed.
@@ -164,13 +164,13 @@ regarding its variables are needed.
 <span id="index-coordinates"></span>
 
 </li><li> <em><code>position</code></em> is a 2D screen coordinate, a location. Smalltalk
-  proposes the <span class="sansserif">Point</span> class to represent such object. It
+  proposes the <code>Point</code> class to represent such object. It
   understands many mathematics operations as operations on vectors;
   very useful for mechanical calculations.
 
-<p>A point can be instantiated with the binary message <span class="sansserif">#@</span> send to
+<p>A point can be instantiated with the binary message <code>#@</code> send to
   a number with another number as its argument: <code>100 @ 100</code>
-  creates a <span class="sansserif">Point</span> instance representing the coordinates
+  creates a <code>Point</code> instance representing the coordinates
   (100;100).
 </p>
 <p>The ship&rsquo;s <code>position</code> is regularly recomputed according to
@@ -179,10 +179,10 @@ regarding its variables are needed.
   and engine boost.
 </p> 
 </li><li> <em><code>heading</code></em> is an angle in radians, the direction where
-  the ship nose is pointing. It is therefore a <span class="sansserif">Float</span> number.
+  the ship nose is pointing. It is therefore a <code>Float</code> number.
   
 </li><li> <em><code>velocity</code></em> is the vector representing the
-  instantaneous speed of the ship. It is <span class="sansserif">Point</span> instance.
+  instantaneous speed of the ship. It is <code>Point</code> instance.
   
 </li><li> <em><code>fuel</code></em> is the gauge, as long as it is not zero, the
   player can ignite the ship&rsquo;s rocket engine to provide acceleration to move
@@ -206,13 +206,13 @@ toward the right of the screen, and the second one toward the top of
 the screen. This choice ease the computation of the ship acceleration,
 velocity and position.
 </p>
-<span id="Torpedo"></span><h3 class="heading"><span class="sansserif">Torpedo</span></h3>
+<span id="Torpedo"></span><h3 class="heading"><code>Torpedo</code></h3>
 <p>A torpedo is launched or &ldquo;fired&rdquo; from a ship with an initial velocity matching the
 ship heading. Once the torpedo fuel reserve reaches zero it self destructs.
 </p>
 <ul>
 <li> <em><code>position</code></em> is a 2D screen coordinate, a
-  <span class="sansserif">Point</span> instance. Unlike the ship it does not accelerate based 
+  <code>Point</code> instance. Unlike the ship it does not accelerate based 
   on the gravity pull of the central star. Indeed, a torpedo
   does not come with a mass state.  For our purposes it is essentially zero. Its
   position over time only depends on the torpedo velocity.
@@ -220,7 +220,7 @@ ship heading. Once the torpedo fuel reserve reaches zero it self destructs.
 </li><li> <em><code>velocity</code></em> is a vector representing the
   instantaneous speed of the torpedo. It is constant over the torpedo
   lifespan. Its direction matches the ship heading when fired. Again
-  velocity is kept as a <span class="sansserif">Point</span> instance.
+  velocity is kept as a <code>Point</code> instance.
 
 </li><li> <em><code>lifeSpan</code></em> is an integer number counter, when it
   reaches zero the torpedo self-destructs.
@@ -229,12 +229,12 @@ ship heading. Once the torpedo fuel reserve reaches zero it self destructs.
 
 <span id="Instance-variables"></span><h4 class="subsection">3.6.2 Instance variables</h4>
 <p>In the previous chapter, we explained how to define the four classes
-<span class="sansserif">SpaceWar</span>, <span class="sansserif">CentralStar</span>, <span class="sansserif">SpaceShip</span> and
-<span class="sansserif">Torpedo</span>. In this section, we will add to the these definitions
+<code>SpaceWar</code>, <code>CentralStar</code>, <code>SpaceShip</code> and
+<code>Torpedo</code>. In this section, we will add to the these definitions
 the instance variables &ndash; states &ndash; discussed above.
 </p>
 <p>To add the
-variables to the <span class="sansserif">Torpedo</span> class, from the Browser, select this
+variables to the <code>Torpedo</code> class, from the Browser, select this
 class. Next, add the variable names to the
 <code>instanceVariableNames:</code> parameter, separated by one space
 character. Finally, save the updated class definition with
@@ -249,11 +249,11 @@ character. Finally, save the updated class definition with
    category: &rsquo;Spacewar!&rsquo;</span>
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 3.14: </strong><span class="sansserif">Torpedo</span> class with its instance variables</p></div></div>
+<div class="float-caption"><p><strong>Example 3.14: </strong><code>Torpedo</code> class with its instance variables</p></div></div>
 <div class="float"><span id="spacewarVar"></span>
 <blockquote class="indentedblock">
 <p><em>Add the instance variables we discussed earlier to the
-<span class="sansserif">SpaceWar</span>, <span class="sansserif">CentralStar</span> and <span class="sansserif">StarShip</span> classes.</em>
+<code>SpaceWar</code>, <code>CentralStar</code> and <code>StarShip</code> classes.</em>
 </p></blockquote>
 
 
@@ -305,7 +305,7 @@ the method category you want &ndash; when none, select <code>-- all
 
 </li></ol>
 
-<p>The getter <span class="sansserif">mass</span> on <span class="sansserif">SpaceShip</span> is written as:
+<p>The getter <code>mass</code> on <code>SpaceShip</code> is written as:
 </p>
 <div class="display">
 <pre class="display"><span class="sansserif">SpaceShip&gt;&gt;mass
@@ -314,18 +314,18 @@ the method category you want &ndash; when none, select <code>-- all
 
 <p>The <em><code>SpaceShip&gt;&gt;</code></em> part is not valid code and should not be
 written in the Browser. It is a text convention to inform the reader
-the subsequent method is from the <span class="sansserif">SpaceShip</span> class.
+the subsequent method is from the <code>SpaceShip</code> class.
 </p>
 <div class="float"><span id="spaceShipGetters"></span>
 <blockquote class="indentedblock">
 <p><em>Write the
-<span class="sansserif">SpaceShip</span> getter messages for its
+<code>SpaceShip</code> getter messages for its
 <code>position</code>, <code>velocity</code> and <code>mass</code>
 attributes.</em>
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong>Exercise 3.10: </strong><span class="sansserif">SpaceShip</span> getter message</p></div></div>
+<div class="float-caption"><p><strong>Exercise 3.10: </strong><code>SpaceShip</code> getter message</p></div></div>
 <span id="index-variable_002c-assignment"></span>
 <span id="index-variable_002c-_003a_003d"></span>
 <span id="index-variable_002c-2190"></span>
@@ -354,7 +354,7 @@ box called <em><code>name</code></em>.
 </p>
 <p>Since each instance variable box can hold an object of any class,
 we like to name the variable to show that we intend that the <code>name</code>
-variable should hold a string, an instance of the <span class="sansserif">String</span> class.
+variable should hold a string, an instance of the <code>String</code> class.
 </p>
 <p>A bit later, we will have more to say on intent in naming.
 </p>
@@ -366,12 +366,12 @@ appropriate setters.</em>
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong>Exercise 3.11: </strong><span class="sansserif">SpaceShip</span> setter messages</p></div></div>
+<div class="float-caption"><p><strong>Exercise 3.11: </strong><code>SpaceShip</code> setter messages</p></div></div>
 <p>Observe how we do not have a setter message for the space ship
 <code>mass</code> attribute. Indeed, it does not make sense to change
 the mass of a ship from another object. In fact, if we consider both
 player ship to be of equal mass, we should remove the <code>mass</code>
-variable and edit the <span class="sansserif">mass</span> method to return a literal number:
+variable and edit the <code>mass</code> method to return a literal number:
 </p>
 <div class="float"><span id="methodConstant"></span>
 <div class="display">
@@ -384,27 +384,27 @@ variable and edit the <span class="sansserif">mass</span> method to return a lit
 <p>A space ship controlled by the player understands messages to adjust
 its direction and acceleration<a id="DOCF15" href="#FOOT15"><sup>15</sup></a>:
 </p>
-<p><strong>Direction.</strong> The ship heading is controlled with the <span class="sansserif">#left</span>
-  and <span class="sansserif">#right</span> messages. The former increments the
+<p><strong>Direction.</strong> The ship heading is controlled with the <code>#left</code>
+  and <code>#right</code> messages. The former increments the
   <code>heading</code> by 0.1 and the later decrements it by 0.1.
 </p>
 <div class="float"><span id="shipHeading"></span>
 <blockquote class="indentedblock">
 <p><em>Write
-  two methods named <span class="sansserif">left</span> and <span class="sansserif">right</span> to shift the ship
+  two methods named <code>left</code> and <code>right</code> to shift the ship
   heading of 0.1 accordingly to the indications above.</em>
 </p></blockquote>
 
 
 <div class="float-caption"><p><strong>Exercise 3.12: </strong>Methods to control ship heading</p></div></div>
-<p><strong>Acceleration.</strong> When the <span class="sansserif">#push</span> message is sent to
+<p><strong>Acceleration.</strong> When the <code>#push</code> message is sent to
   the ship, the engines are ignited and an internal acceleration of 10
-  units of acceleration is applied to the ship. When the <span class="sansserif">#unpush</span>
+  units of acceleration is applied to the ship. When the <code>#unpush</code>
   message is sent, the acceleration stops.
 </p>
 <div class="float"><span id="shipAcceleration"></span>
 <blockquote class="indentedblock">
-<p><em>Write two methods named <span class="sansserif">push</span> and <span class="sansserif">unpush</span> to
+<p><em>Write two methods named <code>push</code> and <code>unpush</code> to
   adjust the ship inner acceleration accordingly to the indications
   above.</em>
 </p></blockquote>
@@ -415,8 +415,8 @@ its direction and acceleration<a id="DOCF15" href="#FOOT15"><sup>15</sup></a>:
 <span id="Initializing"></span><h4 class="subsection">3.6.4 Initializing</h4>
 <span id="index-initialize"></span>
 <p>When an instance is created, for example <em><code>SpaceShip new</code></em>, it
-is automatically initialized: the message <span class="sansserif">#initialize</span> is sent to
-the newly created object and its matching <span class="sansserif">initialize</span> instance
+is automatically initialized: the message <code>#initialize</code> is sent to
+the newly created object and its matching <code>initialize</code> instance
 side method is called.
 </p>
 <p>The initializing process is useful to set the default values of the
@@ -438,8 +438,8 @@ set its default position, speed, acceleration:
 <p>In the method <a href="#initSpaceShip">Example 3.17</a>, observe the first line
 <code>super initialize</code>. When a message is sent to
 <code>super</code>, it refers to the superclass of the class&rsquo;s method
-using <code>super</code>. So far, the <span class="sansserif">SpaceShip</span> parent class is
-<span class="sansserif">Object</span>, therefore the <code>Object&gt;&gt;initialize</code> method is
+using <code>super</code>. So far, the <code>SpaceShip</code> parent class is
+<code>Object</code>, therefore the <code>Object&gt;&gt;initialize</code> method is
 called first for initialization.
 </p>
 <p>When created, a space ship is positioned to the top and right of the

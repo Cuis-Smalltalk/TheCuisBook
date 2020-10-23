@@ -115,10 +115,10 @@ how do we get its attention?
 <p>Modern integrated <em>System On a Chip</em> (<em>SOC</em>) hardware
 has many circuits which are active at the same time.  So one kind
 of event is sensing something happening in the world.
-Class <span class="sansserif">EventSensor</span> handles
+Class <code>EventSensor</code> handles
 keyboard key press and mouse <em>hardware interrupts</em>, translating
 between hardware signals and software event objects.  For us, 
-the class <span class="sansserif">MorphicEvent</span> and its subclasses are quite important.
+the class <code>MorphicEvent</code> and its subclasses are quite important.
 Basically, morphs &ldquo;raise their hand&rdquo; and say what events, if any, they
 are interested in receiving and implement methods which
 get event objects which hold the information that the events capture.
@@ -128,33 +128,33 @@ is used to march time forward.  We are interested in
 timer alarms and in particular <em>steps</em> which is used to
 coordinate updates to the display and manage processing of queued
 input events. 
-There is a class <span class="sansserif">StepMessage</span>,
+There is a class <code>StepMessage</code>,
 and you can look at the &ldquo;stepping&rdquo; method category
-in the <span class="sansserif">Morph</span> class.  These timed clock events are used
+in the <code>Morph</code> class.  These timed clock events are used
 to <em>time slice</em> long running tasks and do housekeeping
 which we will describe in the next chapter on processes.
 </p>
 <p>Events are critical to understanding how the user interface works.
-In brief, there is a <span class="sansserif">PasteUpMorph</span> which is the screen background
+In brief, there is a <code>PasteUpMorph</code> which is the screen background
 graphic and the associated <em>World State</em>.  When you <kbd>Right-Click</kbd>
 on this morph, it is the one which brings up the World Menu.
-The World State tracks the cursor, which is a <span class="sansserif">HandMorph</span> and
+The World State tracks the cursor, which is a <code>HandMorph</code> and
 as Morphs change position and appearance, also keeps
-a <span class="sansserif">DamageRecorder</span> to track what parts of the display have changed
+a <code>DamageRecorder</code> to track what parts of the display have changed
 so that only the &ldquo;damaged&rdquo; areas need be redrawn.
 </p>
-<p>As <span class="sansserif">MouseMoveEvent</span>s are generated, the <span class="sansserif">HandMorph</span> adjusts
+<p>As <code>MouseMoveEvent</code>s are generated, the <code>HandMorph</code> adjusts
 its screen position.  When mouse and keystroke events arrive,
-the <span class="sansserif">HandMorph</span> coordinates the &ldquo;dispatch&rdquo; of events to
+the <code>HandMorph</code> coordinates the &ldquo;dispatch&rdquo; of events to
 the proper morph under the hand as well as displaying tool tips
 and carrying morphs in transit during drag operations.
 </p>
-<p>As we saw above with <span class="sansserif">ColorClickEllipse</span>, any morph may
-override default <span class="sansserif">Morph</span> methods to assert that it handles
+<p>As we saw above with <code>ColorClickEllipse</code>, any morph may
+override default <code>Morph</code> methods to assert that it handles
 various user events and the methods which take the
 associated event objects when events arrive.
 </p>
-<p>Basically, user input events are generated, a <span class="sansserif">HandMorph</span>
+<p>Basically, user input events are generated, a <code>HandMorph</code>
 reflects any cursor movement, morphs react to events, each long running
 task gets a time slice and makes some progress,
 any display changes are updated on the screen, and the next step

@@ -92,12 +92,12 @@ Next: <a href="Collections-detailed.html" accesskey="n" rel="next">Collections d
 <hr>
 <span id="Fun-with-collections-1"></span><h3 class="section">4.3 Fun with collections</h3>
 <p>A Collection is a grouping of objects. Arrays and Lists are
-collections.  We already know a <span class="sansserif">String</span> is a collection;
+collections.  We already know a <code>String</code> is a collection;
 precisely a collection of characters.  Many kinds of Collection have
 similar behaviors.
 </p>
 <span id="index-array"></span>
-<p>An <span class="sansserif">Array</span> is a fixed size collection, and unlike a string it can
+<p>An <code>Array</code> is a fixed size collection, and unlike a string it can
 contain any kind of literal enclosed in <code>#(&nbsp;)</code>:
 </p><div class="display">
 <pre class="display"><span class="sansserif">&quot;array of numbers&quot;
@@ -160,7 +160,7 @@ arithmetic operations:
 </pre></div>
 
 <p>To get an array of natural numbers from 1 to 100, we use the keyword
-message <span class="sansserif">#to:</span>
+message <code>#to:</code>
 </p>
 <div class="display">
 <pre class="display"><span class="sansserif">(1 to: 100) asArray
@@ -171,9 +171,9 @@ message <span class="sansserif">#to:</span>
 92 93 94 95 96 97 98 99 100)</span>
 </pre></div>
 
-<p>In this line of code, the message <span class="sansserif">#to:</span> is sent to <code>1</code>
+<p>In this line of code, the message <code>#to:</code> is sent to <code>1</code>
 with the argument <code>100</code>. It returns an interval object. The
-message <span class="sansserif">#asArray</span> sent to the interval returns an array.
+message <code>#asArray</code> sent to the interval returns an array.
 </p>
 <div class="float"><span id="exeNegativeIntegers"></span>
 <blockquote class="indentedblock">
@@ -187,8 +187,8 @@ array of integer numbers ranging from -80 to 50.</em>
 <span id="index-collection_002c-OrderedCollection"></span>
 <span id="index-collection_002c-add_003a"></span>
 <p>The size of an array is fixed, it can not grow. An
-<span class="sansserif">OrderedCollection</span> is a dynamic, ordered collection, it grows
-when adding element with the <span class="sansserif">#add:</span> message:
+<code>OrderedCollection</code> is a dynamic, ordered collection, it grows
+when adding element with the <code>#add:</code> message:
 </p><div class="float"><span id="dynamicSize"></span>
 <div class="display">
 <pre class="display"><span class="sansserif">| fibo | 
@@ -222,7 +222,7 @@ enumerators. Enumerators operate on each element of a collection.
 </p>
 <span id="index-collection_002c-set-operations-_0028union_002c-intersection_002c-difference_0029"></span>
 <p>Set operations between two collections are computed with the
-<span class="sansserif">#union:</span>, <span class="sansserif">#intersection:</span> and <span class="sansserif">#difference:</span> messages.
+<code>#union:</code>, <code>#intersection:</code> and <code>#difference:</code> messages.
 </p><div class="float"><span id="setOpe"></span>
 <div class="display">
 <pre class="display"><span class="sansserif">#(1 2 3 4 5) intersection: #(3 4 5 6 7)
@@ -252,7 +252,7 @@ comparing objects later.
 <span id="index-collection_002c-select_003a"></span>
 <span id="index-collection_002c-enumerator-mechanism"></span>
 <span id="index-block"></span>
-<p>To select the prime numbers from 1 to 100, we use the <span class="sansserif">#select:</span>
+<p>To select the prime numbers from 1 to 100, we use the <code>#select:</code>
 enumerator. This message is sent to a collection, then it will select
 each element of the collection returning true to a test condition:
 </p>
@@ -264,7 +264,7 @@ each element of the collection returning true to a test condition:
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 4.3: </strong>Select prime numbers between 1 and 100</p></div></div>
-<p>This example introduces the message <span class="sansserif">#select:</span> and block of code, a
+<p>This example introduces the message <code>#select:</code> and block of code, a
 primordial constituent element of the Cuis-Smalltalk model. A block of code,
 delimited by square brackets, is a piece of code for later
 execution(s). Let&rsquo;s explain how this script is evaluated:
@@ -274,7 +274,7 @@ execution(s). Let&rsquo;s explain how this script is evaluated:
 
 </li><li> the block of code <code>[:n | n isPrime]</code> is instantiated (created)
 
-</li><li> the message <span class="sansserif">#select:</span> is sent to the interval with the
+</li><li> the message <code>#select:</code> is sent to the interval with the
  block of code as the argument
 
 </li><li> for each integer of the interval, the block of code is invoked
@@ -294,8 +294,7 @@ can be used multiple times.
 <pre class="display"><span class="sansserif">| add2 |
  add2 := [:n| n + 2].
  { add2 value: 2. add2 value: 7 }.
-&rArr;  #(4 9)
-</span>
+&rArr;  #(4 9)</span>
 </pre></div>
 
 
@@ -304,7 +303,7 @@ the need of index.  By this we mean that they are simple to get right.
 We like simple!
 </p>
 <p>To get an idea of how useful enumerators are, take a browse at the
-<span class="sansserif">Collection</span> class in the method category <code>enumerating</code>.
+<code>Collection</code> class in the method category <code>enumerating</code>.
 </p>
 <div class="float"><span id="oddNumbers"></span>
 <blockquote class="indentedblock">
@@ -315,8 +314,8 @@ We like simple!
 
 <div class="float-caption"><p><strong>Exercise 4.4: </strong>Odd integers</p></div></div>
 <p>You want to know the number of prime numbers under 100.  Just send
-the message <span class="sansserif">#size</span> to the answered collection at
-<a href="#prime100">Example 4.3</a>. The parenthesis are mandatory to ensure the <span class="sansserif">#size</span>
+the message <code>#size</code> to the answered collection at
+<a href="#prime100">Example 4.3</a>. The parenthesis are mandatory to ensure the <code>#size</code>
 is sent last to the resulting collection:
 </p><div class="float"><span id="qtyPrime100"></span>
 <div class="display">
@@ -360,7 +359,7 @@ collection of the odd integers in [1 ; 100] which are not prime.</em>
 
 <div class="float-caption"><p><strong>Exercise 4.7: </strong>Odd and non prime integers</p></div></div>
 <span id="index-collection_002c-collect_003a"></span>
-<p>A sister enumerator to <span class="sansserif">#select:</span> is <span class="sansserif">#collect:</span>. It returns a
+<p>A sister enumerator to <code>#select:</code> is <code>#collect:</code>. It returns a
 new collection of the same size, with each element transformed by a
 block of code. When searching perfect cubic roots, it is useful to
 know about some cubes:
@@ -438,7 +437,7 @@ family of <em>repeat</em>, <em>while</em> and <em>for</em> loops.
 <span id="index-loop_002c-for-1"></span>
 <span id="index-for-loop-1"></span>
 <p>A simple <em>for</em> loop between two integer values is written with
-the keyword message <span class="sansserif">#to:do:</span>, the last argument is a block of code
+the keyword message <code>#to:do:</code>, the last argument is a block of code
 executed for each index:
 </p><div class="float"><span id="forLoop"></span>
 <div class="display">
@@ -465,7 +464,7 @@ inserted:
 <span id="index-repeat-1"></span>
 <span id="index-Fibonacci-sequence"></span>
 <p>A repeated loop without index or any collection is written with the
-<span class="sansserif">#timesRepeat:</span> message:
+<code>#timesRepeat:</code> message:
 </p><div class="float"><span id="repeatLoop"></span>
 <div class="display">
 <pre class="display"><span class="sansserif">| fibo |

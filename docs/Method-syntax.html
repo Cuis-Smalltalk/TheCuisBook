@@ -103,8 +103,8 @@ class. A class is defined by sending a message to an existing class,
 asking it to create a subclass, so there is no special syntax required
 for defining classes.
 </p>
-<p>Here is the method <span class="sansserif">keyStroke:</span> in the class
-<span class="sansserif">SpaceWar</span>. The usual convention is to refer to methods as
+<p>Here is the method <code>keyStroke:</code> in the class
+<code>SpaceWar</code>. The usual convention is to refer to methods as
 <code>ClassName&gt;&gt;methodName</code>, so we call this method
 <code>SpaceWar&gt;&gt;keyStroke:</code>)
 </p>
@@ -125,7 +125,7 @@ key = Character arrowDown ifTrue: [&#x2191; ships first fireTorpedo]</span>
 </p>
 <ul>
 <li> the method pattern, containing the name (<em>i.e.</em>,
- <span class="sansserif">keyStroke:</span>) and any arguments, here <code>event</code> a
+ <code>keyStroke:</code>) and any arguments, here <code>event</code> a
  keyboard event,
 
 </li><li> comments (these may occur anywhere, but the convention is to
@@ -146,12 +146,12 @@ value of <code>self</code>.
 </p>
 <p>Arguments and local variables should always start with lower case
 letters. Names starting with upper-case letters are assumed to be
-global variables. Class names, like <span class="sansserif">Character</span>, for example,
+global variables. Class names, like <code>Character</code>, for example,
 are simply global variables referring to the object representing
 that class.
 </p>
 <p>As you might suspect from <a href="Communicating-entities.html#classesCount">Example 2.2</a>, <code>Smalltalk allClasses size</code> just
-sends the <span class="sansserif">#allClasses</span> method to a dictionary named <code>Smalltalk</code>.
+sends the <code>#allClasses</code> method to a dictionary named <code>Smalltalk</code>.
 As with any other object, you can inspect this dictionary.  You can note a case of
 self-reference here: the value of <code>Smalltalk at: #Smalltalk</code> is <code>Smalltalk</code>.
 </p>

@@ -34,12 +34,12 @@ K. Dickey, H. Fernandes, J. Vuletich
 @macro assign
 @U{2190}
 @end macro
-@alias class=sansserif
+@alias class=code
 @alias smalltalk=code
-@alias method=sansserif
+@alias method=code
 @alias label=command
 @macro msg{messageName}
-@sansserif{#\messageName\}
+@code{#\messageName\}
 @end macro
 @c Smalltalk example
 @macro smalltalkExample{example}

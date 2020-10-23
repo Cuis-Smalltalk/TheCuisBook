@@ -145,7 +145,7 @@ Next: <a href="The-Exercises.html" accesskey="n" rel="next">The Exercises</a>, P
 <p>Identifiers that start with upper case letters are global variables,
  class variables, pool dictionaries or class
  names. <code>Smalltalk</code> is a global variable, an instance of the
- class <span class="sansserif">SystemDictionary</span>.
+ class <code>SystemDictionary</code>.
 </p>
 <span id="index-receiver"></span>
 </dd>
@@ -180,7 +180,7 @@ Next: <a href="The-Exercises.html" accesskey="n" rel="next">The Exercises</a>, P
 <dd>
 <p>A dollar sign introduces a literal character: <code>$a</code> is the
  literal for ‘a’. Instances of non-printing characters can be obtained
- by sending appropriately named messages to the <span class="sansserif">Character</span>
+ by sending appropriately named messages to the <code>Character</code>
  class, such as <code>Character space</code> and <code>Character
  tab</code>.
 </p>
@@ -273,7 +273,7 @@ Next: <a href="The-Exercises.html" accesskey="n" rel="next">The Exercises</a>, P
 </dd>
 <dt><strong>Unary messages.</strong></dt>
 <dd>
-<p>Unary messages consist of a single word (like <span class="sansserif">#factorial</span>)
+<p>Unary messages consist of a single word (like <code>#factorial</code>)
  sent to a receiver (like 3).
 </p>
 <span id="index-message_002c-binary-1"></span>
@@ -289,7 +289,7 @@ Next: <a href="The-Exercises.html" accesskey="n" rel="next">The Exercises</a>, P
 <dt><strong>Keyword messages.</strong></dt>
 <dd>
 <p>Keyword messages consist of multiple keywords (like
- <span class="sansserif">#raisedTo:modulo:</span>), each ending with a colon and taking a single
+ <code>#raisedTo:modulo:</code>), each ending with a colon and taking a single
  argument. In the expression <code>2 raisedTo: 6 modulo: 10</code>, the
  message selector <code>raisedTo:modulo:</code> takes the two arguments
  6 and 10, one following each colon. We send the message to the
@@ -316,8 +316,8 @@ Next: <a href="The-Exercises.html" accesskey="n" rel="next">The Exercises</a>, P
 <dd>
 <p>Semicolons can be used to send a cascade of messages to a single
  receiver. In <code>Transcript show: 'hello'; cr</code> we first send
- the keyword message <span class="sansserif">#show: &rsquo;hello&rsquo;</span> to the receiver
- <span class="sansserif">Transcript</span>, and then we send the unary message <span class="sansserif">#cr</span> to
+ the keyword message <code>#show: 'hello'</code> to the receiver
+ <code>Transcript</code>, and then we send the unary message <code>#cr</code> to
  the same receiver.
 </p>
 </dd>

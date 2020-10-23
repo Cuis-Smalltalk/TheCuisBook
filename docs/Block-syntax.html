@@ -93,7 +93,7 @@ Next: <a href="Control-flow-with-block-and-message.html" accesskey="n" rel="next
 <span id="Block-syntax-1"></span><h3 class="section">5.4 Block syntax</h3>
 <p>Blocks provide a mechanism to defer the evaluation of expressions. A
 block is essentially an anonymous function. A block is evaluated by
-sending it the message <span class="sansserif">#value</span>. The block answers the value of the last
+sending it the message <code>#value</code>. The block answers the value of the last
 expression in its body, unless there is an explicit return (with
 &#x2191;), in which case it does not answer any value.
 </p>
@@ -105,8 +105,8 @@ expression in its body, unless there is an explicit return (with
 <p>Blocks may take parameters, each of which is declared with a leading
 colon. A vertical bar separates the parameter declaration(s) from the
 body of the block. To evaluate a block with one parameter, you must
-send it the message <span class="sansserif">#value:</span> with one argument. A two-parameter
-block must be sent <span class="sansserif">#value:value:</span>, and so on, up to 4 arguments:
+send it the message <code>#value:</code> with one argument. A two-parameter
+block must be sent <code>#value:value:</code>, and so on, up to 4 arguments:
 </p>
 <div class="display">
 <pre class="display"><span class="sansserif">[ :x | 1 + x ] value: 2
@@ -116,7 +116,7 @@ block must be sent <span class="sansserif">#value:value:</span>, and so on, up t
 </pre></div>
 
 <p>If you have a block with more than four parameters, you must use
-<span class="sansserif">#valueWithArguments:</span> and pass the arguments in an array. (A block
+<code>#valueWithArguments:</code> and pass the arguments in an array. (A block
 with a large number of parameters is often a sign of a design
 problem.)
 </p>
@@ -147,7 +147,7 @@ x := 1.
 </pre></div>
 
 <span id="index-block_002c-assigned-to-a-variable"></span>
-<p>Blocks are instances of the class <span class="sansserif">BlockClosure</span>. This means
+<p>Blocks are instances of the class <code>BlockClosure</code>. This means
 that they are objects, so they can be assigned to variables and passed
 as arguments just like any other object.
 </p>
@@ -180,7 +180,7 @@ rewrite <a href="#computeDivisors">Example 5.2</a> to avoid code duplication?</e
 <p>The <code>SpaceWar&gt;&gt;teleport:</code> method contains a nice example
 using a block to avoid code duplication to generate random abscissa
 and ordinate coordinates. Each time a new coordinate is needed, the
-message <span class="sansserif">#value</span> is sent to the block of code:
+message <code>#value</code> is sent to the block of code:
 </p>
 <div class="float"><span id="teleportMethod"></span>
 <div class="display">
@@ -195,7 +195,7 @@ message <span class="sansserif">#value</span> is sent to the block of code:
     morphPosition: randomCoordinate value @ randomCoordinate value</span>
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 5.3: </strong><span class="sansserif">teleport:</span> method</p></div></div>
+<div class="float-caption"><p><strong>Example 5.3: </strong><code>teleport:</code> method</p></div></div>
 
 <span id="index-control-flow"></span>
 <hr>

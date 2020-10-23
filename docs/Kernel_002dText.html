@@ -91,15 +91,15 @@ Next: <a href="Spacewar_0021-States-and-Behaviors.html" accesskey="n" rel="next"
 </div>
 <hr>
 <span id="Kernel_002dText-1"></span><h3 class="section">3.5 Kernel-Text</h3>
-<p>Notably, this category contains classes <span class="sansserif">Character</span>, <span class="sansserif">String</span>
-and <span class="sansserif">Symbol</span>. <span class="sansserif">String</span> instances are collections of
-<span class="sansserif">Character</span> instances.
+<p>Notably, this category contains classes <code>Character</code>, <code>String</code>
+and <code>Symbol</code>. <code>String</code> instances are collections of
+<code>Character</code> instances.
 </p>
 <span id="index-character"></span>
 <p><strong>Character.</strong> An individual character is written prefixed with a
 &ldquo;$&rdquo;, for example: <code>$A</code>. It can be defined with the class side method
-<span class="sansserif">numericValue:</span> or converted from an integer instance with the
-<span class="sansserif">#asCharacter</span>:
+<code>numericValue:</code> or converted from an integer instance with the
+<code>#asCharacter</code>:
 </p>
 <div class="display">
 <pre class="display"><span class="sansserif">Character numericValue: 65 &rArr; $A
@@ -110,7 +110,7 @@ and <span class="sansserif">Symbol</span>. <span class="sansserif">String</span>
 <code>Character tab</code>, <code>Character lf</code>, etc.
 </p>
 <p>As each string is collection of characters, when enumerating a string we
-can use the <span class="sansserif">Character</span> instance methods:
+can use the <code>Character</code> instance methods:
 </p>
 <div class="float"><span id="apples12"></span>
 <div class="display">
@@ -129,7 +129,7 @@ reject the numeric characters.</em>
 <div class="float-caption"><p><strong>Exercise 3.7: </strong>Select apples</p></div></div>
 <span id="index-method_002c-category-2"></span>
 <span id="index-string-1"></span>
-<p><strong>String.</strong> <span class="sansserif">String</span> is a very large class, it comes with
+<p><strong>String.</strong> <code>String</code> is a very large class, it comes with
 more than 200 methods. It is useful to browse these method categories
 to see common ways to group methods.
 </p>
@@ -143,9 +143,9 @@ to the first method name starting with an &ldquo;f&rdquo;.
 </p>
 <p>Consider the case where you need to search for a substring, a string within a
 string: when browsing
-the <span class="sansserif">String</span> class, search for method categories named like
+the <code>String</code> class, search for method categories named like
 <strong>finding...</strong> or <strong>accessing</strong>. There you find a family of
-<span class="sansserif">findXXX</span> methods. Read the comments at the beginning of these
+<code>findXXX</code> methods. Read the comments at the beginning of these
 methods:
 </p>
 <div class="display">

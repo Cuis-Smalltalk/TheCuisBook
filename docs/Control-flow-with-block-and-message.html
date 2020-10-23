@@ -102,7 +102,7 @@ and collections, with blocks as arguments.
 <span id="index-boolean"></span>
 <span id="Test"></span><h4 class="subheading">Test</h4>
 <p>Conditionals are expressed by sending one of the messages
-<span class="sansserif">#ifTrue:</span>, <span class="sansserif">#ifFalse:</span> or <span class="sansserif">#ifTrue:ifFalse:</span> to the result
+<code>#ifTrue:</code>, <code>#ifFalse:</code> or <code>#ifTrue:ifFalse:</code> to the result
 of a boolean expression:
 </p>
 <div class="display">
@@ -112,13 +112,13 @@ of a boolean expression:
 &rArr; &rsquo;bigger&rsquo;</span>
 </pre></div>
 
-<p>The class <span class="sansserif">Boolean</span> offers a fascinating insight into how much
+<p>The class <code>Boolean</code> offers a fascinating insight into how much
 of the Smalltalk language has been pushed into the class
-library. <span class="sansserif">Boolean</span> is the abstract superclass of the
-<em>Singleton</em> classes <span class="sansserif">True</span> and <span class="sansserif">False</span><a id="DOCF19" href="#FOOT19"><sup>19</sup></a>.
+library. <code>Boolean</code> is the abstract superclass of the
+<em>Singleton</em> classes <code>True</code> and <code>False</code><a id="DOCF19" href="#FOOT19"><sup>19</sup></a>.
 </p>
-<p>Most of the behaviour of <span class="sansserif">Boolean</span> instances can be understood
-by considering the method <span class="sansserif">ifTrue:ifFalse:</span>, which takes two
+<p>Most of the behaviour of <code>Boolean</code> instances can be understood
+by considering the method <code>ifTrue:ifFalse:</code>, which takes two
 blocks as arguments:
 </p>
 <div class="display">
@@ -126,8 +126,8 @@ blocks as arguments:
 &rArr; &rsquo;bigger&rsquo;</span>
 </pre></div>
 
-<p>The method is abstract in <span class="sansserif">Boolean</span>. It is implemented in its
-concrete subclasses <span class="sansserif">True</span> and <span class="sansserif">False</span>:
+<p>The method is abstract in <code>Boolean</code>. It is implemented in its
+concrete subclasses <code>True</code> and <code>False</code>:
 </p>
 <div class="float"><span id="ifTrueIfFalse"></span>
 <div class="display">
@@ -143,8 +143,8 @@ False&gt;&gt;ifTrue: trueAlternativeBlock ifFalse: falseAlternativeBlock
 object, the object itself determines which method will be used to
 respond. In this case an instance of True simply evaluates the true
 alternative, while an instance of False evaluates the false
-alternative. All the abstract <span class="sansserif">Boolean</span> methods are implemented
-in this way for <span class="sansserif">True</span> and <span class="sansserif">False</span>. Look at another
+alternative. All the abstract <code>Boolean</code> methods are implemented
+in this way for <code>True</code> and <code>False</code>. Look at another
 example:
 </p>
 <div class="float"><span id="negation"></span>
@@ -156,7 +156,7 @@ example:
 
 <div class="float-caption"><p><strong>Example 5.5: </strong>Implementing negation</p></div></div>
 <p>Booleans offer several useful convenience methods, such as
-<span class="sansserif">ifTrue:</span>, <span class="sansserif">ifFalse:</span>, <span class="sansserif">ifFalse:ifTrue</span>. You also
+<code>ifTrue:</code>, <code>ifFalse:</code>, <code>ifFalse:ifTrue</code>. You also
 have the choice between eager and lazy conjunctions and disjunctions:
 </p>
 <div class="display">
@@ -168,28 +168,28 @@ have the choice between eager and lazy conjunctions and disjunctions:
 &rArr; false &quot;argument block is never evaluated, so no exception&quot;</span>
 </pre></div>
 
-<p>In the first example, both <span class="sansserif">Boolean</span> subexpressions are
-evaluated, since <code>&amp;</code> takes a <span class="sansserif">Boolean</span> argument. In
+<p>In the first example, both <code>Boolean</code> subexpressions are
+evaluated, since <code>&amp;</code> takes a <code>Boolean</code> argument. In
 the second and third examples, only the first is evaluated, since
-<span class="sansserif">and:</span> expects a <span class="sansserif">Block</span> as its argument. The
-<span class="sansserif">Block</span> is evaluated only if the first argument is true.
+<code>and:</code> expects a <code>Block</code> as its argument. The
+<code>Block</code> is evaluated only if the first argument is true.
 </p>
 <div class="float"><span id="implementingAndOr"></span>
 <blockquote class="indentedblock">
-<p><em>Try to imagine how <span class="sansserif">and:</span> and <span class="sansserif">or:</span> are  implemented.</em>
+<p><em>Try to imagine how <code>and:</code> and <code>or:</code> are  implemented.</em>
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong>Exercise 5.2: </strong>Implementing <span class="sansserif">and:</span> and <span class="sansserif">or:</span></p></div></div>
+<div class="float-caption"><p><strong>Exercise 5.2: </strong>Implementing <code>and:</code> and <code>or:</code></p></div></div>
 
 <p>In the code fragment of <a href="#shipLost">Example 5.6</a>, we test if a ship is lost in
 deep space. It depends on two conditions:
 </p><ol>
 <li> the ship is out of the game play area, tested with the
-  <span class="sansserif">#isInOuterSpace</span> message,
+  <code>#isInOuterSpace</code> message,
 
 </li><li> the ship takes the direction of deep space, tested with the
-  <span class="sansserif">#isGoingOuterSpace</span> message.
+  <code>#isGoingOuterSpace</code> message.
 
 </li></ol>
 
@@ -222,7 +222,7 @@ an example of a very procedural loop:
 n &rArr; 1024</span>
 </pre></div>
 
-<p><span class="sansserif">#whileFalse:</span> reverses the exit condition:
+<p><code>#whileFalse:</code> reverses the exit condition:
 </p>
 <div class="display">
 <pre class="display"><span class="sansserif">n := 1.
@@ -231,9 +231,9 @@ n &rArr; 1024</span>
 </pre></div>
 
 <p>You can check all the alternatives in the <code>controlling</code> method
-category of the class <span class="sansserif">BlockClosure</span>.
+category of the class <code>BlockClosure</code>.
 </p>
-<p><span class="sansserif">#timesRepeat:</span> offers a simple way to implement a fixed iteration:
+<p><code>#timesRepeat:</code> offers a simple way to implement a fixed iteration:
 </p>
 <div class="display">
 <pre class="display"><span class="sansserif">n := 1.
@@ -241,7 +241,7 @@ category of the class <span class="sansserif">BlockClosure</span>.
 n &rArr; 1024</span>
 </pre></div>
 
-<p>We can also send the message <span class="sansserif">#to:do:</span> to a number which then acts
+<p>We can also send the message <code>#to:do:</code> to a number which then acts
 as the initial value of a loop counter. The two arguments are the
 upper bound, and a block that takes the current value of the loop
 counter as its argument:
@@ -253,9 +253,9 @@ result &rArr; &rsquo;1 2 3 4 5 6 7 8 9 10 &rsquo;</span>
 </pre></div>
 
 <p>You can check all the alternatives in the <code>intervals</code> method
-category of the class <span class="sansserif">Number</span>.
+category of the class <code>Number</code>.
 </p>
-<p><strong>Tip.</strong> If the exit condition of method like <span class="sansserif">whileTrue:</span>
+<p><strong>Tip.</strong> If the exit condition of method like <code>whileTrue:</code>
 is never satisfied, you may have implemented an <em>infinite loop</em>.
 Just type <kbd>Cmd-period</kbd> to get a debugger.  We will learn about how
 to handle this condition in the section on debugging, below.
@@ -267,7 +267,7 @@ to handle this condition in the section on debugging, below.
 <h5><a id="FOOT19" href="#DOCF19">(19)</a></h3>
 <p>A
 singleton class is designed to have only one instance. Each of
-<span class="sansserif">True</span> and <span class="sansserif">False</span> classes has one instance,
+<code>True</code> and <code>False</code> classes has one instance,
 <code>true</code> and <code>false</code>.</p>
 </div>
 <hr>

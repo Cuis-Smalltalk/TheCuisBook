@@ -113,21 +113,21 @@ contextual information on the selected item.
 </p>
 <p>Again, Class methods apply to the Class itself.  Instance Methods apply for 
 all instances modeled by the class.  We saw above that
-the class <span class="sansserif">Fraction</span>
-has a method <span class="sansserif">#numerator:denominator:</span> which is used to get a new instance of
-a <code>Fraction</code>.  There is only one <span class="sansserif">Fraction</span> class object.
-Messages like <span class="sansserif">#squared</span> and <span class="sansserif">#abs</span> are sent to any <code>Fraction</code>
+the class <code>Fraction</code>
+has a method <code>#numerator:denominator:</code> which is used to get a new instance of
+a <code>Fraction</code>.  There is only one <code>Fraction</code> class object.
+Messages like <code>#squared</code> and <code>#abs</code> are sent to any <code>Fraction</code>
 instance, of which there are many.
 </p>
 <p>Up to now we have attempted to be very careful with definitions, but 
 you know that when we say &ldquo;a fraction&rdquo; we
-mean &ldquo;an instance of the class <span class="sansserif">Fraction</span>&rdquo;.
+mean &ldquo;an instance of the class <code>Fraction</code>&rdquo;.
 From here our language will be more casual.
 </p>
 <div class="float"><span id="floatInfo"></span>
 <blockquote class="indentedblock">
 <p><em>When the
-<span class="sansserif">Float</span> class is selected, what is the information provided by
+<code>Float</code> class is selected, what is the information provided by
 the text pane?</em>
 </p></blockquote>
 
@@ -135,7 +135,7 @@ the text pane?</em>
 <div class="float-caption"><p><strong>Exercise 3.1: </strong>Float class information</p></div></div>
 <p>We have spent much time here because it is important to avoid
 confusion between instance methods and class
-methods. Let&rsquo;s consider the <span class="sansserif">Float</span> class as an example.
+methods. Let&rsquo;s consider the <code>Float</code> class as an example.
 </p>
 <span id="index-class_002c-class-method-1"></span>
 <p><strong>Class Methods.</strong> In <a href="#ch03_002dfloatClassSide">Figure 3.1</a> the methods listed are
@@ -164,7 +164,7 @@ and should see <code>Float epsilon</code>.
 Click elsewhere on the Workspace to make this menu go away.
 </p>
 <p>Nevertheless, you can not send a class message to an instance of
-<span class="sansserif">Float</span>, it throws an error and opens the red debugger window.
+<code>Float</code>, it throws an error and opens the red debugger window.
 </p>
 <p>Just close the debug window for now to ignore the result.
 We will look into this in more detail later.
@@ -195,7 +195,7 @@ Integer primesUpTo: 20
 <div class="float"><span id="ch03_002dfloatClassSide"></span>
 <div align="center"><img src="ch03-floatClassSide.png" alt="ch03-floatClassSide">
 </div>
-<div class="float-caption"><p><strong>Figure 3.1: </strong>Class methods in <span class="sansserif">Float</span></p></div></div>
+<div class="float-caption"><p><strong>Figure 3.1: </strong>Class methods in <code>Float</code></p></div></div>
 <span id="index-class_002c-instance-method-2"></span>
 <p><strong>Instance methods.</strong> In <a href="#ch03_002dfloatInstanceSide">Figure 3.2</a>, the methods
 listed are instance side, in the browser the <code>instance</code> button
@@ -238,7 +238,7 @@ OrderedCollection new add: Float pi; add: Float e; yourself
 <div class="float"><span id="ch03_002dfloatInstanceSide"></span>
 <div align="center"><img src="ch03-floatInstanceSide.png" alt="ch03-floatInstanceSide">
 </div>
-<div class="float-caption"><p><strong>Figure 3.2: </strong>Instance methods in <span class="sansserif">Float</span></p></div></div>
+<div class="float-caption"><p><strong>Figure 3.2: </strong>Instance methods in <code>Float</code></p></div></div>
 
 <p>Here another example from Spacewar! mixing class and instance
 methods. This portion of code updates the orientation of a torpedo

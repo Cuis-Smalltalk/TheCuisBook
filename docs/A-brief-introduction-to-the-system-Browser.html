@@ -123,7 +123,7 @@ the other categories as <strong>Kernel-Text</strong> and
 <p>Next to the right are the classes in the selected class category. They
 are nicely presented in a parent-child class hierarchy. When a class is
 first selected in this pane, its declaration appears in the large pane
-bellow, the <span class="sansserif">Number</span> class declaration is:
+bellow, the <code>Number</code> class declaration is:
 </p>
 <div class="display">
 <pre class="display"><span class="sansserif">Magnitude subclass: #Number
@@ -136,17 +136,17 @@ bellow, the <span class="sansserif">Number</span> class declaration is:
 <p>A few important points in this declaration:
 </p>
 <ul>
-<li> <em><span class="sansserif">Number</span></em> is a subclass of <em><span class="sansserif">Magnitude</span></em>.
+<li> <em><code>Number</code></em> is a subclass of <em><code>Magnitude</code></em>.
    This means
-   <span class="sansserif">Number</span> is a kind of specialized <span class="sansserif">Magnitude</span>.
+   <code>Number</code> is a kind of specialized <code>Magnitude</code>.
 
 </li><li> the declaration itself is Smalltalk code, indeed the message
-   <span class="sansserif">#subclass:instanceVariableNames:classVariableNames:poolDictionaries:category:</span>
-   was sent to <span class="sansserif">Magnitude</span> to create this class.
+   <code>#subclass:instanceVariableNames:classVariableNames:poolDictionaries:category:</code>
+   was sent to <code>Magnitude</code> to create this class.
 
-</li><li> the <code>subclass:</code> argument <span class="sansserif">Number</span> is prefixed
+</li><li> the <code>subclass:</code> argument <code>Number</code> is prefixed
    with &ldquo;#&rdquo;, it is a symbol, a kind of unique string. Indeed when
-   declaring the <span class="sansserif">Number</span> class, the system does not know about it
+   declaring the <code>Number</code> class, the system does not know about it
    yet, so it is named as a symbol.
 
 </li><li> The <code>instanceVariableNames:</code> argument is a string:
@@ -157,8 +157,8 @@ bellow, the <span class="sansserif">Number</span> class declaration is:
 
 <p>A subclass inherits behaviors from its parent superclass, and so only needs
 to describe what is different from its superclass.  An instance
-of <span class="sansserif">Number</span> adds methods (which define behaviors) unknown to an instance
-of <span class="sansserif">Magnitude</span>.  We will explore this in detail as we go forward.
+of <code>Number</code> adds methods (which define behaviors) unknown to an instance
+of <code>Magnitude</code>.  We will explore this in detail as we go forward.
 </p>
 <span id="index-class_002c-comment"></span>
 <p>To learn about the intend of a class, it is good practice to <strong>always</strong>
@@ -172,7 +172,7 @@ to edit the comment of the selected class.
 <p>To the right of the class panel is the method categories panel.
 A class may have with tens of methods, so grouping
 them by category helps other users orient to find related methods.
-As a reference, <span class="sansserif">Number</span>
+As a reference, <code>Number</code>
 has more than 100 instance side methods implemented in
 itself<a id="DOCF12" href="#FOOT12"><sup>12</sup></a>. Clicking the <code>arithmetic</code> category
 directly gives access to related methods in the next and last pane at
@@ -181,7 +181,7 @@ the right.
 <div class="float"><span id="stringArith"></span>
 <blockquote class="indentedblock">
 <p><em>How many methods is there
-in the <strong>arithmetic</strong> method category of the <span class="sansserif">String</span>
+in the <strong>arithmetic</strong> method category of the <code>String</code>
 class?</em>
 </p></blockquote>
 
@@ -197,7 +197,7 @@ a class name to match.  Try it with <code>String</code>.
 
 <span id="index-class_002c-instance-method"></span>
 <p>In the Browser, once a method is selected &ndash; in
-<a href="#ch02_002dbrowserDetailed">Figure 2.1</a>, <span class="sansserif">abs</span> method &ndash; the bottom part
+<a href="#ch02_002dbrowserDetailed">Figure 2.1</a>, <code>abs</code> method &ndash; the bottom part
 shows its source code, ready to be explored or edited. Again, often,
 you will read a small comment just after the method name, it is
 surrounded by double quotes.
@@ -212,12 +212,12 @@ on the class name will open a Browser on the named class:
 <li> In the Workspace, type <em><code>2 class</code></em> and print
    with <kbd>Ctrl-p</kbd>,
 
-</li><li> <span class="sansserif">SmallInteger</span> is printed and automatically highlighted as the current selection,
+</li><li> <code>SmallInteger</code> is printed and automatically highlighted as the current selection,
 
-</li><li> Invoke the Browser on the selected <span class="sansserif">SmallInteger</span>
+</li><li> Invoke the Browser on the selected <code>SmallInteger</code>
    class with <kbd>Ctrl-b</kbd>,
 
-</li><li> A new Browser instance opens on the <span class="sansserif">SmallInteger</span>, ready to
+</li><li> A new Browser instance opens on the <code>SmallInteger</code>, ready to
    be explored.
 
 </li></ul>

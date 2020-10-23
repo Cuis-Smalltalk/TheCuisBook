@@ -95,9 +95,9 @@ Next: <a href="Fun-with-variables.html" accesskey="n" rel="next">Fun with variab
 <span id="index-class_002c-protocol"></span>
 <span id="index-protocol"></span>
 
-<p>The <span class="sansserif">String</span> class also inherits behavior from its
-ancestor classes. Indeed <span class="sansserif">String</span> is a subclass of
-<span class="sansserif">ArrayedCollection</span>. The direct consequence is that when
+<p>The <code>String</code> class also inherits behavior from its
+ancestor classes. Indeed <code>String</code> is a subclass of
+<code>ArrayedCollection</code>. The direct consequence is that when
 searching for some specific behavior, you may need to explore the
 parent classes too. The whole behavior of a class, defined in the
 class itself and its parents is called its <em>protocol</em>.
@@ -109,7 +109,7 @@ options:
 </p>
 <ol>
 <li> <strong>Explore the protocol.</strong> In the class pane of the
-   browser, do ...select <span class="sansserif">String</span> class &rarr;
+   browser, do ...select <code>String</code> class &rarr;
    click the right mouse button &rarr; in the menu select
    <code>Browse protocol (p)</code>... Alternatively, use the keyboard
    shortcut <kbd>Ctrl-p</kbd>.
@@ -117,27 +117,27 @@ options:
 <div class="float"><span id="ch03_002dbrowseProtocol"></span>
 <div align="center"><img src="ch03-browseProtocol.png" alt="ch03-browseProtocol">
 </div>
-<div class="float-caption"><p><strong>Figure 4.1: </strong>Browse <span class="sansserif">String</span> protocol</p></div></div>
-<p>The new window is a protocol browser for the <span class="sansserif">String</span>
-   class. At the left, we see a hierarchy of the <span class="sansserif">String</span>&rsquo;s ancestor
+<div class="float-caption"><p><strong>Figure 4.1: </strong>Browse <code>String</code> protocol</p></div></div>
+<p>The new window is a protocol browser for the <code>String</code>
+   class. At the left, we see a hierarchy of the <code>String</code>&rsquo;s ancestor
    classes.
    At the right are the method selectors for strings and, in parenthesis,
    the class where they are defined.  Methods defined in class
-   <span class="sansserif">String</span> are in bold type.
+   <code>String</code> are in bold type.
 </p>
 <p>Selecting one class there only shows the protocol starting from
-   this class down to the <span class="sansserif">String</span> class. If you select
-   <span class="sansserif">String</span> in the left panel, you see only method names defined in
-   the <span class="sansserif">String</span> class itself.
+   this class down to the <code>String</code> class. If you select
+   <code>String</code> in the left panel, you see only method names defined in
+   the <code>String</code> class itself.
 </p>
 <p>In <a href="#ch03_002dbrowseProtocol">Figure 4.1</a>, no specific class is selected,
-   therefore the whole <span class="sansserif">String</span> protocol is listed at the
-   right. The method <span class="sansserif">before:</span> implemented in
-   <span class="sansserif">SequenceableCollection</span> is selected and its source code is
+   therefore the whole <code>String</code> protocol is listed at the
+   right. The method <code>before:</code> implemented in
+   <code>SequenceableCollection</code> is selected and its source code is
    displayed on the large bottom pane.
 </p>
 </li><li> <strong>Explore the hierarchy.</strong> In the class pane of the
-   browser, do ...select <span class="sansserif">String</span> class &rarr;
+   browser, do ...select <code>String</code> class &rarr;
    click the right mouse button &rarr; in the menu select
    <code>Browse hierarchy (h)</code>... Alternatively, use the keyboard
    shortcut <kbd>Ctrl-h</kbd> or the button <code>hierarchy</code> on the
@@ -146,7 +146,7 @@ options:
 <div class="float"><span id="ch03_002dbrowseHierarchy"></span>
 <div align="center"><img src="ch03-browseHierarchy.png" alt="ch03-browseHierarchy">
 </div>
-<div class="float-caption"><p><strong>Figure 4.2: </strong>Browse the <span class="sansserif">String</span> hierarchy</p></div></div>
+<div class="float-caption"><p><strong>Figure 4.2: </strong>Browse the <code>String</code> hierarchy</p></div></div>
 <p>The hierarchy browser is very like the system browser with only two
    differences:
 </p>
@@ -154,8 +154,8 @@ options:
 <ul>
 <li> At the far left, the class categories pane is absent,
       
-</li><li> In the classes pane, the hierarchy of <span class="sansserif">String</span> is
-      printed. It makes easy to browse <span class="sansserif">String</span> parent and
+</li><li> In the classes pane, the hierarchy of <code>String</code> is
+      printed. It makes easy to browse <code>String</code> parent and
       child classes.
 
 </li></ul>
@@ -166,17 +166,16 @@ options:
 the protocol browser, it does not display the entire protocol
 of a class.  No inherited methods are shown, only those
 defined directly in the selected class. In <a href="#ch03_002dbrowseHierarchy">Figure 4.2</a>, the class
-<span class="sansserif">SequenceableCollection</span> is selected as well as its method
-<span class="sansserif">before:</span>.
+<code>SequenceableCollection</code> is selected as well as its method
+<code>before:</code>.
 </p>
-<p>The <span class="sansserif">before:</span> method extracts from a collection the element before a specified
-element. When inherited in <span class="sansserif">String</span>, those elements are
-<span class="sansserif">Character</span> instances:
+<p>The <code>before:</code> method extracts from a collection the element before a specified
+element. When inherited in <code>String</code>, those elements are
+<code>Character</code> instances:
 </p>
 <div class="display">
 <pre class="display"><span class="sansserif">&rsquo;1 + 3i&rsquo; before: $i
-&rArr; $3 
-</span>
+&rArr; $3</span>
 </pre></div>
 
 <p>Practice the tools and resolve the exercise bellow.
@@ -189,8 +188,8 @@ method to transform &rsquo;Hello My Friend&rsquo; in &rsquo;My Friend&rsquo;?</e
 
 
 <div class="float-caption"><p><strong>Exercise 4.1: </strong>Cut a string</p></div></div>
-<p>Beware, some messages in the <span class="sansserif">String</span> protocol may obviously not
-work. Observe bellow, the error is thrown on a <span class="sansserif">Character</span>
+<p>Beware, some messages in the <code>String</code> protocol may obviously not
+work. Observe bellow, the error is thrown on a <code>Character</code>
 instance:
 </p>
 <div class="display">
@@ -228,15 +227,14 @@ duplicated &ndash; copying a string always results in a new string
 </p>
 <div class="display">
 <pre class="display"><span class="sansserif">&rsquo;hello my friend&rsquo; asSymbol
-&rArr; #&rsquo;hello my friend&rsquo;
-</span>
+&rArr; #&rsquo;hello my friend&rsquo;</span>
 </pre></div>
 
-<p><span class="sansserif">Symbol</span> is a subclass of <span class="sansserif">String</span> and much of its behavior
-is inherited. As we learn about <span class="sansserif">String</span>s we
+<p><code>Symbol</code> is a subclass of <code>String</code> and much of its behavior
+is inherited. As we learn about <code>String</code>s we
 are also learning quite a bit about symbols.
 </p>
-<p>Note that many <span class="sansserif">String</span> methods are defined to return strings.
+<p>Note that many <code>String</code> methods are defined to return strings.
 </p>
 <div class="display">
 <pre class="display"><span class="sansserif">&rsquo;hello my friend&rsquo; class.

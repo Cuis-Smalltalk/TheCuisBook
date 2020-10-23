@@ -123,9 +123,9 @@ the method invoked has the selector <em><code>#at:put:</code></em> and the argum
 following a model or template. This model is known by its <em>Class</em>.
 All instances of a class share the same methods and so react in the same ways.
 </p>
-<p>For example, there is one class <span class="sansserif">Fraction</span> but many
+<p>For example, there is one class <code>Fraction</code> but many
 fractions (1/2, 1/3, 23/17, ...) which all behave the way
-we expect fractions to behave.  Class <span class="sansserif">Fraction</span>
+we expect fractions to behave.  Class <code>Fraction</code>
 and the classes it inherits from define this common behavior,
 as we will now describe.
 </p>
@@ -137,7 +137,7 @@ behavior by implementing the methods.  A variable is basically a named
 box which can hold any object.  Each instance of a class gets its own
 box with the common name.
 </p>
-<p>Let see how the <span class="sansserif">Fraction</span>
+<p>Let see how the <code>Fraction</code>
 class is declared:
 </p>
 <div class="display">
@@ -155,11 +155,11 @@ own denominator.
 </p>
 <span id="index-superclass"></span>
 <p>From this declaration, we observe there is a hierarchy in
-the class definition: <span class="sansserif">Fraction</span> is a kind of
-<span class="sansserif">Number</span>. This means a fraction inherits the internal state &ndash;
-variables &ndash; and behavior &ndash; methods &ndash; defined in the <span class="sansserif">Number</span>
-class. <span class="sansserif">Fraction</span> is called a <em>subclass</em> of <span class="sansserif">Number</span>,
-and so naturally we call <span class="sansserif">Number</span> a <em>superclass</em> of <span class="sansserif">Fraction</span>.
+the class definition: <code>Fraction</code> is a kind of
+<code>Number</code>. This means a fraction inherits the internal state &ndash;
+variables &ndash; and behavior &ndash; methods &ndash; defined in the <code>Number</code>
+class. <code>Fraction</code> is called a <em>subclass</em> of <code>Number</code>,
+and so naturally we call <code>Number</code> a <em>superclass</em> of <code>Fraction</code>.
 </p>
 <span id="index-class_002c-inheritance"></span>
 <p>A Class specifies the behavior of all of its instances.  It is useful 
@@ -187,13 +187,13 @@ but appropriate ways.
 <span id="index-instance_002c-creation"></span>
 <span id="index-class_002c-class-method"></span>
 <p>We have already met fractions. Those fractions are
-objects called <em>instance</em>s of the class <span class="sansserif">Fraction</span>. To create
+objects called <em>instance</em>s of the class <code>Fraction</code>. To create
 an instance we wrote <code>5 / 4</code>, the mechanism is based on
 message sending and polymorphism.  Let us look into how this works.
 </p>
 <p>The number <code>5</code> is an
-integer receiving the message <span class="sansserif">#/</span>, therefore looking at the method
-<span class="sansserif">/</span> in the <span class="sansserif">Integer</span> class explains how is instantiated
+integer receiving the message <code>#/</code>, therefore looking at the method
+<code>/</code> in the <code>Integer</code> class explains how is instantiated
 the fraction. See part of this method:
 </p><div class="display">
 <pre class="display"><span class="sansserif">/ aNumber
@@ -209,11 +209,11 @@ aNumber isInteger ifTrue:
 returns a fraction, reduced. We can expect that in some other
 situation an integer is returned, for example <code>6 / 2</code>.
 </p>
-<p>In the example, we observe the message <span class="sansserif">#numerator:denominator:</span> is
-sent to the class <span class="sansserif">Fraction</span>, such a message refers to a
-<em>class method</em> understood only by the <span class="sansserif">Fraction</span> class. It
+<p>In the example, we observe the message <code>#numerator:denominator:</code> is
+sent to the class <code>Fraction</code>, such a message refers to a
+<em>class method</em> understood only by the <code>Fraction</code> class. It
 is expected such a named method returns an instance of a
-<span class="sansserif">Fraction</span>.
+<code>Fraction</code>.
 </p>
 <p>Try out in a workspace:
 </p><div class="display">
@@ -222,7 +222,7 @@ is expected such a named method returns an instance of a
 </pre></div>
 
 <p>Observe how the fraction is not reduced. Whereas it is, when
-instantiated with the <span class="sansserif">#/</span> message:
+instantiated with the <code>#/</code> message:
 </p>
 <div class="display">
 <pre class="display"><span class="sansserif">24 / 21
@@ -230,13 +230,13 @@ instantiated with the <span class="sansserif">#/</span> message:
 </pre></div>
 
 <p>A class method is often used to create a new instance from a class. In
-<a href="Fun-with-collections.html#forLoop">Example 4.7</a>, the message <span class="sansserif">#new</span> is sent to the class
-<span class="sansserif">OrderedCollection</span> to create a new empty collection;
-<em><span class="sansserif">new</span></em> is a class method.
+<a href="Fun-with-collections.html#forLoop">Example 4.7</a>, the message <code>#new</code> is sent to the class
+<code>OrderedCollection</code> to create a new empty collection;
+<em><code>new</code></em> is a class method.
 </p>
-<p>In <a href="Fun-with-collections.html#repeatLoop">Example 4.8</a>, the <span class="sansserif">#newFrom:</span> message is sent to the class
-<span class="sansserif">OrderedCollection</span> to create a new collection filled with
-elements from the array given in argument; <em><span class="sansserif">newFrom:</span></em> is
+<p>In <a href="Fun-with-collections.html#repeatLoop">Example 4.8</a>, the <code>#newFrom:</code> message is sent to the class
+<code>OrderedCollection</code> to create a new collection filled with
+elements from the array given in argument; <em><code>newFrom:</code></em> is
 another class method.
 </p>
 <span id="index-class_002c-instance-method-1"></span>
@@ -245,33 +245,33 @@ another class method.
 <p>Now observe the hierarchy of the Number class:
 </p>
 <div class="format">
-<pre class="format"><span class="sansserif">Number</span>
-   <span class="sansserif">Float</span>
-      <span class="sansserif">BoxedFloat64</span>
-      <span class="sansserif">SmallFloat64</span>
-   <span class="sansserif">Fraction</span>
-   <span class="sansserif">Integer</span>
-      <span class="sansserif">LargePositiveInteger</span>
-         <span class="sansserif">LargeNegativeInteger</span>
-      <span class="sansserif">SmallInteger</span>
+<pre class="format"><code>Number</code>
+   <code>Float</code>
+      <code>BoxedFloat64</code>
+      <code>SmallFloat64</code>
+   <code>Fraction</code>
+   <code>Integer</code>
+      <code>LargePositiveInteger</code>
+         <code>LargeNegativeInteger</code>
+      <code>SmallInteger</code>
 </pre></div>
 
-<p><span class="sansserif">Float</span>, <span class="sansserif">Integer</span> and <span class="sansserif">Fraction</span> are direct
-descendants of the <span class="sansserif">Number</span> class. We have already learned about the
-<span class="sansserif">#squared</span> message sent to integer and fraction instances:
+<p><code>Float</code>, <code>Integer</code> and <code>Fraction</code> are direct
+descendants of the <code>Number</code> class. We have already learned about the
+<code>#squared</code> message sent to integer and fraction instances:
 </p>
 <div class="display">
 <pre class="display"><span class="sansserif">16 squared &rArr; 256
 (2 / 3) squared &rArr; 4/9</span>
 </pre></div>
 
-<p>As the <span class="sansserif">#squared</span> message is sent to <span class="sansserif">Integer</span> and
-<span class="sansserif">Fraction</span> instances, the associated <span class="sansserif">squared</span> method is
+<p>As the <code>#squared</code> message is sent to <code>Integer</code> and
+<code>Fraction</code> instances, the associated <code>squared</code> method is
 called an <em>instance method</em>. This method is defined in both the
-<span class="sansserif">Number</span> and <span class="sansserif">Fraction</span> classes.
+<code>Number</code> and <code>Fraction</code> classes.
 </p>
 <span id="index-method_002c-returned-value-_0028explicit_0029"></span>
-<p>Let&rsquo;s examine this method in <span class="sansserif">Number</span>:
+<p>Let&rsquo;s examine this method in <code>Number</code>:
 </p><div class="display">
 <pre class="display"><span class="sansserif">Number&gt;&gt;squared
 &quot;Answer the receiver multiplied by itself.&quot;
@@ -283,7 +283,7 @@ object itself, here it is the value of the number. The <code>^</code>
 symbol indicates to return the following value <code>self *
 self</code>.
 </p>
-<p>Now let&rsquo;s examine this same method in <span class="sansserif">Fraction</span>:
+<p>Now let&rsquo;s examine this same method in <code>Fraction</code>:
 </p><div class="display">
 <pre class="display"><span class="sansserif">Fraction&gt;&gt;squared
    ^ Fraction
@@ -293,23 +293,23 @@ self</code>.
 
 <p>Here a new fraction is instantiated with the original instance
 numerator and denominator being squared.
-This alternate <span class="sansserif">squared</span> method, ensures a fraction instance is
+This alternate <code>squared</code> method, ensures a fraction instance is
 returned.
 </p>
 <span id="index-method_002c-overriding"></span>
 <span id="index-overriding"></span>
-<p>When message <span class="sansserif">#squared</span> is sent to a number, different methods are
+<p>When message <code>#squared</code> is sent to a number, different methods are
 executed depending on the number is a fraction or another other kind of
 number. Polymorphism means that the Class of each instance decides
 how it will repond to a particular message.
-Here, the <span class="sansserif">Fraction</span> class
-is <em>overriding</em> the <span class="sansserif">squared</span> method, defined above in the
+Here, the <code>Fraction</code> class
+is <em>overriding</em> the <code>squared</code> method, defined above in the
 class hierarchy.  If a method is not overridden, an inherited method
 is invoked to respond to the message.
 </p>
 <span id="index-number_002c-abs"></span>
-<p>Still in the <span class="sansserif">Number</span> hierarchy, let&rsquo;s examine another example
-of polymorphism with the <span class="sansserif">#abs</span> message:
+<p>Still in the <code>Number</code> hierarchy, let&rsquo;s examine another example
+of polymorphism with the <code>#abs</code> message:
 </p>
 <div class="display">
 <pre class="display"><span class="sansserif">-10 abs &rArr; 10
@@ -317,8 +317,8 @@ of polymorphism with the <span class="sansserif">#abs</span> message:
 (-5 / 3) abs &rArr; 5/3</span>
 </pre></div>
 
-<p>The implementation in <span class="sansserif">Number</span> does not need much
-explanation. There is the <span class="sansserif">#ifTrue:ifFalse:</span> we have not yet
+<p>The implementation in <code>Number</code> does not need much
+explanation. There is the <code>#ifTrue:ifFalse:</code> we have not yet
 discussed so far, but the code is quite self-explanatory:
 </p>
 <div class="display">
@@ -330,22 +330,22 @@ receiver.&quot;
       ifFalse: [^self]</span>
 </pre></div>
 
-<p>This implementation will do just fine for the <span class="sansserif">Number</span>
+<p>This implementation will do just fine for the <code>Number</code>
 subclasses. Nevertheless, there are several classes overriding it for
 specialized or optimized cases.
 </p>
 <span id="index-method_002c-returned-value-_0028default_0029"></span>
-<p>For example, regarding large positive integer, <span class="sansserif">abs</span> is
+<p>For example, regarding large positive integer, <code>abs</code> is
 empty. Indeed, <strong>in the absence of explicitly returned value, the
 default returned value is the instance itself</strong>, in our situation the
-<span class="sansserif">LargePositiveInteger</span> instance:
+<code>LargePositiveInteger</code> instance:
 </p>
 <div class="display">
 <pre class="display"><span class="sansserif">LargePositiveInteger&gt;&gt;abs</span>
 </pre></div>
 
-<p>The <span class="sansserif">LargeNegativeInteger</span> knows it is negative and its absolute value must be 
-itself but with its sign reversed, that is <span class="sansserif">negated</span>:
+<p>The <code>LargeNegativeInteger</code> knows it is negative and its absolute value must be 
+itself but with its sign reversed, that is <code>negated</code>:
 </p>
 <div class="display">
 <pre class="display"><span class="sansserif">LargeNegativeInteger&gt;&gt;abs
@@ -366,7 +366,7 @@ specialize their answer to produce the naturally expected result.
 </p>
 <p>As an object instance is modeled by its class, it is possible to
 ask any object its
-class with the <span class="sansserif">#class</span> message. Observe carefully the class
+class with the <code>#class</code> message. Observe carefully the class
 returned in line 2 and 3:
 </p>
 <div class="float"><span id="askingClass"></span>

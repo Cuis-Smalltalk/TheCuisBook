@@ -97,13 +97,13 @@ Next: <a href="Message-to-string-entities.html" accesskey="n" rel="next">Message
 <li> <strong>Unary messages</strong> take no argument.
  <br>
 <em> <code>1 factorial</code></em>
- sends the message <span class="sansserif">#factorial</span> to the object
+ sends the message <code>#factorial</code> to the object
  <code>1</code>,
 
 </li><li> <strong>Binary messages</strong> take exactly one argument.
  <br>
 <em> <code>1 + 2</code></em>
- sends the message <span class="sansserif">#+</span> with argument
+ sends the message <code>#+</code> with argument
  <code>2</code> to the object <code>1</code>.
 
 </li><li> <strong>Keyword messages</strong> take an arbitrary number of
@@ -111,7 +111,7 @@ Next: <a href="Message-to-string-entities.html" accesskey="n" rel="next">Message
  <br>
 <em> <code>2 raisedTo: 6 modulo: 10</code></em>
  sends the message
- consisting of the message selector <span class="sansserif">#raisedTo:modulo:</span> and the
+ consisting of the message selector <code>#raisedTo:modulo:</code> and the
  arguments <code>6</code> and <code>10</code> to the object
  <code>2</code>.
 
@@ -170,10 +170,10 @@ are superfluous but improve understanding:
 
 <div class="float-caption"><p><strong>Example 2.3: </strong>Ship velocity</p></div></div>
 <span id="index-cascade-of-messages"></span>
-<p>In the <a href="Writing-your-first-scripts.html#hello2">Example 1.2</a> example, the message <span class="sansserif">#show:</span> and <span class="sansserif">#newLine</span>
-are sent to the same <span class="sansserif">Transcript</span> entity. In such circumstance,
+<p>In the <a href="Writing-your-first-scripts.html#hello2">Example 1.2</a> example, the message <code>#show:</code> and <code>#newLine</code>
+are sent to the same <code>Transcript</code> entity. In such circumstance,
 we can use the <em>cascade</em> technique to avoid this repetition. The
-receiver <span class="sansserif">Transcript</span> is written once and the sent messages are
+receiver <code>Transcript</code> is written once and the sent messages are
 separated by semicolon:
 </p>
 <div class="float"><span id="helloCascade"></span>
@@ -203,7 +203,7 @@ readability of the code:
 <pre class="display"><span class="sansserif">Transcript show: &rsquo;Hello World!&rsquo;; newLine; show: &rsquo;I am Cuising&rsquo;</span>
 </pre></div>
 
-<p>The <span class="sansserif">Transcript</span> class is frequently helpful in presenting
+<p>The <code>Transcript</code> class is frequently helpful in presenting
 useful information when developing an application. An alternative
 to the <kbd>Ctrl-d</kbd> (<em><b>D</b>o it</em>) shortcut is <kbd>Ctrl-p</kbd> (<em><b>P</b>rint it</em>), which 
 executes the script and prints the result direcly in the Workspace.
@@ -211,7 +211,7 @@ executes the script and prints the result direcly in the Workspace.
 <p>In the example, we have requested no special result.  Selecting the
 text and typing <kbd>Ctrl-p</kbd> results in the default, which is to
 return the object to which a message is sent, in this case the
-<span class="sansserif">Transcript</span>.
+<code>Transcript</code>.
 </p>
 <hr>
 <div class="header">

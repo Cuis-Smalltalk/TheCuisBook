@@ -106,7 +106,7 @@ behavior.
 which each of its concrete subclasses are expected to specialize.
 This captures and communicates our intent.
 </p>
-<p>Observe how the important <span class="sansserif">do:</span> method is declared
+<p>Observe how the important <code>do:</code> method is declared
 but not implemented:
 </p>
 <div class="display">
@@ -115,7 +115,7 @@ but not implemented:
 self subclassResponsibility</span>
 </pre></div>
 
-<p>Then observe how two different <span class="sansserif">Collection</span> subclasses
+<p>Then observe how two different <code>Collection</code> subclasses
 implement it:
 </p>
 <div class="display">
@@ -138,14 +138,14 @@ fixed size and collection with a variable size.
 <span id="index-collection_002c-fixed-size"></span>
 <p><strong>Collection of fixed size.</strong>  Such collections are gathered in
 the category <code>Collections-Arrayed</code>. The most notable one is
-<span class="sansserif">Array</span>, its size &ndash; the number of elements it can hold &ndash; is
+<code>Array</code>, its size &ndash; the number of elements it can hold &ndash; is
 set when creating the instance. Once instantiated, you can neither add nor
 delete elements to an array.
 </p>
 <span id="index-collection_002c-instantiate-array"></span>
 <span id="index-Array"></span>
 
-<p>There are different ways to create <span class="sansserif">Array</span> instance:
+<p>There are different ways to create <code>Array</code> instance:
 </p>
 <div class="float"><span id="createArray"></span>
 <div class="display">
@@ -161,8 +161,8 @@ different. The former one is created and filled with its contents at
 compile time of the code, the consequence is it can only be filled
 with literal elements as integer, float, string. The later one is
 created at execution time of the code, it can be filled with elements
-instantiated at the execution time as <span class="sansserif">Fraction</span> or
-<span class="sansserif">Point</span> instances.
+instantiated at the execution time as <code>Fraction</code> or
+<code>Point</code> instances.
 </p>
 <span id="index-collection_002c-access-element"></span>
 <p>You can access elements:
@@ -218,7 +218,7 @@ several class categories: <code>Collections-Unordered</code>,
 <code>Collections-Sequenceable</code>, etc. They represent the most common
 collections.
 </p>
-<p><span class="sansserif">OrderedCollection</span> is a notable one. Its elements are ordered:
+<p><code>OrderedCollection</code> is a notable one. Its elements are ordered:
 elements are added one after the other in sequence<a id="DOCF18" href="#FOOT18"><sup>18</sup></a>. Its size is
 variable depending on added or removed elements.
 </p>
@@ -233,7 +233,7 @@ coll3 := OrderedCollection ofSize: 4</span>
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 4.11: </strong>Collection with a variable size</p></div></div>
-<p>The access to elements is identical to an <span class="sansserif">Array</span>
+<p>The access to elements is identical to an <code>Array</code>
 instance, but dynamic collections allow you to add and remove elements:
 </p>
 <div class="float"><span id="remDelArray"></span>
@@ -256,7 +256,7 @@ dynamic array</p></div></div>
 <div class="float-caption"><p><strong>Exercise 4.14: </strong>Add an element after</p></div></div>
 <span id="index-Set"></span>
 <span id="index-collection_002c-Set"></span>
-<p><strong>Set.</strong> <span class="sansserif">Set</span> is an unordered collection without duplicated
+<p><strong>Set.</strong> <code>Set</code> is an unordered collection without duplicated
 elements. The order of the element is not guaranteed, though. Observe
 how pi is the first element of the set:
 </p>
@@ -282,9 +282,9 @@ set add: 1; add: Float pi; add: 3/3; add: 1/3; add: 1.0; yourself
 <div class="float-caption"><p><strong>Example 4.14: </strong>Set, without duplicates</p></div></div>
 
 <span id="index-collection_002c-convert"></span>
-<p>A very handy way to create a <span class="sansserif">Set</span> instance, or any other
+<p>A very handy way to create a <code>Set</code> instance, or any other
 collection, is to create a dynamic array and convert it with the
-<span class="sansserif">#asSet</span> message:
+<code>#asSet</code> message:
 </p>
 <div class="float"><span id="convertDynArray"></span>
 <div class="display">
@@ -310,7 +310,7 @@ collection, is to create a dynamic array and convert it with the
    addAll: #(1 2 3 5 6 10 15 30) ; 
    addAll: #(1 3 5 9 15 45) ; 
    yourself. 
-&rArr; a Set(5 10 15 1 6 30 45 2 3 9) </span>
+&rArr; a Set(5 10 15 1 6 30 45 2 3 9)</span>
 </pre></div>
 
 <div class="float"><span id="setLetters"></span>
@@ -365,7 +365,7 @@ colors at: #yellow ifAbsentPut: Color yellow
 <pre class="display"><span class="sansserif">colors keys.
 &rArr; #(#red #green #blue) 
 colors keyAtValue: Color green
-&rArr; #green </span>
+&rArr; #green</span>
 </pre></div>
 
 <p><strong>Beware.</strong> The classic enumerators iterate the values of the
@@ -380,7 +380,7 @@ dictionary:
 </p>
 <div class="display">
 <pre class="display"><span class="sansserif">colors associationsDo: [:assoc | 
-   Transcript show: assoc key; space; assoc value; cr ] </span>
+   Transcript show: assoc key; space; assoc value; cr ]</span>
 </pre></div>
 
 <p>There are other variants to explore by yourself.
@@ -405,7 +405,7 @@ experiment with the workspace.
 
 <h5><a id="FOOT18" href="#DOCF18">(18)</a></h3>
 <p>Of course you can
-insert an element between two elements. However <span class="sansserif">LinkList</span>
+insert an element between two elements. However <code>LinkList</code>
 instance are more efficient for this use case scenario.</p>
 </div>
 <hr>
