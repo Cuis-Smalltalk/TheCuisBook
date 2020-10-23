@@ -291,10 +291,20 @@ tt.key{
 }
 code
 {
+    font-family: revert;
+    font-size: 120%;
+    font-weight: bold;
+    color: #900;
+}
+
+table.index-cp code
+{
+    font-family: revert;
     font-size: 120%;
     color: #900;
-    font-weight: bold;
 }
+
+
 
 kbd
 {
