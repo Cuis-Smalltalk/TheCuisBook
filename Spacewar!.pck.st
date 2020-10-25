@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4390] on 25 October 2020 at 9:12:50 am'!
+'From Cuis 5.0 [latest update: #4390] on 25 October 2020 at 9:19:34 am'!
 'Description '!
-!provides: 'Spacewar!!' 1 68!
+!provides: 'Spacewar!!' 1 69!
 SystemOrganization addCategory: #'Spacewar!!'!
 
 
@@ -58,15 +58,23 @@ SpaceWar class
 !CentralStar commentStamp: '<historical>' prior: 0!
 I am the central start of the game generating a gravity field.!
 
-!SpaceWar commentStamp: 'hlsf 9/16/2020 15:06:56' prior: 0!
+!Mobile commentStamp: 'hlsf 10/25/2020 09:16:19' prior: 0!
+An abstract mobile with a mass and inner acceleration, subject to a gravity pull.!
+
+!SpaceShip commentStamp: 'hlsf 10/25/2020 09:19:28' prior: 0!
+A ship comes with a torpedo inventory and a fuel tank.
+Player controls its heading and acceleration, and he can fire torpedo.!
+
+!Torpedo commentStamp: 'hlsf 10/25/2020 09:18:37' prior: 0!
+A torpedo comes with a lifespan and an automatic acceleration handling!
+
+!SpaceWar commentStamp: 'hlsf 10/25/2020 09:15:26' prior: 0!
 I am the gameplay view. My submorphs are the elements of the game.
+SpaceWar new openInWorld
 
-| game | 
-game _ SpaceWar new.
-game addMorph: SpaceShip new.
-game openInWorld
-
-Control with the left, up, right arrows!
+Ship controls:
+Green: left, right, up down arrows
+Red: a, d, w, s keys!
 
 !CentralStar methodsFor: 'accessing' stamp: 'hlsf 10/8/2020 22:20:17'!
 mass
