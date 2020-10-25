@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4390] on 8 October 2020 at 10:31:25 pm'!
+'From Cuis 5.0 [latest update: #4390] on 25 October 2020 at 9:12:50 am'!
 'Description '!
-!provides: 'Spacewar!!' 1 67!
+!provides: 'Spacewar!!' 1 68!
 SystemOrganization addCategory: #'Spacewar!!'!
 
 
@@ -311,14 +311,18 @@ destroyTorpedo: aTorpedo
 	aTorpedo delete.
 	torpedoes remove: aTorpedo ! !
 
-!SpaceWar methodsFor: 'events' stamp: 'hlsf 10/3/2020 15:22:00'!
+!SpaceWar methodsFor: 'events' stamp: 'hlsf 10/25/2020 09:11:55'!
 keyStroke: event
 	| key |
 	key _ event keyCharacter.
 	key = Character arrowUp ifTrue: [^ ships first push].
 	key = Character arrowRight ifTrue: [^ ships first right].
 	key = Character arrowLeft ifTrue: [^ ships first left].
-	key = Character arrowDown ifTrue: [^ ships first fireTorpedo]! !
+	key = Character arrowDown ifTrue: [^ ships first fireTorpedo].
+	key = $w ifTrue: [^ ships second push].
+	key =$d ifTrue: [^ ships second right].
+	key = $a ifTrue: [^ ships second left].
+	key = $s ifTrue: [^ ships second fireTorpedo]! !
 
 !SpaceWar methodsFor: 'events' stamp: 'hlsf 9/11/2020 10:07:17'!
 mouseEnter: evt
