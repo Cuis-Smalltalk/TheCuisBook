@@ -1,62 +1,59 @@
-'From Cuis 5.0 [latest update: #4390] on 25 October 2020 at 9:19:34 am'!
+'From Cuis 5.0 [latest update: #4426] on 26 October 2020 at 2:01:01 pm'!
 'Description '!
-!provides: 'Spacewar!!' 1 69!
-SystemOrganization addCategory: #'Spacewar!!'!
+!provides: 'Spacewar!!' 1 70!
+SystemOrganization addCategory: 'Spacewar!!'!
 
 
-!classDefinition: #CentralStar category: #'Spacewar!!'!
-Morph subclass: #CentralStar
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Spacewar!!'!
-!classDefinition: 'CentralStar class' category: #'Spacewar!!'!
-CentralStar class
-	instanceVariableNames: ''!
-
-!classDefinition: #Mobile category: #'Spacewar!!'!
-Morph subclass: #Mobile
+!classDefinition: #Mobile category: 'Spacewar!!'!
+MovableMorph subclass: #Mobile
 	instanceVariableNames: 'acceleration color velocity'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Spacewar!!'!
-!classDefinition: 'Mobile class' category: #'Spacewar!!'!
+!classDefinition: 'Mobile class' category: 'Spacewar!!'!
 Mobile class
 	instanceVariableNames: ''!
 
-!classDefinition: #SpaceShip category: #'Spacewar!!'!
+!classDefinition: #SpaceShip category: 'Spacewar!!'!
 Mobile subclass: #SpaceShip
 	instanceVariableNames: 'name fuel torpedoes'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Spacewar!!'!
-!classDefinition: 'SpaceShip class' category: #'Spacewar!!'!
+!classDefinition: 'SpaceShip class' category: 'Spacewar!!'!
 SpaceShip class
 	instanceVariableNames: ''!
 
-!classDefinition: #Torpedo category: #'Spacewar!!'!
+!classDefinition: #Torpedo category: 'Spacewar!!'!
 Mobile subclass: #Torpedo
 	instanceVariableNames: 'lifeSpan'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Spacewar!!'!
-!classDefinition: 'Torpedo class' category: #'Spacewar!!'!
+!classDefinition: 'Torpedo class' category: 'Spacewar!!'!
 Torpedo class
 	instanceVariableNames: ''!
 
-!classDefinition: #SpaceWar category: #'Spacewar!!'!
-Morph subclass: #SpaceWar
+!classDefinition: #SpaceWar category: 'Spacewar!!'!
+MovableMorph subclass: #SpaceWar
 	instanceVariableNames: 'color ships torpedoes centralStar'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Spacewar!!'!
-!classDefinition: 'SpaceWar class' category: #'Spacewar!!'!
+!classDefinition: 'SpaceWar class' category: 'Spacewar!!'!
 SpaceWar class
 	instanceVariableNames: ''!
 
+!classDefinition: #CentralStar category: 'Spacewar!!'!
+Morph subclass: #CentralStar
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Spacewar!!'!
+!classDefinition: 'CentralStar class' category: 'Spacewar!!'!
+CentralStar class
+	instanceVariableNames: ''!
 
-!CentralStar commentStamp: '<historical>' prior: 0!
-I am the central start of the game generating a gravity field.!
 
 !Mobile commentStamp: 'hlsf 10/25/2020 09:16:19' prior: 0!
 An abstract mobile with a mass and inner acceleration, subject to a gravity pull.!
@@ -76,23 +73,8 @@ Ship controls:
 Green: left, right, up down arrows
 Red: a, d, w, s keys!
 
-!CentralStar methodsFor: 'accessing' stamp: 'hlsf 10/8/2020 22:20:17'!
-mass
-	^ 8000! !
-
-!CentralStar methodsFor: 'drawing' stamp: 'hlsf 10/1/2020 15:43:23'!
-drawOn: canvas
-	canvas ellipseCenterX: 0
-		y:  0
-		rx: 15 + (2 atRandom - 1)
-		ry: 15 + (2 atRandom - 1)
-		borderWidth: 3 
-		borderColor: Color orange 
-		fillColor: Color yellow ! !
-
-!CentralStar methodsFor: 'geometry testing' stamp: 'jmv 9/28/2020 14:35:30'!
-requiresVectorCanvas
-	^false! !
+!CentralStar commentStamp: '<historical>' prior: 0!
+I am the central start of the game generating a gravity field.!
 
 !Mobile methodsFor: 'accessing' stamp: 'hlsf 10/1/2020 08:34:04'!
 color: aColor
@@ -166,16 +148,6 @@ morphExtent
 
 	^60@60! !
 
-!SpaceShip methodsFor: 'initialization' stamp: 'hlsf 10/1/2020 17:24:19'!
-initialize
-	super initialize.
-	self resupply! !
-
-!SpaceShip methodsFor: 'initialization' stamp: 'hlsf 10/1/2020 17:30:57'!
-resupply
-	fuel _ 500.
-	torpedoes _ 20! !
-
 !SpaceShip methodsFor: 'drawing' stamp: 'hlsf 10/1/2020 18:11:26'!
 drawOn: canvas
 
@@ -233,6 +205,16 @@ right
 unpush
 "Stop the accelaration boost"
 	acceleration _ 0! !
+
+!SpaceShip methodsFor: 'initialization' stamp: 'hlsf 10/1/2020 17:24:19'!
+initialize
+	super initialize.
+	self resupply! !
+
+!SpaceShip methodsFor: 'initialization' stamp: 'hlsf 10/1/2020 17:30:57'!
+resupply
+	fuel _ 500.
+	torpedoes _ 20! !
 
 !Torpedo methodsFor: 'computing' stamp: 'hlsf 10/2/2020 21:15:54'!
 update: t
@@ -419,3 +401,21 @@ collisionsTorpedoesStar
 		(each morphPosition dist: centralStar morphPosition) < 8 		ifTrue: [
 			each flashWith: Color orange.
 			self destroyTorpedo: each]]! !
+
+!CentralStar methodsFor: 'accessing' stamp: 'hlsf 10/8/2020 22:20:17'!
+mass
+	^ 8000! !
+
+!CentralStar methodsFor: 'drawing' stamp: 'hlsf 10/1/2020 15:43:23'!
+drawOn: canvas
+	canvas ellipseCenterX: 0
+		y:  0
+		rx: 15 + (2 atRandom - 1)
+		ry: 15 + (2 atRandom - 1)
+		borderWidth: 3 
+		borderColor: Color orange 
+		fillColor: Color yellow ! !
+
+!CentralStar methodsFor: 'geometry testing' stamp: 'jmv 9/28/2020 14:35:30'!
+requiresVectorCanvas
+	^false! !
