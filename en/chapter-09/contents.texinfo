@@ -1,2 +1,11 @@
 @node Process
 @chapter Process
+
+The second kind of event is quite similar, but is used to march time
+forward.  We are interested in timer alarms and in particular
+@dfn{steps} which is used to coordinate updates to the display and
+manage processing of queued input events.  There is a class
+@class{StepMessage}, and you can look at the @label{stepping} method
+category in the @class{Morph} class.  These timed clock events are
+used to @dfn{time slice} long running tasks and do housekeeping which
+we will describe in the next chapter on processes.

@@ -1,2 +1,11 @@
 @node The Fundamentals of Morph
 @chapter The Fundamentals of Morph
+
+Events are critical to understanding how the user interface works.  In
+brief, there is a @class{PasteUpMorph} which is the screen background
+graphic and the associated @dfn{World State}.  When you
+@kbd{Right-Click} on this morph, it is the one which brings up the
+World Menu.  The World State tracks the cursor, which is a
+@class{HandMorph} and as Morphs change position and appearance, also
+keeps a @class{DamageRecorder} to track what parts of the display have
+changed so that only the ``damaged'' areas need be redrawn.
