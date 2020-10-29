@@ -27,11 +27,25 @@ sensing something happening in the world.  Class @class{EventSensor}
 handles keyboard key press and mouse @dfn{hardware interrupts},
 translating between hardware signals and software event objects.
 
-In @cuis{}, the class @class{MorphicEvent} and its subclasses
-represent the diversity of events in the system.  Basically, a morph
-@emph{raises its hand} and says what events, if any, it is interested
-in receiving. Then it implements methods to get the event objects
-holding the information of the captured events.
+Basically, a morph @emph{raises its hand} and says what events, if
+any, it is interested in receiving. Then it implements methods to get
+the event objects holding the information of the captured events. In
+@cuis{}, the class @class{MorphicEvent} and its subclasses represent
+the diversity of events in the system.
+
+@format
+@class{MorphicEvent}
+   @class{DropEvent}
+   @class{DropFilesEvent}
+   @class{UserInputEvent}
+      @class{KeyboardEvent}
+      @class{MouseEvent}
+         @class{MouseButtonEvent}
+         @class{MouseMoveEvent}
+         @class{MouseScrollEvent}
+      @class{WindowEvent}
+@end format
+
 
 As @class{MouseMoveEvent}s are generated, the @class{HandMorph}
 adjusts its screen position.  When mouse and keystroke events arrive,
