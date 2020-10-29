@@ -1,5 +1,5 @@
-@node Summary of syntax
-@appendix Summary of syntax
+@node Summary of Syntax
+@appendix Summary of Syntax
 
 @float 
 @multitable @columnfractions .49 0.01 .50

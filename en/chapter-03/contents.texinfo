@@ -1,5 +1,5 @@
-@node Class - model of communicating entities
-@chapter Class, model of communicating entities
+@node Class - Model of Communicating Entities
+@chapter Class, Model of Communicating Entities
 
 @cuis{} is a pure object oriented programming language (OOP): all the
 entities in the language: integers, floats, rational numbers, strings, 

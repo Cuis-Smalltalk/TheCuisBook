@@ -1,7 +1,7 @@
 \input texinfo @c -*-texinfo-*-
 @c %**start of header
 @settitle The Cuis-Smalltalk Book
-@set timeStamp Time-stamp: <2020-10-10 10:20:46 hilaire>
+@set timeStamp Time-stamp: <2020-10-29 10:02:34 hilaire>
 @set cuisVersion 5.0#4253
 @set txicodequoteundirected ON 
 @setfilename TheCuisBook.info
@@ -87,18 +87,18 @@ Complete license: @url{https://creativecommons.org/licenses/by-sa/4.0/legalcode}
 * Preface::
 * Smalltalk Philosophy::
 * The Message Way of Life::
-* Class - model of communicating entities::
+* Class - Model of Communicating Entities::
 * The Collection Way of Life::
 * Control Flow Messaging::
-* Visual With Morph::
-* Model And View::
+* Visual with Morph::
+* The Fundamentals of Morph::
 * Events::
 * Process::
 * Code Management::
-* Documents copyright::
-* Summary of syntax::
+* Documents Copyright::
+* Summary of Syntax::
 * The Exercises::
-* Solutions of the exercises::
+* Solutions of the Exercises::
 * The Examples::
 * The Figures::
 * Indexes::

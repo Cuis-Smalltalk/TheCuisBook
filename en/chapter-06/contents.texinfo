@@ -1,5 +1,5 @@
-@node Visual With Morph
-@chapter Visual With Morph
+@node Visual with Morph
+@chapter Visual with Morph
 
 Every object you see in @cuis{} is a @class{Morph} or is composed
 of @class{Morph}s.  Basically, a @class{Morph} is an object with

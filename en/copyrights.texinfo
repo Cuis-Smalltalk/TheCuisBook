@@ -1,6 +1,6 @@
 @c Documents avec copyright
-@node Documents copyright
-@appendix Documents copyright
+@node Documents Copyright
+@appendix Documents Copyright
 
 
 @raggedright
