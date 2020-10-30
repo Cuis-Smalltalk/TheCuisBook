@@ -69,8 +69,24 @@ keeping the juggler's illusion that all balls
 in the air are moving at once.  Underneath, the balls are each moving
 just a bit, in sequence.
 
+@subsection Overall Mechanism
+
+@c Explain the event-handling-testing and event method categories in Morph. (btw, event->event-handling, event-handling->event-preferences. Need to be clarified because it is confusing
+
+@c event-handling-tested->events-handled
+@c event-handling->events-preference
+@c events->events-handling
 
 
+@section Events in Details
+
+@subsection Mouse Events
+
+@subsection Keyboard Event
+
+@subsection Other Events
+
+@section Spacewar! Events
 
 
 
