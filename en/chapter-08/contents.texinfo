@@ -1,6 +1,12 @@
 @node Events
 @chapter Events
 
+@menu
+* System Events::
+* Overall Mechanism::
+* Spacewar! Events::
+@end menu
+
 @heading What just happened?
 
 We talked above about control flow, how one makes decisions about what
@@ -19,6 +25,7 @@ Also, a computer may be fast enough that it literally has
 
 You are reading the right chapter to know.
 
+@node System Events
 @section System Events
 
 Modern integrated @dfn{System On a Chip} (@dfn{SOC}) hardware has many
@@ -59,33 +66,83 @@ handles various user events and the methods which take the associated
 event objects when events arrive.
 
 Basically, user input events are generated, a @class{HandMorph}
-reflects any cursor movement, morphs react to events, each long running
-task gets a time slice and makes some progress,
-any display changes are updated on the screen, and the next step
-happens.  Time marches forward a step.
+reflects any cursor movement, morphs react to events, each long
+running task gets a time slice and makes some progress, any display
+changes are updated on the screen, and the next step happens.  Time
+marches forward a step.
 
-This happens over and over and over,
-keeping the juggler's illusion that all balls
-in the air are moving at once.  Underneath, the balls are each moving
-just a bit, in sequence.
+This happens over and over and over, keeping the juggler's illusion
+that all balls in the air are moving at once.  Underneath, the balls
+are each moving just a bit, in sequence.
 
-@subsection Overall Mechanism
+@node Overall Mechanism
+@section Overall Mechanism
 
-@c Explain the event-handling-testing and event method categories in Morph. (btw, event->event-handling, event-handling->event-preferences. Need to be clarified because it is confusing
+@c Explain the event-handling-testing and event method categories in
+@c Morph. (btw, event->event-handling,
+@c event-handling->event-preferences. Need to be clarified because it
+@c is confusing
 
 @c event-handling-tested->events-handled
 @c event-handling->events-preference
 @c events->events-handling
 
+In @ref{A brief introduction to Inspectors}, we explained how to
+set properties for morph instance to handle specific event. In this
+circumstance, one property informed @cuis{} we were interested by a
+given event (@smalltalk{#handlesMouseDown}), a second property defined
+the behavior with a block of code when this event occurred.
 
-@section Events in Details
+Alternatively, to handle events in a given morph class, we define the
+behavior with instance methods. In the @class{Morph} class, observe
+the method categories @label{event} and @label{event handling
+testing}.
 
-@subsection Mouse Events
+In @label{event handling testing} is listed methods returning a
+Boolean to indicate if the instance should be notified by the
+event. Let's take a look at one of this method,
+@method{handlesMouseDown:}, its comment is worth reading:
 
-@subsection Keyboard Event
+@smalltalkExample{Morph>>handlesMouseDown: aMouseButtonEvent
+"Do I want to receive mouseButton messages ?
+- #mouseButton1Down:localPosition:
+- #mouseButton1Up:localPosition:
+- #mouseButton2Down:localPosition:
+- #mouseButton2Up:localPosition:
+- #mouseButton3Down:localPosition:
+- #mouseButton3Up:localPosition:
+- #mouseMove:localPosition:
+- #mouseButton2Activity
+NOTE: The default response is false. Subclasses that implement these
+messages directly should override this one to return true.
+Implementors could query the argument, and only answer true for (for
+example) button 2 up only."
+"Use a property test to allow individual instances to dynamically
+specify this."
 
-@subsection Other Events
+   @return{} self hasProperty: #'handlesMouseDown:'}
 
+As defined by default this method, and the other handles, checks if
+there is a homonym property. In a specific morph where we want to
+handles mouse down event, we just redefine it to return true:
+
+@smalltalkExample{MyMorph>>>>handlesMouseDown: aMouseButtonEvent
+   @return{} true}
+
+Now in the @label{events} @class{Morph}'s method category, we find the
+handlers listed in the comment above. A @class{ScrollBar}, a kind of
+Morph to represent list scroll bar, scrolls its list contents when a
+mouse button 1 is pressed:
+
+@smalltalkExample{ScrollBar>>mouseButton1Down: aMouseBtnEvent position: eventPosition
+"Update visual feedback"
+   self setNextDirectionFromEvent: aMouseBtnEvent.
+   self scrollByPage}
+
+To discover other events available for your morph, proceed as
+described above.
+
+@node Spacewar! Events
 @section Spacewar! Events
 
 
