@@ -864,3 +864,18 @@ acceleration.
 @exercise{Update all ships and torpedoes, updateShipsTorpedoes,
 @emph{Replace the two lines ``../..'' with code to update the ships
 and the torpedoes positions and velocities.}}
+
+
+Among other things, the game play handles the collisions between the
+various protagonists. Enumerators are very handy.
+
+Ships are hold in array of size 2, we just iterate it with a @msg{do:}
+message and a dedicated block of code:
+
+@smalltalkExampleCaption{Collision between the ships and the Sun,shipSunCollision,
+SpaceWar>>collisionsShipsStar
+   ships do: [:aShip | 
+      (aShip morphPosition dist: centralStar morphPosition) < 20 ifTrue: [
+         aShip flashWith: Color red.
+         self teleport: aShip]
+   ]}

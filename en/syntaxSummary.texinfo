@@ -21,7 +21,7 @@
    @item @smalltalk{"a comment"}                @tab @tab a comment
    @item @tab
    @item @smalltalk{|xy|}                       @tab @tab declaration of variables x and y
-   @item @smalltalk{x := 1}                     @tab @tab assign 1 to x
+   @item @smalltalk{x @assign{} 1}, @smalltalk{x := 1}                     @tab @tab assign 1 to x
    @item @smalltalk{[x + y]}                    @tab @tab a block that evaluates to x+y
    @item @smalltalk{<primitive: 1>}             @tab @tab virtual machine primitive or annotation
    @item @tab @tab
@@ -29,7 +29,7 @@
    @item @smalltalk{3+4}                        @tab @tab binary messages
    @item @smalltalk{2 raisedTo: 6 modulo: 10}   @tab @tab keyword message
    @item @tab @tab
-   @item @smalltalk{^ true}                     @tab @tab return the value true
+   @item @smalltalk{@return{} true}, @smalltalk{^ true}                     @tab @tab return the value true
    @item @smalltalk{Transcript show: 'hello'. Transcript cr} @tab @tab expression separator (.)
    @item @smalltalk{Transcript show: 'hello'; cr} @tab @tab message cascade (;)
 @end multitable

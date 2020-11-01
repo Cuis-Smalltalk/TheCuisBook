@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4438] on 1 November 2020 at 10:07:20 am'!
+'From Cuis 5.0 [latest update: #4438] on 1 November 2020 at 12:06:42 pm'!
 'Description '!
-!provides: 'Spacewar!!' 1 71!
+!provides: 'Spacewar!!' 1 72!
 SystemOrganization addCategory: 'Spacewar!!'!
 
 
@@ -128,6 +128,13 @@ update: t
 requiresVectorCanvas
 	^false! !
 
+!Mobile methodsFor: 'initialization' stamp: 'hlsf 10/1/2020 08:37:29'!
+initialize
+	super initialize.
+	color _ Color gray.
+	velocity _ 0 @ 0.
+	acceleration _ 0.! !
+
 !Mobile methodsFor: 'testing' stamp: 'hlsf 10/8/2020 22:21:33'!
 isGoingOuterSpace
 "is the mobile going crazy in direction of the outer space?"
@@ -138,39 +145,10 @@ isInOuterSpace
 "Is the mobile located in the outer space? (outside of the game play area)"
 	^(owner morphContainsPoint: self morphPosition) not! !
 
-!Mobile methodsFor: 'initialization' stamp: 'hlsf 10/1/2020 08:37:29'!
-initialize
-	super initialize.
-	color _ Color gray.
-	velocity _ 0 @ 0.
-	acceleration _ 0.! !
-
 !SpaceShip methodsFor: 'accessing' stamp: 'hlsf 10/1/2020 14:51:37'!
 morphExtent
 
 	^60@60! !
-
-!SpaceShip methodsFor: 'drawing' stamp: 'hlsf 10/1/2020 18:11:26'!
-drawOn: canvas
-
-	| a b c d |
-	a _ 0@ -30.
-	b _ -10@0.
-	c _ 0@ -5.
-	d _ 10@0.
-	canvas line: a to: b width: 2 color: color.
-	canvas line: b to: c width: 2 color: color.
-	canvas line: c to: d width: 2 color: color.
-	canvas line: d to: a width: 2 color: color.
-
-	"Draw gas exhaust"
-	acceleration ifNotZero: [
-		canvas line: c to: 0@20 width: 1 color: Color gray].! !
-
-!SpaceShip methodsFor: 'drawing' stamp: 'hlsf 9/21/2020 20:47:48'!
-nose
-
-	^ self direction * 30! !
 
 !SpaceShip methodsFor: 'control' stamp: 'hlsf 10/1/2020 17:25:38'!
 fireTorpedo
@@ -208,6 +186,28 @@ unpush
 "Stop the accelaration boost"
 	acceleration _ 0! !
 
+!SpaceShip methodsFor: 'drawing' stamp: 'hlsf 10/1/2020 18:11:26'!
+drawOn: canvas
+
+	| a b c d |
+	a _ 0@ -30.
+	b _ -10@0.
+	c _ 0@ -5.
+	d _ 10@0.
+	canvas line: a to: b width: 2 color: color.
+	canvas line: b to: c width: 2 color: color.
+	canvas line: c to: d width: 2 color: color.
+	canvas line: d to: a width: 2 color: color.
+
+	"Draw gas exhaust"
+	acceleration ifNotZero: [
+		canvas line: c to: 0@20 width: 1 color: Color gray].! !
+
+!SpaceShip methodsFor: 'drawing' stamp: 'hlsf 9/21/2020 20:47:48'!
+nose
+
+	^ self direction * 30! !
+
 !SpaceShip methodsFor: 'initialization' stamp: 'hlsf 10/1/2020 17:24:19'!
 initialize
 	super initialize.
@@ -239,15 +239,15 @@ drawOn: canvas
 	canvas line: c to: b width: 2 color: color.
 	canvas line: a to: c width: 2 color: color.! !
 
+!Torpedo methodsFor: 'geometry' stamp: 'hlsf 10/1/2020 14:52:01'!
+morphExtent
+	^ 8 @ 8! !
+
 !Torpedo methodsFor: 'initialization' stamp: 'hlsf 10/1/2020 08:57:33'!
 initialize
 	super initialize.
 	lifeSpan _ 500.
 	acceleration _ 4000! !
-
-!Torpedo methodsFor: 'geometry' stamp: 'hlsf 10/1/2020 14:52:01'!
-morphExtent
-	^ 8 @ 8! !
 
 !SpaceWar methodsFor: 'accessing' stamp: 'jmv 9/28/2020 10:41:48'!
 morphExtent
@@ -256,6 +256,27 @@ morphExtent
 !SpaceWar methodsFor: 'accessing' stamp: 'hlsf 9/16/2020 16:41:40'!
 starMass
 	^ centralStar mass! !
+
+!SpaceWar methodsFor: 'actions' stamp: 'hlsf 9/21/2020 20:56:33'!
+addTorpedo: aTorpedo
+	torpedoes add: aTorpedo.
+	self addMorph: aTorpedo ! !
+
+!SpaceWar methodsFor: 'actions' stamp: 'hlsf 9/21/2020 21:10:33'!
+destroyTorpedo: aTorpedo
+	aTorpedo delete.
+	torpedoes remove: aTorpedo ! !
+
+!SpaceWar methodsFor: 'actions' stamp: 'hlsf 10/1/2020 17:29:37'!
+teleport: aShip
+"Teleport a ship at a random location"
+	| area randomCoordinate |
+	aShip resupply.
+	area _ self morphLocalBounds insetBy: 20.
+	randomCoordinate _ [(area left to: area right) atRandom].
+	aShip 
+		velocity: 0@0;
+		morphPosition: randomCoordinate value @ randomCoordinate value! !
 
 !SpaceWar methodsFor: 'collisions' stamp: 'hlsf 10/1/2020 15:04:27'!
 collisions
@@ -310,16 +331,6 @@ handlesKeyboard
 handlesMouseOver: event
 	^ true! !
 
-!SpaceWar methodsFor: 'events' stamp: 'hlsf 9/21/2020 20:56:33'!
-addTorpedo: aTorpedo
-	torpedoes add: aTorpedo.
-	self addMorph: aTorpedo ! !
-
-!SpaceWar methodsFor: 'events' stamp: 'hlsf 9/21/2020 21:10:33'!
-destroyTorpedo: aTorpedo
-	aTorpedo delete.
-	torpedoes remove: aTorpedo ! !
-
 !SpaceWar methodsFor: 'events' stamp: 'hlsf 10/25/2020 09:11:55'!
 keyStroke: event
 	| key |
@@ -342,17 +353,6 @@ mouseEnter: evt
 mouseLeave: evt
 	evt hand releaseKeyboardFocus: self.
 	self stopStepping! !
-
-!SpaceWar methodsFor: 'events' stamp: 'hlsf 10/1/2020 17:29:37'!
-teleport: aShip
-"Teleport a ship at a random location"
-	| area randomCoordinate |
-	aShip resupply.
-	area _ self morphLocalBounds insetBy: 20.
-	randomCoordinate _ [(area left to: area right) atRandom].
-	aShip 
-		velocity: 0@0;
-		morphPosition: randomCoordinate value @ randomCoordinate value! !
 
 !SpaceWar methodsFor: 'focus handling' stamp: 'hlsf 9/10/2020 16:04:35'!
 keyboardFocusChange: gotFocus

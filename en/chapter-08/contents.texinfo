@@ -144,6 +144,53 @@ described above.
 
 @node Spacewar! Events
 @section Spacewar! Events
+Obviously our Spacewar! game handles events. First to control the
+ships with the keyboard. Secondly, we want the game to pause/to resume
+when the mouse cursor moves out/in of the game play.
 
+In our design, an unique morph, @class{SpaceWar} instance, models the
+game play. Therefore we want this instance to handle the events
+described above.
 
+@cindex event, mouse
+@cindex mouse
+@subsection Mouse event
+We want to catch event when the mouse cursor moves over our
+@class{SpaceWar} morph.
 
+@exercise{Get notified of mouse move over event, handleMouseOver,
+@emph{Which method should returns true to let the game play be notified
+with dedicated messages the mouse cursor enters or leaves? In which
+class should we implement this method?}}
+
+Once we make explicit we want the game play to receive mouse move over
+events, we need to set the behavior accordingly with dedicated
+methods.
+
+Eech time the mouse cursor enters the game play, we want:
+
+@itemize
+
+  @item @strong{Keyboard focus.} It follows the mouse cursor: the
+  keyboard input goes to the morph under the mouse cursor. In @cuis{},
+  the mouse cursor is modeled as a @class{HandMorph} instance, an
+  event object (see event classes hierarchy at the beginning of this
+  chapter). An event object is interrogated about its hand with the
+  @msg{hand} message. All in all, we want the keyboard focus to be
+  targeted toward our game play:
+
+  @smalltalkExample{event hand newKeyboardFocus: self}
+
+  @item @strong{Resume the game.} The continuous update of the game is
+  done through a dedicated process called stepping mechanism; it will
+  be discussed in the next chapter. The game play just asks itself to
+  resume the stepping:
+  @smalltalkExample{self startStepping} 
+@end itemize
+
+@exercise{Handle mouse enter event, mouseEnter, @emph{Which message is
+sent to the game play to be notified the mouse cursor enter the game
+play area?  How should be written the matching method?}}
+
+@cindex event, keyboard
+@subsection Keyboard event

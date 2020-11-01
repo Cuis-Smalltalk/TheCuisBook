@@ -52,7 +52,7 @@ right panel is 6: @method{*}, @method{+}, @method{-}, @method{/},
 @method{//} and @method{\\}.
 
 @c Chapter 3
-@unnumberedsec Class, model of communicating entities
+@unnumberedsec Class, model of Communicating Entities
 @subheading @ref{floatInfo}
 When the @class{Float} is selected, the wide text pane prints: ``class
 definition for Float @textdegree{} 92 instance methods @textdegree{}
@@ -424,8 +424,41 @@ then do ...@clicksequence{right click @click{} @label{more...}
 To categorized the remaining uncategorized control methods, repeat but
 select @label{control} at the last step as this category now exists.
 
+@subheading @ref{shipCollision}
+We do not need an iterator to detect a collision between two
+ships. However we use an iterator to take action on each ship when a
+collision is detected.
+@example
+SpaceWar>>collisionsShips
+| positionA position B |
+   positionA @assign{} ships first morphPosition.
+   positionB @assign{} ships second  morphPosition.
+   (positionA dist: positionB) < 25 ifTrue: [
+      ships do: [:each |
+         each flashWith: Color red.
+         self teleport: each]
+   ]
+@end example
 
-@unnumberedsec Visual With Morph
+Local variables only used to ease the code source formatting in
+printed book.
+
+@subheading @ref{torpedoSunCollision}
+You just need to pick the appropriate code snippets from the
+referenced exercise and examples.
+@example
+SpaceWar>>collisionsTorpedoesStar
+| position |
+   position @assign{} centralStar morphPosition.
+   torpedoes do: [:each | 
+      (each morphPosition dist: position) < 8 ifTrue: [
+         each flashWith: Color orange.
+         self destroyTorpedo: each]]
+@end example
+
+
+@c Chapter 6
+@unnumberedsec Visual with Morph
 
 @subheading @ref{allActorsMorph}
 Just replace all @class{Object} occurrences with @class{Morph}:
@@ -467,3 +500,30 @@ Mobile subclass: #Torpedo
    poolDictionaries: ''
    category: 'Spacewar!'
 @end example
+
+
+
+@c Chapter 8
+@unnumberedsec Events
+
+@subheading @ref{handleMouseOver}
+The method @method{handlesMouseOver:}, implemented in the
+@class{SpaceWar} morph class, returns true so the game play is
+informed of mouse over events in dedicated methods.
+@example
+SpaceWar>>handlesMouseOver: event
+   @return{} true
+@end example
+
+@subheading @ref{mouseEnter}
+You need to browse the @method{Morph>>handlesMouseOver:} method and
+read the comment. It writes about a @msg{mouseEnter:} message; we
+implement the matching method in @class{SpaceWar} class with the
+behaviors previously described:
+@example
+SpaceWar>>mouseEnter: event
+   event hand newKeyboardFocus: self.	
+   self startStepping
+@end example
+
+

@@ -524,3 +524,39 @@ SpaceShip>>fireTorpedo
 @figure{Spacewar! torpedoes around,ch05-SpacewarGamePlay,8}
 
 
+@subsection Collisions
+In a previous chapter we gave a small taste of the collision detection
+code between the space ships and the central start. It relies on
+iterator, block of code and control flow.
+
+However we have other scenarios as ship-ship, torpedo-Sun and
+torpedo-ship collisions.
+
+@exercise{Ships collision, shipCollision, @emph{How will you write
+the method to detect the collision between the two ships and to take
+action accordingly? (Adapt from @ref{shipSunCollision})}}
+
+The detection between the two ships and the possible numerous
+torpedoes required two enumerators with nested blocks of code:
+
+@smalltalkExampleCaption{Collision between the ships and the
+torpedoes,shipsTorpedoesCollision,
+SpaceWar>>collisionsShipsTorpedoes
+ships do: [:aShip | 
+  torpedoes do: [:aTorpedo |
+    (aShip morphPosition dist: aTorpedo morphPosition) < 15 ifTrue: [
+      aShip flashWith: Color red.
+      aTorpedo flashWith: Color orange.
+      self destroyTorpedo: aTorpedo.
+      self teleport: aShip]
+  ]
+]}
+
+
+The last torpedo-Sun scenario collision is left as an exercise for
+you.
+
+@exercise{Collision between the torpedoes and the Sun, torpedoSunCollision,
+@emph{Write the method to detect the collisions between the torpedoes
+and the central star and take action accordingly. (Adapt from
+@ref{shipSunCollision} and @ref{shipsTorpedoesCollision}.)}}
