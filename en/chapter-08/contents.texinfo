@@ -100,7 +100,7 @@ testing}.
 
 In @label{event handling testing} is listed methods returning a
 Boolean to indicate if the instance should be notified by the
-event. Let's take a look at one of this method,
+event. Let's take a look at one of these methods,
 @method{handlesMouseDown:}, its comment is worth reading:
 
 @smalltalkExample{Morph>>handlesMouseDown: aMouseButtonEvent
@@ -124,7 +124,7 @@ specify this."
 
 As defined by default this method, and the other handles, checks if
 there is a homonym property. In a specific morph where we want to
-handles mouse down event, we just redefine it to return true:
+handle mouse down event, we just redefine it to return true:
 
 @smalltalkExample{MyMorph>>>>handlesMouseDown: aMouseButtonEvent
    @return{} true}
