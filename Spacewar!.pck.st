@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4426] on 26 October 2020 at 2:01:01 pm'!
+'From Cuis 5.0 [latest update: #4438] on 1 November 2020 at 10:07:20 am'!
 'Description '!
-!provides: 'Spacewar!!' 1 70!
+!provides: 'Spacewar!!' 1 71!
 SystemOrganization addCategory: 'Spacewar!!'!
 
 
@@ -65,11 +65,13 @@ Player controls its heading and acceleration, and he can fire torpedo.!
 !Torpedo commentStamp: 'hlsf 10/25/2020 09:18:37' prior: 0!
 A torpedo comes with a lifespan and an automatic acceleration handling!
 
-!SpaceWar commentStamp: 'hlsf 10/25/2020 09:15:26' prior: 0!
-I am the gameplay view. My submorphs are the elements of the game.
-SpaceWar new openInWorld
+!SpaceWar commentStamp: 'hlsf 11/1/2020 10:06:46' prior: 0!
+I am the view and controler of the game.
+My submorphs are the elements of the game.
 
-Ship controls:
+To start the game execute: "SpaceWar new openInWorld"
+
+Ship Controls
 Green: left, right, up down arrows
 Red: a, d, w, s keys!
 
@@ -255,41 +257,58 @@ morphExtent
 starMass
 	^ centralStar mass! !
 
-!SpaceWar methodsFor: 'initialization' stamp: 'hlsf 9/10/2020 15:21:22'!
-defaultColor
-	^ `Color black`! !
+!SpaceWar methodsFor: 'collisions' stamp: 'hlsf 10/1/2020 15:04:27'!
+collisions
+	self collisionsShipsStar.
+	self collisionsTorpedoesStar.
+	self collisionsShipsTorpedoes.
+	self collisionsShips ! !
 
-!SpaceWar methodsFor: 'initialization' stamp: 'hlsf 10/4/2020 15:36:42'!
-initialize
-"We want to capture keyboard and mouse events, 
-start the game loop(step) and initialize the actors." 
-	super initialize.
-	color _ self defaultColor.
-	self setProperty: #'handlesKeyboard' toValue: true.
-	self setProperty: #'handlesMouseOver:' toValue: true.
-	self startSteppingStepTime: self stepTime.
-	self initializeActors.! !
+!SpaceWar methodsFor: 'collisions' stamp: 'hlsf 10/1/2020 15:07:19'!
+collisionsShips
+	(ships first morphPosition dist: ships second morphPosition) < 25 		ifTrue: [
+		ships do: [:each |
+			each flashWith: Color red.
+			self teleport: each]		]! !
 
-!SpaceWar methodsFor: 'initialization' stamp: 'hlsf 10/3/2020 11:45:38'!
-initializeActors
-	centralStar _ CentralStar new.
-	self addMorph: centralStar.
-	centralStar morphPosition: 0@0.
-	torpedoes _ OrderedCollection new.
-	ships _ Array 		with: SpaceShip new 		with: SpaceShip new.
-	self addAllMorphs: ships.
-	ships first 
-		morphPosition: 200 @ -200;
-		color: Color green darker.
-	ships second 
-		morphPosition: -200 @ 200;
-		color: Color red darker.! !
+!SpaceWar methodsFor: 'collisions' stamp: 'hlsf 10/1/2020 14:54:07'!
+collisionsShipsStar
+	ships do: [:aShip | 
+		(aShip morphPosition dist: centralStar morphPosition) < 20 		ifTrue: [
+			aShip flashWith: Color red.
+			self teleport: aShip]]! !
+
+!SpaceWar methodsFor: 'collisions' stamp: 'hlsf 10/1/2020 14:58:09'!
+collisionsShipsTorpedoes
+	ships do: [:aShip | 
+		torpedoes do: [:aTorpedo |
+		(aShip morphPosition dist: aTorpedo morphPosition) < 15 		ifTrue: [
+			aShip flashWith: Color red.
+			aTorpedo flashWith: Color orange.
+			self destroyTorpedo: aTorpedo.
+			self teleport: aShip]]
+	]! !
+
+!SpaceWar methodsFor: 'collisions' stamp: 'hlsf 10/1/2020 14:57:03'!
+collisionsTorpedoesStar
+	torpedoes do: [:each | 
+		(each morphPosition dist: centralStar morphPosition) < 8 		ifTrue: [
+			each flashWith: Color orange.
+			self destroyTorpedo: each]]! !
 
 !SpaceWar methodsFor: 'drawing' stamp: 'hlsf 10/1/2020 15:45:54'!
 drawOn: aCanvas
 	aCanvas
 		fillRectangle: self morphLocalBounds
 		color: color! !
+
+!SpaceWar methodsFor: 'event handling testing' stamp: 'hlsf 11/1/2020 10:03:57'!
+handlesKeyboard
+	^ true! !
+
+!SpaceWar methodsFor: 'event handling testing' stamp: 'hlsf 11/1/2020 10:04:18'!
+handlesMouseOver: event
+	^ true! !
 
 !SpaceWar methodsFor: 'events' stamp: 'hlsf 9/21/2020 20:56:33'!
 addTorpedo: aTorpedo
@@ -342,6 +361,38 @@ keyboardFocusChange: gotFocus
 		ifFalse: [color _ self defaultColor alpha: 0.5].
 	self redrawNeeded.! !
 
+!SpaceWar methodsFor: 'geometry testing' stamp: 'jmv 9/28/2020 14:35:47'!
+requiresVectorCanvas
+	^false! !
+
+!SpaceWar methodsFor: 'initialization' stamp: 'hlsf 9/10/2020 15:21:22'!
+defaultColor
+	^ `Color black`! !
+
+!SpaceWar methodsFor: 'initialization' stamp: 'hlsf 11/1/2020 10:04:39'!
+initialize
+"We want to capture keyboard and mouse events, 
+start the game loop(step) and initialize the actors." 
+	super initialize.
+	color _ self defaultColor.
+	self startSteppingStepTime: self stepTime.
+	self initializeActors.! !
+
+!SpaceWar methodsFor: 'initialization' stamp: 'hlsf 10/3/2020 11:45:38'!
+initializeActors
+	centralStar _ CentralStar new.
+	self addMorph: centralStar.
+	centralStar morphPosition: 0@0.
+	torpedoes _ OrderedCollection new.
+	ships _ Array 		with: SpaceShip new 		with: SpaceShip new.
+	self addAllMorphs: ships.
+	ships first 
+		morphPosition: 200 @ -200;
+		color: Color green darker.
+	ships second 
+		morphPosition: -200 @ 200;
+		color: Color red darker.! !
+
 !SpaceWar methodsFor: 'stepping' stamp: 'hlsf 10/1/2020 14:38:36'!
 stepAt: millisecondSinceLast
 	ships do: [:each | each update: millisecondSinceLast / 1000 ].
@@ -358,49 +409,6 @@ stepTime
 !SpaceWar methodsFor: 'stepping' stamp: 'hlsf 9/10/2020 18:03:59'!
 wantsSteps
 	^ true! !
-
-!SpaceWar methodsFor: 'geometry testing' stamp: 'jmv 9/28/2020 14:35:47'!
-requiresVectorCanvas
-	^false! !
-
-!SpaceWar methodsFor: 'collisions' stamp: 'hlsf 10/1/2020 15:04:27'!
-collisions
-	self collisionsShipsStar.
-	self collisionsTorpedoesStar.
-	self collisionsShipsTorpedoes.
-	self collisionsShips ! !
-
-!SpaceWar methodsFor: 'collisions' stamp: 'hlsf 10/1/2020 15:07:19'!
-collisionsShips
-	(ships first morphPosition dist: ships second morphPosition) < 25 		ifTrue: [
-		ships do: [:each |
-			each flashWith: Color red.
-			self teleport: each]		]! !
-
-!SpaceWar methodsFor: 'collisions' stamp: 'hlsf 10/1/2020 14:54:07'!
-collisionsShipsStar
-	ships do: [:aShip | 
-		(aShip morphPosition dist: centralStar morphPosition) < 20 		ifTrue: [
-			aShip flashWith: Color red.
-			self teleport: aShip]]! !
-
-!SpaceWar methodsFor: 'collisions' stamp: 'hlsf 10/1/2020 14:58:09'!
-collisionsShipsTorpedoes
-	ships do: [:aShip | 
-		torpedoes do: [:aTorpedo |
-		(aShip morphPosition dist: aTorpedo morphPosition) < 15 		ifTrue: [
-			aShip flashWith: Color red.
-			aTorpedo flashWith: Color orange.
-			self destroyTorpedo: aTorpedo.
-			self teleport: aShip]]
-	]! !
-
-!SpaceWar methodsFor: 'collisions' stamp: 'hlsf 10/1/2020 14:57:03'!
-collisionsTorpedoesStar
-	torpedoes do: [:each | 
-		(each morphPosition dist: centralStar morphPosition) < 8 		ifTrue: [
-			each flashWith: Color orange.
-			self destroyTorpedo: each]]! !
 
 !CentralStar methodsFor: 'accessing' stamp: 'hlsf 10/8/2020 22:20:17'!
 mass
