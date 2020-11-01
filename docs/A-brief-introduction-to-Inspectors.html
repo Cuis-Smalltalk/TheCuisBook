@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : October 29, 2020
+Compilation : November 1, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -102,10 +102,12 @@ submorph hierarchy.
 <div class="float"><span id="ch06_002d08_002d2ndMidClckToSubmorph"></span>
 <div align="center"><img src="ch06-08-2ndMidClckToSubmorph.png" alt="ch06-08-2ndMidClckToSubmorph">
 </div>
-<div class="float-caption"><p><strong>Figure 6.7: </strong>Middle-Click again to descend into Submorphs</p></div></div>
-<p>There is an orange handle on the right, just under the green <strong>Duplicate</strong> handle.
-<kbd>Left-Click</kbd> this to get the <strong>Debug</strong> menu.
-Use this menu to get an <em>Inspector</em> for the rectangle.
+<div class="float-caption"><p><strong>Figure 6.7: </strong>Middle-Click again to descend into
+Submorphs</p></div></div>
+<p>There is an orange handle on the right, just under the green
+<strong>Duplicate</strong> handle.  <kbd>Left-Click</kbd> this to get the
+<strong>Debug</strong> menu.  Use this menu to get an <em>Inspector</em> for the
+rectangle.
 </p>
 <span id="index-tools_002c-inspector"></span>
 <p>Observe <a href="#ch06_002d11aColorClickOnRect">Figure 6.8</a>, on the left we have a pane for
@@ -123,10 +125,11 @@ where <strong>self</strong> is bound to the object we are inspecting.
 <div align="center"><img src="ch06-11aColorClickOnRect.png" alt="ch06-11aColorClickOnRect">
 </div>
 <div class="float-caption"><p><strong>Figure 6.8: </strong>Add Instance Specific Behavior</p></div></div>
-<p>To add a behavior to all instances of a class, we create an instance method.  Here we are going
-to create a behavior for &ldquo;just this one WidgetMorph instance&rdquo;.
+<p>To add a behavior to all instances of a class, we create an instance
+method.  Here we are going to create a behavior for &ldquo;just this one
+WidgetMorph instance&rdquo;.
 </p>
-<span id="index-morph_002c-properties"></span>
+<span id="morphProperties"></span><span id="index-morph_002c-properties"></span>
 <p>In addition to instance variables, a morph can have any number of
 named <em>properties</em> which can be different for each morph.
 </p>
@@ -151,8 +154,9 @@ rect, because the rect now takes the mouse event.  You have to
 mouse-down on the Ellipse.  More on this below.
 </p>
 <span id="index-morph_002c-move_002fpick-up"></span>
-<p>One quick note on <strong>Move</strong> versus <strong>Pick up</strong>.  <strong>Move</strong> moves a submorph
-&ldquo;within&rdquo; its parent.  <strong>Pick up</strong> grabs a morph &ldquo;out&rdquo; of its parent. 
+<p>One quick note on <strong>Move</strong> versus <strong>Pick up</strong>.
+<strong>Move</strong> moves a submorph &ldquo;within&rdquo; its parent.  <strong>Pick
+up</strong> grabs a morph &ldquo;out&rdquo; of its parent.
 </p>
 <div class="float"><span id="ch06_002d09_002dMove_002dWithin"></span>
 <div align="center"><img src="ch06-09-Move-Within.png" alt="ch06-09-Move-Within">
@@ -177,8 +181,10 @@ contains code to set the borderWidth and the borderColor.
 <div class="float"><span id="ch06_002d14_002dSetBorderColor"></span>
 <div align="center"><img src="ch06-14-SetBorderColor.png" alt="ch06-14-SetBorderColor">
 </div>
-<div class="float-caption"><p><strong>Figure 6.12: </strong>Use Inspector to set borderColor and borderWidth</p></div></div>
-<p>In the typical case one wants to refine or change behaviors for all instances of a class.
+<div class="float-caption"><p><strong>Figure 6.12: </strong>Use Inspector to set borderColor and
+borderWidth</p></div></div>
+<p>In the typical case one wants to refine or change behaviors for all
+instances of a class.
 </p>
 <hr>
 <div class="header">

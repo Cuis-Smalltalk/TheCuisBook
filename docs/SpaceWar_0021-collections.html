@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : October 29, 2020
+Compilation : November 1, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -226,7 +226,25 @@ and the torpedoes positions and velocities.</em>
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong>Exercise 4.18: </strong>Update all ships and torpedoes</p></div></div><hr>
+<div class="float-caption"><p><strong>Exercise 4.18: </strong>Update all ships and torpedoes</p></div></div>
+
+<p>Among other things, the game play handles the collisions between the
+various protagonists. Enumerators are very handy.
+</p>
+<p>Ships are hold in array of size 2, we just iterate it with a <code>#do:</code>
+message and a dedicated block of code:
+</p>
+<div class="float"><span id="shipSunCollision"></span>
+<div class="display">
+<pre class="display"><span class="sansserif">SpaceWar&gt;&gt;collisionsShipsStar
+   ships do: [:aShip | 
+      (aShip morphPosition dist: centralStar morphPosition) &lt; 20 ifTrue: [
+         aShip flashWith: Color red.
+         self teleport: aShip]
+   ]</span>
+</pre></div>
+
+<div class="float-caption"><p><strong>Example 4.21: </strong>Collision between the ships and the Sun</p></div></div><hr>
 <div class="header">
 <p>
 Previous: <a href="Collections-detailed.html" accesskey="p" rel="prev">Collections detailed</a>, Up: <a href="The-Collection-Way-of-Life.html" accesskey="u" rel="up">The Collection Way of Life</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>

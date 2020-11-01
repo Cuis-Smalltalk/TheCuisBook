@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This book is for Cuis-Smalltalk (5.0#4253), a free and modern
+implementation of the Smalltalk language and environment.
+
+Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
+
+
+
+
+
+
+Compilation : November 1, 2020
+
+Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
+
+
+
+The contents of this book are protected under Creative Commons
+Attribution-ShareAlike 4.0 International.
+
+You are free to:
+
+
+Share - copy and redistribute the material in any medium or
+format
+
+
+Adapt - remix, transform, and build upon the material for any
+purpose, even commercially.
+
+
+
+Under the following terms:
+
+
+Attribution. You must give appropriate credit, provide a link to
+the license, and indicate if changes were made. You may do so in any
+reasonable manner, but not in any way that suggests the licensor
+endorses you or your use.
+
+
+Share Alike. If you remix, transform, or build upon the material,
+you must distribute your contributions under the same license as the
+original.
+
+Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+ -->
+<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Spacewar! Events (The Cuis-Smalltalk Book)</title>
+
+<meta name="description" content="Spacewar! Events (The Cuis-Smalltalk Book)">
+<meta name="keywords" content="Spacewar! Events (The Cuis-Smalltalk Book)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Indexes.html" rel="index" title="Indexes">
+<link href="Events.html" rel="up" title="Events">
+<link href="Process.html" rel="next" title="Process">
+<link href="Overall-Mechanism.html" rel="prev" title="Overall Mechanism">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="style.css">
+
+
+</head>
+
+<body lang="en">
+<span id="Spacewar_0021-Events"></span><div class="header">
+<p>
+Previous: <a href="Overall-Mechanism.html" accesskey="p" rel="prev">Overall Mechanism</a>, Up: <a href="Events.html" accesskey="u" rel="up">Events</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Spacewar_0021-Events-1"></span><h3 class="section">8.3 Spacewar! Events</h3>
+<p>Obviously our Spacewar! game handles events. First to control the
+ships with the keyboard. Secondly, we want the game to pause/to resume
+when the mouse cursor moves out/in of the game play.
+</p>
+<p>In our design, an unique morph, <code>SpaceWar</code> instance, models the
+game play. Therefore we want this instance to handle the events
+described above.
+</p>
+<span id="index-event_002c-mouse"></span>
+<span id="index-mouse"></span>
+<span id="Mouse-event"></span><h4 class="subsection">8.3.1 Mouse event</h4>
+<p>We want to catch event when the mouse cursor moves over our
+<code>SpaceWar</code> morph.
+</p>
+<div class="float"><span id="handleMouseOver"></span>
+<blockquote class="indentedblock">
+<p><em>Which method should returns true to let the game play be notified
+with dedicated messages the mouse cursor enters or leaves? In which
+class should we implement this method?</em>
+</p></blockquote>
+
+
+<div class="float-caption"><p><strong>Exercise 8.1: </strong>Get notified of mouse move over event</p></div></div>
+<p>Once we make explicit we want the game play to receive mouse move over
+events, we need to set the behavior accordingly with dedicated
+methods.
+</p>
+<p>Eech time the mouse cursor enters the game play, we want:
+</p>
+<ul>
+<li> <strong>Keyboard focus.</strong> It follows the mouse cursor: the
+  keyboard input goes to the morph under the mouse cursor. In Cuis-Smalltalk,
+  the mouse cursor is modeled as a <code>HandMorph</code> instance, an
+  event object (see event classes hierarchy at the beginning of this
+  chapter). An event object is interrogated about its hand with the
+  <code>#hand</code> message. All in all, we want the keyboard focus to be
+  targeted toward our game play:
+
+<div class="display">
+<pre class="display"><span class="sansserif">event hand newKeyboardFocus: self</span>
+</pre></div>
+
+</li><li> <strong>Resume the game.</strong> The continuous update of the game is
+  done through a dedicated process called stepping mechanism; it will
+  be discussed in the next chapter. The game play just asks itself to
+  resume the stepping:
+  <div class="display">
+<pre class="display"><span class="sansserif">self startStepping</span>
+</pre></div>
+</li></ul>
+
+<div class="float"><span id="mouseEnter"></span>
+<blockquote class="indentedblock">
+<p><em>Which message is
+sent to the game play to be notified the mouse cursor enter the game
+play area?  How should be written the matching method?</em>
+</p></blockquote>
+
+
+<div class="float-caption"><p><strong>Exercise 8.2: </strong>Handle mouse enter event</p></div></div>
+<span id="index-event_002c-keyboard"></span>
+<span id="Keyboard-event"></span><h4 class="subsection">8.3.2 Keyboard event</h4>
+<hr>
+<div class="header">
+<p>
+Previous: <a href="Overall-Mechanism.html" accesskey="p" rel="prev">Overall Mechanism</a>, Up: <a href="Events.html" accesskey="u" rel="up">Events</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : October 29, 2020
+Compilation : November 1, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -231,7 +231,55 @@ space ship position, heading and velocity before being fired.
 </div>
 <div class="float-caption"><p><strong>Figure 5.1: </strong>Spacewar! torpedoes around</p></div></div>
 
-<hr>
+<span id="Collisions"></span><h4 class="subsection">5.6.3 Collisions</h4>
+<p>In a previous chapter we gave a small taste of the collision detection
+code between the space ships and the central start. It relies on
+iterator, block of code and control flow.
+</p>
+<p>However we have other scenarios as ship-ship, torpedo-Sun and
+torpedo-ship collisions.
+</p>
+<div class="float"><span id="shipCollision"></span>
+<blockquote class="indentedblock">
+<p><em>How will you write
+the method to detect the collision between the two ships and to take
+action accordingly? (Adapt from <a href="SpaceWar_0021-collections.html#shipSunCollision">Example 4.21</a>)</em>
+</p></blockquote>
+
+
+<div class="float-caption"><p><strong>Exercise 5.5: </strong>Ships collision</p></div></div>
+<p>The detection between the two ships and the possible numerous
+torpedoes required two enumerators with nested blocks of code:
+</p>
+<div class="float"><span id="shipsTorpedoesCollision"></span>
+<div class="display">
+<pre class="display"><span class="sansserif">SpaceWar&gt;&gt;collisionsShipsTorpedoes
+ships do: [:aShip | 
+  torpedoes do: [:aTorpedo |
+    (aShip morphPosition dist: aTorpedo morphPosition) &lt; 15 ifTrue: [
+      aShip flashWith: Color red.
+      aTorpedo flashWith: Color orange.
+      self destroyTorpedo: aTorpedo.
+      self teleport: aShip]
+  ]
+]</span>
+</pre></div>
+
+<div class="float-caption"><p><strong>Example 5.10: </strong>Collision between the ships and the
+torpedoes</p></div></div>
+
+<p>The last torpedo-Sun scenario collision is left as an exercise for
+you.
+</p>
+<div class="float"><span id="torpedoSunCollision"></span>
+<blockquote class="indentedblock">
+<p><em>Write the method to detect the collisions between the torpedoes
+and the central star and take action accordingly. (Adapt from
+<a href="SpaceWar_0021-collections.html#shipSunCollision">Example 4.21</a> and <a href="#shipsTorpedoesCollision">Example 5.10</a>.)</em>
+</p></blockquote>
+
+
+<div class="float-caption"><p><strong>Exercise 5.6: </strong>Collision between the torpedoes and the Sun</p></div></div><hr>
 <div class="header">
 <p>
 Previous: <a href="Control-flow-with-block-and-message.html" accesskey="p" rel="prev">Control flow with block and message</a>, Up: <a href="Control-Flow-Messaging.html" accesskey="u" rel="up">Control Flow Messaging</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>

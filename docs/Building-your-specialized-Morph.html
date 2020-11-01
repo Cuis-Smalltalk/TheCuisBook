@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : October 29, 2020
+Compilation : November 1, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -92,8 +92,9 @@ Next: <a href="Spacewar_0021-graphics.html" accesskey="n" rel="next">Spacewar! g
 <hr>
 <span id="Building-your-specialized-Morph-1"></span><h3 class="section">6.4 Building your specialized Morph</h3>
 <span id="index-morph_002c-subclass"></span>
-<p>Let&rsquo;s make a simple subclass which changes color when <kbd>Left-Click</kbd>ed.
-Create a new class just as we did with Spacewar! but subclass EllipseMorph with #ColorClickEllipse.
+<p>Let&rsquo;s make a simple subclass which changes color when
+<kbd>Left-Click</kbd>ed.  Create a new class just as we did with Spacewar!
+but subclass EllipseMorph with #ColorClickEllipse.
 </p>
 <div class="display">
 <pre class="display"><span class="sansserif">EllipseMorph subclass: #ColorClickEllipse
@@ -103,9 +104,10 @@ Create a new class just as we did with Spacewar! but subclass EllipseMorph with 
              category: &rsquo;Spacewar!!&rsquo;</span>
 </pre></div>
 
-<p><kbd>Right-Click</kbd> on the <strong>Message Category</strong> pane and select <strong>new category...</strong>.
-This brings up a number of selections and allows us to create new ones.
-Select &ldquo;event handling testing&rdquo;.  Then add the method <code>ColorClickEllipse&gt;&gt;handlesMouseDown:</code>.
+<p><kbd>Right-Click</kbd> on the <strong>Message Category</strong> pane and select
+<strong>new category...</strong>.  This brings up a number of selections and
+allows us to create new ones.  Select &ldquo;event handling testing&rdquo;.
+Then add the method <code>ColorClickEllipse&gt;&gt;handlesMouseDown:</code>.
 </p>
 <div class="display">
 <pre class="display"><span class="sansserif">handlesMouseDown: aMouseButtonEvent
@@ -114,7 +116,8 @@ Select &ldquo;event handling testing&rdquo;.  Then add the method <code>ColorCli
 </span>
 </pre></div>
 
-<p>Likewise, add a new catagory &ldquo;event handing&rdquo; and add the other method we need.
+<p>Likewise, add a new catagory &ldquo;event handing&rdquo; and add the other
+method we need.
 </p>
 <div class="display">
 <pre class="display"><span class="sansserif">mouseButton1Up: aMouseButtonEvent localPosition: localEventPosition
@@ -130,7 +133,8 @@ out.  These are fun to <kbd>Left-Click</kbd> on.  Make as many as you want!
 <div align="center"><img src="ch06-15-ColorClickEllipse.png" alt="ch06-15-ColorClickEllipse">
 </div>
 <div class="float-caption"><p><strong>Figure 6.13: </strong>Obtain ColorClickEllipse</p></div></div>
-<p>Now you know how to specialize an individual morph, or make a whole new class of them!
+<p>Now you know how to specialize an individual morph, or make a whole
+new class of them!
 </p>
 
 

@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : October 29, 2020
+Compilation : November 1, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -60,7 +60,7 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="index.html" rel="up" title="Top">
 <link href="Code-Management.html" rel="next" title="Code Management">
-<link href="Events.html" rel="prev" title="Events">
+<link href="Spacewar_0021-Events.html" rel="prev" title="Spacewar! Events">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -92,6 +92,15 @@ Next: <a href="Code-Management.html" accesskey="n" rel="next">Code Management</a
 <hr>
 <span id="Process-1"></span><h2 class="chapter">9 Process</h2>
 
+<p>The second kind of event is quite similar, but is used to march time
+forward.  We are interested in timer alarms and in particular
+<em>steps</em> which is used to coordinate updates to the display and
+manage processing of queued input events.  There is a class
+<code>StepMessage</code>, and you can look at the <code>stepping</code> method
+category in the <code>Morph</code> class.  These timed clock events are
+used to <em>time slice</em> long running tasks and do housekeeping which
+we will describe in the next chapter on processes.
+</p>
 
 
 </body>
