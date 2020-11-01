@@ -2,7 +2,19 @@
 @node Solutions of the Exercises
 @appendix Solutions of the Exercises
 
+
+@menu
+* Smallltalk Philosophy (Solutions)::
+* The Message Way of Life (Solutions)::
+* Class -- model of Communicating Entities (Solutions)::
+* The Collection Way of Life (Solutions)::
+* Control Flow Messaging (Solutions)::
+* Visual with Morph (Solutions)::
+* Events (Solutions)::
+@end menu
+
 @c Chapter 1
+@node Smallltalk Philosophy (Solutions)
 @unnumberedsec Smallltalk Philosophy
 @subheading @ref{exePlacement}
 @figure{Placement,E-img1,8}
@@ -26,6 +38,7 @@ Transcript show: 2020 printStringWords capitalized
 @end example
 
 @c Chapter 2
+@node The Message Way of Life (Solutions)
 @unnumberedsec The Message Way of Life
 @subheading @ref{helloBelle}
 @example
@@ -52,6 +65,7 @@ right panel is 6: @method{*}, @method{+}, @method{-}, @method{/},
 @method{//} and @method{\\}.
 
 @c Chapter 3
+@node Class -- model of Communicating Entities (Solutions)
 @unnumberedsec Class, model of Communicating Entities
 @subheading @ref{floatInfo}
 When the @class{Float} is selected, the wide text pane prints: ``class
@@ -214,6 +228,7 @@ CentralStar>>initialize
 
 
 @c Chapter 4
+@node The Collection Way of Life (Solutions)
 @unnumberedsec The Collection Way of Life
 @subheading @ref{cutString}
 Open the protocol browser on the class @class{String}, search for the
@@ -394,6 +409,7 @@ SpaceWar>>stepAt: msSinceLast
 
 
 @c Chapter 5
+@node Control Flow Messaging (Solutions)
 @unnumberedsec Control Flow Messaging
 @subheading @ref{blockDivisor}
 @example
@@ -458,6 +474,7 @@ SpaceWar>>collisionsTorpedoesStar
 
 
 @c Chapter 6
+@node Visual with Morph (Solutions)
 @unnumberedsec Visual with Morph
 
 @subheading @ref{allActorsMorph}
@@ -504,6 +521,7 @@ Mobile subclass: #Torpedo
 
 
 @c Chapter 8
+@node Events (Solutions)
 @unnumberedsec Events
 
 @subheading @ref{handleMouseOver}

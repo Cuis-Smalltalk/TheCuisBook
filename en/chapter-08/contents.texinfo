@@ -167,7 +167,7 @@ Once we make explicit we want the game play to receive mouse move over
 events, we need to set the behavior accordingly with dedicated
 methods.
 
-Eech time the mouse cursor enters the game play, we want:
+Each time the mouse cursor enters the game play, we want:
 
 @itemize
 
