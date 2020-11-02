@@ -155,6 +155,8 @@ described above.
 @cindex event, mouse
 @cindex mouse
 @subsection Mouse event
+
+@subsubheading Mouse cursor enters game play
 We want to catch event when the mouse cursor moves over our
 @class{SpaceWar} morph.
 
@@ -171,13 +173,13 @@ Each time the mouse cursor enters the game play, we want:
 
 @itemize
 
-  @item @strong{Keyboard focus.} It follows the mouse cursor: the
+  @item @strong{Get keyboard focus.} It follows the mouse cursor: the
   keyboard input goes to the morph under the mouse cursor. In @cuis{},
   the mouse cursor is modeled as a @class{HandMorph} instance, an
   event object (see event classes hierarchy at the beginning of this
   chapter). An event object is interrogated about its hand with the
   @msg{hand} message. All in all, we want the keyboard focus to be
-  targeted toward our game play:
+  targeted toward our game play when the mouse enter:
 
   @smalltalkExample{event hand newKeyboardFocus: self}
 
@@ -189,8 +191,45 @@ Each time the mouse cursor enters the game play, we want:
 @end itemize
 
 @exercise{Handle mouse enter event, mouseEnter, @emph{Which message is
-sent to the game play to be notified the mouse cursor enter the game
+sent to the game play to be notified the mouse cursor enters the game
 play area?  How should be written the matching method?}}
+
+@subsubheading Mouse cursor leaves game play 
+We also want to be informed when the mouse cursor leaves our
+@class{SpaceWar} morph. Thanks to the work done in
+@ref{handleMouseOver}, we already informed @cuis{} we want to be
+notified of mouse movement over the game play. However we need to code
+the behavior when the mouse cursor leaves the game play:
+
+@itemize
+
+  @item @strong{Release keyboard focus.} We tell @cuis{} the game play
+  does not want keyboard focus:
+
+  @smalltalkExample{event hand releaseKeyboardFocus: self}
+
+  @item @strong{Pause the game.} We stop the continuous
+  @emph{stepping} update of the game:
+
+  @smalltalkExample{self stopStepping}
+
+@end itemize
+
+@exercise{Handle mouse leave event, mouseLeave, @emph{Which message is
+sent to the game play to be notified the mouse cursor leaves the game
+play area?  How should be written the matching method?}}
+
+In graphic user interface, a visual effect is often used to inform the
+user the keyboard focus change. In Spacewar! we jut make the game play
+background transparent.
+
+@figure{Left: keyboard focus on the game -- Right: keyboard focus not
+on the game @comma{} it is paused and when can see underneath, ch08-Focus,12}
+
+
+
+In the Morph framework there is this @method{keyboardFocusChange:}
+method to write the appropriate code, its argument is a Boolean
 
 @cindex event, keyboard
 @subsection Keyboard event

@@ -544,4 +544,15 @@ SpaceWar>>mouseEnter: event
    self startStepping
 @end example
 
+@subheading @ref{mouseLeave}
+The message @msg{mouseLeave:} is sent to our @class{SpaceWar} instance
+each time the mouse cursor move out (leaves) of the game
+play. Therefore we add the homonym method to the @class{SpaceWar}
+class:
+@example
+SpaceWar>>mouseLeave: event
+   event hand releaseKeyboardFocus: self.
+   self stopStepping
+@end example
+
 
