@@ -555,4 +555,12 @@ SpaceWar>>mouseLeave: event
    self stopStepping
 @end example
 
-
+@subheading @ref{keyboardEvent}
+The @msg{handlesKeyboard} message is sent to a morph to know if it
+wants to receive keyboard event. The morph responds true to this
+message to state its interest on keyboard event. We implement the
+method in the @class{SpaceWar} class:
+@example
+SpaceWar>>handlesKeyboard
+   @return{} true
+@end example

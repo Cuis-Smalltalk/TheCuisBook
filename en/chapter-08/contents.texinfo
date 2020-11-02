@@ -220,16 +220,35 @@ sent to the game play to be notified the mouse cursor leaves the game
 play area?  How should be written the matching method?}}
 
 In graphic user interface, a visual effect is often used to inform the
-user the keyboard focus change. In Spacewar! we jut make the game play
-background transparent.
+user the keyboard focus changed. In Spacewar! we make the game play
+background to change depending on the sate of the keyboard focus.
 
-@figure{Left: keyboard focus on the game -- Right: keyboard focus not
-on the game @comma{} it is paused and when can see underneath, ch08-Focus,12}
+In @ref{ch08-Focus}, at the left keyboard focus is on the game; at the
+right keyboard focus not on the game, it is paused and when can see
+underneath.
 
+@figure{Spacewar! effect depending on the keyboard focus, ch08-Focus,12}
 
+In the Morph framework, the @msg{keyboardFocusChange:} message is sent
+to the morph losing or gaining the keyboard focus, its parameter is a
+Boolean. Therefore we implement the @ref{ch08-Focus} behavior in the
+matching @class{SpaceWar}'s method @method{keyboardFocusChange:}
 
-In the Morph framework there is this @method{keyboardFocusChange:}
-method to write the appropriate code, its argument is a Boolean
+@smalltalkExampleCaption{Spacewar! keyboard focus effect, keyboardFocusEffect,
+SpaceWar>>keyboardFocusChange: gotFocus
+   gotFocus 
+      ifTrue: [color @assign{} self defaultColor]
+      ifFalse: [color @assign{} self defaultColor alpha: 0.5].
+   self redrawNeeded}
 
 @cindex event, keyboard
 @subsection Keyboard event
+To control the space ships, we use the keyboard. Therefore we want the
+game play be notified of the keyboard events.
+
+@exercise{Get notified of keyboard event, keyboardEvent, @emph{Find
+out which method should return true to let the game be notified of
+keyboard event.}}
+
+We can decide to be notified of the key down or key up event and also
+key down then up event (@dfn{key stroke}).
