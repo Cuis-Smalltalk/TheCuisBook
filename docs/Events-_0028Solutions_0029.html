@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : November 1, 2020
+Compilation : November 7, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -112,7 +112,26 @@ behaviors previously described:
    self startStepping
 </pre></div>
 
+<span id="mouseLeave-1"></span><h4 class="subheading"><a href="Spacewar_0021-Events.html#mouseLeave">Exercise 8.3</a></h4>
+<p>The message <code>#mouseLeave:</code> is sent to our <code>SpaceWar</code> instance
+each time the mouse cursor move out (leaves) of the game
+play. Therefore we add the homonym method to the <code>SpaceWar</code>
+class:
+</p><div class="example">
+<pre class="example">SpaceWar&gt;&gt;mouseLeave: event
+   event hand releaseKeyboardFocus: self.
+   self stopStepping
+</pre></div>
 
+<span id="keyboardEvent-1"></span><h4 class="subheading"><a href="Spacewar_0021-Events.html#keyboardEvent">Exercise 8.4</a></h4>
+<p>The <code>#handlesKeyboard</code> message is sent to a morph to know if it
+wants to receive keyboard event. The morph responds true to this
+message to state its interest on keyboard event. We implement the
+method in the <code>SpaceWar</code> class:
+</p><div class="example">
+<pre class="example">SpaceWar&gt;&gt;handlesKeyboard
+   &#x2191; true
+</pre></div>
 
 
 
