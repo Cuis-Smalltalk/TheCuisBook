@@ -564,3 +564,13 @@ method in the @class{SpaceWar} class:
 SpaceWar>>handlesKeyboard
    @return{} true
 @end example
+
+@subheading @ref{secondShipControl}
+We designate the characters as @smalltalk{$w $a $s $d}. We append the
+code bellow to the method @method{SpaceWar>>keyStroke:}
+@example
+key = $w ifTrue: [@return{} ships second push].
+key = $d ifTrue: [@return{} ships second right].
+key = $a ifTrue: [@return{} ships second left].
+key = $s ifTrue: [@return{} ships second fireTorpedo]
+@end example
