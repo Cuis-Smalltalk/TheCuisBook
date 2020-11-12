@@ -1,7 +1,7 @@
 @node The Message Way of Life
 @chapter The Message Way of Life
 
-Smalltalk design is based on entities communicating with each other
+A Smalltalk system is a collection of entities communicating with each other
 through messages. That's all, there is nothing more.
 
 

@@ -78,9 +78,9 @@ was guided by the objectives of making @emph{Personal Dynamic Media}
 and the Dynabook real. The final version of Smalltalk built at Xerox
 was Smalltalk-80.
 
-Given the relatively weak capabilities of computer hardware at this
+Given the relatively weak capabilities of computer hardware at that
 time, implementing this vision presented real challenges, and much
-creativity was called for.  Today, smartphones, tablets and laptops
+creativity was called for.  Today, smartphones, tablets and laptops do
 have the hardware capabilities a Dynabook requires. However, the same
 advance hasn't happened for the medium of personal software. 
 
@@ -122,7 +122,7 @@ development environment that, with study, is
 comprehensible to a single person.
 
 As we experiment with and evolve Cuis, this goal is carried out by removing everything
-possible from the base system which is not necessary, and by having a
+possible from the base system which is not essential, and by having a
 composition strategy which allows one to write or add any features as 
 needed.  As one gains understanding of the software kernel or core, one only
 has to read and learn from each additional feature at a time to understand the whole.
@@ -153,7 +153,7 @@ computer and an @dfn{image} representing the state of this computer.
 The virtual machine is an executable program running on a dedicated
 host (GNU/Linux, Mac OS X, Windows, etc.). It is called the @dfn{Open
 Smalltalk Virtual Machine}, or Squeak @vm{} in short. There are
-different flavors of @vm{}, one for each combination of Operating
+different flavors of @vm{}, for various combinations of Operating
 System and CPU architecture. Therefore, one @vm{} compiled
 for Windows on Intel architecture will not work in Linux on
 ARM architecture. You need the specific @vm{} compiled for
@@ -161,12 +161,12 @@ the combination of Operating System and CPU architecture
 your computer is based on.
 
 The image is a regular file feeding the @vm{} with all the objects
- defining the state of the virtual computer. These objects are
- classes, methods, instances of those classes as numbers, strings,
- windows, debuggers -- whatever existed when the state of the virtual
- computer was saved. An @dfn{image file} saved on a given Operating System
- and CPU architecture @strong{will run identically on another system} as
- long as the same @vm{} generation is used.
+defining the state of the virtual computer. These objects are
+classes, methods, instances of those classes as numbers, strings,
+windows, debuggers -- whatever existed when the state of the virtual
+computer was saved. An @dfn{image file} saved on a given Operating System
+and CPU architecture @strong{will run identically on another system} 
+requiring only a compatible @vm{} to be used.
 
 The @vm{} allows an image to be restarted with windows in the same locations
 between different operating systems and different CPU architectures
@@ -189,12 +189,12 @@ should, however, be easily transferable.
 To get @cuis{} running on your computer, follow the instructions in
 the @file{README} file accompanying the archive. Once you get @cuis{}
 running, read the information displayed on the windows. When you are
-done, close these windows. Next you will adjust @cuis{} to your
+done, you can close these windows and adjust @cuis{} to your
 preferences.
 
 @subsection Editing your preferences
-Once you read the instructions on the default windows, the next 
-thing you want to do is to adjust its visual properties to fit your
+Once you read the information on the default windows, the next 
+thing you want to do is to adjust visual properties to fit your
 preferences and needs. To do so, access the World menu
 ...@clicksequence{Background click @click{} @label{Preferences...}} then
 select the pin on the top right of the menu to make it permanent. Here
@@ -238,11 +238,11 @@ examples are associated with small exercises to experiment with and
 accompanied with solutions in the annex. We intentionally keep the
 details of the syntax out of this section.
 
-In a Workspace, the usual @emph{Hello world!} program can be written
+In a Workspace, the usual @emph{Hello World!} program can be written
 in Smalltalk:
 
 @smalltalkExampleCaption{The traditional 'Hello World!' program,hello,
-Transcript show: 'Hello World'}
+Transcript show: 'Hello World!'}
 
 @cindex tools, transcript
 To execute this code, select it with the mouse and
@@ -374,15 +374,15 @@ constant expressions.  They literally are as the appear.
 There are different syntax variants to write a number:
 
 @multitable @columnfractions .45 .55
-@headitem Numeric literal @tab What it represents
-   @item @smalltalk{1}                          @tab decimal integer
-   @item @smalltalk{2r101}                      @tab binary integer
-   @item @smalltalk{16rFF}                      @tab hexadecimal integer
-   @item @smalltalk{1.5}                        @tab floating point number
-   @item @smalltalk{2.4e7}                      @tab floating pont exponential notation
+@headitem Numeric literal                    @tab What it represents
+   @item @smalltalk{1}                         @tab integer (decimal notation)
+   @item @smalltalk{2r101}                  @tab integer (binary binary)
+   @item @smalltalk{16rFF}                  @tab integer (hexadecimal notation)
+   @item @smalltalk{1.5}                      @tab floating point number
+   @item @smalltalk{2.4e7}                  @tab floating point (exponential notation)
 @end multitable
 
-Depending on the value we need to use, we mix these literal
+Depending on the value we need to use, we can mix these literal
 representations:
 
 @smalltalkExample{16rA + 1 + 5e-1 + 6e-2
