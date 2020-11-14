@@ -1,2 +1,11 @@
 @node Code Management
 @chapter Code Management
+
+@c TOC
+@c * Cuis save in the change files everything we do.
+@c * It can be played back
+@c * We can save the image to save our Work-in-Progress.
+@c * The drawback: even if very unlikly an image can be corrupted and witch such an image, the virtual machine executable will crash at start up. Every things on the image can be lost under this circumstances.
+@c * Package is the way to save the source code of a Cuis application
+@c * Describe your daily workflow with package
+@c * Gives a few script to automate your installation
