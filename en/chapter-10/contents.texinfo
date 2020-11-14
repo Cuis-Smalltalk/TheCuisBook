@@ -1,6 +1,23 @@
 @node Code Management
 @chapter Code Management
 
+We already wrote about the @cuis{} image (@xref{Installing and
+configuring @cuis{}}). When saving the state of the virtual machine in
+the image file, every single changes done in the environment will be
+included in the saved image: this includes the windows in the
+environment, workspace content, newly written classes and methods,
+existing instances including the visual morphs, a debugging session
+with a System Browser, an inspector and a debugger.
+
+At any time, the user can save the image with
+...@clicksequence{Background click @click{}
+@label{Save}}... Alternatively @label{Save as...} saves the image under
+an alternate name provided by the user.
+
+Saving the image is the easiest and straightforward method to save
+your own code. But we can't really call that code management as your
+code is not save in a dedicated file of its own.
+
 @c TOC
 @c * Cuis save in the change files everything we do.
 @c * It can be played back
