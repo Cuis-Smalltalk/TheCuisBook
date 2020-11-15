@@ -1,13 +1,22 @@
 @node Code Management
 @chapter Code Management
 
-We already wrote about the @cuis{} image (@xref{Installing and
+Regarding the source code, @cuis{} comes with several tools to
+manipulate it: the image, the change record, the change set and the
+package system. We give you a tour around these mechanisms then explain
+how you should manage the code of an application written with @cuis{}.
+
+@node The Image
+@section The Image
+
+We already wrote about the @cuis{} @dfn{image} (@xref{Installing and
 configuring @cuis{}}). When saving the state of the virtual machine in
 the image file, every single changes done in the environment will be
 included in the saved image: this includes the windows in the
 environment, workspace content, newly written classes and methods,
 existing instances including the visual morphs, a debugging session
 with a System Browser, an inspector and a debugger.
+
 
 At any time, the user can save the image with
 ...@clicksequence{Background click @click{}
@@ -16,7 +25,82 @@ an alternate name provided by the user.
 
 Saving the image is the easiest and straightforward method to save
 your own code. But we can't really call that code management as your
-code is not save in a dedicated file of its own.
+code is not saved in a dedicated file of its own but along the
+image. Moreover it will be unpractical to share your work with other
+person.
+
+For various reasons, an image may be in fuzzy state: the virtual
+machine may crash when running it or the environment may be in a lock
+down state. This is another drawback when using the image as your sole
+source code repository. The net result is loosing your work.
+
+Another situation where you lost code is a virtual machine crash or to
+forget to save the image when quitting @cuis{}. In such situation
+there is a solution to recover your lost editing: the @dfn{ChangeSet}.
+
+@node The Change Record
+@section The Change Record
+
+@cuis{} records any action occurring in the environment: the code you
+edit in the System Browser, the code you execute in a
+Workspace. Therefore, in the event of a @cuis{} crash or you did not
+save your editing when quitting the environment, you can restore your
+editing when starting afresh @cuis{}. Let's explore this feature with
+a simple example.
+
+On a fresh @cuis{} installation, create a new class category named
+@label{TheCuisBook} and within @class{TheBook} class:
+
+@itemize
+
+  @item Over the class pane of System Browser (at the most left), do
+   ...@clicksequence{Right click @click{} @label{add
+   items... (a)}}... key in @label{TheCuisBook}.
+
+  @item Select this new class category and create the class
+  @class{TheBook} as a kind of @class{Object}: select the
+  @label{TheCuisBook} category then in the source code bellow edit the
+  class template to replace @smalltalk{#NameOfClass} with
+  @smalltalk{#TheBook} then save the class definition with
+  @kbd{Ctrl-s}.
+  
+@end itemize
+
+Open a Workspace, then key in the following code:
+
+@smalltalkExample{| myBook |
+myBook @assign{} TheBook new}
+
+@cuis{} does not save code you key in the Workspace, but code you
+execute. Let's execute this code: @kbd{Ctrl-a} then @kbd{Ctrl-p}, the
+Workspace prints the result: @smalltalk{a TheBook}, an instance of a
+@class{TheBook} class.
+
+Now quit @cuis{} without saving, of course it first asks us
+@label{Save the current image before}, choose @label{No}, then it
+warns us:
+
+@verbatim
+Some ChangeSet for Cuis core might have unsaved changes.
+If you continue, they would be lost.
+Continue?
+@end verbatim
+
+Proceed with @label{Yes}. At least, we are done quitting the @cuis{}
+environment without saving.
+
+Now start again @cuis{}, then do ...@clicksequence{Background click
+@click{} @label{Changes...} @click{} @label{Recently logged
+Changes...}}. The system presents a list snapshpots of the image with
+tagged with date stamp. Pick up the one occurring just before you lost
+your code.
+
+@node The Change Set
+@section The Change Set
+
+@node The Package
+@section The Package
+
 
 @c TOC
 @c * Cuis save in the change files everything we do.
