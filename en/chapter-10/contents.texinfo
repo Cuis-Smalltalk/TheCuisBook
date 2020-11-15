@@ -91,9 +91,8 @@ environment without saving.
 
 Now start again @cuis{}, then do ...@clicksequence{Background click
 @click{} @label{Changes...} @click{} @label{Recently logged
-Changes...}}. The system presents a list snapshpots of the image with
-tagged with date stamp. Pick up the one occurring just before you lost
-your code.
+Changes...}}. The system presents a list image snapshpots tagged with
+date stamp. Pick up the one occurring just before you lost your code.
 
 @node The Change Set
 @section The Change Set
