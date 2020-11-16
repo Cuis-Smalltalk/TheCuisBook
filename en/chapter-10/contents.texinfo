@@ -19,7 +19,7 @@ with a System Browser, an inspector and a debugger.
 
 
 At any time, the user can save the image with
-...@clicksequence{Background click @click{}
+...@clicksequence{World menu @click{}
 @label{Save}}... Alternatively @label{Save as...} saves the image under
 an alternate name provided by the user.
 
@@ -89,7 +89,7 @@ Continue?
 Proceed with @label{Yes}. At least, we are done quitting the @cuis{}
 environment without saving.
 
-Now start again @cuis{}, then do ...@clicksequence{Background click
+Now start again @cuis{}, then do ...@clicksequence{World menu
 @click{} @label{Changes...} @click{} @label{Recently logged
 Changes...}}. The system presents a list image snapshpots tagged with
 date stamp. Pick up the one occurring just before you lost your code.
