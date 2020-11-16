@@ -38,8 +38,9 @@ Another situation where you lost code is a virtual machine crash or to
 forget to save the image when quitting @cuis{}. In such situation
 there is a solution to recover your lost editing: the @dfn{ChangeSet}.
 
-@node The Change Record
-@section The Change Record
+@cindex change log
+@node The Change Log
+@section The Change Log
 
 @cuis{} records any action occurring in the environment: the code you
 edit in the System Browser, the code you execute in a
@@ -94,6 +95,7 @@ Now start again @cuis{}, then do ...@clicksequence{World menu
 Changes...}}. The system presents a list image snapshpots tagged with
 date stamp. Pick up the one occurring just before you lost your code.
 
+@cindex change set
 @node The Change Set
 @section The Change Set
 
