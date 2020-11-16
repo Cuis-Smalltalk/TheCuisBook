@@ -110,10 +110,13 @@ The @class{TheBook} class we added to @cuis{} in the previous section
 is a change made to the core of the system. By default, it is recorded
 in a change set automatically created by the system. In
 @ref{ch10-ChangeSet1}, observe the class @class{TheBook}, it belongs
-to a change set named 4439-CuisCore-AuthorName-2020Nov16-13h40m.  In
-the left pane, each unsaved change set is marked with a
-@label{-->}. Here it tells us the change was not saved on disk. To do
-just use the contextual menu over the change set name.
+to a change set named
+@label{4439-CuisCore-AuthorName-2020Nov16-13h40m}.  In the left pane,
+each unsaved change set is marked with a @label{-->}. Here it tells us
+the change was not saved on disk. To save the change set, just use its
+contextual menu and use one of the @label{file out} entry. The change
+set will be saved along the @cuis{} image under its system name with
+@label{AuthorName} substituated with the real author name.
 
 @figure{The Change Sorter@comma{} method edit,ch10-ChangeSet2,8}
 
