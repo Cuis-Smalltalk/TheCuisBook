@@ -6,7 +6,7 @@ htmlDest="cuisHtml"
 infoDest="cuisInfo"
 docbookDest="cuisDocbook"
 masterDoc="TheCuisBook.texinfo"
-chapNumbers="00 01 02 03 04 05 06 07 08 09 50"
+chapNumbers="00 01 02 03 04 05 06 07 08 09 10 50"
 
 function collateChapters {
     chapters=""

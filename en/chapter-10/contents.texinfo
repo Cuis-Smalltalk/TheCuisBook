@@ -97,6 +97,31 @@ date stamp. Pick up the one occurring just before you lost your code.
 @node The Change Set
 @section The Change Set
 
+On a fresh @cuis{} installation, each code you edit in the System
+Browser is recorded in a @dfn{Change Set},
+
+You browse a change set with a tool named the @dfn{Change Sorter}:
+...@clicksequence{World menu @click{} @label{Changes...}  @click{}
+@label{Change Sorter}}...
+
+@figure{The Change Sorter@comma{} class edit,ch10-ChangeSet1,8}
+
+The @class{TheBook} class we added to @cuis{} in the previous section
+is a change made to the core of the system. By default, it is recorded
+in a change set automatically created by the system. In
+@ref{ch10-ChangeSet1}, observe the class @class{TheBook}, it belongs
+to a change set named 4439-CuisCore-AuthorName-2020Nov16-13h40m.  In
+the left pane, each unsaved change set is marked with a
+@label{-->}. Here it tells us the change was not saved on disk. To do
+just use the contextual menu over the change set name.
+
+@figure{The Change Sorter@comma{} method edit,ch10-ChangeSet2,8}
+
+To the @class{TheBook} class add a method @method{pages}, then observe
+@ref{ch10-ChangeSet2}: at the top right the added or modified classes
+are listed, in the middle the list of added or modified methods. When
+a method is selected its source code is printed in the bottom pane.
+
 @node The Package
 @section The Package
 
