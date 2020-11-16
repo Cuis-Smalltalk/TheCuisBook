@@ -347,7 +347,7 @@ The @dfn{System Browser}, in short the @dfn{Browser}, is a tool to
 rule all the classes in @cuis{}. It is both a tool to explore the
 classes (system or user ones) and to write new classes and methods.
 
-To access the tool, ...@clicksequence{Background click @click{}
+To access the tool, ...@clicksequence{World menu @click{}
 @label{Open...} @click{} @label{Browser}}...
 
 @figure{The System Browser,ch02-browserDetailed,12}
@@ -537,7 +537,7 @@ a given class category and a bit more, but more on that last point
 later. To create our @label{Spacewar!} package and save our game code:
 
 @enumerate
-  @item Do ...@clicksequence{background click @click{}
+  @item Do ...@clicksequence{World menu @click{}
   @label{Open...} @click{} @label{Installed Packages}}...
 
   @item On the Installed Packages window, do ...@clicksequence{click @label{new}
@@ -558,7 +558,7 @@ environment, use the File List tool:
 
 @enumerate
 
-  @item Do ...@clicksequence{background click @click{}
+  @item Do ...@clicksequence{World menu @click{}
   @label{Open...} @click{} @label{File List}}...
 
   @item Search for the file @file{Spacewar!.pck.st} and click the

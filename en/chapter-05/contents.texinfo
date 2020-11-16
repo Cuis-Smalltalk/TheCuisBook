@@ -415,7 +415,7 @@ use the Browser to do so.
 @subsection Writing your first method
 Let's say we want to add the @method{initialize} method to our
 @class{SpaceWar} class. Of course we need to use the System Browser:
-...@clicksequence{Background click @click{} @label{Open...} @click{}
+...@clicksequence{World menu @click{} @label{Open...} @click{}
 @label{Browser}}...
 
 Observe @ref{ch02-browserDetailed} and proceed as follow:

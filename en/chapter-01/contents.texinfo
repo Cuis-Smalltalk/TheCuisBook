@@ -202,7 +202,7 @@ you have the most important options: the choice for the @strong{font
 size}, the @strong{themes} whenever your prefer light or dark
 colouring. There are other preferences you can explore by
 yourself. Once you are done, access again the World menu
-...@clicksequence{Background click @click{} @label{Save}}... to make your
+...@clicksequence{World menu @click{} @label{Save}}... to make your
 preferences permanent. In this book, we keep the default @cuis{}
 theme, we suggest you to do the same so your environment reflects the
 book screenshots.
@@ -213,7 +213,7 @@ book screenshots.
 @cindex tools, workspace
 The first tool to discover is the @dfn{Workspace} tool. It is a kind
 of text editor to key in Smalltalk code you can execute
-immediately. Do a ...@clicksequence{Background click @click{}
+immediately. Do a ...@clicksequence{World menu @click{}
 @label{Open...} @click{} @label{Workspace}}...
 
 Now we ask @cuis{} to make the window's placement: click the blue icon
@@ -250,7 +250,7 @@ To execute this code, select it with the mouse and
 You may now see nothing happen! Indeed to see the output, you need a
 @dfn{Transcript} window to be visible.  The @class{Transcript} is a
 place where programmer can send information for the user as we are
-doing here. Do ...@clicksequence{Background click @click{}
+doing here. Do ...@clicksequence{World menu @click{}
 @label{Open...} @click{} @label{Transcript}}... and execute the code
 again.
 
