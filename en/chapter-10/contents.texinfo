@@ -111,8 +111,8 @@ You browse a change set with a tool named the @dfn{Change Sorter}:
 The @class{TheBook} class we added to @cuis{} in the previous section
 is a change made to the core of the system. By default, it is recorded
 in a change set automatically created by the system. In
-@ref{ch10-ChangeSet1}, observe the class @class{TheBook}, it belongs
-to a change set named
+@ref{ch10-ChangeSet1} at the top right, observe the class
+@class{TheBook}, it belongs to a change set named
 @label{4439-CuisCore-AuthorName-2020Nov16-13h40m}.  In the left pane,
 each unsaved change set is marked with a @label{-->}. Here it tells us
 the change was not saved on disk. To save the change set, just use its
@@ -122,13 +122,27 @@ set will be saved along the @cuis{} image under its system name with
 
 @figure{The Change Sorter@comma{} method edit,ch10-ChangeSet2,8}
 
-To the @class{TheBook} class add a method @method{pages}, then observe
-@ref{ch10-ChangeSet2}: at the top right the added or modified classes
-are listed, in the middle the list of added or modified methods. When
-a method is selected its source code is printed in the bottom pane.
+Observe @ref{ch10-ChangeSet2}, after we added the method
+@method{pages} to the @class{TheBook} class, the middle pane lists the
+added or modified methods. When a method is selected its source code
+is printed in the bottom pane.
 
+The change set way of managing the source code is used by the
+developers of @cuis{}, to work on its core image. When you want to
+write an application, a dedicated tool or even a set of classes
+covering a specific domain, you really want to use something else to
+manage the code, a package.
+
+
+@cindex package
+@cindex class, category
 @node The Package
 @section The Package
+A package can hold a set of classes who belong to a same category. We
+already discussed about that, see @ref{Spacewar! package}.
+
+@c explain how to include class extension in a package
+
 
 
 @c TOC

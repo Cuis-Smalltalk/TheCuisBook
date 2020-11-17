@@ -529,6 +529,7 @@ When done, your class category should be filled with four classes as in
 
 
 @subsection Spacewar! package
+@anchor{Spacewar! package}
 @cindex package, create (new)
 @cindex package, save
 Another important use case of a class category is to define a package
