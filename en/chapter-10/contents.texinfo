@@ -162,22 +162,22 @@ manipulate it.
   @item @label{contents}. It opens a @dfn{Change List} tool to review
   the modifications to the image this change set will produce once
   installed. It also let you cherry pick the individual changes you
-  want to install and discard. Each line you cherry pick represents a
-  class or a method addition/modification. Once you selected the code
+  want to install and to discard. Each line you cherry pick represents
+  a class or a method addition/modification. Once you select the code
   to install, press the @label{file in selections} button to proceed
   with the installation.
 
   Consider a co-developer modifying the @class{TheBook} class, she
-  added an instance variable @smalltalk{pages} and adjust the
+  added an instance variable @smalltalk{pages} and adjusted the
   @method{pages} methods accordingly. She filed out her changes then
-  share the file with you. Observe in @ref{ch10-ChangeList} how you
+  shared the file with you. Observe in @ref{ch10-ChangeList} how you
   will review her changes with the Change List tool. Stroked in red
   our code in the image to be removed and in green her changes to be
   installed.
 
   @figure{Change List tool to review modifications to the image,ch10-ChangeList,8}
 
-  @item @label{install}. It just install the complete change set
+  @item @label{install}. It just installs the complete change set
   without interactivity.
   
 @end itemize
@@ -186,7 +186,7 @@ The change set way of managing the source code is used by the
 developers of @cuis{}, to work on its core image. When you want to
 write an application, a dedicated tool or even a set of classes
 covering a specific domain, you really want to use something else to
-manage the code, a package.
+manage the code: a package.
 
 
 @cindex package
