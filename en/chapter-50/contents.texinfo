@@ -11,6 +11,7 @@
 * Control Flow Messaging (Solutions)::
 * Visual with Morph (Solutions)::
 * Events (Solutions)::
+* Code Management (Solutions)::
 @end menu
 
 @c Chapter 1
@@ -574,3 +575,40 @@ key = $d ifTrue: [@return{} ships second right].
 key = $a ifTrue: [@return{} ships second left].
 key = $s ifTrue: [@return{} ships second fireTorpedo]
 @end example
+
+
+@c Chapter 9
+@node Code Managements (Solutions)
+@unnumberedsec Code Managements
+
+@subheading @ref{twoCategoriesOnePackage}
+@enumerate
+
+  @item In the System Browser, create two class categories: in its
+  most left pane menu select @label{add item... (a)} and key in one
+  category name at a time.
+
+  @item Create two classes, in each category: @class{TheCuisBook}
+  subclass of @class{Object} and @class{TheBookMorph} subclass of
+  @class{MovableMorph}.
+
+  The two operations above are doable in one shot. Select any existing
+  category and key in the class definition with the category name:
+
+  @smalltalkExample{MovableMorph subclass: #TheBookMorph
+   instanceVariableNames: ''
+   classVariableNames: ''
+   poolDictionaries: ''
+   category: '@strong{TheCuisBook-Views}'}
+
+   Once you save the class definition, the @class{TheBookMorph} class is
+   created -- obviously -- but also the @label{TheCuisBook-Views}
+   category!
+
+   @item Go to the Installed Packages tool ...@clicksequence{World menu
+   @click{} @label{Open...} @click{} @label{Installed Packages}}...,
+   press the @label{new} button and key in @label{TheCuisBook}.
+
+   @item Press the @label{save} button, you are done!
+
+@end enumerate

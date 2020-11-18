@@ -6,6 +6,13 @@ manipulate it: the image, the change record, the change set and the
 package system. We give you a tour around these mechanisms then explain
 how you should manage the code of an application written with @cuis{}.
 
+@menu
+* The Image::
+* The Change Log::
+* The Change Set::
+* The Package::
+@end menu
+
 @node The Image
 @section The Image
 
@@ -188,17 +195,47 @@ write an application, a dedicated tool or even a set of classes
 covering a specific domain, you really want to use something else to
 manage the code: a package.
 
-
-@cindex package
-@cindex class, category
 @node The Package
 @section The Package
-A package can hold a set of classes who belong to the same category;
-we already discussed about that in a previous chapter, see
-@ref{Spacewar! package}.
+@cindex package
+@cindex class, category
+A package can hold a set of classes part of the same class category;
+we already discussed it in a previous chapter, see @ref{Spacewar!
+package}.
+
+For the record, a package is defined with the class category we want
+to turn as a package. Our Spacewar! game classes are part of the class
+category @label{Spacewar}. To create the related package we open the
+Installed Package tool, after pressing the @label{new} button we just
+key in @label{Spacewar} in.
 
 @c explain how to include class extension in a package
+@cindex package, prefix
+But we can do more. We can include several class categories in one
+package. Consider we want to span our CuisBook classes in two
+categories @label{TheCuisBook-Models} and @label{TheCuisBook-Views}, a
+new package created with the name @label{TheCuisBook} include these
+two class categories; this label is a @dfn{prefix} to search for the
+matching categories to include in the package.
 
+Therefore, often, a package comes with several categories to organize
+the classes in matching domains. We encourage to do so. When an
+application or framework grows, to keep a sound organisation, you may
+fell the need to reshape the class categories: rename, split, merge,
+etc. As long as you keep the same prefix in the class categories and
+the package name, your classes will be safe in the same package.  For
+the record, in the System Browser, you can drag and drop any class in
+any class category to reorganize.
+
+@exercise{Two class categories@comma{} one package,twoCategoriesOnePackage,
+@emph{Create a @label{TheCuisBook} package from the two class
+categories @label{TheCuisBook-Models} and
+@label{TheCuisBook-Views}. The former contains a @class{TheBook}
+class and the later a @class{TheBookMorph} class. Save the package
+on disk.}}
+
+
+@cindex package, system extension
 
 
 @c TOC

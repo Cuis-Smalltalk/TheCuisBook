@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : November 8, 2020
+Compilation : November 18, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -99,7 +99,7 @@ computer and an <em>image</em> representing the state of this computer.
 <p>The virtual machine is an executable program running on a dedicated
 host (GNU/Linux, Mac OS X, Windows, etc.). It is called the <em>Open
 Smalltalk Virtual Machine</em>, or Squeak <acronym>VM</acronym> in short. There are
-different flavors of <acronym>VM</acronym>, one for each combination of Operating
+different flavors of <acronym>VM</acronym>, for various combinations of Operating
 System and CPU architecture. Therefore, one <acronym>VM</acronym> compiled
 for Windows on Intel architecture will not work in Linux on
 ARM architecture. You need the specific <acronym>VM</acronym> compiled for
@@ -107,12 +107,12 @@ the combination of Operating System and CPU architecture
 your computer is based on.
 </p>
 <p>The image is a regular file feeding the <acronym>VM</acronym> with all the objects
- defining the state of the virtual computer. These objects are
- classes, methods, instances of those classes as numbers, strings,
- windows, debuggers &ndash; whatever existed when the state of the virtual
- computer was saved. An <em>image file</em> saved on a given Operating System
- and CPU architecture <strong>will run identically on another system</strong> as
- long as the same <acronym>VM</acronym> generation is used.
+defining the state of the virtual computer. These objects are
+classes, methods, instances of those classes as numbers, strings,
+windows, debuggers &ndash; whatever existed when the state of the virtual
+computer was saved. An <em>image file</em> saved on a given Operating System
+and CPU architecture <strong>will run identically on another system</strong> 
+requiring only a compatible <acronym>VM</acronym> to be used.
 </p>
 <p>The <acronym>VM</acronym> allows an image to be restarted with windows in the same locations
 between different operating systems and different CPU architectures
@@ -135,12 +135,12 @@ should, however, be easily transferable.
 <p>To get Cuis-Smalltalk running on your computer, follow the instructions in
 the <samp>README</samp> file accompanying the archive. Once you get Cuis-Smalltalk
 running, read the information displayed on the windows. When you are
-done, close these windows. Next you will adjust Cuis-Smalltalk to your
+done, you can close these windows and adjust Cuis-Smalltalk to your
 preferences.
 </p>
 <span id="Editing-your-preferences"></span><h4 class="subsection">1.2.1 Editing your preferences</h4>
-<p>Once you read the instructions on the default windows, the next 
-thing you want to do is to adjust its visual properties to fit your
+<p>Once you read the information on the default windows, the next 
+thing you want to do is to adjust visual properties to fit your
 preferences and needs. To do so, access the World menu
 ...Background click &rarr; <code>Preferences...</code> then
 select the pin on the top right of the menu to make it permanent. Here
@@ -148,7 +148,7 @@ you have the most important options: the choice for the <strong>font
 size</strong>, the <strong>themes</strong> whenever your prefer light or dark
 colouring. There are other preferences you can explore by
 yourself. Once you are done, access again the World menu
-...Background click &rarr; <code>Save</code>... to make your
+...World menu &rarr; <code>Save</code>... to make your
 preferences permanent. In this book, we keep the default Cuis-Smalltalk
 theme, we suggest you to do the same so your environment reflects the
 book screenshots.
@@ -161,7 +161,7 @@ book screenshots.
 <span id="index-tools_002c-workspace"></span>
 <p>The first tool to discover is the <em>Workspace</em> tool. It is a kind
 of text editor to key in Smalltalk code you can execute
-immediately. Do a ...Background click &rarr;
+immediately. Do a ...World menu &rarr;
 <code>Open...</code> &rarr; <code>Workspace</code>...
 </p>
 <p>Now we ask Cuis-Smalltalk to make the window&rsquo;s placement: click the blue icon

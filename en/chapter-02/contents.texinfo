@@ -528,18 +528,20 @@ When done, your class category should be filled with four classes as in
 @figure{Spacewar! class category,ch02-spacewarClassCategory,6}
 
 
-@subsection Spacewar! package
 @anchor{Spacewar! package}
+@subsection Spacewar! package
 @cindex package, create (new)
 @cindex package, save
+@cindex package, tool
 Another important use case of a class category is to define a package
 to save code on file.  A package saves the code of the classes held in
 a given class category and a bit more, but more on that last point
 later. To create our @label{Spacewar!} package and save our game code:
 
 @enumerate
-  @item Do ...@clicksequence{World menu @click{}
-  @label{Open...} @click{} @label{Installed Packages}}...
+  @item Open the @dfn{Installed Packages} tool:
+  ...@clicksequence{World menu @click{} @label{Open...} @click{}
+  @label{Installed Packages}}...
 
   @item On the Installed Packages window, do ...@clicksequence{click @label{new}
   button @click{} Input @emph{Spacewar!} @click{} @kbd{Return}}...
