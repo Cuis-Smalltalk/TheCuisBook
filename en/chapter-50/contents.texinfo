@@ -578,8 +578,8 @@ key = $s ifTrue: [@return{} ships second fireTorpedo]
 
 
 @c Chapter 9
-@node Code Managements (Solutions)
-@unnumberedsec Code Managements
+@node Code Management (Solutions)
+@unnumberedsec Code Management
 
 @subheading @ref{twoCategoriesOnePackage}
 @enumerate

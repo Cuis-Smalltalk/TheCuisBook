@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This book is for Cuis-Smalltalk (5.0#4253), a free and modern
+implementation of the Smalltalk language and environment.
+
+Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
+
+
+
+
+
+
+Compilation : November 18, 2020
+
+Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
+
+
+
+The contents of this book are protected under Creative Commons
+Attribution-ShareAlike 4.0 International.
+
+You are free to:
+
+
+Share - copy and redistribute the material in any medium or
+format
+
+
+Adapt - remix, transform, and build upon the material for any
+purpose, even commercially.
+
+
+
+Under the following terms:
+
+
+Attribution. You must give appropriate credit, provide a link to
+the license, and indicate if changes were made. You may do so in any
+reasonable manner, but not in any way that suggests the licensor
+endorses you or your use.
+
+
+Share Alike. If you remix, transform, or build upon the material,
+you must distribute your contributions under the same license as the
+original.
+
+Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+ -->
+<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>The Image (The Cuis-Smalltalk Book)</title>
+
+<meta name="description" content="The Image (The Cuis-Smalltalk Book)">
+<meta name="keywords" content="The Image (The Cuis-Smalltalk Book)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Indexes.html" rel="index" title="Indexes">
+<link href="Code-Management.html" rel="up" title="Code Management">
+<link href="The-Change-Log.html" rel="next" title="The Change Log">
+<link href="Code-Management.html" rel="prev" title="Code Management">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="style.css">
+
+
+</head>
+
+<body lang="en">
+<span id="The-Image"></span><div class="header">
+<p>
+Next: <a href="The-Change-Log.html" accesskey="n" rel="next">The Change Log</a>, Up: <a href="Code-Management.html" accesskey="u" rel="up">Code Management</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="The-Image-1"></span><h3 class="section">10.1 The Image</h3>
+
+<p>We already wrote about the Cuis-Smalltalk <em>image</em> (See <a href="Installing-and-configuring-Cuis_002dSmalltalk.html">Installing and configuring Cuis-Smalltalk</a>). When saving the state of the virtual machine in
+the image file, every single changes done in the environment will be
+included in the saved image: this includes the windows in the
+environment, workspace content, newly written classes and methods,
+existing instances including the visual morphs, a debugging session
+with a System Browser, an inspector and a debugger.
+</p>
+
+<p>At any time, the user can save the image with
+...World menu &rarr;
+<code>Save</code>... Alternatively <code>Save as...</code> saves the image under
+an alternate name provided by the user.
+</p>
+<p>Saving the image is the easiest and straightforward method to save
+your own code. But we can&rsquo;t really call that code management as your
+code is not saved in a dedicated file of its own but along the
+image. Moreover it will be unpractical to share your work with other
+person.
+</p>
+<p>For various reasons, an image may be in fuzzy state: the virtual
+machine may crash when running it or the environment may be in a lock
+down state. This is another drawback when using the image as your sole
+source code repository. The net result is loosing your work.
+</p>
+<p>Another situation where you lost code is a virtual machine crash or to
+forget to save the image when quitting Cuis-Smalltalk. In such situation
+there is a solution to recover your lost editing: the <em>ChangeSet</em>.
+</p>
+<span id="index-change-log"></span>
+
+
+
+</body>
+</html>
