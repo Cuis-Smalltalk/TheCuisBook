@@ -127,6 +127,61 @@ Observe @ref{ch10-ChangeSet2}, after we added the method
 added or modified methods. When a method is selected its source code
 is printed in the bottom pane.
 
+Let's say we save the change set -- @dfn{File out} entries in the
+change sorter tool menu. This creates a new file
+@file{451-CuisCore-HilaireFernandes-2020Nov14-21h08m-hlsf.001.cs.st}
+along the @cuis{} image file:
+
+@smalltalkExampleCaption{Change set contents, changeSetContents,
+From Cuis 5.0 [latest update: #4450] on 18 November 2020 at 9:05:09 am'!
+!classDefinition: #TheBook category: 'TheCuisBook'!
+Object subclass: #TheBook
+   instanceVariableNames: ''
+   classVariableNames: ''
+   poolDictionaries: ''
+   category: 'TheCuisBook'!
+
+!TheBook methodsFor: 'as yet unclassified' stamp: 'hlsf 11/18/2020 09:04:58'!
+pages
+   @return{} 151! !}
+
+To load this change set back in a new image, you use the @dfn{File
+List} tool ...@clicksequence{World menu @click{} @label{Open} @click{}
+@label{File List}}... Browse the folder containing the change set file
+to load, then select it, from there you have three options to
+manipulate it.
+
+@figure{The File List tool@comma{} to install a change set and more,ch10-FileListChangeSet,11}
+
+@itemize
+
+  @item @label{code}. It opens a kind of System Browser limited to
+  the code in the change set file. It is a very handy tool to read and
+  to learn the code from the change set.
+
+  @item @label{contents}. It opens a @dfn{Change List} tool to review
+  the modifications to the image this change set will produce once
+  installed. It also let you cherry pick the individual changes you
+  want to install and discard. Each line you cherry pick represents a
+  class or a method addition/modification. Once you selected the code
+  to install, press the @label{file in selections} button to proceed
+  with the installation.
+
+  Consider a co-developer modifying the @class{TheBook} class, she
+  added an instance variable @smalltalk{pages} and adjust the
+  @method{pages} methods accordingly. She filed out her changes then
+  share the file with you. Observe in @ref{ch10-ChangeList} how you
+  will review her changes with the Change List tool. Stroked in red
+  our code in the image to be removed and in green her changes to be
+  installed.
+
+  @figure{Change List tool to review modifications to the image,ch10-ChangeList,8}
+
+  @item @label{install}. It just install the complete change set
+  without interactivity.
+  
+@end itemize
+
 The change set way of managing the source code is used by the
 developers of @cuis{}, to work on its core image. When you want to
 write an application, a dedicated tool or even a set of classes
@@ -138,8 +193,9 @@ manage the code, a package.
 @cindex class, category
 @node The Package
 @section The Package
-A package can hold a set of classes who belong to a same category. We
-already discussed about that, see @ref{Spacewar! package}.
+A package can hold a set of classes who belong to the same category;
+we already discussed about that in a previous chapter, see
+@ref{Spacewar! package}.
 
 @c explain how to include class extension in a package
 
