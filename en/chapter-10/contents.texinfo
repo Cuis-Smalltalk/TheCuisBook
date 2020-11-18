@@ -234,15 +234,53 @@ categories @label{TheCuisBook-Models} and
 class and the later a @class{TheBookMorph} class. Save the package
 on disk.}}
 
-
 @cindex package, system extension
+Imagine we need to print the page number of the @class{TheBook} table
+of contents as lower cased roman number, as we do with the printed
+version of this book. The code is very simple:
 
+@smalltalkExample{4 printStringRoman asLowercase
+@result{} 'iv'}
+
+Instead of invoking this sequence of messages each time we need it, we
+ add a dedicated message to the @class{Integer} class:
+
+@smalltalkExample{Integer>>printStringToc
+   @return{} self printStringRoman asLowercase}
+
+Now within our @class{TheBook}'s methods we just do things like:
+
+@smalltalkExample{../..
+ aPage @assign{} Page new.
+ aPage number: 1 printStringToc.
+ ../..}
+
+Now we are facing a problem. For the need of the @label{TheBook}
+package we extend the @class{Integer} class with a method
+@method{printStringToc}, however this method addition is part of the
+@cuis{} core system and its associated default change set. See
+@ref{ch10-ChangeSetToCore}, the Change Sorter tool exactly shows that.
+
+@figure{Change Sorter@comma{} supplementary method to core, ch10-ChangeSetToCore,9}
+
+Therefore when saving our @label{TheBook} package this method is not
+included and it is lost when quitting @cuis{}. To include it in our
+package we categorize it in a method category with the
+@label{*TheCuisBook} prefix. @label{*TheCuisBook-printing} is a good
+candidate. In the System Browser method pane, over
+@method{printStringToc}, do ...@clicksequence{Contextual menu @click{}
+@label{more...} @click{} @label{change category...}} and key in
+@label{*TheCuisBook-printing}.
+
+Now the Change Sorter writes about @method{Integer>>printStringToc}:
+@cite{Method was moved to some other package}. The Installed Packages
+tools now tells us we have an extension, use its @label{browse} button
+to get an update on the package contents.
+
+@figure{Package with extension to the @class{Integer} class of the
+@label{Kernel-Number} system class
+category,ch10-BrowsePackageChange,9}
 
 @c TOC
-@c * Cuis save in the change files everything we do.
-@c * It can be played back
-@c * We can save the image to save our Work-in-Progress.
-@c * The drawback: even if very unlikly an image can be corrupted and witch such an image, the virtual machine executable will crash at start up. Every things on the image can be lost under this circumstances.
-@c * Package is the way to save the source code of a Cuis application
 @c * Describe your daily workflow with package
 @c * Gives a few script to automate your installation
