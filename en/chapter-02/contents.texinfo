@@ -386,7 +386,7 @@ A few important points in this declaration:
    @class{Number} is a kind of specialized @class{Magnitude}.
 
    @item the declaration itself is Smalltalk code, indeed the message
-   @msg{subclass:instanceVariableNames:classVariableNames:poolDictionaries:category:}
+   @msg{subclass:instanceVariableNames:classVariableNames:...}
    was sent to @class{Magnitude} to create this class.
 
    @item the @smalltalk{subclass:} argument @class{Number} is prefixed
