@@ -136,7 +136,7 @@ is printed in the bottom pane.
 
 Let's say we save the change set -- @dfn{File out} entries in the
 change sorter tool menu. This creates a new file
-@file{451-CuisCore-HilaireFernandes-2020Nov14-21h08m-hlsf.001.cs.st}
+@file{4451-CuisCore-HilaireFernandes-2020Nov14-21h08m-hlsf.001.cs.st}
 along the @cuis{} image file:
 
 @smalltalkExampleCaption{Change set contents, changeSetContents,
@@ -278,9 +278,65 @@ tools now tells us we have an extension, use its @label{browse} button
 to get an update on the package contents.
 
 @figure{Package with extension to the @class{Integer} class of the
-@label{Kernel-Number} system class
+@label{Kernel-Numbers} system class
 category,ch10-BrowsePackageChange,9}
 
+Observe how each category -- class or method one -- of an extension is
+prefixed with a @label{*}.
+
+@node Daily Workflow
+@section Daily Workflow
+
+For our Spacewar! game, we created a dedicated package
+@file{Spacewar!.pck.st} file. This is the way to go when writing
+external package: define a dedicated package and from time to time
+save your work with the @label{save} button in the Installed Packages
+tool.
+
+@cuis{} uses GitHub to host, version, diff its core development and to
+manage a set of external packages (i.e. code that is maintained
+independently and outside @cuis{} but closely related to it).
+
+Package files are simple text files, encoded for latin alphabet (ISO
+8859-15) and handled without problems by GitHub. @cuis{} uses the LF
+(ascii code 10) newline convention, as preferred in GitHub. This
+allows Git/GitHub to diff versions, and merge branches.
+
+Separate GitHub repositories are used for projects, i.e. package or
+set of closely related packages that are always loaded and maintained
+together as a whole.
+
+Your daily workflow with @cuis{} to develop an external package will
+look like:
+
+@enumerate
+
+  @item Start with a standard, fresh, Cuis image. Never save the
+  image.
+
+  @item Set up your preferred version control system to manage your
+  external packages. The recommendation is to use a GitHub repository
+  with a name beginning with 'Cuis-Smalltalk-', so it will be easy for
+  anybody to find it. But beside this consideration, using any other
+  version control system is fine.
+  
+  @item Install the necessary packages from the @cuis{} Git
+  repositories.
+
+  @item Develop. Modify and/or create packages.
+
+  @item Save own packages (to your preferred repositories).
+
+  @item add / commit / push accordingly to your version control system
+
+  @item Fileout changes that are not part of any package. These are
+  automatically captured in numbered changesets, separated from
+  changes to packages.
+
+  @item Exit the image. Usually without saving.
+   
+@end enumerate
+
+
 @c TOC
-@c * Describe your daily workflow with package
 @c * Gives a few script to automate your installation
