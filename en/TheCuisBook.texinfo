@@ -135,7 +135,7 @@ Complete license: @url{https://creativecommons.org/licenses/by-sa/4.0/legalcode}
 @c
 @include chapter-08/contents.texinfo
 @c
-@include chapter-10/contents.texinfo
+@include chapter-09/contents.texinfo
 @c================================================================
 @c: Part Four
 @c @part Part Four @*Appendices
