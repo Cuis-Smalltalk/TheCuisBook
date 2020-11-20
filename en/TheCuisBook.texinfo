@@ -93,7 +93,6 @@ Complete license: @url{https://creativecommons.org/licenses/by-sa/4.0/legalcode}
 * Visual with Morph::
 * The Fundamentals of Morph::
 * Events::
-* Process::
 * Code Management::
 * Documents Copyright::
 * Summary of Syntax::
@@ -135,8 +134,6 @@ Complete license: @url{https://creativecommons.org/licenses/by-sa/4.0/legalcode}
 @include chapter-07/contents.texinfo
 @c
 @include chapter-08/contents.texinfo
-@c
-@include chapter-09/contents.texinfo
 @c
 @include chapter-10/contents.texinfo
 @c================================================================
