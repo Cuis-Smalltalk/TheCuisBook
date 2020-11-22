@@ -16,4 +16,4 @@ morph _ world submorphs detect: [:aMorph | aMorph class = WorkspaceWindow].
 morph morphBounds: (0 @ (area height // 2) extent: extent x @ (2 / 3 * extent y)).
 TranscriptWindow openTranscript morphBounds: 
 	(0 @ (area height // 2 + (2 / 3 * extent y)) 
-		extent: 	extent x @ (1 / 3 * extent y )).).
+		extent: 	extent x @ (1 / 3 * extent y )).
