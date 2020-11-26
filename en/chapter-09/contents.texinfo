@@ -291,7 +291,7 @@ For our Spacewar! game, we created a dedicated package
 @file{Spacewar!.pck.st} file. This is the way to go when writing
 external package: define a dedicated package and from time to time
 save your work with the @label{save} button in the Installed Packages
-tool.
+tool (@xref{ch02-InstalledPackages}).
 
 @cuis{} uses GitHub to host, version, diff its core development and to
 manage a set of external packages (i.e. code that is maintained
@@ -336,6 +336,118 @@ look like:
   @item Exit the image. Usually without saving.
    
 @end enumerate
+
+
+@todo{Requirement/dependencies}
+
+
+@subsection Automate your image
+
+As described in the daily workflow, it is a good habit to not save the
+whole image but only the modified package of the edited source
+code. However, each time we start a coding session, it is tedious to
+set up the image to fit our personal needs and taste.
+
+Things one may want to personalize in the image are:
+
+@itemize
+
+  @item The font and taskbar sizes,
+
+  @item Placement of tools like System Browser, Workspace, Transcript,
+
+  @item Default contents in the Workspace, ready to be executed,
+
+  @item Installation of Packages.
+
+@end itemize
+
+@cindex line command option, -s (run a script)
+We want to record these image preferences in a
+@file{setUpEnvironment.st} script to be executed at start up. On
+GNU/Linux, you ask @cuis{} to run a script with the @option{-s}, for
+example @command{squeakVM Cuis5.0.image -s setUpEnvironement.st} where
+@file{setUpEnvironement.st}. is a file containing Smalltalk code. A
+real life example may look like:
+@verbatim
+../cogspur/squeak Cuis5.0-4426 -s ../scripts/setUpEnvironment.st
+@end verbatim
+
+We will describe in detail an example of a set up script. It is
+interesting Smalltalk code poking around heterogeneous areas of
+@cuis{} like the developer tools, the Morph system, the preferences
+and collection handling.
+
+@cindex morph, world
+Let's start by removing the open windows:
+
+@example
+| list |
+"Delete all windows but the taskbar"
+list @assign{} UISupervisor ui submorphs reject: [:aMorph |
+   aMorph is: #TaskbarMorph].
+list do: [:each | each delete].
+@end example
+
+The whole user interface world of @cuis{} is a kind of Morph, a
+@class{WorldMorph} instance. Its sub morphs are windows, menus, the
+taskbar or any kind of morph the user can interact with. To access
+this @class{WorldMorph} instance you ask to the @class{UISupervisor}
+with the @msg{ui} message. Once we select all the morphs in the world
+but the taskbar -- really @msg{reject:} it -- we @msg{delete} them
+from the world.
+
+Next, we change the preferences:
+
+@example
+| list morph |
+../..
+"Change to Dark theme"
+Feature require: #'Theme-Themes'.
+DarkTheme beCurrent.
+"Adjust font size"
+Preferences smallFonts.
+"Adjust taskbar size"
+morph @assign{} UISupervisor ui submorphs first.
+morph scale: 1 / 2.
+@end example
+
+We require Theme-Themes package; as it is not installed on the default
+image, it will be searched on the disk for installation. Regarding the
+taskbar access, remember we deleted all the morphs but the taskbar
+from the world, therefore the taskbar is really the first in the sub
+morphs collection of the world.
+
+Before installing the tools, we ask a @class{RealEstateAgent} the free
+area. Sadly this agent does not take into consideration the area
+occupied by the task bar, so we need to tweak its answer. Then we
+compute a quarter of this free area extent (half in width and half
+in height make a quarter of the whole free area):
+
+@example
+| list morph area extent |
+../..
+"Compute the available free space for windows placement"
+area @assign{} RealEstateAgent maximumUsableArea
+   extendBy: 0 @@ morph morphHeight negated.
+extent @assign{} area extent // 2.
+@end example
+
+Now we are ready to install a few tools. First three browsers each
+occupying a quarter of the screen:
+
+@example
+"Open a few System Browsers"
+BrowserWindow openBrowser
+   morphBounds: (0 @@ 0 extent: extent).
+BrowserWindow openBrowser
+   morphBounds: (area width // 2 @@ 0 extent: extent).
+"Open a System Browser on a specific class"
+morph @assign{} BrowserWindow openBrowser
+   morphBounds: (area extent // 2 extent: extent).
+morph model setClass: Integer selector: nil.
+@end example
+
 
 
 @c TOC

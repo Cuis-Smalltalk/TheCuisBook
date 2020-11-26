@@ -1,7 +1,7 @@
 \input texinfo @c -*-texinfo-*-
 @c %**start of header
 @settitle The Cuis-Smalltalk Book
-@set timeStamp Time-stamp: <2020-11-19 20:40:51 hilaire>
+@set timeStamp Time-stamp: <2020-11-26 14:30:53 hilaire>
 @set cuisVersion 5.0#4253
 @set txicodequoteundirected ON 
 @setfilename TheCuisBook.info
@@ -15,6 +15,8 @@
 @c @afourlatex
 @c 7x9.25 inches 17.8x23.5
 @smallbook
+@c Remove ugly black rectangle
+@c \finalout
 @c %**end of header
 
 @copying
