@@ -448,6 +448,32 @@ morph @assign{} BrowserWindow openBrowser
 morph model setClass: Integer selector: nil.
 @end example
 
+Then in the remaining free quarter, we install a workspace occupying
+two thirds of the area and a transcript one third. The workspace is
+installed with some default contents. We need to hack a bit because
+when asking for a new Workspace, @cuis{} does not answer the created
+instance, we have to search it in the windows of the world.
+
+@example
+"Open a Workspace with some default contents"
+Workspace openWorkspace.
+morph @assign{} UISupervisor ui submorphs detect: [:aMorph |
+   aMorph class = WorkspaceWindow].
+morph model actualContents: '"Some code"
+1 + 2.
+"Other code"
+5 * 3.'.
+morph morphBounds:
+   (0 @@ (area height // 2)
+      extent: extent x @@ (2 / 3 * extent y)).
+"Open a transcript for logs"
+TranscriptWindow openTranscript morphBounds: 
+   (0 @@ (area height // 2 + (2 / 3 * extent y)) 
+      extent: extent x @@ (1 / 3 * extent y )).
+@end example
+
+Of course you should adjust the argument of the @msg{actualContents:}
+message to meaningful code for your usage.
 
 
 @c TOC

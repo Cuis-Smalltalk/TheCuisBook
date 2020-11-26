@@ -19,7 +19,7 @@ BrowserWindow openBrowser morphBounds: (area width // 2 @ 0 extent: extent).
 "Open a System Browser on a specific class"
 morph _ BrowserWindow openBrowser morphBounds: (area extent // 2 extent: extent).
 morph model setClass: Integer selector: nil.
-"Open a Workspace with some default content"
+"Open a Workspace with some default contents"
 Workspace openWorkspace.
 "dirty hack because of Workspace inconsistency"
 morph _ UISupervisor ui submorphs detect: [:aMorph | aMorph class = WorkspaceWindow].
