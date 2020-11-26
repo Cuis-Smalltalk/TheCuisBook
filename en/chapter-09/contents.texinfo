@@ -353,7 +353,7 @@ Things one may want to personalize in the image are:
 
 @itemize
 
-  @item The font and taskbar sizes,
+  @item Preferences adjustments,
 
   @item Placement of tools like System Browser, Workspace, Transcript,
 
