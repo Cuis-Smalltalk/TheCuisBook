@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : November 18, 2020
+Compilation : November 26, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -90,7 +90,7 @@ ul.no-bullet {list-style: none}
 Next: <a href="The-Package.html" accesskey="n" rel="next">The Package</a>, Previous: <a href="The-Change-Log.html" accesskey="p" rel="prev">The Change Log</a>, Up: <a href="Code-Management.html" accesskey="u" rel="up">Code Management</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="The-Change-Set-1"></span><h3 class="section">10.3 The Change Set</h3>
+<span id="The-Change-Set-1"></span><h3 class="section">9.3 The Change Set</h3>
 
 <p>On a fresh Cuis-Smalltalk installation, each code you edit in the System
 Browser is recorded in a <em>Change Set</em>,
@@ -102,11 +102,11 @@ Browser is recorded in a <em>Change Set</em>,
 <div class="float"><span id="ch10_002dChangeSet1"></span>
 <div align="center"><img src="ch10-ChangeSet1.png" alt="ch10-ChangeSet1">
 </div>
-<div class="float-caption"><p><strong>Figure 10.1: </strong>The Change Sorter, class edit</p></div></div>
+<div class="float-caption"><p><strong>Figure 9.1: </strong>The Change Sorter, class edit</p></div></div>
 <p>The <code>TheBook</code> class we added to Cuis-Smalltalk in the previous section
 is a change made to the core of the system. By default, it is recorded
 in a change set automatically created by the system. In
-<a href="#ch10_002dChangeSet1">Figure 10.1</a> at the top right, observe the class
+<a href="#ch10_002dChangeSet1">Figure 9.1</a> at the top right, observe the class
 <code>TheBook</code>, it belongs to a change set named
 <code>4439-CuisCore-AuthorName-2020Nov16-13h40m</code>.  In the left pane,
 each unsaved change set is marked with a <code>--&gt;</code>. Here it tells us
@@ -118,15 +118,15 @@ set will be saved along the Cuis-Smalltalk image under its system name with
 <div class="float"><span id="ch10_002dChangeSet2"></span>
 <div align="center"><img src="ch10-ChangeSet2.png" alt="ch10-ChangeSet2">
 </div>
-<div class="float-caption"><p><strong>Figure 10.2: </strong>The Change Sorter, method edit</p></div></div>
-<p>Observe <a href="#ch10_002dChangeSet2">Figure 10.2</a>, after we added the method
+<div class="float-caption"><p><strong>Figure 9.2: </strong>The Change Sorter, method edit</p></div></div>
+<p>Observe <a href="#ch10_002dChangeSet2">Figure 9.2</a>, after we added the method
 <code>pages</code> to the <code>TheBook</code> class, the middle pane lists the
 added or modified methods. When a method is selected its source code
 is printed in the bottom pane.
 </p>
 <p>Let&rsquo;s say we save the change set &ndash; <em>File out</em> entries in the
 change sorter tool menu. This creates a new file
-<samp>451-CuisCore-HilaireFernandes-2020Nov14-21h08m-hlsf.001.cs.st</samp>
+<samp>4451-CuisCore-HilaireFernandes-2020Nov14-21h08m-hlsf.001.cs.st</samp>
 along the Cuis-Smalltalk image file:
 </p>
 <div class="float"><span id="changeSetContents"></span>
@@ -144,7 +144,7 @@ pages
    &#x2191; 151! !</span>
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 10.1: </strong>Change set contents</p></div></div>
+<div class="float-caption"><p><strong>Example 9.1: </strong>Change set contents</p></div></div>
 <p>To load this change set back in a new image, you use the <em>File
 List</em> tool ...World menu &rarr; <code>Open</code> &rarr;
 <code>File List</code>... Browse the folder containing the change set file
@@ -154,7 +154,7 @@ manipulate it.
 <div class="float"><span id="ch10_002dFileListChangeSet"></span>
 <div align="center"><img src="ch10-FileListChangeSet.png" alt="ch10-FileListChangeSet">
 </div>
-<div class="float-caption"><p><strong>Figure 10.3: </strong>The File List tool, to install a change set and more</p></div></div>
+<div class="float-caption"><p><strong>Figure 9.3: </strong>The File List tool, to install a change set and more</p></div></div>
 <ul>
 <li> <code>code</code>. It opens a kind of System Browser limited to
   the code in the change set file. It is a very handy tool to read and
@@ -171,7 +171,7 @@ manipulate it.
 <p>Consider a co-developer modifying the <code>TheBook</code> class, she
   added an instance variable <code>pages</code> and adjusted the
   <code>pages</code> methods accordingly. She filed out her changes then
-  shared the file with you. Observe in <a href="#ch10_002dChangeList">Figure 10.4</a> how you
+  shared the file with you. Observe in <a href="#ch10_002dChangeList">Figure 9.4</a> how you
   will review her changes with the Change List tool. Stroked in red
   our code in the image to be removed and in green her changes to be
   installed.
@@ -179,7 +179,7 @@ manipulate it.
 <div class="float"><span id="ch10_002dChangeList"></span>
 <div align="center"><img src="ch10-ChangeList.png" alt="ch10-ChangeList">
 </div>
-<div class="float-caption"><p><strong>Figure 10.4: </strong>Change List tool to review modifications to the image</p></div></div>
+<div class="float-caption"><p><strong>Figure 9.4: </strong>Change List tool to review modifications to the image</p></div></div>
 </li><li> <code>install</code>. It just installs the complete change set
   without interactivity.
   

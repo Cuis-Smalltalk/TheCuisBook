@@ -1,0 +1,297 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This book is for Cuis-Smalltalk (5.0#4253), a free and modern
+implementation of the Smalltalk language and environment.
+
+Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
+
+
+
+
+
+
+Compilation : November 26, 2020
+
+Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
+
+
+
+The contents of this book are protected under Creative Commons
+Attribution-ShareAlike 4.0 International.
+
+You are free to:
+
+
+Share - copy and redistribute the material in any medium or
+format
+
+
+Adapt - remix, transform, and build upon the material for any
+purpose, even commercially.
+
+
+
+Under the following terms:
+
+
+Attribution. You must give appropriate credit, provide a link to
+the license, and indicate if changes were made. You may do so in any
+reasonable manner, but not in any way that suggests the licensor
+endorses you or your use.
+
+
+Share Alike. If you remix, transform, or build upon the material,
+you must distribute your contributions under the same license as the
+original.
+
+Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+ -->
+<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Daily Workflow (The Cuis-Smalltalk Book)</title>
+
+<meta name="description" content="Daily Workflow (The Cuis-Smalltalk Book)">
+<meta name="keywords" content="Daily Workflow (The Cuis-Smalltalk Book)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Indexes.html" rel="index" title="Indexes">
+<link href="Code-Management.html" rel="up" title="Code Management">
+<link href="Documents-Copyright.html" rel="next" title="Documents Copyright">
+<link href="The-Package.html" rel="prev" title="The Package">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="style.css">
+
+
+</head>
+
+<body lang="en">
+<span id="Daily-Workflow"></span><div class="header">
+<p>
+Previous: <a href="The-Package.html" accesskey="p" rel="prev">The Package</a>, Up: <a href="Code-Management.html" accesskey="u" rel="up">Code Management</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Daily-Workflow-1"></span><h3 class="section">9.5 Daily Workflow</h3>
+
+<p>For our Spacewar! game, we created a dedicated package
+<samp>Spacewar!.pck.st</samp> file. This is the way to go when writing
+external package: define a dedicated package and from time to time
+save your work with the <code>save</code> button in the Installed Packages
+tool (See <a href="Spacewar_0021-models.html#ch02_002dInstalledPackages">Figure 2.3</a>).
+</p>
+<p>Cuis-Smalltalk uses GitHub to host, version, diff its core development and to
+manage a set of external packages (i.e. code that is maintained
+independently and outside Cuis-Smalltalk but closely related to it).
+</p>
+<p>Package files are simple text files, encoded for latin alphabet (ISO
+8859-15) and handled without problems by GitHub. Cuis-Smalltalk uses the LF
+(ascii code 10) newline convention, as preferred in GitHub. This
+allows Git/GitHub to diff versions, and merge branches.
+</p>
+<p>Separate GitHub repositories are used for projects, i.e. package or
+set of closely related packages that are always loaded and maintained
+together as a whole.
+</p>
+<p>Your daily workflow with Cuis-Smalltalk to develop an external package will
+look like:
+</p>
+<ol>
+<li> Start with a standard, fresh, Cuis image. Never save the
+  image.
+
+</li><li> Set up your preferred version control system to manage your
+  external packages. The recommendation is to use a GitHub repository
+  with a name beginning with &rsquo;Cuis-Smalltalk-&rsquo;, so it will be easy for
+  anybody to find it. But beside this consideration, using any other
+  version control system is fine.
+  
+</li><li> Install the necessary packages from the Cuis-Smalltalk Git
+  repositories.
+
+</li><li> Develop. Modify and/or create packages.
+
+</li><li> Save own packages (to your preferred repositories).
+
+</li><li> add / commit / push accordingly to your version control system
+
+</li><li> Fileout changes that are not part of any package. These are
+  automatically captured in numbered changesets, separated from
+  changes to packages.
+
+</li><li> Exit the image. Usually without saving.
+   
+</li></ol>
+
+
+<span id="index-to-be-written_002c-Requirement_002fdependencies"></span>
+<p><strong>To be written.</strong> Requirement/dependencies
+</p>
+
+<span id="Automate-your-image"></span><h4 class="subsection">9.5.1 Automate your image</h4>
+
+<p>As described in the daily workflow, it is a good habit to not save the
+whole image but only the modified package of the edited source
+code. However, each time we start a coding session, it is tedious to
+set up the image to fit our personal needs and taste.
+</p>
+<p>Things one may want to personalize in the image are:
+</p>
+<ul>
+<li> The font and taskbar sizes,
+
+</li><li> Placement of tools like System Browser, Workspace, Transcript,
+
+</li><li> Default contents in the Workspace, ready to be executed,
+
+</li><li> Installation of Packages.
+
+</li></ul>
+
+<span id="index-line-command-option_002c-_002ds-_0028run-a-script_0029"></span>
+<p>We want to record these image preferences in a
+<samp>setUpEnvironment.st</samp> script to be executed at start up. On
+GNU/Linux, you ask Cuis-Smalltalk to run a script with the <samp>-s</samp>, for
+example <code>squeakVM Cuis5.0.image -s setUpEnvironement.st</code> where
+<samp>setUpEnvironement.st</samp>. is a file containing Smalltalk code. A
+real life example may look like:
+</p><pre class="verbatim">../cogspur/squeak Cuis5.0-4426 -s ../scripts/setUpEnvironment.st
+</pre>
+<p>We describe in detail an example of a set up script organizing the
+environment as seen in <a href="#ch10_002dImageSetUp">Figure 9.7</a>. It is interesting
+Smalltalk code poking around heterogeneous areas of Cuis-Smalltalk like the
+developer tools, the Morph system, the preferences and collection
+handling.
+</p>
+<div class="float"><span id="ch10_002dImageSetUp"></span>
+<div align="center"><img src="ch10-ImageSetUp.png" alt="ch10-ImageSetUp">
+</div>
+<div class="float-caption"><p><strong>Figure 9.7: </strong>Environment of an image started with the set up script</p></div></div>
+<span id="index-morph_002c-world"></span>
+<p>Let&rsquo;s start by removing the open windows:
+</p>
+<div class="display">
+<pre class="display"><span class="sansserif">| list |
+&quot;Delete all windows but the taskbar&quot;
+list &#x2190; UISupervisor ui submorphs reject: [:aMorph |
+   aMorph is: #TaskbarMorph].
+list do: [:each | each delete].</span>
+</pre></div>
+
+<p>The whole user interface world of Cuis-Smalltalk is a kind of Morph, a
+<code>WorldMorph</code> instance. Its sub morphs are windows, menus, the
+taskbar or any kind of morph the user can interact with. To access
+this <code>WorldMorph</code> instance you ask to the <code>UISupervisor</code>
+with the <code>#ui</code> message. Once we select all the morphs in the world
+but the taskbar &ndash; really <code>#reject:</code> it &ndash; we <code>#delete</code> them
+from the world.
+</p>
+<p>Next, we change the preferences:
+</p>
+<div class="display">
+<pre class="display"><span class="sansserif">| list morph |
+../..
+&quot;Change to Dark theme&quot;
+Feature require: #&rsquo;Theme-Themes&rsquo;.
+DarkTheme beCurrent.
+&quot;Adjust font size&quot;
+Preferences smallFonts.
+&quot;Adjust taskbar size&quot;
+morph &#x2190; UISupervisor ui submorphs first.
+morph scale: 1 / 2.</span>
+</pre></div>
+
+<p>We require Theme-Themes package; as it is not installed on the default
+image, it will be searched on the disk for installation. Regarding the
+taskbar access, remember we deleted all the morphs but the taskbar
+from the world, therefore the taskbar is really the first in the sub
+morphs collection of the world.
+</p>
+<p>Before installing the tools, we ask a <code>RealEstateAgent</code> the free
+area. Sadly this agent does not take into consideration the area
+occupied by the task bar, so we need to tweak its answer. Then we
+compute a quarter of this free area extent (half in width and half
+in height make a quarter of the whole free area):
+</p>
+<div class="display">
+<pre class="display"><span class="sansserif">| list morph area extent |
+../..
+&quot;Compute the available free space for windows placement&quot;
+area &#x2190; RealEstateAgent maximumUsableArea
+   extendBy: 0 @ morph morphHeight negated.
+extent &#x2190; area extent // 2.</span>
+</pre></div>
+
+<p>Now we are ready to install a few tools. First three browsers each
+occupying a quarter of the screen:
+</p>
+<div class="display">
+<pre class="display"><span class="sansserif">&quot;Open a few System Browsers&quot;
+BrowserWindow openBrowser
+   morphBounds: (0 @ 0 extent: extent).
+BrowserWindow openBrowser
+   morphBounds: (area width // 2 @ 0 extent: extent).
+&quot;Open a System Browser on a specific class&quot;
+morph &#x2190; BrowserWindow openBrowser
+   morphBounds: (area extent // 2 extent: extent).
+morph model setClass: Integer selector: nil.</span>
+</pre></div>
+
+<p>Then in the remaining free quarter, we install a workspace occupying
+two thirds of the area and a transcript one third. The workspace is
+installed with some default contents. We need to hack a bit because
+when asking for a new Workspace, Cuis-Smalltalk does not answer the created
+instance, we have to search it in the windows of the world.
+</p>
+<div class="display">
+<pre class="display"><span class="sansserif">&quot;Open a Workspace with some default contents&quot;
+Workspace openWorkspace.
+morph &#x2190; UISupervisor ui submorphs detect: [:aMorph |
+   aMorph class = WorkspaceWindow].
+morph model actualContents: &rsquo;&quot;Some code&quot;
+1 + 2.
+&quot;Other code&quot;
+5 * 3.&rsquo;.
+morph morphBounds:
+   (0 @ (area height // 2)
+      extent: extent x @ (2 / 3 * extent y)).
+&quot;Open a transcript for logs&quot;
+TranscriptWindow openTranscript morphBounds: 
+   (0 @ (area height // 2 + (2 / 3 * extent y)) 
+      extent: extent x @ (1 / 3 * extent y )).</span>
+</pre></div>
+
+<p>Of course you should adjust the argument of the <code>#actualContents:</code>
+message to meaningful code for your usage.
+</p>
+
+
+
+<hr>
+<div class="header">
+<p>
+Previous: <a href="The-Package.html" accesskey="p" rel="prev">The Package</a>, Up: <a href="Code-Management.html" accesskey="u" rel="up">Code Management</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

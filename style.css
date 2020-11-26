@@ -67,6 +67,7 @@ margin: 0.5em 1em .5em 1em;
 
 pre.verbatim
 {
+font-size: 110%;
 border: 1px solid #900;
 padding: 1em;
 color: #900;

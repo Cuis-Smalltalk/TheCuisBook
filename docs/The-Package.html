@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : November 18, 2020
+Compilation : November 26, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -59,7 +59,7 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="Code-Management.html" rel="up" title="Code Management">
-<link href="Documents-Copyright.html" rel="next" title="Documents Copyright">
+<link href="Daily-Workflow.html" rel="next" title="Daily Workflow">
 <link href="The-Change-Set.html" rel="prev" title="The Change Set">
 <style type="text/css">
 <!--
@@ -87,10 +87,10 @@ ul.no-bullet {list-style: none}
 <body lang="en">
 <span id="The-Package"></span><div class="header">
 <p>
-Previous: <a href="The-Change-Set.html" accesskey="p" rel="prev">The Change Set</a>, Up: <a href="Code-Management.html" accesskey="u" rel="up">Code Management</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Daily-Workflow.html" accesskey="n" rel="next">Daily Workflow</a>, Previous: <a href="The-Change-Set.html" accesskey="p" rel="prev">The Change Set</a>, Up: <a href="Code-Management.html" accesskey="u" rel="up">Code Management</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="The-Package-1"></span><h3 class="section">10.4 The Package</h3>
+<span id="The-Package-1"></span><h3 class="section">9.4 The Package</h3>
 <span id="index-package"></span>
 <span id="index-class_002c-category-3"></span>
 <p>A package can hold a set of classes part of the same class category;
@@ -129,7 +129,7 @@ on disk.</em>
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong>Exercise 10.1: </strong>Two class categories, one package</p></div></div>
+<div class="float-caption"><p><strong>Exercise 9.1: </strong>Two class categories, one package</p></div></div>
 <span id="index-package_002c-system-extension"></span>
 <p>Imagine we need to print the page number of the <code>TheBook</code> table
 of contents as lower cased roman number, as we do with the printed
@@ -161,12 +161,12 @@ version of this book. The code is very simple:
 package we extend the <code>Integer</code> class with a method
 <code>printStringToc</code>, however this method addition is part of the
 Cuis-Smalltalk core system and its associated default change set. See
-<a href="#ch10_002dChangeSetToCore">Figure 10.5</a>, the Change Sorter tool exactly shows that.
+<a href="#ch10_002dChangeSetToCore">Figure 9.5</a>, the Change Sorter tool exactly shows that.
 </p>
 <div class="float"><span id="ch10_002dChangeSetToCore"></span>
 <div align="center"><img src="ch10-ChangeSetToCore.png" alt="ch10-ChangeSetToCore">
 </div>
-<div class="float-caption"><p><strong>Figure 10.5: </strong>Change Sorter, supplementary method to core</p></div></div>
+<div class="float-caption"><p><strong>Figure 9.5: </strong>Change Sorter, supplementary method to core</p></div></div>
 <p>Therefore when saving our <code>TheBook</code> package this method is not
 included and it is lost when quitting Cuis-Smalltalk. To include it in our
 package we categorize it in a method category with the
@@ -184,13 +184,16 @@ to get an update on the package contents.
 <div class="float"><span id="ch10_002dBrowsePackageChange"></span>
 <div align="center"><img src="ch10-BrowsePackageChange.png" alt="ch10-BrowsePackageChange">
 </div>
-<div class="float-caption"><p><strong>Figure 10.6: </strong>Package with extension to the <code>Integer</code> class of the
-<code>Kernel-Number</code> system class
+<div class="float-caption"><p><strong>Figure 9.6: </strong>Package with extension to the <code>Integer</code> class of the
+<code>Kernel-Numbers</code> system class
 category</p></div></div>
+<p>Observe how each category &ndash; class or method one &ndash; of an extension is
+prefixed with a <code>*</code>.
+</p>
 <hr>
 <div class="header">
 <p>
-Previous: <a href="The-Change-Set.html" accesskey="p" rel="prev">The Change Set</a>, Up: <a href="Code-Management.html" accesskey="u" rel="up">Code Management</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Daily-Workflow.html" accesskey="n" rel="next">Daily Workflow</a>, Previous: <a href="The-Change-Set.html" accesskey="p" rel="prev">The Change Set</a>, Up: <a href="Code-Management.html" accesskey="u" rel="up">Code Management</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 
 
