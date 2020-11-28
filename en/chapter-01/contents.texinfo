@@ -193,19 +193,18 @@ done, you can close these windows and adjust @cuis{} to your
 preferences.
 
 @subsection Editing your preferences
-Once you read the information on the default windows, the next 
-thing you want to do is to adjust visual properties to fit your
-preferences and needs. To do so, access the World menu
-...@clicksequence{Background click @click{} @label{Preferences...}} then
-select the pin on the top right of the menu to make it permanent. Here
-you have the most important options: the choice for the @strong{font
-size}, the @strong{themes} whenever your prefer light or dark
-colouring. There are other preferences you can explore by
-yourself. Once you are done, access again the World menu
-...@clicksequence{World menu @click{} @label{Save}}... to make your
-preferences permanent. In this book, we keep the default @cuis{}
-theme, we suggest you to do the same so your environment reflects the
-book screenshots.
+Once you read the information on the default windows, the next thing
+you want to do is to adjust visual properties to fit your preferences
+and needs. To do so, access the World menu
+...@clicksequence{Background click @click{} @label{Preferences...}}
+then select the pin on the top right of the menu to make it
+permanent. Here you have the most important options: the choice for
+the @strong{font size}, the @strong{themes} whenever your prefer light
+or dark colouring. There are other preferences you can explore by
+yourself. Once you are done, do ...@clicksequence{World menu @click{}
+@label{Save}}... to make your preferences permanent. In this book, we
+keep the default @cuis{} theme, we suggest you to do the same so your
+environment reflects the book screenshots.
 
 @figure{Set Preferences,ch01-Preferences,12}
 
@@ -213,7 +212,7 @@ book screenshots.
 @cindex tools, workspace
 The first tool to discover is the @dfn{Workspace} tool. It is a kind
 of text editor to key in Smalltalk code you can execute
-immediately. Do a ...@clicksequence{World menu @click{}
+immediately. Do ...@clicksequence{World menu @click{}
 @label{Open...} @click{} @label{Workspace}}...
 
 Now we ask @cuis{} to make the window's placement: click the blue icon
@@ -245,14 +244,13 @@ in Smalltalk:
 Transcript show: 'Hello World!'}
 
 @cindex tools, transcript
-To execute this code, select it with the mouse and
+To execute this code, select it with the mouse and over it do
 ...@clicksequence{right mouse click @click{} @label{Do it (d)}}...
 You may now see nothing happen! Indeed to see the output, you need a
 @dfn{Transcript} window to be visible.  The @class{Transcript} is a
 place where programmer can send information for the user as we are
-doing here. Do ...@clicksequence{World menu @click{}
-@label{Open...} @click{} @label{Transcript}}... and execute the code
-again.
+doing here. Do ...@clicksequence{World menu @click{} @label{Open...}
+@click{} @label{Transcript}}... and execute the code again.
 
 @figure{Transcript window with output,ch01-img2,3}
 
@@ -269,9 +267,9 @@ This code comes in three parts:
 @end itemize
 
 The action of printing takes place in the class
-@class{Transcript}. The code execution is invoked with keyboard
-shortcuts @kbd{Ctrl-A} (@emph{select @b{A}ll})
-then @kbd{Ctrl-D} (@emph{@b{D}o it}).
+@class{Transcript}. The code execution is also invoked with keyboard
+shortcuts @kbd{Ctrl-A} (@emph{select @b{A}ll}) then @kbd{Ctrl-D}
+(@emph{@b{D}o it}).
 
 @smalltalkExampleCaption{Multiple lines, hello2,
 Transcript show: 'Hello World!'.
@@ -369,17 +367,17 @@ words capitalized.}}
 @cindex literal, number
 Integer and float numbers we have played with are @dfn{Numeric
 Literals}. Literals are building blocks of the language and considered as
-constant expressions.  They literally are as the appear.
+constant expressions.  They literally are as they appear.
 
-There are different syntax variants to write a number:
+There are syntax variants to write a number:
 
 @multitable @columnfractions .45 .55
 @headitem Numeric literal                    @tab What it represents
-   @item @smalltalk{1}                         @tab integer (decimal notation)
-   @item @smalltalk{2r101}                  @tab integer (binary binary)
-   @item @smalltalk{16rFF}                  @tab integer (hexadecimal notation)
-   @item @smalltalk{1.5}                      @tab floating point number
-   @item @smalltalk{2.4e7}                  @tab floating point (exponential notation)
+   @item @smalltalk{1}                       @tab integer (decimal notation)
+   @item @smalltalk{2r101}                   @tab integer (binary binary)
+   @item @smalltalk{16rFF}                   @tab integer (hexadecimal notation)
+   @item @smalltalk{1.5}                     @tab floating point number
+   @item @smalltalk{2.4e7}                   @tab floating point (exponential notation)
 @end multitable
 
 Depending on the value we need to use, we can mix these literal
@@ -398,7 +396,7 @@ several time to different hardware architectures and complemented with
 additional features. @emph{Computer Space}, the first arcade video
 game cabinet was a clone of Spacewar!
 
-@figure{Spacewar! game on DEC PDP-1 minicomputer,ch01-SpacewarPDP,8}
+@figure{Spacewar! game on DEC PDP-1 minicomputer,ch01-SpacewarPDP,7}
 
 Wikipedia describes very precisely this space combat simulation game:
 
@@ -422,12 +420,7 @@ the other ship while avoiding a collision with the star or the
 opposing ship. Flying near the star can provide a gravity assist to
 the player at the risk of misjudging the trajectory and falling into
 the star. If a ship moves past one edge of the screen, it reappears on
-the other side in a wraparound effect. A hyperspace feature, or "panic
-button", can be used as a last-ditch means to evade enemy torpedoes by
-moving the player's ship to another location on the screen after it
-disappears for a few seconds, but the reentry from hyperspace occurs
-at a random location, and in some versions there is an increasing
-probability of the ship exploding with each use.
+the other side in a wraparound effect.
 @author Wikipedia, @url{https://en.wikipedia.org/wiki/Spacewar!#Gameplay,Spacewar!,Spacewar!}
 @end quotation
 
@@ -445,6 +438,6 @@ Therefore, the protagonists of the game are:
 
 @end enumerate
 
-@figure{Spacewar! game play,ch01-SpacewarGameplay,8}
+@figure{Spacewar! game play,ch01-SpacewarGameplay,5}
 
 
