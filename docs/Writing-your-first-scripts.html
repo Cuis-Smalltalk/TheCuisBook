@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : November 26, 2020
+Compilation : November 29, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -106,15 +106,14 @@ in Smalltalk:
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 1.1: </strong>The traditional &rsquo;Hello World!&rsquo; program</p></div></div>
-<span id="index-tools_002c-transcript"></span>
-<p>To execute this code, select it with the mouse and
+<span id="index-tools-1"></span>
+<p>To execute this code, select it with the mouse and over it do
 ...right mouse click &rarr; <code>Do it (d)</code>...
 You may now see nothing happen! Indeed to see the output, you need a
 <em>Transcript</em> window to be visible.  The <code>Transcript</code> is a
 place where programmer can send information for the user as we are
-doing here. Do ...World menu &rarr;
-<code>Open...</code> &rarr; <code>Transcript</code>... and execute the code
-again.
+doing here. Do ...World menu &rarr; <code>Open...</code>
+&rarr; <code>Transcript</code>... and execute the code again.
 </p>
 <div class="float"><span id="ch01_002dimg2"></span>
 <div align="center"><img src="ch01-img2.png" alt="ch01-img2">
@@ -132,9 +131,9 @@ again.
 </li></ul>
 
 <p>The action of printing takes place in the class
-<code>Transcript</code>. The code execution is invoked with keyboard
-shortcuts <kbd>Ctrl-A</kbd> (<em>select <b>A</b>ll</em>)
-then <kbd>Ctrl-D</kbd> (<em><b>D</b>o it</em>).
+<code>Transcript</code>. The code execution is also invoked with keyboard
+shortcuts <kbd>Ctrl-A</kbd> (<em>select <b>A</b>ll</em>) then <kbd>Ctrl-D</kbd>
+(<em><b>D</b>o it</em>).
 </p>
 <div class="float"><span id="hello2"></span>
 <div class="display">
@@ -154,13 +153,13 @@ language, it is a collection of characters. We already met string with
 our first script, it is enclosed in single quotes: <code>'hello
 world!'</code>. We capitalize it with the <code>#capitalized</code> message:
 </p>
-<span id="index-string_002c-capitalized"></span>
+<span id="index-string-1"></span>
 <div class="display">
 <pre class="display"><span class="sansserif">Transcript show: &rsquo;hello world!&rsquo; capitalized
 &rArr; &rsquo;Hello world!&rsquo; </span>
 </pre></div>
 
-<span id="index-string_002c-concatenate"></span>
+<span id="index-string-2"></span>
 <p>Two strings are concatenated with the <code>#,</code> message:
 </p><div class="float"><span id="concatenateStrings"></span>
 <div class="display">
@@ -178,7 +177,7 @@ world!'</code>. We capitalize it with the <code>#capitalized</code> message:
 
 <div class="float-caption"><p><strong>Exercise 1.2: </strong>Concatenate and capitalize</p></div></div>
 <span id="Fun-with-numbers"></span><h4 class="subsection">1.3.1 Fun with numbers</h4>
-<span id="index-number_002c-integer"></span>
+<span id="index-number"></span>
 
 <p>In your Workspace, to compute a factorial execute the example bellow
 with <kbd>Ctrl-a</kbd> then <kbd>Ctrl-p</kbd> (<em><b>P</b>rint it</em>):
@@ -245,9 +244,9 @@ sum of the first four integer inverses.</em>
 <p>Integers can be printed in different forms with the appropriate
 message:
 </p>
-<span id="index-number_002c-roman"></span>
-<span id="index-number_002c-as-words"></span>
-<span id="index-number_002c-base"></span>
+<span id="index-number-1"></span>
+<span id="index-number-2"></span>
+<span id="index-number-3"></span>
 <div class="display">
 <pre class="display"><span class="sansserif">2020 printStringRoman &rArr; &rsquo;MMXX&rsquo; 
 2020 printStringWords  &rArr; &rsquo;two thousand, twenty&rsquo;
@@ -264,13 +263,13 @@ words capitalized.</em>
 
 <div class="float-caption"><p><strong>Exercise 1.4: </strong>Capitalize number as words</p></div></div>
 
-<span id="index-number_002c-literal"></span>
-<span id="index-literal_002c-number"></span>
+<span id="index-number-4"></span>
+<span id="index-literal"></span>
 <p>Integer and float numbers we have played with are <em>Numeric
 Literals</em>. Literals are building blocks of the language and considered as
-constant expressions.  They literally are as the appear.
+constant expressions.  They literally are as they appear.
 </p>
-<p>There are different syntax variants to write a number:
+<p>There are syntax variants to write a number:
 </p>
 <table>
 <thead><tr><th width="45%">Numeric literal</th><th width="55%">What it represents</th></tr></thead>

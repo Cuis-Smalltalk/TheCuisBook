@@ -209,7 +209,7 @@ environment reflects the book screenshots.
 @figure{Set Preferences,ch01-Preferences,12}
 
 @subsection Fun with window placement
-@cindex tools, workspace
+@cindex tools @subentry workspace
 The first tool to discover is the @dfn{Workspace} tool. It is a kind
 of text editor to key in Smalltalk code you can execute
 immediately. Do ...@clicksequence{World menu @click{}
@@ -243,7 +243,7 @@ in Smalltalk:
 @smalltalkExampleCaption{The traditional 'Hello World!' program,hello,
 Transcript show: 'Hello World!'}
 
-@cindex tools, transcript
+@cindex tools @subentry transcript
 To execute this code, select it with the mouse and over it do
 ...@clicksequence{right mouse click @click{} @label{Do it (d)}}...
 You may now see nothing happen! Indeed to see the output, you need a
@@ -266,9 +266,12 @@ This code comes in three parts:
 
 @end itemize
 
+@cindex shortcut @seeentry{keyboard shortcut}
+@cindex keyboard shortcut @subentry select all code (@kbd{Ctrl-a})
+@cindex keyboard shortcut @subentry executing code (@kbd{Ctrl-d})
 The action of printing takes place in the class
 @class{Transcript}. The code execution is also invoked with keyboard
-shortcuts @kbd{Ctrl-A} (@emph{select @b{A}ll}) then @kbd{Ctrl-D}
+shortcuts @kbd{Ctrl-a} (@emph{select @b{A}ll}) then @kbd{Ctrl-d}
 (@emph{@b{D}o it}).
 
 @smalltalkExampleCaption{Multiple lines, hello2,
@@ -286,11 +289,11 @@ language, it is a collection of characters. We already met string with
 our first script, it is enclosed in single quotes: @smalltalk{'hello
 world!'}. We capitalize it with the @msg{capitalized} message:
 
-@cindex string, capitalized
+@cindex string @subentry capitalized
 @smalltalkExample{Transcript show: 'hello world!' capitalized
 @result{} 'Hello world!' }
 
-@cindex string, concatenate
+@cindex string @subentry concatenate
 Two strings are concatenated with the @msg{,} message:
 @smalltalkExampleCaption{Concatenate strings, concatenateStrings,
 Transcript show: 'Hello '@comma{} 'my beloved '@comma{} 'friend'
@@ -301,7 +304,8 @@ Transcript show: 'Hello '@comma{} 'my beloved '@comma{} 'friend'
 'Hello MY BELOVED friends'}}
 
 @subsection Fun with numbers
-@cindex number, integer
+@cindex number @subentry integer
+@cindex keyboard shortcut @subentry execute and print result (@kbd{Ctrl-p})
 
 In your Workspace, to compute a factorial execute the example bellow
 with @kbd{Ctrl-a} then @kbd{Ctrl-p} (@emph{@b{P}rint it}):
@@ -320,6 +324,10 @@ factorial}, you realize it takes far more time to print one factorial result
 than to compute two factorials and divide them. The result is an integer
 as expected, not a decimal number answer as many computer languages
 will return.
+
+@cindex number @subentry rational fraction
+@cindex rational fraction @seeentry{number}
+@cindex fraction @seeentry{number}
 
 As we are discussing division, you may not get the result you expect:
 @smalltalkExample{15 / 4
@@ -351,9 +359,9 @@ sum of the first four integer inverses.}}
 Integers can be printed in different forms with the appropriate
 message:
 
-@cindex number, roman
-@cindex number, as words
-@cindex number, base
+@cindex number @subentry roman
+@cindex number @subentry as words
+@cindex number @subentry base
 @smalltalkExample{2020 printStringRoman @result{} 'MMXX' 
 2020 printStringWords  @result{} 'two thousand, twenty'
 "Number as the Maya did"
@@ -363,8 +371,8 @@ message:
 words capitalized.}}
 
 
-@cindex number, literal
-@cindex literal, number
+@cindex number @subentry literal
+@cindex literal @subentry number
 Integer and float numbers we have played with are @dfn{Numeric
 Literals}. Literals are building blocks of the language and considered as
 constant expressions.  They literally are as they appear.

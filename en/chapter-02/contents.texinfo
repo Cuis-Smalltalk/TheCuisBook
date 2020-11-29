@@ -17,27 +17,32 @@ through messages. That's all, there is nothing more.
 @node Communicating entities
 @section Communicating entities
 
-@cindex message, sender
-@cindex message, receiver
+@cindex message @subentry sender
+@cindex message @subentry receiver
+@cindex instance
+@cindex class
 When a given entity receives a message from another entity, it
 triggers a specific behavior.  The receiving entity of the message is
 called the @dfn{receiver} and the sending entity, the @dfn{sender}. In
-@cuis{} terminology, an entity is called an @dfn{instance of a class}, a @dfn{class instance}, or simply an @dfn{instance}.
-A @dfn{class} is a kind of model for an entity.
+@cuis{} terminology, an entity is called an @dfn{instance of a class},
+a @dfn{class instance}, or simply an @dfn{instance}.  A @dfn{class} is
+a kind of model for an entity.
 
+@cindex method
 The behavior is defined internally in the receiver and it can be
 triggered from any instance.
 @strong{Behaviors are invoked only by messages sent between entities}.
 An entity may send a message to
 itself. A behavior is defined in a class and is called a @dfn{method}.
 
+@cindex garbage collection
 This results in a huge cloud of entities communicating with each other
 through message sending. New entities are instantiated when needed
 then automatically garbage collected when no longer required. On a
 fresh @cuis{} environment, the instances class count is more than
 150000.
 
-@cindex collection, @method{inject:into:}
+@cindex collection @subentry @method{inject:into:}
 @smalltalkExampleCaption{Calculating the number of entities, entitiesCount,
 ProtoObject allSubclasses inject: 0 into: [:count :class |
    count + class allInstances size] 
@@ -57,43 +62,31 @@ The scripts you
 read and wrote were all about entities communicating with each other
 through messages.
 
-
-@todo{SystemWindows.}
-
-@todo{Text editor menus.}
-
-@todo{Keyboard shortcuts.}
-
-@cindex message, send
-@cindex message, unary
-@cindex message, binary
-@cindex message, keyword
+@cindex message @subentry send
 @node Messages sends definition
 @section Message sends definition
 There are three kinds of messages in @cuis{}:
 
 @itemize
-
+@cindex message @subentry unary
  @item @strong{Unary messages} take no argument.
  @*
- @smalltalk{1 factorial}
- sends the message @msg{factorial} to the object
- @smalltalk{1},
+ In @smalltalk{1 factorial} the message @msg{factorial} is sent to the
+ object @smalltalk{1}.
 
+@cindex message @subentry binary
  @item @strong{Binary messages} take exactly one argument.
- @*
- @smalltalk{1 + 2}
- sends the message @msg{+} with argument
- @smalltalk{2} to the object @smalltalk{1}.
+ @* 
+ In @smalltalk{1 + 2} the message @msg{+} is sent to the object
+ @smalltalk{1} with the argument @smalltalk{2}.
 
- @item @strong{Keyword messages} take an arbitrary number of
+@cindex message @subentry keyword
+@item @strong{Keyword messages} take an arbitrary number of
  arguments.
- @*
- @smalltalk{2 raisedTo: 6 modulo: 10}
- sends the message
- consisting of the message selector @msg{raisedTo:modulo:} and the
- arguments @smalltalk{6} and @smalltalk{10} to the object
- @smalltalk{2}.
+ @* 
+ In @smalltalk{2 raisedTo: 6 modulo: 10} the message consisting of the
+ message selector @msg{raisedTo:modulo:} and the arguments
+ @smalltalk{6} and @smalltalk{10} is sent to the object @smalltalk{2}.
 
 @end itemize
 
@@ -109,7 +102,7 @@ Keyword message selectors consist of a series of alphanumeric
 keywords, where each keyword starts with a lower-case letter and ends
 with a colon.
 
-@cindex message, precedence
+@cindex message @subentry precedence
 Unary messages have the highest precedence, then binary messages, and
 finally keyword messages, so:
 
@@ -138,14 +131,15 @@ are superfluous but improve understanding:
 @smalltalkExampleCaption{Ship velocity,updateShipVelocity,
 newVelocity @assign{} (ai + ag) * t + velocity}
 
+@cindex message  @subentry cascade
 @cindex cascade of messages
-In the @ref{hello2} example, the message @msg{show:} and @msg{newLine}
+In the @ref{hello2}, the message @msg{show:} and @msg{newLine}
 are sent to the same @class{Transcript} entity. In such circumstance,
 we can use the @dfn{cascade} technique to avoid this repetition. The
 receiver @class{Transcript} is written once and the sent messages are
 separated by semicolon:
 
-@smalltalkExampleCaption{Cascade of message, helloCascade,
+@smalltalkExampleCaption{Cascade of messages, helloCascade,
 Transcript
    show: 'Hello World!';
    newLine;
@@ -165,21 +159,22 @@ readability of the code:
 @smalltalkExample{Transcript show: 'Hello World!'; newLine; show: 'I am Cuising'}
 
 The @class{Transcript} class is frequently helpful in presenting
-useful information when developing an application. An alternative
-to the @kbd{Ctrl-d} (@emph{@b{D}o it}) shortcut is @kbd{Ctrl-p} (@emph{@b{P}rint it}), which 
-executes the script and prints the result direcly in the Workspace.
+useful information when developing an application. An alternative to
+the @kbd{Ctrl-d} (@emph{@b{D}o it}) shortcut is @kbd{Ctrl-p}
+(@emph{@b{P}rint it}), which executes the script and prints the result
+direcly in the Workspace.
 
-In the example, we have requested no special result.  Selecting the
+In the @ref{helloCascade}, we have requested no special result.  Selecting the
 text and typing @kbd{Ctrl-p} results in the default, which is to
 return the object to which a message is sent, in this case the
 @class{Transcript}.
 
+@cindex string @subentry character access
 @node Message to string entities
 @section Message to string entities
-@cindex string, character access
 Access to a character in a string is done with the keyword message
-@msg{at:} and its index position in the string. Execute the following
-examples with the @kbd{Ctrl-p} shortcut:
+@msg{at:} and its index position in the string as argument. Execute
+the following examples with the @kbd{Ctrl-p} shortcut:
 
 @smalltalkExample{'Hello' at: 1 @result{} $H
 'Hello' at: 5 @result{} $o}
@@ -189,31 +184,33 @@ Observe how a character is prefixed with the ``$'' symbol.
 @strong{Caution.} The index indicates position naturally from 1 to the
 string length.
 
-@cindex string, @method{indexOf:}
+@cindex string @subentry @method{indexOf:}
 @smalltalkExample{'Hello' indexOf: $e
 @result{} 2}
 
-@cindex string, @method{at:put:}
+@cindex string @subentry @method{at:put:}
+@cindex @method{yourself}
 To change one character, use the companion two keyword message
 @msg{at:put:}. The argument must be noted as a character:
 @smalltalkExample{'Hello' at: 2 put: $a; yourself
 @result{} 'Hallo'}
 
-Observe the use of the cascade with the @msg{yourself} message.
-A cascade sends following messages to the original receiver,
-so @smalltalk{#yourself} returns the updated string.
-Without the cascade, $a is returned as the result of the #at:put: message.
+Observe the use of the cascade with the @msg{yourself} message.  A
+cascade sends following messages to the original receiver, so
+@smalltalk{#yourself} returns the updated string.  Without the
+cascade, @smalltalk{$a} is returned as the result of the @msg{at:put:}
+message.
 
 @exercise{Hello to Belle,helloBelle, @emph{Replace each character of
 the string 'Hello' to become 'Belle'}}
 
-@cindex character, ascii
+@cindex character @subentry ascii
 Character can be converted to integer and integer to character:
 @smalltalkExample{$A asciiValue @result{} 65
 (65 + 25) asCharacter @result{} $Z}
 
-@cindex string, @method{shuffled}
-@cindex collection, @method{shuffled}
+@cindex string @subentry @method{shuffled}
+@cindex collection @subentry @method{shuffled}
 Shuffling a string is funny but without much use. Nevertheless,
 shuffling can apply to any kind of collection, not only to string, and it
 proves to be of some use as we may see later:
@@ -221,7 +218,8 @@ proves to be of some use as we may see later:
 @result{} 'wod llreohl'}
 Note that results of each shuffle are different.
 
-@cindex string, @method{asArray}
+@cindex string @subentry @method{asArray}
+@cindex message @subentry composition
 Messages naturally compose.
 @smalltalkExample{'hello world' shuffled asArray
 @result{} #($h $d $l $  $o $w $e $l $l $o $r) }
@@ -231,16 +229,16 @@ and parentheses surround the elements of the array.
 In this case the elements are @class{Character}s, but they can
 be instances of any class.
 
-@cindex string, @method{sort}
+@cindex string @subentry @method{sort}
 Similarly, we can ask a string to sort its characters:
 @smalltalkExample{'hello world' sort
-@result{}  ' dehllloorw'  }
+@result{} ' dehllloorw'}
 
 Like @smalltalk{#shuffled}, all collections answer to the message @smalltalk{#sorted},
 which answers a sorted collection.
-@cindex string, @method{sorted}
+@cindex string @subentry @method{sorted}
 @smalltalkExample{'hello world' sorted
-@result{}  #($  $d $e $h $l $l $l $o $o $r $w)  }
+@result{} #($  $d $e $h $l $l $l $o $o $r $w)}
 
 Note that this breaks patterns.  We get a @class{String} result when giving 
 a @class{String} the message @smalltalk{#shuffled} but get an @class{Array}
@@ -253,9 +251,10 @@ discuss how we name instances and methods to show intent and reduce surprise.
 
 @node Messages to number entities
 @section Messages to number entities
-@cindex number, root
-@cindex number, @method{sqrt}
-@cindex number, @method{squared}
+@cindex number @subentry root
+@cindex number @subentry @method{sqrt}
+@cindex number @subentry @method{squared}
+@cindex number @subentry rational fraction @subentry operations
 
 Earlier, we discussed how @cuis{} knows about rational fractions.  The
 four arithmetic operations and mathematical functions are implemented
@@ -268,7 +267,7 @@ with the binary messages understood by the rational numbers:
 @exercise{Sum of the squares,squaredSum, @emph{Write the code to compute the
 sum of the squares of the inverse of the first four integers.}}
 
-@cindex number, decimal division
+@cindex number @subentry decimal division
 If @cuis{} integer division returns a rational number, how do we find the
 result in decimal? One option is to write a number as a floating point literal,
 a @dfn{Float}.
@@ -297,13 +296,13 @@ The modulo reminder of the Euclidean division is computed with the message
 @smalltalkExample{15 \\\\ 4
 @result{} 3}
 
-@cindex number, @method{odd}
-@cindex number, @method{even}
-@cindex number, @method{isPrime}
-@cindex number, @method{isDivisibleBy:}
-@cuis{} knows some arithmetic operations to test if an integer is an
-odd, even, prime number or divider. You just send the appropriate
-unary or keyword message to the number:
+@cindex number @subentry @method{odd}
+@cindex number @subentry @method{even}
+@cindex number @subentry @method{isPrime}
+@cindex number @subentry @method{isDivisibleBy:}
+@cuis{} knows arithmetic operations to test if an integer is an odd,
+even, prime number or divider. You just send the appropriate unary or
+keyword message to the number:
 
 @smalltalkExampleCaption{Testing on integer,integerBasicTest,
 25 odd @result{} true
@@ -314,8 +313,8 @@ unary or keyword message to the number:
 117 isDivisibleBy: 7 @result{} false
 117 isDivisibleBy: 9 @result{} true}
 
-@cindex number, @method{gcd:}
-@cindex number, @method{lcm:}
+@cindex number @subentry @method{gcd:} (great common divisor)
+@cindex number @subentry @method{lcm:} (lest common multiple)
 With specific @dfn{keyword messages} you compute the Least Common
 Multiple and Greatest Common Divisor. A keyword message is composed of
 one or several colon(s) ``:'' to insert argument(s):
@@ -328,14 +327,13 @@ field. According to the Newton's law of universal gravitation, any
 object with a mass -- a spaceship or a torpedo in the game -- is
 subjected to the gravitational force. We compute it as a vector to
 account its direction and magnitude. The game code extract bellow
-shows mixed scalar and vector calculus done with messages sending (See
-@ref{motionEquations}):
+shows a (simplified) mixed scalar and vector calculus done with messages
+sending (See @ref{motionEquations}):
 
 @smalltalkExampleCaption{Compute the gravity force vector,gravityVector,
 -10 * self mass * owner starMass / (position r raisedTo: 3) * position}
 
-
-@cindex tools, system browser
+@cindex tools @subentry system browser
 @cindex browser
 @node A brief introduction to the system Browser
 @section A brief introduction to the system Browser
@@ -347,25 +345,24 @@ The @dfn{System Browser}, in short the @dfn{Browser}, is a tool to
 rule all the classes in @cuis{}. It is both a tool to explore the
 classes (system or user ones) and to write new classes and methods.
 
-To access the tool, ...@clicksequence{World menu @click{}
+To access the tool ...@clicksequence{World menu @click{}
 @label{Open...} @click{} @label{Browser}}...
 
 @figure{The System Browser,ch02-browserDetailed,12}
 
-@cindex browser, class category
-@cindex class, category
-At the top left are the @dfn{class categories}, groups of
-classes with of the same theme. A category can also be used to
-create a @dfn{Package}, which is
-an organisational element to save code in a file system.
-In @ref{ch02-browserDetailed}, the
-selected class category is @strong{Kernel-Numbers}, a group of
-classes we already started using. The term @strong{Kernel-} indicates it
-is part of fundamental categories, but it is only a convention. See
-the other categories as @strong{Kernel-Text} and
-@strong{Kernel-Chronology} related to text and date entities.
+@cindex browser @subentry class category
+@cindex class @subentry category
+At the top left are the @dfn{class categories}, groups of classes
+sharing the same theme. A category can also be used to create a
+@dfn{Package}, which is an organisational element to save code in a
+file system.  In @ref{ch02-browserDetailed}, the selected class
+category is @strong{Kernel-Numbers}, a group of classes we already
+started using. The term @strong{Kernel-} indicates it is part of
+fundamental categories, but it is only a convention. See the other
+categories as @strong{Kernel-Text} and @strong{Kernel-Chronology}
+related to text and date entities.
 
-@cindex class, declaration
+@cindex class  @subentry declaration
 Next to the right are the classes in the selected class category. They
 are nicely presented in a parent-child class hierarchy. When a class is
 first selected in this pane, its declaration appears in the large pane
@@ -405,7 +402,7 @@ to describe what is different from its superclass.  An instance
 of @class{Number} adds methods (which define behaviors) unknown to an instance
 of @class{Magnitude}.  We will explore this in detail as we go forward.
 
-@cindex class, comment
+@cindex class @subentry comment
 To learn about the intend of a class, it is good practice to @strong{always}
 visit the class comment. Often a comment comes also with code
 examples to learn how to use the object; these code snippets can be
@@ -413,7 +410,7 @@ selected and executed in place as done from a Workspace. In
 @ref{ch02-browserDetailed}, see the @label{comment} button to read or
 to edit the comment of the selected class.
 
-@cindex method, category
+@cindex method @subentry category
 To the right of the class panel is the method categories panel.
 A class may have with tens of methods, so grouping
 them by category helps other users orient to find related methods.
@@ -424,19 +421,20 @@ more than 300.}. Clicking the @label{arithmetic} category
 directly gives access to related methods in the next and last pane at
 the right.
 
+@cindex class @subentry category
+@cindex keyboard shortcut @subentry find a class (@kbd{Ctrl-f})
+@strong{Tip.} A @clicksequence{right click} on the Class Category pane
+brings up its context menu.  You can select @label{find class ..} or,
+as the menu indictes, use @kbd{Ctrl-f} (@emph{@b{F}ind}), to get a
+fill-in panel and type part of a class name to match.  Try it with
+@smalltalk{String}.
+
 @exercise{Count of methods,stringArith,@emph{How many methods is there
 in the @strong{arithmetic} method category of the @class{String}
 class?}}
 
-@cindex class, category
-@strong{Tip.} A @clicksequence{right click} on the Class Category pane brings up
-its context menu.  You can select @label{find class ..} or,
-as the menu indictes,
-use @kbd{Ctrl-f} (@emph{@b{F}ind}), to get a fill-in panel and type part of
-a class name to match.  Try it with @smalltalk{String}.
 
-
-@cindex class, instance method
+@cindex class @subentry instance method
 In the Browser, once a method is selected -- in
 @ref{ch02-browserDetailed}, @method{abs} method -- the bottom part
 shows its source code, ready to be explored or edited. Again, often,
@@ -445,7 +443,8 @@ surrounded by double quotes.
 
 Every entity knows its class and answers it to the message @smalltalk{#class}.
 
-@cindex browser, invoke from Workspace
+@cindex browser @subentry invoke from Workspace
+@cindex keyboard shortcut @subentry browse a class (@kbd{Ctrl-b})
 @strong{Tip.} In the workspace @kbd{Ctrl-b} (@emph{@b{B}rowse})
 on the class name will open a Browser on the named class:
 
@@ -489,17 +488,18 @@ representing the involved entities:
 Before defining these classes in @cuis{}, we want to create a
 dedicated class category to group them there.
 
-In a Smalltalk window, right-click on a pane will typically bring up a menu
-of operations you can apply which are specific to that pane.
-With the mouse pointer
-over the class category pane of the Browser -- the most left one --
-just do:
+In any kind of @cuis{} window, right-click on a pane will typically
+bring up a menu of operations you can apply which are specific to that
+pane.
+
+With the mouse pointer over the class category pane of the Browser --
+the most left one -- just do:
 
 ...@clicksequence{right mouse click @click{} @label{add item}}... then
-key in @emph{Spacewar!}.
+key in @emph{Spacewar!}
 
 
-@cindex class, create (new)
+@cindex class @subentry create (new)
 Once our new category is set, the Browser proposes on the method
 source code pane -- the bottom one -- a code template to create a new
 class in the @label{Spacewar!} category:
@@ -510,6 +510,7 @@ class in the @label{Spacewar!} category:
    poolDictionaries: ''
    category: 'Spacewar!'}
 
+@cindex keyboard shortcut @subentry save code (@kbd{Ctrl-s})
 We replace the symbol @smalltalk{#NameOfSubclass} with a symbol
 representing the name of the class we want to create. Let's start with
 @smalltalk{#SpaceWar}. To save the class, over the class
@@ -530,18 +531,19 @@ When done, your class category should be filled with four classes as in
 
 @anchor{Spacewar! package}
 @subsection Spacewar! package
-@cindex package, create (new)
-@cindex package, save
-@cindex package, tool
+@cindex package @subentry  create (new)
+@cindex package @subentry save
+@cindex package @subentry tool
 Another important use case of a class category is to define a package
 to save code on file.  A package saves the code of the classes held in
 a given class category and a bit more, but more on that last point
-later. To create our @label{Spacewar!} package and save our game code:
+later. To create our @label{Spacewar!} package and save our game code
+we use the Installed Packages tool.
 
 @enumerate
-  @item Open the @dfn{Installed Packages} tool:
-  ...@clicksequence{World menu @click{} @label{Open...} @click{}
-  @label{Installed Packages}}...
+  @item Open the @dfn{Installed Packages} tool ...@clicksequence{World
+  menu @click{} @label{Open...} @click{} @label{Installed
+  Packages}}...
 
   @item On the Installed Packages window, do ...@clicksequence{click @label{new}
   button @click{} Input @emph{Spacewar!} @click{} @kbd{Return}}...
@@ -553,8 +555,7 @@ later. To create our @label{Spacewar!} package and save our game code:
 
 @figure{Installed Package window,ch02-InstalledPackages,8}
 
-
-@cindex package, load
+@cindex package @subentry load
 A file @file{Spacewar!.pck.st} is created along the @cuis{} image
 file.  Every time a package needs to be loaded in a fresh @cuis{}
 environment, use the File List tool:
