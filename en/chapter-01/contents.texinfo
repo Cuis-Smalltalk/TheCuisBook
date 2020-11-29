@@ -305,6 +305,7 @@ Transcript show: 'Hello '@comma{} 'my beloved '@comma{} 'friend'
 
 @subsection Fun with numbers
 @cindex number @subentry integer
+@cindex interger @seeentry{number}
 @cindex keyboard shortcut @subentry execute and print result (@kbd{Ctrl-p})
 
 In your Workspace, to compute a factorial execute the example bellow
@@ -359,9 +360,9 @@ sum of the first four integer inverses.}}
 Integers can be printed in different forms with the appropriate
 message:
 
-@cindex number @subentry roman
-@cindex number @subentry as words
-@cindex number @subentry base
+@cindex number @subentry integer @subentry roman
+@cindex number @subentry integer @subentry as words
+@cindex number @subentry integer @subentry base
 @smalltalkExample{2020 printStringRoman @result{} 'MMXX' 
 2020 printStringWords  @result{} 'two thousand, twenty'
 "Number as the Maya did"

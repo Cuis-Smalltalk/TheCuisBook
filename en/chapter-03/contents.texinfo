@@ -1,12 +1,28 @@
 @node Class - Model of Communicating Entities
 @chapter Class, Model of Communicating Entities
 
-@cuis{} is a pure object oriented programming language (OOP): all the
-entities in the language: integers, floats, rational numbers, strings, 
-collections, blocks of code and so forth -- every instance usable
-as a noun in Smalltalk -- is an object.
+@anchor{goldberg1}
+@quotation
+If I give you something that you can play with and extend, even a
+piece of paper with a paragraph and I say it's not written well,
+rewrite it, that's easier than giving you nothing and say make
+something; you know, giving a blank sheet of paper and starting to
+write.  So the lovely part that has proven true for professional
+programmers as well as kids is when you start with something, an
+object that does something, and then you put many objects like those
+together and have them interact, and then you extend and make them
+behave a little differently, you can take a very incremental approach
+to learning how to control a computer system.
+@author Adele Goldberg
+@end quotation
 
-@todo{historic context of class}
+@* @* @* @*
+
+@cuis{} is a pure object oriented programming language (OOP). All the
+entities in the language: integers, floats, rational numbers, strings,
+collections, blocks of code and so forth -- every instance usable as a
+noun in Smalltalk -- is an object.
+
 
 @menu
 * Understanding Object Oriented Programming::
@@ -66,8 +82,8 @@ behavior by implementing the methods.  A variable is basically a named
 box which can hold any object.  Each instance of a class gets its own
 box with the common name.
 
-Let see how the @class{Fraction}
-class is declared:
+@cindex number @subentry rational fraction
+Let see how the @class{Fraction} class is declared:
 
 @smalltalkExample{Number subclass: #Fraction
    instanceVariableNames: 'numerator denominator'
@@ -88,47 +104,49 @@ variables -- and behavior -- methods -- defined in the @class{Number}
 class. @class{Fraction} is called a @dfn{subclass} of @class{Number},
 and so naturally we call @class{Number} a @dfn{superclass} of @class{Fraction}.
 
-@cindex class, inheritance
-A Class specifies the behavior of all of its instances.  It is useful 
-to be able to say "this object is like that object, but for
-these differences".  
-We do this in Smalltalk by a Class inheriting instance state and behavior from 
-its parent Class.  This child, or subclass then specifies just the
-instance state and behavior which is different from its parent.
+@cindex class @subentry inheritance
+A Class specifies the behavior of all of its instances.  It is useful
+to be able to say @emph{this object is like that object, but for these
+differences}.  We do this in Smalltalk by a Class inheriting instance
+state and behavior from its parent Class.  This child, or subclass
+then specifies just the instance state and behavior which is different
+from its parent.
 
 This aspect of object oriented programming is called
 @dfn{inheritance}. In @cuis{}, each class inherits from one parent
 class.
 
-In Smalltalk, we say that each object decides for itself
-how it reponds to a message.
-This is called @dfn{polymorphism}.
-The same message selector may be sent to objects of different Classes.  
-The 'shape' (morph) of the computation is different depending on the specific 
-class of the 'many' (poly) possible classes of the object receiving the message.
+@cindex polymorphism
 
-We saw above that different kinds of objects
-all responded to the same #printString message in different,
-but appropriate ways.
+In Smalltalk, we say that each object decides for itself how it
+reponds to a message.  This is called @dfn{polymorphism}.  The same
+message selector may be sent to objects of different Classes.  The
+@emph{shape} (morph) of the computation is different depending on the
+specific class of the @emph{many} (poly) possible classes of the
+object receiving the message.
+
+Different kinds of objects all responded to the same @msg{printString}
+message in different, but appropriate ways.
 
 @c instance creation
-@cindex instance, creation
-@cindex class, class method
-We have already met fractions. Those fractions are
-objects called @dfn{instance}s of the class @class{Fraction}. To create
-an instance we wrote @smalltalk{5 / 4}, the mechanism is based on
-message sending and polymorphism.  Let us look into how this works.
+@cindex instance @subentry creation
+@cindex class @subentry class method
+We have already met fractions. Those fractions are objects called
+@dfn{instance}s of the class @class{Fraction}. To create an instance
+we wrote @smalltalk{5 / 4}, the mechanism is based on message sending
+and polymorphism.  Let us look into how this works.
 
-The number @smalltalk{5} is an
-integer receiving the message @msg{/}, therefore looking at the method
-@method{/} in the @class{Integer} class explains how is instantiated
-the fraction. See part of this method:
+The number @smalltalk{5} is an integer receiving the message @msg{/},
+therefore looking at the method @method{/} in the @class{Integer}
+class explains how is instantiated the fraction. See part of this
+method:
+
 @smalltalkExample{/ aNumber
 "Refer to the comment in Number / "
 | quoRem |
 aNumber isInteger ifTrue:
 ../..
-   ifFalse: [^ (Fraction numerator: self denominator: aNumber) reduced]].
+   ifFalse: [@return{} (Fraction numerator: self denominator: aNumber) reduced]].
 ../..}
 
 From this source code, we learn that in some situations, the method
@@ -161,10 +179,10 @@ In @ref{repeatLoop}, the @msg{newFrom:} message is sent to the class
 elements from the array given in argument; @emph{@method{newFrom:}} is
 another class method.
 
+@page
 @c instance method
-@cindex class, instance method
+@cindex class  @subentry instance method
 @cindex polymorphism
-@cindex number, @method{squared}
 Now observe the hierarchy of the Number class:
 
 @format
@@ -179,6 +197,7 @@ Now observe the hierarchy of the Number class:
       @class{SmallInteger}
 @end format
 
+@cindex number @subentry @method{squared}
 @class{Float}, @class{Integer} and @class{Fraction} are direct
 descendants of the @class{Number} class. We have already learned about the
 @msg{squared} message sent to integer and fraction instances:
@@ -191,20 +210,20 @@ As the @msg{squared} message is sent to @class{Integer} and
 called an @dfn{instance method}. This method is defined in both the
 @class{Number} and @class{Fraction} classes.
 
-@cindex method, returned value (explicit)
+@cindex method  @subentry returned value (explicit)
 Let's examine this method in @class{Number}:
 @smalltalkExample{Number>>squared
 "Answer the receiver multiplied by itself."
-   ^self * self}
+   @return{} self * self}
 
 In an instance method source code, @smalltalk{self} refers to the
-object itself, here it is the value of the number. The @smalltalk{^}
-symbol indicates to return the following value @smalltalk{self *
-self}.
+object itself, here it is the value of the number. The @return{} (also
+@smalltalk{^}) symbol indicates to return the following value
+@smalltalk{self * self}.
 
 Now let's examine this same method in @class{Fraction}:
 @smalltalkExample{Fraction>>squared
-   ^ Fraction
+   @return{} Fraction
       numerator: numerator squared
       denominator: denominator squared}
 
@@ -213,7 +232,7 @@ numerator and denominator being squared.
 This alternate @method{squared} method, ensures a fraction instance is
 returned.
 
-@cindex method, overriding
+@cindex method  @subentry overriding
 @cindex overriding
 When message @msg{squared} is sent to a number, different methods are
 executed depending on the number is a fraction or another other kind of
@@ -224,7 +243,7 @@ is @dfn{overriding} the @method{squared} method, defined above in the
 class hierarchy.  If a method is not overridden, an inherited method
 is invoked to respond to the message.
 
-@cindex number, @method{abs}
+@cindex number @subentry @method{abs}
 Still in the @class{Number} hierarchy, let's examine another example
 of polymorphism with the @msg{abs} message:
 
@@ -240,14 +259,14 @@ discussed so far, but the code is quite self-explanatory:
 "Answer a Number that is the absolute value (positive magnitude) of the 
 receiver."
    self < 0
-      ifTrue: [^self negated]
-      ifFalse: [^self]}
+      ifTrue: [@return{} self negated]
+      ifFalse: [@return{} self]}
 
 This implementation will do just fine for the @class{Number}
 subclasses. Nevertheless, there are several classes overriding it for
 specialized or optimized cases.
 
-@cindex method, returned value (default)
+@cindex method @subentry returned value (implicit)
 For example, regarding large positive integer, @method{abs} is
 empty. Indeed, @strong{in the absence of explicitly returned value, the
 default returned value is the instance itself}, in our situation the
@@ -255,23 +274,24 @@ default returned value is the instance itself}, in our situation the
 
 @smalltalkExample{LargePositiveInteger>>abs}
 
-The @class{LargeNegativeInteger} knows it is negative and its absolute value must be 
-itself but with its sign reversed, that is @method{negated}:
+The @class{LargeNegativeInteger} knows it is negative and its absolute
+value is itself but with its sign reversed, that is @method{negated}:
 
 @smalltalkExample{LargeNegativeInteger>>abs
-   ^ self negated}
+   @return{} self negated}
    
 These two overriding methods are more efficient as they avoid test and
 ifTrue/ifFalse branches. Polymorphism is often used to avoid test and
 branch.
 
-@strong{Tip.} If you select the text @smalltalk{abs}
-in a Browser or Workspace
-and right-click to get the context menu, you will find
-an entry @label{Implementors of it}.
-You can select this or use @kbd{Ctrl-m} (@emph{i@b{M}plementors}) to
-see how various methods for @smalltalk{#abs} use polymorphism to
-specialize their answer to produce the naturally expected result.
+@cindex keyboard shortcut @subentry implementors of (@kbd{Ctrl-m})
+
+@strong{Tip.} If you select the text @smalltalk{abs} in a Browser or
+Workspace and right-click to get the context menu, you will find an
+entry @label{Implementors of it}.  You can select this or use
+@kbd{Ctrl-m} (@emph{i@b{M}plementors}) to see how various methods for
+@smalltalk{#abs} use polymorphism to specialize their answer to
+produce the naturally expected result.
 
 As an object instance is modeled by its class, it is possible to
 ask any object its
@@ -332,11 +352,16 @@ We have spent much time here because it is important to avoid
 confusion between instance methods and class
 methods. Let's consider the @class{Float} class as an example.
 
-@cindex class, class method
+@cindex class @subentry class method
+
 @strong{Class Methods.} In @ref{ch03-floatClassSide} the methods listed are
 class side, in the browser the @label{class} button is pressed to see this
-list. From a Workspace, this methods are called with the message name
-sent directly to the class:
+list.
+
+@figure{Class methods in @class{Float},ch03-floatClassSide,5}
+
+From a Workspace, this methods are called with the message name sent
+directly to the class:
 
 @smalltalkExample{Float e
 @result{} 2.718281828459045
@@ -345,22 +370,23 @@ Float epsilon
 Float fmax
 @result{} 1.7976931348623157e308}
 
-@strong{Tip.} You have noticed that text typed into the Workspace is colored
-and highlighted based on what you type.  We will discuss this below
-when we talk about the Smalltalk language, but the idea is to be helpful.
-If you start to type a word
-the Cuis Workspace knows about, you can press the @kbd{tab} key
-and get a set of choices for completion of the word.
-Try typing @smalltalk{Float epsi} and pressing @kbd{tab}.
-You can then press @kbd{enter}
-and should see @smalltalk{Float epsilon}.
-Click elsewhere on the Workspace to make this menu go away.
+
+@cindex keyboard shortcut @subentry code completion (@kbd{tab})
+
+@strong{Tip.} You have noticed that text typed into the Workspace is
+colored and highlighted based on what you type.  We will discuss this
+below when we talk about the Smalltalk language, but the idea is to be
+helpful.  If you start to type a word the Cuis Workspace knows about,
+you can press the @kbd{tab} key and get a set of choices for
+completion of the word.  Try typing @smalltalk{Float epsi} and
+pressing @kbd{tab}.  You can then press @kbd{enter} and should see
+@smalltalk{Float epsilon}.  Click elsewhere on the Workspace to make
+this menu go away.
 
 Nevertheless, you can not send a class message to an instance of
 @class{Float}, it throws an error and opens the red debugger window.
 
 Just close the debug window for now to ignore the result.
-We will look into this in more detail later.
 
 @smalltalkExample{3.14 pi
 @result{} MessageNotUnderstood: SmallFloat64>>pi
@@ -381,13 +407,16 @@ Float readFrom: '001.200'
 Integer primesUpTo: 20
 @result{} #(2 3 5 7 11 13 17 19) }
 
-@figure{Class methods in @class{Float},ch03-floatClassSide,5}
+@cindex class @subentry instance method
 
-@cindex class, instance method
 @strong{Instance methods.} In @ref{ch03-floatInstanceSide}, the methods
 listed are instance side, in the browser the @label{instance} button
-is pressed to see this list. In a Workspace, this methods are called
-with the message name sent directly to an instance:
+is pressed to see this list.
+
+@figure{Instance methods in @class{Float},ch03-floatInstanceSide,7}
+
+In a Workspace, this methods are called with the message name sent
+directly to an instance:
 
 @smalltalkExample{-10.12 abs @result{} 10.12
 3.14 cos @result{} -0.9999987317275395
@@ -416,9 +445,6 @@ OrderedCollection new add: Float pi; add: Float e; yourself
 @result{} an OrderedCollection(3.141592653589793 2.718281828459045) 
 }
 
-@figure{Instance methods in @class{Float},ch03-floatInstanceSide,7}
-
-
 Here another example from Spacewar! mixing class and instance
 methods. This portion of code updates the orientation of a torpedo
 according to its velocity vector:
@@ -441,13 +467,10 @@ What we call system classes are models of fundamental objects. In
 other programming languages, these would be implemented in
 that language's standard library.
 
-In a truely open system, there is no real distinction between system classes
-and user classes, but it will help us to draw a boundary around the
-most used objects. Let's have a brief introduction to some fundamental
-Smalltalk classes
-and their most important methods.  Later we will cover
-graphics, files, networking, and the user interface objects called Morphs.
-
+In a truely open system, there is no real distinction between system
+classes and user classes, but it will help us to draw a boundary
+around the most used objects. Let's have a brief introduction to some
+fundamental Smalltalk classes and their most important methods.
 
 In the upper left pane of the Browser, Categories of classes important
 to start with are:
@@ -474,7 +497,7 @@ to start with are:
 @end itemize
 
 
-@cindex method, category
+@cindex method @subentry category
 @node Kernel-Numbers
 @section Kernel-Numbers
 The top hierarchy @class{Number} class shows most of the behaviors
@@ -485,8 +508,11 @@ the method categories.
 
 Let's suppose we want to round a float number. In @class{Number}, we
 explore the @strong{Truncation and round off} method category to
-discover several behaviors. The next things to do, is to test these
+discover several behaviors. The next things to do is to test these
 messages in a Workspace to discover the one we are searching for:
+
+@cindex number @subentry @method{roundTo:}
+@cindex number @subentry @method{roundUpTo:}
 
 @smalltalkExampleCaption{Rounding numbers@comma{} Workspace try out, roundingNumbers,
 1.264 roundTo: 0.1 @result{} 1.3 
@@ -495,8 +521,11 @@ messages in a Workspace to discover the one we are searching for:
 1.264 roundTo: 0.001 @result{} 1.264}
 
 
-@cindex loop, for
-@cindex for loop
+@cindex loop @subentry for
+@cindex for loop @seeentry{loop}
+@cindex number @subentry @method{to:do:}
+@cindex number @subentry @method{to:do:by}
+
 Number is a very strange place to look for an indexed loop in a given
 interval. Nevertheless, an interval is defined by start and stop
 numbers. In the @class{Number} class, the method category
@@ -516,8 +545,10 @@ polymorphically with most kinds of number:
 Float pi to: 5 by: 1/3 do: [:i | Transcript show: (i roundTo: 0.01) ; space]
 @result{} 3.14 3.47 3.81 4.14 4.47 4.81}
 
-@cindex loop, repeat
-@cindex repeat
+@cindex loop  @subentry repeat
+@cindex repeat @seeentry{loop}
+@cindex number @subentry integer @subentry @method{timesRepeat:}
+
 Now, in the @class{Integer} class, explore the method category
 @label{enumerating}, here is the @method{timesRepeat:}. When a
 portion of code needs to be executed several times
@@ -534,7 +565,10 @@ an integer:
 Note: Expect a different result each time.
 
 @cindex @class{Interval}
-@cindex number, interval
+@cindex number @subentry interval
+@cindex number @subentry @method{to:}
+@cindex number @subentry @method{to:by:}
+
 Interval of numbers can be defined on their own, for future use:
 
 @smalltalkExampleCaption{Interval,interval,
@@ -561,11 +595,11 @@ collection:
 @result{} 4 "different result each time"}
 
 In Spacewar!, when a ship is destroyed it is teleported to a random
-position in the game play area. Interval are handy to pick up random
-coordinates. In the example bellow, the variable
+position in the square game play area. Interval are handy to pick up
+random coordinates. In the example bellow, the variable
 @smalltalk{randomCoordinate} holds a bloc of code -- called anonymous
-function in other languages; it picks up a random value in the interval
-consisting of the game play area left and right extents:
+function in other languages; it picks up a random value in the
+interval consisting of the game play area left and right extents:
 
 @smalltalkExampleCaption{Teleport ship, teleportShipInterval,
 randomCoordinate @assign{} [(area left to: area right) atRandom].
@@ -578,7 +612,7 @@ aShip
 the interval [0 ; 2PI]@comma{} each 1/10. Output in the transcript.}}
 
 @c Integer bits representation and manpulation
-@cindex number, base
+@cindex number @subentry integer @subentry base
 Integer numbers are represented in different bases when prefixed with
 the base and ``r''. When executing and printing @kbd{Ctrl-p} such a
 number, it is immediately printed in the decimal base:
@@ -607,7 +641,6 @@ although there are the most documented use cases.}:
 20r40 @result{} 80 "pronounced 4-twenties in some languages"
 20r100 @result{} 400}
 
-@cindex integer, bits shifting
 @cindex bits shifting
 Because of the nature of a number represented in base 2, shifting its
 bits left and right is equivalent to multiplying by 2 and dividing by
@@ -624,7 +657,7 @@ the integer 360 by 1024@comma{} without using the multiplication operation?}}
 
 
 @subheading Hiatus with decimal numbers
-@cindex number, decimal
+@cindex number @subentry decimal
 We saw decimal numbers are written with a dot ``.'' to separate the
 integer and the decimal parts: @smalltalk{1.5}, @smalltalk{1235.021}
 or @smalltalk{0.5}. The number @smalltalk{0.00004} is more easily
@@ -653,8 +686,8 @@ to the expected results.}}
 When accuracy is absolutely mandatory use the Rational Numbers
 representation of @cuis{}.
 
-@cindex number, rational
-@cindex number, fraction
+@cindex number @subentry rational fraction
+
 A rational number is written with the division symbol between two
 integers: do @kbd{Ctrl-p} on @smalltalk{5/2} @result{}
 @smalltalk{5/2}. @cuis{} returns a rational fraction, it does not compute a
@@ -718,7 +751,7 @@ can use the @class{Character} instance methods:
 @exercise{Select apples,selectApples, @emph{Modify @ref{apples12} to
 reject the numeric characters.}}
 
-@cindex method, category
+@cindex method @subentry category
 @cindex string
 @strong{String.} @class{String} is a very large class, it comes with
 more than 200 methods. It is useful to browse these method categories
@@ -942,8 +975,8 @@ Object subclass: #Torpedo
 
 
 @subsection Behaviors
-@cindex message, setter
-@cindex message, getter
+@cindex message @subentry setter
+@cindex message @subentry getter
 Some of these states need to be accessed from other entities:
 
 @itemize
@@ -1000,9 +1033,9 @@ the subsequent method is from the @class{SpaceShip} class.
 @smalltalk{position}@comma{} @smalltalk{velocity} and @smalltalk{mass}
 attributes.}}
 
-@cindex variable, assignment
-@cindex variable, :=
-@cindex variable, @U{2190}
+@cindex variable @subentry assignment
+@cindex variable @subentry :=
+@cindex variable @subentry @U{2190}
 
 Some instance variables need to be set from another entity,
 so a @dfn{setter} keyword message is necessary.

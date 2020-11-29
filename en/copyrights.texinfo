@@ -18,3 +18,9 @@ resized,
 https://www.flickr.com/photos/35034362831@@N01/494431001,
 https://creativecommons.org/licenses/by/2.0/deed.en
 @end raggedright
+
+@subheading @ref{goldberg1,,Adele Goldberg quote}
+@raggedright
+Oral History of Adele Goldberg, Computer History Museum, 10 May 2010
+@end raggedright
+

@@ -283,23 +283,23 @@ variable:
 @smalltalkExample{15 asFloat / 4
 @result{} 3.75}
 
-@cindex number, integer division
+@cindex number @subentry integer @subentry division
 You can also ask for division with truncation to
 get an integer result using 
 the message @msg{//}:
 @smalltalkExample{15 // 4
 @result{} 3}
 
-@cindex number, division reminder
+@cindex number @subentry integer @subentry division reminder
 The modulo reminder of the Euclidean division is computed with the message
 @msg{\\\\}:
 @smalltalkExample{15 \\\\ 4
 @result{} 3}
 
-@cindex number @subentry @method{odd}
-@cindex number @subentry @method{even}
-@cindex number @subentry @method{isPrime}
-@cindex number @subentry @method{isDivisibleBy:}
+@cindex number @subentry integer @subentry @method{odd}
+@cindex number @subentry integer @subentry @method{even}
+@cindex number @subentry integer @subentry @method{isPrime}
+@cindex number @subentry integer @subentry @method{isDivisibleBy:}
 @cuis{} knows arithmetic operations to test if an integer is an odd,
 even, prime number or divider. You just send the appropriate unary or
 keyword message to the number:
@@ -313,8 +313,8 @@ keyword message to the number:
 117 isDivisibleBy: 7 @result{} false
 117 isDivisibleBy: 9 @result{} true}
 
-@cindex number @subentry @method{gcd:} (great common divisor)
-@cindex number @subentry @method{lcm:} (lest common multiple)
+@cindex number @subentry integer @subentry @method{gcd:} (great common divisor)
+@cindex number @subentry integer @subentry @method{lcm:} (lest common multiple)
 With specific @dfn{keyword messages} you compute the Least Common
 Multiple and Greatest Common Divisor. A keyword message is composed of
 one or several colon(s) ``:'' to insert argument(s):
