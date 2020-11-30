@@ -169,7 +169,7 @@ Object subclass: #CentralStar
    category: 'Spacewar!'
 
 Object subclass: #SpaceShip
-   instanceVariableNames: 'name position heading velocity
+   instanceVariableNames: 'position heading velocity
       fuel torpedoes mass acceleration'
    classVariableNames: ''
    poolDictionaries: ''

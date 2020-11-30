@@ -703,13 +703,16 @@ using the rational numbers, the @ref{FloatPrecision} becomes:
 (1/10) + (2/10) - (3/10)
 @result{} 0}
 
-This time we have the expected result. Under the covers the computer only
-does the calculations with integer components so no roundoff results.
+This time we have the expected result. Under the covers the computer
+only does the calculations with integer components so no roundoff
+results. This is a fine example that to solve some problem you need a
+paradigm shift.
 
 @exercise{Fix the errors,exeFractionPrecision, @emph{Return to
 @ref{exeFloatPrecision} and use rational writing to represent decimal
 numbers. The errors are gone.}}
 
+@cindex number @subentry convertion
 @cuis{} knows how to convert a decimal number as a fraction, by
 sending the message @msg{asFraction}. We already acknowledged the
 computer dyscalculia trouble with decimal number, this is why when
@@ -814,8 +817,8 @@ string of the form 'Joe bought XX apples and YY oranges' to the form
 @section Spacewar! States and Behaviors
 
 @subsection The game states
-After defining the class involved in the game design, we can now
- define several states of these classes:
+After defining the classes involved in the game design, we now define
+ several states of these classes:
 
 @itemize
 
@@ -826,11 +829,11 @@ After defining the class involved in the game design, we can now
  @item A @class{CentralStar} has a @smalltalk{mass} state. It is
  necessary to compute the gravity force applied to a given ship.
 
- @item A @class{SpaceShip} instance has a @smalltalk{name},
- @smalltalk{position} coordinates, a @smalltalk{heading} angle, a
- @smalltalk{velocity} vector, a @smalltalk{fuel} gauge, a count of the
- available @smalltalk{torpedoes}, a @smalltalk{mass} and an
- @smalltalk{acceleration} engine boost.
+ @item A @class{SpaceShip} instance knows about its @smalltalk{name},
+ its @smalltalk{position} coordinates, its @smalltalk{heading} angle,
+ its @smalltalk{velocity} vector, its @smalltalk{fuel} gauge, its
+ count of the available @smalltalk{torpedoes}, its @smalltalk{mass}
+ and its @smalltalk{acceleration} engine boost.
 
  @item A @class{Torpedo} has @smalltalk{position},
  @smalltalk{velocity} and @smalltalk{lifeSpan} states.
@@ -847,9 +850,10 @@ we will write ``the variable @smalltalk{myVar} is a @class{String}''
 instead of the correct but cumbersome ``the instance variable
 @smalltalk{myVar} is a reference to a @class{String} instance''.}
 
-@heading @class{Spacewar}
-This object is the entry to the game. We want a meaningful class
-name. Its instance variables are the involved protagonist of the game:
+@heading @class{SpaceWar}
+This object is the entry into the game. We want a meaningful class
+name. Its instance variables are the involved protagonists of the
+game:
 
 @itemize
 
@@ -857,11 +861,11 @@ name. Its instance variables are the involved protagonist of the game:
   the game play. We need to know about it to request its mass.
 
   @item @smalltalk{ships} is a collection of the two player ships. It
-  can be a fixed sized collection as an @class{Array} instance.
+  is an @class{Array} instance, its size is fixed to two elements.
   
-  @item @smalltalk{torpedoes} is a collection of the torpedoes fired
-  in the game play. Their quantity is variable, an
-  @class{OrderedCollection} instance makes sense.
+  @item @smalltalk{torpedoes} is a collection of the fired torpedoes
+  in the game play. Their quantity is variable, a dynamic
+  @class{OrderedCollection} makes sense.
 
 @end itemize
 
@@ -877,21 +881,20 @@ regarding its variables are needed.
 
 @itemize
 
-  @item @smalltalk{name} is a string
-
+  @item @smalltalk{name} is a @class{String}.
 
 @cindex @class{Point}
 @cindex coordinates
 
-  @item @smalltalk{position} is a 2D screen coordinate, a location. Smalltalk
-  proposes the @class{Point} class to represent such object. It
-  understands many mathematics operations as operations on vectors;
-  very useful for mechanical calculations.
+  @item @smalltalk{position} is a 2D screen coordinates, a
+  location. Smalltalk proposes the @class{Point} class to represent
+  such object. It understands many mathematics operations as
+  operations on vectors; very useful for mechanical calculus.
 
-  A point can be instantiated with the binary message @msg{@@} send to
-  a number with another number as its argument: @smalltalk{100 @@ 100}
-  creates a @class{Point} instance representing the coordinates
-  (100;100).
+  A point is easily instantiated with the binary message @msg{@@} send
+  to a number with another number as its argument: @smalltalk{100 @@
+  200} returns a @class{Point} instance representing the coordinates
+  (100;200).
 
   The ship's @smalltalk{position} is regularly recomputed according to
   the law of the Galilean reference frame. The computation depends on
@@ -902,7 +905,7 @@ regarding its variables are needed.
   the ship nose is pointing. It is therefore a @class{Float} number.
   
   @item @smalltalk{velocity} is the vector representing the
-  instantaneous speed of the ship. It is @class{Point} instance.
+  instantaneous speed of the ship. It is a @class{Point} instance.
   
   @item @smalltalk{fuel} is the gauge, as long as it is not zero, the
   player can ignite the ship's rocket engine to provide acceleration to move
@@ -910,13 +913,14 @@ regarding its variables are needed.
   integer number.
   
   @item @smalltalk{torpedoes} is the quantity of available torpedoes
-  the play can fire. It is an integer number.
+  the play can fire. It is an @class{Integer} number.
   
-  @item @smalltalk{mass} is an integer representing the ship mass.
+  @item @smalltalk{mass} is an @class{Integer} representing the ship
+  mass.
   
   @item @smalltalk{acceleration} is the intrinsic ship acceleration
-  norm provided when the ship's rockets are ignited. It is therefore an
-  integer number.
+  norm provided when the ship's rockets are ignited. It is therefore
+  an @class{Integer} number.
 
 @end itemize
 
@@ -927,16 +931,18 @@ the screen. This choice ease the computation of the ship acceleration,
 velocity and position.
 
 @heading @class{Torpedo}
-A torpedo is launched or ``fired'' from a ship with an initial velocity matching the
-ship heading. Once the torpedo fuel reserve reaches zero it self destructs.
+A torpedo is launched or ``fired'' from a ship with an initial
+velocity related to the ship velocity. Once the torpedo life span
+counter reaches zero, it self destructs.
 
 @itemize
 
-  @item @smalltalk{position} is a 2D screen coordinate, a
-  @class{Point} instance. Unlike the ship it does not accelerate based 
-  on the gravity pull of the central star. Indeed, a torpedo
-  does not come with a mass state.  For our purposes it is essentially zero. Its
-  position over time only depends on the torpedo velocity.
+  @item @smalltalk{position} is a 2D screen coordinates, a
+  @class{Point} instance. Unlike the ship it does not accelerate based
+  on the gravity pull of the central star. Indeed, a torpedo does not
+  come with a mass state.  For our purposes it is essentially
+  zero. Its position over time only depends on the torpedo velocity
+  and its initial acceleration.
 
   @item @smalltalk{velocity} is a vector representing the
   instantaneous speed of the torpedo. It is constant over the torpedo
@@ -955,10 +961,9 @@ In the previous chapter, we explained how to define the four classes
 @class{Torpedo}. In this section, we will add to the these definitions
 the instance variables -- states -- discussed above.
 
-To add the
-variables to the @class{Torpedo} class, from the Browser, select this
-class. Next, add the variable names to the
-@smalltalk{instanceVariableNames:} parameter, separated by one space
+To add the variables to the @class{Torpedo} class, from the Browser,
+select this class. Next, add the variable names to the
+@smalltalk{instanceVariableNames:} keyword, separated by one space
 character. Finally, save the updated class definition with
 @kbd{Ctrl-s} shortcut:
 

@@ -11,22 +11,44 @@ not worth knowing.
 
 @c We should write Cuis is easily discoverable, one can learn by looking at Cuis code
 
-@cuis{} ---in short, Cuis--- is a portable environment for doing, building and sharing software. Like any other tool, Cuis doesn't require having a particular mindset or following a particular process. However, Cuis is built with a specific view on what software is, and what it means to build software. As a consequence, Cuis is especially effective if these ideas resonate with you and, at least occasionally, you let them guide your thoughts and actions.
+@cuis{} ---in short, Cuis--- is a portable environment for doing,
+building and sharing software. Like any other tool, Cuis doesn't
+require having a particular mindset or following a particular
+process. However, Cuis is built with a specific view on what software
+is, and what it means to build software. As a consequence, Cuis is
+especially effective if these ideas resonate with you and, at least
+occasionally, you let them guide your thoughts and actions.
 
-In this book, we will go along with you as you explore, discover and learn about Cuis and Smalltalk.
+In this book, we will go along with you as you explore, discover and
+learn about Cuis and Smalltalk.
 
-We don't assume knowledge of computer programming, but if you happen to have some experience with an Object Oriented or Functional language you will recognize many concepts. If you don't have any programming experience, or you have coded in an imperative, closer to the metal language, such as C or Assembly, many of the ideas may be new.
+We don't assume knowledge of computer programming, but if you happen
+to have some experience with an Object Oriented or Functional language
+you will recognize many concepts. If you don't have any programming
+experience, or you have coded in an imperative, closer to the metal
+language, such as C or Assembly, many of the ideas may be new.
 
-In any case, especially during the first chapters, read this book and follow the examples with an open mind. A new point of view on what software development means will be an enriching experience.  For us, programming is a thoughtful process.
+In any case, especially during the first chapters, read this book and
+follow the examples with an open mind. A new point of view on what
+software development means will be an enriching experience.  For us,
+programming is a thoughtful process.
 
-We understand software development as the activity of learning and documenting knowledge for ourselves and others to use, and also to be run on a computer. The fact that a computer can execute the software and produce useful solutions to some problem, is a consequence of the knowledge being sound and relevant. Just making it work is not the important part!
+We understand software development as the activity of learning and
+documenting knowledge for ourselves and others to use, and also to be
+run on a computer. The fact that a computer can execute the software
+and produce useful solutions to some problem, is a consequence of the
+knowledge being sound and relevant. Just making it work is not the
+important part!
 
-These ideas, that will be developed further along in the book you are reading, strongly shape Cuis and the experience of using it.
-Amongst their most obvious consequences are a passion for reducing unneeded complexity,
-while providing a complete, live software development experience. 
+These ideas, that will be developed further along in the book you are
+reading, strongly shape Cuis and the experience of using it.  Amongst
+their most obvious consequences are a passion for reducing unneeded
+complexity, while providing a complete, live software development
+experience.
 
-This book is an introduction and invitation to explore Cuis. 
-We hope you will join us in this journey to use Cuis as a medium to express ideas and thoughts, to build cool stuff, and to make Cuis ever better. 
+This book is an introduction and invitation to explore Cuis.  We hope
+you will join us in this journey to use Cuis as a medium to express
+ideas and thoughts, to build cool stuff, and to make Cuis ever better.
 
 @figure{Cuis,ch00-img1,12}
 
