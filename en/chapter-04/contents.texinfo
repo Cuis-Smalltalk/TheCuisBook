@@ -38,12 +38,11 @@ Again the browser is helpful to explore a class protocol. You have two
 options:
 
 @enumerate
-
+@cindex keyboard shortcut @subentry browse protocol (@kbd{Ctrl-p})
    @item @strong{Explore the protocol.} In the class pane of the
    browser, do ...@clicksequence{select @class{String} class @click{}
-   click the right mouse button @click{} in the menu select
-   @label{Browse protocol (p)}}... Alternatively, use the keyboard
-   shortcut @kbd{Ctrl-p}.
+   right mouse button @click{} @label{Browse protocol
+   (p)}}... Alternatively, use the keyboard shortcut @kbd{Ctrl-p}.
 
    @figure{Browse @class{String} protocol,ch03-browseProtocol,8}
 
@@ -52,11 +51,11 @@ options:
    classes.
    At the right are the method selectors for strings and, in parenthesis,
    the class where they are defined.  Methods defined in class
-   @class{String} are in bold type.
+   @class{String} are in bold characters.
 
    Selecting one class there only shows the protocol starting from
    this class down to the @class{String} class. If you select
-   @class{String} in the left panel, you see only method names defined in
+   @class{String} in the left panel, you only see methods defined in
    the @class{String} class itself.
 
    In @ref{ch03-browseProtocol}, no specific class is selected,
@@ -65,12 +64,12 @@ options:
    @class{SequenceableCollection} is selected and its source code is
    displayed on the large bottom pane.
 
+@cindex keyboard shortcut @subentry browse hierarchy (@kbd{Ctrl-h})
    @item @strong{Explore the hierarchy.} In the class pane of the
    browser, do ...@clicksequence{select @class{String} class @click{}
-   click the right mouse button @click{} in the menu select
-   @label{Browse hierarchy (h)}}... Alternatively, use the keyboard
-   shortcut @kbd{Ctrl-h} or the button @label{hierarchy} on the
-   system browser.
+   right mouse button @click{} @label{Browse hierarchy
+   (h)}}... Alternatively, use the keyboard shortcut @kbd{Ctrl-h} or
+   the button @label{hierarchy} on the system browser.
 
    @figure{Browse the @class{String} hierarchy,ch03-browseHierarchy,8}
 

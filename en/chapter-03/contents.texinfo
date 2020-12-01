@@ -1051,22 +1051,20 @@ following method:
    name @assign{} aString}
 
 The @assign{} character is an assignment, it means the
-@smalltalk{name} instance variable
-is bound to the @smalltalk{aString}
-string object. To type in this symbol type @key{_} then space, @cuis{}
-will turn it to left arrow symbol.
-Alternatively write @smalltalk{name := aString}.
+@smalltalk{name} instance variable is bound to the @smalltalk{aString}
+@class{String} object. To type in this symbol type @key{_} then space,
+@cuis{} will turn it to left arrow symbol.  Alternatively write
+@smalltalk{name := aString}.
 
 Since @smalltalk{name} is an instance variable, each instance method
 knows to use the box for the name.  The meaning here is that we are
-placing the value of the @smalltalk{aString} argument into the instance's
-box called @smalltalk{name}.
+placing the value of the @smalltalk{aString} argument into the
+instance's box called @smalltalk{name}.
 
-Since each instance variable box can hold an object of any class,
-we like to name the variable to show that we intend that the @smalltalk{name}
-variable should hold a string, an instance of the @class{String} class.
-
-A bit later, we will have more to say on intent in naming.
+Since each instance variable box can hold an object of any class, we
+like to name the argument to show that we intend that the
+@smalltalk{name} variable should hold a string, an instance of the
+@class{String} class.
 
 @exercise{@class{SpaceShip} setter messages, spaceShipSetters,
 @emph{Ship @smalltalk{position} and @smalltalk{velocity} will need to

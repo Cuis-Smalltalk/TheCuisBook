@@ -90,8 +90,8 @@ code is executed.
    @smalltalk{nil}.
 
 
-@cindex pseudo-variable, @smalltalk{thisConstext}
-@cindex @smalltalk{thisConstext}
+@cindex pseudo-variable, @smalltalk{thisContext}
+@cindex @smalltalk{thisContext}
    @item @smalltalk{thisContext} is a pseudo-variable that represents
    the top frame of the run-time stack. In other words, it represents
    the currently executing @smalltalk{MethodContext} or
