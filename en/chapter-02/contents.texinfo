@@ -423,11 +423,12 @@ the right.
 
 @cindex class @subentry category
 @cindex keyboard shortcut @subentry find a class (@kbd{Ctrl-f})
-@strong{Tip.} A @clicksequence{right click} on the Class Category pane
+
+@cuisNote{A @clicksequence{right click} on the Class Category pane
 brings up its context menu.  You can select @label{find class ..} or,
 as the menu indictes, use @kbd{Ctrl-f} (@emph{@b{F}ind}), to get a
 fill-in panel and type part of a class name to match.  Try it with
-@smalltalk{String}.
+@smalltalk{String}.}
 
 @exercise{Count of methods,stringArith,@emph{How many methods is there
 in the @strong{arithmetic} method category of the @class{String}

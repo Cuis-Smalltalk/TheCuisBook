@@ -61,28 +61,28 @@ code is executed.
 
 @itemize
 
-@cindex pseudo-variable, @smalltalk{true}
-@cindex pseudo-variable, @smalltalk{false}
+@cindex pseudo-variable @subentry @smalltalk{true}
+@cindex pseudo-variable @subentry @smalltalk{false}
 @cindex @smalltalk{true}
 @cindex @smalltalk{false}
    @item @smalltalk{true} and @smalltalk{false} are the unique
    instances of the @class{Boolean} classes @class{True} and
    @smalltalk{False}.
 
-@cindex pseudo-variable, @smalltalk{self}
+@cindex pseudo-variable @subentry @smalltalk{self}
 @cindex @smalltalk{self}
 @cindex @smalltalk{self}
    @item @smalltalk{self} always refers to the receiver of the
    currently executing method.
 
-@cindex pseudo-variable, @smalltalk{super}
+@cindex pseudo-variable @subentry @smalltalk{super}
 @cindex @smalltalk{super}
    @item @smalltalk{super} also refers to the receiver of the current
    method, but when you send a message to @smalltalk{super}, the
    method-lookup changes so that it starts from the superclass of the
    class containing the method that uses @smalltalk{super}.
    
-@cindex pseudo-variable, @smalltalk{nil}
+@cindex pseudo-variable @subentry @smalltalk{nil}
 @cindex @smalltalk{nil}
    @item @smalltalk{nil} is the undefined object. It is the unique
    instance of the class @smalltalk{UndefinedObject}. Instance
@@ -90,7 +90,7 @@ code is executed.
    @smalltalk{nil}.
 
 
-@cindex pseudo-variable, @smalltalk{thisContext}
+@cindex pseudo-variable @subentry @smalltalk{thisContext}
 @cindex @smalltalk{thisContext}
    @item @smalltalk{thisContext} is a pseudo-variable that represents
    the top frame of the run-time stack. In other words, it represents
@@ -195,7 +195,7 @@ If you have a block with more than four parameters, you must use
 with a large number of parameters is often a sign of a design
 problem.)
 
-@cindex block, local variable
+@cindex block @subentry local variable
 Blocks may also declare local variables, which are surrounded by
 vertical bars, just like local variable declarations in a
 method. Locals are declared after any arguments:
@@ -217,7 +217,7 @@ x := 1.
 [ :y | x + y ] value: 2
 @result{} 3}
 
-@cindex block, assigned to a variable
+@cindex block @subentry assigned to a variable
 Blocks are instances of the class @class{BlockClosure}. This means
 that they are objects, so they can be assigned to variables and passed
 as arguments just like any other object.
@@ -265,7 +265,7 @@ Smalltalk offers no special constructs for control flow.
 Decision logic is expressed by sending messages to booleans, numbers
 and collections, with blocks as arguments.
 
-@cindex control flow, test
+@cindex control flow @subentry test
 @cindex test
 @cindex boolean
 @subheading Test
@@ -361,7 +361,7 @@ and slow it down by a factor of 2"
      self morphPosition: self morphPosition negated]}
 
 
-@cindex control flow, loop
+@cindex control flow @subentry loop
 @cindex loop
 @subheading Loop
 Loops are typically expressed by sending messages to blocks, integers
@@ -400,10 +400,10 @@ result @result{} '1 2 3 4 5 6 7 8 9 10 '}
 You can check all the alternatives in the @label{intervals} method
 category of the class @class{Number}.
 
-@strong{Tip.} If the exit condition of method like @method{whileTrue:}
-is never satisfied, you may have implemented an @dfn{infinite loop}.
+@cuisNote{If the exit condition of method like @method{whileTrue:} is
+never satisfied, you may have implemented an @dfn{infinite loop}.
 Just type @kbd{Cmd-period} to get a debugger.  We will learn about how
-to handle this condition in the section on debugging, below.
+to handle this condition in the section on debugging, below.}
 
 @node Spacewar!'s methods
 @section Spacewar!'s methods
@@ -411,7 +411,7 @@ So far we show a lot of code examples, sometime complete method source
 code, but we never explain how you a add method to a class. We will
 use the Browser to do so.
 
-@cindex method, creating
+@cindex method @subentry creating
 @subsection Writing your first method
 Let's say we want to add the @method{initialize} method to our
 @class{SpaceWar} class. Of course we need to use the System Browser:

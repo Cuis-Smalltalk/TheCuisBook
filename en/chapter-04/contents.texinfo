@@ -166,25 +166,47 @@ Note that many @class{String} methods are defined to return strings.
 @cindex variable
 @cindex variable (method)  @subentry declaration
 How a variable can be fun? With @cuis{}, a variable is the name of a
-box that holds a value, that's it!
+box that holds a value -- an object, that's it!
 
 A variable can hold a value of any class.  The value is strongly typed
 (we can always determine its Class), but the variable (box) is not
 restricted to holding a value of a single type.
 
-To declare a method variable we name it at the beginning of the script
-and surround it by pipe characters ``|''.
+One important direct consequence is that the @emph{type} of a variable
+-- i.e. the class of the referenced object -- can change over
+time. Observe this example:
 
-A variable always holds a value.
-Until we place a different value into a variable, the variable
-holds the @smalltalk{nil} value.
-When we say that a value is @dfn{bound} to a
-variable we mean that the named box now holds that value.
+@smalltalkExample{| a |
+a @assign{} 1 / 3.
+a class
+@result{} Fraction
+a @assign{} a + (2 / 3)
+@result{} 1
+a class
+@result{} SmallInteger}
+
+The initial value of the variable @smalltalk{a} was a @class{Fraction}
+instance, after some calculus it ends as a @class{SmallInteger}
+instance.
+
+In fact to be honest, there is no such things as type, it is only
+referenced objects which can @emph{mutate} over time into other kind
+of object: a metal body structure to which you add two wheels may
+become a bicycle, or a car if you add four wheels.
+
+Therefore, to declare a method variable we just name it at the
+beginning of the script and surround it by pipe characters ``|''.
+
+A variable always holds a value.  Until we place a different value
+into a variable, the variable holds the @smalltalk{nil} value, an
+instance of @class{UndefinedObject}.  When we say that a value is
+@dfn{bound} to a variable we mean that the named box now holds that
+value.
 
 So far we sent messages directly to objects, but we can send message to a
 variable bound to an object too.
 
-Any object responds to the message #printString.
+Any object responds to the message @msg{printString}.
 
 @smalltalkExample{| msg |
 msg := 'hello world!'.
@@ -194,10 +216,10 @@ msg := 5.
 Transcript show: msg printString, ' is a kind of '.
 Transcript show: msg class printString; newLine.}
 
-@strong{Caution.} This ease of use has a drawback: when sending a
-message to a variable bound to an object, the system does not check
-that the object understands the message. Nevertheless there is a procedure
-to catch this kind of situation.
+@cuisNote{This ease of use has a drawback: when sending a message to a
+variable bound to an object, the system does not check that the object
+understands the message. Nevertheless there is a procedure to catch
+this kind of situation.}
 
 @node Fun with collections
 @section Fun with collections

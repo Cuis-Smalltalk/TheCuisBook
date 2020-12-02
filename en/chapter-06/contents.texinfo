@@ -74,7 +74,6 @@ Morphs can contain other morphs.  These interior morphs are called
 writing the software ``code'', but let's do it directly with a
 @class{WidgetMorph}.
 
-@page
 First we obtain a WidgetMorph from the @strong{New morph...} submenus.
 
 @figure{Obtain a WidgetMorph,ch06-05-AddRectangle,5}

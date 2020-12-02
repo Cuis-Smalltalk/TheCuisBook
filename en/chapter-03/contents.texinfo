@@ -286,12 +286,12 @@ branch.
 
 @cindex keyboard shortcut @subentry implementors of (@kbd{Ctrl-m})
 
-@strong{Tip.} If you select the text @smalltalk{abs} in a Browser or
+@cuisNote{If you select the text @smalltalk{abs} in a Browser or
 Workspace and right-click to get the context menu, you will find an
 entry @label{Implementors of it}.  You can select this or use
 @kbd{Ctrl-m} (@emph{i@b{M}plementors}) to see how various methods for
 @smalltalk{#abs} use polymorphism to specialize their answer to
-produce the naturally expected result.
+produce the naturally expected result.}
 
 As an object instance is modeled by its class, it is possible to
 ask any object its
@@ -360,7 +360,7 @@ list.
 
 @figure{Class methods in @class{Float},ch03-floatClassSide,5}
 
-From a Workspace, this methods are called with the message name sent
+From a Workspace, these methods are called with the message name sent
 directly to the class:
 
 @smalltalkExample{Float e
@@ -373,7 +373,7 @@ Float fmax
 
 @cindex keyboard shortcut @subentry code completion (@kbd{tab})
 
-@strong{Tip.} You have noticed that text typed into the Workspace is
+@cuisNote{You have noticed that text typed into the Workspace is
 colored and highlighted based on what you type.  We will discuss this
 below when we talk about the Smalltalk language, but the idea is to be
 helpful.  If you start to type a word the Cuis Workspace knows about,
@@ -381,12 +381,11 @@ you can press the @kbd{tab} key and get a set of choices for
 completion of the word.  Try typing @smalltalk{Float epsi} and
 pressing @kbd{tab}.  You can then press @kbd{enter} and should see
 @smalltalk{Float epsilon}.  Click elsewhere on the Workspace to make
-this menu go away.
+this menu go away.}
 
 Nevertheless, you can not send a class message to an instance of
-@class{Float}, it throws an error and opens the red debugger window.
-
-Just close the debug window for now to ignore the result.
+@class{Float}, it throws an error and opens the red debugger
+window. Just close the debug window for now to ignore the result.
 
 @smalltalkExample{3.14 pi
 @result{} MessageNotUnderstood: SmallFloat64>>pi
@@ -664,11 +663,11 @@ or @smalltalk{0.5}. The number @smalltalk{0.00004} is more easily
 written @smalltalk{4e-5}; it means 4 preceded by 5 zeros or 4 as the
 fifth digit after the decimal dot.
 
-@strong{Attention.} Computers encode and store decimal numbers
-imprecisely. You need to be aware of that when doing computation and
-equality comparison. Many systems hide these errors because there are
-very tiny errors. @cuis{} does not hide this inaccuracy.  There is
-good information about this in the class comment of @class{Float}.
+@cuisNote{Computers encode and store decimal numbers imprecisely. You
+need to be aware of that when doing computation and equality
+comparison. Many systems hide these errors because there are very tiny
+errors. @cuis{} does not hide this inaccuracy.  There is good
+information about this in the class comment of @class{Float}.}
 
 @smalltalkExampleCaption{Computer dyscalculia!,FloatPrecision,
 0.1 + 0.2 - 0.3
@@ -762,11 +761,11 @@ to see common ways to group methods.
 
 Sometimes you may not see a category which helps right away.
 
-@strong{Tip.} If you expect a method selector to start with a character,
-click-select the @label{-- all --} method category, then move the cursor
-over the pane listing the method names.
-Press this character, e.g. @smalltalk{$f}.  This will scroll the method pane
-to the first method name starting with an ``f''.
+@cuisNote{If you expect a method selector to start with a character,
+click-select the @label{-- all --} method category, then move the
+cursor over the pane listing the method names.  Press this character,
+e.g. @smalltalk{$f}.  This will scroll the method pane to the first
+method name starting with an ``f''.}
 
 Consider the case where you need to search for a substring, a string within a
 string: when browsing
@@ -844,11 +843,10 @@ We need to explain the mathematical nature of these states, then
 discuss their object representation in the instance variables of our
 classes.
 
-@cuisNote{@strong{Warning.}
-In the following sections, to ease reading
-we will write ``the variable @smalltalk{myVar} is a @class{String}''
-instead of the correct but cumbersome ``the instance variable
-@smalltalk{myVar} is a reference to a @class{String} instance''.}
+@cuisNote{In the following sections, to ease reading we will write
+``the variable @smalltalk{myVar} is a @class{String}'' instead of the
+correct but cumbersome ``the instance variable @smalltalk{myVar} is a
+reference to a @class{String} instance''.}
 
 @heading @class{SpaceWar}
 This object is the entry into the game. We want a meaningful class
