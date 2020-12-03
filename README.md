@@ -38,6 +38,12 @@ To learn more about the Texinfo format:
   * [GNU Texinfo manual](https://www.gnu.org/software/texinfo/manual/texinfo/)
 
 
+## TOD
+
+* So far, the current index mixes both concepts and methods.  It will
+be nicer to have two separate indexes: one for the concepts and
+another one for the methods.
+
 ## Writing documentation
 
 ### General recommendations
@@ -131,61 +137,3 @@ and PDFLatex. Texinfo is shipped with all GNU/Linux
 distribution. There are packages for other systems.
 
 To compile, invoke the build script, for example: `makeBook en pdf`
-
-
-**DO NOT READ BELLOW, NEED TO BE PROCESSED, NOT YET THERE.**
-
--------------------------------------------------------------------------------
-
-
-SPECIAL BLOC COMMAND TO DESCRIBE METHODS
-read source book for examples
-
-
-
-@defmethod class method arguments(if any)
-/description/
-@end defmethod
-
-@defmethod DrGeoFigure faire: bloc
-  @var{bloc}, bloc de code Pharo contenant des
-    instructions de construction et/ou d'animation de la figure
-    interactive.
-  
-Exécute le bloc de code dans un processus en tâche de fond. A utiliser
-lorsque la construction doit se faire sous les yeux de l'utilisateur
-ou bien lorsque la figure est animée.
-  
-@example
-| figure point | 
-figure := DrGeoFigure nouveau.
-point := figure point: 0@@0.
-figure do: [ 
-   -5 a: 5 par: 0.1 faire: [:x |
-      point deplacerA: x@@(x cos * 3).
-      (Delay forMilliseconds: 100) wait.
-      figure actualiser]
-]
-@end example
-@end defmethod
-
-@deftypemethod class classOfReturnedInstance method arguments(if any)
-/description/
-@end deftypemethod
-
-Example:
-@deftypemethod DrGeoFigure <WrpValue> angleGeometriqueCentre:de:a: a b c
-
-  @var{a}, référence d'un point, sommet de l'angle
-
-  @var{b}, référence d'un point
-
-  @var{c}, référence d'un point
-
-  @result{} référence d'un angle géométrique bac dont la mesure
-  appartient à [0 ; 180[.
-@example
-figure angleGeometriqueCentre: a de: b a: c
-@end example
-@end deftypemethod
-

@@ -228,7 +228,7 @@ collections.  We already know a @class{String} is a collection;
 precisely a collection of characters.  Many kinds of Collection have
 similar behaviors.
 
-@cindex array
+@cindex @class{Array}
 An @class{Array} is a fixed size collection, and unlike a string it can
 contain any kind of literal enclosed in @smalltalk{#(@tie{})}:
 @smalltalkExample{"array of numbers"
@@ -343,8 +343,9 @@ Set operations between two collections are computed with the
 @exercise{Hole in a set,holeSet,@emph{Construct the array of the
 numbers 1@comma{}...@comma{}24@comma{}76@comma{}...@comma{}100.}}
 
-Set operations work with any kind of object. We will discuss
-comparing objects later.
+Set operations work with any kind of object. Comparing objects
+deserves its own section.
+
 @smalltalkExample{#(1 2 3 'e' 5) intersection: #(3.0 4 6 7 'e')
 @result{} #(3 'e')}
 
@@ -373,17 +374,17 @@ execution(s). Let's explain how this script is evaluated:
 
  @item the message @msg{select:} is sent to the interval with the
  block of code as the argument
-
- @item for each integer of the interval, the block of code is invoked
- with its parameter @smalltalk{n} set to the integer value.
- A @dfn{block parameter} starts with a colon, ``:'', and is an
- ordinary identifer @footnote{An @dfn{identifier} is just a word that starts
- in a lower case letter and consists of upper and lower case letters
- and decimal digits.  All variable names are identifiers}.
- Then, each
- time @smalltalk{n isPrime} evaluates to true, the @smalltalk{n} value
- is added to a new collection answered when the @smalltalk{select:}
- method finished testing each element of the collection.
+@cindex block @subentry parameter
+ @item in the @method{select:} method, for each integer of the
+ interval, the block of code is invoked with its parameter
+ @smalltalk{n} set to the integer value.  A @dfn{block parameter}
+ starts with a colon, ``:'', and is an ordinary identifer @footnote{An
+ @dfn{identifier} is just a word that starts in a lower case letter
+ and consists of upper and lower case letters and decimal digits.  All
+ variable names are identifiers}.  Then, each time @smalltalk{n
+ isPrime} evaluates to true, the @smalltalk{n} value is added to a new
+ collection answered when the @smalltalk{select:} method finished
+ testing each element of the collection.
 
 @end itemize
 
@@ -406,16 +407,17 @@ To get an idea of how useful enumerators are, take a browse at the
 @exercise{Odd integers,oddNumbers,@emph{Select the odd number between
 -20 and 45.}}
 
-You want to know the number of prime numbers under 100.  Just send
-the message @msg{size} to the answered collection at
-@ref{prime100}. The parenthesis are mandatory to ensure the @msg{size}
-is sent last to the resulting collection:
-@smalltalkExampleCaption{Number of prime numbers between 1 and
+You want to know the number of prime numbers under 100.  Just send the
+message @msg{size} to the answered collection at @ref{prime100}. The
+parenthesis are mandatory to ensure @msg{size} is sent last to the
+resulting collection:
+
+@smalltalkExampleCaption{Quantity of prime numbers between 1 and
 100,qtyPrime100, ( (1 to: 100) select: [:n | n isPrime] ) size
 @result{} 25}
 
 For more clarity, we use a variable named @smalltalk{primeNumbers} to
-remembers about the prime numbers list we build:
+remember about the prime numbers list we build:
 @smalltalkExample{| primeNumbers |
 primeNumbers := (1 to: 100) select: [:n | n isPrime].
 primeNumbers size}
@@ -461,9 +463,9 @@ alphabet order.  The method is named after Julius Caesar, who used it
 in his private correspondence with a shift of 3.
 
 @exercise{Alphabet Caesar's cipher,alphabetCipher,@emph{Write a script
-to collect the upper letters representing the Caesar's cipher. The
-expected answers is} #($D $E $F $G $H $I $J $K $L $M $N $O $P $Q $R $S
-$T $U $V $W $X $Y $Z $A $B $C)}
+to collect the alphabet upper letters representing the Caesar's
+cipher. The expected answers is} #($D $E $F $G $H $I $J $K $L $M $N $O
+$P $Q $R $S $T $U $V $W $X $Y $Z $A $B $C)}
 
 Once you get the alphabet cipher right, you can encode your first
 message:
@@ -471,14 +473,15 @@ message:
 phrase 'SMALLTALKEXPRESSION'.}}
 
 And decode message:
-@exercise{Decode with Caesar's cipher,decodeCaesar,@emph{Decode the
-message 'DOHDMDFWDHVW'.}}
+
+@exercise{Decode with Caesar's cipher,decodeCaesar,@emph{Decode this famous quotation attributed to Julius Caesar 'DOHDMDFWDHVW'.}}
 
 @subheading Fun with loops
 Collection can be iterated with traditional loops: there is a whole
 family of @emph{repeat}, @emph{while} and @emph{for} loops.
 
 @cindex loop @subentry for
+@cindex number @subentry @method{to:do}
 A simple @emph{for} loop between two integer values is written with
 the keyword message @msg{to:do:}, the last argument is a block of code
 executed for each index:
@@ -489,9 +492,12 @@ sequence := OrderedCollection new.
 sequence
 @result{} an OrderedCollection(1 1/2 1/3 1/4 1/5 1/6 1/7 1/8 1/9 1/10)}
 
+@cindex collection @subentry @method{collect:}
 A collect writes more concisely, though:
-@smalltalkExample{(1 to: 10) collect: [:k | 1/k]}
+@smalltalkExample{(1 to: 10) collect: [:k | 1 / k]}
 
+@cindex loop @subentry for @subentry step
+@cindex number @subentry @method{to:do:by:}
 To step with a different value than 1, a third numeric argument is
 inserted:
 @smalltalkExample{1 to: 10 by: 0.5 do: [:k | sequence add: 1 / k]}
@@ -499,7 +505,7 @@ inserted:
 @cindex loop @subentry repeat
 @cindex Fibonacci sequence
 A repeated loop without index or any collection is written with the
-@msg{timesRepeat:} message:
+@msg{timesRepeat:} message send to an integer:
 @smalltalkExampleCaption{A @emph{repeat} loop, repeatLoop,
 | fibo |
 fibo := OrderedCollection newFrom: #(1 1).
@@ -508,6 +514,7 @@ fibo := OrderedCollection newFrom: #(1 1).
 fibo
 @result{} an OrderedCollection(1 1 2 3 5 8 13 21 34 55 89 144)}
 
+@cindex collection @subentry @method{pairsDo:}
 The quotient of consecutive Fibonacci terms converge toward the golden
 value:
 @smalltalkExample{fibo pairsDo: [:i :j |
@@ -560,8 +567,8 @@ super do: [:assoc | aBlock value: assoc value]}
 @c distinguish growable and non-growable collection Array (Collections-Arrayed) and OrderedCollection
 @c (Collections_Sequenceable)
 
-Two groups of collections must be distinguished: collection with a
-fixed size and collection with a variable size.
+Two important groups of collections must be distinguished: collection
+with a fixed size and collection with a variable size.
 
 @cindex collection @subentry fixed size
 @strong{Collection of fixed size.}  Such collections are gathered in
@@ -590,7 +597,7 @@ instantiated at the execution time as @class{Fraction} or
 @class{Point} instances.
 
 @cindex collection @subentry access element
-You can access elements:
+You can access elements with an important variety of messages:
 @smalltalkExampleCaption{Collection access to elements,collectionAccess,
 array1 first @result{} 2
 array1 second @result{} 'Apple'
@@ -598,12 +605,12 @@ array1 third @result{} $@@
 array1 fourth @result{} 4
 array1 last @result{} 4
 array1 at: 2 @result{} 'Apple'
-array2 at: 3 @result{} $2@@3
-array2 swap: 2 with: 4 @result{} #(2 4 $@@ 'Apple') 
+array2 at: 3 @result{} 2@@3
+array2 swap: 2 with: 4 @result{} #(2 1/3 2@@3 'Apple') 
 array1 at: 2 put: 'Orange'; yourself @result{} #(2 'Orange' $@@ 4)
 array1 indexOf: 'Apple' @result{} 2}
 
-Use the system browser to discover alternative way to access elements
+Use the System Browser to discover alternative way to access elements
 of a collection.
 
 @exercise{Access part of a collection, collFirst, @emph{What is the
@@ -620,7 +627,7 @@ array1 remove: 'Apple'
 Nevertheless, it is possible to fill at once an array:
 
 @exercise{Fill an array,fillArray, @emph{How will you fill at once
-@smalltalk{array4} with 'kiwi'?}}
+@smalltalk{array1} with 'kiwi'?}}
 
 @cindex collection @subentry variable size
 @strong{Collection of variable size.}  Such collection are gathered in
@@ -695,7 +702,7 @@ Observe the alternate conversion messages:
 @{1 . Float pi . 3/3 . 1/3 . 1.0@} asSortedCollection
 @result{} a SortedCollection(1/3 1 1 1.0 3.141592653589793)}
 
-To compile the divisors list of 30 and 45 (not the common divisors):
+To collect compile the divisors list of 30 and 45 (not the common divisors):
 
 @smalltalkExample{Set  new 
    addAll: #(1 2 3 5 6 10 15 30) ; 
@@ -763,8 +770,8 @@ dictionary to replace its values with a nicely capitalized string?}}
 
 @c The other kind of collection should be self-discoverable
 There are many more collections to explore. You now know enough to
-explore and to search by yourself with the system browser, and to
-experiment with the workspace.
+explore and to search by yourself with the System Browser, and to
+experiment with the Workspace.
 
 
 @node SpaceWar! collections

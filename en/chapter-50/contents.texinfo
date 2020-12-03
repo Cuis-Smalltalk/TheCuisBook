@@ -304,7 +304,7 @@ far:
 
 @subheading @ref{encodeCaesar}
 In the solution of @ref{alphabetCipher}, we just need to replace the
-characters intervale with a string:
+characters interval with a string:
 @example
 'SMALLTALKEXPRESSION' collect: [:c |
    (c asciiValue - 65 + 3 \\ 26 + 65) asCharacter]
@@ -332,24 +332,24 @@ array1 first: 2
 You could simply do a thumb:
 
 @example
-array4 at: 1 put: 'kiwi'.
-array4 at: 2 put: 'kiwi'.
-array4 at: 3 put: 'kiwi'.
-array4 at: 4 put: 'kiwi'.
+array1 at: 1 put: 'kiwi'.
+array1 at: 2 put: 'kiwi'.
+array1 at: 3 put: 'kiwi'.
+array1 at: 4 put: 'kiwi'.
 @end example
 
 Or even a bit less thumb:
 
 @example
-1 to: 4 do: [:index |
-   array4 at: index put: 'kiwi']
+1 to: array1 size do: [:index |
+   array1 at: index put: 'kiwi']
 @end example
 
 But if you search for carefully the @class{Array} protocol, you can
 just do:
 
 @example
-array4 atAllPut: 'kiwi'.
+array1 atAllPut: 'kiwi'.
 @end example
 
 @subheading @ref{addAfter}

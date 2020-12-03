@@ -179,6 +179,7 @@ expression in its body, unless there is an explicit return (with
 @smalltalkExample{[ 1 + 2 ] value
 @result{} 3}
 
+@cindex block @subentry parameter
 Blocks may take parameters, each of which is declared with a leading
 colon. A vertical bar separates the parameter declaration(s) from the
 body of the block. To evaluate a block with one parameter, you must
@@ -402,8 +403,8 @@ category of the class @class{Number}.
 
 @cuisNote{If the exit condition of method like @method{whileTrue:} is
 never satisfied, you may have implemented an @dfn{infinite loop}.
-Just type @kbd{Cmd-period} to get a debugger.  We will learn about how
-to handle this condition in the section on debugging, below.}
+Just type @kbd{Cmd-period} to get a debugger.  Handling such situation
+deserves its one section on debugging.}
 
 @node Spacewar!'s methods
 @section Spacewar!'s methods

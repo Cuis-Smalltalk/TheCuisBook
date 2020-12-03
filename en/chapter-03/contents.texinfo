@@ -521,6 +521,7 @@ messages in a Workspace to discover the one we are searching for:
 
 
 @cindex loop @subentry for
+@cindex loop @subentry for @subentry step
 @cindex for loop @seeentry{loop}
 @cindex number @subentry @method{to:do:}
 @cindex number @subentry @method{to:do:by}
