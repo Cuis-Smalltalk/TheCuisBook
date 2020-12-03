@@ -799,7 +799,7 @@ quantity is variable, we want to use an @class{OrdredCollection}
 instance to keep track of them.
 
 In the @class{SpaceWar} class, we already defined two instance
-variable @smalltalk{ships} and @smalltalk{torpedoes}. Now, we want an
+variables @smalltalk{ships} and @smalltalk{torpedoes}. Now, we want an
 @method{initializeActors} method to set up the game with the involved
 actors -- central star, ships, etc. Part of this initialization is to
 create the necessary collections.
@@ -833,8 +833,8 @@ their position according to the mechanical laws.
 
 A fired torpedo has a constant velocity, no external forces is applied
 to it. Its position is linearly updated according to the time
-elapsed. The @smalltalk{t} parameter in the @msg{update:} message
-gives this time interval.
+elapsed. The @smalltalk{t} parameter in the @msg{update:} message is
+this time interval.
 
 @smalltalkExampleCaption{Torpedo mechanic, torpedoMechanic,
 Torpedo>>update: t
@@ -858,12 +858,12 @@ SpaceShip>>update: t
    velocity @assign{} newVelocity.
    ../..}
 
-@cuisNote{Remember, regarding arithmetic operators @cuis{} does not follow
-the mathematics precedence. There are ordinary binary messages whose
-precedence are from the left to the right when there is no
-parenthesis. For example, in the code fragment @smalltalk{...(velocity
-* t)...}, the parenthesis are mandatory to get the expected
-computation.}
+@cuisNote{Remember, regarding arithmetic operators @cuis{} does not
+follow the mathematics precedence. There are ordinary @strong{binary
+messages} whose precedence are from the left to the right when there
+is no parenthesis. For example, in the code fragment
+@smalltalk{...(velocity * t)...}, the parenthesis are mandatory to get
+the expected computation.}
 
 @c Explain the SpaceWar step method
 The game play is the responsibility of a @class{SpaceWar} instance. At
