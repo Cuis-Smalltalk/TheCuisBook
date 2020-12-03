@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : November 29, 2020
+Compilation : December 3, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -91,18 +91,19 @@ Previous: <a href="Control-flow-with-block-and-message.html" accesskey="p" rel="
 </div>
 <hr>
 <span id="Spacewar_0021_0027s-methods-1"></span><h3 class="section">5.6 Spacewar!&rsquo;s methods</h3>
-<p>So far we show a lot of code examples, sometime complete method source
-code, but we never explain how you a add method to a class. We will
-use the Browser to do so.
+<p>You are already acquainted to the writing of simple methods for the
+Spacewar! game. We will write some more and learn how to categorize
+them.
 </p>
-<span id="index-method_002c-creating"></span>
-<span id="Writing-your-first-method"></span><h4 class="subsection">5.6.1 Writing your first method</h4>
-<p>Let&rsquo;s say we want to add the <code>initialize</code> method to our
-<code>SpaceWar</code> class. Of course we need to use the System Browser:
+<span id="index-method-8"></span>
+<span id="Initializing-the-game-play"></span><h4 class="subsection">5.6.1 Initializing the game play</h4>
+<p>We want to add the <code>initialize</code> method to our <code>SpaceWar</code>
+class. Of course we need to use the System Browser:
 ...World menu &rarr; <code>Open...</code> &rarr;
 <code>Browser</code>...
 </p>
-<p>Observe <a href="A-brief-introduction-to-the-system-Browser.html#ch02_002dbrowserDetailed">Figure 2.1</a> and proceed as follow:
+<p>As a reminder proceed as follow (if necessary observe
+<a href="A-brief-introduction-to-the-system-Browser.html#ch02_002dbrowserDetailed">Figure 2.1</a>):
 </p>
 <ol>
 <li> In the <code>Class Category</code> pane at the far left, scroll down
@@ -168,7 +169,10 @@ method category.</em>
 
 <div class="float-caption"><p><strong>Exercise 5.3: </strong>Categorize a method</p></div></div>
 <span id="Space-ship-controls"></span><h4 class="subsection">5.6.2 Space ship controls</h4>
-<p>In the <code>SpaceShip</code> class, add its control methods:
+
+<p>In a previous chapter, you wrote as an exercise simple implementation
+of the <a href="Spacewar_0021-States-and-Behaviors.html#simpleControls">control ship methods</a>. The definitive
+control methods of the <code>SpaceShip</code> class are rewritten as:
 </p>
 <div class="float"><span id="shipControls"></span>
 <div class="display">
@@ -241,9 +245,9 @@ torpedo-ship collisions.
 </p>
 <div class="float"><span id="shipCollision"></span>
 <blockquote class="indentedblock">
-<p><em>How will you write
-the method to detect the collision between the two ships and to take
-action accordingly? (Adapt from <a href="SpaceWar_0021-collections.html#shipSunCollision">Example 4.21</a>)</em>
+<p><em>How will you write the
+method to detect the collision between the two ships and take action
+accordingly? (Adapt from <a href="SpaceWar_0021-collections.html#shipSunCollision">Example 4.21</a>)</em>
 </p></blockquote>
 
 

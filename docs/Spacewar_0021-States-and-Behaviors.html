@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : November 29, 2020
+Compilation : December 3, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -93,8 +93,8 @@ Previous: <a href="Kernel_002dText.html" accesskey="p" rel="prev">Kernel-Text</a
 <span id="Spacewar_0021-States-and-Behaviors-1"></span><h3 class="section">3.6 Spacewar! States and Behaviors</h3>
 
 <span id="The-game-states"></span><h4 class="subsection">3.6.1 The game states</h4>
-<p>After defining the class involved in the game design, we can now
- define several states of these classes:
+<p>After defining the classes involved in the game design, we now define
+ several states of these classes:
 </p>
 <ul>
 <li> A <code>SpaceWar</code> instance representing the game play needs to
@@ -104,11 +104,11 @@ Previous: <a href="Kernel_002dText.html" accesskey="p" rel="prev">Kernel-Text</a
 </li><li> A <code>CentralStar</code> has a <code>mass</code> state. It is
  necessary to compute the gravity force applied to a given ship.
 
-</li><li> A <code>SpaceShip</code> instance has a <code>name</code>,
- <code>position</code> coordinates, a <code>heading</code> angle, a
- <code>velocity</code> vector, a <code>fuel</code> gauge, a count of the
- available <code>torpedoes</code>, a <code>mass</code> and an
- <code>acceleration</code> engine boost.
+</li><li> A <code>SpaceShip</code> instance knows about its <code>name</code>,
+ its <code>position</code> coordinates, its <code>heading</code> angle,
+ its <code>velocity</code> vector, its <code>fuel</code> gauge, its
+ count of the available <code>torpedoes</code>, its <code>mass</code>
+ and its <code>acceleration</code> engine boost.
 
 </li><li> A <code>Torpedo</code> has <code>position</code>,
  <code>velocity</code> and <code>lifeSpan</code> states.
@@ -122,27 +122,27 @@ classes.
 <blockquote class="indentedblock">
 <p>&nbsp;<img src="note.png" alt="note">
 <br>
-<strong>Warning.</strong>
-In the following sections, to ease reading
-we will write &ldquo;the variable <code>myVar</code> is a <code>String</code>&rdquo;
-instead of the correct but cumbersome &ldquo;the instance variable
-<code>myVar</code> is a reference to a <code>String</code> instance&rdquo;.
+In the following sections, to ease reading we will write
+&ldquo;the variable <code>myVar</code> is a <code>String</code>&rdquo; instead of the
+correct but cumbersome &ldquo;the instance variable <code>myVar</code> is a
+reference to a <code>String</code> instance&rdquo;.
 </p></blockquote>
 
-<span id="Spacewar"></span><h3 class="heading"><code>Spacewar</code></h3>
-<p>This object is the entry to the game. We want a meaningful class
-name. Its instance variables are the involved protagonist of the game:
+<span id="SpaceWar"></span><h3 class="heading"><code>SpaceWar</code></h3>
+<p>This object is the entry into the game. We want a meaningful class
+name. Its instance variables are the involved protagonists of the
+game:
 </p>
 <ul>
 <li> <code>centralStar</code> is the unique <code>CentralStar</code> of
   the game play. We need to know about it to request its mass.
 
 </li><li> <code>ships</code> is a collection of the two player ships. It
-  can be a fixed sized collection as an <code>Array</code> instance.
+  is an <code>Array</code> instance, its size is fixed to two elements.
   
-</li><li> <code>torpedoes</code> is a collection of the torpedoes fired
-  in the game play. Their quantity is variable, an
-  <code>OrderedCollection</code> instance makes sense.
+</li><li> <code>torpedoes</code> is a collection of the fired torpedoes
+  in the game play. Their quantity is variable, a dynamic
+  <code>OrderedCollection</code> makes sense.
 
 </li></ul>
 
@@ -157,21 +157,20 @@ an <code>Integer</code>.
 regarding its variables are needed.
 </p>
 <ul>
-<li> <code>name</code> is a string
-
+<li> <code>name</code> is a <code>String</code>.
 
 <span id="index-Point"></span>
 <span id="index-coordinates"></span>
 
-</li><li> <code>position</code> is a 2D screen coordinate, a location. Smalltalk
-  proposes the <code>Point</code> class to represent such object. It
-  understands many mathematics operations as operations on vectors;
-  very useful for mechanical calculations.
+</li><li> <code>position</code> is a 2D screen coordinates, a
+  location. Smalltalk proposes the <code>Point</code> class to represent
+  such object. It understands many mathematics operations as
+  operations on vectors; very useful for mechanical calculus.
 
-<p>A point can be instantiated with the binary message <code>#@</code> send to
-  a number with another number as its argument: <code>100 @ 100</code>
-  creates a <code>Point</code> instance representing the coordinates
-  (100;100).
+<p>A point is easily instantiated with the binary message <code>#@</code> send
+  to a number with another number as its argument: <code>100 @
+  200</code> returns a <code>Point</code> instance representing the coordinates
+  (100;200).
 </p>
 <p>The ship&rsquo;s <code>position</code> is regularly recomputed according to
   the law of the Galilean reference frame. The computation depends on
@@ -182,7 +181,7 @@ regarding its variables are needed.
   the ship nose is pointing. It is therefore a <code>Float</code> number.
   
 </li><li> <code>velocity</code> is the vector representing the
-  instantaneous speed of the ship. It is <code>Point</code> instance.
+  instantaneous speed of the ship. It is a <code>Point</code> instance.
   
 </li><li> <code>fuel</code> is the gauge, as long as it is not zero, the
   player can ignite the ship&rsquo;s rocket engine to provide acceleration to move
@@ -190,13 +189,14 @@ regarding its variables are needed.
   integer number.
   
 </li><li> <code>torpedoes</code> is the quantity of available torpedoes
-  the play can fire. It is an integer number.
+  the play can fire. It is an <code>Integer</code> number.
   
-</li><li> <code>mass</code> is an integer representing the ship mass.
+</li><li> <code>mass</code> is an <code>Integer</code> representing the ship
+  mass.
   
 </li><li> <code>acceleration</code> is the intrinsic ship acceleration
-  norm provided when the ship&rsquo;s rockets are ignited. It is therefore an
-  integer number.
+  norm provided when the ship&rsquo;s rockets are ignited. It is therefore
+  an <code>Integer</code> number.
 
 </li></ul>
 
@@ -207,15 +207,17 @@ the screen. This choice ease the computation of the ship acceleration,
 velocity and position.
 </p>
 <span id="Torpedo"></span><h3 class="heading"><code>Torpedo</code></h3>
-<p>A torpedo is launched or &ldquo;fired&rdquo; from a ship with an initial velocity matching the
-ship heading. Once the torpedo fuel reserve reaches zero it self destructs.
+<p>A torpedo is launched or &ldquo;fired&rdquo; from a ship with an initial
+velocity related to the ship velocity. Once the torpedo life span
+counter reaches zero, it self destructs.
 </p>
 <ul>
-<li> <code>position</code> is a 2D screen coordinate, a
-  <code>Point</code> instance. Unlike the ship it does not accelerate based 
-  on the gravity pull of the central star. Indeed, a torpedo
-  does not come with a mass state.  For our purposes it is essentially zero. Its
-  position over time only depends on the torpedo velocity.
+<li> <code>position</code> is a 2D screen coordinates, a
+  <code>Point</code> instance. Unlike the ship it does not accelerate based
+  on the gravity pull of the central star. Indeed, a torpedo does not
+  come with a mass state.  For our purposes it is essentially
+  zero. Its position over time only depends on the torpedo velocity
+  and its initial acceleration.
 
 </li><li> <code>velocity</code> is a vector representing the
   instantaneous speed of the torpedo. It is constant over the torpedo
@@ -233,10 +235,9 @@ ship heading. Once the torpedo fuel reserve reaches zero it self destructs.
 <code>Torpedo</code>. In this section, we will add to the these definitions
 the instance variables &ndash; states &ndash; discussed above.
 </p>
-<p>To add the
-variables to the <code>Torpedo</code> class, from the Browser, select this
-class. Next, add the variable names to the
-<code>instanceVariableNames:</code> parameter, separated by one space
+<p>To add the variables to the <code>Torpedo</code> class, from the Browser,
+select this class. Next, add the variable names to the
+<code>instanceVariableNames:</code> keyword, separated by one space
 character. Finally, save the updated class definition with
 <kbd>Ctrl-s</kbd> shortcut:
 </p>
@@ -260,8 +261,8 @@ character. Finally, save the updated class definition with
 <div class="float-caption"><p><strong>Exercise 3.9: </strong>Instance variables of the Spacewar! protagonists</p></div></div>
 
 <span id="Behaviors"></span><h4 class="subsection">3.6.3 Behaviors</h4>
-<span id="index-message_002c-setter"></span>
-<span id="index-message_002c-getter"></span>
+<span id="index-message-9"></span>
+<span id="index-message-10"></span>
 <p>Some of these states need to be accessed from other entities:
 </p>
 <ul>
@@ -326,9 +327,9 @@ attributes.</em>
 
 
 <div class="float-caption"><p><strong>Exercise 3.10: </strong><code>SpaceShip</code> getter message</p></div></div>
-<span id="index-variable_002c-assignment"></span>
-<span id="index-variable_002c-_003a_003d"></span>
-<span id="index-variable_002c-2190"></span>
+<span id="index-variable"></span>
+<span id="index-variable-1"></span>
+<span id="index-variable-2"></span>
 
 <p>Some instance variables need to be set from another entity,
 so a <em>setter</em> keyword message is necessary.
@@ -341,22 +342,20 @@ following method:
 </pre></div>
 
 <p>The &#x2190; character is an assignment, it means the
-<code>name</code> instance variable
-is bound to the <code>aString</code>
-string object. To type in this symbol type <tt class="key">_</tt> then space, Cuis-Smalltalk
-will turn it to left arrow symbol.
-Alternatively write <code>name := aString</code>.
+<code>name</code> instance variable is bound to the <code>aString</code>
+<code>String</code> object. To type in this symbol type <tt class="key">_</tt> then space,
+Cuis-Smalltalk will turn it to left arrow symbol.  Alternatively write
+<code>name := aString</code>.
 </p>
 <p>Since <code>name</code> is an instance variable, each instance method
 knows to use the box for the name.  The meaning here is that we are
-placing the value of the <code>aString</code> argument into the instance&rsquo;s
-box called <code>name</code>.
+placing the value of the <code>aString</code> argument into the
+instance&rsquo;s box called <code>name</code>.
 </p>
-<p>Since each instance variable box can hold an object of any class,
-we like to name the variable to show that we intend that the <code>name</code>
-variable should hold a string, an instance of the <code>String</code> class.
-</p>
-<p>A bit later, we will have more to say on intent in naming.
+<p>Since each instance variable box can hold an object of any class, we
+like to name the argument to show that we intend that the
+<code>name</code> variable should hold a string, an instance of the
+<code>String</code> class.
 </p>
 <div class="float"><span id="spaceShipSetters"></span>
 <blockquote class="indentedblock">
@@ -380,7 +379,8 @@ variable and edit the <code>mass</code> method to return a literal number:
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 3.16: </strong>A method returning a constant</p></div></div>
-<span id="Control"></span><h4 class="subsubheading">Control</h4>
+
+<span id="simpleControls"></span><span id="Controls"></span><h4 class="subsubheading">Controls</h4>
 <p>A space ship controlled by the player understands messages to adjust
 its direction and acceleration<a id="DOCF15" href="#FOOT15"><sup>15</sup></a>:
 </p>

@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : November 29, 2020
+Compilation : December 3, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -113,17 +113,18 @@ representing the involved entities:
 <p>Before defining these classes in Cuis-Smalltalk, we want to create a
 dedicated class category to group them there.
 </p>
-<p>In a Smalltalk window, right-click on a pane will typically bring up a menu
-of operations you can apply which are specific to that pane.
-With the mouse pointer
-over the class category pane of the Browser &ndash; the most left one &ndash;
-just do:
+<p>In any kind of Cuis-Smalltalk window, right-click on a pane will typically
+bring up a menu of operations you can apply which are specific to that
+pane.
+</p>
+<p>With the mouse pointer over the class category pane of the Browser &ndash;
+the most left one &ndash; just do:
 </p>
 <p>...right mouse click &rarr; <code>add item</code>... then
-key in <em>Spacewar!</em>.
+key in <em>Spacewar!</em>
 </p>
 
-<span id="index-class_002c-create-_0028new_0029"></span>
+<span id="index-class-6"></span>
 <p>Once our new category is set, the Browser proposes on the method
 source code pane &ndash; the bottom one &ndash; a code template to create a new
 class in the <code>Spacewar!</code> category:
@@ -136,6 +137,7 @@ class in the <code>Spacewar!</code> category:
    category: &rsquo;Spacewar!&rsquo;</span>
 </pre></div>
 
+<span id="index-keyboard-shortcut-5"></span>
 <p>We replace the symbol <code>#NameOfSubclass</code> with a symbol
 representing the name of the class we want to create. Let&rsquo;s start with
 <code>#SpaceWar</code>. To save the class, over the class
@@ -157,18 +159,19 @@ get another class code template, click the class category
 <div class="float-caption"><p><strong>Figure 2.2: </strong>Spacewar! class category</p></div></div>
 
 <span id="Spacewar_0021-package"></span><span id="Spacewar_0021-package-1"></span><h4 class="subsection">2.6.2 Spacewar! package</h4>
-<span id="index-package_002c-create-_0028new_0029"></span>
-<span id="index-package_002c-save"></span>
-<span id="index-package_002c-tool"></span>
+<span id="index-package"></span>
+<span id="index-package-1"></span>
+<span id="index-package-2"></span>
 <p>Another important use case of a class category is to define a package
 to save code on file.  A package saves the code of the classes held in
 a given class category and a bit more, but more on that last point
-later. To create our <code>Spacewar!</code> package and save our game code:
+later. To create our <code>Spacewar!</code> package and save our game code
+we use the Installed Packages tool.
 </p>
 <ol>
-<li> Open the <em>Installed Packages</em> tool:
-  ...World menu &rarr; <code>Open...</code> &rarr;
-  <code>Installed Packages</code>...
+<li> Open the <em>Installed Packages</em> tool ...World
+  menu &rarr; <code>Open...</code> &rarr; <code>Installed
+  Packages</code>...
 
 </li><li> On the Installed Packages window, do ...click <code>new</code>
   button &rarr; Input <em>Spacewar!</em> &rarr; <kbd>Return</kbd>...
@@ -182,8 +185,7 @@ later. To create our <code>Spacewar!</code> package and save our game code:
 <div align="center"><img src="ch02-InstalledPackages.png" alt="ch02-InstalledPackages">
 </div>
 <div class="float-caption"><p><strong>Figure 2.3: </strong>Installed Package window</p></div></div>
-
-<span id="index-package_002c-load"></span>
+<span id="index-package-3"></span>
 <p>A file <samp>Spacewar!.pck.st</samp> is created along the Cuis-Smalltalk image
 file.  Every time a package needs to be loaded in a fresh Cuis-Smalltalk
 environment, use the File List tool:

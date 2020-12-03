@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : November 29, 2020
+Compilation : December 3, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -91,9 +91,10 @@ Next: <a href="A-brief-introduction-to-the-system-Browser.html" accesskey="n" re
 </div>
 <hr>
 <span id="Messages-to-number-entities-1"></span><h3 class="section">2.4 Messages to number entities</h3>
-<span id="index-number_002c-root"></span>
-<span id="index-number_002c-sqrt"></span>
-<span id="index-number_002c-squared"></span>
+<span id="index-number-6"></span>
+<span id="index-number-7"></span>
+<span id="index-number-8"></span>
+<span id="index-number-9"></span>
 
 <p>Earlier, we discussed how Cuis-Smalltalk knows about rational fractions.  The
 four arithmetic operations and mathematical functions are implemented
@@ -113,7 +114,7 @@ sum of the squares of the inverse of the first four integers.</em>
 
 
 <div class="float-caption"><p><strong>Exercise 2.2: </strong>Sum of the squares</p></div></div>
-<span id="index-number_002c-decimal-division"></span>
+<span id="index-number-10"></span>
 <p>If Cuis-Smalltalk integer division returns a rational number, how do we find the
 result in decimal? One option is to write a number as a floating point literal,
 a <em>Float</em>.
@@ -133,7 +134,7 @@ variable:
 &rArr; 3.75</span>
 </pre></div>
 
-<span id="index-number_002c-integer-division"></span>
+<span id="index-number-11"></span>
 <p>You can also ask for division with truncation to
 get an integer result using 
 the message <code>#//</code>:
@@ -142,7 +143,7 @@ the message <code>#//</code>:
 &rArr; 3</span>
 </pre></div>
 
-<span id="index-number_002c-division-reminder"></span>
+<span id="index-number-12"></span>
 <p>The modulo reminder of the Euclidean division is computed with the message
 <code>#\\</code>:
 </p><div class="display">
@@ -150,13 +151,13 @@ the message <code>#//</code>:
 &rArr; 3</span>
 </pre></div>
 
-<span id="index-number_002c-odd"></span>
-<span id="index-number_002c-even"></span>
-<span id="index-number_002c-isPrime"></span>
-<span id="index-number_002c-isDivisibleBy_003a"></span>
-<p>Cuis-Smalltalk knows some arithmetic operations to test if an integer is an
-odd, even, prime number or divider. You just send the appropriate
-unary or keyword message to the number:
+<span id="index-number-13"></span>
+<span id="index-number-14"></span>
+<span id="index-number-15"></span>
+<span id="index-number-16"></span>
+<p>Cuis-Smalltalk knows arithmetic operations to test if an integer is an odd,
+even, prime number or divider. You just send the appropriate unary or
+keyword message to the number:
 </p>
 <div class="float"><span id="integerBasicTest"></span>
 <div class="display">
@@ -170,8 +171,8 @@ unary or keyword message to the number:
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 2.6: </strong>Testing on integer</p></div></div>
-<span id="index-number_002c-gcd_003a"></span>
-<span id="index-number_002c-lcm_003a"></span>
+<span id="index-number-17"></span>
+<span id="index-number-18"></span>
 <p>With specific <em>keyword messages</em> you compute the Least Common
 Multiple and Greatest Common Divisor. A keyword message is composed of
 one or several colon(s) &ldquo;:&rdquo; to insert argument(s):
@@ -186,8 +187,8 @@ field. According to the Newton&rsquo;s law of universal gravitation, any
 object with a mass &ndash; a spaceship or a torpedo in the game &ndash; is
 subjected to the gravitational force. We compute it as a vector to
 account its direction and magnitude. The game code extract bellow
-shows mixed scalar and vector calculus done with messages sending (See
-<a href="Spacewar_0021-models.html#motionEquations">Figure 2.4</a>):
+shows a (simplified) mixed scalar and vector calculus done with messages
+sending (See <a href="Spacewar_0021-models.html#motionEquations">Figure 2.4</a>):
 </p>
 <div class="float"><span id="gravityVector"></span>
 <div class="display">
@@ -195,8 +196,7 @@ shows mixed scalar and vector calculus done with messages sending (See
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 2.7: </strong>Compute the gravity force vector</p></div></div>
-
-<span id="index-tools_002c-system-browser"></span>
+<span id="index-tools-2"></span>
 <span id="index-browser"></span>
 <hr>
 <div class="header">

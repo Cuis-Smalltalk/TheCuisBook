@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : November 29, 2020
+Compilation : December 3, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -93,15 +93,17 @@ Next: <a href="Control-flow-with-block-and-message.html" accesskey="n" rel="next
 <span id="Block-syntax-1"></span><h3 class="section">5.4 Block syntax</h3>
 <p>Blocks provide a mechanism to defer the evaluation of expressions. A
 block is essentially an anonymous function. A block is evaluated by
-sending it the message <code>#value</code>. The block answers the value of the last
-expression in its body, unless there is an explicit return (with
-&#x2191;), in which case it does not answer any value.
+sending it the message <code>#value</code>. The block answers the value of the
+last expression in its body, unless there is an explicit return (with
+&#x2191;), in which case it returns the value of the subsequent
+expression).
 </p>
 <div class="display">
 <pre class="display"><span class="sansserif">[ 1 + 2 ] value
 &rArr; 3</span>
 </pre></div>
 
+<span id="index-block-3"></span>
 <p>Blocks may take parameters, each of which is declared with a leading
 colon. A vertical bar separates the parameter declaration(s) from the
 body of the block. To evaluate a block with one parameter, you must
@@ -120,13 +122,13 @@ block must be sent <code>#value:value:</code>, and so on, up to 4 arguments:
 with a large number of parameters is often a sign of a design
 problem.)
 </p>
-<span id="index-block_002c-local-variable"></span>
+<span id="index-block-4"></span>
 <p>Blocks may also declare local variables, which are surrounded by
 vertical bars, just like local variable declarations in a
 method. Locals are declared after any arguments:
 </p>
 <div class="display">
-<pre class="display"><span class="sansserif">[ :x :y | | z | z := x + y. z ] value: 1 value: 2
+<pre class="display"><span class="sansserif">[ :x :y | | z | z &#x2190; x + y. z ] value: 1 value: 2
 &rArr; 3</span>
 </pre></div>
 
@@ -141,12 +143,12 @@ to the variable x of its enclosing environment:
 </p>
 <div class="display">
 <pre class="display"><span class="sansserif">|x|
-x := 1.
+x &#x2190; 1.
 [ :y | x + y ] value: 2
 &rArr; 3</span>
 </pre></div>
 
-<span id="index-block_002c-assigned-to-a-variable"></span>
+<span id="index-block-5"></span>
 <p>Blocks are instances of the class <code>BlockClosure</code>. This means
 that they are objects, so they can be assigned to variables and passed
 as arguments just like any other object.
@@ -156,8 +158,8 @@ as arguments just like any other object.
 <div class="float"><span id="computeDivisors"></span>
 <div class="display">
 <pre class="display"><span class="sansserif">| n m |
-n := 60.
-m := 45.
+n &#x2190; 60.
+m &#x2190; 45.
 (1 to: n) select: [:d | n \ d = 0 ].
 &quot;&rArr; #(1 2 3 4 5 6 10 12 15 20 30 60)&quot;
 (1 to: m) select: [:d | m \ d = 0]

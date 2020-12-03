@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : November 29, 2020
+Compilation : December 3, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -94,26 +94,25 @@ Next: <a href="Message-to-string-entities.html" accesskey="n" rel="next">Message
 <p>There are three kinds of messages in Cuis-Smalltalk:
 </p>
 <ul>
-<li> <strong>Unary messages</strong> take no argument.
+<li><span id="index-message-3"></span>
+</li><li> <strong>Unary messages</strong> take no argument.
  <br>
- <code>1 factorial</code>
- sends the message <code>#factorial</code> to the object
- <code>1</code>,
+ In <code>1 factorial</code> the message <code>#factorial</code> is sent to the
+ object <code>1</code>.
 
+<span id="index-message-4"></span>
 </li><li> <strong>Binary messages</strong> take exactly one argument.
- <br>
- <code>1 + 2</code>
- sends the message <code>#+</code> with argument
- <code>2</code> to the object <code>1</code>.
+ <br> 
+ In <code>1 + 2</code> the message <code>#+</code> is sent to the object
+ <code>1</code> with the argument <code>2</code>.
 
+<span id="index-message-5"></span>
 </li><li> <strong>Keyword messages</strong> take an arbitrary number of
  arguments.
- <br>
- <code>2 raisedTo: 6 modulo: 10</code>
- sends the message
- consisting of the message selector <code>#raisedTo:modulo:</code> and the
- arguments <code>6</code> and <code>10</code> to the object
- <code>2</code>.
+ <br> 
+ In <code>2 raisedTo: 6 modulo: 10</code> the message consisting of the
+ message selector <code>#raisedTo:modulo:</code> and the arguments
+ <code>6</code> and <code>10</code> is sent to the object <code>2</code>.
 
 </li></ul>
 
@@ -131,7 +130,7 @@ following set:
 keywords, where each keyword starts with a lower-case letter and ends
 with a colon.
 </p>
-<span id="index-message_002c-precedence"></span>
+<span id="index-message-6"></span>
 <p>Unary messages have the highest precedence, then binary messages, and
 finally keyword messages, so:
 </p>
@@ -169,8 +168,9 @@ are superfluous but improve understanding:
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 2.3: </strong>Ship velocity</p></div></div>
+<span id="index-message-7"></span>
 <span id="index-cascade-of-messages"></span>
-<p>In the <a href="Writing-your-first-scripts.html#hello2">Example 1.2</a> example, the message <code>#show:</code> and <code>#newLine</code>
+<p>In the <a href="Writing-your-first-scripts.html#hello2">Example 1.2</a>, the message <code>#show:</code> and <code>#newLine</code>
 are sent to the same <code>Transcript</code> entity. In such circumstance,
 we can use the <em>cascade</em> technique to avoid this repetition. The
 receiver <code>Transcript</code> is written once and the sent messages are
@@ -184,7 +184,7 @@ separated by semicolon:
    show: &rsquo;I am Cuising&rsquo;</span>
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 2.4: </strong>Cascade of message</p></div></div>
+<div class="float-caption"><p><strong>Example 2.4: </strong>Cascade of messages</p></div></div>
 <p>Another example from the Spacewar! game:
 </p>
 <div class="float"><span id="teleportShip"></span>
@@ -204,15 +204,17 @@ readability of the code:
 </pre></div>
 
 <p>The <code>Transcript</code> class is frequently helpful in presenting
-useful information when developing an application. An alternative
-to the <kbd>Ctrl-d</kbd> (<em><b>D</b>o it</em>) shortcut is <kbd>Ctrl-p</kbd> (<em><b>P</b>rint it</em>), which 
-executes the script and prints the result direcly in the Workspace.
+useful information when developing an application. An alternative to
+the <kbd>Ctrl-d</kbd> (<em><b>D</b>o it</em>) shortcut is <kbd>Ctrl-p</kbd>
+(<em><b>P</b>rint it</em>), which executes the script and prints the result
+direcly in the Workspace.
 </p>
-<p>In the example, we have requested no special result.  Selecting the
+<p>In the <a href="#helloCascade">Example 2.4</a>, we have requested no special result.  Selecting the
 text and typing <kbd>Ctrl-p</kbd> results in the default, which is to
 return the object to which a message is sent, in this case the
 <code>Transcript</code>.
 </p>
+<span id="index-string-3"></span>
 <hr>
 <div class="header">
 <p>

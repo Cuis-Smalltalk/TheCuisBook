@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : November 29, 2020
+Compilation : December 3, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -137,11 +137,18 @@ the text pane?</em>
 confusion between instance methods and class
 methods. Let&rsquo;s consider the <code>Float</code> class as an example.
 </p>
-<span id="index-class_002c-class-method-1"></span>
+<span id="index-class-11"></span>
+
 <p><strong>Class Methods.</strong> In <a href="#ch03_002dfloatClassSide">Figure 3.1</a> the methods listed are
 class side, in the browser the <code>class</code> button is pressed to see this
-list. From a Workspace, this methods are called with the message name
-sent directly to the class:
+list.
+</p>
+<div class="float"><span id="ch03_002dfloatClassSide"></span>
+<div align="center"><img src="ch03-floatClassSide.png" alt="ch03-floatClassSide">
+</div>
+<div class="float-caption"><p><strong>Figure 3.1: </strong>Class methods in <code>Float</code></p></div></div>
+<p>From a Workspace, these methods are called with the message name sent
+directly to the class:
 </p>
 <div class="display">
 <pre class="display"><span class="sansserif">Float e
@@ -152,22 +159,26 @@ Float fmax
 &rArr; 1.7976931348623157e308</span>
 </pre></div>
 
-<p><strong>Tip.</strong> You have noticed that text typed into the Workspace is colored
-and highlighted based on what you type.  We will discuss this below
-when we talk about the Smalltalk language, but the idea is to be helpful.
-If you start to type a word
-the Cuis Workspace knows about, you can press the <kbd>tab</kbd> key
-and get a set of choices for completion of the word.
-Try typing <code>Float epsi</code> and pressing <kbd>tab</kbd>.
-You can then press <kbd>enter</kbd>
-and should see <code>Float epsilon</code>.
-Click elsewhere on the Workspace to make this menu go away.
-</p>
+
+<span id="index-keyboard-shortcut-7"></span>
+
+<blockquote class="indentedblock">
+<p>&nbsp;<img src="note.png" alt="note">
+<br>
+You have noticed that text typed into the Workspace is
+colored and highlighted based on what you type.  We will discuss this
+below when we talk about the Smalltalk language, but the idea is to be
+helpful.  If you start to type a word the Cuis Workspace knows about,
+you can press the <kbd>tab</kbd> key and get a set of choices for
+completion of the word.  Try typing <code>Float epsi</code> and
+pressing <kbd>tab</kbd>.  You can then press <kbd>enter</kbd> and should see
+<code>Float epsilon</code>.  Click elsewhere on the Workspace to make
+this menu go away.
+</p></blockquote>
+
 <p>Nevertheless, you can not send a class message to an instance of
-<code>Float</code>, it throws an error and opens the red debugger window.
-</p>
-<p>Just close the debug window for now to ignore the result.
-We will look into this in more detail later.
+<code>Float</code>, it throws an error and opens the red debugger
+window. Just close the debug window for now to ignore the result.
 </p>
 <div class="display">
 <pre class="display"><span class="sansserif">3.14 pi
@@ -192,15 +203,18 @@ Integer primesUpTo: 20
 &rArr; #(2 3 5 7 11 13 17 19) </span>
 </pre></div>
 
-<div class="float"><span id="ch03_002dfloatClassSide"></span>
-<div align="center"><img src="ch03-floatClassSide.png" alt="ch03-floatClassSide">
-</div>
-<div class="float-caption"><p><strong>Figure 3.1: </strong>Class methods in <code>Float</code></p></div></div>
-<span id="index-class_002c-instance-method-2"></span>
+<span id="index-class-12"></span>
+
 <p><strong>Instance methods.</strong> In <a href="#ch03_002dfloatInstanceSide">Figure 3.2</a>, the methods
 listed are instance side, in the browser the <code>instance</code> button
-is pressed to see this list. In a Workspace, this methods are called
-with the message name sent directly to an instance:
+is pressed to see this list.
+</p>
+<div class="float"><span id="ch03_002dfloatInstanceSide"></span>
+<div align="center"><img src="ch03-floatInstanceSide.png" alt="ch03-floatInstanceSide">
+</div>
+<div class="float-caption"><p><strong>Figure 3.2: </strong>Instance methods in <code>Float</code></p></div></div>
+<p>In a Workspace, this methods are called with the message name sent
+directly to an instance:
 </p>
 <div class="display">
 <pre class="display"><span class="sansserif">-10.12 abs &rArr; 10.12
@@ -234,11 +248,6 @@ OrderedCollection new add: Float pi; add: Float e; yourself
 &rArr; an OrderedCollection(3.141592653589793 2.718281828459045) 
 </span>
 </pre></div>
-
-<div class="float"><span id="ch03_002dfloatInstanceSide"></span>
-<div align="center"><img src="ch03-floatInstanceSide.png" alt="ch03-floatInstanceSide">
-</div>
-<div class="float-caption"><p><strong>Figure 3.2: </strong>Instance methods in <code>Float</code></p></div></div>
 
 <p>Here another example from Spacewar! mixing class and instance
 methods. This portion of code updates the orientation of a torpedo

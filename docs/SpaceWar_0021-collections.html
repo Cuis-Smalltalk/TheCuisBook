@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : November 29, 2020
+Compilation : December 3, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -114,7 +114,7 @@ quantity is variable, we want to use an <code>OrdredCollection</code>
 instance to keep track of them.
 </p>
 <p>In the <code>SpaceWar</code> class, we already defined two instance
-variable <code>ships</code> and <code>torpedoes</code>. Now, we want an
+variables <code>ships</code> and <code>torpedoes</code>. Now, we want an
 <code>initializeActors</code> method to set up the game with the involved
 actors &ndash; central star, ships, etc. Part of this initialization is to
 create the necessary collections.
@@ -154,8 +154,8 @@ their position according to the mechanical laws.
 </p>
 <p>A fired torpedo has a constant velocity, no external forces is applied
 to it. Its position is linearly updated according to the time
-elapsed. The <code>t</code> parameter in the <code>#update:</code> message
-gives this time interval.
+elapsed. The <code>t</code> parameter in the <code>#update:</code> message is
+this time interval.
 </p>
 <div class="float"><span id="torpedoMechanic"></span>
 <div class="display">
@@ -188,12 +188,12 @@ change accordingly to the mechanical laws of physics.
 <blockquote class="indentedblock">
 <p>&nbsp;<img src="note.png" alt="note">
 <br>
-Remember, regarding arithmetic operators Cuis-Smalltalk does not follow
-the mathematics precedence. There are ordinary binary messages whose
-precedence are from the left to the right when there is no
-parenthesis. For example, in the code fragment <code>...(velocity
-* t)...</code>, the parenthesis are mandatory to get the expected
-computation.
+Remember, regarding arithmetic operators Cuis-Smalltalk does not
+follow the mathematics precedence. There are ordinary <strong>binary
+messages</strong> whose precedence are from the left to the right when there
+is no parenthesis. For example, in the code fragment
+<code>...(velocity * t)...</code>, the parenthesis are mandatory to get
+the expected computation.
 </p></blockquote>
 
 <p>The game play is the responsibility of a <code>SpaceWar</code> instance. At

@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : November 29, 2020
+Compilation : December 3, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -109,9 +109,9 @@ Next: <a href="Explore-OOP-from-the-Browser.html" accesskey="n" rel="next">Explo
    method with that name known by its class or superclass.
 
 </li></ul>
-<span id="index-class"></span>
+<span id="index-class-7"></span>
 <span id="index-subclass"></span>
-<span id="index-instance"></span>
+<span id="index-instance-1"></span>
 <span id="index-selector"></span>
 
 <p>The method name is called a <em>selector</em> because it is used to select
@@ -137,8 +137,8 @@ behavior by implementing the methods.  A variable is basically a named
 box which can hold any object.  Each instance of a class gets its own
 box with the common name.
 </p>
-<p>Let see how the <code>Fraction</code>
-class is declared:
+<span id="index-number-19"></span>
+<p>Let see how the <code>Fraction</code> class is declared:
 </p>
 <div class="display">
 <pre class="display"><span class="sansserif">Number subclass: #Fraction
@@ -161,47 +161,49 @@ variables &ndash; and behavior &ndash; methods &ndash; defined in the <code>Numb
 class. <code>Fraction</code> is called a <em>subclass</em> of <code>Number</code>,
 and so naturally we call <code>Number</code> a <em>superclass</em> of <code>Fraction</code>.
 </p>
-<span id="index-class_002c-inheritance"></span>
-<p>A Class specifies the behavior of all of its instances.  It is useful 
-to be able to say &quot;this object is like that object, but for
-these differences&quot;.  
-We do this in Smalltalk by a Class inheriting instance state and behavior from 
-its parent Class.  This child, or subclass then specifies just the
-instance state and behavior which is different from its parent.
+<span id="index-class-8"></span>
+<p>A Class specifies the behavior of all of its instances.  It is useful
+to be able to say <em>this object is like that object, but for these
+differences</em>.  We do this in Smalltalk by a Class inheriting instance
+state and behavior from its parent Class.  This child, or subclass
+then specifies just the instance state and behavior which is different
+from its parent.
 </p>
 <p>This aspect of object oriented programming is called
 <em>inheritance</em>. In Cuis-Smalltalk, each class inherits from one parent
 class.
 </p>
-<p>In Smalltalk, we say that each object decides for itself
-how it reponds to a message.
-This is called <em>polymorphism</em>.
-The same message selector may be sent to objects of different Classes.  
-The &rsquo;shape&rsquo; (morph) of the computation is different depending on the specific 
-class of the &rsquo;many&rsquo; (poly) possible classes of the object receiving the message.
+<span id="index-polymorphism"></span>
+
+<p>In Smalltalk, we say that each object decides for itself how it
+reponds to a message.  This is called <em>polymorphism</em>.  The same
+message selector may be sent to objects of different Classes.  The
+<em>shape</em> (morph) of the computation is different depending on the
+specific class of the <em>many</em> (poly) possible classes of the
+object receiving the message.
 </p>
-<p>We saw above that different kinds of objects
-all responded to the same #printString message in different,
-but appropriate ways.
+<p>Different kinds of objects all responded to the same <code>#printString</code>
+message in different, but appropriate ways.
 </p>
-<span id="index-instance_002c-creation"></span>
-<span id="index-class_002c-class-method"></span>
-<p>We have already met fractions. Those fractions are
-objects called <em>instance</em>s of the class <code>Fraction</code>. To create
-an instance we wrote <code>5 / 4</code>, the mechanism is based on
-message sending and polymorphism.  Let us look into how this works.
+<span id="index-instance-2"></span>
+<span id="index-class-9"></span>
+<p>We have already met fractions. Those fractions are objects called
+<em>instance</em>s of the class <code>Fraction</code>. To create an instance
+we wrote <code>5 / 4</code>, the mechanism is based on message sending
+and polymorphism.  Let us look into how this works.
 </p>
-<p>The number <code>5</code> is an
-integer receiving the message <code>#/</code>, therefore looking at the method
-<code>/</code> in the <code>Integer</code> class explains how is instantiated
-the fraction. See part of this method:
-</p><div class="display">
+<p>The number <code>5</code> is an integer receiving the message <code>#/</code>,
+therefore looking at the method <code>/</code> in the <code>Integer</code>
+class explains how is instantiated the fraction. See part of this
+method:
+</p>
+<div class="display">
 <pre class="display"><span class="sansserif">/ aNumber
 &quot;Refer to the comment in Number / &quot;
 | quoRem |
 aNumber isInteger ifTrue:
 ../..
-   ifFalse: [^ (Fraction numerator: self denominator: aNumber) reduced]].
+   ifFalse: [&#x2191; (Fraction numerator: self denominator: aNumber) reduced]].
 ../..</span>
 </pre></div>
 
@@ -239,9 +241,8 @@ instantiated with the <code>#/</code> message:
 elements from the array given in argument; <em><code>newFrom:</code></em> is
 another class method.
 </p>
-<span id="index-class_002c-instance-method-1"></span>
-<span id="index-polymorphism"></span>
-<span id="index-number_002c-squared-1"></span>
+<span id="index-class-10"></span>
+<span id="index-polymorphism-1"></span>
 <p>Now observe the hierarchy of the Number class:
 </p>
 <div class="format">
@@ -256,6 +257,7 @@ another class method.
       <code>SmallInteger</code>
 </pre></div>
 
+<span id="index-number-20"></span>
 <p><code>Float</code>, <code>Integer</code> and <code>Fraction</code> are direct
 descendants of the <code>Number</code> class. We have already learned about the
 <code>#squared</code> message sent to integer and fraction instances:
@@ -270,23 +272,23 @@ descendants of the <code>Number</code> class. We have already learned about the
 called an <em>instance method</em>. This method is defined in both the
 <code>Number</code> and <code>Fraction</code> classes.
 </p>
-<span id="index-method_002c-returned-value-_0028explicit_0029"></span>
+<span id="index-method-2"></span>
 <p>Let&rsquo;s examine this method in <code>Number</code>:
 </p><div class="display">
 <pre class="display"><span class="sansserif">Number&gt;&gt;squared
 &quot;Answer the receiver multiplied by itself.&quot;
-   ^self * self</span>
+   &#x2191; self * self</span>
 </pre></div>
 
 <p>In an instance method source code, <code>self</code> refers to the
-object itself, here it is the value of the number. The <code>^</code>
-symbol indicates to return the following value <code>self *
-self</code>.
+object itself, here it is the value of the number. The &#x2191; (also
+<code>^</code>) symbol indicates to return the following value
+<code>self * self</code>.
 </p>
 <p>Now let&rsquo;s examine this same method in <code>Fraction</code>:
 </p><div class="display">
 <pre class="display"><span class="sansserif">Fraction&gt;&gt;squared
-   ^ Fraction
+   &#x2191; Fraction
       numerator: numerator squared
       denominator: denominator squared</span>
 </pre></div>
@@ -296,7 +298,7 @@ numerator and denominator being squared.
 This alternate <code>squared</code> method, ensures a fraction instance is
 returned.
 </p>
-<span id="index-method_002c-overriding"></span>
+<span id="index-method-3"></span>
 <span id="index-overriding"></span>
 <p>When message <code>#squared</code> is sent to a number, different methods are
 executed depending on the number is a fraction or another other kind of
@@ -307,7 +309,7 @@ is <em>overriding</em> the <code>squared</code> method, defined above in the
 class hierarchy.  If a method is not overridden, an inherited method
 is invoked to respond to the message.
 </p>
-<span id="index-number_002c-abs"></span>
+<span id="index-number-21"></span>
 <p>Still in the <code>Number</code> hierarchy, let&rsquo;s examine another example
 of polymorphism with the <code>#abs</code> message:
 </p>
@@ -326,15 +328,15 @@ discussed so far, but the code is quite self-explanatory:
 &quot;Answer a Number that is the absolute value (positive magnitude) of the 
 receiver.&quot;
    self &lt; 0
-      ifTrue: [^self negated]
-      ifFalse: [^self]</span>
+      ifTrue: [&#x2191; self negated]
+      ifFalse: [&#x2191; self]</span>
 </pre></div>
 
 <p>This implementation will do just fine for the <code>Number</code>
 subclasses. Nevertheless, there are several classes overriding it for
 specialized or optimized cases.
 </p>
-<span id="index-method_002c-returned-value-_0028default_0029"></span>
+<span id="index-method-4"></span>
 <p>For example, regarding large positive integer, <code>abs</code> is
 empty. Indeed, <strong>in the absence of explicitly returned value, the
 default returned value is the instance itself</strong>, in our situation the
@@ -344,26 +346,31 @@ default returned value is the instance itself</strong>, in our situation the
 <pre class="display"><span class="sansserif">LargePositiveInteger&gt;&gt;abs</span>
 </pre></div>
 
-<p>The <code>LargeNegativeInteger</code> knows it is negative and its absolute value must be 
-itself but with its sign reversed, that is <code>negated</code>:
+<p>The <code>LargeNegativeInteger</code> knows it is negative and its absolute
+value is itself but with its sign reversed, that is <code>negated</code>:
 </p>
 <div class="display">
 <pre class="display"><span class="sansserif">LargeNegativeInteger&gt;&gt;abs
-   ^ self negated</span>
+   &#x2191; self negated</span>
 </pre></div>
    
 <p>These two overriding methods are more efficient as they avoid test and
 ifTrue/ifFalse branches. Polymorphism is often used to avoid test and
 branch.
 </p>
-<p><strong>Tip.</strong> If you select the text <code>abs</code>
-in a Browser or Workspace
-and right-click to get the context menu, you will find
-an entry <code>Implementors of it</code>.
-You can select this or use <kbd>Ctrl-m</kbd> (<em>i<b>M</b>plementors</em>) to
-see how various methods for <code>#abs</code> use polymorphism to
-specialize their answer to produce the naturally expected result.
-</p>
+<span id="index-keyboard-shortcut-6"></span>
+
+<blockquote class="indentedblock">
+<p>&nbsp;<img src="note.png" alt="note">
+<br>
+If you select the text <code>abs</code> in a Browser or
+Workspace and right-click to get the context menu, you will find an
+entry <code>Implementors of it</code>.  You can select this or use
+<kbd>Ctrl-m</kbd> (<em>i<b>M</b>plementors</em>) to see how various methods for
+<code>#abs</code> use polymorphism to specialize their answer to
+produce the naturally expected result.
+</p></blockquote>
+
 <p>As an object instance is modeled by its class, it is possible to
 ask any object its
 class with the <code>#class</code> message. Observe carefully the class

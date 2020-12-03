@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : November 29, 2020
+Compilation : December 3, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -92,27 +92,32 @@ Next: <a href="Messages-sends-definition.html" accesskey="n" rel="next">Messages
 <hr>
 <span id="Communicating-entities-1"></span><h3 class="section">2.1 Communicating entities</h3>
 
-<span id="index-message_002c-sender"></span>
-<span id="index-message_002c-receiver"></span>
+<span id="index-message"></span>
+<span id="index-message-1"></span>
+<span id="index-instance"></span>
+<span id="index-class"></span>
 <p>When a given entity receives a message from another entity, it
 triggers a specific behavior.  The receiving entity of the message is
 called the <em>receiver</em> and the sending entity, the <em>sender</em>. In
-Cuis-Smalltalk terminology, an entity is called an <em>instance of a class</em>, a <em>class instance</em>, or simply an <em>instance</em>.
-A <em>class</em> is a kind of model for an entity.
+Cuis-Smalltalk terminology, an entity is called an <em>instance of a class</em>,
+a <em>class instance</em>, or simply an <em>instance</em>.  A <em>class</em> is
+a kind of model for an entity.
 </p>
+<span id="index-method"></span>
 <p>The behavior is defined internally in the receiver and it can be
 triggered from any instance.
 <strong>Behaviors are invoked only by messages sent between entities</strong>.
 An entity may send a message to
 itself. A behavior is defined in a class and is called a <em>method</em>.
 </p>
+<span id="index-garbage-collection"></span>
 <p>This results in a huge cloud of entities communicating with each other
 through message sending. New entities are instantiated when needed
 then automatically garbage collected when no longer required. On a
 fresh Cuis-Smalltalk environment, the instances class count is more than
 150000.
 </p>
-<span id="index-collection_002c-inject_003ainto_003a"></span>
+<span id="index-collection"></span>
 <div class="float"><span id="entitiesCount"></span>
 <div class="display">
 <pre class="display"><span class="sansserif">ProtoObject allSubclasses inject: 0 into: [:count :class |
@@ -138,20 +143,7 @@ The scripts you
 read and wrote were all about entities communicating with each other
 through messages.
 </p>
-
-<span id="index-to-be-written_002c-SystemWindows_002e"></span>
-<p><strong>To be written.</strong> SystemWindows.
-</p>
-<span id="index-to-be-written_002c-Text-editor-menus_002e"></span>
-<p><strong>To be written.</strong> Text editor menus.
-</p>
-<span id="index-to-be-written_002c-Keyboard-shortcuts_002e"></span>
-<p><strong>To be written.</strong> Keyboard shortcuts.
-</p>
-<span id="index-message_002c-send"></span>
-<span id="index-message_002c-unary"></span>
-<span id="index-message_002c-binary"></span>
-<span id="index-message_002c-keyword"></span>
+<span id="index-message-2"></span>
 <hr>
 <div class="header">
 <p>

@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : November 29, 2020
+Compilation : December 3, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -99,27 +99,26 @@ the messages which are their names.
 rule all the classes in Cuis-Smalltalk. It is both a tool to explore the
 classes (system or user ones) and to write new classes and methods.
 </p>
-<p>To access the tool, ...World menu &rarr;
+<p>To access the tool ...World menu &rarr;
 <code>Open...</code> &rarr; <code>Browser</code>...
 </p>
 <div class="float"><span id="ch02_002dbrowserDetailed"></span>
 <div align="center"><img src="ch02-browserDetailed.png" alt="ch02-browserDetailed">
 </div>
 <div class="float-caption"><p><strong>Figure 2.1: </strong>The System Browser</p></div></div>
-<span id="index-browser_002c-class-category"></span>
-<span id="index-class_002c-category"></span>
-<p>At the top left are the <em>class categories</em>, groups of
-classes with of the same theme. A category can also be used to
-create a <em>Package</em>, which is
-an organisational element to save code in a file system.
-In <a href="#ch02_002dbrowserDetailed">Figure 2.1</a>, the
-selected class category is <strong>Kernel-Numbers</strong>, a group of
-classes we already started using. The term <strong>Kernel-</strong> indicates it
-is part of fundamental categories, but it is only a convention. See
-the other categories as <strong>Kernel-Text</strong> and
-<strong>Kernel-Chronology</strong> related to text and date entities.
+<span id="index-browser-1"></span>
+<span id="index-class-1"></span>
+<p>At the top left are the <em>class categories</em>, groups of classes
+sharing the same theme. A category can also be used to create a
+<em>Package</em>, which is an organisational element to save code in a
+file system.  In <a href="#ch02_002dbrowserDetailed">Figure 2.1</a>, the selected class
+category is <strong>Kernel-Numbers</strong>, a group of classes we already
+started using. The term <strong>Kernel-</strong> indicates it is part of
+fundamental categories, but it is only a convention. See the other
+categories as <strong>Kernel-Text</strong> and <strong>Kernel-Chronology</strong>
+related to text and date entities.
 </p>
-<span id="index-class_002c-declaration"></span>
+<span id="index-class-2"></span>
 <p>Next to the right are the classes in the selected class category. They
 are nicely presented in a parent-child class hierarchy. When a class is
 first selected in this pane, its declaration appears in the large pane
@@ -160,7 +159,7 @@ to describe what is different from its superclass.  An instance
 of <code>Number</code> adds methods (which define behaviors) unknown to an instance
 of <code>Magnitude</code>.  We will explore this in detail as we go forward.
 </p>
-<span id="index-class_002c-comment"></span>
+<span id="index-class-3"></span>
 <p>To learn about the intend of a class, it is good practice to <strong>always</strong>
 visit the class comment. Often a comment comes also with code
 examples to learn how to use the object; these code snippets can be
@@ -168,7 +167,7 @@ selected and executed in place as done from a Workspace. In
 <a href="#ch02_002dbrowserDetailed">Figure 2.1</a>, see the <code>comment</code> button to read or
 to edit the comment of the selected class.
 </p>
-<span id="index-method_002c-category"></span>
+<span id="index-method-1"></span>
 <p>To the right of the class panel is the method categories panel.
 A class may have with tens of methods, so grouping
 them by category helps other users orient to find related methods.
@@ -178,6 +177,19 @@ itself<a id="DOCF12" href="#FOOT12"><sup>12</sup></a>. Clicking the <code>arithm
 directly gives access to related methods in the next and last pane at
 the right.
 </p>
+<span id="index-class-4"></span>
+<span id="index-keyboard-shortcut-3"></span>
+
+<blockquote class="indentedblock">
+<p>&nbsp;<img src="note.png" alt="note">
+<br>
+A right click on the Class Category pane
+brings up its context menu.  You can select <code>find class ..</code> or,
+as the menu indictes, use <kbd>Ctrl-f</kbd> (<em><b>F</b>ind</em>), to get a
+fill-in panel and type part of a class name to match.  Try it with
+<code>String</code>.
+</p></blockquote>
+
 <div class="float"><span id="stringArith"></span>
 <blockquote class="indentedblock">
 <p><em>How many methods is there
@@ -187,15 +199,8 @@ class?</em>
 
 
 <div class="float-caption"><p><strong>Exercise 2.3: </strong>Count of methods</p></div></div>
-<span id="index-class_002c-category-1"></span>
-<p><strong>Tip.</strong> A right click on the Class Category pane brings up
-its context menu.  You can select <code>find class ..</code> or,
-as the menu indictes,
-use <kbd>Ctrl-f</kbd> (<em><b>F</b>ind</em>), to get a fill-in panel and type part of
-a class name to match.  Try it with <code>String</code>.
-</p>
 
-<span id="index-class_002c-instance-method"></span>
+<span id="index-class-5"></span>
 <p>In the Browser, once a method is selected &ndash; in
 <a href="#ch02_002dbrowserDetailed">Figure 2.1</a>, <code>abs</code> method &ndash; the bottom part
 shows its source code, ready to be explored or edited. Again, often,
@@ -204,7 +209,8 @@ surrounded by double quotes.
 </p>
 <p>Every entity knows its class and answers it to the message <code>#class</code>.
 </p>
-<span id="index-browser_002c-invoke-from-Workspace"></span>
+<span id="index-browser-2"></span>
+<span id="index-keyboard-shortcut-4"></span>
 <p><strong>Tip.</strong> In the workspace <kbd>Ctrl-b</kbd> (<em><b>B</b>rowse</em>)
 on the class name will open a Browser on the named class:
 </p>

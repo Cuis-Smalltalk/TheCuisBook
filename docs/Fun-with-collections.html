@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : November 29, 2020
+Compilation : December 3, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -96,7 +96,7 @@ collections.  We already know a <code>String</code> is a collection;
 precisely a collection of characters.  Many kinds of Collection have
 similar behaviors.
 </p>
-<span id="index-array"></span>
+<span id="index-Array"></span>
 <p>An <code>Array</code> is a fixed size collection, and unlike a string it can
 contain any kind of literal enclosed in <code>#(&nbsp;)</code>:
 </p><div class="display">
@@ -117,7 +117,7 @@ array will not work as expected:
 &rArr; #(1 2 #/ 3)</span>
 </pre></div>
 
-<span id="index-array_002c-dynamic"></span>
+<span id="index-array"></span>
 <p>Indeed, the <code>$/</code> is interpreted as a literal symbol and we get
 basic components of &ldquo;2 / 3&rdquo; but this text is not
 interpreted as a fraction. To get a fraction
@@ -130,8 +130,8 @@ with <code>{ }</code>:
 &rArr; #(1 2/3 7.5)</span>
 </pre></div>
 
-<span id="index-array_002c-operation"></span>
-<span id="index-array_002c-size"></span>
+<span id="index-array-1"></span>
+<span id="index-array-2"></span>
 <p>With an array filled with numbers you can request information and
 arithmetic operations:
 </p><div class="display">
@@ -140,7 +140,7 @@ arithmetic operations:
 #(1 2 3 4) / 10 &rArr; #(1/10 1/5 3/10 2/5)</span>
 </pre></div>
 
-<span id="index-collection_002c-squared"></span>
+<span id="index-collection-2"></span>
 <p>Mathematics operations work as well:
 </p><div class="display">
 <pre class="display"><span class="sansserif">#(1 2 3 4) squared &rArr; #(1 4 9 16)
@@ -149,7 +149,7 @@ arithmetic operations:
 0.7071067811865475 0.49999999999999994)</span>
 </pre></div>
 
-<span id="index-array_002c-statistic"></span>
+<span id="index-array-3"></span>
 <p>Basic statistic methods can be used directly on array of numbers:
 </p>
 <div class="display">
@@ -183,9 +183,9 @@ array of integer numbers ranging from -80 to 50.</em>
 
 
 <div class="float-caption"><p><strong>Exercise 4.2: </strong>Negative integer numbers</p></div></div>
-<span id="index-collection_002c-dynamic"></span>
-<span id="index-collection_002c-OrderedCollection"></span>
-<span id="index-collection_002c-add_003a"></span>
+<span id="index-collection-3"></span>
+<span id="index-collection-4"></span>
+<span id="index-collection-5"></span>
 <p>The size of an array is fixed, it can not grow. An
 <code>OrderedCollection</code> is a dynamic, ordered collection, it grows
 when adding element with the <code>#add:</code> message:
@@ -202,9 +202,9 @@ fibo
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 4.1: </strong>Dynamic size collection</p></div></div>
-<span id="index-collection_002c-at_003a"></span>
-<span id="index-collection_002c-last"></span>
-<span id="index-collection_002c-indexOf_003a"></span>
+<span id="index-collection-6"></span>
+<span id="index-collection-7"></span>
+<span id="index-collection-8"></span>
 <p>Index access to the elements of a collection is done with a variety of
 messages. The index naturally ranges from 1 to the collection size:
 </p><div class="display">
@@ -220,7 +220,7 @@ fibo at: fibo size &rArr; 21</span>
 <p>A collection comes with a set of helpful methods named
 enumerators. Enumerators operate on each element of a collection.
 </p>
-<span id="index-collection_002c-set-operations-_0028union_002c-intersection_002c-difference_0029"></span>
+<span id="index-collection-9"></span>
 <p>Set operations between two collections are computed with the
 <code>#union:</code>, <code>#intersection:</code> and <code>#difference:</code> messages.
 </p><div class="float"><span id="setOpe"></span>
@@ -242,15 +242,16 @@ numbers 1,...,24,76,...,100.</em>
 
 
 <div class="float-caption"><p><strong>Exercise 4.3: </strong>Hole in a set</p></div></div>
-<p>Set operations work with any kind of object. We will discuss
-comparing objects later.
-</p><div class="display">
+<p>Set operations work with any kind of object. Comparing objects
+deserves its own section.
+</p>
+<div class="display">
 <pre class="display"><span class="sansserif">#(1 2 3 &rsquo;e&rsquo; 5) intersection: #(3.0 4 6 7 &rsquo;e&rsquo;)
 &rArr; #(3 &rsquo;e&rsquo;)</span>
 </pre></div>
 
-<span id="index-collection_002c-select_003a"></span>
-<span id="index-collection_002c-enumerator-mechanism"></span>
+<span id="index-collection-10"></span>
+<span id="index-collection-11"></span>
 <span id="index-block"></span>
 <p>To select the prime numbers from 1 to 100, we use the <code>#select:</code>
 enumerator. This message is sent to a collection, then it will select
@@ -276,15 +277,14 @@ execution(s). Let&rsquo;s explain how this script is evaluated:
 
 </li><li> the message <code>#select:</code> is sent to the interval with the
  block of code as the argument
-
-</li><li> for each integer of the interval, the block of code is invoked
- with its parameter <code>n</code> set to the integer value.
- A <em>block parameter</em> starts with a colon, &ldquo;:&rdquo;, and is an
- ordinary identifer <a id="DOCF17" href="#FOOT17"><sup>17</sup></a>.
- Then, each
- time <code>n isPrime</code> evaluates to true, the <code>n</code> value
- is added to a new collection answered when the <code>select:</code>
- method finished testing each element of the collection.
+<span id="index-block-1"></span>
+ </li><li> in the <code>select:</code> method, for each integer of the
+ interval, the block of code is invoked with its parameter
+ <code>n</code> set to the integer value.  A <em>block parameter</em>
+ starts with a colon, &ldquo;:&rdquo;, and is an ordinary identifer <a id="DOCF17" href="#FOOT17"><sup>17</sup></a>.  Then, each time <code>n
+ isPrime</code> evaluates to true, the <code>n</code> value is added to a new
+ collection answered when the <code>select:</code> method finished
+ testing each element of the collection.
 
 </li></ul>
 
@@ -313,20 +313,21 @@ We like simple!
 
 
 <div class="float-caption"><p><strong>Exercise 4.4: </strong>Odd integers</p></div></div>
-<p>You want to know the number of prime numbers under 100.  Just send
-the message <code>#size</code> to the answered collection at
-<a href="#prime100">Example 4.3</a>. The parenthesis are mandatory to ensure the <code>#size</code>
-is sent last to the resulting collection:
-</p><div class="float"><span id="qtyPrime100"></span>
+<p>You want to know the number of prime numbers under 100.  Just send the
+message <code>#size</code> to the answered collection at <a href="#prime100">Example 4.3</a>. The
+parenthesis are mandatory to ensure <code>#size</code> is sent last to the
+resulting collection:
+</p>
+<div class="float"><span id="qtyPrime100"></span>
 <div class="display">
 <pre class="display"><span class="sansserif">( (1 to: 100) select: [:n | n isPrime] ) size
 &rArr; 25</span>
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 4.4: </strong>Number of prime numbers between 1 and
+<div class="float-caption"><p><strong>Example 4.4: </strong>Quantity of prime numbers between 1 and
 100</p></div></div>
 <p>For more clarity, we use a variable named <code>primeNumbers</code> to
-remembers about the prime numbers list we build:
+remember about the prime numbers list we build:
 </p><div class="display">
 <pre class="display"><span class="sansserif">| primeNumbers |
 primeNumbers := (1 to: 100) select: [:n | n isPrime].
@@ -358,7 +359,7 @@ collection of the odd integers in [1 ; 100] which are not prime.</em>
 
 
 <div class="float-caption"><p><strong>Exercise 4.7: </strong>Odd and non prime integers</p></div></div>
-<span id="index-collection_002c-collect_003a"></span>
+<span id="index-collection-12"></span>
 <p>A sister enumerator to <code>#select:</code> is <code>#collect:</code>. It returns a
 new collection of the same size, with each element transformed by a
 block of code. When searching perfect cubic roots, it is useful to
@@ -404,9 +405,9 @@ in his private correspondence with a shift of 3.
 <div class="float"><span id="alphabetCipher"></span>
 <blockquote class="indentedblock">
 <p><em>Write a script
-to collect the upper letters representing the Caesar&rsquo;s cipher. The
-expected answers is</em> #($D $E $F $G $H $I $J $K $L $M $N $O $P $Q $R $S
-$T $U $V $W $X $Y $Z $A $B $C)
+to collect the alphabet upper letters representing the Caesar&rsquo;s
+cipher. The expected answers is</em> #($D $E $F $G $H $I $J $K $L $M $N $O
+$P $Q $R $S $T $U $V $W $X $Y $Z $A $B $C)
 </p></blockquote>
 
 
@@ -422,10 +423,10 @@ phrase &rsquo;SMALLTALKEXPRESSION&rsquo;.</em>
 
 <div class="float-caption"><p><strong>Exercise 4.10: </strong>Encode with Caesar&rsquo;s cipher</p></div></div>
 <p>And decode message:
-</p><div class="float"><span id="decodeCaesar"></span>
+</p>
+<div class="float"><span id="decodeCaesar"></span>
 <blockquote class="indentedblock">
-<p><em>Decode the
-message &rsquo;DOHDMDFWDHVW&rsquo;.</em>
+<p><em>Decode this famous quotation attributed to Julius Caesar &rsquo;DOHDMDFWDHVW&rsquo;.</em>
 </p></blockquote>
 
 
@@ -434,8 +435,8 @@ message &rsquo;DOHDMDFWDHVW&rsquo;.</em>
 <p>Collection can be iterated with traditional loops: there is a whole
 family of <em>repeat</em>, <em>while</em> and <em>for</em> loops.
 </p>
-<span id="index-loop_002c-for-1"></span>
-<span id="index-for-loop-1"></span>
+<span id="index-loop-3"></span>
+<span id="index-number-34"></span>
 <p>A simple <em>for</em> loop between two integer values is written with
 the keyword message <code>#to:do:</code>, the last argument is a block of code
 executed for each index:
@@ -449,22 +450,24 @@ sequence
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 4.7: </strong>A <em>for</em> loop</p></div></div>
+<span id="index-collection-13"></span>
 <p>A collect writes more concisely, though:
 </p><div class="display">
-<pre class="display"><span class="sansserif">(1 to: 10) collect: [:k | 1/k]</span>
+<pre class="display"><span class="sansserif">(1 to: 10) collect: [:k | 1 / k]</span>
 </pre></div>
 
+<span id="index-loop-4"></span>
+<span id="index-number-35"></span>
 <p>To step with a different value than 1, a third numeric argument is
 inserted:
 </p><div class="display">
 <pre class="display"><span class="sansserif">1 to: 10 by: 0.5 do: [:k | sequence add: 1 / k]</span>
 </pre></div>
 
-<span id="index-loop_002c-repeat-1"></span>
-<span id="index-repeat-1"></span>
+<span id="index-loop-5"></span>
 <span id="index-Fibonacci-sequence"></span>
 <p>A repeated loop without index or any collection is written with the
-<code>#timesRepeat:</code> message:
+<code>#timesRepeat:</code> message send to an integer:
 </p><div class="float"><span id="repeatLoop"></span>
 <div class="display">
 <pre class="display"><span class="sansserif">| fibo |
@@ -476,6 +479,7 @@ fibo
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 4.8: </strong>A <em>repeat</em> loop</p></div></div>
+<span id="index-collection-14"></span>
 <p>The quotient of consecutive Fibonacci terms converge toward the golden
 value:
 </p><div class="display">
@@ -495,9 +499,10 @@ value:
 <h4 class="footnotes-heading">Footnotes</h4>
 
 <h5><a id="FOOT17" href="#DOCF17">(17)</a></h3>
-<p>An <em>identifier</em> is just a word that starts
- in a lower case letter and consists of upper and lower case letters
- and decimal digits.  All variable names are identifiers</p>
+<p>An
+ <em>identifier</em> is just a word that starts in a lower case letter
+ and consists of upper and lower case letters and decimal digits.  All
+ variable names are identifiers</p>
 </div>
 <hr>
 <div class="header">

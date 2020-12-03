@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : November 29, 2020
+Compilation : December 3, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -97,7 +97,7 @@ Smalltalk offers no special constructs for control flow.
 Decision logic is expressed by sending messages to booleans, numbers
 and collections, with blocks as arguments.
 </p>
-<span id="index-control-flow_002c-test"></span>
+<span id="index-control-flow-1"></span>
 <span id="index-test"></span>
 <span id="index-boolean"></span>
 <span id="Test"></span><h4 class="subheading">Test</h4>
@@ -163,9 +163,9 @@ have the choice between eager and lazy conjunctions and disjunctions:
 <pre class="display"><span class="sansserif">(1 &gt; 2) &amp; (3 &lt; 4)
 &rArr; false  &quot;must evaluate both sides&quot;
 (1 &gt; 2) and: [ 3 &lt; 4 ]
-&rArr; false   &quot;only evaluate receiver&quot;
+&rArr; false  &quot;only evaluate receiver&quot;
 (1 &gt; 2) and: [ (1 / 0) &gt; 0 ]
-&rArr; false &quot;argument block is never evaluated, so no exception&quot;</span>
+&rArr; false  &quot;argument block is never evaluated, so no exception&quot;</span>
 </pre></div>
 
 <p>In the first example, both <code>Boolean</code> subexpressions are
@@ -181,9 +181,13 @@ the second and third examples, only the first is evaluated, since
 
 
 <div class="float-caption"><p><strong>Exercise 5.2: </strong>Implementing <code>and:</code> and <code>or:</code></p></div></div>
-
-<p>In the code fragment of <a href="#shipLost">Example 5.6</a>, we test if a ship is lost in
-deep space. It depends on two conditions:
+<p>In the <a href="Method-syntax.html#spacewarKeyStroke">Example 5.1</a> at the beginning of this chapter, there
+are 4 control flow <code>#ifTrue:</code> messages. Each argument is a block of
+code and when evaluated, it explicitly returns an expression,
+therefore interrupting the method execution.
+</p>
+<p>In the code fragment of <a href="#shipLost">Example 5.6</a> bellow, we test if a ship is
+lost in deep space. It depends on two conditions:
 </p><ol>
 <li> the ship is out of the game play area, tested with the
   <code>#isInOuterSpace</code> message,
@@ -208,8 +212,8 @@ and slow it down by a factor of 2&quot;
 
 <div class="float-caption"><p><strong>Example 5.6: </strong>Ship lost in space</p></div></div>
 
-<span id="index-control-flow_002c-loop"></span>
-<span id="index-loop"></span>
+<span id="index-control-flow-2"></span>
+<span id="index-loop-6"></span>
 <span id="Loop"></span><h4 class="subheading">Loop</h4>
 <p>Loops are typically expressed by sending messages to blocks, integers
 or collections. Since the exit condition for a loop may be repeatedly
@@ -217,16 +221,16 @@ evaluated, it should be a block rather than a boolean value. Here is
 an example of a very procedural loop:
 </p>
 <div class="display">
-<pre class="display"><span class="sansserif">n := 1.
-[ n &lt; 1000 ] whileTrue: [ n := n * 2 ].
+<pre class="display"><span class="sansserif">n &#x2190; 1.
+[ n &lt; 1000 ] whileTrue: [ n &#x2190; n * 2 ].
 n &rArr; 1024</span>
 </pre></div>
 
 <p><code>#whileFalse:</code> reverses the exit condition:
 </p>
 <div class="display">
-<pre class="display"><span class="sansserif">n := 1.
-[ n &gt; 1000 ] whileFalse: [ n := n * 2 ].
+<pre class="display"><span class="sansserif">n &#x2190; 1.
+[ n &gt; 1000 ] whileFalse: [ n &#x2190; n * 2 ].
 n &rArr; 1024</span>
 </pre></div>
 
@@ -236,8 +240,8 @@ category of the class <code>BlockClosure</code>.
 <p><code>#timesRepeat:</code> offers a simple way to implement a fixed iteration:
 </p>
 <div class="display">
-<pre class="display"><span class="sansserif">n := 1.
-10 timesRepeat: [ n := n * 2 ].
+<pre class="display"><span class="sansserif">n &#x2190; 1.
+10 timesRepeat: [ n &#x2190; n * 2 ].
 n &rArr; 1024</span>
 </pre></div>
 
@@ -247,19 +251,22 @@ upper bound, and a block that takes the current value of the loop
 counter as its argument:
 </p>
 <div class="display">
-<pre class="display"><span class="sansserif">result := String new.
-1 to: 10 do: [:n | result := result, n printString, &rsquo; &rsquo;].
+<pre class="display"><span class="sansserif">result &#x2190; String new.
+1 to: 10 do: [:n | result &#x2190; result, n printString, &rsquo; &rsquo;].
 result &rArr; &rsquo;1 2 3 4 5 6 7 8 9 10 &rsquo;</span>
 </pre></div>
 
 <p>You can check all the alternatives in the <code>intervals</code> method
 category of the class <code>Number</code>.
 </p>
-<p><strong>Tip.</strong> If the exit condition of method like <code>whileTrue:</code>
-is never satisfied, you may have implemented an <em>infinite loop</em>.
-Just type <kbd>Cmd-period</kbd> to get a debugger.  We will learn about how
-to handle this condition in the section on debugging, below.
-</p>
+<blockquote class="indentedblock">
+<p>&nbsp;<img src="note.png" alt="note">
+<br>
+If the exit condition of method like <code>whileTrue:</code> is
+never satisfied, you may have implemented an <em>infinite loop</em>.
+Just type <kbd>Cmd-period</kbd> to get the Debugger.
+</p></blockquote>
+
 <div class="footnote">
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>

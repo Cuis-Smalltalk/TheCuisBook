@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : November 29, 2020
+Compilation : December 3, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -164,7 +164,7 @@ far:
 
 <span id="encodeCaesar-1"></span><h4 class="subheading"><a href="Fun-with-collections.html#encodeCaesar">Exercise 4.10</a></h4>
 <p>In the solution of <a href="Fun-with-collections.html#alphabetCipher">Exercise 4.9</a>, we just need to replace the
-characters intervale with a string:
+characters interval with a string:
 </p><div class="example">
 <pre class="example">'SMALLTALKEXPRESSION' collect: [:c |
    (c asciiValue - 65 + 3 \\ 26 + 65) asCharacter]
@@ -192,24 +192,24 @@ hierarchy browser on <code>Array</code> to discover it:
 <p>You could simply do a thumb:
 </p>
 <div class="example">
-<pre class="example">array4 at: 1 put: 'kiwi'.
-array4 at: 2 put: 'kiwi'.
-array4 at: 3 put: 'kiwi'.
-array4 at: 4 put: 'kiwi'.
+<pre class="example">array1 at: 1 put: 'kiwi'.
+array1 at: 2 put: 'kiwi'.
+array1 at: 3 put: 'kiwi'.
+array1 at: 4 put: 'kiwi'.
 </pre></div>
 
 <p>Or even a bit less thumb:
 </p>
 <div class="example">
-<pre class="example">1 to: 4 do: [:index |
-   array4 at: index put: 'kiwi']
+<pre class="example">1 to: array1 size do: [:index |
+   array1 at: index put: 'kiwi']
 </pre></div>
 
 <p>But if you search for carefully the <code>Array</code> protocol, you can
 just do:
 </p>
 <div class="example">
-<pre class="example">array4 atAllPut: 'kiwi'.
+<pre class="example">array1 atAllPut: 'kiwi'.
 </pre></div>
 
 <span id="addAfter-1"></span><h4 class="subheading"><a href="Collections-detailed.html#addAfter">Exercise 4.14</a></h4>

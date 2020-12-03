@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : November 29, 2020
+Compilation : December 3, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -91,10 +91,9 @@ Next: <a href="Messages-to-number-entities.html" accesskey="n" rel="next">Messag
 </div>
 <hr>
 <span id="Message-to-string-entities-1"></span><h3 class="section">2.3 Message to string entities</h3>
-<span id="index-string_002c-character-access"></span>
 <p>Access to a character in a string is done with the keyword message
-<code>#at:</code> and its index position in the string. Execute the following
-examples with the <kbd>Ctrl-p</kbd> shortcut:
+<code>#at:</code> and its index position in the string as argument. Execute
+the following examples with the <kbd>Ctrl-p</kbd> shortcut:
 </p>
 <div class="display">
 <pre class="display"><span class="sansserif">&rsquo;Hello&rsquo; at: 1 &rArr; $H
@@ -106,13 +105,14 @@ examples with the <kbd>Ctrl-p</kbd> shortcut:
 <p><strong>Caution.</strong> The index indicates position naturally from 1 to the
 string length.
 </p>
-<span id="index-string_002c-indexOf_003a"></span>
+<span id="index-string-4"></span>
 <div class="display">
 <pre class="display"><span class="sansserif">&rsquo;Hello&rsquo; indexOf: $e
 &rArr; 2</span>
 </pre></div>
 
-<span id="index-string_002c-at_003aput_003a"></span>
+<span id="index-string-5"></span>
+<span id="index-yourself"></span>
 <p>To change one character, use the companion two keyword message
 <code>#at:put:</code>. The argument must be noted as a character:
 </p><div class="display">
@@ -120,10 +120,11 @@ string length.
 &rArr; &rsquo;Hallo&rsquo;</span>
 </pre></div>
 
-<p>Observe the use of the cascade with the <code>#yourself</code> message.
-A cascade sends following messages to the original receiver,
-so <code>#yourself</code> returns the updated string.
-Without the cascade, $a is returned as the result of the #at:put: message.
+<p>Observe the use of the cascade with the <code>#yourself</code> message.  A
+cascade sends following messages to the original receiver, so
+<code>#yourself</code> returns the updated string.  Without the
+cascade, <code>$a</code> is returned as the result of the <code>#at:put:</code>
+message.
 </p>
 <div class="float"><span id="helloBelle"></span>
 <blockquote class="indentedblock">
@@ -133,15 +134,15 @@ the string &rsquo;Hello&rsquo; to become &rsquo;Belle&rsquo;</em>
 
 
 <div class="float-caption"><p><strong>Exercise 2.1: </strong>Hello to Belle</p></div></div>
-<span id="index-character_002c-ascii"></span>
+<span id="index-character"></span>
 <p>Character can be converted to integer and integer to character:
 </p><div class="display">
 <pre class="display"><span class="sansserif">$A asciiValue &rArr; 65
 (65 + 25) asCharacter &rArr; $Z</span>
 </pre></div>
 
-<span id="index-string_002c-shuffled"></span>
-<span id="index-collection_002c-shuffled"></span>
+<span id="index-string-6"></span>
+<span id="index-collection-1"></span>
 <p>Shuffling a string is funny but without much use. Nevertheless,
 shuffling can apply to any kind of collection, not only to string, and it
 proves to be of some use as we may see later:
@@ -151,7 +152,8 @@ proves to be of some use as we may see later:
 </pre></div>
 <p>Note that results of each shuffle are different.
 </p>
-<span id="index-string_002c-asArray"></span>
+<span id="index-string-7"></span>
+<span id="index-message-8"></span>
 <p>Messages naturally compose.
 </p><div class="display">
 <pre class="display"><span class="sansserif">&rsquo;hello world&rsquo; shuffled asArray
@@ -163,19 +165,19 @@ and parentheses surround the elements of the array.
 In this case the elements are <code>Character</code>s, but they can
 be instances of any class.
 </p>
-<span id="index-string_002c-sort"></span>
+<span id="index-string-8"></span>
 <p>Similarly, we can ask a string to sort its characters:
 </p><div class="display">
 <pre class="display"><span class="sansserif">&rsquo;hello world&rsquo; sort
-&rArr;  &rsquo; dehllloorw&rsquo;  </span>
+&rArr; &rsquo; dehllloorw&rsquo;</span>
 </pre></div>
 
 <p>Like <code>#shuffled</code>, all collections answer to the message <code>#sorted</code>,
 which answers a sorted collection.
-<span id="index-string_002c-sorted"></span>
+<span id="index-string-9"></span>
 </p><div class="display">
 <pre class="display"><span class="sansserif">&rsquo;hello world&rsquo; sorted
-&rArr;  #($  $d $e $h $l $l $l $o $o $r $w)  </span>
+&rArr; #($  $d $e $h $l $l $l $o $o $r $w)</span>
 </pre></div>
 
 <p>Note that this breaks patterns.  We get a <code>String</code> result when giving 
