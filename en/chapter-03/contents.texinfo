@@ -1080,7 +1080,9 @@ variable and edit the @method{mass} method to return a literal number:
 SpaceShip>>mass
    ^ 1}
 
-@subsubheading Control
+
+@anchor{simpleControls}
+@subsubheading Controls
 A space ship controlled by the player understands messages to adjust
 its direction and acceleration@footnote{The velocity is a consequence
 of the accelerations applied to the space ship.}:

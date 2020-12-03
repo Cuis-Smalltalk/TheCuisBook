@@ -38,7 +38,7 @@ To learn more about the Texinfo format:
   * [GNU Texinfo manual](https://www.gnu.org/software/texinfo/manual/texinfo/)
 
 
-## TOD
+## TODO
 
 * So far, the current index mixes both concepts and methods.  It will
 be nicer to have two separate indexes: one for the concepts and

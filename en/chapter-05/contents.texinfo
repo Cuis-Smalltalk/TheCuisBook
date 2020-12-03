@@ -97,7 +97,7 @@ code is executed.
    the currently executing @smalltalk{MethodContext} or
    @smalltalk{BlockContext}. @smalltalk{thisContext} is normally not
    of interest to most programmers, but it is essential for
-   implementing development tools like the debugger and it is also
+   implementing development tools like the Debugger and it is also
    used to implement exception handling and continuations.
 
 @end itemize
@@ -108,19 +108,19 @@ code is executed.
 
 Whereas expressions may be evaluated anywhere in @cuis{} (for example,
 in a workspace, in a debugger, or in a browser), methods are normally
-defined in a browser window, or in the debugger. Methods can also be
-filed in from an external medium, but this is not the usual way to
-program in @cuis{}.
+defined in the System Browser window, or in the Debugger. Methods can
+also be filed in from an external medium, but this is not the usual
+way to program in @cuis{}.
 
 Programs are developed one method at a time, in the context of a given
 class. A class is defined by sending a message to an existing class,
 asking it to create a subclass, so there is no special syntax required
-for defining classes.
+for defining classes. We already learn that in a previous chapter.
 
-Here is the method @method{keyStroke:} in the class
-@class{SpaceWar}. The usual convention is to refer to methods as
-@smalltalk{ClassName>>methodName}, so we call this method
-@smalltalk{SpaceWar>>keyStroke:})
+Let's take a another look to the method syntax when control flow is
+involved -- our first explanation was @ref{Spacewar! States and Behaviors}).
+
+Here is the method @method{keyStroke:} in the class @class{SpaceWar}.
 
 @smalltalkExampleCaption{SpaceWar! key stroke,spacewarKeyStroke,
 SpaceWar>>keyStroke: event
@@ -172,9 +172,10 @@ self-reference here: the value of @smalltalk{Smalltalk at: #Smalltalk} is @small
 @section Block syntax
 Blocks provide a mechanism to defer the evaluation of expressions. A
 block is essentially an anonymous function. A block is evaluated by
-sending it the message @msg{value}. The block answers the value of the last
-expression in its body, unless there is an explicit return (with
-@return{}), in which case it does not answer any value.
+sending it the message @msg{value}. The block answers the value of the
+last expression in its body, unless there is an explicit return (with
+@return{}), in which case it returns the value of the subsequent
+expression).
 
 @smalltalkExample{[ 1 + 2 ] value
 @result{} 3}
@@ -201,7 +202,7 @@ Blocks may also declare local variables, which are surrounded by
 vertical bars, just like local variable declarations in a
 method. Locals are declared after any arguments:
 
-@smalltalkExample{[ :x :y | | z | z := x + y. z ] value: 1 value: 2
+@smalltalkExample{[ :x :y | | z | z @assign{} x + y. z ] value: 1 value: 2
 @result{} 3}
 
 Blocks can refer to
@@ -214,7 +215,7 @@ The following block refers
 to the variable x of its enclosing environment:
 
 @smalltalkExample{|x|
-x := 1.
+x @assign{} 1.
 [ :y | x + y ] value: 2
 @result{} 3}
 
@@ -226,8 +227,8 @@ as arguments just like any other object.
 Consider the example below to compute the divisors of an integer:
 
 @smalltalkExampleCaption{Compute divisors, computeDivisors,| n m |
-n := 60.
-m := 45.
+n @assign{} 60.
+m @assign{} 45.
 (1 to: n) select: [:d | n \\ d = 0 ].
 "@result{} #(1 2 3 4 5 6 10 12 15 20 30 60)"
 (1 to: m) select: [:d | m \\ d = 0]
@@ -324,9 +325,9 @@ have the choice between eager and lazy conjunctions and disjunctions:
 @smalltalkExample{(1 > 2) & (3 < 4)
 @result{} false  "must evaluate both sides"
 (1 > 2) and: [ 3 < 4 ]
-@result{} false   "only evaluate receiver"
+@result{} false  "only evaluate receiver"
 (1 > 2) and: [ (1 / 0) > 0 ]
-@result{} false "argument block is never evaluated, so no exception"}
+@result{} false  "argument block is never evaluated, so no exception"}
 
 In the first example, both @class{Boolean} subexpressions are
 evaluated, since @smalltalk{&} takes a @class{Boolean} argument. In
@@ -337,9 +338,13 @@ the second and third examples, only the first is evaluated, since
 @exercise{Implementing @method{and:} and @method{or:}, implementingAndOr,
 @emph{Try to imagine how @method{and:} and @method{or:} are  implemented.}}
 
+In the @ref{spacewarKeyStroke} at the beginning of this chapter, there
+are 4 control flow @msg{ifTrue:} messages. Each argument is a block of
+code and when evaluated, it explicitly returns an expression,
+therefore interrupting the method execution.
 
-In the code fragment of @ref{shipLost}, we test if a ship is lost in
-deep space. It depends on two conditions:
+In the code fragment of @ref{shipLost} bellow, we test if a ship is
+lost in deep space. It depends on two conditions:
 @enumerate
 
   @item the ship is out of the game play area, tested with the
@@ -370,14 +375,14 @@ or collections. Since the exit condition for a loop may be repeatedly
 evaluated, it should be a block rather than a boolean value. Here is
 an example of a very procedural loop:
 
-@smalltalkExample{n := 1.
-[ n < 1000 ] whileTrue: [ n := n * 2 ].
+@smalltalkExample{n @assign{} 1.
+[ n < 1000 ] whileTrue: [ n @assign{} n * 2 ].
 n @result{} 1024}
 
 @msg{whileFalse:} reverses the exit condition:
 
-@smalltalkExample{n := 1.
-[ n > 1000 ] whileFalse: [ n := n * 2 ].
+@smalltalkExample{n @assign{} 1.
+[ n > 1000 ] whileFalse: [ n @assign{} n * 2 ].
 n @result{} 1024}
 
 You can check all the alternatives in the @label{controlling} method
@@ -385,8 +390,8 @@ category of the class @class{BlockClosure}.
 
 @msg{timesRepeat:} offers a simple way to implement a fixed iteration:
 
-@smalltalkExample{n := 1.
-10 timesRepeat: [ n := n * 2 ].
+@smalltalkExample{n @assign{} 1.
+10 timesRepeat: [ n @assign{} n * 2 ].
 n @result{} 1024}
 
 We can also send the message @msg{to:do:} to a number which then acts
@@ -394,8 +399,8 @@ as the initial value of a loop counter. The two arguments are the
 upper bound, and a block that takes the current value of the loop
 counter as its argument:
 
-@smalltalkExample{result := String new.
-1 to: 10 do: [:n | result := result, n printString, ' '].
+@smalltalkExample{result @assign{} String new.
+1 to: 10 do: [:n | result @assign{} result, n printString, ' '].
 result @result{} '1 2 3 4 5 6 7 8 9 10 '}
 
 You can check all the alternatives in the @label{intervals} method
@@ -403,23 +408,23 @@ category of the class @class{Number}.
 
 @cuisNote{If the exit condition of method like @method{whileTrue:} is
 never satisfied, you may have implemented an @dfn{infinite loop}.
-Just type @kbd{Cmd-period} to get a debugger.  Handling such situation
-deserves its one section on debugging.}
+Just type @kbd{Cmd-period} to get the Debugger.}
 
 @node Spacewar!'s methods
 @section Spacewar!'s methods
-So far we show a lot of code examples, sometime complete method source
-code, but we never explain how you a add method to a class. We will
-use the Browser to do so.
+You are already acquainted to the writing of simple methods for the
+Spacewar! game. We will write some more and learn how to categorize
+them.
 
 @cindex method @subentry creating
-@subsection Writing your first method
-Let's say we want to add the @method{initialize} method to our
-@class{SpaceWar} class. Of course we need to use the System Browser:
+@subsection Initializing the game play
+We want to add the @method{initialize} method to our @class{SpaceWar}
+class. Of course we need to use the System Browser:
 ...@clicksequence{World menu @click{} @label{Open...} @click{}
 @label{Browser}}...
 
-Observe @ref{ch02-browserDetailed} and proceed as follow:
+As a reminder proceed as follow (if necessary observe
+@ref{ch02-browserDetailed}):
 
 @enumerate
 
@@ -475,7 +480,10 @@ in @ref{teleportMethod} then categorize it in the @label{events}
 method category.}}
 
 @subsection Space ship controls
-In the @class{SpaceShip} class, add its control methods:
+
+In a previous chapter, you wrote as an exercise simple implementation
+of the @ref{simpleControls,,control ship methods}. The definitive
+control methods of the @class{SpaceShip} class are rewritten as:
 
 @smalltalkExampleCaption{Ship controls, shipControls,SpaceShip>>push
   "Init an accelaration boost"
@@ -533,9 +541,9 @@ iterator, block of code and control flow.
 However we have other scenarios as ship-ship, torpedo-Sun and
 torpedo-ship collisions.
 
-@exercise{Ships collision, shipCollision, @emph{How will you write
-the method to detect the collision between the two ships and to take
-action accordingly? (Adapt from @ref{shipSunCollision})}}
+@exercise{Ships collision, shipCollision, @emph{How will you write the
+method to detect the collision between the two ships and take action
+accordingly? (Adapt from @ref{shipSunCollision})}}
 
 The detection between the two ships and the possible numerous
 torpedoes required two enumerators with nested blocks of code:

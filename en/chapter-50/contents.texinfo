@@ -415,7 +415,7 @@ SpaceWar>>stepAt: msSinceLast
 @subheading @ref{blockDivisor}
 @example
 | divisors |
-divisors := [:x | (1 to: x) select: [:d | x \\ d = 0] ].
+divisors @assign{} [:x | (1 to: x) select: [:d | x \\ d = 0] ].
 divisors value: 60.
 @result{} #(1 2 3 4 5 6 10 12 15 20 30 60)
 divisors value: 45
