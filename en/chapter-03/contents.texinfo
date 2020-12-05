@@ -130,7 +130,8 @@ message in different, but appropriate ways.
 
 @c instance creation
 @cindex instance @subentry creation
-@cindex class @subentry class method
+@cindex class @subentry method @seeentry{method}
+@cindex method @subentry class method
 We have already met fractions. Those fractions are objects called
 @dfn{instance}s of the class @class{Fraction}. To create an instance
 we wrote @smalltalk{5 / 4}, the mechanism is based on message sending
@@ -181,7 +182,8 @@ another class method.
 
 @page
 @c instance method
-@cindex class  @subentry instance method
+@cindex instance @subentry method @seeentry{method}
+@cindex method @subentry instance method
 @cindex polymorphism
 Now observe the hierarchy of the Number class:
 
@@ -352,7 +354,7 @@ We have spent much time here because it is important to avoid
 confusion between instance methods and class
 methods. Let's consider the @class{Float} class as an example.
 
-@cindex class @subentry class method
+@cindex method @subentry class method
 
 @strong{Class Methods.} In @ref{ch03-floatClassSide} the methods listed are
 class side, in the browser the @label{class} button is pressed to see this
@@ -406,7 +408,7 @@ Float readFrom: '001.200'
 Integer primesUpTo: 20
 @result{} #(2 3 5 7 11 13 17 19) }
 
-@cindex class @subentry instance method
+@cindex method @subentry instance method
 
 @strong{Instance methods.} In @ref{ch03-floatInstanceSide}, the methods
 listed are instance side, in the browser the @label{instance} button

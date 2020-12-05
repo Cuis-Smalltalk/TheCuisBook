@@ -535,7 +535,7 @@ SpaceShip>>fireTorpedo
 
 @subsection Collisions
 In a previous chapter we gave a small taste of the collision detection
-code between the space ships and the central start. It relies on
+code between the space ships and the central star. It relies on
 iterator, block of code and control flow.
 
 However we have other scenarios as ship-ship, torpedo-Sun and

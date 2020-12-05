@@ -1,9 +1,37 @@
 @node Visual with Morph
 @chapter Visual with Morph
 
-Every object you see in @cuis{} is a @class{Morph} or is composed
-of @class{Morph}s.  Basically, a @class{Morph} is an object with
-state and behavior that can also depict itself on a computer
+
+What would we expect if we ask for good support for building GUIs in a
+programming system?
+
+All modern computers (and phones, etc) have high resolution color
+displays. Any software running on them, that is accessible to a user,
+needs to show stuff on that Display.
+
+Conventional UI managers (that is, Operating Systems and Web Browsers)
+started by including only the most basic GUI elements first: basic
+text editors, buttons, simple lists, scrolling for large content, and
+(usually) multiple resizeable overlapping windows. Anything else needs
+to be handled via additional libraries. While there are libraries for
+handling richer content (D3.js and Matplotlib are examples), the
+result is not consistent, neither for developers nor for users.
+
+@cuis{} takes a different approach, pioneered by Smalltalk-80 and
+especially Self. @todo{Need a reference}.
+
+We take the high quality Display for granted, as a mouse, finger or
+other pointing device. And we build on the objective of providing
+ample possibilities for GUIs both in existing, and in novel styles and
+designs, yet to be invented. Additionally, in the usual Smalltalk way,
+all the framework code is available for study and modification: there
+are no third party libraries, and only the lowest level code is
+precompiled, but it still can be overriden or changed.
+
+
+Therefore every object you see in @cuis{} is a @class{Morph} or is
+composed of @class{Morph}s.  Basically, a @class{Morph} is an object
+with state and behavior that can also depict itself on a computer
 display screen.
 
 Because Morphs are useful, when you look at
@@ -20,9 +48,11 @@ But the basic ideas are quite simple.
 * Spacewar! graphics::
 @end menu
 
+
+
 @node Ellipse Morph
 @section Ellipse Morph
-@cindex morph, ellipse
+@cindex morph @subentry ellipse
 Let's start with one of the basic morphs, an @class{EllipseMorph}.
 You could write @smalltalk{EllipseMorph new openInWorld} and
 @emph{@b{D}o-it}, but we are doing visual things for now, so let's get
@@ -43,7 +73,7 @@ One of the balance points in design is how to eliminate clutter.  One
 useful strategy is to reveal capabilities in context as they are
 needed.
 
-@cindex morph, halo
+@cindex morph @subentry halo
 In the case of Cuis, you have to know some basics because helpful
 tools are there but stay out of the way.  At any time you can
 @kbd{Right-Click} on the desktop to get the World Menu.  You can also
@@ -67,8 +97,8 @@ to the right and down, and release the mouse button.
 
 @node Submorph
 @section Submorph
-@cindex morph, submorph
-@cindex morph, rectangle
+@cindex morph @subentry submorph
+@cindex morph @subentry rectangle
 Morphs can contain other morphs.  These interior morphs are called
 @dfn{submorph}s of their containing morph. Again, you can do this by
 writing the software ``code'', but let's do it directly with a
@@ -112,7 +142,7 @@ There is an orange handle on the right, just under the green
 @strong{Debug} menu.  Use this menu to get an @dfn{Inspector} for the
 rectangle.
 
-@cindex tools, inspector
+@cindex tools @subentry inspector
 Observe @ref{ch06-11aColorClickOnRect}, on the left we have a pane for
 self, all inst vars, and the individual instance variables.  Clicking
 to select ``all inst vars'' and the values pane on the right shows
@@ -131,7 +161,7 @@ method.  Here we are going to create a behavior for ``just this one
 WidgetMorph instance''.
 
 @anchor{morphProperties}
-@cindex morph, properties
+@cindex morph @subentry properties
 In addition to instance variables, a morph can have any number of
 named @dfn{properties} which can be different for each morph.
 
@@ -153,7 +183,7 @@ Note that you can no longer move the ellipse by mouse-down on the
 rect, because the rect now takes the mouse event.  You have to
 mouse-down on the Ellipse.  More on this below.
 
-@cindex morph, move/pick up
+@cindex morph @subentry move/pick up
 One quick note on @strong{Move} versus @strong{Pick up}.
 @strong{Move} moves a submorph ``within'' its parent.  @strong{Pick
 up} grabs a morph ``out'' of its parent.
@@ -181,7 +211,7 @@ instances of a class.
 
 @node Building your specialized Morph
 @section Building your specialized Morph
-@cindex morph, subclass
+@cindex morph @subentry subclass
 Let's make a simple subclass which changes color when
 @kbd{Left-Click}ed.  Create a new class just as we did with Spacewar!
 but subclass EllipseMorph with #ColorClickEllipse.
@@ -192,6 +222,7 @@ but subclass EllipseMorph with #ColorClickEllipse.
              poolDictionaries: ''
              category: 'Spacewar!!'}
 
+@cindex event @subentry testing
 @kbd{Right-Click} on the @strong{Message Category} pane and select
 @strong{new category...}.  This brings up a number of selections and
 allows us to create new ones.  Select ``event handling testing''.
@@ -202,6 +233,7 @@ Then add the method @smalltalk{ColorClickEllipse>>handlesMouseDown:}.
   ^true
 }
 
+@cindex event @subentry handling
 Likewise, add a new catagory ``event handing'' and add the other
 method we need.
 

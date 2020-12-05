@@ -435,7 +435,7 @@ in the @strong{arithmetic} method category of the @class{String}
 class?}}
 
 
-@cindex class @subentry instance method
+@cindex method @subentry instance method
 In the Browser, once a method is selected -- in
 @ref{ch02-browserDetailed}, @method{abs} method -- the bottom part
 shows its source code, ready to be explored or edited. Again, often,
@@ -484,8 +484,8 @@ representing the involved entities:
 
 @end enumerate
 
-@cindex browser, class category (new)
-@cindex class, category (new)
+@cindex browser @subentry class category (new)
+@cindex class @subentry category (new)
 Before defining these classes in @cuis{}, we want to create a
 dedicated class category to group them there.
 

@@ -40,6 +40,7 @@ the event objects holding the information of the captured events. In
 @cuis{}, the class @class{MorphicEvent} and its subclasses represent
 the diversity of events in the system.
 
+@cindex event @subentry classes
 @format
 @class{MorphicEvent}
    @class{DropEvent}
@@ -87,11 +88,13 @@ are each moving just a bit, in sequence.
 @c event-handling->events-preference
 @c events->events-handling
 
-In @ref{A brief introduction to Inspectors}, we explained how to
-set properties for morph instance to handle specific event. In this
+@cindex event @subentry testing
+@cindex event @subentry handling
+In @ref{A brief introduction to Inspectors}, we explained how to set
+properties for morph instance to handle specific event. In this
 circumstance, one property informed @cuis{} we were interested by a
 given event (@smalltalk{#handlesMouseDown}), a second property defined
-the behavior with a block of code when this event occurred.
+the behavior with a block of code to execute when this event occurred.
 
 Alternatively, to handle events in a given morph class, we define the
 behavior with instance methods. In the @class{Morph} class, observe
@@ -122,7 +125,7 @@ specify this."
 
    @return{} self hasProperty: #'handlesMouseDown:'}
 
-As defined by default this method, and the other handles, checks if
+As defined by default, this method, and the other handles, checks if
 there is a homonym property. In a specific morph where we want to
 handle mouse down event, we just redefine it to return true:
 
@@ -139,8 +142,8 @@ mouse button 1 is pressed:
    self setNextDirectionFromEvent: aMouseBtnEvent.
    self scrollByPage}
 
-To discover other events available for your morph, proceed as
-described above.
+To discover other events available for your morph, explore with the
+System Browser as described above.
 
 @node Spacewar! Events
 @section Spacewar! Events
@@ -152,10 +155,12 @@ In our design, an unique morph, @class{SpaceWar} instance, models the
 game play. Therefore we want this instance to handle the events
 described above.
 
-@cindex event, mouse
+@cindex event @subentry mouse
 @cindex mouse
 @subsection Mouse event
 
+
+@cindex event @subentry testing @subentry mouse over
 @subsubheading Mouse cursor enters game play
 We want to catch event when the mouse cursor moves over our
 @class{SpaceWar} morph.
@@ -169,6 +174,7 @@ Once we make explicit we want the game play to receive mouse move over
 events, we need to set the behavior accordingly with dedicated
 methods.
 
+@cindex event @subentry handling @subentry mouse enter
 Each time the mouse cursor enters the game play, we want:
 
 @itemize
@@ -194,6 +200,7 @@ Each time the mouse cursor enters the game play, we want:
 sent to the game play to be notified the mouse cursor enters the game
 play area?  How should be written the matching method?}}
 
+@cindex event @subentry handling @subentry mouse enter
 @subsubheading Mouse cursor leaves game play 
 We also want to be informed when the mouse cursor leaves our
 @class{SpaceWar} morph. Thanks to the work done in
@@ -220,8 +227,8 @@ sent to the game play to be notified the mouse cursor leaves the game
 play area?  How should be written the matching method?}}
 
 In graphic user interface, a visual effect is often used to inform the
-user the keyboard focus changed. In Spacewar! we make the game play
-background to change depending on the sate of the keyboard focus.
+user the keyboard focus changed. In Spacewar! we change the game play
+background depending on the sate of the keyboard focus.
 
 In @ref{ch08-Focus}, at the left keyboard focus is on the game; at the
 right keyboard focus not on the game, it is paused and when can see
@@ -241,8 +248,9 @@ SpaceWar>>keyboardFocusChange: gotFocus
       ifFalse: [color @assign{} self defaultColor alpha: 0.5].
    self redrawNeeded}
 
-@cindex event, keyboard
+@cindex event @subentry keyboard
 @subsection Keyboard event
+@cindex event @subentry testing @subentry keyboard
 To control the space ships, we use the keyboard. Therefore we want the
 game play be notified of the keyboard events.
 
@@ -250,6 +258,7 @@ game play be notified of the keyboard events.
 out which method should return true to let the game be notified of
 keyboard event.}}
 
+@cindex event @subentry handling @subentry keyboard
 We can decide to be notified of the key down or key up event and also
 key down then up event (@dfn{key stroke}). As long as our
 @class{SpaceWar} morph responds true to the @msg{handlesKeyboard}
