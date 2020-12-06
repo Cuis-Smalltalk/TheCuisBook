@@ -121,7 +121,7 @@ back at any time with a mouse click.
 @figure{Drag construction handle to change size,ch06-03-DragToEnlarge,4}
 
 Now that you know this, move the yellow lower right handle with tool
-tip @strong{Change size} via @dfn{Click-Drag}.  Just hold down the
+tip @label{Change size} via @dfn{Click-Drag}.  Just hold down the
 left mouse button while the cursor is over the handle, move the cursor
 to the right and down, and release the mouse button.
 
