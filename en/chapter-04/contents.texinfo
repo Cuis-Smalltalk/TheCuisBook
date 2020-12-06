@@ -874,7 +874,7 @@ determined by the @method{stepTime} method:
 @smalltalkExampleCaption{Regular refresh of the game play, reflreshGamePlay,
 SpaceWar>>stepTime
 "millisecond"
-   ^ 20
+   @return{} 20
 
 SpaceWar>>stepAt: millisecondSinceLast
    ../..

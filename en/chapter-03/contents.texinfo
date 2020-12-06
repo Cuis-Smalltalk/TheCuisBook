@@ -780,7 +780,7 @@ methods:
 @smalltalkExample{findString: subString
    "Answer the index of subString within the receiver, starting at
    start. If the receiver does not contain subString, answer 0."
-   ^self findString: subString startingAt: 1.}
+   @return{} self findString: subString startingAt: 1.}
 
 Or:
 
@@ -1028,7 +1028,7 @@ It describes itself as:
 The getter @method{mass} on @class{SpaceShip} is written as:
 
 @smalltalkExample{SpaceShip>>mass
-   ^ mass}
+   @return{} mass}
 
 The @smalltalk{SpaceShip>>} part is not valid code and should not be
 written in the Browser. It is a text convention to inform the reader
@@ -1080,7 +1080,7 @@ variable and edit the @method{mass} method to return a literal number:
 
 @smalltalkExampleCaption{A method returning a constant, methodConstant,
 SpaceShip>>mass
-   ^ 1}
+   @return{} 1}
 
 
 @anchor{simpleControls}

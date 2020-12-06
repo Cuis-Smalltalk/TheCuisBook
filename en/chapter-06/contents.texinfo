@@ -270,7 +270,7 @@ Then add the method @smalltalk{ColorClickEllipse>>handlesMouseDown:}.
 
 @smalltalkExample{handlesMouseDown: aMouseButtonEvent
   "Answer that I do handle mouseDown events''
-  ^true
+  @return{} true
 }
 
 @cindex event @subentry handling
@@ -469,7 +469,7 @@ initialization and its mass:
   acceleration @assign{} 0
         
 Mobile>>mass
-  ^ 1}
+  @return{} 1}
 
 The next methods to add are the ones relative to the mechanics
 calculus. First, the gravity acceleration calculus:
