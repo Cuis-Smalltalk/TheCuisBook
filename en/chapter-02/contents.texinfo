@@ -556,7 +556,7 @@ we use the Installed Packages tool.
 
 @figure{Installed Package window,ch02-InstalledPackages,8}
 
-@cindex package @subentry load
+@cindex package @subentry load @subentry by graphic interface
 A file @file{Spacewar!.pck.st} is created along the @cuis{} image
 file.  Every time a package needs to be loaded in a fresh @cuis{}
 environment, use the File List tool:

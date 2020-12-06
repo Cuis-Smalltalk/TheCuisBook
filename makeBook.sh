@@ -46,7 +46,7 @@ function doInfo {
 
 function doHtml {
     prepareDestination $htmlDest
-    cp style.css $lang/$htmlDest
+    cp misc/style.css $lang/$htmlDest
     cd $lang
 #    texi2any --no-validate -I $imgPath --output=$htmlDest/ --html --css-ref=style.css $masterDoc
     texi2any -I $imgPath --output=$htmlDest/ --html --css-ref=style.css $masterDoc
