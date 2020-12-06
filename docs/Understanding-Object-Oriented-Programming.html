@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 3, 2020
+Compilation : December 6, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -187,6 +187,7 @@ message in different, but appropriate ways.
 </p>
 <span id="index-instance-2"></span>
 <span id="index-class-9"></span>
+<span id="index-method-3"></span>
 <p>We have already met fractions. Those fractions are objects called
 <em>instance</em>s of the class <code>Fraction</code>. To create an instance
 we wrote <code>5 / 4</code>, the mechanism is based on message sending
@@ -241,7 +242,8 @@ instantiated with the <code>#/</code> message:
 elements from the array given in argument; <em><code>newFrom:</code></em> is
 another class method.
 </p>
-<span id="index-class-10"></span>
+<span id="index-instance-3"></span>
+<span id="index-method-4"></span>
 <span id="index-polymorphism-1"></span>
 <p>Now observe the hierarchy of the Number class:
 </p>
@@ -272,7 +274,7 @@ descendants of the <code>Number</code> class. We have already learned about the
 called an <em>instance method</em>. This method is defined in both the
 <code>Number</code> and <code>Fraction</code> classes.
 </p>
-<span id="index-method-2"></span>
+<span id="index-method-5"></span>
 <p>Let&rsquo;s examine this method in <code>Number</code>:
 </p><div class="display">
 <pre class="display"><span class="sansserif">Number&gt;&gt;squared
@@ -298,7 +300,7 @@ numerator and denominator being squared.
 This alternate <code>squared</code> method, ensures a fraction instance is
 returned.
 </p>
-<span id="index-method-3"></span>
+<span id="index-method-6"></span>
 <span id="index-overriding"></span>
 <p>When message <code>#squared</code> is sent to a number, different methods are
 executed depending on the number is a fraction or another other kind of
@@ -336,7 +338,7 @@ receiver.&quot;
 subclasses. Nevertheless, there are several classes overriding it for
 specialized or optimized cases.
 </p>
-<span id="index-method-4"></span>
+<span id="index-method-7"></span>
 <p>For example, regarding large positive integer, <code>abs</code> is
 empty. Indeed, <strong>in the absence of explicitly returned value, the
 default returned value is the instance itself</strong>, in our situation the

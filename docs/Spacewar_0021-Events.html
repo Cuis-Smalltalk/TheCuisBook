@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 3, 2020
+Compilation : December 6, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -99,10 +99,12 @@ when the mouse cursor moves out/in of the game play.
 game play. Therefore we want this instance to handle the events
 described above.
 </p>
-<span id="index-event_002c-mouse"></span>
+<span id="index-event-5"></span>
 <span id="index-mouse"></span>
 <span id="Mouse-event"></span><h4 class="subsection">8.3.1 Mouse event</h4>
 
+
+<span id="index-event-6"></span>
 <span id="Mouse-cursor-enters-game-play"></span><h4 class="subsubheading">Mouse cursor enters game play</h4>
 <p>We want to catch event when the mouse cursor moves over our
 <code>SpaceWar</code> morph.
@@ -120,6 +122,7 @@ class should we implement this method?</em>
 events, we need to set the behavior accordingly with dedicated
 methods.
 </p>
+<span id="index-event-7"></span>
 <p>Each time the mouse cursor enters the game play, we want:
 </p>
 <ul>
@@ -153,6 +156,7 @@ play area?  How should be written the matching method?</em>
 
 
 <div class="float-caption"><p><strong>Exercise 8.2: </strong>Handle mouse enter event</p></div></div>
+<span id="index-event-8"></span>
 <span id="Mouse-cursor-leaves-game-play"></span><h4 class="subsubheading">Mouse cursor leaves game play</h4>
 <p>We also want to be informed when the mouse cursor leaves our
 <code>SpaceWar</code> morph. Thanks to the work done in
@@ -187,8 +191,8 @@ play area?  How should be written the matching method?</em>
 
 <div class="float-caption"><p><strong>Exercise 8.3: </strong>Handle mouse leave event</p></div></div>
 <p>In graphic user interface, a visual effect is often used to inform the
-user the keyboard focus changed. In Spacewar! we make the game play
-background to change depending on the sate of the keyboard focus.
+user the keyboard focus changed. In Spacewar! we change the game play
+background depending on the sate of the keyboard focus.
 </p>
 <p>In <a href="#ch08_002dFocus">Figure 8.1</a>, at the left keyboard focus is on the game; at the
 right keyboard focus not on the game, it is paused and when can see
@@ -213,8 +217,9 @@ matching <code>SpaceWar</code>&rsquo;s method <code>keyboardFocusChange:</code>
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 8.1: </strong>Spacewar! keyboard focus effect</p></div></div>
-<span id="index-event_002c-keyboard"></span>
+<span id="index-event-9"></span>
 <span id="Keyboard-event"></span><h4 class="subsection">8.3.2 Keyboard event</h4>
+<span id="index-event-10"></span>
 <p>To control the space ships, we use the keyboard. Therefore we want the
 game play be notified of the keyboard events.
 </p>
@@ -227,6 +232,7 @@ keyboard event.</em>
 
 
 <div class="float-caption"><p><strong>Exercise 8.4: </strong>Get notified of keyboard event</p></div></div>
+<span id="index-event-11"></span>
 <p>We can decide to be notified of the key down or key up event and also
 key down then up event (<em>key stroke</em>). As long as our
 <code>SpaceWar</code> morph responds true to the <code>#handlesKeyboard</code>

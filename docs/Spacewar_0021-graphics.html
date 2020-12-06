@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 3, 2020
+Compilation : December 6, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -90,9 +90,9 @@ ul.no-bullet {list-style: none}
 Previous: <a href="Building-your-specialized-Morph.html" accesskey="p" rel="prev">Building your specialized Morph</a>, Up: <a href="Visual-with-Morph.html" accesskey="u" rel="up">Visual with Morph</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Spacewar_0021-graphics-1"></span><h3 class="section">6.5 Spacewar! graphics</h3>
+<span id="Spacewar_0021-graphics-1"></span><h3 class="section">6.6 Spacewar! graphics</h3>
 
-<span id="All-Morphs"></span><h4 class="subsection">6.5.1 All Morphs</h4>
+<span id="All-Morphs"></span><h4 class="subsection">6.6.1 All Morphs</h4>
 <p>Previously we defined the actors of the game as subclasses of the very
 general <code>Object</code> class (See
 <a href="Spacewar_0021-States-and-Behaviors.html#torpedoClassVariables">Example 3.14</a>). However the game play, the central star,
@@ -173,7 +173,7 @@ star, space ships and torpedoes are <em>sub morphs</em> of a
    torpedoes &#x2190; OrderedCollection new</span>
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 6.1: </strong>Complete code to initialize the Spacewar! actors</p></div></div>
+<div class="float-caption"><p><strong>Example 6.3: </strong>Complete code to initialize the Spacewar! actors</p></div></div>
 <p>There are two important messages: <code>#addMorph:</code> and
 <code>#morphPosition:</code>. The former asks to the receiver morph to embed
 its morph argument as a sub morph, the later asks to set the receiver
@@ -193,7 +193,7 @@ morphPosition</code> and each time we need to modify the position we write
 </p>
 
 <span id="index-refactoring"></span>
-<span id="The-art-of-refactoring"></span><h4 class="subsection">6.5.2 The art of refactoring</h4>
+<span id="The-art-of-refactoring"></span><h4 class="subsection">6.6.2 The art of refactoring</h4>
 <p>In our <a href="Spacewar_0021-models.html#newtonModel">newtonian model</a> we explained the
 space ships are subjected to the engine acceleration and the gravity
 pull of the central star. The equations are described in
@@ -265,7 +265,7 @@ understandable and logic.
    category: &rsquo;Spacewar!&rsquo;</span>
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 6.2: </strong>Mobile in the game play</p></div></div>
+<div class="float-caption"><p><strong>Example 6.4: </strong>Mobile in the game play</p></div></div>
 <div class="float"><span id="refactoryShipTorpedo"></span>
 <blockquote class="indentedblock">
 <p><em>What should be the refactored definitions of the
@@ -299,7 +299,7 @@ calculus. First, the gravity acceleration calculus:
    &#x2191; -10 * self mass * owner starMass / (position r raisedTo: 3) * position</span>
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 6.3: </strong>Calculate the gravity force</p></div></div>
+<div class="float-caption"><p><strong>Example 6.5: </strong>Calculate the gravity force</p></div></div>
 <p>It deserves a few comments:
 </p><ul>
 <li> <code>self morphPosition</code> returns a <code>Point</code>
@@ -354,7 +354,7 @@ morph way to access the mobile&rsquo;s position:
      self morphPosition: self morphPosition negated]</span>
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 6.4: </strong><code>Mobile</code>&rsquo;s <code>update:</code> method</p></div></div>
+<div class="float-caption"><p><strong>Example 6.6: </strong><code>Mobile</code>&rsquo;s <code>update:</code> method</p></div></div>
 <p>Now we should add the two methods to detect when a mobile is heading
 to deep space:
 </p>
@@ -370,7 +370,7 @@ Mobile&gt;&gt;isGoingOuterSpace
    &#x2191; (self morphPosition dotProduct: velocity) &gt; 0</span>
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 6.5: </strong>Test when a mobile is going deep space</p></div></div>
+<div class="float-caption"><p><strong>Example 6.7: </strong>Test when a mobile is going deep space</p></div></div>
 <p>As you see, these test methods are simple and short. When writing
 Cuis-Smalltalk code, this is something we appreciate a lot and we do not
 hesitate to cut a long method in several small methods. It improves
@@ -447,7 +447,7 @@ Torpedo&gt;&gt;initialize
    acceleration &#x2190; 4000</span>
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 6.6: </strong>Initialize overriding in the <code>Mobile</code>
+<div class="float-caption"><p><strong>Example 6.8: </strong>Initialize overriding in the <code>Mobile</code>
 hierarchy</p></div></div>
 <p>Observe how each class is only responsible of its specific state
 initialization:

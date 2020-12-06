@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 3, 2020
+Compilation : December 6, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -90,11 +90,11 @@ ul.no-bullet {list-style: none}
 Next: <a href="Spacewar_0021-graphics.html" accesskey="n" rel="next">Spacewar! graphics</a>, Previous: <a href="A-brief-introduction-to-Inspectors.html" accesskey="p" rel="prev">A brief introduction to Inspectors</a>, Up: <a href="Visual-with-Morph.html" accesskey="u" rel="up">Visual with Morph</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Building-your-specialized-Morph-1"></span><h3 class="section">6.4 Building your specialized Morph</h3>
-<span id="index-morph_002c-subclass"></span>
+<span id="Building-your-specialized-Morph-1"></span><h3 class="section">6.5 Building your specialized Morph</h3>
+<span id="index-morph-6"></span>
 <p>Let&rsquo;s make a simple subclass which changes color when
 <kbd>Left-Click</kbd>ed.  Create a new class just as we did with Spacewar!
-but subclass EllipseMorph with #ColorClickEllipse.
+but subclass <code>EllipseMorph</code> with <code>#ColorClickEllipse</code>.
 </p>
 <div class="display">
 <pre class="display"><span class="sansserif">EllipseMorph subclass: #ColorClickEllipse
@@ -104,8 +104,9 @@ but subclass EllipseMorph with #ColorClickEllipse.
              category: &rsquo;Spacewar!!&rsquo;</span>
 </pre></div>
 
-<p><kbd>Right-Click</kbd> on the <strong>Message Category</strong> pane and select
-<strong>new category...</strong>.  This brings up a number of selections and
+<span id="index-event"></span>
+<p><kbd>Right-Click</kbd> on the <code>Message Category</code> pane and select
+<code>new category...</code>.  This brings up a number of selections and
 allows us to create new ones.  Select &ldquo;event handling testing&rdquo;.
 Then add the method <code>ColorClickEllipse&gt;&gt;handlesMouseDown:</code>.
 </p>
@@ -116,6 +117,7 @@ Then add the method <code>ColorClickEllipse&gt;&gt;handlesMouseDown:</code>.
 </span>
 </pre></div>
 
+<span id="index-event-1"></span>
 <p>Likewise, add a new catagory &ldquo;event handing&rdquo; and add the other
 method we need.
 </p>
@@ -126,13 +128,14 @@ method we need.
 </pre></div>
 
 <p>Now, you have created a new Morph class and can select a
-ColorClickEllipse from the World Menu <strong>New Morph..</strong> and try it
-out.  These are fun to <kbd>Left-Click</kbd> on.  Make as many as you want!
+<code>ColorClickEllipse</code> from the World Menu <code>New Morph..</code> and
+try it out.  These are fun to <kbd>Left-Click</kbd> on.  Make as many as
+you want!
 </p>
 <div class="float"><span id="ch06_002d15_002dColorClickEllipse"></span>
 <div align="center"><img src="ch06-15-ColorClickEllipse.png" alt="ch06-15-ColorClickEllipse">
 </div>
-<div class="float-caption"><p><strong>Figure 6.13: </strong>Obtain ColorClickEllipse</p></div></div>
+<div class="float-caption"><p><strong>Figure 6.13: </strong>Obtain a <code>ColorClickEllipse</code></p></div></div>
 <p>Now you know how to specialize an individual morph, or make a whole
 new class of them!
 </p>

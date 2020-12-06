@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 3, 2020
+Compilation : December 6, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -59,7 +59,7 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="index.html" rel="up" title="Top">
-<link href="Ellipse-Morph.html" rel="next" title="Ellipse Morph">
+<link href="Installing-a-Package.html" rel="next" title="Installing a Package">
 <link href="Spacewar_0021_0027s-methods.html" rel="prev" title="Spacewar!'s methods">
 <style type="text/css">
 <!--
@@ -92,9 +92,39 @@ Next: <a href="The-Fundamentals-of-Morph.html" accesskey="n" rel="next">The Fund
 <hr>
 <span id="Visual-with-Morph-1"></span><h2 class="chapter">6 Visual with Morph</h2>
 
-<p>Every object you see in Cuis-Smalltalk is a <code>Morph</code> or is composed
-of <code>Morph</code>s.  Basically, a <code>Morph</code> is an object with
-state and behavior that can also depict itself on a computer
+
+<p>What would we expect if we ask for good support for building GUIs in a
+programming system?
+</p>
+<p>All modern computers (and phones, etc) have high resolution color
+displays. Any software running on them, that is accessible to a user,
+needs to show stuff on that Display.
+</p>
+<p>Conventional UI managers (that is, Operating Systems and Web Browsers)
+started by including only the most basic GUI elements first: basic
+text editors, buttons, simple lists, scrolling for large content, and
+(usually) multiple resizeable overlapping windows. Anything else needs
+to be handled via additional libraries. While there are libraries for
+handling richer content (D3.js and Matplotlib are examples), the
+result is not consistent, neither for developers nor for users.
+</p>
+<p>Cuis-Smalltalk takes a different approach, pioneered by Smalltalk-80 and
+especially Self.
+<span id="index-to-be-written_002c-Need-a-reference"></span>
+<strong>To be written.</strong> Need a reference.
+</p>
+<p>We take the high quality Display for granted, as a mouse, finger or
+other pointing device. And we build on the objective of providing
+ample possibilities for GUIs both in existing, and in novel styles and
+designs, yet to be invented. Additionally, in the usual Smalltalk way,
+all the framework code is available for study and modification: there
+are no third party libraries, and only the lowest level code is
+precompiled, but it still can be overriden or changed.
+</p>
+
+<p>Therefore every object you see in Cuis-Smalltalk is a <code>Morph</code> or is
+composed of <code>Morph</code>s.  Basically, a <code>Morph</code> is an object
+with state and behavior that can also depict itself on a computer
 display screen.
 </p>
 <p>Because Morphs are useful, when you look at
@@ -104,18 +134,26 @@ But the basic ideas are quite simple.
 </p>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="Ellipse-Morph.html" accesskey="1">Ellipse Morph</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="Installing-a-Package.html" accesskey="1">Installing a Package</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Submorph.html" accesskey="2">Submorph</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="Ellipse-Morph.html" accesskey="2">Ellipse Morph</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="A-brief-introduction-to-Inspectors.html" accesskey="3">A brief introduction to Inspectors</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="Submorph.html" accesskey="3">Submorph</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Building-your-specialized-Morph.html" accesskey="4">Building your specialized Morph</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="A-brief-introduction-to-Inspectors.html" accesskey="4">A brief introduction to Inspectors</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Spacewar_0021-graphics.html" accesskey="5">Spacewar! graphics</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="Building-your-specialized-Morph.html" accesskey="5">Building your specialized Morph</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Spacewar_0021-graphics.html" accesskey="6">Spacewar! graphics</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="The-Fundamentals-of-Morph.html" accesskey="n" rel="next">The Fundamentals of Morph</a>, Previous: <a href="Control-Flow-Messaging.html" accesskey="p" rel="prev">Control Flow Messaging</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
 
 
 

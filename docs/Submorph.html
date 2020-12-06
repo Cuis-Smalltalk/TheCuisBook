@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 3, 2020
+Compilation : December 6, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -90,32 +90,34 @@ ul.no-bullet {list-style: none}
 Next: <a href="A-brief-introduction-to-Inspectors.html" accesskey="n" rel="next">A brief introduction to Inspectors</a>, Previous: <a href="Ellipse-Morph.html" accesskey="p" rel="prev">Ellipse Morph</a>, Up: <a href="Visual-with-Morph.html" accesskey="u" rel="up">Visual with Morph</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Submorph-1"></span><h3 class="section">6.2 Submorph</h3>
-<span id="index-morph_002c-submorph"></span>
-<span id="index-morph_002c-rectangle"></span>
+<span id="Submorph-1"></span><h3 class="section">6.3 Submorph</h3>
+<span id="index-morph-2"></span>
+<span id="index-morph-3"></span>
 <p>Morphs can contain other morphs.  These interior morphs are called
 <em>submorph</em>s of their containing morph. Again, you can do this by
 writing the software &ldquo;code&rdquo;, but let&rsquo;s do it directly with a
 <code>WidgetMorph</code>.
 </p>
-<p>First we obtain a WidgetMorph from the <strong>New morph...</strong> submenus.
+<p>First we obtain a <code>WidgetMorph</code> from the <code>New morph...</code>
+submenus. The <code>WidgetMorph</code> instance display itself as a
+rect with a border.
 </p>
 <div class="float"><span id="ch06_002d05_002dAddRectangle"></span>
 <div align="center"><img src="ch06-05-AddRectangle.png" alt="ch06-05-AddRectangle">
 </div>
-<div class="float-caption"><p><strong>Figure 6.4: </strong>Obtain a WidgetMorph</p></div></div>
-<p>Now drag the rect over the ellipse and <kbd>Middle-Click</kbd> on the rect
-and click on the blue construction handle to gets the rect&rsquo;s
-<em>Morph Menu</em>.  Use the menu selection <strong>embed into...</strong> and
+<div class="float-caption"><p><strong>Figure 6.4: </strong>Obtain a <code>WidgetMorph</code></p></div></div>
+<p>Now drag the rect over the ellipse and <kbd>Middle-Click</kbd> on the
+rect and click on the blue construction handle to gets the rect&rsquo;s
+<em>Morph Menu</em>.  Use the menu selection <code>embed into...</code> and
 select the ellipse as its new parent.
 </p>
 <div class="float"><span id="ch06_002d06_002dEmbedRectIntoEllipse"></span>
 <div align="center"><img src="ch06-06-EmbedRectIntoEllipse.png" alt="ch06-06-EmbedRectIntoEllipse">
 </div>
-<div class="float-caption"><p><strong>Figure 6.5: </strong>Make the Rect a Submorph of the
-Ellipse</p></div></div>
-<p>Now when you click-drag the ellipse, or use the <strong>Pick up</strong> or
-<strong>Move</strong> construction handles, the rect is just a decoration for
+<div class="float-caption"><p><strong>Figure 6.5: </strong>Make the rect a submorph of the
+ellipse</p></div></div>
+<p>Now when you click-drag the ellipse, or use the <code>Pick up</code> or
+<code>Move</code> construction handles, the rect is just a decoration for
 the ellipse.
 </p>
 <p>Indeed, the rect seems to have fused into the ellipse.  Using the

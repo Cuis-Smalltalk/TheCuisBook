@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 3, 2020
+Compilation : December 6, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -94,11 +94,13 @@ Next: <a href="Spacewar_0021-Events.html" accesskey="n" rel="next">Spacewar! Eve
 
 
 
-<p>In <a href="A-brief-introduction-to-Inspectors.html">A brief introduction to Inspectors</a>, we explained how to
-set properties for morph instance to handle specific event. In this
+<span id="index-event-3"></span>
+<span id="index-event-4"></span>
+<p>In <a href="A-brief-introduction-to-Inspectors.html">A brief introduction to Inspectors</a>, we explained how to set
+properties for morph instance to handle specific event. In this
 circumstance, one property informed Cuis-Smalltalk we were interested by a
 given event (<code>#handlesMouseDown</code>), a second property defined
-the behavior with a block of code when this event occurred.
+the behavior with a block of code to execute when this event occurred.
 </p>
 <p>Alternatively, to handle events in a given morph class, we define the
 behavior with instance methods. In the <code>Morph</code> class, observe
@@ -131,7 +133,7 @@ specify this.&quot;
    &#x2191; self hasProperty: #&rsquo;handlesMouseDown:&rsquo;</span>
 </pre></div>
 
-<p>As defined by default this method, and the other handles, checks if
+<p>As defined by default, this method, and the other handles, checks if
 there is a homonym property. In a specific morph where we want to
 handle mouse down event, we just redefine it to return true:
 </p>
@@ -152,8 +154,8 @@ mouse button 1 is pressed:
    self scrollByPage</span>
 </pre></div>
 
-<p>To discover other events available for your morph, proceed as
-described above.
+<p>To discover other events available for your morph, explore with the
+System Browser as described above.
 </p>
 <hr>
 <div class="header">
