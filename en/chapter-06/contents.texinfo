@@ -346,7 +346,7 @@ as subclasses of the @class{Morph} class.}}
 
 As explained in the previous sections of this chapter, a morph can be
 embedded in another game. In Spacewar!, a @class{SpaceWar} morph
-instance representing the game play, it is the @emph{owner} of the central
+instance represents the game play, it is the @emph{owner} of the central
 star, space ship and torpedo morphs. Put in other words, the central
 star, space ships and torpedoes are @emph{sub morphs} of a
 @class{SpaceWar} morph instance.
@@ -408,31 +408,35 @@ torpedo should come with a mass.} and its engine acceleration; an
 agile space ship pilot could use gravity assist to accelerate a
 torpedo fired with a path close to the central star.
 
-@todo{It will be nice to have a dotted track of a torpedo using
-gravity assist.}
+@todo{It will be nice to have a dotted track of a torpedo using gravity assist.}
 
 What are the impacts of these considerations on the torpedo and space
 ship entities?
 
-Firstly, they will share @emph{common states} as the mass, the
-position, the velocity and the acceleration.
+@enumerate
 
-Secondly, they will share @emph{common behaviors} as the computation
-to update the position and velocity.
+  @item They will share @emph{common states} as the mass,
+  the position, the velocity and the acceleration.
 
-Thirdly, they will have @emph{different states}: a torpedo has a life
-span state while a space ship has fuel tank capacity and torpedoes
-stock states.
+  @item They will share @emph{common behaviors} as the
+  computation to update the position and velocity.
 
-Fourthly, they will have @emph{different behaviors}: a torpedo is self
-destroyed when its life span expires, a space ship fires torpedoes and
-accelerates as long as its fuel tank and its torpedoes count are not
-zero.
+  @item They will have @emph{different states}: a torpedo
+  has a life span state while a space ship has fuel tank capacity and
+  torpedoes stock states.
+
+  @item They will have @emph{different behaviors}: a
+  torpedo is self destroyed when its life span expires, a space ship
+  fires torpedoes and accelerates as long as its fuel tank and its
+  torpedoes count are not zero.
+
+@end enumerate
 
 Sharing states and behaviors along different states and behaviors are
 a strong indication that the @class{SpaceShip} and @class{Torpedo}
 classes should share a common ancestor class; one more specialized
 than the @class{Morph} class they currently share.
+
 
 Doing such analysis on the computer model of the game is part of the
 @dfn{refactoring} effort to avoid behavior and state duplications while
@@ -581,7 +585,7 @@ is found, if not a @emph{Message Not Understood} error is thrown.
 
 Among the specific added behaviors, the torpedo orientation along its
 velocity vector, it is inaccurate but nice looking; the life span
-control and the self destruction sequence; the engine acceleration
+control and the self-destruction sequence; the engine acceleration
 handling. When a torpedo is just fired, its engine acceleration is
 huge then it decreases quickly.
 
@@ -627,7 +631,7 @@ initialization:
    fuel @assign{} 500.
    torpedoes @assign{} 20}
 
- @item @strong{Torpedo.} Mechanic states initialized; self destroy
+ @item @strong{Torpedo.} Mechanic states initialized; self-destroy
  sequence initialized and acceleration adjusted to mimic the torpedo
  boost at fire up.
 
