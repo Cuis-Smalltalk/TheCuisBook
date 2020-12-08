@@ -54,11 +54,11 @@ At its simplest, an object has two components:
    method with that name known by its class or superclass.
 
 @end itemize
+
 @cindex class
 @cindex subclass
 @cindex instance
 @cindex selector
-
 The method name is called a @dfn{selector} because it is used to select
 which behavior is invoked. For example, in @smalltalk{'hello' at: 1 put: $B},
 the method invoked has the selector @smalltalk{#at:put:} and the arguments
@@ -75,7 +75,7 @@ and the classes it inherits from define this common behavior,
 as we will now describe.
 
 
-@cindex variable (instance)
+@cindex variable @subentry instance
 @cindex instance variable
 A given class declares its internal variables -- states -- and the
 behavior by implementing the methods.  A variable is basically a named
@@ -497,10 +497,10 @@ to start with are:
 
 @end itemize
 
-
-@cindex method @subentry category
 @node Kernel-Numbers
 @section Kernel-Numbers
+@cindex method @subentry category
+
 The top hierarchy @class{Number} class shows most of the behaviors
 inherited by the subclasses as @class{Float}, @class{Integer} and
 @class{Fraction}. The Smalltalk way to learn about a behavior is to
@@ -660,6 +660,7 @@ the integer 360 by 1024@comma{} without using the multiplication operation?}}
 
 @subheading Hiatus with decimal numbers
 @cindex number @subentry decimal
+
 We saw decimal numbers are written with a dot ``.'' to separate the
 integer and the decimal parts: @smalltalk{1.5}, @smalltalk{1235.021}
 or @smalltalk{0.5}. The number @smalltalk{0.00004} is more easily

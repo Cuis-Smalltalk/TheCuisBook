@@ -155,13 +155,13 @@ In our design, an unique morph, @class{SpaceWar} instance, models the
 game play. Therefore we want this instance to handle the events
 described above.
 
+@subsection Mouse event
 @cindex event @subentry mouse
 @cindex mouse
-@subsection Mouse event
 
-
-@cindex event @subentry testing @subentry mouse over
 @subsubheading Mouse cursor enters game play
+@cindex event @subentry testing @subentry mouse over
+
 We want to catch event when the mouse cursor moves over our
 @class{SpaceWar} morph.
 
@@ -200,8 +200,9 @@ Each time the mouse cursor enters the game play, we want:
 sent to the game play to be notified the mouse cursor enters the game
 play area?  How should be written the matching method?}}
 
-@cindex event @subentry handling @subentry mouse enter
 @subsubheading Mouse cursor leaves game play 
+@cindex event @subentry handling @subentry mouse enter
+
 We also want to be informed when the mouse cursor leaves our
 @class{SpaceWar} morph. Thanks to the work done in
 @ref{handleMouseOver}, we already informed @cuis{} we want to be
@@ -248,9 +249,10 @@ SpaceWar>>keyboardFocusChange: gotFocus
       ifFalse: [color @assign{} self defaultColor alpha: 0.5].
    self redrawNeeded}
 
-@cindex event @subentry keyboard
 @subsection Keyboard event
+@cindex event @subentry keyboard
 @cindex event @subentry testing @subentry keyboard
+
 To control the space ships, we use the keyboard. Therefore we want the
 game play be notified of the keyboard events.
 

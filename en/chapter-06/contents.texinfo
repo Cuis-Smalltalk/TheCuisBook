@@ -387,8 +387,9 @@ morphPosition} and each time we need to modify the position we write
 
 
 @c refactor ship and torpedo as mobile entity
-@cindex refactoring
 @subsection The art of refactoring
+@cindex refactoring
+
 In our @ref{newtonModel,, newtonian model} we explained the
 space ships are subjected to the engine acceleration and the gravity
 pull of the central star. The equations are described in

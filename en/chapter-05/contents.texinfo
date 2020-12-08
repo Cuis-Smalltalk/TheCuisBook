@@ -43,9 +43,10 @@ Expressions are composed of the following building blocks:
 
 @end enumerate
 
-@cindex pseudo-variables
 @node Pseudo-variables
 @section Pseudo-variables
+@cindex pseudo-variables
+
 In Smalltalk, there are 6 reserved keywords, or pseudo-variables:
 
 @indentedblock
@@ -102,9 +103,9 @@ code is executed.
 
 @end itemize
 
-@cindex method
 @node Method syntax
 @section Method syntax
+@cindex method
 
 Whereas expressions may be evaluated anywhere in @cuis{} (for example,
 in a workspace, in a debugger, or in a browser), methods are normally
@@ -167,9 +168,10 @@ sends the @msg{allClasses} method to a dictionary named @smalltalk{Smalltalk}.
 As with any other object, you can inspect this dictionary.  You can note a case of
 self-reference here: the value of @smalltalk{Smalltalk at: #Smalltalk} is @smalltalk{Smalltalk}.
 
-@cindex block
 @node Block syntax
 @section Block syntax
+@cindex block
+
 Blocks provide a mechanism to defer the evaluation of expressions. A
 block is essentially an anonymous function. A block is evaluated by
 sending it the message @msg{value}. The block answers the value of the
@@ -258,19 +260,21 @@ SpaceWar>>teleport: aShip
     morphPosition: randomCoordinate value @@ randomCoordinate value}
 
 
-@cindex control flow
 @node Control flow with block and message
 @section Control flow with block and message
+@cindex control flow
+
 Deciding to send this message instead of that one is called @dfn{control flow} --
 controlling the flow of a computation.
 Smalltalk offers no special constructs for control flow.
 Decision logic is expressed by sending messages to booleans, numbers
 and collections, with blocks as arguments.
 
+@subheading Test
 @cindex control flow @subentry test
 @cindex test
 @cindex boolean
-@subheading Test
+
 Conditionals are expressed by sending one of the messages
 @msg{ifTrue:}, @msg{ifFalse:} or @msg{ifTrue:ifFalse:} to the result
 of a boolean expression:
@@ -367,9 +371,10 @@ and slow it down by a factor of 2"
      self morphPosition: self morphPosition negated]}
 
 
+@subheading Loop
 @cindex control flow @subentry loop
 @cindex loop
-@subheading Loop
+
 Loops are typically expressed by sending messages to blocks, integers
 or collections. Since the exit condition for a loop may be repeatedly
 evaluated, it should be a block rather than a boolean value. Here is
@@ -416,8 +421,9 @@ You are already acquainted to the writing of simple methods for the
 Spacewar! game. We will write some more and learn how to categorize
 them.
 
-@cindex method @subentry creating
 @subsection Initializing the game play
+@cindex method @subentry creating
+
 We want to add the @method{initialize} method to our @class{SpaceWar}
 class. Of course we need to use the System Browser:
 ...@clicksequence{World menu @click{} @label{Open...} @click{}

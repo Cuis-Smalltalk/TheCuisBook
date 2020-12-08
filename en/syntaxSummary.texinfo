@@ -37,7 +37,7 @@
 
 
 @table @strong
- @cindex variable, local
+ @cindex variable @subentry local
  @item Local variables.
 
  @smalltalk{startPoint} is a variable name, or identifier. By
@@ -47,7 +47,7 @@
  temporary variable must be lower case. This indicates to the reader
  that the variable has a private scope.
 
- @cindex variable, shared
+ @cindex variable @subentry shared
  @item Shared variables
 
  Identifiers that start with upper case letters are global variables,
@@ -65,7 +65,7 @@
  assign to it.
 
  @cindex integer (see number)
- @cindex number, integer
+ @cindex number @subentry integer
  @item Integers.
 
  In addition to ordinary decimal integers like @smalltalk{42}, @cuis{}
@@ -73,7 +73,7 @@
  (i.e., binary), which is equal to decimal 5.
 
  @cindex float (see number)
- @cindex number, float
+ @cindex number @subentry float
  @item Float point numbers.
 
  Floating point numbers can be specified with their base-ten exponent:
@@ -104,7 +104,7 @@
  @smalltalk{#Hello} but there may be multiple String objects with the
  value @smalltalk{'Hello'}.
 
- @cindex array, static
+ @cindex array @subentry static
  @item Static arrays.
 
  Static arrays or Compile-time arrays are defined by @smalltalk{#( )},
@@ -114,7 +114,7 @@
  elements: the integer @smalltalk{27}, the compile-time array containing the two
  booleans, and the symbol @smalltalk{#abc}.
 
- @cindex array, dynamic
+ @cindex array @subentry dynamic
  @item Dynamic arrays.
 
  Dynamic arrays or Run-time arrays. Curly braces @{ @} define a
@@ -132,7 +132,7 @@
  comment, not a string, and is ignored by the @cuis{}
  compiler. Comments may span multiple lines.
 
- @cindex variable (local), declaration
+ @cindex variable @subentry local @subentry declaration
  @item Local variable declarations.
 
  Vertical bars | | enclose the declaration of one or more local
@@ -164,20 +164,20 @@
  executed only if the primitive fails. The same syntax is also used
  for method annotations.
 
- @cindex message, unary
+ @cindex message @subentry unary
  @item Unary messages.
 
  Unary messages consist of a single word (like @msg{factorial})
  sent to a receiver (like 3).
 
- @cindex message, binary
+ @cindex message @subentry binary
  @item Binary messages.
 
  Binary messages are operators (like @smalltalk{+}) sent to a receiver
  and taking a single argument. In @smalltalk{3 + 4}, the receiver is
  @smalltalk{3} and the argument is @smalltalk{4}.
 
- @cindex message, keyword
+ @cindex message @subentry keyword
  @item Keyword messages.
 
  Keyword messages consist of multiple keywords (like

@@ -164,7 +164,9 @@ Note that many @class{String} methods are defined to return strings.
 @node Fun with variables
 @section Fun with variables
 @cindex variable
-@cindex variable (method)  @subentry declaration
+@cindex variable @subentry method
+@cindex method @subentry variable @seeentry{variable}
+
 How a variable can be fun? With @cuis{}, a variable is the name of a
 box that holds a value -- an object, that's it!
 

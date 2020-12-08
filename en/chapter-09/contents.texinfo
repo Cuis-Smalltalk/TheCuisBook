@@ -46,9 +46,9 @@ Another situation where you lost code is a virtual machine crash or to
 forget to save the image when quitting @cuis{}. In such situation
 there is a solution to recover your lost editing: the @dfn{ChangeSet}.
 
-@cindex change log
 @node The Change Log
 @section The Change Log
+@cindex change log
 
 @cuis{} records any action occurring in the environment: the code you
 edit in the System Browser, the code you execute in a
@@ -103,9 +103,9 @@ Now start again @cuis{}, then do ...@clicksequence{World menu
 Changes...}}. The system presents a list image snapshpots tagged with
 date stamp. Pick up the one occurring just before you lost your code.
 
-@cindex change set
 @node The Change Set
 @section The Change Set
+@cindex change set
 
 On a fresh @cuis{} installation, each code you edit in the System
 Browser is recorded in a @dfn{Change Set},
@@ -199,7 +199,8 @@ manage the code: a package.
 @node The Package
 @section The Package
 @cindex package
-@cindex class, category
+@cindex class @subentry category
+
 A package can hold a set of classes part of the same class category;
 we already discussed it in a previous chapter, see @ref{Spacewar!
 package}.
@@ -211,7 +212,7 @@ Installed Package tool, after pressing the @label{new} button we just
 key in @label{Spacewar} in.
 
 @c explain how to include class extension in a package
-@cindex package, prefix
+@cindex package @subentry prefix
 But we can do more. We can include several class categories in one
 package. Consider we want to span our CuisBook classes in two
 categories @label{TheCuisBook-Models} and @label{TheCuisBook-Views}, a
@@ -235,7 +236,7 @@ categories @label{TheCuisBook-Models} and
 class and the later a @class{TheBookMorph} class. Save the package
 on disk.}}
 
-@cindex package, system extension
+@cindex package @subentry system extension
 Imagine we need to print the page number of the @class{TheBook} table
 of contents as lower cased roman number, as we do with the printed
 version of this book. The code is very simple:
@@ -363,7 +364,7 @@ Things one may want to personalize in the image are:
 
 @end itemize
 
-@cindex line command option, -s (run a script)
+@cindex line command option @subentry -s (run a script)
 We want to record these image preferences in a
 @file{setUpEnvironment.st} script to be executed at start up. On
 GNU/Linux, you ask @cuis{} to run a script with the @option{-s}, for
@@ -382,7 +383,7 @@ handling.
 
 @figure{Environment of an image started with the set up script,ch10-ImageSetUp,12}
 
-@cindex morph, world
+@cindex morph @subentry world
 Let's start by removing the open windows:
 
 @smalltalkExample{| list |

@@ -62,10 +62,12 @@ The scripts you
 read and wrote were all about entities communicating with each other
 through messages.
 
-@cindex message @subentry send
 @node Messages sends definition
 @section Message sends definition
+@cindex message @subentry send
+
 There are three kinds of messages in @cuis{}:
+
 
 @itemize
 @cindex message @subentry unary
@@ -169,9 +171,10 @@ text and typing @kbd{Ctrl-p} results in the default, which is to
 return the object to which a message is sent, in this case the
 @class{Transcript}.
 
-@cindex string @subentry character access
 @node Message to string entities
 @section Message to string entities
+@cindex string @subentry character access
+
 Access to a character in a string is done with the keyword message
 @msg{at:} and its index position in the string as argument. Execute
 the following examples with the @kbd{Ctrl-p} shortcut:
@@ -333,10 +336,11 @@ sending (See @ref{motionEquations}):
 @smalltalkExampleCaption{Compute the gravity force vector,gravityVector,
 -10 * self mass * owner starMass / (position r raisedTo: 3) * position}
 
-@cindex tools @subentry system browser
-@cindex browser
 @node A brief introduction to the system Browser
 @section A brief introduction to the system Browser
+@cindex tools @subentry system browser
+@cindex browser
+
 Smalltalk organizes instance behaviors using classes.  
 A class is an object which holds the methods which react to
 the messages which are their names.

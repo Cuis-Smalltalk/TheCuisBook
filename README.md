@@ -53,14 +53,17 @@ not use tab unless the text editor converts it to spaces.
 **Index.** Index when important concepts are explained. We write index
 entry lowercase! Insert an index just after a section title, and just
 before a paragraph. The command to use is @cindex for conceptual
-index: `@cindex tools, workspace`
+index: `@cindex tools @subentry workspace`
 
 Regarding indexing message, here is the rule:
+
   * When the message name is meaningfull, index with messsage name
-    itself with the appropriate tag. For example `@cindex number, @msg{isPrime}`
+    itself with the appropriate tag. For example `@cindex number
+    @subentry @method{isPrime}`
+    
   * When the message name is not meaningfull enought or too long,
-    index with a meaning term. For examples, `@cindex number, as
-    words` for the message printStringWords; `@cindex number, base`
+    index with a meaning term. For examples, `@cindex number @subentry as
+    words` for the message printStringWords; `@cindex number @subentry base`
     for the message printStringBase:
 
 ### Macros and commands to use
