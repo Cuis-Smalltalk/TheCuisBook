@@ -115,7 +115,7 @@ icons.  If you pause the cursor over one of these, you get a @dfn{tool
 tip}, a temporary text popup who's name should give a clue to its
 usage.
 
-If you click elsewhere the construction handles leave, you get them
+If you click elsewhere the construction handles leave, but you can get them
 back at any time with a mouse click.
 
 @figure{Drag construction handle to change size,ch06-03-DragToEnlarge,4}
@@ -137,7 +137,7 @@ writing the software ``code'', but let's do it directly with a
 @class{WidgetMorph}.
 
 First we obtain a @class{WidgetMorph} from the @label{New morph...}
-submenus. The @class{WidgetMorph} instance display itself as a
+submenus. The @class{WidgetMorph} instance displays itself as a
 rect with a border.
 
 @figure{Obtain a @class{WidgetMorph},ch06-05-AddRectangle,7}
@@ -318,7 +318,7 @@ graphic shape:
   
 @end itemize
 
-Therefore it makes sense to turn these actors as kind of
+Therefore it makes sense to turn these actors into kinds of
 @class{Morph}s, the visual entity of @cuis{}. To do so, point a System
 Browser to the class definition of each actor, replace the parent
 class @class{Object} by @class{Morph}, then save the class definition
@@ -346,7 +346,7 @@ as subclasses of the @class{Morph} class.}}
 
 As explained in the previous sections of this chapter, a morph can be
 embedded in another game. In Spacewar!, a @class{SpaceWar} morph
-instance represents the game play, it is the @emph{owner} of the central
+instance presenting the game play, it is the @emph{owner} of the central
 star, space ship and torpedo morphs. Put in other words, the central
 star, space ships and torpedoes are @emph{sub morphs} of a
 @class{SpaceWar} morph instance.
@@ -371,12 +371,12 @@ SpaceWar>>initializeActors
 There are two important messages: @msg{addMorph:} and
 @msg{morphPosition:}. The former asks to the receiver morph to embed
 its morph argument as a sub morph, the later asks to set the receiver
-coordinates in its owner reference frame. From reading the code, you
+coordinates in its owner's reference frame. From reading the code, you
 deduce the origin of the owner reference frame is its middle,
 indeed our central star is in the middle of the game play.
 
 There is a third message not written here, @msg{morphPosition}, to ask
-the coordinates of the receiver in its owner reference frame.
+the coordinates of the receiver in its owner's reference frame.
 
 Remember our discussion about the @smalltalk{position} instance
 variable. Now you clearly understand it is redundant and we remove it
@@ -433,17 +433,18 @@ ship entities?
 
 @end enumerate
 
-Sharing states and behaviors along different states and behaviors are
-a strong indication that the @class{SpaceShip} and @class{Torpedo}
-classes should share a common ancestor class; one more specialized
+Shared state and behaviors suggest a common class.  Unshared states
+and behaviors suggests specialized subclasses which embody
+the differences.  So let us ``factor out'' the shared elements of
+the @class{SpaceShip} and @class{Torpedo}
+classes into a common ancestor class; one more specialized
 than the @class{Morph} class they currently share.
-
 
 Doing such analysis on the computer model of the game is part of the
 @dfn{refactoring} effort to avoid behavior and state duplications while
 making more obvious common logic in the entities. The general idea of
 code refactoring is to rework existing code to make it more elegant,
-understandable and logic.
+understandable and logical.
 
 To do so, we want to introduce a @class{Mobile} class, kind of
  @class{Morph} with behaviors specific to a mobile subjected to
@@ -559,7 +560,7 @@ the receiver morph whether the point in argument is inside its shape.
 @cindex overriding
 When a mobile is updated, its position and velocity are
 updated. However the @class{Mobile} subclasses @class{SpaceShip} or
-@class{Torpedo} may need additional specific update. In object
+@class{Torpedo} may need additional specific updates. In object
 oriented programming there is this special mechanism named
 @dfn{overriding} to achieve this.
 
@@ -591,9 +592,10 @@ handling. When a torpedo is just fired, its engine acceleration is
 huge then it decreases quickly.
 
 With the System Browser pointed to the @method{Torpedo>>update:}
-method, observe the @option{inheritance} button, it is green light, it
-indicates the message is sent to @smalltalk{super} too. It is a
-reminder it is a specialized behavior. The button tool tip explains
+method, observe the @option{inheritance} button, it is light green, which
+indicates the message is sent to @smalltalk{super} too. This is a
+reminder the method supplies a specialized behavior. 
+The button tool tip explains
 the other coloring meanings. When pressing this button, you browse the
 implementations of the @method{upate:} method.
 
@@ -601,8 +603,7 @@ implementations of the @method{upate:} method.
 
 We already met an example of overriding when initializing a space ship
 instance -- see @ref{initSpaceShip}. In the context of our class
-hierarchy refactoring, the initialize overriding is refactored to span
-over the whole @class{Mobile} hierarchy:
+refactoring, the @method{initialize} overriding spans the whole @class{Mobile} hierarchy:
 
 @smalltalkExampleCaption{Initialize overriding in the @class{Mobile}
 hierarchy,initMobileHierarchy,Mobile>>initialize
