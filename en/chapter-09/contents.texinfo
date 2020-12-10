@@ -101,6 +101,7 @@ From there you have three options:
   Workspaces or any places where code can be executed). Often this is
   not really what you want to do, particularly the executed code.
 
+@cindex tool @subentry lost changes 
   @item @strong{Restore lost changes manually.} In the subsequent
   @label{Lost changes} window are presented to you each recorded
   changes, one per line, in chronological order, the older at the top
@@ -113,10 +114,15 @@ From there you have three options:
   @class{TheBook} class but the executed code in the Workspace, select
   the two lines related to class definition.
 
+  The contextual menu (mouse right click) of the @label{Lost changes}
+  window offers a lot of options to filter the changes. Useful when
+  the batch of lost changes is important.
+
   @item @strong{Nothing.} No record is restored. At some point you may
   want to save the image right after, so @cuis{} stops recall you
   about these changes each time you start it.
 
+@cindex tools @subentry recent changes
   In case you change your mind and you want to recover changes, do
   ...@clicksequence{World menu @click{} @label{Changes...}  @click{}
   @label{Recently logged Changes...}}.
@@ -148,7 +154,7 @@ in a change set automatically created by the system. In
 @ref{ch10-ChangeSet1} at the top right, observe the class
 @class{TheBook}, it belongs to a change set named
 @label{4439-CuisCore-AuthorName-2020Nov16-13h40m}.  In the left pane,
-each unsaved change set is marked with a @label{-->}. Here it tells us
+each unsaved change set is marked with a @label{--->}. Here it tells us
 the change was not saved on disk. To save the change set, just use its
 contextual menu and use one of the @label{file out} entry. The change
 set will be saved along the @cuis{} image under its system name with
