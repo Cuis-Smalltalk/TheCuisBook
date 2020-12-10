@@ -1,6 +1,13 @@
 @node Visual with Morph
 @chapter Visual with Morph
 
+@quotation
+Simple things should be simple and complex things should be possible.
+@author Alan Kay
+@end quotation
+
+@* @* @* @*
+
 
 What would we expect if we ask for good support for building GUIs in a
 programming system?

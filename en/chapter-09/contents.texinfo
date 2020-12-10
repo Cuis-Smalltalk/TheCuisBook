@@ -255,8 +255,8 @@ key in @label{Spacewar} in.
 @cindex package @subentry prefix
 But we can do more. We can include several class categories in one
 package. Consider we want to span our CuisBook classes in two
-categories @label{TheCuisBook-Models} and @label{TheCuisBook-Views}, a
-new package created with the name @label{TheCuisBook} include these
+categories @label{TheCuisBook-Models} and @label{TheCuisBook-Views}. A
+new package created with the name @label{TheCuisBook} includes these
 two class categories; this label is a @dfn{prefix} to search for the
 matching categories to include in the package.
 
@@ -265,9 +265,9 @@ the classes in matching domains. We encourage to do so. When an
 application or framework grows, to keep a sound organisation, you may
 fell the need to reshape the class categories: rename, split, merge,
 etc. As long as you keep the same prefix in the class categories and
-the package name, your classes will be safe in the same package.  For
-the record, in the System Browser, you can drag and drop any class in
-any class category to reorganize.
+the package name, your classes will be safe in the same package. In
+the System Browser, you can drag and drop any class in any class
+category to reorganize.
 
 @exercise{Two class categories@comma{} one package,twoCategoriesOnePackage,
 @emph{Create a @label{TheCuisBook} package from the two class

@@ -2,16 +2,11 @@
 @chapter The Message Way of Life
 
 @quotation
-Simple things should be simple and complex things should be possible.
+The key in making great and growable systems is much more to design how its
+ modules communicate rather than what their internal properties and
+ behaviors should be.
 @author Alan Kay
 @end quotation
-
-@quotation
-It is better to have 100 functions operate on one data structure than
-to have 10 functions operate on 10 data structures.
-@author Alan Perlis
-@end quotation
-
 
 
 @* @* @* @*
