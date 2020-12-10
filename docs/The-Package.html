@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 6, 2020
+Compilation : December 10, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -92,7 +92,8 @@ Next: <a href="Daily-Workflow.html" accesskey="n" rel="next">Daily Workflow</a>,
 <hr>
 <span id="The-Package-1"></span><h3 class="section">9.4 The Package</h3>
 <span id="index-package-5"></span>
-<span id="index-class_002c-category"></span>
+<span id="index-class-14"></span>
+
 <p>A package can hold a set of classes part of the same class category;
 we already discussed it in a previous chapter, see <a href="Spacewar_0021-models.html#Spacewar_0021-package">Spacewar! package</a>.
 </p>
@@ -102,11 +103,11 @@ category <code>Spacewar</code>. To create the related package we open the
 Installed Package tool, after pressing the <code>new</code> button we just
 key in <code>Spacewar</code> in.
 </p>
-<span id="index-package_002c-prefix"></span>
+<span id="index-package-6"></span>
 <p>But we can do more. We can include several class categories in one
 package. Consider we want to span our CuisBook classes in two
-categories <code>TheCuisBook-Models</code> and <code>TheCuisBook-Views</code>, a
-new package created with the name <code>TheCuisBook</code> include these
+categories <code>TheCuisBook-Models</code> and <code>TheCuisBook-Views</code>. A
+new package created with the name <code>TheCuisBook</code> includes these
 two class categories; this label is a <em>prefix</em> to search for the
 matching categories to include in the package.
 </p>
@@ -115,9 +116,9 @@ the classes in matching domains. We encourage to do so. When an
 application or framework grows, to keep a sound organisation, you may
 fell the need to reshape the class categories: rename, split, merge,
 etc. As long as you keep the same prefix in the class categories and
-the package name, your classes will be safe in the same package.  For
-the record, in the System Browser, you can drag and drop any class in
-any class category to reorganize.
+the package name, your classes will be safe in the same package. In
+the System Browser, you can drag and drop any class in any class
+category to reorganize.
 </p>
 <div class="float"><span id="twoCategoriesOnePackage"></span>
 <blockquote class="indentedblock">
@@ -130,7 +131,7 @@ on disk.</em>
 
 
 <div class="float-caption"><p><strong>Exercise 9.1: </strong>Two class categories, one package</p></div></div>
-<span id="index-package_002c-system-extension"></span>
+<span id="index-package-7"></span>
 <p>Imagine we need to print the page number of the <code>TheBook</code> table
 of contents as lower cased roman number, as we do with the printed
 version of this book. The code is very simple:
@@ -161,12 +162,12 @@ version of this book. The code is very simple:
 package we extend the <code>Integer</code> class with a method
 <code>printStringToc</code>, however this method addition is part of the
 Cuis-Smalltalk core system and its associated default change set. See
-<a href="#ch10_002dChangeSetToCore">Figure 9.5</a>, the Change Sorter tool exactly shows that.
+<a href="#ch10_002dChangeSetToCore">Figure 9.7</a>, the Change Sorter tool exactly shows that.
 </p>
 <div class="float"><span id="ch10_002dChangeSetToCore"></span>
 <div align="center"><img src="ch10-ChangeSetToCore.png" alt="ch10-ChangeSetToCore">
 </div>
-<div class="float-caption"><p><strong>Figure 9.5: </strong>Change Sorter, supplementary method to core</p></div></div>
+<div class="float-caption"><p><strong>Figure 9.7: </strong>Change Sorter, supplementary method to core</p></div></div>
 <p>Therefore when saving our <code>TheBook</code> package this method is not
 included and it is lost when quitting Cuis-Smalltalk. To include it in our
 package we categorize it in a method category with the
@@ -184,7 +185,7 @@ to get an update on the package contents.
 <div class="float"><span id="ch10_002dBrowsePackageChange"></span>
 <div align="center"><img src="ch10-BrowsePackageChange.png" alt="ch10-BrowsePackageChange">
 </div>
-<div class="float-caption"><p><strong>Figure 9.6: </strong>Package with extension to the <code>Integer</code> class of the
+<div class="float-caption"><p><strong>Figure 9.8: </strong>Package with extension to the <code>Integer</code> class of the
 <code>Kernel-Numbers</code> system class
 category</p></div></div>
 <p>Observe how each category &ndash; class or method one &ndash; of an extension is

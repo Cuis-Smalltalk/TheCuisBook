@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 6, 2020
+Compilation : December 10, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -92,13 +92,21 @@ Next: <a href="Visual-with-Morph.html" accesskey="n" rel="next">Visual with Morp
 <hr>
 <span id="Control-Flow-Messaging-1"></span><h2 class="chapter">5 Control Flow Messaging</h2>
 
+<blockquote>
+<p>Fools ignore complexity. Pragmatists suffer it. Some can avoid
+it. Geniuses remove it.
+</p></blockquote>
+<div align="center">&mdash; <em>Alan Perlis</em>
+</div>
+<br> <br> <br> <br>
+
 <p>Cuis-Smalltalk syntax is minimal. Essentially there is syntax only for
 sending messages (i.e., expressions) . Expressions are built up from a
 very small number of primitive elements. There are only 6 keywords,
-and <strong>there is no syntax for control structures</strong> or for declaring
-new classes. Instead, nearly everything is achieved by sending
-messages to objects. For instance, instead of an if-then-else control
-structure, Smalltalk sends messages like <code>#ifTrue:</code> to
+and <strong>there is no syntax for control structures</strong> or for
+declaring new classes. Instead, nearly everything is achieved by
+sending messages to objects. For instance, instead of an if-then-else
+control structure, Smalltalk sends messages like <code>#ifTrue:</code> to
 <code>Boolean</code> objects. As we already know, new (sub)classes are
 created by sending a message to their superclass.
 </p>

@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 6, 2020
+Compilation : December 10, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -95,32 +95,30 @@ Next: <a href="The-Change-Log.html" accesskey="n" rel="next">The Change Log</a>,
 <p>We already wrote about the Cuis-Smalltalk <em>image</em> (See <a href="Installing-and-configuring-Cuis_002dSmalltalk.html">Installing and configuring Cuis-Smalltalk</a>). When saving the state of the virtual machine in
 the image file, every single changes done in the environment will be
 included in the saved image: this includes the windows in the
-environment, workspace content, newly written classes and methods,
+environment, Workspace contents, newly written classes and methods,
 existing instances including the visual morphs, a debugging session
-with a System Browser, an inspector and a debugger.
+with a System Browser, an Inspector, etc.
 </p>
-
-<p>At any time, the user can save the image with
-...World menu &rarr;
-<code>Save</code>... Alternatively <code>Save as...</code> saves the image under
-an alternate name provided by the user.
+<p>At any time, the user can save the image with ...World
+menu &rarr; <code>Save</code>... Alternatively <code>Save as...</code> saves
+the image under an alternate name provided by the user.
 </p>
 <p>Saving the image is the easiest and straightforward method to save
 your own code. But we can&rsquo;t really call that code management as your
 code is not saved in a dedicated file of its own but along the
 image. Moreover it will be unpractical to share your work with other
-person.
+person, through a version control system for example.
 </p>
 <p>For various reasons, an image may be in fuzzy state: the virtual
 machine may crash when running it or the environment may be in a lock
 down state. This is another drawback when using the image as your sole
 source code repository. The net result is loosing your work.
 </p>
-<p>Another situation where you lost code is a virtual machine crash or to
-forget to save the image when quitting Cuis-Smalltalk. In such situation
-there is a solution to recover your lost editing: the <em>ChangeSet</em>.
+<p>Another situation where you lost code is a virtual machine crash or
+you forget to save the image when quitting Cuis-Smalltalk. In the former
+situation, there is however a solution to recover your lost editing,
+the <em>Change Log</em>.
 </p>
-<span id="index-change-log"></span>
 
 
 

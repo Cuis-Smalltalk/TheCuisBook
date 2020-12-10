@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 6, 2020
+Compilation : December 10, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -91,16 +91,19 @@ Next: <a href="Spacewar_0021_0027s-methods.html" accesskey="n" rel="next">Spacew
 </div>
 <hr>
 <span id="Control-flow-with-block-and-message-1"></span><h3 class="section">5.5 Control flow with block and message</h3>
+<span id="index-control-flow"></span>
+
 <p>Deciding to send this message instead of that one is called <em>control flow</em> &ndash;
 controlling the flow of a computation.
 Smalltalk offers no special constructs for control flow.
 Decision logic is expressed by sending messages to booleans, numbers
 and collections, with blocks as arguments.
 </p>
+<span id="Test"></span><h4 class="subheading">Test</h4>
 <span id="index-control-flow-1"></span>
 <span id="index-test"></span>
 <span id="index-boolean"></span>
-<span id="Test"></span><h4 class="subheading">Test</h4>
+
 <p>Conditionals are expressed by sending one of the messages
 <code>#ifTrue:</code>, <code>#ifFalse:</code> or <code>#ifTrue:ifFalse:</code> to the result
 of a boolean expression:
@@ -212,9 +215,10 @@ and slow it down by a factor of 2&quot;
 
 <div class="float-caption"><p><strong>Example 5.6: </strong>Ship lost in space</p></div></div>
 
+<span id="Loop"></span><h4 class="subheading">Loop</h4>
 <span id="index-control-flow-2"></span>
 <span id="index-loop-6"></span>
-<span id="Loop"></span><h4 class="subheading">Loop</h4>
+
 <p>Loops are typically expressed by sending messages to blocks, integers
 or collections. Since the exit condition for a loop may be repeatedly
 evaluated, it should be a block rather than a boolean value. Here is

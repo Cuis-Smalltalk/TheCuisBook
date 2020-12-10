@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 6, 2020
+Compilation : December 10, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -91,13 +91,13 @@ Next: <a href="The-Change-Set.html" accesskey="n" rel="next">The Change Set</a>,
 </div>
 <hr>
 <span id="The-Change-Log-1"></span><h3 class="section">9.2 The Change Log</h3>
+<span id="index-change-log"></span>
 
 <p>Cuis-Smalltalk records any action occurring in the environment: the code you
 edit in the System Browser, the code you execute in a
-Workspace. Therefore, in the event of a Cuis-Smalltalk crash or you did not
-save your editing when quitting the environment, you can restore your
-editing when starting afresh Cuis-Smalltalk. Let&rsquo;s explore this feature with
-a simple example.
+Workspace. Therefore, in the event of a Cuis-Smalltalk crash you can restore
+your editing when starting afresh Cuis-Smalltalk. Let&rsquo;s explore this feature
+with a simple example.
 </p>
 <p>On a fresh Cuis-Smalltalk installation, create a new class category named
 <code>TheCuisBook</code> and within <code>TheBook</code> class:
@@ -128,23 +128,61 @@ execute. Let&rsquo;s execute this code: <kbd>Ctrl-a</kbd> then <kbd>Ctrl-p</kbd>
 Workspace prints the result: <code>a TheBook</code>, an instance of a
 <code>TheBook</code> class.
 </p>
-<p>Now quit Cuis-Smalltalk without saving, of course it first asks us
-<code>Save the current image before</code>, choose <code>No</code>, then it
-warns us:
+<p>Now kill Cuis-Smalltalk abruptly. On GNU/Linux, you can use the
+<code>xkill</code> command to terminate Cuis-Smalltalk by pointing its window.
 </p>
-<pre class="verbatim">Some ChangeSet for Cuis core might have unsaved changes.
-If you continue, they would be lost.
-Continue?
-</pre>
-<p>Proceed with <code>Yes</code>. At least, we are done quitting the Cuis-Smalltalk
-environment without saving.
+<p>Now start again Cuis-Smalltalk, it immediately informs you there are unsaved
+changes:
 </p>
-<p>Now start again Cuis-Smalltalk, then do ...World menu
-&rarr; <code>Changes...</code> &rarr; <code>Recently logged
-Changes...</code>. The system presents a list image snapshpots tagged with
-date stamp. Pick up the one occurring just before you lost your code.
+<div class="float"><span id="ch10_002dRecoverLostChanges1"></span>
+<div align="center"><img src="ch10-RecoverLostChanges1.png" alt="ch10-RecoverLostChanges1">
+</div>
+<div class="float-caption"><p><strong>Figure 9.1: </strong>Cuis-Smalltalk informs about lost changes</p></div></div>
+<p>From there you have three options:
 </p>
-<span id="index-change-set"></span>
+<ul>
+<li> <strong>Restore lost changes automatically.</strong> Cuis-Smalltalk will
+  apply all the changes: new class definitions, new methods; edited
+  class definitions and method source code; executed code (in
+  Workspaces or any places where code can be executed). Often this is
+  not really what you want to do, particularly the executed code.
+
+<span id="index-tool"></span>
+</li><li> <strong>Restore lost changes manually.</strong> In the subsequent
+  <code>Lost changes</code> window are presented to you each recorded
+  changes, one per line, in chronological order, the older at the top
+  of the list. You select each change (line) you want to restore, then
+  you apply your selection with the <code>file in selections</code> button.
+
+<div class="float"><span id="ch10_002dRecoverLostChanges2"></span>
+<div align="center"><img src="ch10-RecoverLostChanges2.png" alt="ch10-RecoverLostChanges2">
+</div>
+<div class="float-caption"><p><strong>Figure 9.2: </strong>Select manually the changes to file in</p></div></div>
+<p>To file in the changes related to the creation of the
+  <code>TheBook</code> class but the executed code in the Workspace, select
+  the two lines related to class definition.
+</p>
+<p>The contextual menu (mouse right click) of the <code>Lost changes</code>
+  window offers a lot of options to filter the changes. Useful when
+  the batch of lost changes is important.
+</p>
+</li><li> <strong>Nothing.</strong> No record is restored. At some point you may
+  want to save the image right after, so Cuis-Smalltalk stops recall you
+  about these changes each time you start it.
+
+<span id="index-tools-4"></span>
+<p>In case you change your mind and you want to recover changes, do
+  ...World menu &rarr; <code>Changes...</code>  &rarr;
+  <code>Recently logged Changes...</code>.
+</p>
+<p>The system presents you a list of image snapshpots tagged with date
+  stamp. Pick up the one occurring just before you lost your code,
+  likely at the top of the list. Then in the <code>Recent changes</code>
+  window, you proceed as described earlier to cherry pick the changes
+  to restore.
+</p>
+</li></ul>
+
 <hr>
 <div class="header">
 <p>
