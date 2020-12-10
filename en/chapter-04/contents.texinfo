@@ -1,6 +1,13 @@
 @node The Collection Way of Life
 @chapter The Collection Way of Life
 
+@quotation
+Simplicity does not precede complexity, but follows it.
+@author Alan Perlis
+@end quotation
+
+@* @* @* @*
+
 Since the concept's introduction in the 70s, collections and their associated
 iterators are important programming elements of Smalltalk. Correctly
 used, they improve both code compactness and code understanding; two

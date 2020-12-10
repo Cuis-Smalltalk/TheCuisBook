@@ -1,13 +1,21 @@
 @node Control Flow Messaging
 @chapter Control Flow Messaging
 
+@quotation
+Fools ignore complexity. Pragmatists suffer it. Some can avoid
+it. Geniuses remove it.
+@author Alan Perlis
+@end quotation
+
+@* @* @* @*
+
 @cuis{} syntax is minimal. Essentially there is syntax only for
 sending messages (i.e., expressions) . Expressions are built up from a
 very small number of primitive elements. There are only 6 keywords,
-and @strong{there is no syntax for control structures} or for declaring
-new classes. Instead, nearly everything is achieved by sending
-messages to objects. For instance, instead of an if-then-else control
-structure, Smalltalk sends messages like @msg{ifTrue:} to
+and @strong{there is no syntax for control structures} or for
+declaring new classes. Instead, nearly everything is achieved by
+sending messages to objects. For instance, instead of an if-then-else
+control structure, Smalltalk sends messages like @msg{ifTrue:} to
 @class{Boolean} objects. As we already know, new (sub)classes are
 created by sending a message to their superclass.
 
