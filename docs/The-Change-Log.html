@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 10, 2020
+Compilation : December 11, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -96,20 +96,20 @@ Next: <a href="The-Change-Set.html" accesskey="n" rel="next">The Change Set</a>,
 <p>Cuis-Smalltalk records any action occurring in the environment: the code you
 edit in the System Browser, the code you execute in a
 Workspace. Therefore, in the event of a Cuis-Smalltalk crash you can restore
-your editing when starting afresh Cuis-Smalltalk. Let&rsquo;s explore this feature
-with a simple example.
+unsaved changes when you launch the same Cuis-Smalltalk again. Let&rsquo;s explore
+this feature with a simple example.
 </p>
 <p>On a fresh Cuis-Smalltalk installation, create a new class category named
 <code>TheCuisBook</code> and within <code>TheBook</code> class:
 </p>
 <ul>
-<li> Over the class pane of System Browser (at the most left), do
-   ...Right click &rarr; <code>add
+<li> Over the class category pane of System Browser (at the most
+   left), do ...Right click &rarr; <code>add
    items... (a)</code>... key in <code>TheCuisBook</code>.
 
 </li><li> Select this new class category and create the class
   <code>TheBook</code> as a kind of <code>Object</code>: select the
-  <code>TheCuisBook</code> category then in the source code bellow edit the
+  <code>TheCuisBook</code> category then in the source code below edit the
   class template to replace <code>#NameOfClass</code> with
   <code>#TheBook</code> then save the class definition with
   <kbd>Ctrl-s</kbd>.
@@ -149,16 +149,17 @@ changes:
 
 <span id="index-tool"></span>
 </li><li> <strong>Restore lost changes manually.</strong> In the subsequent
-  <code>Lost changes</code> window are presented to you each recorded
-  changes, one per line, in chronological order, the older at the top
-  of the list. You select each change (line) you want to restore, then
-  you apply your selection with the <code>file in selections</code> button.
+  <code>Lost changes</code> window you are presented with the unsaved
+  changes, one per line, in chronological order, with the older ones
+  at the top of the list. You select each change (line) you want to
+  restore, then you apply your selection with the <code>file in
+  selections</code> button.
 
 <div class="float"><span id="ch10_002dRecoverLostChanges2"></span>
 <div align="center"><img src="ch10-RecoverLostChanges2.png" alt="ch10-RecoverLostChanges2">
 </div>
-<div class="float-caption"><p><strong>Figure 9.2: </strong>Select manually the changes to file in</p></div></div>
-<p>To file in the changes related to the creation of the
+<div class="float-caption"><p><strong>Figure 9.2: </strong>Manually select the changes to file in</p></div></div>
+<p>To file-in the changes related to the creation of the
   <code>TheBook</code> class but the executed code in the Workspace, select
   the two lines related to class definition.
 </p>
@@ -166,9 +167,8 @@ changes:
   window offers a lot of options to filter the changes. Useful when
   the batch of lost changes is important.
 </p>
-</li><li> <strong>Nothing.</strong> No record is restored. At some point you may
-  want to save the image right after, so Cuis-Smalltalk stops recall you
-  about these changes each time you start it.
+</li><li> <strong>Nothing.</strong> No changes are restored. Keep in mind that
+  unsaved changes aren&rsquo;t discarded until you save your image.
 
 <span id="index-tools-4"></span>
 <p>In case you change your mind and you want to recover changes, do
