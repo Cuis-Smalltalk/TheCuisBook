@@ -1,11 +1,239 @@
 @node The Fundamentals of Morph
 @chapter The Fundamentals of Morph
 
-Events are critical to understanding how the user interface works.  In
-brief, there is a @class{PasteUpMorph} which is the screen background
-graphic and the associated @dfn{World State}.  When you
-@kbd{Right-Click} on this morph, it is the one which brings up the
-World Menu.  The World State tracks the cursor, which is a
-@class{HandMorph} and as Morphs change position and appearance, also
-keeps a @class{DamageRecorder} to track what parts of the display have
-changed so that only the ``damaged'' areas need be redrawn.
+What would we expect if we ask for good support for building GUIs in a programming system?
+
+Chapter 6 started with that same question, and gave an overview of Morphs and their interactive behavior. This chapter deals with how Morphs are built, how to create new Morphs and what rules they follow.
+
+The User Interface framework in Cuis is called Morphic. Morphic was origianlly created by Randy Smith and John Maloney as the UI for Self (https://bibliography.selflanguage.org/_static/self4.0UserInterface.pdf). Later, John Maloney ported it to Smalltalk, to be used as the UI for Squeak (http://stephane.ducasse.free.fr/FreeBooks/CollectiveNBlueBook/morphic.final.pdf).
+
+For Cuis, we built Morphic 3, the third design iteration of these ideas, after Self's Morphic 1 and Squeak's Morphic 2. If you already know Morphic in Self or Squeak, most concepts are similar, although with some improvements: Morphic 3 coordinates are not limited to being integer numbers, the apparent size (zoom level) of elements is not tied to pixel density, and all drawing is done with high quality (subpixel) anti aliasing. These enhancements are enabled by the huge advance in hardware resources since Self and Squeak were designed (in the late 80's and late 90's respectively). Additionally, careful design of the framework relieves Morph programmers from much the complexity that was required, especially with regards to geometry.
+
+This step is required until VectorGraphics become part of the base Cuis image:
+@smalltalkExample{Feature require: 'VectorGraphics'}
+
+Let's start with some examples. What we want is to build our own graphic objects, or Morphs. A Morph class is part of the Morph hierarchy and usually includes a #drawOn: method for drawing its distinctive appearance. If we forget about computers for a second, and consider drawing with color pens on a sheet of paper, one of the most basic things we can do  is to draw straight lines. So, let's build a straight line object:
+
+@smalltalkExample{Morph subclass: #LineExampleMorph
+   instanceVariableNames: ''
+   classVariableNames: ''
+   poolDictionaries: ''
+   category: 'Morphic-Learning'}
+
+In method category 'drawing' add:
+@smalltalkExample{drawOn: aCanvas
+   aCanvas strokeWidth: 20 color: Color green do: [
+      aCanvas
+         moveToX: 100 y: 100;
+         lineToX: 400 y: 200 ].}
+
+Now do:
+@smalltalkExample{LineExampleMorph new openInWorld}
+
+(If you get a prompter asking whether to install and activate Vector Graphics support, please answer yes).
+
+There it is. You have already built your first Morph class. We hope that the code is self evident. Note that the #drawOn: method takes a VectorCanvas as an argument. VectorCanvas provides many drawing operations for morphs to use. You can play with the various drawing operations and their parameters, and see the result. If you make a mistake, and the #drawOn: method fails, you'll get a red and yellow error box. After fixing your #drawOn: method, do 'World' / 'Debug...' / 'Start drawing all again' to get your morph redrawn correctly.
+
+You might have already tried to click and drag on your Line, like you can do with regular windows and most other Morphs. If not, try now. But nothing happens! The reason is that our Morph is fixed in a place in the owner morph (the WorldMorph). It is fixed because #drawOn: says it should be a line between 100@@100 and 400@@200. Moving it around would mean modifying those points. That could possible, for example, if the points were stored in instance variables.
+
+But now, we just want to code our morph in the simplest possible way, and still be able to move it around. The solution is to make it subclass of MovableMorph, instead of Morph. To do this, first evaluate `LineExampleMorph allInstancesDo: [ :m | m delete]` to get rid of all of them. Then, in the browser, in the class declaration, type 'MovableMorph' instead of 'Morph' and save. Now do again `LineExampleMorph new openInWorld` and you'll get a line you can grab with the mouse and move it around. MovableMorph adds a new instance variable called 'location'. If a morph has a location, it can be moved around, by modifying it. The location also defines a new, local coordinate system. All the coordinates used in the #drawOn: method are now relative to this new coordinate system. That's why we don't need to modify the #drawOn: method. #drawOn: now tells how the morph should be drawn, but not where. The location also specifies a possible rotation and scale factor. This means that subinstances of MovableMorph can also be rotated and zoomed.
+
+Let's build another morph, to have more fun.
+
+@smalltalkExample{MovableMorph subclass: #TriangleExampleMorph
+   instanceVariableNames: 'borderColor fillColor'
+   classVariableNames: ''
+   poolDictionaries: ''
+   category: 'Morphic-Learning'}
+
+In method category 'initialization' add:
+@smalltalkExample{initialize
+   super initialize.
+   borderColor := Color random alpha: 0.8.
+   fillColor := Color random alpha: 0.6.}
+
+In method category 'drawing' add:
+@smalltalkExample{drawOn: aCanvas
+   aCanvas strokeWidth: 10 color: borderColor fillColor: fillColor do: [
+      aCanvas
+         moveToX: 0 y: 100;
+         lineToX: 87 y: -50;
+         lineToX: -87 y: -50;
+         lineToX: 0 y: 100 ].}
+
+Take a moment to try to understand that code, and to guess what it will do. Now do:
+@smalltalkExample{TriangleExampleMorph new openInWorld}
+
+Do it several times, and move each triangle around. Each new triangle you create has different colors. And these colors are not completely opaque. This means that when you place your triangle over some other morph, you can see through it.
+
+Morphic gives you additional ways to interact with your morphs. If you have a three button mouse, or a wheel mouse, place the mouse pointer (which happens to be an instance of HandMorph) over one of your triangles and click with the center button or mouse. If you don't have a three button mouse, [command]-click should do the trick too. You get a constellation of small colored circles around your morph. This is called the morph's 'halo', and each colored circle is a 'halo handle'.
+
+At the top left you have the red 'Remove' handle. Clicking on it just removes the morph from the morphic world. Hover your mouse over each handle, and you'll get a tooltip with its name. Other handles let you duplicate a morph, open a menu with actions on it, pick it up (same as dragging it with the hand as you did before). The move operation is similar to pick up, but doesn't remove the morph from the current owner. More about that, later. The debug handle opens a menu from where you can open an inspector or browser on your morph.
+
+You also have a rotate and scale handles. Try them! To use them, move your hand to the handle, and then press the mouse button and drag it. As you might have guessed, the rotate handles spins your morph around its 0@@0 coordinates (i.e. the origin of its own coordinate system). The scale handles controls the apparent zoom applied to your morph. Both scale and rotation (and also displacement, as when you move your morph around) are implemented by modifying the inner coordinate system defined by your morph. Displacement, rotation and scale are floating point numbers (and thus not limited to integers).
+
+You can obviously control all this with code. Let's add a couple additional methods to our TriangleExampleMorph. Let's make our triangle be "alive":
+
+Method category 'stepping'
+@smalltalkExample{wantsSteps
+   ^true}
+
+@smalltalkExample{step
+   fillColor := Color random.
+   self redrawNeeded.}
+
+Then create some additional Triangles as you did before.
+
+This will make our triangles change colod once a second. But more interesting, do:
+@smalltalkExample{stepTime
+   ^100}
+
+@smalltalkExample{step
+   self morphPosition: self morphPosition + (0.4@@0).
+   self redrawNeeded.}
+
+Now, our morph will step ten times per second, and will move to the right at a speed of four pixels per second. Note that each step it will move by 0.4 pixels, and not by an integer number of pixels. High quality anti aliasing drawing means we can actually do that! You can make it step for times a second, and move 1 pixel each time, and see how different that looks.
+
+Now try this
+@smalltalkExample{step
+   self morphPosition: self morphPosition + (0.2@@0).
+   self rotateBy: 4 degreesToRadians.
+   self redrawNeeded.}
+
+It gets even better. First get rid of all instances `TriangleExampleMorph allInstancesDo: [ :m | m delete]`
+@smalltalkExample{initialize
+   super initialize.
+   borderColor := Color random alpha: 0.8.
+   fillColor := Color random alpha: 0.6.
+   scaleBy := 1.1.}
+(accept scaleBy as a new instance variable).
+
+@smalltalkExample{step
+   self morphPosition: self morphPosition + (0.2@@0).
+   self rotateBy: 4 degreesToRadians.
+   self scaleBy: scaleBy.
+   self scale > 1.2 ifTrue: [scaleBy := 0.9].
+   self scale < 0.2 ifTrue: [scaleBy := 1.1].
+   self redrawNeeded.}
+
+@smalltalkExample{TriangleExampleMorph new openInWorld}
+See that when the triangle is doing its crazy dance, you can still open a halo and interact with it.
+
+Now, let's try something different. Grab one of your LineExampleMorph. With the halo, zoom it until it is about the size of your triangle. Now place the triangle above your line. Open a halo on the triangle, click on the Menu handle and select 'embed into' / LineExampleMorph. This makes the triangle a submorph of the line. Now, if you move, scale or rotate the line, the triangle also gets adjusted.
+
+You can open a halo on the triangle. To do this, middle-click twice. With the halo on the triangle, you can rotate or zoom it independently of the line. Also note that if you try to grab the triangle with your hand (not using the halo), what you grab is the line+triangle composite. You can't just drag the triangle away. For this, you also need the triangle's halo. Use the move handle (by now, it is likely that the triangle walked quite a bit!), to position the triangle without "getting it out" of the line. Use the grab handle, to take the triangle with the hand, and drop it in the world. Now, the triangle is no longer submorph of the line, and they can be moved, rotated or scaled independently.
+
+But let's try something. Make the triangle submorph of the line again. Now add the following method to category 'geometry testing' of class LineExampleMorph
+@smalltalkExample{clipsSubmorphs
+   ^ true}
+
+The drawing of the triangle gets cut exactly at the bounds of the line. This is most useful for implementing scrolling panes (that only make a part of their contents visible), but might have other uses too.
+
+With all the things we have already learned, we can build a more sophisticated morph. Let's build a ClockMorph. In order to have a default text font based on vector graphics, do World / 'Preferences...' / 'Set System Font...' / 'DejaVu...' / 'DejaVuSans' (or select any other TrueType font from the ones available). Let's create some needed parts:
+
+@smalltalkExample{MovableMorph subclass: #ClockMorph
+   instanceVariableNames: ''
+   classVariableNames: ''
+   poolDictionaries: ''
+   category: 'Morphic-Learning'}
+
+Method category 'drawing'
+@smalltalkExample{drawOn: aCanvas
+   aCanvas
+      ellipseCenterX: 0 y: 0 rx: 100 ry: 100
+      borderWidth: 10 borderColor: `(Color fromHexString: '#a6e6e8') alpha: 0.5`
+      fillColor: `(Color fromHexString: '#d7e4e4') alpha: 0.3`.
+   aCanvas drawString: 'XII' at: -13 @@ -90 font: nil color: `Color brown`.
+   aCanvas drawString: 'III' at: 66 @@ -10 font: nil color: `Color brown`.
+   aCanvas drawString: 'IV' at: -11 @@ 70 font: nil color: `Color brown`.
+   aCanvas drawString: 'IX' at: -90 @@ -10 font: nil color: `Color brown`.}
+
+@smalltalkExample{MovableMorph subclass: #ClockHourHandMorph
+   instanceVariableNames: ''
+   classVariableNames: ''
+   poolDictionaries: ''
+   category: 'Morphic-Learning'}
+
+Method category 'drawing'
+@smalltalkExample{drawOn: aCanvas
+   aCanvas fillColor: `(Color black) alpha: 0.6` do: [
+      aCanvas
+         moveToX: -10 y: 0;
+         lineToX: 0 y: 5;
+         lineToX: 50 y: 0;
+         lineToX: 0 y: -5;
+         lineToX: -10 y: 0 ].}
+
+You can start playing with them. We could use several instances of a single ClockHandMorph, or create several classes. Here we chose to do the latter. Note that all the drawOn: use hardcoded constants for all coordinates. As we have seen before, this is not a limitation. We don't need to write a lot of trigonometric and scaling formulas to build Morphs in Cuis!
+
+By now, you might imagine what we are doing with all this, but please stick with us while we finish building our clock.
+
+@smalltalkExample{MovableMorph subclass: #ClockMinuteHandMorph
+   instanceVariableNames: ''
+   classVariableNames: ''
+   poolDictionaries: ''
+   category: 'Morphic-Learning'}
+
+Method category 'drawing'
+@smalltalkExample{drawOn: aCanvas
+   aCanvas fillColor: `(Color black) alpha: 0.6` do: [
+      aCanvas
+         moveToX: -8 y: 0;
+         lineToX: 0 y: 4;
+         lineToX: 82 y: 0;
+         lineToX: 0 y: -4;
+         lineToX: -8 y: 0 ].}
+
+@smalltalkExample{MovableMorph subclass: #ClockSecondHandMorph
+   instanceVariableNames: ''
+   classVariableNames: ''
+   poolDictionaries: ''
+   category: 'Morphic-Learning'}
+
+Method category 'drawing'
+@smalltalkExample{drawOn: aCanvas
+   aCanvas strokeWidth: 1.5 color: Color red do: [
+      aCanvas
+         moveToX: 0 y: 0;
+         lineToX: 85 y: 0 ]}
+
+Now, all that is needed is to put our clock together:
+
+ClockMorph, method category 'initialization' (accept the new names as instance variables)
+@smalltalkExample{initialize
+   super initialize.
+   self addMorph: (hourHand := ClockHourHandMorph new).
+   self addMorph: (minuteHand := ClockMinuteHandMorph new).
+   self addMorph: (secondHand := ClockSecondHandMorph new).}
+
+And make it work:
+ClockMorph, method category 'stepping'
+@smalltalkExample{wantsSteps
+   ^true}
+
+@smalltalkExample{step
+   | time |
+   time := Time now.
+   hourHand rotation: (time hour * 30 - 90) degreesToRadians.
+   minuteHand rotation: (time minute * 6 - 90) degreesToRadians.
+   secondHand rotation: (time second * 6 - 90) degreesToRadians.}
+
+Take a look at how we update the clock hands.
+
+As we said before, any MovableMorph defines a coordinate system for its own #drawOn: method and also for its submorphs. This new coordinate system might include rotation or reflexion of the axis, and scaling of sizes, but by default they don't. This means that they just translate the origin, by specifying where in the owner point 0@@0 is to be located.
+
+The World coordinate system has 0@@0 at the top left corner, with X coordinates increasing to the right, and Y coordinates increasing downwards. Positive rotations go clockwise. (This is the usual convention in graphics frameworks. Note that this is different from the usual Math convention, where Y increases upwards, and positive angles go counterclockwise.)
+
+So, how do we update the hands? For example, for the hour hand, one hour means 30 degrees, as 12 hours means 360 degrees or a whole turn. We multiply hours by 30 to get degrees. But for 0 the hand must point up, that is -90 degrees in our coordinate system. So we substract 90. Then we convert to radians, the unit expected by the #rotation: method. Minute and second hand work in a similar way, but as there are 60 minutes in one hour, and 60 seconds in one minute, se need to multiply them by 6 to get degrees. As rotation is done around the origin, and the clock has set the origin at its center (see ClockMorph >> #drawOn: ), there's no need to set the position of the hands. Their 0@@0 will therefore be at the clock 0@@0, i.e. the center of the clock.
+
+Create some instances of your clock: `ClockMorph new openInWorld`. You can rotate and zoom. Look at the visual quality of the Roman numerals in the clock face, especially when rotated and zoomed. You don't get this graphics quality on your regular programming environment! You can also extract the parts, or scale each separately. Another fun experiment is to extract the Roman numerals into a separate ClockFaceMorph, and make it submorph of the Clock. Then, you can rotate just the face, not the clock, and the clock will show fake time. Try it!
+
+You might have noted two things that seem missing, though: How to compute bounding rectangles for Morphs, and how to detect if a Morph is being hit by the Hand, so you can move it or get a halo. The display rectangle that contains a morph is needed by the framework to manage the areas of the Display that need to be updated as a result of any change. But you don't need to know this rectangle in order to build your own Morphs. In Cuis, the framework computes it as needed, and stores it in the 'privateDisplayBounds' variable. You don't need to worry about that variable at all. WRT detecting if a Morph is hit by the Hand, or more generally, if a pixel is belongs to a Morph, truth is that when a Morph is drawn, the framework indeed knows all the pixels it is affecting. The #drawOn: method already specifies the shape of the Morph. Therefore, there is not a real need to ask the programmer to code the Morph geometry again in a separate method! All that is needed is careful design of the framework itself, to avoid requiring programmers to handle this extra complexity.
+
+The ideas we have outlined in this chapter are the fundamental ones in Morphic, and the framework is implemented in order to support them. Morphs (i.e. interactive graphic objects) are very general and flexible. They are not restricted to a conventional widgets library, although such a library (rooted in WidgetMorph) is included and used for building all the Smalltalk tools.
+
+The examples we have explored use the VectorGraphics package. This package includes VectorCanvas and HybridCanvas classes. However, installing this package is not required for using the regular Smalltalk tools you have been using. The reason is that Cuis includes by default the BitBltCanvas class inherited from Squeak (and called FormCanvas there). BitBltCanvas doesn't support the vector graphics drawing operations and doesn't do anti aliasing or zooming. But it is mature, and it relies on the BitBlt operation that is included in the virtual machine. This means that it offers excellent performance.
+
+VectorGraphics is still in active development. When its drawing performance becomes good enough, it will be possible to draw all Morphs, completely replacing BitBltCanvas. Then, the UI customization option 'World' / 'Preferences...' / 'Font Sizes...' will no longer be needed, as all windows will be zoomable, in addition to resizable.
+
+To further explore Cuis' Morphic, evaluate `Feature require: 'SVG'`, and then `SVGElementMorph examplesLion` and the other examples there. Also, be sure to try the example in the comment in #unicodeExamples.
