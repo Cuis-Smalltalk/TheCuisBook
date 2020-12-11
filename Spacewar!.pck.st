@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4438] on 1 November 2020 at 12:06:42 pm'!
+'From Cuis 5.0 [latest update: #4489] on 11 December 2020 at 1:02:28 pm'!
 'Description '!
-!provides: 'Spacewar!!' 1 72!
+!provides: 'Spacewar!!' 1 73!
 SystemOrganization addCategory: 'Spacewar!!'!
 
 
@@ -408,6 +408,10 @@ stepTime
 
 !SpaceWar methodsFor: 'stepping' stamp: 'hlsf 9/10/2020 18:03:59'!
 wantsSteps
+	^ true! !
+
+!SpaceWar methodsFor: 'as yet unclassified' stamp: 'hlsf 12/11/2020 13:00:49'!
+clipsSubmorphs
 	^ true! !
 
 !CentralStar methodsFor: 'accessing' stamp: 'hlsf 10/8/2020 22:20:17'!
