@@ -135,11 +135,11 @@ From there you have three options:
   ...@clicksequence{World menu @click{} @label{Changes...}  @click{}
   @label{Recently logged Changes...}}.
 
-  The system presents you a list of image snapshpots tagged with date
+  The system presents you a list of image snapshots tagged with a date
   stamp. Pick up the one occurring just before you lost your code,
-  likely at the top of the list. Then in the @label{Recent changes}
-  window, you proceed as described earlier to cherry pick the changes
-  to restore.
+  most likely at the top of the list. Then in the @label{Recent
+  changes} window, you proceed as described earlier to cherry pick the
+  changes to restore.
 
 @end itemize
 
