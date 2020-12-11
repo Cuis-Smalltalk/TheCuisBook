@@ -60,21 +60,21 @@ the @dfn{Change Log}.
 @cuis{} records any action occurring in the environment: the code you
 edit in the System Browser, the code you execute in a
 Workspace. Therefore, in the event of a @cuis{} crash you can restore
-your editing when starting afresh @cuis{}. Let's explore this feature
-with a simple example.
+unsaved changes when you launch the same @cuis{} again. Let's explore
+this feature with a simple example.
 
 On a fresh @cuis{} installation, create a new class category named
 @label{TheCuisBook} and within @class{TheBook} class:
 
 @itemize
 
-  @item Over the class pane of System Browser (at the most left), do
-   ...@clicksequence{Right click @click{} @label{add
+  @item Over the class category pane of System Browser (at the most
+   left), do ...@clicksequence{Right click @click{} @label{add
    items... (a)}}... key in @label{TheCuisBook}.
 
   @item Select this new class category and create the class
   @class{TheBook} as a kind of @class{Object}: select the
-  @label{TheCuisBook} category then in the source code bellow edit the
+  @label{TheCuisBook} category then in the source code below edit the
   class template to replace @smalltalk{#NameOfClass} with
   @smalltalk{#TheBook} then save the class definition with
   @kbd{Ctrl-s}.
@@ -111,14 +111,15 @@ From there you have three options:
 
 @cindex tool @subentry lost changes 
   @item @strong{Restore lost changes manually.} In the subsequent
-  @label{Lost changes} window are presented to you each recorded
-  changes, one per line, in chronological order, the older at the top
-  of the list. You select each change (line) you want to restore, then
-  you apply your selection with the @label{file in selections} button.
+  @label{Lost changes} window you are presented with the unsaved
+  changes, one per line, in chronological order, with the older ones
+  at the top of the list. You select each change (line) you want to
+  restore, then you apply your selection with the @label{file in
+  selections} button.
 
-  @figure{Select manually the changes to file in, ch10-RecoverLostChanges2,9}
+  @figure{Manually select the changes to file in,ch10-RecoverLostChanges2,9}
 
-  To file in the changes related to the creation of the
+  To file-in the changes related to the creation of the
   @class{TheBook} class but the executed code in the Workspace, select
   the two lines related to class definition.
 
@@ -126,9 +127,8 @@ From there you have three options:
   window offers a lot of options to filter the changes. Useful when
   the batch of lost changes is important.
 
-  @item @strong{Nothing.} No record is restored. At some point you may
-  want to save the image right after, so @cuis{} stops recall you
-  about these changes each time you start it.
+  @item @strong{Nothing.} No changes are restored. Keep in mind that
+  unsaved changes aren't discarded until you save your image.
 
 @cindex tools @subentry recent changes
   In case you change your mind and you want to recover changes, do
