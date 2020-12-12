@@ -231,7 +231,7 @@ interesting, do:
 Now, our morph will step ten times per second, and will move to the
 right at a speed of four pixels per second. Note that each step it
 will move by 0.4 pixels, and not by an integer number of pixels. High
-quality anti aliasing drawing means we can actually do that! You can
+quality anti-aliasing drawing means we can actually do that! You can
 make it step for times a second, and move 1 pixel each time, and see
 how different that looks.
 
@@ -243,7 +243,10 @@ Now try this:
    self redrawNeeded}
 
 It gets even better. First get rid of all instances:
-@smalltalk{TriangleExampleMorph allInstancesDo: [ :m | m delete]}.
+
+@smalltalkExample{TriangleExampleMorph allInstancesDo: [ :m | m delete]}.
+
+And modify these methods:
 
 @smalltalkExample{TriangleExampleMorph>>initialize
    super initialize.
@@ -265,17 +268,45 @@ It gets even better. First get rid of all instances:
 See that when the triangle is doing its crazy dance, you can still
 open a halo and interact with it.
 
-Now, let's try something different. Grab one of your LineExampleMorph. With the halo, zoom it until it is about the size of your triangle. Now place the triangle above your line. Open a halo on the triangle, click on the Menu handle and select 'embed into' / LineExampleMorph. This makes the triangle a submorph of the line. Now, if you move, scale or rotate the line, the triangle also gets adjusted.
+Now, let's try something different. Grab one of your
+@class{LineExampleMorph}. With the halo, zoom it until it is about the
+size of your triangle. Now place the triangle above your line. Open a
+halo on the triangle, click on the Menu handle and select
+...@clicksequence{@label{embed into} @click{}
+@label{LineExampleMorph}}. This makes the triangle a submorph of the
+line. Now, if you move, scale or rotate the line, the triangle also
+gets adjusted.
 
-You can open a halo on the triangle. To do this, middle-click twice. With the halo on the triangle, you can rotate or zoom it independently of the line. Also note that if you try to grab the triangle with your hand (not using the halo), what you grab is the line+triangle composite. You can't just drag the triangle away. For this, you also need the triangle's halo. Use the move handle (by now, it is likely that the triangle walked quite a bit!), to position the triangle without "getting it out" of the line. Use the grab handle, to take the triangle with the hand, and drop it in the world. Now, the triangle is no longer submorph of the line, and they can be moved, rotated or scaled independently.
+You can open a halo on the triangle. To do this, middle-click
+twice. With the halo on the triangle, you can rotate or zoom it
+independently of the line. Also note that if you try to grab the
+triangle with your hand (not using the halo), what you grab is the
+line+triangle composite. You can't just drag the triangle away. For
+this, you also need the triangle's halo. Use the move handle (by now,
+it is likely that the triangle walked quite a bit!), to position the
+triangle without "getting it out" of the line. Use the grab handle, to
+take the triangle with the hand, and drop it in the world. Now, the
+triangle is no longer submorph of the line, and they can be moved,
+rotated or scaled independently.
 
-But let's try something. Make the triangle submorph of the line again. Now add the following method to category 'geometry testing' of class LineExampleMorph
-@smalltalkExample{clipsSubmorphs
-   ^ true}
+But let's try something. Make the triangle submorph of the line
+again. Now add the following method to category @label{geometry
+testing} of class @class{LineExampleMorph}
 
-The drawing of the triangle gets cut exactly at the bounds of the line. This is most useful for implementing scrolling panes (that only make a part of their contents visible), but might have other uses too.
+@smalltalkExample{TriangleExampleMorph>>clipsSubmorphs
+   @return{} true}
 
-With all the things we have already learned, we can build a more sophisticated morph. Let's build a ClockMorph. In order to have a default text font based on vector graphics, do World / 'Preferences...' / 'Set System Font...' / 'DejaVu...' / 'DejaVuSans' (or select any other TrueType font from the ones available). Let's create some needed parts:
+The drawing of the triangle gets cut exactly at the bounds of the
+line. This is most useful for implementing scrolling panes (that only
+make a part of their contents visible), but might have other uses too.
+
+With all the things we have already learned, we can build a more
+sophisticated morph. Let's build a @class{ClockMorph}. In order to
+have a default text font based on vector graphics, do
+...@clicksequence{World menu @click{} @label{Preferences...} @click{}
+@label{Set System Font...} @click{} @label{DejaVu...} @click{}
+@label{DejaVuSans}} (or select any other TrueType font from the ones
+available). Let's create some needed parts:
 
 @smalltalkExample{MovableMorph subclass: #ClockMorph
    instanceVariableNames: ''
@@ -283,8 +314,8 @@ With all the things we have already learned, we can build a more sophisticated m
    poolDictionaries: ''
    category: 'Morphic-Learning'}
 
-Method category 'drawing'
-@smalltalkExample{drawOn: aCanvas
+Method category @label{drawing}:
+@smalltalkExample{ClockMorph>>drawOn: aCanvas
    aCanvas
       ellipseCenterX: 0 y: 0 rx: 100 ry: 100
       borderWidth: 10 borderColor: `(Color fromHexString: '#a6e6e8') alpha: 0.5`
@@ -300,8 +331,8 @@ Method category 'drawing'
    poolDictionaries: ''
    category: 'Morphic-Learning'}
 
-Method category 'drawing'
-@smalltalkExample{drawOn: aCanvas
+Method category @label{drawing}:
+@smalltalkExample{ClockHourHandMorph>>drawOn: aCanvas
    aCanvas fillColor: `(Color black) alpha: 0.6` do: [
       aCanvas
          moveToX: -10 y: 0;
@@ -310,9 +341,15 @@ Method category 'drawing'
          lineToX: 0 y: -5;
          lineToX: -10 y: 0 ].}
 
-You can start playing with them. We could use several instances of a single ClockHandMorph, or create several classes. Here we chose to do the latter. Note that all the drawOn: use hardcoded constants for all coordinates. As we have seen before, this is not a limitation. We don't need to write a lot of trigonometric and scaling formulas to build Morphs in Cuis!
+You can start playing with them. We could use several instances of a
+single @class{ClockHandMorph}, or create several classes. Here we
+chose to do the latter. Note that all the @method{drawOn:} use
+hardcoded constants for all coordinates. As we have seen before, this
+is not a limitation. We don't need to write a lot of trigonometric and
+scaling formulas to build Morphs in @cuis{}!
 
-By now, you might imagine what we are doing with all this, but please stick with us while we finish building our clock.
+By now, you might imagine what we are doing with all this, but please
+stick with us while we finish building our clock.
 
 @smalltalkExample{MovableMorph subclass: #ClockMinuteHandMorph
    instanceVariableNames: ''
@@ -320,8 +357,8 @@ By now, you might imagine what we are doing with all this, but please stick with
    poolDictionaries: ''
    category: 'Morphic-Learning'}
 
-Method category 'drawing'
-@smalltalkExample{drawOn: aCanvas
+Method category @label{drawing}:
+@smalltalkExample{ClockMinuteHandMorph>>drawOn: aCanvas
    aCanvas fillColor: `(Color black) alpha: 0.6` do: [
       aCanvas
          moveToX: -8 y: 0;
@@ -336,8 +373,8 @@ Method category 'drawing'
    poolDictionaries: ''
    category: 'Morphic-Learning'}
 
-Method category 'drawing'
-@smalltalkExample{drawOn: aCanvas
+Method category @label{drawing}:
+@smalltalkExample{ClockSecondHandMorph>>drawOn: aCanvas
    aCanvas strokeWidth: 1.5 color: Color red do: [
       aCanvas
          moveToX: 0 y: 0;
@@ -345,19 +382,22 @@ Method category 'drawing'
 
 Now, all that is needed is to put our clock together:
 
-ClockMorph, method category 'initialization' (accept the new names as instance variables)
-@smalltalkExample{initialize
+@class{ClockMorph}, method category @label{initialization} (accept the
+new names as instance variables):
+
+@smalltalkExample{ClockMorph>>initialize
    super initialize.
    self addMorph: (hourHand := ClockHourHandMorph new).
    self addMorph: (minuteHand := ClockMinuteHandMorph new).
    self addMorph: (secondHand := ClockSecondHandMorph new).}
 
-And make it work:
-ClockMorph, method category 'stepping'
-@smalltalkExample{wantsSteps
-   ^true}
+And make it work. @class{ClockMorph}, method category
+@label{stepping}:
 
-@smalltalkExample{step
+@smalltalkExample{ClockMorph>>wantsSteps
+   @return{} true}
+
+@smalltalkExample{ClockMorph>>step
    | time |
    time := Time now.
    hourHand rotation: (time hour * 30 - 90) degreesToRadians.
@@ -366,20 +406,85 @@ ClockMorph, method category 'stepping'
 
 Take a look at how we update the clock hands.
 
-As we said before, any MovableMorph defines a coordinate system for its own #drawOn: method and also for its submorphs. This new coordinate system might include rotation or reflexion of the axis, and scaling of sizes, but by default they don't. This means that they just translate the origin, by specifying where in the owner point 0@@0 is to be located.
+As we said before, any @class{MovableMorph} defines a coordinate
+system for its own @method{drawOn:} method and also for its
+submorphs. This new coordinate system might include rotation or
+reflexion of the axis, and scaling of sizes, but by default they
+don't. This means that they just translate the origin, by specifying
+where in the owner point 0@@0 is to be located.
 
-The World coordinate system has 0@@0 at the top left corner, with X coordinates increasing to the right, and Y coordinates increasing downwards. Positive rotations go clockwise. (This is the usual convention in graphics frameworks. Note that this is different from the usual Math convention, where Y increases upwards, and positive angles go counterclockwise.)
+The World coordinate system has 0@@0 at the top left corner, with X
+coordinates increasing to the right, and Y coordinates increasing
+downwards. Positive rotations go clockwise. (This is the usual
+convention in graphics frameworks. Note that this is different from
+the usual Math convention, where Y increases upwards, and positive
+angles go counterclockwise.)
 
-So, how do we update the hands? For example, for the hour hand, one hour means 30 degrees, as 12 hours means 360 degrees or a whole turn. We multiply hours by 30 to get degrees. But for 0 the hand must point up, that is -90 degrees in our coordinate system. So we substract 90. Then we convert to radians, the unit expected by the #rotation: method. Minute and second hand work in a similar way, but as there are 60 minutes in one hour, and 60 seconds in one minute, se need to multiply them by 6 to get degrees. As rotation is done around the origin, and the clock has set the origin at its center (see ClockMorph >> #drawOn: ), there's no need to set the position of the hands. Their 0@@0 will therefore be at the clock 0@@0, i.e. the center of the clock.
+So, how do we update the hands? For example, for the hour hand, one
+hour means 30 degrees, as 12 hours means 360 degrees or a whole
+turn. We multiply hours by 30 to get degrees. But for 0 the hand must
+point up, that is -90 degrees in our coordinate system. So we
+substract 90. Then we convert to radians, the unit expected by the
+#rotation: method. Minute and second hand work in a similar way, but
+as there are 60 minutes in one hour, and 60 seconds in one minute, se
+need to multiply them by 6 to get degrees. As rotation is done around
+the origin, and the clock has set the origin at its center (see
+ClockMorph >> #drawOn: ), there's no need to set the position of the
+hands. Their 0@@0 will therefore be at the clock 0@@0, i.e. the center
+of the clock.
 
-Create some instances of your clock: `ClockMorph new openInWorld`. You can rotate and zoom. Look at the visual quality of the Roman numerals in the clock face, especially when rotated and zoomed. You don't get this graphics quality on your regular programming environment! You can also extract the parts, or scale each separately. Another fun experiment is to extract the Roman numerals into a separate ClockFaceMorph, and make it submorph of the Clock. Then, you can rotate just the face, not the clock, and the clock will show fake time. Try it!
+Create some instances of your clock: @smalltalk{ClockMorph new
+openInWorld}. You can rotate and zoom. Look at the visual quality of
+the Roman numerals in the clock face, especially when rotated and
+zoomed. You don't get this graphics quality on your regular
+programming environment! You can also extract the parts, or scale each
+separately. Another fun experiment is to extract the Roman numerals
+into a separate @class{ClockFaceMorph}, and make it submorph of the
+Clock. Then, you can rotate just the face, not the clock, and the
+clock will show fake time. Try it!
 
-You might have noted two things that seem missing, though: How to compute bounding rectangles for Morphs, and how to detect if a Morph is being hit by the Hand, so you can move it or get a halo. The display rectangle that contains a morph is needed by the framework to manage the areas of the Display that need to be updated as a result of any change. But you don't need to know this rectangle in order to build your own Morphs. In Cuis, the framework computes it as needed, and stores it in the 'privateDisplayBounds' variable. You don't need to worry about that variable at all. WRT detecting if a Morph is hit by the Hand, or more generally, if a pixel is belongs to a Morph, truth is that when a Morph is drawn, the framework indeed knows all the pixels it is affecting. The #drawOn: method already specifies the shape of the Morph. Therefore, there is not a real need to ask the programmer to code the Morph geometry again in a separate method! All that is needed is careful design of the framework itself, to avoid requiring programmers to handle this extra complexity.
+You might have noted two things that seem missing, though: How to
+compute bounding rectangles for Morphs, and how to detect if a Morph
+is being hit by the Hand, so you can move it or get a halo. The
+display rectangle that contains a morph is needed by the framework to
+manage the areas of the Display that need to be updated as a result of
+any change. But you don't need to know this rectangle in order to
+build your own Morphs. In Cuis, the framework computes it as needed,
+and stores it in the @smalltalk{privateDisplayBounds} variable. You
+don't need to worry about that variable at all. WRT detecting if a
+Morph is hit by the Hand, or more generally, if a pixel is belongs to
+a Morph, truth is that when a Morph is drawn, the framework indeed
+knows all the pixels it is affecting. The @method{drawOn:} method
+already specifies the shape of the Morph. Therefore, there is not a
+real need to ask the programmer to code the Morph geometry again in a
+separate method! All that is needed is careful design of the framework
+itself, to avoid requiring programmers to handle this extra
+complexity.
 
-The ideas we have outlined in this chapter are the fundamental ones in Morphic, and the framework is implemented in order to support them. Morphs (i.e. interactive graphic objects) are very general and flexible. They are not restricted to a conventional widgets library, although such a library (rooted in WidgetMorph) is included and used for building all the Smalltalk tools.
+The ideas we have outlined in this chapter are the fundamental ones in
+Morphic, and the framework is implemented in order to support
+them. Morphs (i.e. interactive graphic objects) are very general and
+flexible. They are not restricted to a conventional widgets library,
+although such a library (rooted in WidgetMorph) is included and used
+for building all the Smalltalk tools.
 
-The examples we have explored use the VectorGraphics package. This package includes VectorCanvas and HybridCanvas classes. However, installing this package is not required for using the regular Smalltalk tools you have been using. The reason is that Cuis includes by default the BitBltCanvas class inherited from Squeak (and called FormCanvas there). BitBltCanvas doesn't support the vector graphics drawing operations and doesn't do anti aliasing or zooming. But it is mature, and it relies on the BitBlt operation that is included in the virtual machine. This means that it offers excellent performance.
+The examples we have explored use the VectorGraphics package. This
+package includes VectorCanvas and HybridCanvas classes. However,
+installing this package is not required for using the regular
+Smalltalk tools you have been using. The reason is that Cuis includes
+by default the BitBltCanvas class inherited from Squeak (and called
+FormCanvas there). BitBltCanvas doesn't support the vector graphics
+drawing operations and doesn't do anti aliasing or zooming. But it is
+mature, and it relies on the BitBlt operation that is included in the
+virtual machine. This means that it offers excellent performance.
 
-VectorGraphics is still in active development. When its drawing performance becomes good enough, it will be possible to draw all Morphs, completely replacing BitBltCanvas. Then, the UI customization option 'World' / 'Preferences...' / 'Font Sizes...' will no longer be needed, as all windows will be zoomable, in addition to resizable.
+VectorGraphics is still in active development. When its drawing
+performance becomes good enough, it will be possible to draw all
+Morphs, completely replacing BitBltCanvas. Then, the UI customization
+option 'World' / 'Preferences...' / 'Font Sizes...' will no longer be
+needed, as all windows will be zoomable, in addition to resizable.
 
-To further explore Cuis' Morphic, evaluate `Feature require: 'SVG'`, and then `SVGElementMorph examplesLion` and the other examples there. Also, be sure to try the example in the comment in #unicodeExamples.
+To further explore Cuis' Morphic, evaluate `Feature require: 'SVG'`,
+and then `SVGElementMorph examplesLion` and the other examples
+there. Also, be sure to try the example in the comment in
+#unicodeExamples.
