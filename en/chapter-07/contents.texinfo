@@ -1,18 +1,68 @@
 @node The Fundamentals of Morph
 @chapter The Fundamentals of Morph
 
-What would we expect if we ask for good support for building GUIs in a programming system?
+@quotation
+Morphic is a user interface framework that makes it easy and fun to
+build lively interactive user interfaces.
+@author John   Maloney
+@end quotation
 
-Chapter 6 started with that same question, and gave an overview of Morphs and their interactive behavior. This chapter deals with how Morphs are built, how to create new Morphs and what rules they follow.
+@* @* @* @*
 
-The User Interface framework in Cuis is called Morphic. Morphic was origianlly created by Randy Smith and John Maloney as the UI for Self (https://bibliography.selflanguage.org/_static/self4.0UserInterface.pdf). Later, John Maloney ported it to Smalltalk, to be used as the UI for Squeak (http://stephane.ducasse.free.fr/FreeBooks/CollectiveNBlueBook/morphic.final.pdf).
 
-For Cuis, we built Morphic 3, the third design iteration of these ideas, after Self's Morphic 1 and Squeak's Morphic 2. If you already know Morphic in Self or Squeak, most concepts are similar, although with some improvements: Morphic 3 coordinates are not limited to being integer numbers, the apparent size (zoom level) of elements is not tied to pixel density, and all drawing is done with high quality (subpixel) anti aliasing. These enhancements are enabled by the huge advance in hardware resources since Self and Squeak were designed (in the late 80's and late 90's respectively). Additionally, careful design of the framework relieves Morph programmers from much the complexity that was required, especially with regards to geometry.
 
-This step is required until VectorGraphics become part of the base Cuis image:
+What would we expect if we ask for good support for building GUIs in a
+programming system?
+
+In @ref{Visual with Morph} we started with that same question, and
+gave an overview of Morphs and their interactive behavior. This
+chapter deals with how Morphs are built, how to create new Morphs and
+what rules they follow.
+
+@cindex moprh @subentry legacy
+The User Interface framework in @cuis{} is called Morphic. Morphic was
+origianlly created by Randy Smith and John Maloney as the
+@url{https://bibliography.selflanguage.org/_static/self4.0UserInterface.pdf,,UI
+for Self}. Later, John Maloney ported it to Smalltalk, to be used as
+the
+@url{http://stephane.ducasse.free.fr/FreeBooks/CollectiveNBlueBook/morphic.final.pdf,,UI
+for Squeak}.
+
+
+@menu
+* Going Vector::
+@end menu
+
+
+@node Going Vector
+@section Going Vector
+
+For @cuis{}, we built Morphic 3, the third design iteration of these
+ideas, after Self's Morphic 1 and Squeak's Morphic 2. If you already
+know Morphic in Self or Squeak, most concepts are similar, although
+with some improvements: Morphic 3 coordinates are not limited to being
+integer numbers, the apparent size (zoom level) of elements is not
+tied to pixel density, and all drawing is done with high quality
+(subpixel) anti aliasing. These enhancements are enabled by the huge
+advance in hardware resources since Self and Squeak were designed (in
+the late 80's and late 90's respectively). Additionally, careful
+design of the framework relieves Morph programmers from much the
+complexity that was required, especially with regards to geometry.
+
+This step is required until VectorGraphics become part of the base
+@cuis{} image:
+
 @smalltalkExample{Feature require: 'VectorGraphics'}
 
-Let's start with some examples. What we want is to build our own graphic objects, or Morphs. A Morph class is part of the Morph hierarchy and usually includes a #drawOn: method for drawing its distinctive appearance. If we forget about computers for a second, and consider drawing with color pens on a sheet of paper, one of the most basic things we can do  is to draw straight lines. So, let's build a straight line object:
+Let's start with some examples. What we want is to build our own
+graphic objects, or Morphs. A Morph class is part of the Morph
+hierarchy and usually includes a @method{drawOn:} method for drawing
+its distinctive appearance. If we forget about computers for a second,
+and consider drawing with color pens on a sheet of paper, one of the
+most basic things we can do is to draw straight lines.
+
+So, let's start a System Browser window and build a straight line
+object:
 
 @smalltalkExample{Morph subclass: #LineExampleMorph
    instanceVariableNames: ''
@@ -20,19 +70,31 @@ Let's start with some examples. What we want is to build our own graphic objects
    poolDictionaries: ''
    category: 'Morphic-Learning'}
 
-In method category 'drawing' add:
-@smalltalkExample{drawOn: aCanvas
+In method category @label{drawing} add:
+
+@smalltalkExample{LineExampleMorph>>drawOn: aCanvas
    aCanvas strokeWidth: 20 color: Color green do: [
       aCanvas
          moveToX: 100 y: 100;
          lineToX: 400 y: 200 ].}
 
-Now do:
+Now in a Workspace execute:
 @smalltalkExample{LineExampleMorph new openInWorld}
 
-(If you get a prompter asking whether to install and activate Vector Graphics support, please answer yes).
+If you get a prompter asking whether to install and activate Vector
+Graphics support, please answer yes.
 
-There it is. You have already built your first Morph class. We hope that the code is self evident. Note that the #drawOn: method takes a VectorCanvas as an argument. VectorCanvas provides many drawing operations for morphs to use. You can play with the various drawing operations and their parameters, and see the result. If you make a mistake, and the #drawOn: method fails, you'll get a red and yellow error box. After fixing your #drawOn: method, do 'World' / 'Debug...' / 'Start drawing all again' to get your morph redrawn correctly.
+There it is. You have already built your first @class{Morph} class. We
+hope that the code is self evident. Note that the @method{drawOn:}
+method takes a @class{VectorCanvas} instance as an
+argument. @class{VectorCanvas} provides many drawing operations for
+morphs to use. You can play with the various drawing operations and
+their parameters, and see the result. If you make a mistake, and the
+@method{drawOn:} method fails, you'll get a red and yellow error
+box. After fixing your @method{drawOn:} method, do
+...@clicksequence{World menu @click{} @label{Debug...} @click{}
+@label{Start drawing all again}}.. to get your morph redrawn
+correctly.
 
 You might have already tried to click and drag on your Line, like you can do with regular windows and most other Morphs. If not, try now. But nothing happens! The reason is that our Morph is fixed in a place in the owner morph (the WorldMorph). It is fixed because #drawOn: says it should be a line between 100@@100 and 400@@200. Moving it around would mean modifying those points. That could possible, for example, if the points were stored in instance variables.
 

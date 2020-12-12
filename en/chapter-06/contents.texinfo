@@ -264,10 +264,10 @@ Let's make a simple subclass which changes color when
 but subclass @class{EllipseMorph} with @smalltalk{#ColorClickEllipse}.
 
 @smalltalkExample{EllipseMorph subclass: #ColorClickEllipse
-             instanceVariableNames: ''
-             classVariableNames: ''
-             poolDictionaries: ''
-             category: 'Spacewar!!'}
+   instanceVariableNames: ''
+   classVariableNames: ''
+   poolDictionaries: ''
+   category: 'Spacewar!!'}
 
 @cindex event @subentry testing
 @kbd{Right-Click} on the @label{Message Category} pane and select
