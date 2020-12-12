@@ -52,6 +52,7 @@ complexity that was required, especially with regards to geometry.
 This step is required until VectorGraphics become part of the base
 @cuis{} image:
 
+@cindex morph @subentry vector @subentry installation
 @smalltalkExample{Feature require: 'VectorGraphics'}
 
 Let's start with some examples. What we want is to build our own
@@ -72,6 +73,7 @@ object:
 
 In method category @label{drawing} add:
 
+@cindex morph @subentry vector @subentry line drawing
 @smalltalkExample{LineExampleMorph>>drawOn: aCanvas
    aCanvas strokeWidth: 20 color: Color green do: [
       aCanvas
@@ -82,19 +84,20 @@ Now in a Workspace execute:
 @smalltalkExample{LineExampleMorph new openInWorld}
 
 If you get a prompter asking whether to install and activate Vector
-Graphics support, please answer yes.
+Graphics support, please answer yes. There it is. You have already
+built your first @class{Morph} class.
 
-There it is. You have already built your first @class{Morph} class. We
-hope that the code is self evident. Note that the @method{drawOn:}
-method takes a @class{VectorCanvas} instance as an
-argument. @class{VectorCanvas} provides many drawing operations for
-morphs to use. You can play with the various drawing operations and
-their parameters, and see the result. If you make a mistake, and the
-@method{drawOn:} method fails, you'll get a red and yellow error
-box. After fixing your @method{drawOn:} method, do
-...@clicksequence{World menu @click{} @label{Debug...} @click{}
-@label{Start drawing all again}}.. to get your morph redrawn
-correctly.
+@figure{Details of our line morph,ch07-01-LineDetails,10}
+
+The code is self evident, the @method{drawOn:} method takes a
+@class{VectorCanvas} instance as an argument. @class{VectorCanvas}
+provides many drawing operations for morphs to use. You can play with
+the various drawing operations and their parameters, and see the
+result. If you make a mistake, and the @method{drawOn:} method fails,
+you'll get a red and yellow error box. After fixing your
+@method{drawOn:} method, do ...@clicksequence{World menu @click{}
+@label{Debug...} @click{} @label{Start drawing all again}}.. to get
+your morph redrawn correctly.
 
 You might have already tried to click and drag on your Line, like you
 can do with regular windows and most other Morphs. If not, try
@@ -109,6 +112,7 @@ But now, we just want to code our morph in the simplest possible way,
 and still be able to move it around. The solution is to make it
 subclass of @class{MovableMorph}, instead of @class{Morph}.
 
+@cindex morph @subentry delete
 To do this, first evaluate the code below to get rid of all of them:
 
 @smalltalkExampleCaption{Delete all instances of a given morph,deleteMorphInstances,
@@ -144,11 +148,12 @@ In method category @label{initialization} add:
 
 @smalltalkExample{TriangleExampleMorph>>initialize
    super initialize.
-   borderColor := Color random alpha: 0.8.
-   fillColor := Color random alpha: 0.6.}
+   borderColor @assign{} Color random alpha: 0.8.
+   fillColor @assign{} Color random alpha: 0.6.}
 
 In method category @label{drawing} add:
 
+@cindex morph @subentry vector @subentry filling area
 @smalltalkExample{TriangleExampleMorph>>drawOn: aCanvas
    aCanvas strokeWidth: 10 color: borderColor fillColor: fillColor do: [
       aCanvas
@@ -162,60 +167,103 @@ will do. Now execute:
 
 @smalltalkExample{TriangleExampleMorph new openInWorld}
 
-Do it several times, and move each triangle around. Each new triangle you create has different colors. And these colors are not completely opaque. This means that when you place your triangle over some other morph, you can see through it.
+Do it several times, and move each triangle around. Each new triangle
+you create has different colors. And these colors are not completely
+opaque. This means that when you place your triangle over some other
+morph, you can see through it.
 
-Morphic gives you additional ways to interact with your morphs. If you have a three button mouse, or a wheel mouse, place the mouse pointer (which happens to be an instance of HandMorph) over one of your triangles and click with the center button or mouse. If you don't have a three button mouse, [command]-click should do the trick too. You get a constellation of small colored circles around your morph. This is called the morph's 'halo', and each colored circle is a 'halo handle'.
+@figure{A variety of triangle morphs,ch07-02-Triangles,6} 
 
-At the top left you have the red 'Remove' handle. Clicking on it just removes the morph from the morphic world. Hover your mouse over each handle, and you'll get a tooltip with its name. Other handles let you duplicate a morph, open a menu with actions on it, pick it up (same as dragging it with the hand as you did before). The move operation is similar to pick up, but doesn't remove the morph from the current owner. More about that, later. The debug handle opens a menu from where you can open an inspector or browser on your morph.
+As we learn previously, Morphic gives you additional ways to interact
+with your morphs. If you have a three button mouse, or a wheel mouse,
+place the mouse pointer (which happens to be an instance of HandMorph)
+over one of your triangles and click with the center button or
+mouse. If you don't have a three button mouse, @kbd{Command-click}
+should do the trick too. You get a constellation of small colored
+circles around your morph. This is called the morph's 'halo', and each
+colored circle is a 'halo handle'.
 
-You also have a rotate and scale handles. Try them! To use them, move your hand to the handle, and then press the mouse button and drag it. As you might have guessed, the rotate handles spins your morph around its 0@@0 coordinates (i.e. the origin of its own coordinate system). The scale handles controls the apparent zoom applied to your morph. Both scale and rotation (and also displacement, as when you move your morph around) are implemented by modifying the inner coordinate system defined by your morph. Displacement, rotation and scale are floating point numbers (and thus not limited to integers).
+At the top left you have the red @label{Remove} handle. Clicking on it
+just removes the morph from the morphic world. Hover your mouse over
+each handle, and you'll get a tooltip with its name. Other handles let
+you duplicate a morph, open a menu with actions on it, pick it up
+(same as dragging it with the hand as you did before). The move
+operation is similar to pick up, but doesn't remove the morph from the
+current owner. More about that, later. The debug handle opens a menu
+from where you can open an inspector or browser on your morph.
 
-You can obviously control all this with code. Let's add a couple additional methods to our TriangleExampleMorph. Let's make our triangle be "alive":
+You also have a rotate and scale handles. Try them! To use them, move
+your hand to the handle, and then press the mouse button and drag
+it. As you might have guessed, the rotate handles spins your morph
+around its @smalltalk{0@@0} coordinates (i.e. the origin of its own
+coordinate system). The scale handles controls the apparent zoom
+applied to your morph. Both scale and rotation (and also displacement,
+as when you move your morph around) are implemented by modifying the
+inner coordinate system defined by your morph. Displacement, rotation
+and scale are floating point numbers, and thus not limited to
+integers.
 
-Method category 'stepping'
-@smalltalkExample{wantsSteps
-   ^true}
+You can obviously control all this with code. Let's add a couple
+additional methods to our @class{TriangleExampleMorph}. Let's make our
+triangle be @emph{alive}:
 
-@smalltalkExample{step
-   fillColor := Color random.
-   self redrawNeeded.}
+Method category @label{stepping}
+
+@smalltalkExample{TriangleExampleMorph>>wantsSteps
+   @return{} true}
+
+@smalltalkExample{TriangleExampleMorph>>step
+   fillColor @assign{} Color random.
+   self redrawNeeded}
 
 Then create some additional Triangles as you did before.
 
-This will make our triangles change colod once a second. But more interesting, do:
-@smalltalkExample{stepTime
-   ^100}
+This will make our triangles change colod once a second. But more
+interesting, do:
 
-@smalltalkExample{step
+@smalltalkExample{TriangleExampleMorph>>stepTime
+   @return{} 100}
+
+@smalltalkExample{TriangleExampleMorph>>step
    self morphPosition: self morphPosition + (0.4@@0).
-   self redrawNeeded.}
+   self redrawNeeded}
 
-Now, our morph will step ten times per second, and will move to the right at a speed of four pixels per second. Note that each step it will move by 0.4 pixels, and not by an integer number of pixels. High quality anti aliasing drawing means we can actually do that! You can make it step for times a second, and move 1 pixel each time, and see how different that looks.
+Now, our morph will step ten times per second, and will move to the
+right at a speed of four pixels per second. Note that each step it
+will move by 0.4 pixels, and not by an integer number of pixels. High
+quality anti aliasing drawing means we can actually do that! You can
+make it step for times a second, and move 1 pixel each time, and see
+how different that looks.
 
-Now try this
-@smalltalkExample{step
+Now try this:
+
+@smalltalkExample{TriangleExampleMorph>>step
    self morphPosition: self morphPosition + (0.2@@0).
    self rotateBy: 4 degreesToRadians.
-   self redrawNeeded.}
+   self redrawNeeded}
 
-It gets even better. First get rid of all instances `TriangleExampleMorph allInstancesDo: [ :m | m delete]`
-@smalltalkExample{initialize
+It gets even better. First get rid of all instances:
+@smalltalk{TriangleExampleMorph allInstancesDo: [ :m | m delete]}.
+
+@smalltalkExample{TriangleExampleMorph>>initialize
    super initialize.
-   borderColor := Color random alpha: 0.8.
-   fillColor := Color random alpha: 0.6.
-   scaleBy := 1.1.}
+   borderColor @assign{} Color random alpha: 0.8.
+   fillColor @assign{} Color random alpha: 0.6.
+   scaleBy @assign{} 1.1}
 (accept scaleBy as a new instance variable).
 
-@smalltalkExample{step
+@smalltalkExample{TriangleExampleMorph>>step
    self morphPosition: self morphPosition + (0.2@@0).
    self rotateBy: 4 degreesToRadians.
    self scaleBy: scaleBy.
-   self scale > 1.2 ifTrue: [scaleBy := 0.9].
-   self scale < 0.2 ifTrue: [scaleBy := 1.1].
-   self redrawNeeded.}
+   self scale > 1.2 ifTrue: [scaleBy @assign{} 0.9].
+   self scale < 0.2 ifTrue: [scaleBy @assign{} 1.1].
+   self redrawNeeded}
 
 @smalltalkExample{TriangleExampleMorph new openInWorld}
-See that when the triangle is doing its crazy dance, you can still open a halo and interact with it.
+
+See that when the triangle is doing its crazy dance, you can still
+open a halo and interact with it.
 
 Now, let's try something different. Grab one of your LineExampleMorph. With the halo, zoom it until it is about the size of your triangle. Now place the triangle above your line. Open a halo on the triangle, click on the Menu handle and select 'embed into' / LineExampleMorph. This makes the triangle a submorph of the line. Now, if you move, scale or rotate the line, the triangle also gets adjusted.
 
