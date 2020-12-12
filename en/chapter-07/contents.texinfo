@@ -96,9 +96,41 @@ box. After fixing your @method{drawOn:} method, do
 @label{Start drawing all again}}.. to get your morph redrawn
 correctly.
 
-You might have already tried to click and drag on your Line, like you can do with regular windows and most other Morphs. If not, try now. But nothing happens! The reason is that our Morph is fixed in a place in the owner morph (the WorldMorph). It is fixed because #drawOn: says it should be a line between 100@@100 and 400@@200. Moving it around would mean modifying those points. That could possible, for example, if the points were stored in instance variables.
+You might have already tried to click and drag on your Line, like you
+can do with regular windows and most other Morphs. If not, try
+now. But nothing happens! The reason is that our Morph is fixed in a
+place in the owner morph (the WorldMorph). It is fixed because
+@method{drawOn:} says it should be a line between @smalltalk{100@@100}
+and @smalltalk{400@@200}. Moving it around would mean modifying those
+points. That could be possible, for example, if the points were stored
+in instance variables.
 
-But now, we just want to code our morph in the simplest possible way, and still be able to move it around. The solution is to make it subclass of MovableMorph, instead of Morph. To do this, first evaluate `LineExampleMorph allInstancesDo: [ :m | m delete]` to get rid of all of them. Then, in the browser, in the class declaration, type 'MovableMorph' instead of 'Morph' and save. Now do again `LineExampleMorph new openInWorld` and you'll get a line you can grab with the mouse and move it around. MovableMorph adds a new instance variable called 'location'. If a morph has a location, it can be moved around, by modifying it. The location also defines a new, local coordinate system. All the coordinates used in the #drawOn: method are now relative to this new coordinate system. That's why we don't need to modify the #drawOn: method. #drawOn: now tells how the morph should be drawn, but not where. The location also specifies a possible rotation and scale factor. This means that subinstances of MovableMorph can also be rotated and zoomed.
+But now, we just want to code our morph in the simplest possible way,
+and still be able to move it around. The solution is to make it
+subclass of @class{MovableMorph}, instead of @class{Morph}.
+
+To do this, first evaluate the code below to get rid of all of them:
+
+@smalltalkExampleCaption{Delete all instances of a given morph,deleteMorphInstances,
+LineExampleMorph allInstancesDo: [ :m | m delete]}
+
+Then, in the System Browser, in the class declaration, type
+@class{MovableMorph} instead of @class{Morph} and save. Now execute
+again:
+
+@smalltalkExample{LineExampleMorph new openInWorld}
+
+You will get a line you can grab with the mouse and move it
+around. @class{MovableMorph} adds a new instance variable called
+@smalltalk{location}. If a morph has a @smalltalk{location}, it can be
+moved around, by modifying it. The @smalltalk{location} also defines a
+new local coordinate system. All the coordinates used in the
+@method{drawOn:} method are now relative to this new coordinate
+system. That's why we don't need to modify the @method{drawOn:}
+method. @method{drawOn:} now tells how the morph should be drawn, but
+not where. The @smalltalk{location} also specifies a possible rotation
+and scale factor. This means that subinstances of @class{MovableMorph}
+can also be rotated and zoomed.
 
 Let's build another morph, to have more fun.
 
@@ -108,14 +140,16 @@ Let's build another morph, to have more fun.
    poolDictionaries: ''
    category: 'Morphic-Learning'}
 
-In method category 'initialization' add:
-@smalltalkExample{initialize
+In method category @label{initialization} add:
+
+@smalltalkExample{TriangleExampleMorph>>initialize
    super initialize.
    borderColor := Color random alpha: 0.8.
    fillColor := Color random alpha: 0.6.}
 
-In method category 'drawing' add:
-@smalltalkExample{drawOn: aCanvas
+In method category @label{drawing} add:
+
+@smalltalkExample{TriangleExampleMorph>>drawOn: aCanvas
    aCanvas strokeWidth: 10 color: borderColor fillColor: fillColor do: [
       aCanvas
          moveToX: 0 y: 100;
@@ -123,7 +157,9 @@ In method category 'drawing' add:
          lineToX: -87 y: -50;
          lineToX: 0 y: 100 ].}
 
-Take a moment to try to understand that code, and to guess what it will do. Now do:
+Take a moment to try to understand that code, and to guess what it
+will do. Now execute:
+
 @smalltalkExample{TriangleExampleMorph new openInWorld}
 
 Do it several times, and move each triangle around. Each new triangle you create has different colors. And these colors are not completely opaque. This means that when you place your triangle over some other morph, you can see through it.
