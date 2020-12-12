@@ -244,7 +244,7 @@ Now try this:
 
 It gets even better. First get rid of all instances:
 
-@smalltalkExample{TriangleExampleMorph allInstancesDo: [ :m | m delete]}.
+@smalltalkExample{TriangleExampleMorph allInstancesDo: [ :m | m delete]}
 
 And modify these methods:
 
