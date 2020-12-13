@@ -98,7 +98,7 @@ have a default text font based on vector graphics, do
 <code>Set System Font...</code> &rarr; <code>DejaVu...</code> &rarr;
 <code>DejaVuSans</code><a id="DOCF22" href="#FOOT22"><sup>22</sup></a>.
 </p>
-<p>Let&rsquo;s create the dial clock dial:
+<p>Let&rsquo;s create <code>ClockMorph</code>, the dial clock :
 </p>
 <div class="display">
 <pre class="display"><span class="sansserif">MovableMorph subclass: #ClockMorph
@@ -109,7 +109,7 @@ have a default text font based on vector graphics, do
 </pre></div>
 
 <span id="index-morph-21"></span>
-<p>Method category <code>drawing</code>:
+<p>...and its drawing method in the category <code>drawing</code>:
 </p>
 <div class="display">
 <pre class="display"><span class="sansserif">ClockMorph&gt;&gt;drawOn: aCanvas
@@ -125,8 +125,9 @@ have a default text font based on vector graphics, do
 </pre></div>
 
 
-<p>The hand for the hour:
-</p><div class="display">
+<p>We create <code>ClockHourHandMorph</code>, the hand for the hours:
+</p>
+<div class="display">
 <pre class="display"><span class="sansserif">MovableMorph subclass: #ClockHourHandMorph
    instanceVariableNames: &rdquo;
    classVariableNames: &rdquo;
@@ -134,8 +135,9 @@ have a default text font based on vector graphics, do
    category: &rsquo;Morphic-Learning&rsquo;</span>
 </pre></div>
 
-<p>Method category <code>drawing</code>:
-</p><div class="display">
+<p>...and its drawing method in the category <code>drawing</code>:
+</p>
+<div class="display">
 <pre class="display"><span class="sansserif">ClockHourHandMorph&gt;&gt;drawOn: aCanvas
    aCanvas fillColor: (Color black alpha: 0.6) do: [
       aCanvas
@@ -156,6 +158,8 @@ scaling formulas to build Morphs in Cuis-Smalltalk!
 <p>By now, you might imagine what we are doing with all this, but please
 stick with us while we finish building our clock.
 </p>
+<p>We create <code>ClockMinuteHandMorph</code>, the hand for the minutes:
+</p>
 <div class="display">
 <pre class="display"><span class="sansserif">MovableMorph subclass: #ClockMinuteHandMorph
    instanceVariableNames: &rdquo;
@@ -164,8 +168,9 @@ stick with us while we finish building our clock.
    category: &rsquo;Morphic-Learning&rsquo;</span>
 </pre></div>
 
-<p>Method category <code>drawing</code>:
-</p><div class="display">
+<p>...and its drawing method in the category <code>drawing</code>:
+</p>
+<div class="display">
 <pre class="display"><span class="sansserif">ClockMinuteHandMorph&gt;&gt;drawOn: aCanvas
    aCanvas fillColor: ((Color black) alpha: 0.6) do: [
       aCanvas
@@ -176,6 +181,8 @@ stick with us while we finish building our clock.
          lineToX: -8 y: 0 ]</span>
 </pre></div>
 
+<p>And finally, the <code>ClockSecondHandMorph</code>, the hand for the seconds:
+</p>
 <div class="display">
 <pre class="display"><span class="sansserif">MovableMorph subclass: #ClockSecondHandMorph
    instanceVariableNames: &rdquo;
@@ -184,8 +191,9 @@ stick with us while we finish building our clock.
    category: &rsquo;Morphic-Learning&rsquo;</span>
 </pre></div>
 
-<p>Method category <code>drawing</code>:
-</p><div class="display">
+<p>...and its drawing method in the category <code>drawing</code>:
+</p>
+<div class="display">
 <pre class="display"><span class="sansserif">ClockSecondHandMorph&gt;&gt;drawOn: aCanvas
    aCanvas strokeWidth: 1.5 color: Color red do: [
       aCanvas
@@ -193,10 +201,10 @@ stick with us while we finish building our clock.
          lineToX: 85 y: 0 ]</span>
 </pre></div>
 
-<p>Now, all that is needed is to put our clock parts together:
-</p>
-<p><code>ClockMorph</code>, method category <code>initialization</code> (accept the
-new names as instance variables):
+<p>Now, all that is needed is to put our clock parts together in
+<code>ClockMorph</code>. In its method category <code>initialization</code> add
+its <code>initialize</code> method (accept the new names as instance
+variables):
 </p>
 <div class="display">
 <pre class="display"><span class="sansserif">ClockMorph&gt;&gt;initialize
@@ -206,14 +214,16 @@ new names as instance variables):
    self addMorph: (secondHand &#x2190; ClockSecondHandMorph new)</span>
 </pre></div>
 
-<p>And make it work. <code>ClockMorph</code>, method category
-<code>stepping</code>:
+<p>Finally, we animate it. In method category <code>stepping</code> add the
+method:
 </p>
 <div class="display">
 <pre class="display"><span class="sansserif">ClockMorph&gt;&gt;wantsSteps
    &#x2191; true</span>
 </pre></div>
 
+<p>...and:
+</p>
 <div class="display">
 <pre class="display"><span class="sansserif">ClockMorph&gt;&gt;step
    | time |
@@ -225,10 +235,6 @@ new names as instance variables):
 
 <p>Take a look at how we update the clock hands.
 </p>
-<div class="float"><span id="ch07_002d05_002dClock"></span>
-<div align="center"><img src="ch07-05-Clock.png" alt="ch07-05-Clock">
-</div>
-<div class="float-caption"><p><strong>Figure 7.5: </strong>A clock morph</p></div></div>
 <p>As we said before, any <code>MovableMorph</code> defines a coordinate
 system for its own <code>drawOn:</code> method and also for its
 submorphs. This new coordinate system might include rotation or
@@ -243,6 +249,10 @@ convention in graphics frameworks. Note that this is different from
 the usual Math convention, where Y increases upwards, and positive
 angles go counterclockwise.)
 </p>
+<div class="float"><span id="ch07_002d05_002dClock"></span>
+<div align="center"><img src="ch07-05-Clock.png" alt="ch07-05-Clock">
+</div>
+<div class="float-caption"><p><strong>Figure 7.5: </strong>A clock morph</p></div></div>
 <p>So, how do we update the hands? For example, for the hour hand, one
 hour means 30 degrees, as 12 hours means 360 degrees or a whole
 turn. We multiply hours by 30 to get degrees. But for 0 the hand must

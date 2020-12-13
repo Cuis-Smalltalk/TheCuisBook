@@ -297,7 +297,7 @@ numbers, and thus not limited to integers.
 </p>
 <span id="Animated-morph"></span><h4 class="subsection">7.1.4 Animated morph</h4>
 <span id="index-morph-15"></span>
-<p>Let&rsquo;s add a couple of methods to our <code>TriangleExampleMorph</code> to
+<p>Let&rsquo;s add two methods to our <code>TriangleExampleMorph</code> to
 make our triangle <em>alive</em>:
 </p>
 <span id="index-morph-16"></span>
@@ -307,7 +307,8 @@ make our triangle <em>alive</em>:
    &#x2191; true</span>
 </pre></div>
 
-<div class="display">
+<p>...and:
+</p><div class="display">
 <pre class="display"><span class="sansserif">TriangleExampleMorph&gt;&gt;step
    fillColor &#x2190; Color random.
    self redrawNeeded</span>
@@ -316,13 +317,15 @@ make our triangle <em>alive</em>:
 <p>Then create some additional triangles as you did before.
 </p>
 <p>This will make our triangles change color once a second. But more
-interesting, edit the methods and observe:
+interesting, edit the method:
 </p>
 <div class="display">
 <pre class="display"><span class="sansserif">TriangleExampleMorph&gt;&gt;stepTime
    &#x2191; 100</span>
 </pre></div>
 
+<p>...and:
+</p>
 <span id="index-morph-17"></span>
 
 <div class="display">
