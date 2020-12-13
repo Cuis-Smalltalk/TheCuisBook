@@ -505,6 +505,20 @@ into a separate @class{ClockFaceMorph}, and make it submorph of the
 Clock. Then, you can rotate just the face, not the clock, and the
 clock will show fake time. Try it!
 
+
+
+@c exercise, add a round cicle in the second hand
+@c
+@c drawOn: aCanvas
+@c 	aCanvas strokeWidth: 1.5 color: Color red do: [
+@c 		aCanvas
+@c 		moveToX: 0 y: 0;
+@c 		lineToX: 85 y: 0 ].
+@c 	aCanvas ellipseCenterX: 70 y: 0 rx: 3 ry: 3 
+@c 		borderWidth: 1 
+@c 		borderColor: Color red fillColor: Color yellow
+
+
 You might have noted two things that seem missing, though: How to
 compute bounding rectangles for Morphs, and how to detect if a Morph
 is being hit by the Hand, so you can move it or get a halo. The
