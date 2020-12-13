@@ -217,7 +217,7 @@ We will learn how to control all this with code and animate our morph.
 
 @subsection Animated morph
 @cindex morph @subentry animated
-Let's add a couple of methods to our @class{TriangleExampleMorph} to
+Let's add two methods to our @class{TriangleExampleMorph} to
 make our triangle @emph{alive}:
 
 @cindex morph @subentry @method{step,wantsSteps}
@@ -225,6 +225,7 @@ In the method category @label{stepping} define:
 @smalltalkExample{TriangleExampleMorph>>wantsSteps
    @return{} true}
 
+...and:
 @smalltalkExample{TriangleExampleMorph>>step
    fillColor @assign{} Color random.
    self redrawNeeded}
@@ -232,10 +233,12 @@ In the method category @label{stepping} define:
 Then create some additional triangles as you did before.
 
 This will make our triangles change color once a second. But more
-interesting, edit the methods and observe:
+interesting, edit the method:
 
 @smalltalkExample{TriangleExampleMorph>>stepTime
    @return{} 100}
+
+...and:
 
 @cindex morph @subentry @method{morphPosition}
 
@@ -348,7 +351,7 @@ have a default text font based on vector graphics, do
 @label{DejaVuSans}}@footnote{You can select any other TrueType font
 from the ones available}.
 
-Let's create the dial clock dial:
+Let's create @class{ClockMorph}, the dial clock :
 
 @smalltalkExample{MovableMorph subclass: #ClockMorph
    instanceVariableNames: ''
@@ -357,7 +360,7 @@ Let's create the dial clock dial:
    category: 'Morphic-Learning'}
 
 @cindex morph @subentry @method{drawOn:}
-Method category @label{drawing}:
+...and its drawing method in the category @label{drawing}:
 
 @smalltalkExample{ClockMorph>>drawOn: aCanvas
    aCanvas
@@ -371,14 +374,16 @@ Method category @label{drawing}:
    aCanvas drawString: 'IX' at: -90 @@ -10 font: nil color: Color brown}
 
 
-The hand for the hour:
+We create @class{ClockHourHandMorph}, the hand for the hours:
+
 @smalltalkExample{MovableMorph subclass: #ClockHourHandMorph
    instanceVariableNames: ''
    classVariableNames: ''
    poolDictionaries: ''
    category: 'Morphic-Learning'}
 
-Method category @label{drawing}:
+...and its drawing method in the category @label{drawing}:
+
 @smalltalkExample{ClockHourHandMorph>>drawOn: aCanvas
    aCanvas fillColor: (Color black alpha: 0.6) do: [
       aCanvas
@@ -398,13 +403,16 @@ scaling formulas to build Morphs in @cuis{}!
 By now, you might imagine what we are doing with all this, but please
 stick with us while we finish building our clock.
 
+We create @class{ClockMinuteHandMorph}, the hand for the minutes:
+
 @smalltalkExample{MovableMorph subclass: #ClockMinuteHandMorph
    instanceVariableNames: ''
    classVariableNames: ''
    poolDictionaries: ''
    category: 'Morphic-Learning'}
 
-Method category @label{drawing}:
+...and its drawing method in the category @label{drawing}:
+
 @smalltalkExample{ClockMinuteHandMorph>>drawOn: aCanvas
    aCanvas fillColor: ((Color black) alpha: 0.6) do: [
       aCanvas
@@ -414,23 +422,26 @@ Method category @label{drawing}:
          lineToX: 0 y: -4;
          lineToX: -8 y: 0 ]}
 
+And finally, the @class{ClockSecondHandMorph}, the hand for the seconds:
+
 @smalltalkExample{MovableMorph subclass: #ClockSecondHandMorph
    instanceVariableNames: ''
    classVariableNames: ''
    poolDictionaries: ''
    category: 'Morphic-Learning'}
 
-Method category @label{drawing}:
+...and its drawing method in the category @label{drawing}:
+
 @smalltalkExample{ClockSecondHandMorph>>drawOn: aCanvas
    aCanvas strokeWidth: 1.5 color: Color red do: [
       aCanvas
          moveToX: 0 y: 0;
          lineToX: 85 y: 0 ]}
 
-Now, all that is needed is to put our clock parts together:
-
-@class{ClockMorph}, method category @label{initialization} (accept the
-new names as instance variables):
+Now, all that is needed is to put our clock parts together in
+@class{ClockMorph}. In its method category @label{initialization} add
+its @method{initialize} method (accept the new names as instance
+variables):
 
 @smalltalkExample{ClockMorph>>initialize
    super initialize.
@@ -438,11 +449,13 @@ new names as instance variables):
    self addMorph: (minuteHand @assign{} ClockMinuteHandMorph new).
    self addMorph: (secondHand @assign{} ClockSecondHandMorph new)}
 
-And make it work. @class{ClockMorph}, method category
-@label{stepping}:
+Finally, we animate it. In method category @label{stepping} add the
+method:
 
 @smalltalkExample{ClockMorph>>wantsSteps
    @return{} true}
+
+...and:
 
 @smalltalkExample{ClockMorph>>step
    | time |
@@ -452,8 +465,6 @@ And make it work. @class{ClockMorph}, method category
    secondHand rotation: (time second * 6 - 90) degreesToRadians.}
 
 Take a look at how we update the clock hands.
-
-@figure{A clock morph,ch07-05-Clock,4}
 
 As we said before, any @class{MovableMorph} defines a coordinate
 system for its own @method{drawOn:} method and also for its
@@ -468,6 +479,8 @@ downwards. Positive rotations go clockwise. (This is the usual
 convention in graphics frameworks. Note that this is different from
 the usual Math convention, where Y increases upwards, and positive
 angles go counterclockwise.)
+
+@figure{A clock morph,ch07-05-Clock,4}
 
 So, how do we update the hands? For example, for the hour hand, one
 hour means 30 degrees, as 12 hours means 360 degrees or a whole
