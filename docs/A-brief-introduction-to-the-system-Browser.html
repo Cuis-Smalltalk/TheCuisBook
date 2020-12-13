@@ -95,8 +95,7 @@ Next: <a href="Spacewar_0021-models.html" accesskey="n" rel="next">Spacewar! mod
 <span id="index-browser"></span>
 
 <p>Smalltalk organizes instance behaviors using classes.  
-A class is an object which holds the methods which react to
-the messages which are their names.
+A class is an object which holds a set of methods to be executed when it receives a message that is the name of one of these methods.
 </p>
 <p>The <em>System Browser</em>, in short the <em>Browser</em>, is a tool to
 rule all the classes in Cuis-Smalltalk. It is both a tool to explore the
@@ -125,7 +124,7 @@ related to text and date entities.
 <p>Next to the right are the classes in the selected class category. They
 are nicely presented in a parent-child class hierarchy. When a class is
 first selected in this pane, its declaration appears in the large pane
-bellow, the <code>Number</code> class declaration is:
+below, the <code>Number</code> class declaration is:
 </p>
 <div class="display">
 <pre class="display"><span class="sansserif">Magnitude subclass: #Number
@@ -163,8 +162,8 @@ of <code>Number</code> adds methods (which define behaviors) unknown to an insta
 of <code>Magnitude</code>.  We will explore this in detail as we go forward.
 </p>
 <span id="index-class-3"></span>
-<p>To learn about the intend of a class, it is good practice to <strong>always</strong>
-visit the class comment. Often a comment comes also with code
+<p>To learn about the purpouse of a class, it is good practice to <strong>always</strong>
+visit the class comment. Often a comment also comes with code
 examples to learn how to use the object; these code snippets can be
 selected and executed in place as done from a Workspace. In
 <a href="#ch02_002dbrowserDetailed">Figure 2.1</a>, see the <code>comment</code> button to read or
@@ -172,8 +171,8 @@ to edit the comment of the selected class.
 </p>
 <span id="index-method-1"></span>
 <p>To the right of the class panel is the method categories panel.
-A class may have with tens of methods, so grouping
-them by category helps other users orient to find related methods.
+A class may have tens of methods, so grouping
+them by category helps other users orient themselves in finding related methods.
 As a reference, <code>Number</code>
 has more than 100 instance side methods implemented in
 itself<a id="DOCF12" href="#FOOT12"><sup>12</sup></a>. Clicking the <code>arithmetic</code> category
@@ -206,11 +205,11 @@ class?</em>
 <span id="index-method-2"></span>
 <p>In the Browser, once a method is selected &ndash; in
 <a href="#ch02_002dbrowserDetailed">Figure 2.1</a>, <code>abs</code> method &ndash; the bottom part
-shows its source code, ready to be explored or edited. Again, often,
-you will read a small comment just after the method name, it is
+shows its source code, ready to be explored or edited. Often,
+you will find a small comment just after the method name, it will be
 surrounded by double quotes.
 </p>
-<p>Every entity knows its class and answers it to the message <code>#class</code>.
+<p>Every entity knows its own class and will respond it when sent the message <code>#class</code>.
 </p>
 <span id="index-browser-2"></span>
 <span id="index-keyboard-shortcut-4"></span>

@@ -67,7 +67,7 @@ Smalltalk allClasses size
 
 To be honest, in our previous chapter we skipped this important detail
 on Smalltalk design. We wrote about message sending without explaining
-much, we wanted you to discover informally this design.
+much, we wanted you to discover this design informally.
 The scripts you
 read and wrote were all about entities communicating with each other
 through messages.
@@ -137,7 +137,7 @@ is not 7. Parentheses must be used to alter the order of evaluation:
 
 
 However, for mathematics clarity we may want to use parenthesis even
-when not needed. In the Spacewar! code snippet bellow, the parenthesis
+when not needed. In the Spacewar! code snippet below, the parenthesis
 are superfluous but improve understanding:
 
 @smalltalkExampleCaption{Ship velocity,updateShipVelocity,
@@ -328,7 +328,7 @@ keyword message to the number:
 
 @cindex number @subentry integer @subentry @method{gcd:} (great common divisor)
 @cindex number @subentry integer @subentry @method{lcm:} (lest common multiple)
-With specific @dfn{keyword messages} you compute the Least Common
+With specific @dfn{keyword messages} you can compute the Least Common
 Multiple and Greatest Common Divisor. A keyword message is composed of
 one or several colon(s) ``:'' to insert argument(s):
 
@@ -339,11 +339,11 @@ In the Spacewar! game, the central star is the source of a gravity
 field. According to the Newton's law of universal gravitation, any
 object with a mass -- a spaceship or a torpedo in the game -- is
 subjected to the gravitational force. We compute it as a vector to
-account its direction and magnitude. The game code extract bellow
-shows a (simplified) mixed scalar and vector calculus done with messages
+account its direction and magnitude. The game code extract below
+shows a (simplified) mixed scalar and vector calculus done with message
 sending (See @ref{motionEquations}):
 
-@smalltalkExampleCaption{Compute the gravity force vector,gravityVector,
+@smalltalkExampleCaption{Computing the gravity force vector,gravityVector,
 -10 * self mass * owner starMass / (position r raisedTo: 3) * position}
 
 @node A brief introduction to the system Browser
@@ -352,8 +352,7 @@ sending (See @ref{motionEquations}):
 @cindex browser
 
 Smalltalk organizes instance behaviors using classes.  
-A class is an object which holds the methods which react to
-the messages which are their names.
+A class is an object which holds a set of methods to be executed when it receives a message that is the name of one of these methods.
 
 The @dfn{System Browser}, in short the @dfn{Browser}, is a tool to
 rule all the classes in @cuis{}. It is both a tool to explore the
@@ -380,7 +379,7 @@ related to text and date entities.
 Next to the right are the classes in the selected class category. They
 are nicely presented in a parent-child class hierarchy. When a class is
 first selected in this pane, its declaration appears in the large pane
-bellow, the @class{Number} class declaration is:
+below, the @class{Number} class declaration is:
 
 @smalltalkExample{Magnitude subclass: #Number
    instanceVariableNames: ''
@@ -417,8 +416,8 @@ of @class{Number} adds methods (which define behaviors) unknown to an instance
 of @class{Magnitude}.  We will explore this in detail as we go forward.
 
 @cindex class @subentry comment
-To learn about the intend of a class, it is good practice to @strong{always}
-visit the class comment. Often a comment comes also with code
+To learn about the purpouse of a class, it is good practice to @strong{always}
+visit the class comment. Often a comment also comes with code
 examples to learn how to use the object; these code snippets can be
 selected and executed in place as done from a Workspace. In
 @ref{ch02-browserDetailed}, see the @label{comment} button to read or
@@ -426,8 +425,8 @@ to edit the comment of the selected class.
 
 @cindex method @subentry category
 To the right of the class panel is the method categories panel.
-A class may have with tens of methods, so grouping
-them by category helps other users orient to find related methods.
+A class may have tens of methods, so grouping
+them by category helps other users orient themselves in finding related methods.
 As a reference, @class{Number}
 has more than 100 instance side methods implemented in
 itself@footnote{When considering its parents, the combined method count is
@@ -452,11 +451,11 @@ class?}}
 @cindex method @subentry instance method
 In the Browser, once a method is selected -- in
 @ref{ch02-browserDetailed}, @method{abs} method -- the bottom part
-shows its source code, ready to be explored or edited. Again, often,
-you will read a small comment just after the method name, it is
+shows its source code, ready to be explored or edited. Often,
+you will find a small comment just after the method name, it will be
 surrounded by double quotes.
 
-Every entity knows its class and answers it to the message @smalltalk{#class}.
+Every entity knows its own class and will respond it when sent the message @smalltalk{#class}.
 
 @cindex browser @subentry invoke from Workspace
 @cindex keyboard shortcut @subentry browse a class (@kbd{Ctrl-b})
@@ -482,7 +481,7 @@ on the class name will open a Browser on the named class:
 @section Spacewar! models
 
 @subsection First classes
-In last chapter we listed the protagonists of the game. Now, we
+In the last chapter we listed the protagonists of the game. Now, we
 propose a first implementation of the game model with a set of classes
 representing the involved entities:
 
@@ -503,7 +502,7 @@ representing the involved entities:
 Before defining these classes in @cuis{}, we want to create a
 dedicated class category to group them there.
 
-In any kind of @cuis{} window, right-click on a pane will typically
+In any kind of @cuis{} window, pressing right-click on a pane will typically
 bring up a menu of operations you can apply which are specific to that
 pane.
 
@@ -530,8 +529,8 @@ We replace the symbol @smalltalk{#NameOfSubclass} with a symbol
 representing the name of the class we want to create. Let's start with
 @smalltalk{#SpaceWar}. To save the class, over the class
 declaration code do ...@clicksequence{right mouse click @click{}
-@label{Accept}}... @cuis{} will ask your initial and name
-once. Alternatively, you can just do @kbd{Ctrl-s} (@emph{@b{S}ave}).
+@label{Accept}}... @cuis{} will ask your initials and name
+if it hasn't before. Alternatively, you can just do @kbd{Ctrl-s} (@emph{@b{S}ave}).
 
 Then you repeat the process for each of @smalltalk{#StarShip},
 @smalltalk{#CentralStar} and @smalltalk{#Torpedo}. If necessary, to
@@ -595,7 +594,7 @@ chapters.
 @subsection The Newtonian model
 @anchor{newtonModel}
 For an enjoyable game experience, the player ships must follow the
-Newton laws of mechanic. Acceleration, speed and position are computed
+Newton laws of motion. Acceleration, speed and position are computed
 according to these laws. The ships are subjected to two forces: the
 acceleration from the gravity pull of the central star and an inner
 acceleration coming from the ship engines.
