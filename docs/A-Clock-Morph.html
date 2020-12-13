@@ -98,7 +98,7 @@ have a default text font based on vector graphics, do
 <code>Set System Font...</code> &rarr; <code>DejaVu...</code> &rarr;
 <code>DejaVuSans</code><a id="DOCF22" href="#FOOT22"><sup>22</sup></a>.
 </p>
-<p>Let&rsquo;s create the dial clock:
+<p>Let&rsquo;s create the dial clock dial:
 </p>
 <div class="display">
 <pre class="display"><span class="sansserif">MovableMorph subclass: #ClockMorph
@@ -110,19 +110,23 @@ have a default text font based on vector graphics, do
 
 <span id="index-morph-21"></span>
 <p>Method category <code>drawing</code>:
-</p><div class="display">
+</p>
+<div class="display">
 <pre class="display"><span class="sansserif">ClockMorph&gt;&gt;drawOn: aCanvas
    aCanvas
       ellipseCenterX: 0 y: 0 rx: 100 ry: 100
-      borderWidth: 10 borderColor: &lsquo;Color cyan darker alpha: 0.5&lsquo;
-      fillColor: &lsquo;(Color fromHexString: &rsquo;#d7e4e4&rsquo;) alpha: 0.3&lsquo;.
-   aCanvas drawString: &rsquo;XII&rsquo; at: -13 @ -90 font: nil color: &lsquo;Color brown&lsquo;.
-   aCanvas drawString: &rsquo;III&rsquo; at: 66 @ -10 font: nil color: &lsquo;Color brown&lsquo;.
-   aCanvas drawString: &rsquo;IV&rsquo; at: -11 @ 70 font: nil color: &lsquo;Color brown&lsquo;.
-   aCanvas drawString: &rsquo;IX&rsquo; at: -90 @ -10 font: nil color: &lsquo;Color brown&lsquo;.</span>
+      borderWidth: 10
+      borderColor: Color lightCyan
+      fillColor: Color veryVeryLightGray.
+   aCanvas drawString: &rsquo;XII&rsquo; at: -13 @ -90 font: nil color: Color brown.
+   aCanvas drawString: &rsquo;III&rsquo; at: 66 @ -10 font: nil color: Color brown.
+   aCanvas drawString: &rsquo;VI&rsquo; at: -11 @ 70 font: nil color: Color brown.
+   aCanvas drawString: &rsquo;IX&rsquo; at: -90 @ -10 font: nil color: Color brown</span>
 </pre></div>
 
-<div class="display">
+
+<p>The hand for the hour:
+</p><div class="display">
 <pre class="display"><span class="sansserif">MovableMorph subclass: #ClockHourHandMorph
    instanceVariableNames: &rdquo;
    classVariableNames: &rdquo;
@@ -133,7 +137,7 @@ have a default text font based on vector graphics, do
 <p>Method category <code>drawing</code>:
 </p><div class="display">
 <pre class="display"><span class="sansserif">ClockHourHandMorph&gt;&gt;drawOn: aCanvas
-   aCanvas fillColor: &lsquo;(Color black) alpha: 0.6&lsquo; do: [
+   aCanvas fillColor: (Color black alpha: 0.6) do: [
       aCanvas
          moveToX: -10 y: 0;
          lineToX: 0 y: 5;
@@ -163,13 +167,13 @@ stick with us while we finish building our clock.
 <p>Method category <code>drawing</code>:
 </p><div class="display">
 <pre class="display"><span class="sansserif">ClockMinuteHandMorph&gt;&gt;drawOn: aCanvas
-   aCanvas fillColor: &lsquo;(Color black) alpha: 0.6&lsquo; do: [
+   aCanvas fillColor: ((Color black) alpha: 0.6) do: [
       aCanvas
          moveToX: -8 y: 0;
          lineToX: 0 y: 4;
          lineToX: 82 y: 0;
          lineToX: 0 y: -4;
-         lineToX: -8 y: 0 ].</span>
+         lineToX: -8 y: 0 ]</span>
 </pre></div>
 
 <div class="display">
@@ -189,7 +193,7 @@ stick with us while we finish building our clock.
          lineToX: 85 y: 0 ]</span>
 </pre></div>
 
-<p>Now, all that is needed is to put our clock together:
+<p>Now, all that is needed is to put our clock parts together:
 </p>
 <p><code>ClockMorph</code>, method category <code>initialization</code> (accept the
 new names as instance variables):
@@ -197,9 +201,9 @@ new names as instance variables):
 <div class="display">
 <pre class="display"><span class="sansserif">ClockMorph&gt;&gt;initialize
    super initialize.
-   self addMorph: (hourHand := ClockHourHandMorph new).
-   self addMorph: (minuteHand := ClockMinuteHandMorph new).
-   self addMorph: (secondHand := ClockSecondHandMorph new).</span>
+   self addMorph: (hourHand &#x2190; ClockHourHandMorph new).
+   self addMorph: (minuteHand &#x2190; ClockMinuteHandMorph new).
+   self addMorph: (secondHand &#x2190; ClockSecondHandMorph new)</span>
 </pre></div>
 
 <p>And make it work. <code>ClockMorph</code>, method category
@@ -213,7 +217,7 @@ new names as instance variables):
 <div class="display">
 <pre class="display"><span class="sansserif">ClockMorph&gt;&gt;step
    | time |
-   time := Time now.
+   time &#x2190; Time now.
    hourHand rotation: (time hour * 30 - 90) degreesToRadians.
    minuteHand rotation: (time minute * 6 - 90) degreesToRadians.
    secondHand rotation: (time second * 6 - 90) degreesToRadians.</span>
@@ -221,6 +225,10 @@ new names as instance variables):
 
 <p>Take a look at how we update the clock hands.
 </p>
+<div class="float"><span id="ch07_002d05_002dClock"></span>
+<div align="center"><img src="ch07-05-Clock.png" alt="ch07-05-Clock">
+</div>
+<div class="float-caption"><p><strong>Figure 7.5: </strong>A clock morph</p></div></div>
 <p>As we said before, any <code>MovableMorph</code> defines a coordinate
 system for its own <code>drawOn:</code> method and also for its
 submorphs. This new coordinate system might include rotation or
@@ -244,9 +252,9 @@ substract 90. Then we convert to radians, the unit expected by the
 as there are 60 minutes in one hour, and 60 seconds in one minute, se
 need to multiply them by 6 to get degrees. As rotation is done around
 the origin, and the clock has set the origin at its center (see
-ClockMorph &gt;&gt; #drawOn: ), there&rsquo;s no need to set the position of the
-hands. Their 0@0 will therefore be at the clock 0@0, i.e. the center
-of the clock.
+<code>ClockMorph&gt;&gt;drawOn:</code>), there&rsquo;s no need to set the position
+of the hands. Their 0@0 will therefore be at the clock 0@0, i.e. the
+center of the clock.
 </p>
 <p>Create some instances of your clock: <code>ClockMorph new
 openInWorld</code>. You can rotate and zoom. Look at the visual quality of
