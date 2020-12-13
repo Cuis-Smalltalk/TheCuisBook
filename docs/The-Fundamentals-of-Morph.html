@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 11, 2020
+Compilation : December 13, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -59,7 +59,7 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="index.html" rel="up" title="Top">
-<link href="Events.html" rel="next" title="Events">
+<link href="Going-Vector.html" rel="next" title="Going Vector">
 <link href="Spacewar_0021-graphics.html" rel="prev" title="Spacewar! graphics">
 <style type="text/css">
 <!--
@@ -92,15 +92,42 @@ Next: <a href="Events.html" accesskey="n" rel="next">Events</a>, Previous: <a hr
 <hr>
 <span id="The-Fundamentals-of-Morph-1"></span><h2 class="chapter">7 The Fundamentals of Morph</h2>
 
-<p>Events are critical to understanding how the user interface works.  In
-brief, there is a <code>PasteUpMorph</code> which is the screen background
-graphic and the associated <em>World State</em>.  When you
-<kbd>Right-Click</kbd> on this morph, it is the one which brings up the
-World Menu.  The World State tracks the cursor, which is a
-<code>HandMorph</code> and as Morphs change position and appearance, also
-keeps a <code>DamageRecorder</code> to track what parts of the display have
-changed so that only the &ldquo;damaged&rdquo; areas need be redrawn.
+<blockquote>
+<p>Simple things should be simple and complex things should be possible.
+</p></blockquote>
+<div align="center">&mdash; <em>Alan Kay</em>
+</div>
+<br> <br> <br> <br>
+
+
+
+<p>What would we expect if we ask for good support for building GUIs in a
+programming system?
 </p>
+<p>In <a href="Visual-with-Morph.html">Visual with Morph</a> we started with that same question, and
+gave an overview of Morphs and their interactive behavior. This
+chapter deals with how Morphs are built, how to create new Morphs and
+what rules they follow.
+</p>
+<span id="index-moprh"></span>
+<p>The User Interface framework in Cuis-Smalltalk is called Morphic. Morphic was
+origianlly created by Randy Smith and John Maloney as the
+<a href="https://bibliography.selflanguage.org/_static/self4.0UserInterface.pdf">UI
+for Self</a>. Later, John Maloney ported it to Smalltalk, to be used as
+the
+<a href="http://stephane.ducasse.free.fr/FreeBooks/CollectiveNBlueBook/morphic.final.pdf">UI
+for Squeak</a>.
+</p>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="Going-Vector.html" accesskey="1">Going Vector</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="A-Clock-Morph.html" accesskey="2">A Clock Morph</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+
+
 
 
 </body>

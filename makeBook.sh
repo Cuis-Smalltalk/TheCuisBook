@@ -71,6 +71,7 @@ function prepareDestination {
 	if [ -d $dir/img ]; then
 	    cp $dir/img/*.png "$1"
    	    cp $dir/img/*.jpg "$1"
+       	    cp $dir/img/*.gif "$1"
 	fi
     done
     cp ./img/*.png "$1"

@@ -2,9 +2,11 @@
 @chapter Visual with Morph
 
 @quotation
-Simple things should be simple and complex things should be possible.
-@author Alan Kay
+Morphic is a user interface framework that makes it easy and fun to
+build lively interactive user interfaces.
+@author John   Maloney
 @end quotation
+
 
 @* @* @* @*
 

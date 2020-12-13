@@ -113,6 +113,24 @@ K. Dickey, H. Fernandes, J. Vuletich
 @end iftex
 @end macro
 
+@c Figure with caption and extension
+@macro figureExt{caption,file,width,ext}
+@ifnotplaintext
+ @float Figure,\file\
+ @center @image{\file\,\width\cm,,,\ext\}
+ @caption{\caption\}
+ @end float
+@end ifnotplaintext
+@ifplaintext
+ @float Figure
+ @caption{\caption\}
+ @end float
+@end ifplaintext
+@iftex
+   @sp 1
+@end iftex
+@end macro
+
 @c Iconic button
 @macro button{file}
 @ifnotplaintext
