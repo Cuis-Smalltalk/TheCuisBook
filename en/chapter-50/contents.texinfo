@@ -10,6 +10,7 @@
 * The Collection Way of Life (Solutions)::
 * Control Flow Messaging (Solutions)::
 * Visual with Morph (Solutions)::
+* The Fundamentals of Morph (Solutions)::
 * Events (Solutions)::
 * Code Management (Solutions)::
 @end menu
@@ -520,6 +521,27 @@ Mobile subclass: #Torpedo
 @end example
 
 
+@c Chapter 7
+@node The Fundamentals of Morph (Solutions)
+@unnumberedsec The Fundamentals of Morph
+
+@subheading @ref{exeCrossMorph}
+The @method{drawOn:} method is modified to draw two distinct,
+unconnected lines:
+
+@example
+LineExampleMorph>>drawOn: aCanvas
+   aCanvas strokeWidth: 20 color: Color green do: [
+      aCanvas
+         moveToX: 0 y: 0;
+         lineToX: 200 y: 200;
+         moveToX: 200 y: 0;
+         lineToX: 0 y: 200 ]
+@end example
+
+Learn how the @msg{moveToX:y:} message moves the pencil to a given
+position with the pen up, then the @msg{lineToX:y:} asks the pencil to
+draw from that previous position to this new position.
 
 @c Chapter 8
 @node Events (Solutions)

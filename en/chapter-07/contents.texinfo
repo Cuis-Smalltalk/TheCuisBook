@@ -102,6 +102,11 @@ you'll get a red and yellow error box. After fixing your
 @label{Debug...} @click{} @label{Start drawing all again}}.. to get
 your morph redrawn correctly.
 
+@exercise{Cross morph, exeCrossMorph,@emph{How will you modify our
+line morph so it draws itself as a cross with an extent of 200
+pixels?}}
+
+
 @subsection Morph you can move
 @cindex morph @subentry movable
 You might have already tried to click and drag on your Line, like you

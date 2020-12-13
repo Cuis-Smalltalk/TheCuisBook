@@ -49,18 +49,18 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Visual with Morph (Solutions) (The Cuis-Smalltalk Book)</title>
+<title>The Fundamentals of Morph (Solutions) (The Cuis-Smalltalk Book)</title>
 
-<meta name="description" content="Visual with Morph (Solutions) (The Cuis-Smalltalk Book)">
-<meta name="keywords" content="Visual with Morph (Solutions) (The Cuis-Smalltalk Book)">
+<meta name="description" content="The Fundamentals of Morph (Solutions) (The Cuis-Smalltalk Book)">
+<meta name="keywords" content="The Fundamentals of Morph (Solutions) (The Cuis-Smalltalk Book)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="Solutions-of-the-Exercises.html" rel="up" title="Solutions of the Exercises">
-<link href="The-Fundamentals-of-Morph-_0028Solutions_0029.html" rel="next" title="The Fundamentals of Morph (Solutions)">
-<link href="Control-Flow-Messaging-_0028Solutions_0029.html" rel="prev" title="Control Flow Messaging (Solutions)">
+<link href="Events-_0028Solutions_0029.html" rel="next" title="Events (Solutions)">
+<link href="Visual-with-Morph-_0028Solutions_0029.html" rel="prev" title="Visual with Morph (Solutions)">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -85,55 +85,31 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Visual-with-Morph-_0028Solutions_0029"></span><div class="header">
+<span id="The-Fundamentals-of-Morph-_0028Solutions_0029"></span><div class="header">
 <p>
-Next: <a href="The-Fundamentals-of-Morph-_0028Solutions_0029.html" accesskey="n" rel="next">The Fundamentals of Morph (Solutions)</a>, Previous: <a href="Control-Flow-Messaging-_0028Solutions_0029.html" accesskey="p" rel="prev">Control Flow Messaging (Solutions)</a>, Up: <a href="Solutions-of-the-Exercises.html" accesskey="u" rel="up">Solutions of the Exercises</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Events-_0028Solutions_0029.html" accesskey="n" rel="next">Events (Solutions)</a>, Previous: <a href="Visual-with-Morph-_0028Solutions_0029.html" accesskey="p" rel="prev">Visual with Morph (Solutions)</a>, Up: <a href="Solutions-of-the-Exercises.html" accesskey="u" rel="up">Solutions of the Exercises</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Visual-with-Morph-2"></span><h3 class="unnumberedsec">Visual with Morph</h3>
+<span id="The-Fundamentals-of-Morph-2"></span><h3 class="unnumberedsec">The Fundamentals of Morph</h3>
 
-<span id="allActorsMorph-1"></span><h4 class="subheading"><a href="Spacewar_0021-graphics.html#allActorsMorph">Exercise 6.1</a></h4>
-<p>Just replace all <code>Object</code> occurrences with <code>Morph</code>:
+<span id="exeCrossMorph-1"></span><h4 class="subheading"><a href="Going-Vector.html#exeCrossMorph">Exercise 7.1</a></h4>
+<p>The <code>drawOn:</code> method is modified to draw two distinct,
+unconnected lines:
 </p>
 <div class="example">
-<pre class="example">Morph subclass: #SpaceWar
-   instanceVariableNames: 'centralStar ships torpedoes'
-   classVariableNames: ''
-   poolDictionaries: ''
-   category: 'Spacewar!'
-
-Morph subclass: #CentralStar
-   instanceVariableNames: 'mass'
-   classVariableNames: ''
-   poolDictionaries: ''
-   category: 'Spacewar!'
-
-Morph subclass: #SpaceShip
-   instanceVariableNames: 'name position heading velocity
-      fuel torpedoes mass acceleration'
-   classVariableNames: ''
-   poolDictionaries: ''
-   category: 'Spacewar!'
+<pre class="example">LineExampleMorph&gt;&gt;drawOn: aCanvas
+   aCanvas strokeWidth: 20 color: Color green do: [
+      aCanvas
+         moveToX: 0 y: 0;
+         lineToX: 200 y: 200;
+         moveToX: 200 y: 0;
+         lineToX: 0 y: 200 ]
 </pre></div>
 
-
-<span id="refactoryShipTorpedo-1"></span><h4 class="subheading"><a href="Spacewar_0021-graphics.html#refactoryShipTorpedo">Exercise 6.2</a></h4>
-
-<div class="example">
-<pre class="example">Mobile subclass: #SpaceShip
-   instanceVariableNames: 'name heading fuel torpedoes'
-   classVariableNames: ''
-   poolDictionaries: ''
-   category: 'Spacewar!'
-
-Mobile subclass: #Torpedo
-   instanceVariableNames: 'lifeSpan'
-   classVariableNames: ''
-   poolDictionaries: ''
-   category: 'Spacewar!'
-</pre></div>
-
-
+<p>Learn how the <code>#moveToX:y:</code> message moves the pencil to a given
+position with the pen up, then the <code>#lineToX:y:</code> asks the pencil to
+draw from that previous position to this new position.
+</p>
 
 
 
