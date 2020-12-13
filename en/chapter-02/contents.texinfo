@@ -78,9 +78,9 @@ through messages.
 
 There are three kinds of messages in @cuis{}:
 
+@cindex message @subentry unary
 
 @itemize
-@cindex message @subentry unary
  @item @strong{Unary messages} take no argument.
  @*
  In @smalltalk{1 factorial} the message @msg{factorial} is sent to the
