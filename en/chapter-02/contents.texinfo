@@ -17,7 +17,7 @@ through messages. That's all, there is nothing more.
 
 @menu
 * Communicating entities::
-* Messages sends definition::
+* Message send definitions::
 * Message to string entities::
 * Messages to number entities::
 * A brief introduction to the system Browser::
@@ -58,8 +58,7 @@ ProtoObject allSubclasses inject: 0 into: [:count :class |
    count + class allInstances size] 
 @result{} 152058}
 
-The count of classes, the models for the entities -- class instances
--- is less than 600.
+The count of classes, the models for the entities -- instances of the class @class{Class} -- is less than 600.
 
 @smalltalkExampleCaption{Calculating the number of classes, classesCount,
 Smalltalk allClasses size
@@ -72,8 +71,8 @@ The scripts you
 read and wrote were all about entities communicating with each other
 through messages.
 
-@node Messages sends definition
-@section Message sends definition
+@node Message send definitions
+@section Message send definitions
 @cindex message @subentry send
 
 There are three kinds of messages in @cuis{}:
@@ -340,7 +339,7 @@ field. According to the Newton's law of universal gravitation, any
 object with a mass -- a spaceship or a torpedo in the game -- is
 subjected to the gravitational force. We compute it as a vector to
 account its direction and magnitude. The game code extract below
-shows a (simplified) mixed scalar and vector calculus done with message
+shows a (simplified) mixed scalar and vector calculation done with message
 sending (See @ref{motionEquations}):
 
 @smalltalkExampleCaption{Computing the gravity force vector,gravityVector,
@@ -405,7 +404,7 @@ A few important points in this declaration:
    yet, so it is named as a symbol.
 
    @item The @smalltalk{instanceVariableNames:} argument is a string:
-   the instance variables of the class are declared by name separated
+   the instance variables of the class are declared by names separated
    by a space. There are none in this class definition.
 
 @end itemize
