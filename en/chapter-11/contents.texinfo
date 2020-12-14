@@ -3,27 +3,23 @@
 
 @quotation
 Programming is hardly ever a solitary communion between one man and
-one machine. Caring about other people is a conscious decision, and one that
-requires practice.
-@author Kent Beck
+one machine. Caring about other people is a conscious decision, and
+one that requires practice.
+@author Kent Beck@footnote{@url{https://1lib.us/book/2083614/6104eb,,``Smalltalk Best Practice Patterns''(1997)}}
 @end quotation
-@footnote{``Smalltalk Best Practice Patterns''(1997) @url{https://1lib.us/book/2083614/6104eb}}
 
 @quotation
-Programming remains an intensively collaborative process
-between groups of program readers and writers.
-@author Dave Thomas
-@quotation
-@footnote{``Smalltalk With Style''(1996) @url{http://rmod-files.lille.inria.fr/FreeBooks/WithStyle/SmalltalkWithStyle.pdf}}
+Programming remains an intensively collaborative process between
+groups of program readers and writers.
+@author Dave Thomas@footnote{@url{http://rmod-files.lille.inria.fr/FreeBooks/WithStyle/SmalltalkWithStyle.pdf,,``Smalltalk With Style''(1996)}}
+@end quotation
 
 @quotation
-Let your code talk — Names matter. Let the code
-say what it means.
-Introduce a method for everything that needs to be
-done. Donʼt be afraid to delegate, even to yourself.
-@author Oscar Nierstrasz
-@quotation
-@footnote{``Best Practice Patterns - talk slides''(2009) @url{http://scg.unibe.ch/download/st/07BestPractice.pdf}}
+Let your code talk — Names matter. Let the code say what it means.
+Introduce a method for everything that needs to be done. Donʼt be
+afraid to delegate, even to yourself.
+@author Oscar Nierstrasz@footnote{@url{http://scg.unibe.ch/download/st/07BestPractice.pdf,,``Best Practice Patterns - talk slides''(2009)}}
+@end quotation
 
 
 @* @* @* @*
@@ -92,7 +88,8 @@ large changes using powerful tools.  If something happens that
 I did not want, I can then quit the image without saving and
 restart the saved image which remembers the world before I made the change.
 
-@exercise{Rename #right to #turnRight.}
+@exercise{Renaming a method, exeRenameMethod, @emph{Rename #right to
+#turnRight.}}
 
 Looking around some more in the Browser, I notice the method SpaceShip>>nose.
 
@@ -103,7 +100,7 @@ Where did I use this?  Ah, senders..
 Hmmm, perhaps something more specific.  How about #noseDirection?
 How does that look?
 
-@figure{Rename to @method(nodeDirection},ch11-06-noseDirection,8}
+@figure{Rename to @method{nodeDirection},ch11-06-noseDirection,8}
 
 OK, so there is more to explore, but this book is an @emph{introduction}
 and we have to stop writing text somewhere.  This is a good place.
