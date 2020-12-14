@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 13, 2020
+Compilation : December 14, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -110,6 +110,74 @@ unconnected lines:
 position with the pen up, then the <code>#lineToX:y:</code> asks the pencil to
 draw from that previous position to this new position.
 </p>
+<span id="exeRectMorph-1"></span><h4 class="subheading"><a href="Going-Vector.html#exeRectMorph">Exercise 7.2</a></h4>
+<p>We create a <code>RectangleExampleMorph</code>, subclass of
+<code>MovableMorph</code>:
+</p><div class="example">
+<pre class="example">MorphMovableMorph subclass: #RectangleExampleMorph
+   instanceVariableNames: 'fillColor'
+   classVariableNames: ''
+   poolDictionaries: ''
+   category: 'Morphic-Learning'
+</pre></div>
+<p>Then its necessary methods to initialize and to draw the morph:
+</p><div class="example">
+<pre class="example">initialize
+   super initialize .
+   fillColor &#x2190; Color random alpha: 0.5
+
+drawOn: aCanvas
+   aCanvas
+      strokeWidth: 1
+      color: Color blue
+      fillColor: fillColor
+      do: [
+         aCanvas moveToX: 0 y: 0;
+            lineToX: 200 y: 0;
+            lineToX: 200 y: 100;
+            lineToX: 0 y: 100;
+            lineToX: 0 y: 0]
+</pre></div>
+
+<div class="float"><span id="E_002dexeRectMorph"></span>
+<div align="center"><img src="E-exeRectMorph.png" alt="E-exeRectMorph">
+</div>
+<div class="float-caption"><p><strong>Figure D.2: </strong>Several rectangle morphs</p></div></div>
+<span id="exeRotateRect-1"></span><h4 class="subheading"><a href="Going-Vector.html#exeRotateRect">Exercise 7.3</a></h4>
+<p>The rectangle we defined in the solution of <a href="Going-Vector.html#exeRectMorph">Exercise 7.2</a> rotates
+around its top left corner, because this is where is the origin (0;0).
+</p>
+<div class="float"><span id="E_002dexeRotateRect1"></span>
+<div align="center"><img src="E-exeRotateRect1.png" alt="E-exeRotateRect1">
+</div>
+<div class="float-caption"><p><strong>Figure D.3: </strong>This rectangle rotates around its top left corner</p></div></div>
+<p>We need to redefine its corners coordinates so its center position
+matches the origin (0;0):
+</p>
+<div class="example">
+<pre class="example">drawOn: aCanvas
+   aCanvas
+      strokeWidth: 1
+      color: Color blue
+      fillColor: fillColor
+      do: [
+         aCanvas moveToX: -100 y: -50;
+            lineToX: 100 y: -50;
+            lineToX: 100 y: 50;
+            lineToX: -100 y: 50;
+            lineToX: -100 y: -50]
+</pre></div>
+
+<div class="float"><span id="E_002dexeRotateRect2"></span>
+<div align="center"><img src="E-exeRotateRect2.png" alt="E-exeRotateRect2">
+</div>
+<div class="float-caption"><p><strong>Figure D.4: </strong>This rectangle rotates around its center</p></div></div>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Events-_0028Solutions_0029.html" accesskey="n" rel="next">Events (Solutions)</a>, Previous: <a href="Visual-with-Morph-_0028Solutions_0029.html" accesskey="p" rel="prev">Visual with Morph (Solutions)</a>, Up: <a href="Solutions-of-the-Exercises.html" accesskey="u" rel="up">Solutions of the Exercises</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
 
 
 
