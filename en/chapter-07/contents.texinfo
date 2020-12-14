@@ -188,6 +188,13 @@ morph, you can see through it.
 
 @figure{A variety of triangle morphs@comma{} one decorated with its halo,ch07-02-Triangles,6} 
 
+
+@exercise{Rectangle morph, exeRectMorph, @emph{How will you write a
+movable rectangle morph with an extent of 200 per 100? The rect will
+be filled with a random translucent color and surrounded by a thin
+blue line.}}
+
+
 As we learnt previously, Morphic gives you additional ways to interact
 with your morphs. With a three buttons mouse, or a wheel mouse, place
 the mouse pointer (a @class{HandMorph} instance) over one of your
@@ -219,6 +226,11 @@ your morph. Displacement, rotation and scale are floating point
 numbers, and thus not limited to integers.
 
 We will learn how to control all this with code and animate our morph.
+
+@exercise{Rotate your rectangle morph arround its center,exeRotateRect,
+@emph{Rotate your rectangle morph. Does it rotate around its center or
+around one corner? If necessary rewrite your rectangle morph so it rotates
+around its center.}}
 
 @subsection Animated morph
 @cindex morph @subentry animated

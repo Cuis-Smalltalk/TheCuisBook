@@ -543,6 +543,63 @@ Learn how the @msg{moveToX:y:} message moves the pencil to a given
 position with the pen up, then the @msg{lineToX:y:} asks the pencil to
 draw from that previous position to this new position.
 
+@subheading @ref{exeRectMorph}
+We create a @class{RectangleExampleMorph}, subclass of
+@class{MovableMorph}:
+@example
+MorphMovableMorph subclass: #RectangleExampleMorph
+   instanceVariableNames: 'fillColor'
+   classVariableNames: ''
+   poolDictionaries: ''
+   category: 'Morphic-Learning'
+@end example
+Then its necessary methods to initialize and to draw the morph:
+@example
+initialize
+   super initialize .
+   fillColor @assign{} Color random alpha: 0.5
+
+drawOn: aCanvas
+   aCanvas
+      strokeWidth: 1
+      color: Color blue
+      fillColor: fillColor
+      do: [
+         aCanvas moveToX: 0 y: 0;
+            lineToX: 200 y: 0;
+            lineToX: 200 y: 100;
+            lineToX: 0 y: 100;
+            lineToX: 0 y: 0]
+@end example
+
+@figure{Several rectangle morphs,E-exeRectMorph,4}
+
+@subheading @ref{exeRotateRect}
+The rectangle we defined in the solution of @ref{exeRectMorph} rotates
+around its top left corner, because this is where is the origin (0;0).
+
+@figure{This rectangle rotates around its top left corner,E-exeRotateRect1,4}
+
+We need to redefine its corners coordinates so its center position
+matches the origin (0;0):
+
+@example
+drawOn: aCanvas
+   aCanvas
+      strokeWidth: 1
+      color: Color blue
+      fillColor: fillColor
+      do: [
+         aCanvas moveToX: -100 y: -50;
+            lineToX: 100 y: -50;
+            lineToX: 100 y: 50;
+            lineToX: -100 y: 50;
+            lineToX: -100 y: -50]
+@end example
+
+@figure{This rectangle rotates around its center,E-exeRotateRect2,3.5}
+
+
 @c Chapter 8
 @node Events (Solutions)
 @unnumberedsec Events
