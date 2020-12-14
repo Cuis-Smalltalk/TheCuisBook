@@ -1,0 +1,112 @@
+@node Sharing Cuis
+@chapter Sharing Cuis
+
+@quotation
+Programming is hardly ever a solitary communion between one man and
+one machine. Caring about other people is a conscious decision, and one that
+requires practice.
+@author Kent Beck
+@end quotation
+@footnote{``Smalltalk Best Practice Patterns''(1997) @url{https://1lib.us/book/2083614/6104eb}}
+
+@quotation
+Programming remains an intensively collaborative process
+between groups of program readers and writers.
+@author Dave Thomas
+@quotation
+@footnote{``Smalltalk With Style''(1996) @url{http://rmod-files.lille.inria.fr/FreeBooks/WithStyle/SmalltalkWithStyle.pdf}}
+
+@quotation
+Let your code talk — Names matter. Let the code
+say what it means.
+Introduce a method for everything that needs to be
+done. Donʼt be afraid to delegate, even to yourself.
+@author Oscar Nierstrasz
+@quotation
+@footnote{``Best Practice Patterns - talk slides''(2009) @url{http://scg.unibe.ch/download/st/07BestPractice.pdf}}
+
+
+@* @* @* @*
+
+
+This book is an invitation.
+
+We hope that you are using @cuis{} to discover pathways of
+interest and are enjoying the journey.
+
+If so, at some point you have done something wonderful and probably 
+want to share it. 
+
+Good writing takes practice. Good writers read.
+
+Sharing requires communicating intent.
+
+Basic questions:
+@itemize
+ @item Are methods short and understandable?
+ @item Does a line of code read like a sentence?
+ @item Do method names say what they do, rather than how they do it?
+ @item Do class and instance variable names indicate their role(s)?
+ @item Are there useful class comments?
+ @item Can we make something simpler?  Leave something out?
+@end itemize 
+
+Now we have been doing Smalltalk code for a while
+and so tend to follow good practices, but let's
+take another look at our code and see
+if we can make it easier for a reader to understand.
+
+Browsing through the code, I note a method named #left, which seems perhaps
+like an abbreviation.  I can ask for #senders to see how #left is used
+in code elsewhere.
+
+@figure{Senders of @method{left},ch11-01-SendersOfLeft,8}
+
+I notice that most uses of #left are to indicate a position,
+not take an action.  How can I fix that?
+
+Because people frequently want to change things for the better,
+there are a number of handy tools to help do this.
+
+Now I could look at our uses of #left in Spacewars!, but the Cuis IDE
+already knows how to do this!
+
+If I right-click on the Method Pane in the Browser, I get a context menu
+with selections to help me out. Here is choose #Rename.
+
+@figure{Rename @method{left},ch11-02-RenameLeft,8}
+
+Now the tools that help us refactor code are quite powerful,
+so restraint is called for.  I don't want to change all
+uses of #left in the @cuis{} system, just in the Spacewar! category.
+
+@figure{Rename in Category,ch11-03-RenameInCategory,8}
+
+Of course, when making changes one wants to see that the result is
+what one expects.
+
+@figure{Results of Renaming,ch11-04-turnLeft,8}
+
+As I am not perfect, I tend to save the @cuis{} image before I make
+large changes using powerful tools.  If something happens that
+I did not want, I can then quit the image without saving and
+restart the saved image which remembers the world before I made the change.
+
+@exercise{Rename #right to #turnRight.}
+
+Looking around some more in the Browser, I notice the method SpaceShip>>nose.
+
+Where did I use this?  Ah, senders..
+
+@figure{Senders of @method{nose},ch11-05-noseSenders,8}
+
+Hmmm, perhaps something more specific.  How about #noseDirection?
+How does that look?
+
+@figure{Rename to @method(nodeDirection},ch11-06-noseDirection,8}
+
+OK, so there is more to explore, but this book is an @emph{introduction}
+and we have to stop writing text somewhere.  This is a good place.
+We want to get back to writing code!
+And we look forward to seeing @emph{your} projects!
+
