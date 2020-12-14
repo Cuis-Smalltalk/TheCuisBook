@@ -395,7 +395,7 @@ Float pi e
 @result{} MessageNotUnderstood: SmallFloat64>>e}
 
 Often these class methods are used to access constant value as seen in
-the previous example or to create a new instances:
+the previous example or to create a new instance:
 
 @smalltalkExample{OrderedCollection new
 @result{} Create a new empty ordered collection
@@ -597,9 +597,9 @@ collection:
 @result{} 4 "different result each time"}
 
 In Spacewar!, when a ship is destroyed it is teleported to a random
-position in the square game play area. Interval are handy to pick up
+position in the square game play area. Intervals are handy to pick 
 random coordinates. In the example bellow, the variable
-@smalltalk{randomCoordinate} holds a bloc of code -- called anonymous
+@smalltalk{randomCoordinate} holds a block of code -- called anonymous
 function in other languages; it picks up a random value in the
 interval consisting of the game play area left and right extents:
 
@@ -708,7 +708,7 @@ using the rational numbers, the @ref{FloatPrecision} becomes:
 
 This time we have the expected result. Under the covers the computer
 only does the calculations with integer components so no roundoff
-results. This is a fine example that to solve some problem you need a
+results. This is a fine example where solving some problem requires a
 paradigm shift.
 
 @exercise{Fix the errors,exeFractionPrecision, @emph{Return to
@@ -716,7 +716,7 @@ paradigm shift.
 numbers. The errors are gone.}}
 
 @cindex number @subentry convertion
-@cuis{} knows how to convert a decimal number as a fraction, by
+@cuis{} knows how to convert a decimal number to a fraction, by
 sending the message @msg{asFraction}. We already acknowledged the
 computer dyscalculia trouble with decimal number, this is why when
 asking for a fraction representation we have this strange answer. The
@@ -866,7 +866,7 @@ game:
   is an @class{Array} instance, its size is fixed to two elements.
   
   @item @smalltalk{torpedoes} is a collection of the fired torpedoes
-  in the game play. Their quantity is variable, a dynamic
+  in the game play. As this quantity is variable, a dynamic
   @class{OrderedCollection} makes sense.
 
 @end itemize
@@ -929,7 +929,7 @@ regarding its variables are needed.
 A few word regarding the euclidean coordinates: the origin of our
 orthonormal frame is the central star, its first vector is oriented
 toward the right of the screen, and the second one toward the top of
-the screen. This choice ease the computation of the ship acceleration,
+the screen. This choice eases the computation of the ship's acceleration,
 velocity and position.
 
 @heading @class{Torpedo}
@@ -939,7 +939,7 @@ counter reaches zero, it self destructs.
 
 @itemize
 
-  @item @smalltalk{position} is a 2D screen coordinates, a
+  @item @smalltalk{position} is a 2D screen coordinate, a
   @class{Point} instance. Unlike the ship it does not accelerate based
   on the gravity pull of the central star. Indeed, a torpedo does not
   come with a mass state.  For our purposes it is essentially
@@ -1000,7 +1000,9 @@ Some of these states need to be accessed from other entities:
 
 To write these behaviors in the Browser, first select the class then
 the method category you want -- when none, select @label{-- all
---}. In the code pane below appears a method template:
+--}.
+
+In the code pane below appears a method template:
 
 @smalltalkExampleCaption{Method template, methodTemplate,
 messageSelectorAndArgumentNames
@@ -1076,7 +1078,7 @@ appropriate setters.}}
 Observe how we do not have a setter message for the space ship
 @smalltalk{mass} attribute. Indeed, it does not make sense to change
 the mass of a ship from another object. In fact, if we consider both
-player ship to be of equal mass, we should remove the @smalltalk{mass}
+player ships to be of equal mass, we should remove the @smalltalk{mass}
 variable and edit the @method{mass} method to return a literal number:
 
 @smalltalkExampleCaption{A method returning a constant, methodConstant,
