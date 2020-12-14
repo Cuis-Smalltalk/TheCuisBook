@@ -172,6 +172,21 @@ matches the origin (0;0):
 <div align="center"><img src="E-exeRotateRect2.png" alt="E-exeRotateRect2">
 </div>
 <div class="float-caption"><p><strong>Figure D.4: </strong>This rectangle rotates around its center</p></div></div>
+<span id="exeFancyClock-1"></span><h4 class="subheading"><a href="A-Clock-Morph.html#exeFancyClock">Exercise 7.4</a></h4>
+<p>Among the clock parts (submorphs) we only need to modify the drawing
+of the <code>ClockSecondHandMorph</code> class. The disc is surrounded with a
+thin red line and filled in yellow.
+</p><div class="example">
+<pre class="example">ClockSecondHandMorph&gt;&gt;drawOn: aCanvas
+   aCanvas strokeWidth: 1.5 color: Color red do: [
+      aCanvas
+         moveToX: 0 y: 0;
+         lineToX: 85 y: 0 ].
+   aCanvas ellipseCenterX: 70 y: 0 rx: 3 ry: 3 
+      borderWidth: 1 
+      borderColor: Color red fillColor: Color yellow
+</pre></div>
+
 
 <hr>
 <div class="header">

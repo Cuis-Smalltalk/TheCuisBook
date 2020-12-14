@@ -1,0 +1,228 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This book is for Cuis-Smalltalk (5.0#4253), a free and modern
+implementation of the Smalltalk language and environment.
+
+Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
+
+
+
+
+
+
+Compilation : December 14, 2020
+
+Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
+
+
+
+The contents of this book are protected under Creative Commons
+Attribution-ShareAlike 4.0 International.
+
+You are free to:
+
+
+Share - copy and redistribute the material in any medium or
+format
+
+
+Adapt - remix, transform, and build upon the material for any
+purpose, even commercially.
+
+
+
+Under the following terms:
+
+
+Attribution. You must give appropriate credit, provide a link to
+the license, and indicate if changes were made. You may do so in any
+reasonable manner, but not in any way that suggests the licensor
+endorses you or your use.
+
+
+Share Alike. If you remix, transform, or build upon the material,
+you must distribute your contributions under the same license as the
+original.
+
+Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+ -->
+<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Sharing Cuis (The Cuis-Smalltalk Book)</title>
+
+<meta name="description" content="Sharing Cuis (The Cuis-Smalltalk Book)">
+<meta name="keywords" content="Sharing Cuis (The Cuis-Smalltalk Book)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Indexes.html" rel="index" title="Indexes">
+<link href="index.html" rel="up" title="Top">
+<link href="Documents-Copyright.html" rel="next" title="Documents Copyright">
+<link href="Daily-Workflow.html" rel="prev" title="Daily Workflow">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="style.css">
+
+
+</head>
+
+<body lang="en">
+<span id="Sharing-Cuis"></span><div class="header">
+<p>
+Next: <a href="Documents-Copyright.html" accesskey="n" rel="next">Documents Copyright</a>, Previous: <a href="Code-Management.html" accesskey="p" rel="prev">Code Management</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Sharing-Cuis-1"></span><h2 class="chapter">10 Sharing Cuis</h2>
+
+<blockquote>
+<p>Programming is hardly ever a solitary communion between one man and
+one machine. Caring about other people is a conscious decision, and
+one that requires practice.
+</p></blockquote>
+<div align="center">&mdash; <em>Kent Beck, <a href="https://1lib.us/book/2083614/6104eb">&ldquo;Smalltalk Best Practice Patterns&rdquo;(1997)</a></em>
+</div>
+
+<blockquote>
+<p>Programming remains an intensively collaborative process between
+groups of program readers and writers.
+</p></blockquote>
+<div align="center">&mdash; <em>Dave Thomas, <a href="http://rmod-files.lille.inria.fr/FreeBooks/WithStyle/SmalltalkWithStyle.pdf">&ldquo;Smalltalk With Style&rdquo;(1996)</a></em>
+</div>
+<blockquote>
+<p>Let your code talk — Names matter. Let the code say what it means.
+Introduce a method for everything that needs to be done. Donʼt be
+afraid to delegate, even to yourself.
+</p></blockquote>
+<div align="center">&mdash; <em>Oscar Nierstrasz, <a href="http://scg.unibe.ch/download/st/07BestPractice.pdf">&ldquo;Best Practice Patterns - talk slides&rdquo;(2009)</a></em>
+</div>
+
+<br> <br> <br> <br>
+
+
+<p>This book is an invitation.
+</p>
+<p>We hope that you are using Cuis-Smalltalk to discover pathways of
+interest and are enjoying the journey.
+</p>
+<p>If so, at some point you have done something wonderful and probably 
+want to share it. 
+</p>
+<p>Good writing takes practice. Good writers read.
+</p>
+<p>Sharing requires communicating intent.
+</p>
+<p>Basic questions:
+</p><ul>
+<li> Are methods short and understandable?
+ </li><li> Does a line of code read like a sentence?
+ </li><li> Do method names say what they do, rather than how they do it?
+ </li><li> Do class and instance variable names indicate their role(s)?
+ </li><li> Are there useful class comments?
+ </li><li> Can we make something simpler?  Leave something out?
+</li></ul>
+
+<p>Now we have been doing Smalltalk code for a while
+and so tend to follow good practices, but let&rsquo;s
+take another look at our code and see
+if we can make it easier for a reader to understand.
+</p>
+<p>Browsing through the code, I note a method named #left, which seems perhaps
+like an abbreviation.  I can ask for #senders to see how #left is used
+in code elsewhere.
+</p>
+<div class="float"><span id="ch11_002d01_002dSendersOfLeft"></span>
+<div align="center"><img src="ch11-01-SendersOfLeft.png" alt="ch11-01-SendersOfLeft">
+</div>
+<div class="float-caption"><p><strong>Figure 10.1: </strong>Senders of <code>left</code></p></div></div>
+<p>I notice that most uses of #left are to indicate a position,
+not take an action.  How can I fix that?
+</p>
+<p>Because people frequently want to change things for the better,
+there are a number of handy tools to help do this.
+</p>
+<p>Now I could look at our uses of #left in Spacewars!, but the Cuis IDE
+already knows how to do this!
+</p>
+<p>If I right-click on the Method Pane in the Browser, I get a context menu
+with selections to help me out. Here is choose #Rename.
+</p>
+<div class="float"><span id="ch11_002d02_002dRenameLeft"></span>
+<div align="center"><img src="ch11-02-RenameLeft.png" alt="ch11-02-RenameLeft">
+</div>
+<div class="float-caption"><p><strong>Figure 10.2: </strong>Rename <code>left</code></p></div></div>
+<p>Now the tools that help us refactor code are quite powerful,
+so restraint is called for.  I don&rsquo;t want to change all
+uses of #left in the Cuis-Smalltalk system, just in the Spacewar! category.
+</p>
+<div class="float"><span id="ch11_002d03_002dRenameInCategory"></span>
+<div align="center"><img src="ch11-03-RenameInCategory.png" alt="ch11-03-RenameInCategory">
+</div>
+<div class="float-caption"><p><strong>Figure 10.3: </strong>Rename in Category</p></div></div>
+<p>Of course, when making changes one wants to see that the result is
+what one expects.
+</p>
+<div class="float"><span id="ch11_002d04_002dturnLeft"></span>
+<div align="center"><img src="ch11-04-turnLeft.png" alt="ch11-04-turnLeft">
+</div>
+<div class="float-caption"><p><strong>Figure 10.4: </strong>Results of Renaming</p></div></div>
+<p>As I am not perfect, I tend to save the Cuis-Smalltalk image before I make
+large changes using powerful tools.  If something happens that
+I did not want, I can then quit the image without saving and
+restart the saved image which remembers the world before I made the change.
+</p>
+<div class="float"><span id="exeRenameMethod"></span>
+<blockquote class="indentedblock">
+<p><em>Rename #right to
+#turnRight.</em>
+</p></blockquote>
+
+
+<div class="float-caption"><p><strong>Exercise 10.1: </strong>Renaming a method</p></div></div>
+<p>Looking around some more in the Browser, I notice the method SpaceShip&gt;&gt;nose.
+</p>
+<p>Where did I use this?  Ah, senders..
+</p>
+<div class="float"><span id="ch11_002d05_002dnoseSenders"></span>
+<div align="center"><img src="ch11-05-noseSenders.png" alt="ch11-05-noseSenders">
+</div>
+<div class="float-caption"><p><strong>Figure 10.5: </strong>Senders of <code>nose</code></p></div></div>
+<p>Hmmm, perhaps something more specific.  How about #noseDirection?
+How does that look?
+</p>
+<div class="float"><span id="ch11_002d06_002dnoseDirection"></span>
+<div align="center"><img src="ch11-06-noseDirection.png" alt="ch11-06-noseDirection">
+</div>
+<div class="float-caption"><p><strong>Figure 10.6: </strong>Rename to <code>nodeDirection</code></p></div></div>
+<p>OK, so there is more to explore, but this book is an <em>introduction</em>
+and we have to stop writing text somewhere.  This is a good place.
+We want to get back to writing code!
+And we look forward to seeing <em>your</em> projects!
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Documents-Copyright.html" accesskey="n" rel="next">Documents Copyright</a>, Previous: <a href="Code-Management.html" accesskey="p" rel="prev">Code Management</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

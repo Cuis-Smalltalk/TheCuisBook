@@ -1,12 +1,6 @@
 @node Events
 @chapter Events
 
-@menu
-* System Events::
-* Overall Mechanism::
-* Spacewar! Events::
-@end menu
-
 @heading What just happened?
 
 We talked above about control flow, how one makes decisions about what
@@ -24,6 +18,12 @@ Also, a computer may be fast enough that it literally has
 @emph{goes to sleep}, how do we get its attention?
 
 You are reading the right chapter to know.
+
+@menu
+* System Events::
+* Overall Mechanism::
+* Spacewar! Events::
+@end menu
 
 @node System Events
 @section System Events

@@ -92,12 +92,17 @@ Previous: <a href="Going-Vector.html" accesskey="p" rel="prev">Going Vector</a>,
 <hr>
 <span id="A-Clock-Morph-1"></span><h3 class="section">7.2 A Clock Morph</h3>
 <p>With all the things we have already learned, we can build a more
-sophisticated morph. Let&rsquo;s build a <code>ClockMorph</code>. In order to
-have a default text font based on vector graphics, do
-...World menu &rarr; <code>Preferences...</code> &rarr;
-<code>Set System Font...</code> &rarr; <code>DejaVu...</code> &rarr;
-<code>DejaVuSans</code><a id="DOCF22" href="#FOOT22"><sup>22</sup></a>.
+sophisticated morph. Let&rsquo;s build a <code>ClockMorph</code> as see in
+<a href="#ch07_002d05_002dClock">Figure 7.5</a>. In order to have a default text font based on
+vector graphics, do ...World menu &rarr;
+<code>Preferences...</code> &rarr; <code>Set System Font...</code> &rarr;
+<code>DejaVu...</code> &rarr; <code>DejaVuSans</code><a id="DOCF22" href="#FOOT22"><sup>22</sup></a>.
 </p>
+
+<div class="float"><span id="ch07_002d05_002dClock"></span>
+<div align="center"><img src="ch07-05-Clock.png" alt="ch07-05-Clock">
+</div>
+<div class="float-caption"><p><strong>Figure 7.5: </strong>A clock morph</p></div></div>
 <p>Let&rsquo;s create <code>ClockMorph</code>, the dial clock :
 </p>
 <div class="display">
@@ -111,6 +116,7 @@ have a default text font based on vector graphics, do
 <span id="index-morph-21"></span>
 <p>...and its drawing method in the category <code>drawing</code>:
 </p>
+<div class="float"><span id="clockDialDrawing"></span>
 <div class="display">
 <pre class="display"><span class="sansserif">ClockMorph&gt;&gt;drawOn: aCanvas
    aCanvas
@@ -124,6 +130,7 @@ have a default text font based on vector graphics, do
    aCanvas drawString: &rsquo;IX&rsquo; at: -90 @ -10 font: nil color: Color brown</span>
 </pre></div>
 
+<div class="float-caption"><p><strong>Example 7.2: </strong>Drawing the clock dial</p></div></div>
 
 <p>We create <code>ClockHourHandMorph</code>, the hand for the hours:
 </p>
@@ -240,32 +247,42 @@ system for its own <code>drawOn:</code> method and also for its
 submorphs. This new coordinate system might include rotation or
 reflexion of the axis, and scaling of sizes, but by default they
 don&rsquo;t. This means that they just translate the origin, by specifying
-where in the owner point 0@0 is to be located.
+where in the owner point <code>0@0</code> is to be located.
 </p>
-<p>The World coordinate system has 0@0 at the top left corner, with X
-coordinates increasing to the right, and Y coordinates increasing
-downwards. Positive rotations go clockwise. (This is the usual
-convention in graphics frameworks. Note that this is different from
-the usual Math convention, where Y increases upwards, and positive
-angles go counterclockwise.)
+<p>The World coordinate system has <code>0@0</code> at the top left
+corner, with X coordinates increasing to the right, and Y coordinates
+increasing downwards. Positive rotations go clockwise. This is the
+usual convention in graphics frameworks. Note that this is different
+from the usual mathematics convention, where Y increases upwards, and
+positive angles go counterclockwise.
 </p>
-<div class="float"><span id="ch07_002d05_002dClock"></span>
-<div align="center"><img src="ch07-05-Clock.png" alt="ch07-05-Clock">
-</div>
-<div class="float-caption"><p><strong>Figure 7.5: </strong>A clock morph</p></div></div>
 <p>So, how do we update the hands? For example, for the hour hand, one
 hour means 30 degrees, as 12 hours means 360 degrees or a whole
 turn. We multiply hours by 30 to get degrees. But for 0 the hand must
 point up, that is -90 degrees in our coordinate system. So we
 substract 90. Then we convert to radians, the unit expected by the
-#rotation: method. Minute and second hand work in a similar way, but
-as there are 60 minutes in one hour, and 60 seconds in one minute, se
-need to multiply them by 6 to get degrees. As rotation is done around
-the origin, and the clock has set the origin at its center (see
-<code>ClockMorph&gt;&gt;drawOn:</code>), there&rsquo;s no need to set the position
-of the hands. Their 0@0 will therefore be at the clock 0@0, i.e. the
-center of the clock.
+<code>rotation:</code> method. Minute and second hand work in a similar
+way, but as there are 60 minutes in one hour, and 60 seconds in one
+minute, we need to multiply them by 6 to get degrees. As rotation is
+done around the origin, and the clock has set the origin at its center
+(<a href="#clockDialDrawing">Example 7.2</a>), there&rsquo;s no need to set the position of the
+hands. Their <code>0@0</code> origin will therefore be at the clock
+<code>0@0</code>, i.e. the center of the clock.
 </p>
+<div class="float"><span id="ch07_002d06_002dExerciseClock"></span>
+<div align="center"><img src="ch07-06-ExerciseClock.png" alt="ch07-06-ExerciseClock">
+</div>
+<div class="float-caption"><p><strong>Figure 7.6: </strong>A fancy clock morph</p></div></div>
+<div class="float"><span id="exeFancyClock"></span>
+<blockquote class="indentedblock">
+<p><em>Look at the clock on
+<a href="#ch07_002d06_002dExerciseClock">Figure 7.6</a>. Don&rsquo;t you think its hand for the seconds
+decorated with a red and yellow disc is fancy? How will you modify our
+clock morph to get this result?</em>
+</p></blockquote>
+
+
+<div class="float-caption"><p><strong>Exercise 7.4: </strong>A fancy clock</p></div></div>
 <p>Create some instances of your clock: <code>ClockMorph new
 openInWorld</code>. You can rotate and zoom. Look at the visual quality of
 the Roman numerals in the clock face, especially when rotated and
@@ -277,43 +294,42 @@ Clock. Then, you can rotate just the face, not the clock, and the
 clock will show fake time. Try it!
 </p>
 
-
-
-
 <p>You might have noted two things that seem missing, though: How to
 compute bounding rectangles for Morphs, and how to detect if a Morph
 is being hit by the Hand, so you can move it or get a halo. The
 display rectangle that contains a morph is needed by the framework to
 manage the areas of the Display that need to be updated as a result of
 any change. But you don&rsquo;t need to know this rectangle in order to
-build your own Morphs. In Cuis, the framework computes it as needed,
-and stores it in the <code>privateDisplayBounds</code> variable. You
-don&rsquo;t need to worry about that variable at all. WRT detecting if a
-Morph is hit by the Hand, or more generally, if a pixel is belongs to
-a Morph, truth is that when a Morph is drawn, the framework indeed
-knows all the pixels it is affecting. The <code>drawOn:</code> method
-already specifies the shape of the Morph. Therefore, there is not a
-real need to ask the programmer to code the Morph geometry again in a
-separate method! All that is needed is careful design of the framework
-itself, to avoid requiring programmers to handle this extra
-complexity.
+build your own Morphs. In Cuis-Smalltalk, the framework computes it as
+needed, and stores it in the <code>privateDisplayBounds</code>
+variable. You don&rsquo;t need to worry about that variable at
+all. <span id="index-to-be-written_002c-WRT_003a-what-is-it_003f"></span>
+<strong>To be written.</strong> WRT: what is it? detecting if a Morph is hit by the Hand,
+or more generally, if a pixel belongs to a Morph, truth is that when a
+Morph is drawn, the framework indeed knows all the pixels it is
+affecting. The <code>drawOn:</code> method already specifies the shape of
+the Morph. Therefore, there is no need to ask the programmer to code
+the Morph geometry again in a separate method! All that is needed is
+careful design of the framework itself, to avoid requiring programmers
+to handle this extra complexity.
 </p>
 <p>The ideas we have outlined in this chapter are the fundamental ones in
 Morphic, and the framework is implemented in order to support
 them. Morphs (i.e. interactive graphic objects) are very general and
 flexible. They are not restricted to a conventional widgets library,
-although such a library (rooted in WidgetMorph) is included and used
-for building all the Smalltalk tools.
+although such a library (rooted in <code>WidgetMorph</code>) is included
+and used for building all the Smalltalk tools.
 </p>
 <p>The examples we have explored use the VectorGraphics package. This
 package includes VectorCanvas and HybridCanvas classes. However,
 installing this package is not required for using the regular
 Smalltalk tools you have been using. The reason is that Cuis includes
-by default the BitBltCanvas class inherited from Squeak (and called
-FormCanvas there). BitBltCanvas doesn&rsquo;t support the vector graphics
-drawing operations and doesn&rsquo;t do anti aliasing or zooming. But it is
-mature, and it relies on the BitBlt operation that is included in the
-virtual machine. This means that it offers excellent performance.
+by default the <code>BitBltCanvas</code> class inherited from Squeak (and
+called <code>FormCanvas</code> there). <code>BitBltCanvas</code> doesn&rsquo;t support
+the vector graphics drawing operations and doesn&rsquo;t do anti-aliasing or
+zooming. But it is mature, and it relies on the BitBlt operation that
+is included in the virtual machine. This means that it offers
+excellent performance.
 </p>
 <p>VectorGraphics is still in active development. When its drawing
 performance becomes good enough, it will be possible to draw all
@@ -330,8 +346,8 @@ there. Also, be sure to try the example in the comment in
 <h4 class="footnotes-heading">Footnotes</h4>
 
 <h5><a id="FOOT22" href="#DOCF22">(22)</a></h3>
-<p>You can select any other TrueType font
-from the ones available</p>
+<p>You can select
+any other TrueType font from the ones available</p>
 </div>
 <hr>
 <div class="header">
