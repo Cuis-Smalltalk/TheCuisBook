@@ -69,7 +69,7 @@ Now I could look at our uses of #left in Spacewars!, but the Cuis IDE
 already knows how to do this!
 
 If I right-click on the Method Pane in the Browser, I get a context menu
-with selections to help me out. Here is choose #Rename.
+with selections to help me out. Here I choose #Rename.
 
 @figure{Rename @method{left},ch11-02-RenameLeft,8}
 
@@ -101,10 +101,11 @@ Where did I use this?  Ah, senders..
 Hmmm, perhaps something more specific.  How about #noseDirection?
 How does that look?
 
-@figure{Rename to @method{nodeDirection},ch11-06-noseDirection,8}
+@figure{Rename @method{nose} to @method{noseDirection},ch11-06-noseDirection,8}
 
 OK, so there is more to explore, but this book is an @emph{introduction}
 and we have to stop writing text somewhere.  This is a good place.
 We want to get back to writing code!
 And we look forward to seeing @emph{your} projects!
 
+Welcome to @cuis{}!
