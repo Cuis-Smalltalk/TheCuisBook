@@ -18,7 +18,7 @@ to learning how to control a computer system.
 
 @* @* @* @*
 
-@cuis{} is a pure object oriented programming language (OOP). All the
+@cuis{} is a pure object oriented programming (OOP) language. All the
 entities in the language: integers, floats, rational numbers, strings,
 collections, blocks of code and so forth -- every instance usable as a
 noun in Smalltalk -- is an object.
@@ -44,8 +44,8 @@ At its simplest, an object has two components:
 
    @item @strong{Internal state.} This is embodied by variable(s)
    known only by the object. A variable only visible within the object
-   is called @dfn{private}. As a consequence, it is impossible -- if
-   the object decides so -- to know the internal state of the object
+   is called a @dfn{private} variable. As a consequence, it is impossible
+   -- if the object decides so -- to know the internal state of the object
    from another object.
 
    @item @strong{A repertoire of behaviors.} These are the message(s)
@@ -83,7 +83,7 @@ box which can hold any object.  Each instance of a class gets its own
 box with the common name.
 
 @cindex number @subentry rational fraction
-Let see how the @class{Fraction} class is declared:
+Lets see how the @class{Fraction} class is declared:
 
 @smalltalkExample{Number subclass: #Fraction
    instanceVariableNames: 'numerator denominator'
@@ -106,11 +106,11 @@ and so naturally we call @class{Number} a @dfn{superclass} of @class{Fraction}.
 
 @cindex class @subentry inheritance
 A Class specifies the behavior of all of its instances.  It is useful
-to be able to say @emph{this object is like that object, but for these
-differences}.  We do this in Smalltalk by a Class inheriting instance
-state and behavior from its parent Class.  This child, or subclass
-then specifies just the instance state and behavior which is different
-from its parent.
+to be able to say @emph{this object is like that object, but with these
+differences}.  We do this in Smalltalk by having classes inherit instance
+state and behavior from their parent Class.  This child, or subclass
+then specifies just the instance state and behavior that is different
+from its parent, retaining all the unmodified behaviours.
 
 This aspect of object oriented programming is called
 @dfn{inheritance}. In @cuis{}, each class inherits from one parent
@@ -125,7 +125,7 @@ message selector may be sent to objects of different Classes.  The
 specific class of the @emph{many} (poly) possible classes of the
 object receiving the message.
 
-Different kinds of objects all responded to the same @msg{printString}
+Different kinds of objects all respond to the same @msg{printString}
 message in different, but appropriate ways.
 
 @c instance creation
@@ -160,12 +160,12 @@ sent to the class @class{Fraction}, such a message refers to a
 is expected such a named method returns an instance of a
 @class{Fraction}.
 
-Try out in a workspace:
+Try this out in a workspace:
 @smalltalkExample{Fraction numerator: 24 denominator: 21
 @result{} 24/21}
 
-Observe how the fraction is not reduced. Whereas it is, when
-instantiated with the @msg{/} message:
+Observe how the resulting fraction is not reduced. Whereas it is reduced
+when instantiated with the @msg{/} message:
 
 @smalltalkExample{ 24 / 21
 @result{} 8/7}
@@ -236,8 +236,8 @@ returned.
 
 @cindex method  @subentry overriding
 @cindex overriding
-When message @msg{squared} is sent to a number, different methods are
-executed depending on the number is a fraction or another other kind of
+When the message @msg{squared} is sent to a number, different methods are
+executed depending on if the number is a fraction or another kind of
 number. Polymorphism means that the Class of each instance decides
 how it will repond to a particular message.
 Here, the @class{Fraction} class
@@ -282,9 +282,9 @@ value is itself but with its sign reversed, that is @method{negated}:
 @smalltalkExample{LargeNegativeInteger>>abs
    @return{} self negated}
    
-These two overriding methods are more efficient as they avoid test and
-ifTrue/ifFalse branches. Polymorphism is often used to avoid test and
-branch.
+These two overriding methods are more efficient as they avoid unnecessary
+checks and ifTrue/ifFalse branches. Polymorphism is often used to avoid
+unnecessary checks and code branches.
 
 @cindex keyboard shortcut @subentry implementors of (@kbd{Ctrl-m})
 

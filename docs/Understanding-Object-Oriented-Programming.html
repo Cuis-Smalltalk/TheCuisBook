@@ -99,8 +99,8 @@ Next: <a href="Explore-OOP-from-the-Browser.html" accesskey="n" rel="next">Explo
 <ul>
 <li> <strong>Internal state.</strong> This is embodied by variable(s)
    known only by the object. A variable only visible within the object
-   is called <em>private</em>. As a consequence, it is impossible &ndash; if
-   the object decides so &ndash; to know the internal state of the object
+   is called a <em>private</em> variable. As a consequence, it is impossible
+   &ndash; if the object decides so &ndash; to know the internal state of the object
    from another object.
 
 </li><li> <strong>A repertoire of behaviors.</strong> These are the message(s)
@@ -138,7 +138,7 @@ box which can hold any object.  Each instance of a class gets its own
 box with the common name.
 </p>
 <span id="index-number-19"></span>
-<p>Let see how the <code>Fraction</code> class is declared:
+<p>Lets see how the <code>Fraction</code> class is declared:
 </p>
 <div class="display">
 <pre class="display"><span class="sansserif">Number subclass: #Fraction
@@ -163,11 +163,11 @@ and so naturally we call <code>Number</code> a <em>superclass</em> of <code>Frac
 </p>
 <span id="index-class-8"></span>
 <p>A Class specifies the behavior of all of its instances.  It is useful
-to be able to say <em>this object is like that object, but for these
-differences</em>.  We do this in Smalltalk by a Class inheriting instance
-state and behavior from its parent Class.  This child, or subclass
-then specifies just the instance state and behavior which is different
-from its parent.
+to be able to say <em>this object is like that object, but with these
+differences</em>.  We do this in Smalltalk by having classes inherit instance
+state and behavior from their parent Class.  This child, or subclass
+then specifies just the instance state and behavior that is different
+from its parent, retaining all the unmodified behaviours.
 </p>
 <p>This aspect of object oriented programming is called
 <em>inheritance</em>. In Cuis-Smalltalk, each class inherits from one parent
@@ -182,7 +182,7 @@ message selector may be sent to objects of different Classes.  The
 specific class of the <em>many</em> (poly) possible classes of the
 object receiving the message.
 </p>
-<p>Different kinds of objects all responded to the same <code>#printString</code>
+<p>Different kinds of objects all respond to the same <code>#printString</code>
 message in different, but appropriate ways.
 </p>
 <span id="index-instance-2"></span>
@@ -218,14 +218,14 @@ sent to the class <code>Fraction</code>, such a message refers to a
 is expected such a named method returns an instance of a
 <code>Fraction</code>.
 </p>
-<p>Try out in a workspace:
+<p>Try this out in a workspace:
 </p><div class="display">
 <pre class="display"><span class="sansserif">Fraction numerator: 24 denominator: 21
 &rArr; 24/21</span>
 </pre></div>
 
-<p>Observe how the fraction is not reduced. Whereas it is, when
-instantiated with the <code>#/</code> message:
+<p>Observe how the resulting fraction is not reduced. Whereas it is reduced
+when instantiated with the <code>#/</code> message:
 </p>
 <div class="display">
 <pre class="display"><span class="sansserif">24 / 21
@@ -302,8 +302,8 @@ returned.
 </p>
 <span id="index-method-6"></span>
 <span id="index-overriding"></span>
-<p>When message <code>#squared</code> is sent to a number, different methods are
-executed depending on the number is a fraction or another other kind of
+<p>When the message <code>#squared</code> is sent to a number, different methods are
+executed depending on if the number is a fraction or another kind of
 number. Polymorphism means that the Class of each instance decides
 how it will repond to a particular message.
 Here, the <code>Fraction</code> class
@@ -356,9 +356,9 @@ value is itself but with its sign reversed, that is <code>negated</code>:
    &#x2191; self negated</span>
 </pre></div>
    
-<p>These two overriding methods are more efficient as they avoid test and
-ifTrue/ifFalse branches. Polymorphism is often used to avoid test and
-branch.
+<p>These two overriding methods are more efficient as they avoid unnecessary
+checks and ifTrue/ifFalse branches. Polymorphism is often used to avoid
+unnecessary checks and code branches.
 </p>
 <span id="index-keyboard-shortcut-6"></span>
 
