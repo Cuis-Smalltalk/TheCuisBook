@@ -599,6 +599,21 @@ drawOn: aCanvas
 
 @figure{This rectangle rotates around its center,E-exeRotateRect2,3.5}
 
+@subheading @ref{exeFancyClock}
+Among the clock parts (submorphs) we only need to modify the drawing
+of the @class{ClockSecondHandMorph} class. The disc is surrounded with a
+thin red line and filled in yellow.
+@example
+ClockSecondHandMorph>>drawOn: aCanvas
+   aCanvas strokeWidth: 1.5 color: Color red do: [
+      aCanvas
+         moveToX: 0 y: 0;
+         lineToX: 85 y: 0 ].
+   aCanvas ellipseCenterX: 70 y: 0 rx: 3 ry: 3 
+      borderWidth: 1 
+      borderColor: Color red fillColor: Color yellow
+@end example
+
 
 @c Chapter 8
 @node Events (Solutions)
