@@ -571,7 +571,7 @@ we use the Installed Packages tool.
 
 @cindex package @subentry load @subentry by graphic interface
 A file @file{Spacewar!.pck.st} is created along the @cuis{} image
-file.  Every time a package needs to be loaded in a fresh @cuis{}
+file.  To install a package in a fresh @cuis{}
 environment, use the File List tool:
 
 @enumerate
@@ -584,6 +584,11 @@ environment, use the File List tool:
 
 @end enumerate
 
+You can also drag and drop the package file from your operating system 
+over to the Squeak window, upon dropping the file over the window
+@cuis{} will ask you what you want to do with this package.
+To install it on your enviroment you can simply press "Install package".
+
 Now, we have created and saved the package. Whenever you start with a
 fresh @cuis{} environment, you can load the game package.
 
@@ -593,8 +598,8 @@ chapters.
 
 @subsection The Newtonian model
 @anchor{newtonModel}
-For an enjoyable game experience, the player ships must follow the
-Newton laws of motion. Acceleration, speed and position are computed
+For an enjoyable game experience, the player ships must follow
+Newton's laws of motion. Acceleration, speed and position are computed
 according to these laws. The ships are subjected to two forces: the
 acceleration from the gravity pull of the central star and an inner
 acceleration coming from the ship engines.
