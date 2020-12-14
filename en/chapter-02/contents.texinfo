@@ -49,7 +49,7 @@ itself. A behavior is defined in a class and is called a @dfn{method}.
 This results in a huge cloud of entities communicating with each other
 through message sending. New entities are instantiated when needed
 then automatically garbage collected when no longer required. On a
-fresh @cuis{} environment, the instances class count is more than
+fresh @cuis{} environment, the count of class instances is more than
 150000.
 
 @cindex collection @subentry @method{inject:into:}
