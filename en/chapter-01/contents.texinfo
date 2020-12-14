@@ -390,8 +390,8 @@ There are syntax variants to write a number:
 @multitable @columnfractions .45 .55
 @headitem Numeric literal                    @tab What it represents
    @item @smalltalk{1}                       @tab integer (decimal notation)
-   @item @smalltalk{2r101}                   @tab integer (binary binary)
-   @item @smalltalk{16rFF}                   @tab integer (hexadecimal notation)
+   @item @smalltalk{2r101}                   @tab integer (binary radix)
+   @item @smalltalk{16rFF}                   @tab integer (hexadecimal radix)
    @item @smalltalk{1.5}                     @tab floating point number
    @item @smalltalk{2.4e7}                   @tab floating point (exponential notation)
 @end multitable
