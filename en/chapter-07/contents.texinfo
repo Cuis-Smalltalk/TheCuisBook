@@ -194,7 +194,6 @@ movable rectangle morph with an extent of 200 per 100? The rect will
 be filled with a random translucent color and surrounded by a thin
 blue line.}}
 
-
 As we learnt previously, Morphic gives you additional ways to interact
 with your morphs. With a three buttons mouse, or a wheel mouse, place
 the mouse pointer (a @class{HandMorph} instance) over one of your
@@ -231,6 +230,14 @@ We will learn how to control all this with code and animate our morph.
 @emph{Rotate your rectangle morph. Does it rotate around its center or
 around one corner? If necessary rewrite your rectangle morph so it rotates
 around its center.}}
+
+In the solution we gave for the @ref{exeCrossMorph} (@ref{Solutions of
+the Exercises}), the cross origin is set to its top left. Therefore it
+rotates around this point.
+
+@exercise{Rotate the cross around its center,exeCrossCenterMorph,
+@emph{How will you rewrite the @method{drawOn:} so it rotates around
+its center?}}
 
 @subsection Animated morph
 @cindex morph @subentry animated

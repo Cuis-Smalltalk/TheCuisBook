@@ -599,6 +599,17 @@ drawOn: aCanvas
 
 @figure{This rectangle rotates around its center,E-exeRotateRect2,3.5}
 
+@subheading @ref{exeCrossCenterMorph}
+@example
+drawOn: aCanvas
+   aCanvas strokeWidth: 20 color: Color green do: [aCanvas
+      moveToX: -100 y: -100;
+      lineToX: 100 y: 100;
+      moveToX: 100 y: -100;
+      lineToX: -100 y: 100]
+@end example
+
+
 @subheading @ref{exeFancyClock}
 Among the clock parts (submorphs) we only need to modify the drawing
 of the @class{ClockSecondHandMorph} class. The disc is surrounded with a
