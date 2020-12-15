@@ -49,7 +49,7 @@ the late 80's and late 90's respectively). Additionally, careful
 design of the framework relieves Morph programmers from much the
 complexity that was required, especially with regards to geometry.
 
-This step is required until VectorGraphics become part of the base
+This step is required until VectorGraphics becomes part of the base
 @cuis{} image:
 
 @cindex morph @subentry vector @subentry installation
@@ -123,12 +123,12 @@ and still be able to move it around. The solution is to make it
 subclass of @class{MovableMorph}, instead of @class{Morph}.
 
 @cindex morph @subentry @method{delete}
-To do this, first evaluate the code below to get rid of all of them:
+To do this, first evaluate the code below to get rid of all LineExampleMorph instances:
 
 @smalltalkExampleCaption{Delete all instances of a given morph,deleteMorphInstances,
 LineExampleMorph allInstancesDo: [ :m | m delete]}
 
-Then, in the System Browser, in the class declaration, type
+Then, in the System Browser class declaration for LineExampleMorph, type
 @class{MovableMorph} instead of @class{Morph} and save. Now execute
 again:
 
@@ -190,15 +190,15 @@ morph, you can see through it.
 
 
 @exercise{Rectangle morph, exeRectMorph, @emph{How will you write a
-movable rectangle morph with an extent of 200 per 100? The rect will
+movable rectangle morph with an x,y extent of 200 by 100? The rect will
 be filled with a random translucent color and surrounded by a thin
 blue line.}}
 
 As we learnt previously, Morphic gives you additional ways to interact
-with your morphs. With a three buttons mouse, or a wheel mouse, place
+with your morphs. With a three button mouse or a wheel mouse, place
 the mouse pointer (a @class{HandMorph} instance) over one of your
-triangles and click with the center button or mouse. If you don't have
-a three buttons mouse do @kbd{Command-click}. You get a constellation
+triangles and click with the center button or mouse wheel. If you don't have
+a three button mouse substitute @kbd{Command-click}. You get a constellation
 of small colored circles around your morph. This is called the morph's
 @dfn{halo}, and each colored circle is a @dfn{halo
 handle}. @xref{ch07-02-Triangles}.
@@ -345,8 +345,8 @@ away. For this, you need the triangle's halo. Use its @label{Move}
 handle@footnote{By now, it is likely that the triangle walked quite a
 bit!} to position it without @emph{getting it out} of the line. Use
 its @label{Pick up} handle to take it with the hand and drop
-it in the world. Now, the triangle is no longer submorph of the line,
-and they can be moved, rotated or scaled independently.
+it in the world. Now, the triangle is no a longer submorph of the line,
+and the morphs can be moved, rotated or scaled independently.
 
 But let's try something. Make the triangle submorph of the line
 again. Now add the following method to category @label{geometry
@@ -423,13 +423,13 @@ We create @class{ClockHourHandMorph}, the hand for the hours:
 
 You can start playing with them. We could use several instances of a
 single @class{ClockHandMorph}, or create several classes. Here we
-chose to do the latter. Note that all the @method{drawOn:} use
+chose to do the latter. Note that all the @method{drawOn:} methods use
 hardcoded constants for all coordinates. As we have seen before, this
-is not a limitation. We don't need to write a lot of trigonometric and
+is not a limitation. We don't need to write a lot of specialized trigonometric and
 scaling formulas to build Morphs in @cuis{}!
 
 By now, you might imagine what we are doing with all this, but please
-stick with us while we finish building our clock.
+bear with us while we finish building our clock.
 
 We create @class{ClockMinuteHandMorph}, the hand for the minutes:
 
@@ -548,7 +548,8 @@ any change. But you don't need to know this rectangle in order to
 build your own Morphs. In @cuis{}, the framework computes it as
 needed, and stores it in the @smalltalk{privateDisplayBounds}
 variable. You don't need to worry about that variable at
-all. @todo{WRT: what is it?} detecting if a Morph is hit by the Hand,
+all.
+@todo{WRT: what is it?} detecting if a Morph is hit by the Hand,
 or more generally, if a pixel belongs to a Morph, truth is that when a
 Morph is drawn, the framework indeed knows all the pixels it is
 affecting. The @method{drawOn:} method already specifies the shape of
@@ -560,7 +561,7 @@ to handle this extra complexity.
 The ideas we have outlined in this chapter are the fundamental ones in
 Morphic, and the framework is implemented in order to support
 them. Morphs (i.e. interactive graphic objects) are very general and
-flexible. They are not restricted to a conventional widgets library,
+flexible. They are not restricted to a conventional widget library,
 although such a library (rooted in @class{WidgetMorph}) is included
 and used for building all the Smalltalk tools.
 
