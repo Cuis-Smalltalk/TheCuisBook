@@ -58,7 +58,7 @@ options:
    classes.
    At the right are the method selectors for strings and, in parenthesis,
    the class where they are defined.  Methods defined in class
-   @class{String} are in bold characters.
+   @class{String} itself are in bold characters.
 
    Selecting one class there only shows the protocol starting from
    this class down to the @class{String} class. If you select
@@ -113,10 +113,10 @@ element. When inherited in @class{String}, those elements are
 Practice the tools and resolve the exercise bellow.
 
 @exercise{Cut a string, cutString,@emph{Find the appropriate
-method to transform 'Hello My Friend' in 'My Friend'?}}
+method to transform 'Hello My Friend' into 'My Friend'}}
 
 Beware, some messages in the @class{String} protocol may obviously not
-work. Observe bellow, the error is thrown on a @class{Character}
+work. Observe below, the error is thrown on a @class{Character}
 instance:
 
 @smalltalkExample{'Hello My Friend' cos
@@ -195,7 +195,7 @@ a class
 @result{} SmallInteger}
 
 The initial value of the variable @smalltalk{a} was a @class{Fraction}
-instance, after some calculus it ends as a @class{SmallInteger}
+instance, after some calculation it ends as a @class{SmallInteger}
 instance.
 
 In fact to be honest, there is no such things as type, it is only
@@ -274,14 +274,14 @@ arithmetic operations:
 #(1 2 3 4) / 10 @result{} #(1/10 1/5 3/10 2/5)}
 
 @cindex collection @subentry @method{squared}
-Mathematics operations work as well:
+Mathematical operations work as well:
 @smalltalkExample{#(1 2 3 4) squared @result{} #(1 4 9 16)
 #(0 30 45 60) degreeCos
 @result{} #(1.0 0.8660254037844386
 0.7071067811865475 0.49999999999999994)}
 
 @cindex array @subentry statistic
-Basic statistic methods can be used directly on array of numbers:
+Basic statistical methods can be used directly on array of numbers:
 
 @smalltalkExample{#(7.5 3.5 8.9) mean @result{} 6.633333333333333 
 #(7.5 3.5 8.9) range @result{} 5.4
@@ -595,7 +595,7 @@ There are different ways to create @class{Array} instance:
 array1 := #(2 'Apple' $@@ 4) "create at compile time"
 array1b := @{2 . 'Apple' . 2@@1 . 1/3 @} "created a execution time"
 array2 := Array with: 2 with: 'Apple' with: 2@@3 with: 1/3.
-array3 := Array ofSize: 4 "an empty array with a 4 elements capacity"}
+array3 := Array ofSize: 4 "an empty array with a 4 element capacity"}
 
 Array @smalltalk{array1} and @smalltalk{array1b} are bit
 different. The former one is created and filled with its contents at
@@ -647,7 +647,7 @@ collections.
 @class{OrderedCollection} is a notable one. Its elements are ordered:
 elements are added one after the other in sequence@footnote{Of course you can
 insert an element between two elements. However @class{LinkList}
-instance are more efficient for this use case scenario.}. Its size is
+instance are more efficient for this use case.}. Its size is
 variable depending on added or removed elements.
 
 @cindex collection @subentry instantiate variable size array
@@ -711,7 +711,7 @@ Observe the alternate conversion messages:
 @{1 . Float pi . 3/3 . 1/3 . 1.0@} asSortedCollection
 @result{} a SortedCollection(1/3 1 1 1.0 3.141592653589793)}
 
-To collect compile the divisors list of 30 and 45 (not the common divisors):
+To uniquely collect the divisors list of 30 and 45 (not the common divisors):
 
 @smalltalkExample{Set  new 
    addAll: #(1 2 3 5 6 10 15 30) ; 
@@ -719,7 +719,7 @@ To collect compile the divisors list of 30 and 45 (not the common divisors):
    yourself. 
 @result{} a Set(5 10 15 1 6 30 45 2 3 9)}
 
-@exercise{Letters, setLetters, @emph{How will you compile the letters in
+@exercise{Letters, setLetters, @emph{How will you collect the letters in
 the sentences 'buenos d@'{@dotless{i}}as' and 'bonjour'?}}
 
 @cindex collection @subentry @class{Dictionary}
@@ -845,7 +845,7 @@ to it. Its position is linearly updated according to the time
 elapsed. The @smalltalk{t} parameter in the @msg{update:} message is
 this time interval.
 
-@smalltalkExampleCaption{Torpedo mechanic, torpedoMechanic,
+@smalltalkExampleCaption{Torpedo mechanics, torpedoMechanic,
 Torpedo>>update: t
 "Update the torpedo position"
    position @assign{} velocity * t + position.
@@ -867,9 +867,10 @@ SpaceShip>>update: t
    velocity @assign{} newVelocity.
    ../..}
 
-@cuisNote{Remember, regarding arithmetic operators @cuis{} does not
-follow the mathematics precedence. There are ordinary @strong{binary
-messages} whose precedence are from the left to the right when there
+@cuisNote{Remember that Smalltalk does not
+follow the mathematics precedence of arithmetic operators.
+These are seen as ordinary @strong{binary
+messages} which are evaluated from the left to the right when there
 is no parenthesis. For example, in the code fragment
 @smalltalk{...(velocity * t)...}, the parenthesis are mandatory to get
 the expected computation.}
@@ -891,8 +892,8 @@ SpaceWar>>stepAt: millisecondSinceLast
    ../..}
 
 @c Ask the reader to write the code to update the ship and torpedo position
-In the @method{stepAt:} method, we left out intentionally the details to
-update the ships and the torpedoes positions. Note: each ship is sent
+In the @method{stepAt:} method, we intentionally left out the details to
+update the ship and torpedoe positions. Note: each ship is sent
 regularly an @msg{unpush} message to reset its previous @msg{push}
 acceleration.
 
@@ -902,7 +903,7 @@ and the torpedoes positions and velocities.}}
 
 
 Among other things, the game play handles the collisions between the
-various protagonists. Enumerators are very handy.
+various protagonists. Enumerators are very handy for this.
 
 Ships are hold in array of size 2, we just iterate it with a @msg{do:}
 message and a dedicated block of code:
