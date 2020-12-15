@@ -30,13 +30,13 @@ result is not consistent, neither for developers nor for users.
 especially Self.
 @todo{Need a reference}.
 
-We take the high quality Display for granted, as a mouse, finger or
+We take the high quality Display for granted, as well as a mouse, finger or
 other pointing device. And we build on the objective of providing
 ample possibilities for GUIs both in existing, and in novel styles and
-designs, yet to be invented. Additionally, in the usual Smalltalk way,
-all the framework code is available for study and modification: there
-are no third party libraries, and only the lowest level code is
-precompiled, but it still can be overriden or changed.
+designs yet to be invented. Additionally, in the usual Smalltalk way,
+all the framework code is available for study and modification. There
+are no third party libraries. Only the lowest level code is
+precompiled, but that still can be overriden or changed.
 
 
 Therefore every object you see in @cuis{} is a @class{Morph} or is
@@ -84,7 +84,7 @@ git clone https://github.com/Cuis-Smalltalk/Morphic.git
 @end enumerate
 
 @cindex package @subentry load @subentry by code
-Once done, in a Worksapce execute the code to install the package:
+Once done, in a Workspace execute the code to install the package:
 
 @smalltalkExample{Feature require: 'Morphic-Widgets-Extras'}
 
@@ -271,6 +271,8 @@ but subclass @class{EllipseMorph} with @smalltalk{#ColorClickEllipse}.
    poolDictionaries: ''
    category: 'Spacewar!!'}
 
+Save the class definition with @kbd{Ctrl-s}.
+
 @cindex event @subentry testing
 @kbd{Right-Click} on the @label{Message Category} pane and select
 @label{new category...}.  This brings up a number of selections and
@@ -346,23 +348,23 @@ Moreover, as you may have guessed, a Morph already knows about its
 position on screen -- it can be dragged in the screen with the mouse
 cursor. Therefore the @smalltalk{position} instance variable is
 redundant and should be removed. For now we keep it, it will be
-removed later when we will know how to replace each of its use case
-with its appropriate Morph counter part.
+removed later when we will know how to replace each of its use cases
+with its appropriate Morph counterpart.
 
 @exercise{Make all Morphs, allActorsMorph, @emph{Edit
 @smalltalk{SpaceWar}@comma{} @class{CentralStar} and @class{SpaceShip}
-as subclasses of the @class{Morph} class.}}
+to be subclasses of the @class{Morph} class.}}
 
 As explained in the previous sections of this chapter, a morph can be
 embedded in another game. In Spacewar!, a @class{SpaceWar} morph
 instance presenting the game play, it is the @emph{owner} of the central
 star, space ship and torpedo morphs. Put in other words, the central
-star, space ships and torpedoes are @emph{sub morphs} of a
+star, space ships and torpedoes are @emph{submorphs} of a
 @class{SpaceWar} morph instance.
 
 The @method{SpaceWar>>initializeActors} code in @ref{initActors} is
  not complete without adding and positioning the central star and
- space ships as sub morphs of the Spacewar! game play:
+ space ships as submorphs of the Spacewar! game play:
 
 @smalltalkExampleCaption{Complete code to initialize the Spacewar! actors, initFullActors,
 SpaceWar>>initializeActors
@@ -379,7 +381,7 @@ SpaceWar>>initializeActors
 
 There are two important messages: @msg{addMorph:} and
 @msg{morphPosition:}. The former asks to the receiver morph to embed
-its morph argument as a sub morph, the later asks to set the receiver
+its morph argument as a submorph, the later asks to set the receiver
 coordinates in its owner's reference frame. From reading the code, you
 deduce the origin of the owner reference frame is its middle,
 indeed our central star is in the middle of the game play.
@@ -451,17 +453,17 @@ than the @class{Morph} class they currently share.
 
 Doing such analysis on the computer model of the game is part of the
 @dfn{refactoring} effort to avoid behavior and state duplications while
-making more obvious common logic in the entities. The general idea of
+making more obvious the common logic in the entities. The general idea of
 code refactoring is to rework existing code to make it more elegant,
 understandable and logical.
 
-To do so, we want to introduce a @class{Mobile} class, kind of
- @class{Morph} with behaviors specific to a mobile subjected to
+To do so, we will introduce a @class{Mobile} class, a kind of
+ @class{Morph} with behaviors specific to a mobile object subjected to
  accelerations. Its states are the mass, position, velocity and
  acceleration. Well, as we are discussing refactoring, the mass state
  does not really makes sense in our game, indeed our mobile's mass is
- constant. So we just need a method returning a literal number and we
- remove the @smalltalk{mobile} instance variable.
+ constant. We just need a method returning a literal number and we
+ can then remove the @smalltalk{mobile} instance variable.
 
 It results in this @class{Mobile} definition:
 
@@ -486,8 +488,8 @@ initialization and its mass:
 Mobile>>mass
   @return{} 1}
 
-The next methods to add are the ones relative to the mechanics
-calculus. First, the gravity acceleration calculus:
+The next methods to add are the ones relative to the physical
+calculations. First, the code to calculate the gravity acceleration:
 
 @smalltalkExampleCaption{Calculate the gravity force,gravityForce,
 Mobile>>gravity
@@ -496,7 +498,7 @@ Mobile>>gravity
    position @assign{} self morphPosition.
    @return{} -10 * self mass * owner starMass / (position r raisedTo: 3) * position}
 
-It deserves a few comments:
+This method deserves a few comments:
 @itemize
 
   @item @smalltalk{self morphPosition} returns a @class{Point}
@@ -525,8 +527,8 @@ It deserves a few comments:
 The method to update the mobile position and velocity is mostly the
 same as in @ref{spaceShipMechanic}. Of course the
 @smalltalk{SpaceShip>>update:} and @smalltalk{Torpedo>>update:}
-version must be both deleted. Below the complete version with the
-morph way to access the mobile's position:
+version must be both deleted. Below is the complete version with the
+morph's way of accessing the mobile's position:
 
 @smalltalkExampleCaption{@class{Mobile}'s @method{update:} method,mobileUpdate,
 Mobile>>update: t
@@ -548,9 +550,9 @@ Mobile>>update: t
      self morphPosition: self morphPosition negated]}
 
 Now we should add the two methods to detect when a mobile is heading
-to deep space:
+off into deep space:
 
-@smalltalkExampleCaption{Test when a mobile is going deep space,mobileDeepSpace,
+@smalltalkExampleCaption{Test when a mobile is ``spaced out'',mobileDeepSpace,
 Mobile>>isInOuterSpace
 "Is the mobile located in the outer space? (outside of the game
 play area)"
@@ -586,27 +588,28 @@ See the @class{Torpedo>>update:} definition:
    acceleration > 0 ifTrue: [acceleration @assign{} acceleration - 1000]}
 
 Here the @method{update:} method is specialized to the torpedo
-specific needs. The mechanic calculus done in @method{Mobile>>update:}
+specific needs. The mechanic calculation done in @method{Mobile>>update:}
 is still used to update the torpedo position and velocity: this is
-what does @smalltalk{super update: t}. We already discussed
-@smalltalk{super} previously. In the context of
+done by @smalltalk{super update: t}. We already discussed
+@smalltalk{super}. In the context of
 @method{Torpedo>>update:} it means search for an @method{update:}
-method in @class{Torpedo}'s parent class; and so on until the method
-is found, if not a @emph{Message Not Understood} error is thrown.
+method in @class{Torpedo}'s parent class, that class's parent
+and so on until the method
+is found, if not a @emph{Message Not Understood} error is signalled.
 
 Among the specific added behaviors, the torpedo orientation along its
-velocity vector, it is inaccurate but nice looking; the life span
-control and the self-destruction sequence; the engine acceleration
-handling. When a torpedo is just fired, its engine acceleration is
+velocity vector is inaccurate but nice looking. The life span
+control, the self-destruction sequence, and the engine acceleration
+are also handled. When a torpedo is just fired, its engine acceleration is
 huge then it decreases quickly.
 
 With the System Browser pointed to the @method{Torpedo>>update:}
-method, observe the @option{inheritance} button, it is light green, which
+method, observe the @option{inheritance} button. It is light green, which
 indicates the message is sent to @smalltalk{super} too. This is a
 reminder the method supplies a specialized behavior. 
-The button tool tip explains
-the other coloring meanings. When pressing this button, you browse the
-implementations of the @method{upate:} method.
+The button tool tip explains the color hilight meanings within the method's text.
+When pressing the @option{inheritance} button, you browse all 
+implementations of the @method{update:} method within this inheritance chain.
 
 @figure{Update's inheritance button,ch06-20-TorpedoUpdateInheritance,9}
 
@@ -635,15 +638,15 @@ initialization:
 
 @enumerate
 
- @item @strong{SpaceShip.} Its mechanic states is set with the
- @smalltalk{super initialize}; the ship is resupplied with fuel and torpedo:
+ @item @strong{SpaceShip.} Its mechanical states are set with the
+ @smalltalk{super initialize} and then the ship is resupplied with fuel and torpedos:
 
  @smalltalkExample{SpaceShip>>resupply
    fuel @assign{} 500.
    torpedoes @assign{} 20}
 
- @item @strong{Torpedo.} Mechanic states initialized; self-destroy
- sequence initialized and acceleration adjusted to mimic the torpedo
+ @item @strong{Torpedo.} Inherited mechanical states initialized; add self-destroy
+ sequence initialization and acceleration adjusted to mimic the torpedo
  boost at fire up.
 
 @end enumerate
