@@ -48,7 +48,7 @@ Basic questions:
  @item Can we make something simpler?  Leave something out?
 @end itemize 
 
-Now we have been doing Smalltalk code for a while
+Now, we have been doing Smalltalk code for a while
 and so tend to follow good practices, but let's
 take another look at our code and see
 if we can make it easier for a reader to understand.
