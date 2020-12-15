@@ -125,9 +125,11 @@ specify this."
 
    @return{} self hasProperty: #'handlesMouseDown:'}
 
-As defined by default, this method, and the other handles, checks if
-there is a homonym property. In a specific morph where we want to
-handle mouse down event, we just redefine it to return true:
+As defined by default, this method and the other handlers
+check to see if an instance has defined a like named property.
+
+In a morph class where we want all instances to
+handle mouse down events, we just override the appropriate method to return true:
 
 @smalltalkExample{MyMorph>>>>handlesMouseDown: aMouseButtonEvent
    @return{} true}
@@ -165,12 +167,12 @@ described above.
 We want to catch event when the mouse cursor moves over our
 @class{SpaceWar} morph.
 
-@exercise{Get notified of mouse move over event, handleMouseOver,
+@exercise{Get notified of mouse move-over event, handleMouseOver,
 @emph{Which method should returns true to let the game play be notified
 with dedicated messages the mouse cursor enters or leaves? In which
 class should we implement this method?}}
 
-Once we make explicit we want the game play to receive mouse move over
+Once we make explicit we want the game play to receive mouse move-over
 events, we need to set the behavior accordingly with dedicated
 methods.
 
@@ -185,23 +187,23 @@ Each time the mouse cursor enters the game play, we want:
   event object (see event classes hierarchy at the beginning of this
   chapter). An event object is interrogated about its hand with the
   @msg{hand} message. All in all, we want the keyboard focus to be
-  targeted toward our game play when the mouse enter:
+  targeted toward our game play when the mouse enters:
 
   @smalltalkExample{event hand newKeyboardFocus: self}
 
   @item @strong{Resume the game.} The continuous update of the game is
-  done through a dedicated process called stepping mechanism; it will
+  done through a dedicated process stepping mechanism, which will
   be discussed in the next chapter. The game play just asks itself to
-  resume the stepping:
+  resume stepping:
   @smalltalkExample{self startStepping} 
 @end itemize
 
 @exercise{Handle mouse enter event, mouseEnter, @emph{Which message is
 sent to the game play to be notified the mouse cursor enters the game
-play area?  How should be written the matching method?}}
+play area?  How should the matching method be written?}}
 
 @subsubheading Mouse cursor leaves game play 
-@cindex event @subentry handling @subentry mouse enter
+@cindex event @subentry handling @subentry mouse-enter
 
 We also want to be informed when the mouse cursor leaves our
 @class{SpaceWar} morph. Thanks to the work done in
@@ -225,7 +227,7 @@ the behavior when the mouse cursor leaves the game play:
 
 @exercise{Handle mouse leave event, mouseLeave, @emph{Which message is
 sent to the game play to be notified the mouse cursor leaves the game
-play area?  How should be written the matching method?}}
+play area?  How should we write the overridden method?}}
 
 In graphic user interface, a visual effect is often used to inform the
 user the keyboard focus changed. In Spacewar! we change the game play
@@ -266,7 +268,7 @@ key down then up event (@dfn{key stroke}). As long as our
 @class{SpaceWar} morph responds true to the @msg{handlesKeyboard}
 message, it receives the messages @msg{keyUp:}, @msg{keyDown:} and
 @msg{keyStroke:}. By default, the matching methods in the
-@class{Morph} class does nothing.
+@class{Morph} class do nothing.
 
 The argument of these messages is a @class{KeyboardEvent} object to
 which, among other things, you can ask the @msg{keyCharacter} of the
