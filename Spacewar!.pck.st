@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4489] on 11 December 2020 at 1:02:28 pm'!
+'From Cuis 5.0 [latest update: #4488] on 15 December 2020 at 9:16:15 pm'!
 'Description '!
-!provides: 'Spacewar!!' 1 73!
+!provides: 'Spacewar!!' 1 75!
 SystemOrganization addCategory: 'Spacewar!!'!
 
 
@@ -124,7 +124,7 @@ update: t
 			velocity _ velocity / 2.
 			self morphPosition: self morphPosition negated]! !
 
-!Mobile methodsFor: 'geometry testing' stamp: 'hlsf 10/1/2020 08:34:46'!
+!Mobile methodsFor: 'geometry testing' stamp: 'hlsf 12/15/2020 21:03:38'!
 requiresVectorCanvas
 	^false! !
 
@@ -145,10 +145,10 @@ isInOuterSpace
 "Is the mobile located in the outer space? (outside of the game play area)"
 	^(owner morphContainsPoint: self morphPosition) not! !
 
-!SpaceShip methodsFor: 'accessing' stamp: 'hlsf 10/1/2020 14:51:37'!
+!SpaceShip methodsFor: 'accessing' stamp: 'hlsf 12/15/2020 21:06:01'!
 morphExtent
 
-	^60@60! !
+	^20@30! !
 
 !SpaceShip methodsFor: 'control' stamp: 'hlsf 10/1/2020 17:25:38'!
 fireTorpedo
@@ -186,14 +186,14 @@ unpush
 "Stop the accelaration boost"
 	acceleration _ 0! !
 
-!SpaceShip methodsFor: 'drawing' stamp: 'hlsf 10/1/2020 18:11:26'!
+!SpaceShip methodsFor: 'drawing' stamp: 'hlsf 12/15/2020 20:34:53'!
 drawOn: canvas
 
 	| a b c d |
-	a _ 0@ -30.
-	b _ -10@0.
-	c _ 0@ -5.
-	d _ 10@0.
+	a _ 0@ -15.
+	b _ -10@15.
+	c _ 0@ 10.
+	d _ 10@15.
 	canvas line: a to: b width: 2 color: color.
 	canvas line: b to: c width: 2 color: color.
 	canvas line: c to: d width: 2 color: color.
@@ -201,12 +201,11 @@ drawOn: canvas
 
 	"Draw gas exhaust"
 	acceleration ifNotZero: [
-		canvas line: c to: 0@20 width: 1 color: Color gray].! !
+		canvas line: c to: 0@35 width: 1 color: Color gray].! !
 
-!SpaceShip methodsFor: 'drawing' stamp: 'hlsf 9/21/2020 20:47:48'!
+!SpaceShip methodsFor: 'drawing' stamp: 'hlsf 12/15/2020 21:16:09'!
 nose
-
-	^ self direction * 30! !
+	^ self direction * 40! !
 
 !SpaceShip methodsFor: 'initialization' stamp: 'hlsf 10/1/2020 17:24:19'!
 initialize
@@ -228,26 +227,26 @@ update: t
 	lifeSpan isZero ifTrue: [owner destroyTorpedo: self].
 	acceleration > 0 ifTrue: [acceleration _ acceleration - 1000].! !
 
-!Torpedo methodsFor: 'drawing' stamp: 'hlsf 10/1/2020 08:38:35'!
+!Torpedo methodsFor: 'drawing' stamp: 'hlsf 12/15/2020 20:30:57'!
 drawOn: canvas
 
 	| a b c |
-	a _ 0@ -8.
-	b _ -2@0.
-	c _ 2@0.
+	a _ 0@ -4.
+	b _ -2@4.
+	c _ 2@4.
 	canvas line: a to: b width: 2 color: color.
 	canvas line: c to: b width: 2 color: color.
 	canvas line: a to: c width: 2 color: color.! !
 
-!Torpedo methodsFor: 'geometry' stamp: 'hlsf 10/1/2020 14:52:01'!
+!Torpedo methodsFor: 'geometry' stamp: 'hlsf 12/15/2020 21:06:53'!
 morphExtent
-	^ 8 @ 8! !
+	^ 4 @ 8! !
 
-!Torpedo methodsFor: 'initialization' stamp: 'hlsf 10/1/2020 08:57:33'!
+!Torpedo methodsFor: 'initialization' stamp: 'hlsf 12/15/2020 21:12:29'!
 initialize
 	super initialize.
 	lifeSpan _ 500.
-	acceleration _ 4000! !
+	acceleration _ 3000! !
 
 !SpaceWar methodsFor: 'accessing' stamp: 'jmv 9/28/2020 10:41:48'!
 morphExtent
@@ -285,35 +284,35 @@ collisions
 	self collisionsShipsTorpedoes.
 	self collisionsShips ! !
 
-!SpaceWar methodsFor: 'collisions' stamp: 'hlsf 10/1/2020 15:07:19'!
+!SpaceWar methodsFor: 'collisions' stamp: 'hlsf 12/15/2020 21:10:22'!
 collisionsShips
-	(ships first morphPosition dist: ships second morphPosition) < 25 		ifTrue: [
+	(ships first displayBounds intersects: ships second displayBounds) 		ifTrue: [
 		ships do: [:each |
 			each flashWith: Color red.
 			self teleport: each]		]! !
 
-!SpaceWar methodsFor: 'collisions' stamp: 'hlsf 10/1/2020 14:54:07'!
+!SpaceWar methodsFor: 'collisions' stamp: 'hlsf 12/15/2020 20:46:09'!
 collisionsShipsStar
 	ships do: [:aShip | 
-		(aShip morphPosition dist: centralStar morphPosition) < 20 		ifTrue: [
+		(aShip displayBounds intersects: centralStar displayBounds) 		ifTrue: [
 			aShip flashWith: Color red.
 			self teleport: aShip]]! !
 
-!SpaceWar methodsFor: 'collisions' stamp: 'hlsf 10/1/2020 14:58:09'!
+!SpaceWar methodsFor: 'collisions' stamp: 'hlsf 12/15/2020 21:10:58'!
 collisionsShipsTorpedoes
 	ships do: [:aShip | 
 		torpedoes do: [:aTorpedo |
-		(aShip morphPosition dist: aTorpedo morphPosition) < 15 		ifTrue: [
+		(aShip displayBounds intersects: aTorpedo displayBounds) 		ifTrue: [
 			aShip flashWith: Color red.
 			aTorpedo flashWith: Color orange.
 			self destroyTorpedo: aTorpedo.
 			self teleport: aShip]]
 	]! !
 
-!SpaceWar methodsFor: 'collisions' stamp: 'hlsf 10/1/2020 14:57:03'!
+!SpaceWar methodsFor: 'collisions' stamp: 'hlsf 12/15/2020 21:11:28'!
 collisionsTorpedoesStar
 	torpedoes do: [:each | 
-		(each morphPosition dist: centralStar morphPosition) < 8 		ifTrue: [
+		(each displayBounds intersects: centralStar displayBounds) 		ifTrue: [
 			each flashWith: Color orange.
 			self destroyTorpedo: each]]! !
 
@@ -361,7 +360,7 @@ keyboardFocusChange: gotFocus
 		ifFalse: [color _ self defaultColor alpha: 0.5].
 	self redrawNeeded.! !
 
-!SpaceWar methodsFor: 'geometry testing' stamp: 'jmv 9/28/2020 14:35:47'!
+!SpaceWar methodsFor: 'geometry testing' stamp: 'hlsf 12/15/2020 21:03:32'!
 requiresVectorCanvas
 	^false! !
 
@@ -418,16 +417,22 @@ clipsSubmorphs
 mass
 	^ 8000! !
 
-!CentralStar methodsFor: 'drawing' stamp: 'hlsf 10/1/2020 15:43:23'!
+!CentralStar methodsFor: 'drawing' stamp: 'hlsf 12/15/2020 21:05:29'!
 drawOn: canvas
+	| radius |
+	radius _ self morphExtent // 2.
 	canvas ellipseCenterX: 0
 		y:  0
-		rx: 15 + (2 atRandom - 1)
-		ry: 15 + (2 atRandom - 1)
+		rx: radius x + (2 atRandom - 1)
+		ry: radius y + (2 atRandom - 1)
 		borderWidth: 3 
 		borderColor: Color orange 
 		fillColor: Color yellow ! !
 
-!CentralStar methodsFor: 'geometry testing' stamp: 'jmv 9/28/2020 14:35:30'!
+!CentralStar methodsFor: 'geometry testing' stamp: 'hlsf 12/15/2020 21:03:47'!
 requiresVectorCanvas
 	^false! !
+
+!CentralStar methodsFor: 'as yet unclassified' stamp: 'hlsf 12/15/2020 21:04:13'!
+morphExtent
+	^ `30 @ 30`! !
