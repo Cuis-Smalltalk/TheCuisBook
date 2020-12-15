@@ -115,16 +115,17 @@ code is executed.
 @section Method syntax
 @cindex method
 
-Whereas expressions may be evaluated anywhere in @cuis{} (for example,
+Whereas expressions may be evaluated anywhere in @cuis{} (for example 
 in a workspace, in a debugger, or in a browser), methods are normally
-defined in the System Browser window, or in the Debugger. Methods can
+defined in the System Browser window or in the Debugger. Methods can
 also be filed in from an external medium, but this is not the usual
 way to program in @cuis{}.
 
 Programs are developed one method at a time, in the context of a given
 class. A class is defined by sending a message to an existing class,
 asking it to create a subclass, so there is no special syntax required
-for defining classes. We already learn that in a previous chapter.
+for defining classes. We are already farmiliar with this
+from previous examples.
 
 Let's take a another look to the method syntax when control flow is
 involved -- our first explanation was @ref{Spacewar! States and Behaviors}).
@@ -146,8 +147,8 @@ Syntactically, a method consists of:
 @itemize
 
  @item the method pattern, containing the name (@emph{i.e.},
- @method{keyStroke:}) and any arguments, here @smalltalk{event} a
- keyboard event,
+ @method{keyStroke:}) and any arguments, here @smalltalk{event} is a
+ @class{KeyboardEvent},
 
  @item comments (these may occur anywhere, but the convention is to
  put one at the top that explains what the method does),
@@ -297,7 +298,7 @@ of the Smalltalk language has been pushed into the class
 library. @class{Boolean} is the abstract superclass of the
 @emph{Singleton} classes @class{True} and @class{False}@footnote{A
 singleton class is designed to have only one instance. Each of
-@class{True} and @class{False} classes has one instance,
+@class{True} and @class{False} classes has one instance, the values 
 @smalltalk{true} and @smalltalk{false}.}.
 
 Most of the behaviour of @class{Boolean} instances can be understood
@@ -522,11 +523,11 @@ SpaceShip>>left
 category named @label{control}.}}
 
 Control will not be complete without the method to fire a torpedo. It
-is more complex as a torpedo must be correctly initialized,
-though. Indeed a space ship is most of the time in motion, and last
-but not the least, its heading and velocity direction are most of the
-time different. Therefore the torpedo must be set up according to the
-space ship position, heading and velocity before being fired.
+is more complex to correctly initialize a torpedo.
+This is because a space ship is typically in motion, and in addition
+its heading and velocity are changing frequently.
+Therefore the torpedo must be set up according to the current 
+space ship position, heading, and velocity before being fired.
 
 @smalltalkExampleCaption{Firing a torpedo from a space ship in motion,fireTorpedo,
 SpaceShip>>fireTorpedo
