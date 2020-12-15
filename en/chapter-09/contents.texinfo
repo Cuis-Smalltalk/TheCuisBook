@@ -27,8 +27,8 @@ how you should manage the code of an application written with @cuis{}.
 
 We already wrote about the @cuis{} @dfn{image} (@xref{Installing and
 configuring @cuis{}}). When saving the state of the virtual machine in
-the image file, every single changes done in the environment will be
-included in the saved image: this includes the windows in the
+the image file, every single change done in the environment will be
+embodied in the saved image: this includes the windows in the
 environment, Workspace contents, newly written classes and methods,
 existing instances including the visual morphs, a debugging session
 with a System Browser, an Inspector, etc.
@@ -37,20 +37,20 @@ At any time, the user can save the image with ...@clicksequence{World
 menu @click{} @label{Save}}... Alternatively @label{Save as...} saves
 the image under an alternate name provided by the user.
 
-Saving the image is the easiest and straightforward method to save
+Saving the image is the easiest and most straightforward method to save
 your own code. But we can't really call that code management as your
-code is not saved in a dedicated file of its own but along the
-image. Moreover it will be unpractical to share your work with other
-person, through a version control system for example.
+code is not saved in a dedicated file of its own but mixed into other code in an
+image. Moreover it will be unpractical to share your work with others,
+for example via a version control system.
 
 For various reasons, an image may be in fuzzy state: the virtual
-machine may crash when running it or the environment may be in a lock
-down state. This is another drawback when using the image as your sole
-source code repository. The net result is loosing your work.
+machine may crash when running it, the file system may be unstable,
+or the environment may be in a lock
+down state. This is a drawback when using the image as your sole
+source code repository. The net result could be loosing your work.
 
-Another situation where you lost code is a virtual machine crash or
-you forget to save the image when quitting @cuis{}. In the former
-situation, there is however a solution to recover your lost editing,
+Where you lost code because of a virtual machine crash
+there is a solution to recover your lost editing,
 the @dfn{Change Log}.
 
 @node The Change Log
@@ -60,7 +60,7 @@ the @dfn{Change Log}.
 @cuis{} records any action occurring in the environment: the code you
 edit in the System Browser, the code you execute in a
 Workspace. Therefore, in the event of a @cuis{} crash you can restore
-unsaved changes when you launch the same @cuis{} again. Let's explore
+unsaved changes when you launch the same @cuis{} image again. Let's explore
 this feature with a simple example.
 
 On a fresh @cuis{} installation, create a new class category named
@@ -433,7 +433,7 @@ list @assign{} UISupervisor ui submorphs reject: [:aMorph |
 list do: [:each | each delete].}
 
 The whole user interface world of @cuis{} is a kind of Morph, a
-@class{WorldMorph} instance. Its sub morphs are windows, menus, the
+@class{WorldMorph} instance. Its submorphs are windows, menus, the
 taskbar or any kind of morph the user can interact with. To access
 this @class{WorldMorph} instance you ask to the @class{UISupervisor}
 with the @msg{ui} message. Once we select all the morphs in the world
