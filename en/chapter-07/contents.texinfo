@@ -477,7 +477,18 @@ variables):
    self addMorph: (minuteHand @assign{} ClockMinuteHandMorph new).
    self addMorph: (secondHand @assign{} ClockSecondHandMorph new)}
 
-Finally, we animate it. In method category @label{stepping} add the
+@cuisNote{If you have not already added instance variables for the
+clock hands, the Cuis IDE will note this and ask what you want
+to do about it.  We want to declare the three missing names as instance
+variables.}
+
+@figure{Class methods in @class{Float},ch07-07-ClockMorph-initialize,8}
+
+Your @class{ClockMorph} class definition should now be complete!
+
+@figure{@class{ClockMorph} with instance variables added,ch07-08-ClockMorph-ivars-added,8}
+
+Finally, we animate our clock. In method category @label{stepping} add the
 method:
 
 @smalltalkExample{ClockMorph>>wantsSteps
