@@ -241,19 +241,74 @@ manage the code: a package.
 @cindex package
 @cindex class @subentry category
 
-A package can hold a set of classes part of the same class category;
-we already discussed it in a previous chapter, see @ref{Spacewar!
-package}.
+A package can hold a set of classes part of the same class category.
 
-For the record, a package is defined with the class category we want
-to turn as a package. Our Spacewar! game classes are part of the class
-category @label{Spacewar}. To create the related package we open the
-Installed Package tool, after pressing the @label{new} button we just
-key in @label{Spacewar} in.
+Let's save our @smalltalk{Morphic-Learning} category as a package
+using our Installed Packages Browser.
+
+...@clicksequence{World menu @click{} @label{Open...} @click{} @label{Installed Packages}}...
+
+@figure{Installed Packages Browser,ch10-Package-with-requirement,8}
+
+Note that we invoked @smalltalk{Feature require: 'Morphic-Widgets-Extras'}
+and @smalltalk{Feature require: 'VectorGraphics'} above.
+
+Looking at the package names, we can observe several things of note:
+@itemize
+@item Each package is versioned; @emph{VectorGraphics} has version 1, revision 180.
+@item There is a package @emph{Collections-CompactArrays} which we never asked for.
+@item Looking at the lower pane, note that the Collections-CompactArrays package
+is @strong{required} by package VectorGraphics.
+@end itemize
+
+Now this is important.  When a packaged Feature is required, it may
+specify that it also requires packages to work properly, and
+in fact to specify that they be up to a specific version level.
+
+This is the key to being able to
+safely compose packages which have requirements.
+
+OK, let's click on the @label{New} button
+and type Morphic-Learning into the prompt.
+This results in a new package with the same
+name as our @smalltalk{Morphic-Learning}
+category.  Note that this is version 1, revision 0 (1.0 at right) and
+that the package has yet to be saved.
+
+@figure{New Package: @smalltalk{Morphic-Learning}},ch10-NewPackage-Morphic-Learning,8}
+
+Remember that to create our @class{ClockMorph} we required the
+packaged VectorGraphics Feature, so to be able to load our package
+which makes use of this we need to select our new package and
+click on the @label{add Requirement} button at center, right.
+
+This brings up a list of loaded packages to choose from.
+
+@figure{Select package (or Cuis base version) to reqire},ch10-Add-Requirement,8}
+
+Now when we @label{save} our package, we see the pathname where the package
+file was created.  We can now safely email this file, check it into a version
+control system, make a copy to our backup thumb drive.
+
+@figure{Saved package @smalltalk{Morphic-Learning}},ch10-Saved-with-requirement,8}
+
+As mentioned above, package files are just text files with a special format
+which Cuis knows how to load.  If you open a File List browser and
+view the package file, you will see information on how the package
+was created, what it provides and requires, and, if you filled in the
+comment box in the Installed Packages browser, a description.
+
+@exercise{Type ``Morphic Toys'' into the comment box, re-save
+your package, and (re)select the package in a File List to
+see your package description.}
+
+@exercise{If you have not already done so, create and save a @ref{Spacewar!
+package}.  There are no additional requirements to specify.}
 
 @c explain how to include class extension in a package
 @cindex package @subentry prefix
-But we can do more. We can include several class categories in one
+There are other interesting things we can do with packages.
+We can include several class categories in a single
 package. Consider we want to span our CuisBook classes in two
 categories @label{TheCuisBook-Models} and @label{TheCuisBook-Views}. A
 new package created with the name @label{TheCuisBook} includes these
