@@ -3,13 +3,6 @@ A book about Cuis Smalltalk. A community effort to bring documentation
 to people new to Smalltalk and even computer programming. The book
 comes in three parts.
 
-Part one of the book is an introduction to Smalltalk, it wants to
-be an informal introduction to get the user smoothly acclimated to the
-Cuis world: the user will learn a bit about the syntax, the
-environment and its tools, the user will write small applications. The
-part two is more academic as it reviews the fundamental classes of the
-Cuis world. In part three, more advanced topics are covered.
-
 The book comes with examples and exercises. The solutions of the
 exercises are in the annexes. We encourage writers to provides both
 examples then exercises with solutions in annexes.
@@ -86,7 +79,7 @@ flow of text
 
 **@kbd{Ctrl-A}.** To name a keyboard shortcut
 
-**@option{resize...}.** To name a menu entry or a button label
+**@label{resize...}.** To name a menu entry or a button label
 
 **@dfn{Workspace}.** To emphasis a new term when it is first
 defined. Use only once.
