@@ -511,15 +511,13 @@ positive angles go counterclockwise.
 So, how do we update the hands? For example, for the hour hand, one
 hour means 30 degrees, as 12 hours means 360 degrees or a whole
 turn. We multiply hours by 30 to get degrees. But for 0 the hand must
-point up, that is -90 degrees in our coordinate system. So we
-substract 90. Then we convert to radians, the unit expected by the
-@method{rotation:} method. Minute and second hand work in a similar
-way, but as there are 60 minutes in one hour, and 60 seconds in one
-minute, we need to multiply them by 6 to get degrees. As rotation is
-done around the origin, and the clock has set the origin at its center
-(@ref{clockDialDrawing}), there's no need to set the position of the
-hands. Their @smalltalk{0@@0} origin will therefore be at the clock
-@smalltalk{0@@0}, i.e. the center of the clock.
+point up, that is -90 degrees in our coordinate system. So we substract
+90. Minute and second hand work in a similar way, but as there are 60
+minutes in one hour, and 60 seconds in one minute, we need to multiply
+them by 6 to get degrees. As rotation is done around the origin, and the
+clock has set the origin at its center (@ref{clockDialDrawing}), there's no
+need to set the position of the hands. Their @smalltalk{0@@0} origin will
+therefore be at the clock @smalltalk{0@@0}, i.e. the center of the clock.
 
 @figure{A fancy clock morph,ch07-06-ExerciseClock,4}
 
