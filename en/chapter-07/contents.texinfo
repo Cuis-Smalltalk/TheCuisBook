@@ -115,8 +115,8 @@ now. But nothing happens! The reason is that our Morph is fixed in a
 place in the owner morph (the WorldMorph). It is fixed because
 @method{drawOn:} says it should be a line between @smalltalk{100@@100}
 and @smalltalk{400@@200}. Moving it around would mean modifying those
-points. That could be possible, for example, if the points were stored
-in instance variables.
+points. One possible way to do that could be to store those points in instance
+variables.
 
 But now, we just want to code our morph in the simplest possible way,
 and still be able to move it around. The solution is to make it
@@ -273,9 +273,9 @@ interesting, edit the method:
 Now, our morph steps ten times per second, and moves to the right at a
 speed of four pixels per second. At each step it moves by 0.4 pixels,
 and not by an integer number of pixels. High quality anti-aliasing
-drawing means we can actually do that! You can make it step for times
-a second, and move 1 pixel each time, and see how different that
-looks.
+drawing means we can actually do that! You can make it step at a speed
+of four times a second, and move 1 pixel each time, and see how different
+that looks.
 
 Now try this:
 
@@ -342,8 +342,8 @@ independently of the line. Also note that when you grab the triangle
 with your hand (not using the halo), you grab the
 line@tie{}+@tie{}triangle composite. You can't just drag the triangle
 away. For this, you need the triangle's halo. Use its @label{Move}
-handle@footnote{By now, it is likely that the triangle walked quite a
-bit!} to position it without @emph{getting it out} of the line. Use
+handle@footnote{By now, it is likely that the triangle has walked quite
+a bit!} to position it without @emph{getting it out} of the line. Use
 its @label{Pick up} handle to take it with the hand and drop
 it in the world. Now, the triangle is no a longer submorph of the line,
 and the morphs can be moved, rotated or scaled independently.
@@ -488,9 +488,9 @@ method:
 @smalltalkExample{ClockMorph>>step
    | time |
    time @assign{} Time now.
-   hourHand rotation: (time hour * 30 - 90) degreesToRadians.
-   minuteHand rotation: (time minute * 6 - 90) degreesToRadians.
-   secondHand rotation: (time second * 6 - 90) degreesToRadians.}
+   hourHand rotationDegrees: time hour * 30 - 90.
+   minuteHand rotationDegrees: time minute * 6 - 90.
+   secondHand rotationDegrees: time second * 6 - 90.}
 
 Take a look at how we update the clock hands.
 
@@ -542,21 +542,24 @@ clock will show fake time. Try it!
 You might have noted two things that seem missing, though: How to
 compute bounding rectangles for Morphs, and how to detect if a Morph
 is being hit by the Hand, so you can move it or get a halo. The
-display rectangle that contains a morph is needed by the framework to
-manage the areas of the Display that need to be updated as a result of
+display rectangle that fully contains a morph is required by the framework
+to manage the required refresh of Display areas as a result of
 any change. But you don't need to know this rectangle in order to
 build your own Morphs. In @cuis{}, the framework computes it as
 needed, and stores it in the @smalltalk{privateDisplayBounds}
 variable. You don't need to worry about that variable at
 all.
-@todo{WRT: what is it?} detecting if a Morph is hit by the Hand,
-or more generally, if a pixel belongs to a Morph, truth is that when a
-Morph is drawn, the framework indeed knows all the pixels it is
-affecting. The @method{drawOn:} method already specifies the shape of
-the Morph. Therefore, there is no need to ask the programmer to code
-the Morph geometry again in a separate method! All that is needed is
-careful design of the framework itself, to avoid requiring programmers
-to handle this extra complexity.
+
+@todo{WRT: what is it?} 
+
+With respect to detecting if a Morph is being touched by the Hand,
+or more generally, if some pixel belongs to a Morph, truth is that during
+the drawing operation of a Morph, the framework indeed knows all the
+pixels it is affecting. The @method{drawOn:} method completely specifies
+the shape of the Morph. Therefore, there is no need to ask the programmer
+to code the Morph geometry again in a separate method! All that is needed
+is careful design of the framework itself, to avoid requiring programmers to
+handle this extra complexity.
 
 The ideas we have outlined in this chapter are the fundamental ones in
 Morphic, and the framework is implemented in order to support
