@@ -587,3 +587,8 @@ To further explore Cuis' Morphic, evaluate `Feature require: 'SVG'`,
 and then `SVGElementMorph examplesLion` and the other examples
 there. Also, be sure to try the example in the comment in
 #unicodeExamples.
+
+
+@node Spacewar! Drawing
+@section Spacewar! Drawing
+

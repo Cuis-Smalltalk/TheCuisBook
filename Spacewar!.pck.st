@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4488] on 15 December 2020 at 9:16:15 pm'!
+'From Cuis 5.0 [latest update: #4488] on 16 December 2020 at 9:41:36 pm'!
 'Description '!
-!provides: 'Spacewar!!' 1 75!
+!provides: 'Spacewar!!' 1 77!
 SystemOrganization addCategory: 'Spacewar!!'!
 
 
@@ -145,6 +145,17 @@ isInOuterSpace
 "Is the mobile located in the outer space? (outside of the game play area)"
 	^(owner morphContainsPoint: self morphPosition) not! !
 
+!Mobile methodsFor: 'drawing' stamp: 'hlsf 12/16/2020 21:40:44'!
+drawOn: canvas
+	self drawShape: self morphLocalBounds corners color: Color white width: 1 		on: canvas! !
+
+!Mobile methodsFor: 'drawing' stamp: 'hlsf 12/16/2020 21:38:44'!
+drawShape: points color: aColor width: width on: canvas
+	| size |
+	size _ points size.
+	points withIndexDo: [: aPoint :i |
+		canvas line: aPoint to: ( points at: (i  \\ size + 1) ) width: width color: aColor]! !
+
 !SpaceShip methodsFor: 'accessing' stamp: 'hlsf 12/15/2020 21:06:01'!
 morphExtent
 
@@ -186,22 +197,13 @@ unpush
 "Stop the accelaration boost"
 	acceleration _ 0! !
 
-!SpaceShip methodsFor: 'drawing' stamp: 'hlsf 12/15/2020 20:34:53'!
+!SpaceShip methodsFor: 'drawing' stamp: 'hlsf 12/16/2020 21:39:07'!
 drawOn: canvas
-
-	| a b c d |
-	a _ 0@ -15.
-	b _ -10@15.
-	c _ 0@ 10.
-	d _ 10@15.
-	canvas line: a to: b width: 2 color: color.
-	canvas line: b to: c width: 2 color: color.
-	canvas line: c to: d width: 2 color: color.
-	canvas line: d to: a width: 2 color: color.
-
+	self drawShape: {0@ -15 . -10@15. 0@ 10. 10@15} color: color width: 2 on: canvas.
 	"Draw gas exhaust"
 	acceleration ifNotZero: [
-		canvas line: c to: 0@35 width: 1 color: Color gray].! !
+		canvas line: 0@10 to: 0@35 width: 1 color: Color gray].
+	super drawOn: canvas ! !
 
 !SpaceShip methodsFor: 'drawing' stamp: 'hlsf 12/15/2020 21:16:09'!
 nose
@@ -227,16 +229,10 @@ update: t
 	lifeSpan isZero ifTrue: [owner destroyTorpedo: self].
 	acceleration > 0 ifTrue: [acceleration _ acceleration - 1000].! !
 
-!Torpedo methodsFor: 'drawing' stamp: 'hlsf 12/15/2020 20:30:57'!
+!Torpedo methodsFor: 'drawing' stamp: 'hlsf 12/16/2020 21:40:01'!
 drawOn: canvas
-
-	| a b c |
-	a _ 0@ -4.
-	b _ -2@4.
-	c _ 2@4.
-	canvas line: a to: b width: 2 color: color.
-	canvas line: c to: b width: 2 color: color.
-	canvas line: a to: c width: 2 color: color.! !
+	self drawShape: {0@ -4 . 	-2@4 . 2@4} color: color width: 2 on: canvas.
+	super drawOn: canvas ! !
 
 !Torpedo methodsFor: 'geometry' stamp: 'hlsf 12/15/2020 21:06:53'!
 morphExtent
@@ -392,13 +388,14 @@ initializeActors
 		morphPosition: -200 @ 200;
 		color: Color red darker.! !
 
-!SpaceWar methodsFor: 'stepping' stamp: 'hlsf 10/1/2020 14:38:36'!
+!SpaceWar methodsFor: 'stepping' stamp: 'hlsf 12/16/2020 19:45:30'!
 stepAt: millisecondSinceLast
 	ships do: [:each | each update: millisecondSinceLast / 1000 ].
 	ships do: [:each | each unpush ].
 	torpedoes do: [:each | each update: millisecondSinceLast / 1000 ].
 	self collisions.
-	self redrawNeeded ! !
+	self redrawNeeded 
+! !
 
 !SpaceWar methodsFor: 'stepping' stamp: 'hlsf 9/11/2020 13:19:07'!
 stepTime

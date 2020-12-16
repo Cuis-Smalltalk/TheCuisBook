@@ -303,8 +303,8 @@ Now you know how to specialize an individual morph, or make a whole
 new class of them!
 
 
-@node Spacewar! graphics
-@section Spacewar! graphics
+@node Spacewar! Morphs
+@section Spacewar! Morphs
 
 @subsection All Morphs
 Previously we defined the actors of the game as subclasses of the very
