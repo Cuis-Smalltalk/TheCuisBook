@@ -274,8 +274,8 @@ Looking at the package names, we can observe several things of note:
 @end itemize
 
 Now this is important.  When a packaged Feature is required, it may
-specify that it also requires packages to work properly, and
-in fact to specify that they be up to a specific version level.
+specify that it also requires other packages to work properly, and
+in fact to specify that those packages be up to a specific version level.
 
 This is the key to being able to
 safely compose packages which have requirements.
