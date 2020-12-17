@@ -246,19 +246,31 @@ A package can hold a set of classes part of the same class category.
 Let's save our @smalltalk{Morphic-Learning} category as a package
 using our Installed Packages Browser.
 
-...@clicksequence{World menu @click{} @label{Open...} @click{} @label{Installed Packages}}...
+...@clicksequence{World menu @click{} @label{Open...} @click{}
+@label{Installed Packages}}...
 
-@figure{Installed Packages Browser,ch10-Package-with-requirement,8}
+@figure{Installed Packages Browser,ch10-Package-with-requirement,11}
 
-Note that we invoked @smalltalk{Feature require: 'Morphic-Widgets-Extras'}
-and @smalltalk{Feature require: 'VectorGraphics'} above.
+Note that we invoked @smalltalk{Feature require:
+'Morphic-Widgets-Extras'} and @smalltalk{Feature require:
+'VectorGraphics'} above.
+
+@cindex package @subentry requirement
 
 Looking at the package names, we can observe several things of note:
+
 @itemize
-@item Each package is versioned; @emph{VectorGraphics} has version 1, revision 180.
-@item There is a package @emph{Collections-CompactArrays} which we never asked for.
-@item Looking at the lower pane, note that the Collections-CompactArrays package
-is @strong{required} by package VectorGraphics.
+
+  @item Each package is versioned; @emph{VectorGraphics} has version
+  1, revision 180.
+  
+  @item There is a package @emph{Collections-CompactArrays} which we
+  never asked for.
+  
+  @item Looking at the lower pane, note that the
+  Collections-CompactArrays package is @strong{required} by package
+  VectorGraphics.
+  
 @end itemize
 
 Now this is important.  When a packaged Feature is required, it may
@@ -268,14 +280,12 @@ in fact to specify that they be up to a specific version level.
 This is the key to being able to
 safely compose packages which have requirements.
 
-OK, let's click on the @label{New} button
-and type Morphic-Learning into the prompt.
-This results in a new package with the same
-name as our @smalltalk{Morphic-Learning}
-category.  Note that this is version 1, revision 0 (1.0 at right) and
-that the package has yet to be saved.
+OK, let's click on the @label{New} button and type Morphic-Learning
+into the prompt.  This results in a new package with the same name as
+our @smalltalk{Morphic-Learning} category.  Note that this is version
+1, revision 0 (1.0 at right) and that the package has yet to be saved.
 
-@figure{New Package: @smalltalk{Morphic-Learning}},ch10-NewPackage-Morphic-Learning,8}
+@figure{New Package -- @smalltalk{Morphic-Learning},ch10-NewPackage-Morphic-Learning,11}
 
 Remember that to create our @class{ClockMorph} we required the
 packaged VectorGraphics Feature, so to be able to load our package
@@ -284,13 +294,13 @@ click on the @label{add Requirement} button at center, right.
 
 This brings up a list of loaded packages to choose from.
 
-@figure{Select package (or Cuis base version) to reqire},ch10-Add-Requirement,8}
+@figure{Select package (or Cuis base version) to require,ch10-Add-Requirement,4}
 
 Now when we @label{save} our package, we see the pathname where the package
 file was created.  We can now safely email this file, check it into a version
 control system, make a copy to our backup thumb drive.
 
-@figure{Saved package @smalltalk{Morphic-Learning}},ch10-Saved-with-requirement,8}
+@figure{Saved package -- @smalltalk{Morphic-Learning},ch10-Saved-with-requirement,11}
 
 As mentioned above, package files are just text files with a special format
 which Cuis knows how to load.  If you open a File List browser and
@@ -298,12 +308,14 @@ view the package file, you will see information on how the package
 was created, what it provides and requires, and, if you filled in the
 comment box in the Installed Packages browser, a description.
 
-@exercise{Type ``Morphic Toys'' into the comment box, re-save
-your package, and (re)select the package in a File List to
-see your package description.}
+@exercise{Describe a package,exeDescribePackage,@emph{Type ``Morphic
+Toys'' into the comment box@comma{} re-save your package@comma{} and
+(re)select the package in a File List to see your package
+description.}}
 
-@exercise{If you have not already done so, create and save a @ref{Spacewar!
-package}.  There are no additional requirements to specify.}
+@exercise{Save Spacewar! package,exeSavePkgSpacewar, @emph{If you have
+not already done so@comma{} create and save a @ref{Spacewar!
+package}.  There are no additional requirements to specify.}}
 
 @c explain how to include class extension in a package
 @cindex package @subentry prefix
