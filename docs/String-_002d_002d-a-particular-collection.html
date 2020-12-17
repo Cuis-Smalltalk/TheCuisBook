@@ -174,8 +174,8 @@ element. When inherited in <code>String</code>, those elements are
 <code>Character</code> instances:
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">&rsquo;1 + 3i&rsquo; before: $i
-&rArr; $3</span>
+<pre class="example">'1 + 3i' before: $i
+&rArr; $3
 </pre></div>
 
 <p>Practice the tools and resolve the exercise bellow.
@@ -193,8 +193,8 @@ work. Observe below, the error is thrown on a <code>Character</code>
 instance:
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">&rsquo;Hello My Friend&rsquo; cos
-&rArr; MesageNotUnderstood: Character&gt;&gt;cos</span>
+<pre class="example">'Hello My Friend' cos
+&rArr; MesageNotUnderstood: Character&gt;&gt;cos
 </pre></div>
 
 <span id="index-symbol"></span>
@@ -215,10 +215,10 @@ duplicated &ndash; copying a string always results in a new string
 &ndash; however symbols are identical even when duplicated<a id="DOCF16" href="#FOOT16"><sup>16</sup></a>:
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">&rsquo;hello&rsquo; == &rsquo;hello&rsquo; copy
+<pre class="example">'hello' == 'hello' copy
 &rArr; false 
 #hello  == #hello copy
-&rArr; true</span>
+&rArr; true
 </pre></div>
 
 <p>Now you know.  Strings can be duplicated or changed, symbols can&rsquo;t.
@@ -226,8 +226,8 @@ duplicated &ndash; copying a string always results in a new string
 <p>Symbols can contain space characters:
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">&rsquo;hello my friend&rsquo; asSymbol
-&rArr; #&rsquo;hello my friend&rsquo;</span>
+<pre class="example">'hello my friend' asSymbol
+&rArr; #'hello my friend'
 </pre></div>
 
 <p><code>Symbol</code> is a subclass of <code>String</code> and much of its behavior
@@ -237,14 +237,14 @@ are also learning quite a bit about symbols.
 <p>Note that many <code>String</code> methods are defined to return strings.
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">&rsquo;hello my friend&rsquo; class.
+<pre class="example">'hello my friend' class.
 &rArr; String
-#&rsquo;hello my friend&rsquo; class.
+#'hello my friend' class.
 &rArr; Symbol 
-#&rsquo;hello my friend&rsquo; asCamelCase
-&rArr; &rsquo;helloMyFriend&rsquo;
-#&rsquo;hello my friend&rsquo; asCamelCase asSymbol 
-&rArr; #helloMyFriend</span>
+#'hello my friend' asCamelCase
+&rArr; 'helloMyFriend'
+#'hello my friend' asCamelCase asSymbol 
+&rArr; #helloMyFriend
 </pre></div>
 
 

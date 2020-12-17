@@ -141,11 +141,11 @@ box with the common name.
 <p>Lets see how the <code>Fraction</code> class is declared:
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">Number subclass: #Fraction
-   instanceVariableNames: &rsquo;numerator denominator&rsquo;
-   classVariableNames: &rdquo;
-   poolDictionaries: &rdquo;
-   category: &rsquo;Kernel-Numbers&rsquo;</span>
+<pre class="example">Number subclass: #Fraction
+   instanceVariableNames: 'numerator denominator'
+   classVariableNames: ''
+   poolDictionaries: ''
+   category: 'Kernel-Numbers'
 </pre></div>
 
 <p>As expected there are two variables &ndash; named <em>instance variables</em>
@@ -199,13 +199,13 @@ class explains how is instantiated the fraction. See part of this
 method:
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">/ aNumber
+<pre class="example">/ aNumber
 &quot;Refer to the comment in Number / &quot;
 | quoRem |
 aNumber isInteger ifTrue:
 ../..
    ifFalse: [&#x2191; (Fraction numerator: self denominator: aNumber) reduced]].
-../..</span>
+../..
 </pre></div>
 
 <p>From this source code, we learn that in some situations, the method
@@ -220,16 +220,16 @@ is expected such a named method returns an instance of a
 </p>
 <p>Try this out in a workspace:
 </p><div class="example">
-<pre class="example"><span class="sansserif">Fraction numerator: 24 denominator: 21
-&rArr; 24/21</span>
+<pre class="example">Fraction numerator: 24 denominator: 21
+&rArr; 24/21
 </pre></div>
 
 <p>Observe how the resulting fraction is not reduced. Whereas it is reduced
 when instantiated with the <code>#/</code> message:
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">24 / 21
-&rArr; 8/7</span>
+<pre class="example">24 / 21
+&rArr; 8/7
 </pre></div>
 
 <p>A class method is often used to create a new instance from a class. In
@@ -265,8 +265,8 @@ descendants of the <code>Number</code> class. We have already learned about the
 <code>#squared</code> message sent to integer and fraction instances:
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">16 squared &rArr; 256
-(2 / 3) squared &rArr; 4/9</span>
+<pre class="example">16 squared &rArr; 256
+(2 / 3) squared &rArr; 4/9
 </pre></div>
 
 <p>As the <code>#squared</code> message is sent to <code>Integer</code> and
@@ -277,9 +277,9 @@ called an <em>instance method</em>. This method is defined in both the
 <span id="index-method-5"></span>
 <p>Let&rsquo;s examine this method in <code>Number</code>:
 </p><div class="example">
-<pre class="example"><span class="sansserif">Number&gt;&gt;squared
+<pre class="example">Number&gt;&gt;squared
 &quot;Answer the receiver multiplied by itself.&quot;
-   &#x2191; self * self</span>
+   &#x2191; self * self
 </pre></div>
 
 <p>In an instance method source code, <code>self</code> refers to the
@@ -289,10 +289,10 @@ object itself, here it is the value of the number. The &#x2191; (also
 </p>
 <p>Now let&rsquo;s examine this same method in <code>Fraction</code>:
 </p><div class="example">
-<pre class="example"><span class="sansserif">Fraction&gt;&gt;squared
+<pre class="example">Fraction&gt;&gt;squared
    &#x2191; Fraction
       numerator: numerator squared
-      denominator: denominator squared</span>
+      denominator: denominator squared
 </pre></div>
 
 <p>Here a new fraction is instantiated with the original instance
@@ -316,9 +316,9 @@ is invoked to respond to the message.
 of polymorphism with the <code>#abs</code> message:
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">-10 abs &rArr; 10
+<pre class="example">-10 abs &rArr; 10
 5.3 abs &rArr; 5.3
-(-5 / 3) abs &rArr; 5/3</span>
+(-5 / 3) abs &rArr; 5/3
 </pre></div>
 
 <p>The implementation in <code>Number</code> does not need much
@@ -326,12 +326,12 @@ explanation. There is the <code>#ifTrue:ifFalse:</code> we have not yet
 discussed so far, but the code is quite self-explanatory:
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">Number&gt;&gt;abs
+<pre class="example">Number&gt;&gt;abs
 &quot;Answer a Number that is the absolute value (positive magnitude) of the 
 receiver.&quot;
    self &lt; 0
       ifTrue: [&#x2191; self negated]
-      ifFalse: [&#x2191; self]</span>
+      ifFalse: [&#x2191; self]
 </pre></div>
 
 <p>This implementation will do just fine for the <code>Number</code>
@@ -345,15 +345,15 @@ default returned value is the instance itself</strong>, in our situation the
 <code>LargePositiveInteger</code> instance:
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">LargePositiveInteger&gt;&gt;abs</span>
+<pre class="example">LargePositiveInteger&gt;&gt;abs
 </pre></div>
 
 <p>The <code>LargeNegativeInteger</code> knows it is negative and its absolute
 value is itself but with its sign reversed, that is <code>negated</code>:
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">LargeNegativeInteger&gt;&gt;abs
-   &#x2191; self negated</span>
+<pre class="example">LargeNegativeInteger&gt;&gt;abs
+   &#x2191; self negated
 </pre></div>
    
 <p>These two overriding methods are more efficient as they avoid unnecessary

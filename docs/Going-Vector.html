@@ -109,7 +109,7 @@ Cuis-Smalltalk image:
 </p>
 <span id="index-morph-7"></span>
 <div class="example">
-<pre class="example"><span class="sansserif">Feature require: &rsquo;VectorGraphics&rsquo;</span>
+<pre class="example">Feature require: 'VectorGraphics'
 </pre></div>
 
 <span id="A-first-example"></span><h4 class="subsection">7.1.1 A first example</h4>
@@ -125,11 +125,11 @@ most basic things we can do is to draw straight lines.
 object:
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">Morph subclass: #LineExampleMorph
-   instanceVariableNames: &rdquo;
-   classVariableNames: &rdquo;
-   poolDictionaries: &rdquo;
-   category: &rsquo;Morphic-Learning&rsquo;</span>
+<pre class="example">Morph subclass: #LineExampleMorph
+   instanceVariableNames: ''
+   classVariableNames: ''
+   poolDictionaries: ''
+   category: 'Morphic-Learning'
 </pre></div>
 
 <p>In method category <code>drawing</code> add:
@@ -137,16 +137,16 @@ object:
 <span id="index-morph-8"></span>
 <span id="index-morph-9"></span>
 <div class="example">
-<pre class="example"><span class="sansserif">LineExampleMorph&gt;&gt;drawOn: aCanvas
+<pre class="example">LineExampleMorph&gt;&gt;drawOn: aCanvas
    aCanvas strokeWidth: 20 color: Color green do: [
       aCanvas
          moveToX: 100 y: 100;
-         lineToX: 400 y: 200 ].</span>
+         lineToX: 400 y: 200 ].
 </pre></div>
 
 <p>Now in a Workspace execute:
 </p><div class="example">
-<pre class="example"><span class="sansserif">LineExampleMorph new openInWorld</span>
+<pre class="example">LineExampleMorph new openInWorld
 </pre></div>
 
 <p>If you get a prompter asking whether to install and activate Vector
@@ -206,7 +206,7 @@ subclass of <code>MovableMorph</code>, instead of <code>Morph</code>.
 again:
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">LineExampleMorph new openInWorld</span>
+<pre class="example">LineExampleMorph new openInWorld
 </pre></div>
 
 <span id="index-morph-12"></span>
@@ -227,20 +227,20 @@ can also be rotated and zoomed.
 <p>Let&rsquo;s build another morph, to have more fun.
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">MovableMorph subclass: #TriangleExampleMorph
-   instanceVariableNames: &rsquo;borderColor fillColor&rsquo;
-   classVariableNames: &rdquo;
-   poolDictionaries: &rdquo;
-   category: &rsquo;Morphic-Learning&rsquo;</span>
+<pre class="example">MovableMorph subclass: #TriangleExampleMorph
+   instanceVariableNames: 'borderColor fillColor'
+   classVariableNames: ''
+   poolDictionaries: ''
+   category: 'Morphic-Learning'
 </pre></div>
 
 <p>In method category <code>initialization</code> add:
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">TriangleExampleMorph&gt;&gt;initialize
+<pre class="example">TriangleExampleMorph&gt;&gt;initialize
    super initialize.
    borderColor &#x2190; Color random alpha: 0.8.
-   fillColor &#x2190; Color random alpha: 0.6.</span>
+   fillColor &#x2190; Color random alpha: 0.6.
 </pre></div>
 
 <p>In the <code>drawing</code> method category add:
@@ -248,20 +248,20 @@ can also be rotated and zoomed.
 <span id="index-morph-13"></span>
 <span id="index-morph-14"></span>
 <div class="example">
-<pre class="example"><span class="sansserif">TriangleExampleMorph&gt;&gt;drawOn: aCanvas
+<pre class="example">TriangleExampleMorph&gt;&gt;drawOn: aCanvas
    aCanvas strokeWidth: 10 color: borderColor fillColor: fillColor do: [
       aCanvas
          moveToX: 0 y: 100;
          lineToX: 87 y: -50;
          lineToX: -87 y: -50;
-         lineToX: 0 y: 100 ].</span>
+         lineToX: 0 y: 100 ].
 </pre></div>
 
 <p>Take a moment to understand that code, to guess what it will do. Now
 execute:
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">TriangleExampleMorph new openInWorld</span>
+<pre class="example">TriangleExampleMorph new openInWorld
 </pre></div>
 
 <p>Do it several times, and move each triangle around. Each new triangle
@@ -344,15 +344,15 @@ make our triangle <em>alive</em>:
 <span id="index-morph-16"></span>
 <p>In the method category <code>stepping</code> define:
 </p><div class="example">
-<pre class="example"><span class="sansserif">TriangleExampleMorph&gt;&gt;wantsSteps
-   &#x2191; true</span>
+<pre class="example">TriangleExampleMorph&gt;&gt;wantsSteps
+   &#x2191; true
 </pre></div>
 
 <p>...and:
 </p><div class="example">
-<pre class="example"><span class="sansserif">TriangleExampleMorph&gt;&gt;step
+<pre class="example">TriangleExampleMorph&gt;&gt;step
    fillColor &#x2190; Color random.
-   self redrawNeeded</span>
+   self redrawNeeded
 </pre></div>
 
 <p>Then create some additional triangles as you did before.
@@ -361,8 +361,8 @@ make our triangle <em>alive</em>:
 interesting, edit the method:
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">TriangleExampleMorph&gt;&gt;stepTime
-   &#x2191; 100</span>
+<pre class="example">TriangleExampleMorph&gt;&gt;stepTime
+   &#x2191; 100
 </pre></div>
 
 <p>...and:
@@ -370,9 +370,9 @@ interesting, edit the method:
 <span id="index-morph-17"></span>
 
 <div class="example">
-<pre class="example"><span class="sansserif">TriangleExampleMorph&gt;&gt;step
+<pre class="example">TriangleExampleMorph&gt;&gt;step
    self morphPosition: self morphPosition + (0.4@0).
-   self redrawNeeded</span>
+   self redrawNeeded
 </pre></div>
 
 <p>Now, our morph steps ten times per second, and moves to the right at a
@@ -387,44 +387,44 @@ that looks.
 <span id="index-morph-18"></span>
 
 <div class="example">
-<pre class="example"><span class="sansserif">TriangleExampleMorph&gt;&gt;step
+<pre class="example">TriangleExampleMorph&gt;&gt;step
    self morphPosition: self morphPosition + (0.2@0).
    self rotateBy: 4 degreesToRadians.
-   self redrawNeeded</span>
+   self redrawNeeded
 </pre></div>
 
 <p>It gets even better. First get rid of all instances:
 </p> 
 <div class="example">
-<pre class="example"><span class="sansserif">TriangleExampleMorph allInstancesDo: [ :m | m delete]</span>
+<pre class="example">TriangleExampleMorph allInstancesDo: [ :m | m delete]
 </pre></div>
 
 <p>And modify these methods:
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">TriangleExampleMorph&gt;&gt;initialize
+<pre class="example">TriangleExampleMorph&gt;&gt;initialize
    super initialize.
    borderColor &#x2190; Color random alpha: 0.8.
    fillColor &#x2190; Color random alpha: 0.6.
-   scaleBy &#x2190; 1.1</span>
+   scaleBy &#x2190; 1.1
 </pre></div>
 
 <p>Accept <code>scaleBy</code> as a new instance variable of the
 <code>TriangleExampleMorph</code> class.
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">TriangleExampleMorph&gt;&gt;step
+<pre class="example">TriangleExampleMorph&gt;&gt;step
    self morphPosition: self morphPosition + (0.2@0).
    self rotateBy: 4 degreesToRadians.
    self scaleBy: scaleBy.
    self scale &gt; 1.2 ifTrue: [scaleBy &#x2190; 0.9].
    self scale &lt; 0.2 ifTrue: [scaleBy &#x2190; 1.1].
-   self redrawNeeded</span>
+   self redrawNeeded
 </pre></div>
 
 <p>Then create a new triangle:
 </p><div class="example">
-<pre class="example"><span class="sansserif">TriangleExampleMorph new openInWorld</span>
+<pre class="example">TriangleExampleMorph new openInWorld
 </pre></div>
 
 <p>See that when the triangle is doing its crazy dance, you can still
@@ -466,8 +466,8 @@ testing</code> of the class <code>LineExampleMorph</code>:
 <span id="index-morph-20"></span>
 
 <div class="example">
-<pre class="example"><span class="sansserif">LineExampleMorph&gt;&gt;clipsSubmorphs
-   &#x2191; true</span>
+<pre class="example">LineExampleMorph&gt;&gt;clipsSubmorphs
+   &#x2191; true
 </pre></div>
 
 <p>The drawing of the triangle gets cut exactly at the bounds of the

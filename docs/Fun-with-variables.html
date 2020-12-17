@@ -107,14 +107,14 @@ restricted to holding a value of a single type.
 time. Observe this example:
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">| a |
+<pre class="example">| a |
 a &#x2190; 1 / 3.
 a class
 &rArr; Fraction
 a &#x2190; a + (2 / 3)
 &rArr; 1
 a class
-&rArr; SmallInteger</span>
+&rArr; SmallInteger
 </pre></div>
 
 <p>The initial value of the variable <code>a</code> was a <code>Fraction</code>
@@ -141,13 +141,13 @@ variable bound to an object too.
 <p>Any object responds to the message <code>#printString</code>.
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">| msg |
-msg := &rsquo;hello world!&rsquo;.
-Transcript show: msg capitalized printString, &rsquo; is a kind of &rsquo;.
+<pre class="example">| msg |
+msg := 'hello world!'.
+Transcript show: msg capitalized printString, ' is a kind of '.
 Transcript show: msg class printString; newLine.
 msg := 5.
-Transcript show: msg printString, &rsquo; is a kind of &rsquo;.
-Transcript show: msg class printString; newLine.</span>
+Transcript show: msg printString, ' is a kind of '.
+Transcript show: msg class printString; newLine.
 </pre></div>
 
 <blockquote class="indentedblock">

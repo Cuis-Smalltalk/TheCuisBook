@@ -157,8 +157,8 @@ world!'</code>. We capitalize it with the <code>#capitalized</code> message:
 </p>
 <span id="index-string-1"></span>
 <div class="example">
-<pre class="example"><span class="sansserif">Transcript show: &rsquo;hello world!&rsquo; capitalized
-&rArr; &rsquo;Hello world!&rsquo; </span>
+<pre class="example">Transcript show: 'hello world!' capitalized
+&rArr; 'Hello world!' 
 </pre></div>
 
 <span id="index-string-2"></span>
@@ -185,17 +185,17 @@ world!'</code>. We capitalize it with the <code>#capitalized</code> message:
 <p>In your Workspace, to compute a factorial execute the example bellow
 with <kbd>Ctrl-a</kbd> then <kbd>Ctrl-p</kbd> (<em><b>P</b>rint it</em>):
 </p><div class="example">
-<pre class="example"><span class="sansserif">100 factorial
+<pre class="example">100 factorial
 &rArr;  9332621544394415268169923885626670049071596826438162146859
 29638952175999932299156089414639761565182862536979208272237582
-51185210916864000000000000000000000000</span>
+51185210916864000000000000000000000000
 </pre></div>
 
 <p>Cuis-Smalltalk handles very large integer number without the need to use
 special type or method. To convince yourelf try the example bellow:
 </p><div class="example">
-<pre class="example"><span class="sansserif">10000 factorial / 9999 factorial
-&rArr; 10000</span>
+<pre class="example">10000 factorial / 9999 factorial
+&rArr; 10000
 </pre></div>
 
 <p>If you execute and print with <kbd>Ctrl-p</kbd> the code: <code>10000
@@ -208,8 +208,8 @@ will return.
 
 <p>As we are discussing division, you may not get the result you expect:
 </p><div class="example">
-<pre class="example"><span class="sansserif">15 / 4
-&rArr; 15/4</span>
+<pre class="example">15 / 4
+&rArr; 15/4
 </pre></div>
 
 <p>It looks like Cuis-Smalltalk is lazy because it does not answer the decimal
@@ -220,8 +220,8 @@ is troublesome &ndash; to compute, Cuis-Smalltalk does just that!
 </p>
 <p>Try out this to understand what is happening underneath:
 </p><div class="example">
-<pre class="example"><span class="sansserif">(15 / 4) + (1 / 4)
-&rArr; 4</span>
+<pre class="example">(15 / 4) + (1 / 4)
+&rArr; 4
 </pre></div>
 
 <p>Is it not wonderful? Cuis-Smalltalk computes with rational numbers. We
@@ -253,10 +253,10 @@ message:
 <span id="index-number-3"></span>
 <span id="index-number-4"></span>
 <div class="example">
-<pre class="example"><span class="sansserif">2020 printStringRoman &rArr; &rsquo;MMXX&rsquo; 
-2020 printStringWords  &rArr; &rsquo;two thousand, twenty&rsquo;
+<pre class="example">2020 printStringRoman &rArr; 'MMXX' 
+2020 printStringWords  &rArr; 'two thousand, twenty'
 &quot;Number as the Maya did&quot;
-2020 printStringBase: 20 &rArr; &rsquo;510&rsquo;</span>
+2020 printStringBase: 20 &rArr; '510'
 </pre></div>
 
 <div class="float"><span id="capWordNumber"></span>
@@ -289,8 +289,8 @@ constant expressions.  They literally are as they appear.
 representations:
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">16rA + 1 + 5e-1 + 6e-2
-&rArr; 289/25</span>
+<pre class="example">16rA + 1 + 5e-1 + 6e-2
+&rArr; 289/25
 </pre></div>
 
 <hr>

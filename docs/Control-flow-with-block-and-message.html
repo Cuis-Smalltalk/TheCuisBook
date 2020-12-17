@@ -109,10 +109,10 @@ and collections, with blocks as arguments.
 of a boolean expression:
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">(17 * 13 &gt; 220)
-  ifTrue: [ &rsquo;bigger&rsquo; ]
-  ifFalse: [ &rsquo;smaller&rsquo; ]
-&rArr; &rsquo;bigger&rsquo;</span>
+<pre class="example">(17 * 13 &gt; 220)
+  ifTrue: [ 'bigger' ]
+  ifFalse: [ 'smaller' ]
+&rArr; 'bigger'
 </pre></div>
 
 <p>The class <code>Boolean</code> offers a fascinating insight into how much
@@ -125,8 +125,8 @@ by considering the method <code>ifTrue:ifFalse:</code>, which takes two
 blocks as arguments:
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">(4 factorial &gt; 20) ifTrue: [ &rsquo;bigger&rsquo; ] ifFalse: [ &rsquo;smaller&rsquo; ]
-&rArr; &rsquo;bigger&rsquo;</span>
+<pre class="example">(4 factorial &gt; 20) ifTrue: [ 'bigger' ] ifFalse: [ 'smaller' ]
+&rArr; 'bigger'
 </pre></div>
 
 <p>The method is abstract in <code>Boolean</code>. It is implemented in its
@@ -163,12 +163,12 @@ example:
 have the choice between eager and lazy conjunctions and disjunctions:
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">(1 &gt; 2) &amp; (3 &lt; 4)
+<pre class="example">(1 &gt; 2) &amp; (3 &lt; 4)
 &rArr; false  &quot;must evaluate both sides&quot;
 (1 &gt; 2) and: [ 3 &lt; 4 ]
 &rArr; false  &quot;only evaluate receiver&quot;
 (1 &gt; 2) and: [ (1 / 0) &gt; 0 ]
-&rArr; false  &quot;argument block is never evaluated, so no exception&quot;</span>
+&rArr; false  &quot;argument block is never evaluated, so no exception&quot;
 </pre></div>
 
 <p>In the first example, both <code>Boolean</code> subexpressions are
@@ -225,17 +225,17 @@ evaluated, it should be a block rather than a boolean value. Here is
 an example of a very procedural loop:
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">n &#x2190; 1.
+<pre class="example">n &#x2190; 1.
 [ n &lt; 1000 ] whileTrue: [ n &#x2190; n * 2 ].
-n &rArr; 1024</span>
+n &rArr; 1024
 </pre></div>
 
 <p><code>#whileFalse:</code> reverses the exit condition:
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">n &#x2190; 1.
+<pre class="example">n &#x2190; 1.
 [ n &gt; 1000 ] whileFalse: [ n &#x2190; n * 2 ].
-n &rArr; 1024</span>
+n &rArr; 1024
 </pre></div>
 
 <p>You can check all the alternatives in the <code>controlling</code> method
@@ -244,9 +244,9 @@ category of the class <code>BlockClosure</code>.
 <p><code>#timesRepeat:</code> offers a simple way to implement a fixed iteration:
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">n &#x2190; 1.
+<pre class="example">n &#x2190; 1.
 10 timesRepeat: [ n &#x2190; n * 2 ].
-n &rArr; 1024</span>
+n &rArr; 1024
 </pre></div>
 
 <p>We can also send the message <code>#to:do:</code> to a number which then acts
@@ -255,9 +255,9 @@ upper bound, and a block that takes the current value of the loop
 counter as its argument:
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">result &#x2190; String new.
-1 to: 10 do: [:n | result &#x2190; result, n printString, &rsquo; &rsquo;].
-result &rArr; &rsquo;1 2 3 4 5 6 7 8 9 10 &rsquo;</span>
+<pre class="example">result &#x2190; String new.
+1 to: 10 do: [:n | result &#x2190; result, n printString, ' '].
+result &rArr; '1 2 3 4 5 6 7 8 9 10 '
 </pre></div>
 
 <p>You can check all the alternatives in the <code>intervals</code> method

@@ -58,7 +58,7 @@ Thanks to Mauro Rizzi for the review of the book.
    @sp 1
 @end iftex
 @smallexample
-@sansserif{\example\}
+\example\
 @end smallexample
 @iftex
    @sp 1

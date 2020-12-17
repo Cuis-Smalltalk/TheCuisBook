@@ -189,11 +189,11 @@ handling.
 <p>Let&rsquo;s start by removing the open windows:
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">| list |
+<pre class="example">| list |
 &quot;Delete all windows but the taskbar&quot;
 list &#x2190; UISupervisor ui submorphs reject: [:aMorph |
    aMorph is: #TaskbarMorph].
-list do: [:each | each delete].</span>
+list do: [:each | each delete].
 </pre></div>
 
 <p>The whole user interface world of Cuis-Smalltalk is a kind of Morph, a
@@ -207,16 +207,16 @@ from the world.
 <p>Next, we change the preferences:
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">| list morph |
+<pre class="example">| list morph |
 ../..
 &quot;Change to Dark theme&quot;
-Feature require: #&rsquo;Theme-Themes&rsquo;.
+Feature require: #'Theme-Themes'.
 DarkTheme beCurrent.
 &quot;Adjust font size&quot;
 Preferences smallFonts.
 &quot;Adjust taskbar size&quot;
 morph &#x2190; UISupervisor ui submorphs first.
-morph scale: 1 / 2.</span>
+morph scale: 1 / 2.
 </pre></div>
 
 <p>We require Theme-Themes package; as it is not installed on the default
@@ -232,19 +232,19 @@ compute a quarter of this free area extent (half in width and half
 in height make a quarter of the whole free area):
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">| list morph area extent |
+<pre class="example">| list morph area extent |
 ../..
 &quot;Compute the available free space for windows placement&quot;
 area &#x2190; RealEstateAgent maximumUsableArea
    extendBy: 0 @ morph morphHeight negated.
-extent &#x2190; area extent // 2.</span>
+extent &#x2190; area extent // 2.
 </pre></div>
 
 <p>Now we are ready to install a few tools. First three browsers each
 occupying a quarter of the screen:
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">&quot;Open a few System Browsers&quot;
+<pre class="example">&quot;Open a few System Browsers&quot;
 BrowserWindow openBrowser
    morphBounds: (0 @ 0 extent: extent).
 BrowserWindow openBrowser
@@ -252,7 +252,7 @@ BrowserWindow openBrowser
 &quot;Open a System Browser on a specific class&quot;
 morph &#x2190; BrowserWindow openBrowser
    morphBounds: (area extent // 2 extent: extent).
-morph model setClass: Integer selector: nil.</span>
+morph model setClass: Integer selector: nil.
 </pre></div>
 
 <p>Then in the remaining free quarter, we install a workspace occupying
@@ -262,21 +262,21 @@ when asking for a new Workspace, Cuis-Smalltalk does not answer the created
 instance, we have to search it in the windows of the world.
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">&quot;Open a Workspace with some default contents&quot;
+<pre class="example">&quot;Open a Workspace with some default contents&quot;
 Workspace openWorkspace.
 morph &#x2190; UISupervisor ui submorphs detect: [:aMorph |
    aMorph class = WorkspaceWindow].
-morph model actualContents: &rsquo;&quot;Some code&quot;
+morph model actualContents: '&quot;Some code&quot;
 1 + 2.
 &quot;Other code&quot;
-5 * 3.&rsquo;.
+5 * 3.'.
 morph morphBounds:
    (0 @ (area height // 2)
       extent: extent x @ (2 / 3 * extent y)).
 &quot;Open a transcript for logs&quot;
 TranscriptWindow openTranscript morphBounds: 
    (0 @ (area height // 2 + (2 / 3 * extent y)) 
-      extent: extent x @ (1 / 3 * extent y )).</span>
+      extent: extent x @ (1 / 3 * extent y )).
 </pre></div>
 
 <p>Of course you should adjust the argument of the <code>#actualContents:</code>

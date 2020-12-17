@@ -124,11 +124,11 @@ with <kbd>Ctrl-s</kbd>.
 is edited as:
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">Morph subclass: #Torpedo
-   instanceVariableNames: &rsquo;position velocity lifeSpan&rsquo;
-   classVariableNames: &rdquo;
-   poolDictionaries: &rdquo;
-   category: &rsquo;Spacewar!&rsquo;</span>
+<pre class="example">Morph subclass: #Torpedo
+   instanceVariableNames: 'position velocity lifeSpan'
+   classVariableNames: ''
+   poolDictionaries: ''
+   category: 'Spacewar!'
 </pre></div>
 
 <p>Moreover, as you may have guessed, a Morph already knows about its
@@ -282,13 +282,13 @@ understandable and logical.
 initialization and its mass:
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">Mobile&gt;&gt;initialize
+<pre class="example">Mobile&gt;&gt;initialize
   super initialize.
   velocity &#x2190; 0 @ 0.
   acceleration &#x2190; 0
         
 Mobile&gt;&gt;mass
-  &#x2191; 1</span>
+  &#x2191; 1
 </pre></div>
 
 <p>The next methods to add are the ones relative to the physical
@@ -315,8 +315,8 @@ calculations. First, the code to calculate the gravity acceleration:
   star mass and return its value:
 
 <div class="example">
-<pre class="example"><span class="sansserif">SpaceWar&gt;&gt;starMass
-   &#x2191; centralStar mass</span>
+<pre class="example">SpaceWar&gt;&gt;starMass
+   &#x2191; centralStar mass
 </pre></div>
 
 </li><li> In <code>position r</code>, the <code>#r</code> message asks the radius
@@ -391,7 +391,7 @@ oriented programming there is this special mechanism named
 <p>See the <code>Torpedo&gt;&gt;update:</code> definition:
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">Torpedo&gt;&gt;update: t
+<pre class="example">Torpedo&gt;&gt;update: t
    &quot;Update the torpedo position&quot;
    super update: t.
    &quot;orientate the torpedo in its velocity direction, nicer effect
@@ -399,7 +399,7 @@ oriented programming there is this special mechanism named
    self rotation: (velocity y arcTan: velocity x) + Float halfPi scale: 1.
    lifeSpan &#x2190; lifeSpan - 1.
    ifeSpan isZero ifTrue: [owner destroyTorpedo: self].
-   acceleration &gt; 0 ifTrue: [acceleration &#x2190; acceleration - 1000]</span>
+   acceleration &gt; 0 ifTrue: [acceleration &#x2190; acceleration - 1000]
 </pre></div>
 
 <p>Here the <code>update:</code> method is specialized to the torpedo
@@ -462,9 +462,9 @@ initialization:
  <code>super initialize</code> and then the ship is resupplied with fuel and torpedos:
 
 <div class="example">
-<pre class="example"><span class="sansserif">SpaceShip&gt;&gt;resupply
+<pre class="example">SpaceShip&gt;&gt;resupply
    fuel &#x2190; 500.
-   torpedoes &#x2190; 20</span>
+   torpedoes &#x2190; 20
 </pre></div>
 
 </li><li> <strong>Torpedo.</strong> Inherited mechanical states initialized; add self-destroy

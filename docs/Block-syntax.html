@@ -101,8 +101,8 @@ last expression in its body, unless there is an explicit return (with
 expression).
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">[ 1 + 2 ] value
-&rArr; 3</span>
+<pre class="example">[ 1 + 2 ] value
+&rArr; 3
 </pre></div>
 
 <span id="index-block-3"></span>
@@ -113,10 +113,10 @@ send it the message <code>#value:</code> with one argument. A two-parameter
 block must be sent <code>#value:value:</code>, and so on, up to 4 arguments:
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">[ :x | 1 + x ] value: 2
+<pre class="example">[ :x | 1 + x ] value: 2
 &rArr; 3
 [ :x :y | x + y ] value: 1 value: 2
-&rArr; 3</span>
+&rArr; 3
 </pre></div>
 
 <p>If you have a block with more than four parameters, you must use
@@ -130,8 +130,8 @@ vertical bars, just like local variable declarations in a
 method. Locals are declared after any arguments:
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">[ :x :y | | z | z &#x2190; x + y. z ] value: 1 value: 2
-&rArr; 3</span>
+<pre class="example">[ :x :y | | z | z &#x2190; x + y. z ] value: 1 value: 2
+&rArr; 3
 </pre></div>
 
 <p>Blocks can refer to
@@ -144,10 +144,10 @@ their surrounding lexical context &ndash; those apparent in their enclosing text
 to the variable x of its enclosing environment:
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">|x|
+<pre class="example">|x|
 x &#x2190; 1.
 [ :y | x + y ] value: 2
-&rArr; 3</span>
+&rArr; 3
 </pre></div>
 
 <span id="index-block-5"></span>

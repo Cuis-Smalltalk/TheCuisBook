@@ -97,11 +97,11 @@ Next: <a href="Spacewar_0021-Morphs.html" accesskey="n" rel="next">Spacewar! Mor
 but subclass <code>EllipseMorph</code> with <code>#ColorClickEllipse</code>.
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">EllipseMorph subclass: #ColorClickEllipse
-   instanceVariableNames: &rdquo;
-   classVariableNames: &rdquo;
-   poolDictionaries: &rdquo;
-   category: &rsquo;Spacewar!!&rsquo;</span>
+<pre class="example">EllipseMorph subclass: #ColorClickEllipse
+   instanceVariableNames: ''
+   classVariableNames: ''
+   poolDictionaries: ''
+   category: 'Spacewar!!'
 </pre></div>
 
 <p>Save the class definition with <kbd>Ctrl-s</kbd>.
@@ -113,10 +113,10 @@ allows us to create new ones.  Select &ldquo;event handling testing&rdquo;.
 Then add the method <code>ColorClickEllipse&gt;&gt;handlesMouseDown:</code>.
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">handlesMouseDown: aMouseButtonEvent
-  &quot;Answer that I do handle mouseDown events&rdquo;
+<pre class="example">handlesMouseDown: aMouseButtonEvent
+  &quot;Answer that I do handle mouseDown events''
   &#x2191; true
-</span>
+
 </pre></div>
 
 <span id="index-event-1"></span>
@@ -124,9 +124,9 @@ Then add the method <code>ColorClickEllipse&gt;&gt;handlesMouseDown:</code>.
 method we need.
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">mouseButton1Up: aMouseButtonEvent localPosition: localEventPosition
+<pre class="example">mouseButton1Up: aMouseButtonEvent localPosition: localEventPosition
    &quot;I ignore the mouseEvent information and change my color.&quot;
-   self color: Color random</span>
+   self color: Color random
 </pre></div>
 
 <p>Now, you have created a new Morph class and can select a

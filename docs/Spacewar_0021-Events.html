@@ -135,7 +135,7 @@ methods.
   targeted toward our game play when the mouse enters:
 
 <div class="example">
-<pre class="example"><span class="sansserif">event hand newKeyboardFocus: self</span>
+<pre class="example">event hand newKeyboardFocus: self
 </pre></div>
 
 </li><li> <strong>Resume the game.</strong> The continuous update of the game is
@@ -143,7 +143,7 @@ methods.
   be discussed in the next chapter. The game play just asks itself to
   resume stepping:
   <div class="example">
-<pre class="example"><span class="sansserif">self startStepping</span>
+<pre class="example">self startStepping
 </pre></div>
 </li></ul>
 
@@ -170,14 +170,14 @@ the behavior when the mouse cursor leaves the game play:
   does not want keyboard focus:
 
 <div class="example">
-<pre class="example"><span class="sansserif">event hand releaseKeyboardFocus: self</span>
+<pre class="example">event hand releaseKeyboardFocus: self
 </pre></div>
 
 </li><li> <strong>Pause the game.</strong> We stop the continuous
   <em>stepping</em> update of the game:
 
 <div class="example">
-<pre class="example"><span class="sansserif">self stopStepping</span>
+<pre class="example">self stopStepping
 </pre></div>
 
 </li></ul>

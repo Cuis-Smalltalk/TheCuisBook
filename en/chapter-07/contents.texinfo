@@ -618,6 +618,7 @@ Observe as @class{Mobile} being a superclass of @class{SpaceShip} and
 @class{Torpedo} makes the instances of these later classes to respond
 false to the @msg{requiresVectorCanvas} message.
 
+@subsection Central star
 Because we use the bitmap canvas for the rendering of our morphs, each
 morph should knows about its extent. That way the collision detection
 between star, ships and torpedoes works properly.
@@ -627,10 +628,10 @@ message, it responds its extent, in its idle position when not
 rotated.
 
 @cindex backtick
-Our central has an extent of @smalltalk{30@@30}:
+Our central has an extent of @smalltalk{30 @@ 30}:
 
 @smalltalkExampleCaption{Central star extent, centralStarExtent,
-morphExtent
+CentralStar>>morphExtent
    @return{} `30 @@ 30`}
 
 @todo{Explain properly the backtick below:}
@@ -649,7 +650,7 @@ As you learnt previously, a morph draws itself from its
 fluctuating x and y radius:
 
 @smalltalkExampleCaption{A star with a fluctuating size, centralStarDraw,
-drawOn: canvas
+CentralStar>>drawOn: canvas
    | radius |
    radius @assign{} self morphExtent // 2.
    canvas ellipseCenterX: 0
@@ -671,3 +672,56 @@ independently of 0 to 2 units. The star does not look perfectly round.
    @figureExt{A star with a fluctuating size,ch07-09-fluctuatingStar,10,.gif}
 @end ifhtml
 
+@subsection Space ship
+At the game start-up, the nose of the space ship is pointing to the
+top of the screen as seen in @ref{ch07-10-ShipDiagram} and the angle
+of its direction is therefore -90@textdegree{}, while the angle of its
+rotation is 0@textdegree{}. Remember the Y ordinate are oriented
+toward the bottom of the screen.
+
+@figure{Space hip diagram at game start-up,ch07-10-ShipDiagram,4}
+
+Given the vertices as seen in @ref{ch07-10-ShipDiagram}, the extent is
+@smalltalk{20 @@ 30}:
+
+@smalltalkExample{SpaceShip>>morphExtent
+   @return{} `20 @@ 30`}
+
+Then its @method{drawOn:} method is written as:
+
+@smalltalkExampleCaption{Space ship drawing,spaceShipDrawing,
+SpaceShip>>drawOn: canvas
+   | a b c d |
+   a @assign{} 0 @@ -15.
+   b @assign{} -10 @@ 15.
+   c @assign{} 0 @@ 10.
+   d @assign{} 10 @@ 15.
+   canvas line: a to: b width: 2 color: color.
+   canvas line: b to: c width: 2 color: color.
+   canvas line: c to: d width: 2 color: color.
+   canvas line: d to: a width: 2 color: color.
+   "Draw gas exhaust"
+   acceleration ifNotZero: [
+      canvas line: c to: 0 @@ 35 width: 1 color: Color gray]}
+
+When there is an acceleration from the engine, we draw a small gray
+line to represent the gas exhaust.
+
+When the user turns the ship, the morph is rotated a bit:
+
+@smalltalkExample{SpaceShip>>right
+"Rotate the ship to its right"
+   self rotateBy: 0.1
+
+SpaceShip>>left
+"Rotate the ship to its left"
+   self rotateBy: -0.1}
+
+Underneath, @class{MobileMorph} is equipped with an affine
+transformation to scale, rotate and translate the coordinated passed
+as argument to the drawing messages received by the canvas.
+
+@subsection Torpedo
+
+@c Give the diagram of the torpedo, and as an exercise ask how to code
+@c its drawOn: and morphExtent methods

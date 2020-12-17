@@ -151,12 +151,12 @@ list.
 directly to the class:
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">Float e
+<pre class="example">Float e
 &rArr; 2.718281828459045
 Float epsilon
 &rArr; 2.220446049250313e-16
 Float fmax
-&rArr; 1.7976931348623157e308</span>
+&rArr; 1.7976931348623157e308
 </pre></div>
 
 
@@ -181,26 +181,26 @@ this menu go away.
 window. Just close the debug window for now to ignore the result.
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">3.14 pi
+<pre class="example">3.14 pi
 &rArr; MessageNotUnderstood: SmallFloat64&gt;&gt;pi
 Float pi e
-&rArr; MessageNotUnderstood: SmallFloat64&gt;&gt;e</span>
+&rArr; MessageNotUnderstood: SmallFloat64&gt;&gt;e
 </pre></div>
 
 <p>Often these class methods are used to access constant value as seen in
 the previous example or to create a new instance:
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">OrderedCollection new
+<pre class="example">OrderedCollection new
 &rArr; Create a new empty ordered collection
 Fraction numerator: 1 denominator: 3
 &rArr; 1/3 &quot;a fraction instance&quot;
 Float new
 &rArr; 0.0
-Float readFrom: &rsquo;001.200&rsquo;
+Float readFrom: '001.200'
 &rArr; 1.2 
 Integer primesUpTo: 20
-&rArr; #(2 3 5 7 11 13 17 19) </span>
+&rArr; #(2 3 5 7 11 13 17 19) 
 </pre></div>
 
 <span id="index-method-9"></span>
@@ -217,28 +217,28 @@ is pressed to see this list.
 directly to an instance:
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">-10.12 abs &rArr; 10.12
+<pre class="example">-10.12 abs &rArr; 10.12
 3.14 cos &rArr; -0.9999987317275395
--10.12 * 2 &rArr; -20.24</span>
+-10.12 * 2 &rArr; -20.24
 </pre></div>
 
 <p>Instance method message can not be sent directly to a class, you need
 to instantiate first an object:
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">Float cos
+<pre class="example">Float cos
 &rArr; MessageNotUnderstood: Float class&gt;&gt;cos
 Fraction squared
 &rArr; MessageNotUnderstood: Fraction class&gt;&gt;squared
 OrderedCollection add: 10
-&rArr; MessageNotUnderstood: OrderedCollection class&gt;&gt;add:</span>
+&rArr; MessageNotUnderstood: OrderedCollection class&gt;&gt;add:
 </pre></div>
 
 <p>Of course you can mix both class and instance methods, as long as you
 send the message to the appropriate class or instance:
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">Float pi cos
+<pre class="example">Float pi cos
 &rArr; -1.0
 Float e ln
 &rArr; 1.0 
@@ -246,7 +246,7 @@ Float e ln
 &rArr; 16/25
 OrderedCollection new add: Float pi; add: Float e; yourself
 &rArr; an OrderedCollection(3.141592653589793 2.718281828459045) 
-</span>
+
 </pre></div>
 
 <p>Here another example from Spacewar! mixing class and instance

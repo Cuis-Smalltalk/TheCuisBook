@@ -185,22 +185,22 @@ an integer:
 <div class="float-caption"><p><strong>Example 3.6: </strong>Interval</p></div></div>
 <p>Interval works with other object as character:
 </p><div class="example">
-<pre class="example"><span class="sansserif">$d to: $h
-&rArr; #($d $e $f $g $h)</span>
+<pre class="example">$d to: $h
+&rArr; #($d $e $f $g $h)
 </pre></div>
 
 <p>In fact, an interval is an object of its own. It is a sort of
 collection:
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">(1 to: 10) class
+<pre class="example">(1 to: 10) class
 &rArr; Interval
 
 (1 to: 10 by: 2) squared
 &rArr; #(1 9 25 49 81)
 
 (1 to: 10) atRandom
-&rArr; 4 &quot;different result each time&quot;</span>
+&rArr; 4 &quot;different result each time&quot;
 </pre></div>
 
 <p>In Spacewar!, when a ship is destroyed it is teleported to a random
@@ -375,11 +375,11 @@ internal computer represenation of <code>1.3</code> is not exactly as
 it seems:
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">(13/10) asFloat
+<pre class="example">(13/10) asFloat
 &rArr; 1.3
 
 (13/10) asFloat asFraction
-&rArr; 5854679515581645/45035996273704</span>
+&rArr; 5854679515581645/45035996273704
 </pre></div>
 
 <div class="footnote">

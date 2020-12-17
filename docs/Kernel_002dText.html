@@ -102,8 +102,8 @@ and <code>Symbol</code>. <code>String</code> instances are collections of
 <code>#asCharacter</code>:
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">Character numericValue: 65 &rArr; $A
-65 asCharacter &rArr; $A</span>
+<pre class="example">Character numericValue: 65 &rArr; $A
+65 asCharacter &rArr; $A
 </pre></div>
 
 <p>There are class side methods for non printable characters:
@@ -153,39 +153,39 @@ the <code>String</code> class, search for method categories named like
 methods:
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">findString: subString
+<pre class="example">findString: subString
    &quot;Answer the index of subString within the receiver, starting at
    start. If the receiver does not contain subString, answer 0.&quot;
-   &#x2191; self findString: subString startingAt: 1.</span>
+   &#x2191; self findString: subString startingAt: 1.
 </pre></div>
 
 <p>Or:
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">findString: key startingAt: start caseSensitive: caseSensitive
+<pre class="example">findString: key startingAt: start caseSensitive: caseSensitive
    &quot;Answer the index in this String at which the substring key first
    occurs, at or beyond start.  The match can be case-sensitive or
    not.  If no match is found, zero will be returned.&quot;
-   ../..</span>
+   ../..
 </pre></div>
 
 <p>Then experiment with the potentially interesting messages in a workspace:
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">&rsquo;I love apples&rsquo; findString: &rsquo;love&rsquo; &rArr; 3 &quot;match starts at position 3&quot;
-&rsquo;I love apples&rsquo; findString: &rsquo;hate&rsquo;
+<pre class="example">'I love apples' findString: 'love' &rArr; 3 &quot;match starts at position 3&quot;
+'I love apples' findString: 'hate'
 &rArr;  0 &quot;not found&quot;
-&rsquo;We humans, we all love apples&rsquo; findString: &rsquo;we&rsquo;
+'We humans, we all love apples' findString: 'we'
 &rArr; 12 
-&rsquo;We humans, we all love apples&rsquo;
-   findString: &rsquo;we&rsquo;
+'We humans, we all love apples'
+   findString: 'we'
    startingAt: 1
    caseSensitive: false
 &rArr; 1 
-&rsquo;we humans, we all love apples&rsquo; findString: &rsquo;we&rsquo;
+'we humans, we all love apples' findString: 'we'
 &rArr; 1 
-&rsquo;we humans, we all love apples&rsquo; findString: &rsquo;we&rsquo; startingAt: 2
-&rArr; 12</span>
+'we humans, we all love apples' findString: 'we' startingAt: 2
+&rArr; 12
 </pre></div>
 
 <p>Following these paths will, most of the time, lead you toward the answer

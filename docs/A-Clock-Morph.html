@@ -106,11 +106,11 @@ vector graphics, do ...World menu &rarr;
 <p>Let&rsquo;s create <code>ClockMorph</code>, the dial clock :
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">MovableMorph subclass: #ClockMorph
-   instanceVariableNames: &rdquo;
-   classVariableNames: &rdquo;
-   poolDictionaries: &rdquo;
-   category: &rsquo;Morphic-Learning&rsquo;</span>
+<pre class="example">MovableMorph subclass: #ClockMorph
+   instanceVariableNames: ''
+   classVariableNames: ''
+   poolDictionaries: ''
+   category: 'Morphic-Learning'
 </pre></div>
 
 <span id="index-morph-21"></span>
@@ -135,24 +135,24 @@ vector graphics, do ...World menu &rarr;
 <p>We create <code>ClockHourHandMorph</code>, the hand for the hours:
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">MovableMorph subclass: #ClockHourHandMorph
-   instanceVariableNames: &rdquo;
-   classVariableNames: &rdquo;
-   poolDictionaries: &rdquo;
-   category: &rsquo;Morphic-Learning&rsquo;</span>
+<pre class="example">MovableMorph subclass: #ClockHourHandMorph
+   instanceVariableNames: ''
+   classVariableNames: ''
+   poolDictionaries: ''
+   category: 'Morphic-Learning'
 </pre></div>
 
 <p>...and its drawing method in the category <code>drawing</code>:
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">ClockHourHandMorph&gt;&gt;drawOn: aCanvas
+<pre class="example">ClockHourHandMorph&gt;&gt;drawOn: aCanvas
    aCanvas fillColor: (Color black alpha: 0.6) do: [
       aCanvas
          moveToX: -10 y: 0;
          lineToX: 0 y: 5;
          lineToX: 50 y: 0;
          lineToX: 0 y: -5;
-         lineToX: -10 y: 0 ].</span>
+         lineToX: -10 y: 0 ].
 </pre></div>
 
 <p>You can start playing with them. We could use several instances of a
@@ -168,44 +168,44 @@ bear with us while we finish building our clock.
 <p>We create <code>ClockMinuteHandMorph</code>, the hand for the minutes:
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">MovableMorph subclass: #ClockMinuteHandMorph
-   instanceVariableNames: &rdquo;
-   classVariableNames: &rdquo;
-   poolDictionaries: &rdquo;
-   category: &rsquo;Morphic-Learning&rsquo;</span>
+<pre class="example">MovableMorph subclass: #ClockMinuteHandMorph
+   instanceVariableNames: ''
+   classVariableNames: ''
+   poolDictionaries: ''
+   category: 'Morphic-Learning'
 </pre></div>
 
 <p>...and its drawing method in the category <code>drawing</code>:
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">ClockMinuteHandMorph&gt;&gt;drawOn: aCanvas
+<pre class="example">ClockMinuteHandMorph&gt;&gt;drawOn: aCanvas
    aCanvas fillColor: ((Color black) alpha: 0.6) do: [
       aCanvas
          moveToX: -8 y: 0;
          lineToX: 0 y: 4;
          lineToX: 82 y: 0;
          lineToX: 0 y: -4;
-         lineToX: -8 y: 0 ]</span>
+         lineToX: -8 y: 0 ]
 </pre></div>
 
 <p>And finally, the <code>ClockSecondHandMorph</code>, the hand for the seconds:
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">MovableMorph subclass: #ClockSecondHandMorph
-   instanceVariableNames: &rdquo;
-   classVariableNames: &rdquo;
-   poolDictionaries: &rdquo;
-   category: &rsquo;Morphic-Learning&rsquo;</span>
+<pre class="example">MovableMorph subclass: #ClockSecondHandMorph
+   instanceVariableNames: ''
+   classVariableNames: ''
+   poolDictionaries: ''
+   category: 'Morphic-Learning'
 </pre></div>
 
 <p>...and its drawing method in the category <code>drawing</code>:
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">ClockSecondHandMorph&gt;&gt;drawOn: aCanvas
+<pre class="example">ClockSecondHandMorph&gt;&gt;drawOn: aCanvas
    aCanvas strokeWidth: 1.5 color: Color red do: [
       aCanvas
          moveToX: 0 y: 0;
-         lineToX: 85 y: 0 ]</span>
+         lineToX: 85 y: 0 ]
 </pre></div>
 
 <p>Now, all that is needed is to put our clock parts together in
@@ -214,11 +214,11 @@ its <code>initialize</code> method (accept the new names as instance
 variables):
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">ClockMorph&gt;&gt;initialize
+<pre class="example">ClockMorph&gt;&gt;initialize
    super initialize.
    self addMorph: (hourHand &#x2190; ClockHourHandMorph new).
    self addMorph: (minuteHand &#x2190; ClockMinuteHandMorph new).
-   self addMorph: (secondHand &#x2190; ClockSecondHandMorph new)</span>
+   self addMorph: (secondHand &#x2190; ClockSecondHandMorph new)
 </pre></div>
 
 <blockquote class="indentedblock">
@@ -244,19 +244,19 @@ variables.
 method:
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">ClockMorph&gt;&gt;wantsSteps
-   &#x2191; true</span>
+<pre class="example">ClockMorph&gt;&gt;wantsSteps
+   &#x2191; true
 </pre></div>
 
 <p>...and:
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">ClockMorph&gt;&gt;step
+<pre class="example">ClockMorph&gt;&gt;step
    | time |
    time &#x2190; Time now.
    hourHand rotationDegrees: time hour * 30 - 90.
    minuteHand rotationDegrees: time minute * 6 - 90.
-   secondHand rotationDegrees: time second * 6 - 90.</span>
+   secondHand rotationDegrees: time second * 6 - 90.
 </pre></div>
 
 <p>Take a look at how we update the clock hands.

@@ -113,7 +113,7 @@ event. Let&rsquo;s take a look at one of these methods,
 <code>handlesMouseDown:</code>, its comment is worth reading:
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">Morph&gt;&gt;handlesMouseDown: aMouseButtonEvent
+<pre class="example">Morph&gt;&gt;handlesMouseDown: aMouseButtonEvent
 &quot;Do I want to receive mouseButton messages ?
 - #mouseButton1Down:localPosition:
 - #mouseButton1Up:localPosition:
@@ -130,7 +130,7 @@ example) button 2 up only.&quot;
 &quot;Use a property test to allow individual instances to dynamically
 specify this.&quot;
 
-   &#x2191; self hasProperty: #&rsquo;handlesMouseDown:&rsquo;</span>
+   &#x2191; self hasProperty: #'handlesMouseDown:'
 </pre></div>
 
 <p>As defined by default, this method and the other handlers
@@ -140,8 +140,8 @@ check to see if an instance has defined a like named property.
 handle mouse down events, we just override the appropriate method to return true:
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">MyMorph&gt;&gt;&gt;&gt;handlesMouseDown: aMouseButtonEvent
-   &#x2191; true</span>
+<pre class="example">MyMorph&gt;&gt;&gt;&gt;handlesMouseDown: aMouseButtonEvent
+   &#x2191; true
 </pre></div>
 
 <p>Now in the <code>events</code> <code>Morph</code>&rsquo;s method category, we find the
@@ -150,10 +150,10 @@ Morph to represent list scroll bar, scrolls its list contents when a
 mouse button 1 is pressed:
 </p>
 <div class="example">
-<pre class="example"><span class="sansserif">ScrollBar&gt;&gt;mouseButton1Down: aMouseBtnEvent position: eventPosition
+<pre class="example">ScrollBar&gt;&gt;mouseButton1Down: aMouseBtnEvent position: eventPosition
 &quot;Update visual feedback&quot;
    self setNextDirectionFromEvent: aMouseBtnEvent.
-   self scrollByPage</span>
+   self scrollByPage
 </pre></div>
 
 <p>To discover other events available for your morph, explore with the
