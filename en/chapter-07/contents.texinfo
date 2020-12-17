@@ -718,8 +718,8 @@ SpaceShip>>left
    self rotateBy: -0.1}
 
 Underneath, @class{MobileMorph} is equipped with an affine
-transformation to scale, rotate and translate the coordinated passed
-as argument to the drawing messages received by the canvas.
+transformation to scale, rotate and translate the coordinates passed
+as arguments to the drawing messages received by the canvas.
 
 @subsection Torpedo
 
