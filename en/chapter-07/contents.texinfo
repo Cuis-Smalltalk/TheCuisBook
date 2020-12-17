@@ -31,6 +31,7 @@ for Squeak}.
 @menu
 * Going Vector::
 * A Clock Morph::
+* Spacewar! Drawing::
 @end menu
 
 

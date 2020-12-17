@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 14, 2020
+Compilation : December 17, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -108,11 +108,11 @@ messages in a Workspace to discover the one we are searching for:
 <span id="index-number-23"></span>
 
 <div class="float"><span id="roundingNumbers"></span>
-<div class="display">
-<pre class="display"><span class="sansserif">1.264 roundTo: 0.1 &rArr; 1.3 
+<div class="example">
+<pre class="example">1.264 roundTo: 0.1 &rArr; 1.3 
 1.264 roundTo: 0.01 &rArr; 1.26 
 1.264 roundUpTo: 0.01 &rArr; 1.27
-1.264 roundTo: 0.001 &rArr; 1.264</span>
+1.264 roundTo: 0.001 &rArr; 1.264
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 3.3: </strong>Rounding numbers, Workspace try out</p></div></div>
@@ -129,8 +129,8 @@ numbers. In the <code>Number</code> class, the method category
 polymorphically with most kinds of number:
 </p>
 <div class="float"><span id="intervalLoops"></span>
-<div class="display">
-<pre class="display"><span class="sansserif">1 to: 10 do: [:i | Transcript show: 1 / i; space]
+<div class="example">
+<pre class="example">1 to: 10 do: [:i | Transcript show: 1 / i; space]
 &rArr; 1 (1/2) (1/3) (1/4) (1/5) (1/6) (1/7) (1/8) (1/9) (1/10)
 
 1 to: 10 by: 2 do: [:i | Transcript show: 1 / i; space]
@@ -140,7 +140,7 @@ polymorphically with most kinds of number:
 &rArr; (1/10) (3/5) (11/10) (8/5) (1/10) (3/5) (11/10) (8/5) 
 
 Float pi to: 5 by: 1/3 do: [:i | Transcript show: (i roundTo: 0.01) ; space]
-&rArr; 3.14 3.47 3.81 4.14 4.47 4.81</span>
+&rArr; 3.14 3.47 3.81 4.14 4.47 4.81
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 3.4: </strong>Interval loops (for-loop)</p></div></div>
@@ -156,43 +156,44 @@ integer. We already saw this variant in a previous section of this
 chapter.  Throwing a 6 face die 5 times can be simulated with
 an integer:
 </p>
+<span id="index-number-27"></span>
 <div class="float"><span id="playingDice"></span>
-<div class="display">
-<pre class="display"><span class="sansserif">5 timesRepeat: [Transcript show: 6 atRandom; space]
-&rArr; 1 2 4 6 2</span>
+<div class="example">
+<pre class="example">5 timesRepeat: [Transcript show: 6 atRandom; space]
+&rArr; 1 2 4 6 2
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 3.5: </strong>Throwing a dice 5 times</p></div></div>
 <p>Note: Expect a different result each time.
 </p>
 <span id="index-Interval"></span>
-<span id="index-number-27"></span>
 <span id="index-number-28"></span>
 <span id="index-number-29"></span>
+<span id="index-number-30"></span>
 
 <p>Interval of numbers can be defined on their own, for future use:
 </p>
 <div class="float"><span id="interval"></span>
-<div class="display">
-<pre class="display"><span class="sansserif">1 to: 10
+<div class="example">
+<pre class="example">1 to: 10
 &rArr; (1 to: 10)
 
 1 to: 10 by: 2
-&rArr; (1 to: 9 by: 2)</span>
+&rArr; (1 to: 9 by: 2)
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 3.6: </strong>Interval</p></div></div>
 <p>Interval works with other object as character:
-</p><div class="display">
-<pre class="display"><span class="sansserif">$d to: $h
+</p><div class="example">
+<pre class="example"><span class="sansserif">$d to: $h
 &rArr; #($d $e $f $g $h)</span>
 </pre></div>
 
 <p>In fact, an interval is an object of its own. It is a sort of
 collection:
 </p>
-<div class="display">
-<pre class="display"><span class="sansserif">(1 to: 10) class
+<div class="example">
+<pre class="example"><span class="sansserif">(1 to: 10) class
 &rArr; Interval
 
 (1 to: 10 by: 2) squared
@@ -203,18 +204,18 @@ collection:
 </pre></div>
 
 <p>In Spacewar!, when a ship is destroyed it is teleported to a random
-position in the square game play area. Interval are handy to pick up
+position in the square game play area. Intervals are handy to pick 
 random coordinates. In the example bellow, the variable
-<code>randomCoordinate</code> holds a bloc of code &ndash; called anonymous
+<code>randomCoordinate</code> holds a block of code &ndash; called anonymous
 function in other languages; it picks up a random value in the
 interval consisting of the game play area left and right extents:
 </p>
 <div class="float"><span id="teleportShipInterval"></span>
-<div class="display">
-<pre class="display"><span class="sansserif">randomCoordinate &#x2190; [(area left to: area right) atRandom].
+<div class="example">
+<pre class="example">randomCoordinate &#x2190; [(area left to: area right) atRandom].
 aShip
    velocity: 0 @ 0;
-   morphPosition: randomCoordinate value @ randomCoordinate value</span>
+   morphPosition: randomCoordinate value @ randomCoordinate value
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 3.7: </strong>Teleport ship</p></div></div>
@@ -227,36 +228,36 @@ the interval [0 ; 2PI], each 1/10. Output in the transcript.</em>
 
 
 <div class="float-caption"><p><strong>Exercise 3.2: </strong>Cosine table</p></div></div>
-<span id="index-number-30"></span>
+<span id="index-number-31"></span>
 <p>Integer numbers are represented in different bases when prefixed with
 the base and &ldquo;r&rdquo;. When executing and printing <kbd>Ctrl-p</kbd> such a
 number, it is immediately printed in the decimal base:
 </p>
 <div class="float"><span id="integerBase"></span>
-<div class="display">
-<pre class="display"><span class="sansserif">2r1111 &rArr; 15
+<div class="example">
+<pre class="example">2r1111 &rArr; 15
 16rF &rArr; 15
 8r17 &rArr; 15
 20rF &rArr; 15
-10r15 &rArr; 15</span>
+10r15 &rArr; 15
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 3.8: </strong>Integer represented in different base</p></div></div>
 <p>Writing numbers as Mayans or Babylonians<a id="DOCF14" href="#FOOT14"><sup>14</sup></a>:
 </p>
 <div class="float"><span id="countingAncients"></span>
-<div class="display">
-<pre class="display"><span class="sansserif">&quot;The Babylonians&quot;
+<div class="example">
+<pre class="example">&quot;The Babylonians&quot;
 60r10 &rArr; 60
 60r30 &rArr; 180
 60r60 &rArr; 360
 60r30 + 60r60 &rArr; 540 
-(60r30 + 60r60) printStringRadix: 60 &rArr; &rsquo;60r90&rsquo; 
+(60r30 + 60r60) printStringRadix: 60 &rArr; '60r90' 
 
 &quot;The Mayans&quot;
 20r10 &rArr; 20
 20r40 &rArr; 80 &quot;pronounced 4-twenties in some languages&quot;
-20r100 &rArr; 400</span>
+20r100 &rArr; 400
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 3.9: </strong>Counting like the ancients</p></div></div>
@@ -266,11 +267,11 @@ bits left and right is equivalent to multiplying by 2 and dividing by
 2:
 </p>
 <div class="float"><span id="shiftBits"></span>
-<div class="display">
-<pre class="display"><span class="sansserif">(2r1111 &lt;&lt; 1) printStringBase: 2 &rArr; &rsquo;11110&rsquo;
+<div class="example">
+<pre class="example">(2r1111 &lt;&lt; 1) printStringBase: 2 &rArr; '11110'
 2r1111 &lt;&lt; 1 &rArr; 30
-(2r1111 &gt;&gt; 1) printStringBase: 2 &rArr; &rsquo;111&rsquo;
-2r1111 &gt;&gt; 1 &rArr; 7</span>
+(2r1111 &gt;&gt; 1) printStringBase: 2 &rArr; '111'
+2r1111 &gt;&gt; 1 &rArr; 7
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 3.10: </strong>Shifting bits</p></div></div>
@@ -284,7 +285,7 @@ the integer 360 by 1024, without using the multiplication operation?</em>
 <div class="float-caption"><p><strong>Exercise 3.3: </strong>Multiply by 1024</p></div></div>
 
 <span id="Hiatus-with-decimal-numbers"></span><h4 class="subheading">Hiatus with decimal numbers</h4>
-<span id="index-number-31"></span>
+<span id="index-number-32"></span>
 
 <p>We saw decimal numbers are written with a dot &ldquo;.&rdquo; to separate the
 integer and the decimal parts: <code>1.5</code>, <code>1235.021</code>
@@ -303,9 +304,9 @@ information about this in the class comment of <code>Float</code>.
 </p></blockquote>
 
 <div class="float"><span id="FloatPrecision"></span>
-<div class="display">
-<pre class="display"><span class="sansserif">0.1 + 0.2 - 0.3
-&rArr; 5.551115123125783e-17</span>
+<div class="example">
+<pre class="example">0.1 + 0.2 - 0.3
+&rArr; 5.551115123125783e-17
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 3.11: </strong>Computer dyscalculia!</p></div></div>
@@ -326,7 +327,7 @@ number</p></div></div>
 <p>When accuracy is absolutely mandatory use the Rational Numbers
 representation of Cuis-Smalltalk.
 </p>
-<span id="index-number-32"></span>
+<span id="index-number-33"></span>
 
 <p>A rational number is written with the division symbol between two
 integers: do <kbd>Ctrl-p</kbd> on <code>5/2</code> &rArr;
@@ -345,15 +346,15 @@ executing this code</em> <code>5/0</code><em>?</em>
 using the rational numbers, the <a href="#FloatPrecision">Example 3.11</a> becomes:
 </p>
 <div class="float"><span id="FractionPrecision"></span>
-<div class="display">
-<pre class="display"><span class="sansserif">(1/10) + (2/10) - (3/10)
-&rArr; 0</span>
+<div class="example">
+<pre class="example">(1/10) + (2/10) - (3/10)
+&rArr; 0
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 3.12: </strong>Calculation is correct using rational fractions!</p></div></div>
 <p>This time we have the expected result. Under the covers the computer
 only does the calculations with integer components so no roundoff
-results. This is a fine example that to solve some problem you need a
+results. This is a fine example where solving some problem requires a
 paradigm shift.
 </p>
 <div class="float"><span id="exeFractionPrecision"></span>
@@ -365,16 +366,16 @@ numbers. The errors are gone.</em>
 
 
 <div class="float-caption"><p><strong>Exercise 3.6: </strong>Fix the errors</p></div></div>
-<span id="index-number-33"></span>
-<p>Cuis-Smalltalk knows how to convert a decimal number as a fraction, by
+<span id="index-number-34"></span>
+<p>Cuis-Smalltalk knows how to convert a decimal number to a fraction, by
 sending the message <code>#asFraction</code>. We already acknowledged the
 computer dyscalculia trouble with decimal number, this is why when
 asking for a fraction representation we have this strange answer. The
 internal computer represenation of <code>1.3</code> is not exactly as
 it seems:
 </p>
-<div class="display">
-<pre class="display"><span class="sansserif">(13/10) asFloat
+<div class="example">
+<pre class="example"><span class="sansserif">(13/10) asFloat
 &rArr; 1.3
 
 (13/10) asFloat asFraction

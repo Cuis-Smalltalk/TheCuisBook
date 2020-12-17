@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 14, 2020
+Compilation : December 17, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -101,8 +101,8 @@ details of the syntax out of this section.
 in Smalltalk:
 </p>
 <div class="float"><span id="hello"></span>
-<div class="display">
-<pre class="display"><span class="sansserif">Transcript show: &rsquo;Hello World!&rsquo;</span>
+<div class="example">
+<pre class="example">Transcript show: 'Hello World!'
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 1.1: </strong>The traditional &rsquo;Hello World!&rsquo; program</p></div></div>
@@ -138,10 +138,10 @@ shortcuts <kbd>Ctrl-a</kbd> (<em>select <b>A</b>ll</em>) then <kbd>Ctrl-d</kbd>
 (<em><b>D</b>o it</em>).
 </p>
 <div class="float"><span id="hello2"></span>
-<div class="display">
-<pre class="display"><span class="sansserif">Transcript show: &rsquo;Hello World!&rsquo;.
+<div class="example">
+<pre class="example">Transcript show: 'Hello World!'.
 Transcript newLine.
-Transcript show: &rsquo;I am Cuising&rsquo;</span>
+Transcript show: 'I am Cuising'
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 1.2: </strong>Multiple lines</p></div></div>
@@ -156,17 +156,17 @@ our first script, it is enclosed in single quotes: <code>'hello
 world!'</code>. We capitalize it with the <code>#capitalized</code> message:
 </p>
 <span id="index-string-1"></span>
-<div class="display">
-<pre class="display"><span class="sansserif">Transcript show: &rsquo;hello world!&rsquo; capitalized
+<div class="example">
+<pre class="example"><span class="sansserif">Transcript show: &rsquo;hello world!&rsquo; capitalized
 &rArr; &rsquo;Hello world!&rsquo; </span>
 </pre></div>
 
 <span id="index-string-2"></span>
 <p>Two strings are concatenated with the <code>#,</code> message:
 </p><div class="float"><span id="concatenateStrings"></span>
-<div class="display">
-<pre class="display"><span class="sansserif">Transcript show: &rsquo;Hello &rsquo;, &rsquo;my beloved &rsquo;, &rsquo;friend&rsquo;
-&rArr; &rsquo;Hello my beloved friend&rsquo;</span>
+<div class="example">
+<pre class="example">Transcript show: 'Hello ', 'my beloved ', 'friend'
+&rArr; 'Hello my beloved friend'
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 1.3: </strong>Concatenate strings</p></div></div>
@@ -184,8 +184,8 @@ world!'</code>. We capitalize it with the <code>#capitalized</code> message:
 
 <p>In your Workspace, to compute a factorial execute the example bellow
 with <kbd>Ctrl-a</kbd> then <kbd>Ctrl-p</kbd> (<em><b>P</b>rint it</em>):
-</p><div class="display">
-<pre class="display"><span class="sansserif">100 factorial
+</p><div class="example">
+<pre class="example"><span class="sansserif">100 factorial
 &rArr;  9332621544394415268169923885626670049071596826438162146859
 29638952175999932299156089414639761565182862536979208272237582
 51185210916864000000000000000000000000</span>
@@ -193,8 +193,8 @@ with <kbd>Ctrl-a</kbd> then <kbd>Ctrl-p</kbd> (<em><b>P</b>rint it</em>):
 
 <p>Cuis-Smalltalk handles very large integer number without the need to use
 special type or method. To convince yourelf try the example bellow:
-</p><div class="display">
-<pre class="display"><span class="sansserif">10000 factorial / 9999 factorial
+</p><div class="example">
+<pre class="example"><span class="sansserif">10000 factorial / 9999 factorial
 &rArr; 10000</span>
 </pre></div>
 
@@ -207,8 +207,8 @@ will return.
 <span id="index-number-1"></span>
 
 <p>As we are discussing division, you may not get the result you expect:
-</p><div class="display">
-<pre class="display"><span class="sansserif">15 / 4
+</p><div class="example">
+<pre class="example"><span class="sansserif">15 / 4
 &rArr; 15/4</span>
 </pre></div>
 
@@ -219,8 +219,8 @@ all, fractions are just division we are too lazy &ndash; because it
 is troublesome &ndash; to compute, Cuis-Smalltalk does just that!
 </p>
 <p>Try out this to understand what is happening underneath:
-</p><div class="display">
-<pre class="display"><span class="sansserif">(15 / 4) + (1 / 4)
+</p><div class="example">
+<pre class="example"><span class="sansserif">(15 / 4) + (1 / 4)
 &rArr; 4</span>
 </pre></div>
 
@@ -252,8 +252,8 @@ message:
 <span id="index-number-2"></span>
 <span id="index-number-3"></span>
 <span id="index-number-4"></span>
-<div class="display">
-<pre class="display"><span class="sansserif">2020 printStringRoman &rArr; &rsquo;MMXX&rsquo; 
+<div class="example">
+<pre class="example"><span class="sansserif">2020 printStringRoman &rArr; &rsquo;MMXX&rsquo; 
 2020 printStringWords  &rArr; &rsquo;two thousand, twenty&rsquo;
 &quot;Number as the Maya did&quot;
 2020 printStringBase: 20 &rArr; &rsquo;510&rsquo;</span>
@@ -279,8 +279,8 @@ constant expressions.  They literally are as they appear.
 <table>
 <thead><tr><th width="45%">Numeric literal</th><th width="55%">What it represents</th></tr></thead>
 <tr><td width="45%"><code>1</code></td><td width="55%">integer (decimal notation)</td></tr>
-<tr><td width="45%"><code>2r101</code></td><td width="55%">integer (binary binary)</td></tr>
-<tr><td width="45%"><code>16rFF</code></td><td width="55%">integer (hexadecimal notation)</td></tr>
+<tr><td width="45%"><code>2r101</code></td><td width="55%">integer (binary radix)</td></tr>
+<tr><td width="45%"><code>16rFF</code></td><td width="55%">integer (hexadecimal radix)</td></tr>
 <tr><td width="45%"><code>1.5</code></td><td width="55%">floating point number</td></tr>
 <tr><td width="45%"><code>2.4e7</code></td><td width="55%">floating point (exponential notation)</td></tr>
 </table>
@@ -288,8 +288,8 @@ constant expressions.  They literally are as they appear.
 <p>Depending on the value we need to use, we can mix these literal
 representations:
 </p>
-<div class="display">
-<pre class="display"><span class="sansserif">16rA + 1 + 5e-1 + 6e-2
+<div class="example">
+<pre class="example"><span class="sansserif">16rA + 1 + 5e-1 + 6e-2
 &rArr; 289/25</span>
 </pre></div>
 

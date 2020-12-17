@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 14, 2020
+Compilation : December 17, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -137,10 +137,10 @@ named <em>properties</em> which can be different for each morph.
 <p>We add two properties here:
 </p>
 <div class="float"><span id="editMorphBehaviorInspector"></span>
-<div class="display">
-<pre class="display"><span class="sansserif">self setProperty: #handlesMouseDown: toValue: true.
+<div class="example">
+<pre class="example">self setProperty: #handlesMouseDown: toValue: true.
 self setProperty: #mouseButton1Up:localPosition:
-   toValue: [:ignoredEvent :ignoredPosition| self color: Color random]</span>
+   toValue: [:ignoredEvent :ignoredPosition| self color: Color random]
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 6.1: </strong>Edit the behavior of this morph from its Inspector</p></div></div>
@@ -181,9 +181,9 @@ of the inspected object. <code>self</code> refers to the instance. Here
 the pane contains code to set the borderWidth and the borderColor.
 </p>
 <div class="float"><span id="editShapeInspector"></span>
-<div class="display">
-<pre class="display"><span class="sansserif">self borderWidth: 10.
-self borderColor: Color blue</span>
+<div class="example">
+<pre class="example">self borderWidth: 10.
+self borderColor: Color blue
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 6.2: </strong>Edit the state of this ellipse from its Inspector</p></div></div>

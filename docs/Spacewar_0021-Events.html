@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 14, 2020
+Compilation : December 17, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -117,8 +117,8 @@ class should we implement this method?</em>
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong>Exercise 8.1: </strong>Get notified of mouse move over event</p></div></div>
-<p>Once we make explicit we want the game play to receive mouse move over
+<div class="float-caption"><p><strong>Exercise 8.1: </strong>Get notified of mouse move-over event</p></div></div>
+<p>Once we make explicit we want the game play to receive mouse move-over
 events, we need to set the behavior accordingly with dedicated
 methods.
 </p>
@@ -132,18 +132,18 @@ methods.
   event object (see event classes hierarchy at the beginning of this
   chapter). An event object is interrogated about its hand with the
   <code>#hand</code> message. All in all, we want the keyboard focus to be
-  targeted toward our game play when the mouse enter:
+  targeted toward our game play when the mouse enters:
 
-<div class="display">
-<pre class="display"><span class="sansserif">event hand newKeyboardFocus: self</span>
+<div class="example">
+<pre class="example"><span class="sansserif">event hand newKeyboardFocus: self</span>
 </pre></div>
 
 </li><li> <strong>Resume the game.</strong> The continuous update of the game is
-  done through a dedicated process called stepping mechanism; it will
+  done through a dedicated process stepping mechanism, which will
   be discussed in the next chapter. The game play just asks itself to
-  resume the stepping:
-  <div class="display">
-<pre class="display"><span class="sansserif">self startStepping</span>
+  resume stepping:
+  <div class="example">
+<pre class="example"><span class="sansserif">self startStepping</span>
 </pre></div>
 </li></ul>
 
@@ -151,7 +151,7 @@ methods.
 <blockquote class="indentedblock">
 <p><em>Which message is
 sent to the game play to be notified the mouse cursor enters the game
-play area?  How should be written the matching method?</em>
+play area?  How should the matching method be written?</em>
 </p></blockquote>
 
 
@@ -169,15 +169,15 @@ the behavior when the mouse cursor leaves the game play:
 <li> <strong>Release keyboard focus.</strong> We tell Cuis-Smalltalk the game play
   does not want keyboard focus:
 
-<div class="display">
-<pre class="display"><span class="sansserif">event hand releaseKeyboardFocus: self</span>
+<div class="example">
+<pre class="example"><span class="sansserif">event hand releaseKeyboardFocus: self</span>
 </pre></div>
 
 </li><li> <strong>Pause the game.</strong> We stop the continuous
   <em>stepping</em> update of the game:
 
-<div class="display">
-<pre class="display"><span class="sansserif">self stopStepping</span>
+<div class="example">
+<pre class="example"><span class="sansserif">self stopStepping</span>
 </pre></div>
 
 </li></ul>
@@ -186,7 +186,7 @@ the behavior when the mouse cursor leaves the game play:
 <blockquote class="indentedblock">
 <p><em>Which message is
 sent to the game play to be notified the mouse cursor leaves the game
-play area?  How should be written the matching method?</em>
+play area?  How should we write the overridden method?</em>
 </p></blockquote>
 
 
@@ -209,12 +209,12 @@ Boolean. Therefore we implement the <a href="#ch08_002dFocus">Figure 8.1</a> beh
 matching <code>SpaceWar</code>&rsquo;s method <code>keyboardFocusChange:</code>
 </p>
 <div class="float"><span id="keyboardFocusEffect"></span>
-<div class="display">
-<pre class="display"><span class="sansserif">SpaceWar&gt;&gt;keyboardFocusChange: gotFocus
+<div class="example">
+<pre class="example">SpaceWar&gt;&gt;keyboardFocusChange: gotFocus
    gotFocus 
       ifTrue: [color &#x2190; self defaultColor]
       ifFalse: [color &#x2190; self defaultColor alpha: 0.5].
-   self redrawNeeded</span>
+   self redrawNeeded
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 8.1: </strong>Spacewar! keyboard focus effect</p></div></div>
@@ -240,7 +240,7 @@ key down then up event (<em>key stroke</em>). As long as our
 <code>SpaceWar</code> morph responds true to the <code>#handlesKeyboard</code>
 message, it receives the messages <code>#keyUp:</code>, <code>#keyDown:</code> and
 <code>#keyStroke:</code>. By default, the matching methods in the
-<code>Morph</code> class does nothing.
+<code>Morph</code> class do nothing.
 </p>
 <p>The argument of these messages is a <code>KeyboardEvent</code> object to
 which, among other things, you can ask the <code>#keyCharacter</code> of the
@@ -248,14 +248,14 @@ pressed key. The first player ship &ndash; the green one &ndash; is controlled
 with the keyboard arrows when there are stroked:
 </p>
 <div class="float"><span id="firstShipControl"></span>
-<div class="display">
-<pre class="display"><span class="sansserif">SpaceWar&gt;&gt;keyStroke: event
+<div class="example">
+<pre class="example">SpaceWar&gt;&gt;keyStroke: event
    | key |
    key &#x2190; event keyCharacter.
    key = Character arrowUp ifTrue: [&#x2191; ships first push].
    key = Character arrowRight ifTrue: [&#x2191; ships first right].
    key = Character arrowLeft ifTrue: [&#x2191; ships first left].
-   key = Character arrowDown ifTrue: [&#x2191; ships first fireTorpedo].</span>
+   key = Character arrowDown ifTrue: [&#x2191; ships first fireTorpedo].
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 8.2: </strong>Keystroke to control the first player ship</p></div></div>

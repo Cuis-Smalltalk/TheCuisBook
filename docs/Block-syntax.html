@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 14, 2020
+Compilation : December 17, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -100,8 +100,8 @@ last expression in its body, unless there is an explicit return (with
 &#x2191;), in which case it returns the value of the subsequent
 expression).
 </p>
-<div class="display">
-<pre class="display"><span class="sansserif">[ 1 + 2 ] value
+<div class="example">
+<pre class="example"><span class="sansserif">[ 1 + 2 ] value
 &rArr; 3</span>
 </pre></div>
 
@@ -112,8 +112,8 @@ body of the block. To evaluate a block with one parameter, you must
 send it the message <code>#value:</code> with one argument. A two-parameter
 block must be sent <code>#value:value:</code>, and so on, up to 4 arguments:
 </p>
-<div class="display">
-<pre class="display"><span class="sansserif">[ :x | 1 + x ] value: 2
+<div class="example">
+<pre class="example"><span class="sansserif">[ :x | 1 + x ] value: 2
 &rArr; 3
 [ :x :y | x + y ] value: 1 value: 2
 &rArr; 3</span>
@@ -129,8 +129,8 @@ problem.)
 vertical bars, just like local variable declarations in a
 method. Locals are declared after any arguments:
 </p>
-<div class="display">
-<pre class="display"><span class="sansserif">[ :x :y | | z | z &#x2190; x + y. z ] value: 1 value: 2
+<div class="example">
+<pre class="example"><span class="sansserif">[ :x :y | | z | z &#x2190; x + y. z ] value: 1 value: 2
 &rArr; 3</span>
 </pre></div>
 
@@ -143,8 +143,8 @@ their surrounding lexical context &ndash; those apparent in their enclosing text
 <p>The following block refers
 to the variable x of its enclosing environment:
 </p>
-<div class="display">
-<pre class="display"><span class="sansserif">|x|
+<div class="example">
+<pre class="example"><span class="sansserif">|x|
 x &#x2190; 1.
 [ :y | x + y ] value: 2
 &rArr; 3</span>
@@ -158,14 +158,14 @@ as arguments just like any other object.
 <p>Consider the example below to compute the divisors of an integer:
 </p>
 <div class="float"><span id="computeDivisors"></span>
-<div class="display">
-<pre class="display"><span class="sansserif">| n m |
+<div class="example">
+<pre class="example">| n m |
 n &#x2190; 60.
 m &#x2190; 45.
 (1 to: n) select: [:d | n \ d = 0 ].
 &quot;&rArr; #(1 2 3 4 5 6 10 12 15 20 30 60)&quot;
 (1 to: m) select: [:d | m \ d = 0]
-&quot;&rArr; #(1 3 5 9 15 45)&quot;</span>
+&quot;&rArr; #(1 3 5 9 15 45)&quot;
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 5.2: </strong>Compute divisors</p></div></div>
@@ -181,14 +181,15 @@ rewrite <a href="#computeDivisors">Example 5.2</a> to avoid code duplication?</e
 
 
 <div class="float-caption"><p><strong>Exercise 5.1: </strong>Block to compute divisors</p></div></div>
+<span id="index-number-37"></span>
 <p>The <code>SpaceWar&gt;&gt;teleport:</code> method contains a nice example
 using a block to avoid code duplication to generate random abscissa
 and ordinate coordinates. Each time a new coordinate is needed, the
 message <code>#value</code> is sent to the block of code:
 </p>
 <div class="float"><span id="teleportMethod"></span>
-<div class="display">
-<pre class="display"><span class="sansserif">SpaceWar&gt;&gt;teleport: aShip
+<div class="example">
+<pre class="example">SpaceWar&gt;&gt;teleport: aShip
   &quot;Teleport a ship at a random location&quot;
   | area randomCoordinate |
   aShip resupply.
@@ -196,7 +197,7 @@ message <code>#value</code> is sent to the block of code:
   randomCoordinate &#x2190; [(area left to: area right) atRandom].
   aShip 
     velocity: 0 @ 0;
-    morphPosition: randomCoordinate value @ randomCoordinate value</span>
+    morphPosition: randomCoordinate value @ randomCoordinate value
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 5.3: </strong><code>teleport:</code> method</p></div></div>

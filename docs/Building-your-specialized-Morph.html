@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 14, 2020
+Compilation : December 17, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -59,7 +59,7 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="Visual-with-Morph.html" rel="up" title="Visual with Morph">
-<link href="Spacewar_0021-graphics.html" rel="next" title="Spacewar! graphics">
+<link href="Spacewar_0021-Morphs.html" rel="next" title="Spacewar! Morphs">
 <link href="A-brief-introduction-to-Inspectors.html" rel="prev" title="A brief introduction to Inspectors">
 <style type="text/css">
 <!--
@@ -87,7 +87,7 @@ ul.no-bullet {list-style: none}
 <body lang="en">
 <span id="Building-your-specialized-Morph"></span><div class="header">
 <p>
-Next: <a href="Spacewar_0021-graphics.html" accesskey="n" rel="next">Spacewar! graphics</a>, Previous: <a href="A-brief-introduction-to-Inspectors.html" accesskey="p" rel="prev">A brief introduction to Inspectors</a>, Up: <a href="Visual-with-Morph.html" accesskey="u" rel="up">Visual with Morph</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Spacewar_0021-Morphs.html" accesskey="n" rel="next">Spacewar! Morphs</a>, Previous: <a href="A-brief-introduction-to-Inspectors.html" accesskey="p" rel="prev">A brief introduction to Inspectors</a>, Up: <a href="Visual-with-Morph.html" accesskey="u" rel="up">Visual with Morph</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <span id="Building-your-specialized-Morph-1"></span><h3 class="section">6.5 Building your specialized Morph</h3>
@@ -96,22 +96,24 @@ Next: <a href="Spacewar_0021-graphics.html" accesskey="n" rel="next">Spacewar! g
 <kbd>Left-Click</kbd>ed.  Create a new class just as we did with Spacewar!
 but subclass <code>EllipseMorph</code> with <code>#ColorClickEllipse</code>.
 </p>
-<div class="display">
-<pre class="display"><span class="sansserif">EllipseMorph subclass: #ColorClickEllipse
+<div class="example">
+<pre class="example"><span class="sansserif">EllipseMorph subclass: #ColorClickEllipse
    instanceVariableNames: &rdquo;
    classVariableNames: &rdquo;
    poolDictionaries: &rdquo;
    category: &rsquo;Spacewar!!&rsquo;</span>
 </pre></div>
 
+<p>Save the class definition with <kbd>Ctrl-s</kbd>.
+</p>
 <span id="index-event"></span>
 <p><kbd>Right-Click</kbd> on the <code>Message Category</code> pane and select
 <code>new category...</code>.  This brings up a number of selections and
 allows us to create new ones.  Select &ldquo;event handling testing&rdquo;.
 Then add the method <code>ColorClickEllipse&gt;&gt;handlesMouseDown:</code>.
 </p>
-<div class="display">
-<pre class="display"><span class="sansserif">handlesMouseDown: aMouseButtonEvent
+<div class="example">
+<pre class="example"><span class="sansserif">handlesMouseDown: aMouseButtonEvent
   &quot;Answer that I do handle mouseDown events&rdquo;
   &#x2191; true
 </span>
@@ -121,8 +123,8 @@ Then add the method <code>ColorClickEllipse&gt;&gt;handlesMouseDown:</code>.
 <p>Likewise, add a new catagory &ldquo;event handing&rdquo; and add the other
 method we need.
 </p>
-<div class="display">
-<pre class="display"><span class="sansserif">mouseButton1Up: aMouseButtonEvent localPosition: localEventPosition
+<div class="example">
+<pre class="example"><span class="sansserif">mouseButton1Up: aMouseButtonEvent localPosition: localEventPosition
    &quot;I ignore the mouseEvent information and change my color.&quot;
    self color: Color random</span>
 </pre></div>

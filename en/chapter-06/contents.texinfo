@@ -56,7 +56,7 @@ But the basic ideas are quite simple.
 * Submorph::
 * A brief introduction to Inspectors::
 * Building your specialized Morph::
-* Spacewar! graphics::
+* Spacewar! Morphs::
 @end menu
 
 

@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 14, 2020
+Compilation : December 17, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -93,16 +93,17 @@ Next: <a href="Block-syntax.html" accesskey="n" rel="next">Block syntax</a>, Pre
 <span id="Method-syntax-1"></span><h3 class="section">5.3 Method syntax</h3>
 <span id="index-method-13"></span>
 
-<p>Whereas expressions may be evaluated anywhere in Cuis-Smalltalk (for example,
+<p>Whereas expressions may be evaluated anywhere in Cuis-Smalltalk (for example 
 in a workspace, in a debugger, or in a browser), methods are normally
-defined in the System Browser window, or in the Debugger. Methods can
+defined in the System Browser window or in the Debugger. Methods can
 also be filed in from an external medium, but this is not the usual
 way to program in Cuis-Smalltalk.
 </p>
 <p>Programs are developed one method at a time, in the context of a given
 class. A class is defined by sending a message to an existing class,
 asking it to create a subclass, so there is no special syntax required
-for defining classes. We already learn that in a previous chapter.
+for defining classes. We are already farmiliar with this
+from previous examples.
 </p>
 <p>Let&rsquo;s take a another look to the method syntax when control flow is
 involved &ndash; our first explanation was <a href="Spacewar_0021-States-and-Behaviors.html">Spacewar! States and Behaviors</a>).
@@ -110,15 +111,15 @@ involved &ndash; our first explanation was <a href="Spacewar_0021-States-and-Beh
 <p>Here is the method <code>keyStroke:</code> in the class <code>SpaceWar</code>.
 </p>
 <div class="float"><span id="spacewarKeyStroke"></span>
-<div class="display">
-<pre class="display"><span class="sansserif">SpaceWar&gt;&gt;keyStroke: event
+<div class="example">
+<pre class="example">SpaceWar&gt;&gt;keyStroke: event
 &quot;Check for any keyboard stroke, and take action accordingly&quot;
 | key |
 key &#x2190; event keyCharacter.
 key = Character arrowUp ifTrue: [&#x2191; ships first push].
 key = Character arrowRight ifTrue: [&#x2191; ships first right].
 key = Character arrowLeft ifTrue: [&#x2191; ships first left].
-key = Character arrowDown ifTrue: [&#x2191; ships first fireTorpedo]</span>
+key = Character arrowDown ifTrue: [&#x2191; ships first fireTorpedo]
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 5.1: </strong>SpaceWar! key stroke</p></div></div>
@@ -126,8 +127,8 @@ key = Character arrowDown ifTrue: [&#x2191; ships first fireTorpedo]</span>
 </p>
 <ul>
 <li> the method pattern, containing the name (<em>i.e.</em>,
- <code>keyStroke:</code>) and any arguments, here <code>event</code> a
- keyboard event,
+ <code>keyStroke:</code>) and any arguments, here <code>event</code> is a
+ <code>KeyboardEvent</code>,
 
 </li><li> comments (these may occur anywhere, but the convention is to
  put one at the top that explains what the method does),

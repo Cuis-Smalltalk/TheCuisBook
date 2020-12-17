@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 14, 2020
+Compilation : December 17, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -139,30 +139,30 @@ want to share it.
  </li><li> Can we make something simpler?  Leave something out?
 </li></ul>
 
-<p>Now we have been doing Smalltalk code for a while
+<p>Now, we have been doing Smalltalk code for a while
 and so tend to follow good practices, but let&rsquo;s
 take another look at our code and see
 if we can make it easier for a reader to understand.
 </p>
-<p>Browsing through the code, I note a method named #left, which seems perhaps
-like an abbreviation.  I can ask for #senders to see how #left is used
+<p>Browsing through the code, I note a method named <code>#left</code>, which seems perhaps
+like an abbreviation.  I can ask for <em>senders</em> to see how <code>#left</code> is used
 in code elsewhere.
 </p>
 <div class="float"><span id="ch11_002d01_002dSendersOfLeft"></span>
 <div align="center"><img src="ch11-01-SendersOfLeft.png" alt="ch11-01-SendersOfLeft">
 </div>
 <div class="float-caption"><p><strong>Figure 10.1: </strong>Senders of <code>left</code></p></div></div>
-<p>I notice that most uses of #left are to indicate a position,
+<p>I notice that most uses of <code>#left</code> are to indicate a position,
 not take an action.  How can I fix that?
 </p>
 <p>Because people frequently want to change things for the better,
 there are a number of handy tools to help do this.
 </p>
-<p>Now I could look at our uses of #left in Spacewars!, but the Cuis IDE
+<p>Now I could look at our uses of <code>#left</code> in Spacewars!, but the Cuis IDE
 already knows how to do this!
 </p>
 <p>If I right-click on the Method Pane in the Browser, I get a context menu
-with selections to help me out. Here is choose #Rename.
+with selections to help me out. Here I choose <strong>Rename</strong>.
 </p>
 <div class="float"><span id="ch11_002d02_002dRenameLeft"></span>
 <div align="center"><img src="ch11-02-RenameLeft.png" alt="ch11-02-RenameLeft">
@@ -170,7 +170,7 @@ with selections to help me out. Here is choose #Rename.
 <div class="float-caption"><p><strong>Figure 10.2: </strong>Rename <code>left</code></p></div></div>
 <p>Now the tools that help us refactor code are quite powerful,
 so restraint is called for.  I don&rsquo;t want to change all
-uses of #left in the Cuis-Smalltalk system, just in the Spacewar! category.
+uses of <code>#left</code> in the Cuis-Smalltalk system, just in the Spacewar! category.
 </p>
 <div class="float"><span id="ch11_002d03_002dRenameInCategory"></span>
 <div align="center"><img src="ch11-03-RenameInCategory.png" alt="ch11-03-RenameInCategory">
@@ -190,8 +190,8 @@ restart the saved image which remembers the world before I made the change.
 </p>
 <div class="float"><span id="exeRenameMethod"></span>
 <blockquote class="indentedblock">
-<p><em>Rename #right to
-#turnRight.</em>
+<p><em>Rename <code>#right</code> to
+<code>#turnRight</code>.</em>
 </p></blockquote>
 
 
@@ -204,19 +204,20 @@ restart the saved image which remembers the world before I made the change.
 <div align="center"><img src="ch11-05-noseSenders.png" alt="ch11-05-noseSenders">
 </div>
 <div class="float-caption"><p><strong>Figure 10.5: </strong>Senders of <code>nose</code></p></div></div>
-<p>Hmmm, perhaps something more specific.  How about #noseDirection?
+<p>Hmmm, perhaps something more specific.  How about <code>#noseDirection</code>?
 How does that look?
 </p>
 <div class="float"><span id="ch11_002d06_002dnoseDirection"></span>
 <div align="center"><img src="ch11-06-noseDirection.png" alt="ch11-06-noseDirection">
 </div>
-<div class="float-caption"><p><strong>Figure 10.6: </strong>Rename to <code>nodeDirection</code></p></div></div>
+<div class="float-caption"><p><strong>Figure 10.6: </strong>Rename <code>nose</code> to <code>noseDirection</code></p></div></div>
 <p>OK, so there is more to explore, but this book is an <em>introduction</em>
 and we have to stop writing text somewhere.  This is a good place.
 We want to get back to writing code!
 And we look forward to seeing <em>your</em> projects!
 </p>
-<hr>
+<p>Welcome to Cuis-Smalltalk!
+</p><hr>
 <div class="header">
 <p>
 Next: <a href="Documents-Copyright.html" accesskey="n" rel="next">Documents Copyright</a>, Previous: <a href="Code-Management.html" accesskey="p" rel="prev">Code Management</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>

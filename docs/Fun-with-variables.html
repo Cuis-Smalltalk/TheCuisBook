@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 14, 2020
+Compilation : December 17, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -106,8 +106,8 @@ restricted to holding a value of a single type.
 &ndash; i.e. the class of the referenced object &ndash; can change over
 time. Observe this example:
 </p>
-<div class="display">
-<pre class="display"><span class="sansserif">| a |
+<div class="example">
+<pre class="example"><span class="sansserif">| a |
 a &#x2190; 1 / 3.
 a class
 &rArr; Fraction
@@ -118,7 +118,7 @@ a class
 </pre></div>
 
 <p>The initial value of the variable <code>a</code> was a <code>Fraction</code>
-instance, after some calculus it ends as a <code>SmallInteger</code>
+instance, after some calculation it ends as a <code>SmallInteger</code>
 instance.
 </p>
 <p>In fact to be honest, there is no such things as type, it is only
@@ -140,8 +140,8 @@ variable bound to an object too.
 </p>
 <p>Any object responds to the message <code>#printString</code>.
 </p>
-<div class="display">
-<pre class="display"><span class="sansserif">| msg |
+<div class="example">
+<pre class="example"><span class="sansserif">| msg |
 msg := &rsquo;hello world!&rsquo;.
 Transcript show: msg capitalized printString, &rsquo; is a kind of &rsquo;.
 Transcript show: msg class printString; newLine.

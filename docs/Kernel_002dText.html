@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 14, 2020
+Compilation : December 17, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -101,8 +101,8 @@ and <code>Symbol</code>. <code>String</code> instances are collections of
 <code>numericValue:</code> or converted from an integer instance with the
 <code>#asCharacter</code>:
 </p>
-<div class="display">
-<pre class="display"><span class="sansserif">Character numericValue: 65 &rArr; $A
+<div class="example">
+<pre class="example"><span class="sansserif">Character numericValue: 65 &rArr; $A
 65 asCharacter &rArr; $A</span>
 </pre></div>
 
@@ -113,9 +113,9 @@ and <code>Symbol</code>. <code>String</code> instances are collections of
 can use the <code>Character</code> instance methods:
 </p>
 <div class="float"><span id="apples12"></span>
-<div class="display">
-<pre class="display"><span class="sansserif">&rsquo;There are 12 apples.&rsquo; select: [:c |c isDigit].
-&rArr; &rsquo;12&rsquo;</span>
+<div class="example">
+<pre class="example">'There are 12 apples.' select: [:c |c isDigit].
+&rArr; '12'
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 3.13: </strong>Twelve apples</p></div></div>
@@ -152,8 +152,8 @@ the <code>String</code> class, search for method categories named like
 <code>findXXX</code> methods. Read the comments at the beginning of these
 methods:
 </p>
-<div class="display">
-<pre class="display"><span class="sansserif">findString: subString
+<div class="example">
+<pre class="example"><span class="sansserif">findString: subString
    &quot;Answer the index of subString within the receiver, starting at
    start. If the receiver does not contain subString, answer 0.&quot;
    &#x2191; self findString: subString startingAt: 1.</span>
@@ -161,8 +161,8 @@ methods:
 
 <p>Or:
 </p>
-<div class="display">
-<pre class="display"><span class="sansserif">findString: key startingAt: start caseSensitive: caseSensitive
+<div class="example">
+<pre class="example"><span class="sansserif">findString: key startingAt: start caseSensitive: caseSensitive
    &quot;Answer the index in this String at which the substring key first
    occurs, at or beyond start.  The match can be case-sensitive or
    not.  If no match is found, zero will be returned.&quot;
@@ -171,8 +171,8 @@ methods:
 
 <p>Then experiment with the potentially interesting messages in a workspace:
 </p>
-<div class="display">
-<pre class="display"><span class="sansserif">&rsquo;I love apples&rsquo; findString: &rsquo;love&rsquo; &rArr; 3 &quot;match starts at position 3&quot;
+<div class="example">
+<pre class="example"><span class="sansserif">&rsquo;I love apples&rsquo; findString: &rsquo;love&rsquo; &rArr; 3 &quot;match starts at position 3&quot;
 &rsquo;I love apples&rsquo; findString: &rsquo;hate&rsquo;
 &rArr;  0 &quot;not found&quot;
 &rsquo;We humans, we all love apples&rsquo; findString: &rsquo;we&rsquo;

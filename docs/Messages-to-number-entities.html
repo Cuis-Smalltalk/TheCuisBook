@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 14, 2020
+Compilation : December 17, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -99,8 +99,8 @@ Next: <a href="A-brief-introduction-to-the-system-Browser.html" accesskey="n" re
 <p>Earlier, we discussed how Cuis-Smalltalk knows about rational fractions.  The
 four arithmetic operations and mathematical functions are implemented
 with the binary messages understood by the rational numbers:
-</p><div class="display">
-<pre class="display"><span class="sansserif">(15 / 14) * (21 / 5) &rArr; 9 / 2
+</p><div class="example">
+<pre class="example"><span class="sansserif">(15 / 14) * (21 / 5) &rArr; 9 / 2
 (15 / 14) / ( 5 / 21) &rArr; 9 /2 
 (3 / 4) squared &rArr; 9 / 16
 (25 / 4) sqrt &rArr; 5 / 2</span>
@@ -120,8 +120,8 @@ result in decimal? One option is to write a number as a floating point literal,
 a <em>Float</em>.
 This kind of literal is written as the integer
 part and fractional parts are separated by a dot &ldquo;.&rdquo;:
-</p><div class="display">
-<pre class="display"><span class="sansserif">15.0 / 4 &rArr; 3.75
+</p><div class="example">
+<pre class="example"><span class="sansserif">15.0 / 4 &rArr; 3.75
 15 / 4.0 &rArr; 3.75</span>
 </pre></div>
 
@@ -129,8 +129,8 @@ part and fractional parts are separated by a dot &ldquo;.&rdquo;:
 <code>#asFloat</code> message. It is very useful when the integer is in a
 variable:
 </p>
-<div class="display">
-<pre class="display"><span class="sansserif">15 asFloat / 4
+<div class="example">
+<pre class="example"><span class="sansserif">15 asFloat / 4
 &rArr; 3.75</span>
 </pre></div>
 
@@ -138,16 +138,16 @@ variable:
 <p>You can also ask for division with truncation to
 get an integer result using 
 the message <code>#//</code>:
-</p><div class="display">
-<pre class="display"><span class="sansserif">15 // 4
+</p><div class="example">
+<pre class="example"><span class="sansserif">15 // 4
 &rArr; 3</span>
 </pre></div>
 
 <span id="index-number-12"></span>
 <p>The modulo reminder of the Euclidean division is computed with the message
 <code>#\\</code>:
-</p><div class="display">
-<pre class="display"><span class="sansserif">15 \\ 4
+</p><div class="example">
+<pre class="example"><span class="sansserif">15 \\ 4
 &rArr; 3</span>
 </pre></div>
 
@@ -160,14 +160,14 @@ even, prime number or divider. You just send the appropriate unary or
 keyword message to the number:
 </p>
 <div class="float"><span id="integerBasicTest"></span>
-<div class="display">
-<pre class="display"><span class="sansserif">25 odd &rArr; true
+<div class="example">
+<pre class="example">25 odd &rArr; true
 25 even &rArr; false
 25 isPrime &rArr; false
 23 isPrime &rArr; true
 91 isDivisibleBy: 7 &rArr; true
 117 isDivisibleBy: 7 &rArr; false
-117 isDivisibleBy: 9 &rArr; true</span>
+117 isDivisibleBy: 9 &rArr; true
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 2.6: </strong>Testing on integer</p></div></div>
@@ -177,8 +177,8 @@ keyword message to the number:
 Multiple and Greatest Common Divisor. A keyword message is composed of
 one or several colon(s) &ldquo;:&rdquo; to insert argument(s):
 </p>
-<div class="display">
-<pre class="display"><span class="sansserif">12 lcm: 15 &rArr; 60
+<div class="example">
+<pre class="example"><span class="sansserif">12 lcm: 15 &rArr; 60
 12 gcd: 15 &rArr; 3</span>
 </pre></div>
 
@@ -187,12 +187,12 @@ field. According to the Newton&rsquo;s law of universal gravitation, any
 object with a mass &ndash; a spaceship or a torpedo in the game &ndash; is
 subjected to the gravitational force. We compute it as a vector to
 account its direction and magnitude. The game code extract below
-shows a (simplified) mixed scalar and vector calculus done with message
+shows a (simplified) mixed scalar and vector calculation done with message
 sending (See <a href="Spacewar_0021-models.html#motionEquations">Figure 2.4</a>):
 </p>
 <div class="float"><span id="gravityVector"></span>
-<div class="display">
-<pre class="display"><span class="sansserif">-10 * self mass * owner starMass / (position r raisedTo: 3) * position</span>
+<div class="example">
+<pre class="example">-10 * self mass * owner starMass / (position r raisedTo: 3) * position
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 2.7: </strong>Computing the gravity force vector</p></div></div>

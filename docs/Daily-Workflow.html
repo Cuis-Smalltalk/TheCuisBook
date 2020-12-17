@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 14, 2020
+Compilation : December 17, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -176,7 +176,7 @@ real life example may look like:
 </p><pre class="verbatim">../cogspur/squeak Cuis5.0-4426 -s ../scripts/setUpEnvironment.st
 </pre>
 <p>We describe in detail an example of a set up script organizing the
-environment as seen in <a href="#ch10_002dImageSetUp">Figure 9.9</a>. It is interesting
+environment as seen in <a href="#ch10_002dImageSetUp">Figure 9.13</a>. It is interesting
 Smalltalk code poking around heterogeneous areas of Cuis-Smalltalk like the
 developer tools, the Morph system, the preferences and collection
 handling.
@@ -184,12 +184,12 @@ handling.
 <div class="float"><span id="ch10_002dImageSetUp"></span>
 <div align="center"><img src="ch10-ImageSetUp.png" alt="ch10-ImageSetUp">
 </div>
-<div class="float-caption"><p><strong>Figure 9.9: </strong>Environment of an image started with the set up script</p></div></div>
-<span id="index-morph-22"></span>
+<div class="float-caption"><p><strong>Figure 9.13: </strong>Environment of an image started with the set up script</p></div></div>
+<span id="index-morph-23"></span>
 <p>Let&rsquo;s start by removing the open windows:
 </p>
-<div class="display">
-<pre class="display"><span class="sansserif">| list |
+<div class="example">
+<pre class="example"><span class="sansserif">| list |
 &quot;Delete all windows but the taskbar&quot;
 list &#x2190; UISupervisor ui submorphs reject: [:aMorph |
    aMorph is: #TaskbarMorph].
@@ -197,7 +197,7 @@ list do: [:each | each delete].</span>
 </pre></div>
 
 <p>The whole user interface world of Cuis-Smalltalk is a kind of Morph, a
-<code>WorldMorph</code> instance. Its sub morphs are windows, menus, the
+<code>WorldMorph</code> instance. Its submorphs are windows, menus, the
 taskbar or any kind of morph the user can interact with. To access
 this <code>WorldMorph</code> instance you ask to the <code>UISupervisor</code>
 with the <code>#ui</code> message. Once we select all the morphs in the world
@@ -206,8 +206,8 @@ from the world.
 </p>
 <p>Next, we change the preferences:
 </p>
-<div class="display">
-<pre class="display"><span class="sansserif">| list morph |
+<div class="example">
+<pre class="example"><span class="sansserif">| list morph |
 ../..
 &quot;Change to Dark theme&quot;
 Feature require: #&rsquo;Theme-Themes&rsquo;.
@@ -231,8 +231,8 @@ occupied by the task bar, so we need to tweak its answer. Then we
 compute a quarter of this free area extent (half in width and half
 in height make a quarter of the whole free area):
 </p>
-<div class="display">
-<pre class="display"><span class="sansserif">| list morph area extent |
+<div class="example">
+<pre class="example"><span class="sansserif">| list morph area extent |
 ../..
 &quot;Compute the available free space for windows placement&quot;
 area &#x2190; RealEstateAgent maximumUsableArea
@@ -243,8 +243,8 @@ extent &#x2190; area extent // 2.</span>
 <p>Now we are ready to install a few tools. First three browsers each
 occupying a quarter of the screen:
 </p>
-<div class="display">
-<pre class="display"><span class="sansserif">&quot;Open a few System Browsers&quot;
+<div class="example">
+<pre class="example"><span class="sansserif">&quot;Open a few System Browsers&quot;
 BrowserWindow openBrowser
    morphBounds: (0 @ 0 extent: extent).
 BrowserWindow openBrowser
@@ -261,8 +261,8 @@ installed with some default contents. We need to hack a bit because
 when asking for a new Workspace, Cuis-Smalltalk does not answer the created
 instance, we have to search it in the windows of the world.
 </p>
-<div class="display">
-<pre class="display"><span class="sansserif">&quot;Open a Workspace with some default contents&quot;
+<div class="example">
+<pre class="example"><span class="sansserif">&quot;Open a Workspace with some default contents&quot;
 Workspace openWorkspace.
 morph &#x2190; UISupervisor ui submorphs detect: [:aMorph |
    aMorph class = WorkspaceWindow].

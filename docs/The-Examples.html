@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 14, 2020
+Compilation : December 17, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -97,9 +97,9 @@ Next: <a href="The-Figures.html" accesskey="n" rel="next">The Figures</a>, Previ
 <dt><a href="Writing-your-first-scripts.html#concatenateStrings">Example 1.3</a></dt><dd><p>Concatenate strings</p></dd>
 <dt><a href="Communicating-entities.html#entitiesCount">Example 2.1</a></dt><dd><p>Calculating the number of entities</p></dd>
 <dt><a href="Communicating-entities.html#classesCount">Example 2.2</a></dt><dd><p>Calculating the number of classes</p></dd>
-<dt><a href="Messages-sends-definition.html#updateShipVelocity">Example 2.3</a></dt><dd><p>Ship velocity</p></dd>
-<dt><a href="Messages-sends-definition.html#helloCascade">Example 2.4</a></dt><dd><p>Cascade of messages</p></dd>
-<dt><a href="Messages-sends-definition.html#teleportShip">Example 2.5</a></dt><dd><p>Stop and teleport spaceship at a random position</p></dd>
+<dt><a href="Message-send-definitions.html#updateShipVelocity">Example 2.3</a></dt><dd><p>Ship velocity</p></dd>
+<dt><a href="Message-send-definitions.html#helloCascade">Example 2.4</a></dt><dd><p>Cascade of messages</p></dd>
+<dt><a href="Message-send-definitions.html#teleportShip">Example 2.5</a></dt><dd><p>Stop and teleport spaceship at a random position</p></dd>
 <dt><a href="Messages-to-number-entities.html#integerBasicTest">Example 2.6</a></dt><dd><p>Testing on integer</p></dd>
 <dt><a href="Messages-to-number-entities.html#gravityVector">Example 2.7</a></dt><dd><p>Computing the gravity force vector</p></dd>
 <dt><a href="Understanding-Object-Oriented-Programming.html#askingClass">Example 3.1</a></dt><dd><p>Asking the class of an instance</p></dd>
@@ -138,7 +138,7 @@ dynamic array</p></dd>
 <dt><a href="Collections-detailed.html#convertDynArray">Example 4.15</a></dt><dd><p>Convert dynamic array</p></dd>
 <dt><a href="Collections-detailed.html#colorDict">Example 4.16</a></dt><dd><p>Dictionary of colors</p></dd>
 <dt><a href="SpaceWar_0021-collections.html#initActors">Example 4.17</a></dt><dd><p>Incomplete game initialization</p></dd>
-<dt><a href="SpaceWar_0021-collections.html#torpedoMechanic">Example 4.18</a></dt><dd><p>Torpedo mechanic</p></dd>
+<dt><a href="SpaceWar_0021-collections.html#torpedoMechanic">Example 4.18</a></dt><dd><p>Torpedo mechanics</p></dd>
 <dt><a href="SpaceWar_0021-collections.html#spaceShipMechanic">Example 4.19</a></dt><dd><p>Space ship mechanics</p></dd>
 <dt><a href="SpaceWar_0021-collections.html#reflreshGamePlay">Example 4.20</a></dt><dd><p>Regular refresh of the game play</p></dd>
 <dt><a href="SpaceWar_0021-collections.html#shipSunCollision">Example 4.21</a></dt><dd><p>Collision between the ships and the Sun</p></dd>
@@ -155,15 +155,18 @@ dynamic array</p></dd>
 torpedoes</p></dd>
 <dt><a href="A-brief-introduction-to-Inspectors.html#editMorphBehaviorInspector">Example 6.1</a></dt><dd><p>Edit the behavior of this morph from its Inspector</p></dd>
 <dt><a href="A-brief-introduction-to-Inspectors.html#editShapeInspector">Example 6.2</a></dt><dd><p>Edit the state of this ellipse from its Inspector</p></dd>
-<dt><a href="Spacewar_0021-graphics.html#initFullActors">Example 6.3</a></dt><dd><p>Complete code to initialize the Spacewar! actors</p></dd>
-<dt><a href="Spacewar_0021-graphics.html#mobileClass">Example 6.4</a></dt><dd><p>Mobile in the game play</p></dd>
-<dt><a href="Spacewar_0021-graphics.html#gravityForce">Example 6.5</a></dt><dd><p>Calculate the gravity force</p></dd>
-<dt><a href="Spacewar_0021-graphics.html#mobileUpdate">Example 6.6</a></dt><dd><p><code>Mobile</code>&rsquo;s <code>update:</code> method</p></dd>
-<dt><a href="Spacewar_0021-graphics.html#mobileDeepSpace">Example 6.7</a></dt><dd><p>Test when a mobile is going deep space</p></dd>
-<dt><a href="Spacewar_0021-graphics.html#initMobileHierarchy">Example 6.8</a></dt><dd><p>Initialize overriding in the <code>Mobile</code>
+<dt><a href="Spacewar_0021-Morphs.html#initFullActors">Example 6.3</a></dt><dd><p>Complete code to initialize the Spacewar! actors</p></dd>
+<dt><a href="Spacewar_0021-Morphs.html#mobileClass">Example 6.4</a></dt><dd><p>Mobile in the game play</p></dd>
+<dt><a href="Spacewar_0021-Morphs.html#gravityForce">Example 6.5</a></dt><dd><p>Calculate the gravity force</p></dd>
+<dt><a href="Spacewar_0021-Morphs.html#mobileUpdate">Example 6.6</a></dt><dd><p><code>Mobile</code>&rsquo;s <code>update:</code> method</p></dd>
+<dt><a href="Spacewar_0021-Morphs.html#mobileDeepSpace">Example 6.7</a></dt><dd><p>Test when a mobile is &ldquo;spaced out&rdquo;</p></dd>
+<dt><a href="Spacewar_0021-Morphs.html#initMobileHierarchy">Example 6.8</a></dt><dd><p>Initialize overriding in the <code>Mobile</code>
 hierarchy</p></dd>
 <dt><a href="Going-Vector.html#deleteMorphInstances">Example 7.1</a></dt><dd><p>Delete all instances of a given morph</p></dd>
 <dt><a href="A-Clock-Morph.html#clockDialDrawing">Example 7.2</a></dt><dd><p>Drawing the clock dial</p></dd>
+<dt><a href="Spacewar_0021-Drawing.html#vectorGraphicsNo">Example 7.3</a></dt><dd><p>We don&rsquo;t use <code>VectorGraphics</code> for performance reason</p></dd>
+<dt><a href="Spacewar_0021-Drawing.html#centralStarExtent">Example 7.4</a></dt><dd><p>Central star extent</p></dd>
+<dt><a href="Spacewar_0021-Drawing.html#centralStarDraw">Example 7.5</a></dt><dd><p>A star with a fluctuating size</p></dd>
 <dt><a href="Spacewar_0021-Events.html#keyboardFocusEffect">Example 8.1</a></dt><dd><p>Spacewar! keyboard focus effect</p></dd>
 <dt><a href="Spacewar_0021-Events.html#firstShipControl">Example 8.2</a></dt><dd><p>Keystroke to control the first player ship</p></dd>
 <dt><a href="The-Change-Set.html#changeSetContents">Example 9.1</a></dt><dd><p>Change set contents</p></dd>

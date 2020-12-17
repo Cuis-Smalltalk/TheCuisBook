@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 14, 2020
+Compilation : December 17, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -123,7 +123,7 @@ options:
    classes.
    At the right are the method selectors for strings and, in parenthesis,
    the class where they are defined.  Methods defined in class
-   <code>String</code> are in bold characters.
+   <code>String</code> itself are in bold characters.
 </p>
 <p>Selecting one class there only shows the protocol starting from
    this class down to the <code>String</code> class. If you select
@@ -173,8 +173,8 @@ defined directly in the selected class. In <a href="#ch03_002dbrowseHierarchy">F
 element. When inherited in <code>String</code>, those elements are
 <code>Character</code> instances:
 </p>
-<div class="display">
-<pre class="display"><span class="sansserif">&rsquo;1 + 3i&rsquo; before: $i
+<div class="example">
+<pre class="example"><span class="sansserif">&rsquo;1 + 3i&rsquo; before: $i
 &rArr; $3</span>
 </pre></div>
 
@@ -183,17 +183,17 @@ element. When inherited in <code>String</code>, those elements are
 <div class="float"><span id="cutString"></span>
 <blockquote class="indentedblock">
 <p><em>Find the appropriate
-method to transform &rsquo;Hello My Friend&rsquo; in &rsquo;My Friend&rsquo;?</em>
+method to transform &rsquo;Hello My Friend&rsquo; into &rsquo;My Friend&rsquo;</em>
 </p></blockquote>
 
 
 <div class="float-caption"><p><strong>Exercise 4.1: </strong>Cut a string</p></div></div>
 <p>Beware, some messages in the <code>String</code> protocol may obviously not
-work. Observe bellow, the error is thrown on a <code>Character</code>
+work. Observe below, the error is thrown on a <code>Character</code>
 instance:
 </p>
-<div class="display">
-<pre class="display"><span class="sansserif">&rsquo;Hello My Friend&rsquo; cos
+<div class="example">
+<pre class="example"><span class="sansserif">&rsquo;Hello My Friend&rsquo; cos
 &rArr; MesageNotUnderstood: Character&gt;&gt;cos</span>
 </pre></div>
 
@@ -214,8 +214,8 @@ You will use a symbol when you need to name something uniquely.
 duplicated &ndash; copying a string always results in a new string
 &ndash; however symbols are identical even when duplicated<a id="DOCF16" href="#FOOT16"><sup>16</sup></a>:
 </p>
-<div class="display">
-<pre class="display"><span class="sansserif">&rsquo;hello&rsquo; == &rsquo;hello&rsquo; copy
+<div class="example">
+<pre class="example"><span class="sansserif">&rsquo;hello&rsquo; == &rsquo;hello&rsquo; copy
 &rArr; false 
 #hello  == #hello copy
 &rArr; true</span>
@@ -225,8 +225,8 @@ duplicated &ndash; copying a string always results in a new string
 </p>
 <p>Symbols can contain space characters:
 </p>
-<div class="display">
-<pre class="display"><span class="sansserif">&rsquo;hello my friend&rsquo; asSymbol
+<div class="example">
+<pre class="example"><span class="sansserif">&rsquo;hello my friend&rsquo; asSymbol
 &rArr; #&rsquo;hello my friend&rsquo;</span>
 </pre></div>
 
@@ -236,8 +236,8 @@ are also learning quite a bit about symbols.
 </p>
 <p>Note that many <code>String</code> methods are defined to return strings.
 </p>
-<div class="display">
-<pre class="display"><span class="sansserif">&rsquo;hello my friend&rsquo; class.
+<div class="example">
+<pre class="example"><span class="sansserif">&rsquo;hello my friend&rsquo; class.
 &rArr; String
 #&rsquo;hello my friend&rsquo; class.
 &rArr; Symbol 

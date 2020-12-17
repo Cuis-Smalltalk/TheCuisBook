@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 14, 2020
+Compilation : December 17, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -172,7 +172,18 @@ matches the origin (0;0):
 <div align="center"><img src="E-exeRotateRect2.png" alt="E-exeRotateRect2">
 </div>
 <div class="float-caption"><p><strong>Figure D.4: </strong>This rectangle rotates around its center</p></div></div>
-<span id="exeFancyClock-1"></span><h4 class="subheading"><a href="A-Clock-Morph.html#exeFancyClock">Exercise 7.4</a></h4>
+<span id="exeCrossCenterMorph-1"></span><h4 class="subheading"><a href="Going-Vector.html#exeCrossCenterMorph">Exercise 7.4</a></h4>
+<div class="example">
+<pre class="example">drawOn: aCanvas
+   aCanvas strokeWidth: 20 color: Color green do: [aCanvas
+      moveToX: -100 y: -100;
+      lineToX: 100 y: 100;
+      moveToX: 100 y: -100;
+      lineToX: -100 y: 100]
+</pre></div>
+
+
+<span id="exeFancyClock-1"></span><h4 class="subheading"><a href="A-Clock-Morph.html#exeFancyClock">Exercise 7.5</a></h4>
 <p>Among the clock parts (submorphs) we only need to modify the drawing
 of the <code>ClockSecondHandMorph</code> class. The disc is surrounded with a
 thin red line and filled in yellow.

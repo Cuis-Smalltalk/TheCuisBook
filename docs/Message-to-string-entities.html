@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 14, 2020
+Compilation : December 17, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -60,7 +60,7 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="The-Message-Way-of-Life.html" rel="up" title="The Message Way of Life">
 <link href="Messages-to-number-entities.html" rel="next" title="Messages to number entities">
-<link href="Messages-sends-definition.html" rel="prev" title="Messages sends definition">
+<link href="Message-send-definitions.html" rel="prev" title="Message send definitions">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -87,7 +87,7 @@ ul.no-bullet {list-style: none}
 <body lang="en">
 <span id="Message-to-string-entities"></span><div class="header">
 <p>
-Next: <a href="Messages-to-number-entities.html" accesskey="n" rel="next">Messages to number entities</a>, Previous: <a href="Messages-sends-definition.html" accesskey="p" rel="prev">Messages sends definition</a>, Up: <a href="The-Message-Way-of-Life.html" accesskey="u" rel="up">The Message Way of Life</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Messages-to-number-entities.html" accesskey="n" rel="next">Messages to number entities</a>, Previous: <a href="Message-send-definitions.html" accesskey="p" rel="prev">Message send definitions</a>, Up: <a href="The-Message-Way-of-Life.html" accesskey="u" rel="up">The Message Way of Life</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <span id="Message-to-string-entities-1"></span><h3 class="section">2.3 Message to string entities</h3>
@@ -97,8 +97,8 @@ Next: <a href="Messages-to-number-entities.html" accesskey="n" rel="next">Messag
 <code>#at:</code> and its index position in the string as argument. Execute
 the following examples with the <kbd>Ctrl-p</kbd> shortcut:
 </p>
-<div class="display">
-<pre class="display"><span class="sansserif">&rsquo;Hello&rsquo; at: 1 &rArr; $H
+<div class="example">
+<pre class="example"><span class="sansserif">&rsquo;Hello&rsquo; at: 1 &rArr; $H
 &rsquo;Hello&rsquo; at: 5 &rArr; $o</span>
 </pre></div>
 
@@ -108,8 +108,8 @@ the following examples with the <kbd>Ctrl-p</kbd> shortcut:
 string length.
 </p>
 <span id="index-string-4"></span>
-<div class="display">
-<pre class="display"><span class="sansserif">&rsquo;Hello&rsquo; indexOf: $e
+<div class="example">
+<pre class="example"><span class="sansserif">&rsquo;Hello&rsquo; indexOf: $e
 &rArr; 2</span>
 </pre></div>
 
@@ -117,8 +117,8 @@ string length.
 <span id="index-yourself"></span>
 <p>To change one character, use the companion two keyword message
 <code>#at:put:</code>. The argument must be noted as a character:
-</p><div class="display">
-<pre class="display"><span class="sansserif">&rsquo;Hello&rsquo; at: 2 put: $a; yourself
+</p><div class="example">
+<pre class="example"><span class="sansserif">&rsquo;Hello&rsquo; at: 2 put: $a; yourself
 &rArr; &rsquo;Hallo&rsquo;</span>
 </pre></div>
 
@@ -138,8 +138,8 @@ the string &rsquo;Hello&rsquo; to become &rsquo;Belle&rsquo;</em>
 <div class="float-caption"><p><strong>Exercise 2.1: </strong>Hello to Belle</p></div></div>
 <span id="index-character"></span>
 <p>Character can be converted to integer and integer to character:
-</p><div class="display">
-<pre class="display"><span class="sansserif">$A asciiValue &rArr; 65
+</p><div class="example">
+<pre class="example"><span class="sansserif">$A asciiValue &rArr; 65
 (65 + 25) asCharacter &rArr; $Z</span>
 </pre></div>
 
@@ -148,8 +148,8 @@ the string &rsquo;Hello&rsquo; to become &rsquo;Belle&rsquo;</em>
 <p>Shuffling a string is funny but without much use. Nevertheless,
 shuffling can apply to any kind of collection, not only to string, and it
 proves to be of some use as we may see later:
-</p><div class="display">
-<pre class="display"><span class="sansserif">&rsquo;hello world&rsquo; shuffled
+</p><div class="example">
+<pre class="example"><span class="sansserif">&rsquo;hello world&rsquo; shuffled
 &rArr; &rsquo;wod llreohl&rsquo;</span>
 </pre></div>
 <p>Note that results of each shuffle are different.
@@ -157,8 +157,8 @@ proves to be of some use as we may see later:
 <span id="index-string-7"></span>
 <span id="index-message-8"></span>
 <p>Messages naturally compose.
-</p><div class="display">
-<pre class="display"><span class="sansserif">&rsquo;hello world&rsquo; shuffled asArray
+</p><div class="example">
+<pre class="example"><span class="sansserif">&rsquo;hello world&rsquo; shuffled asArray
 &rArr; #($h $d $l $  $o $w $e $l $l $o $r) </span>
 </pre></div>
 
@@ -169,16 +169,16 @@ be instances of any class.
 </p>
 <span id="index-string-8"></span>
 <p>Similarly, we can ask a string to sort its characters:
-</p><div class="display">
-<pre class="display"><span class="sansserif">&rsquo;hello world&rsquo; sort
+</p><div class="example">
+<pre class="example"><span class="sansserif">&rsquo;hello world&rsquo; sort
 &rArr; &rsquo; dehllloorw&rsquo;</span>
 </pre></div>
 
 <p>Like <code>#shuffled</code>, all collections answer to the message <code>#sorted</code>,
 which answers a sorted collection.
 <span id="index-string-9"></span>
-</p><div class="display">
-<pre class="display"><span class="sansserif">&rsquo;hello world&rsquo; sorted
+</p><div class="example">
+<pre class="example"><span class="sansserif">&rsquo;hello world&rsquo; sorted
 &rArr; #($  $d $e $h $l $l $l $o $o $r $w)</span>
 </pre></div>
 
@@ -194,7 +194,7 @@ discuss how we name instances and methods to show intent and reduce surprise.
 <hr>
 <div class="header">
 <p>
-Next: <a href="Messages-to-number-entities.html" accesskey="n" rel="next">Messages to number entities</a>, Previous: <a href="Messages-sends-definition.html" accesskey="p" rel="prev">Messages sends definition</a>, Up: <a href="The-Message-Way-of-Life.html" accesskey="u" rel="up">The Message Way of Life</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Messages-to-number-entities.html" accesskey="n" rel="next">Messages to number entities</a>, Previous: <a href="Message-send-definitions.html" accesskey="p" rel="prev">Message send definitions</a>, Up: <a href="The-Message-Way-of-Life.html" accesskey="u" rel="up">The Message Way of Life</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

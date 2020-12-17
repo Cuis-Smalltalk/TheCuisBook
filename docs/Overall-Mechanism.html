@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 14, 2020
+Compilation : December 17, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -112,8 +112,8 @@ Boolean to indicate if the instance should be notified by the
 event. Let&rsquo;s take a look at one of these methods,
 <code>handlesMouseDown:</code>, its comment is worth reading:
 </p>
-<div class="display">
-<pre class="display"><span class="sansserif">Morph&gt;&gt;handlesMouseDown: aMouseButtonEvent
+<div class="example">
+<pre class="example"><span class="sansserif">Morph&gt;&gt;handlesMouseDown: aMouseButtonEvent
 &quot;Do I want to receive mouseButton messages ?
 - #mouseButton1Down:localPosition:
 - #mouseButton1Up:localPosition:
@@ -133,12 +133,14 @@ specify this.&quot;
    &#x2191; self hasProperty: #&rsquo;handlesMouseDown:&rsquo;</span>
 </pre></div>
 
-<p>As defined by default, this method, and the other handles, checks if
-there is a homonym property. In a specific morph where we want to
-handle mouse down event, we just redefine it to return true:
+<p>As defined by default, this method and the other handlers
+check to see if an instance has defined a like named property.
 </p>
-<div class="display">
-<pre class="display"><span class="sansserif">MyMorph&gt;&gt;&gt;&gt;handlesMouseDown: aMouseButtonEvent
+<p>In a morph class where we want all instances to
+handle mouse down events, we just override the appropriate method to return true:
+</p>
+<div class="example">
+<pre class="example"><span class="sansserif">MyMorph&gt;&gt;&gt;&gt;handlesMouseDown: aMouseButtonEvent
    &#x2191; true</span>
 </pre></div>
 
@@ -147,8 +149,8 @@ handlers listed in the comment above. A <code>ScrollBar</code>, a kind of
 Morph to represent list scroll bar, scrolls its list contents when a
 mouse button 1 is pressed:
 </p>
-<div class="display">
-<pre class="display"><span class="sansserif">ScrollBar&gt;&gt;mouseButton1Down: aMouseBtnEvent position: eventPosition
+<div class="example">
+<pre class="example"><span class="sansserif">ScrollBar&gt;&gt;mouseButton1Down: aMouseBtnEvent position: eventPosition
 &quot;Update visual feedback&quot;
    self setNextDirectionFromEvent: aMouseBtnEvent.
    self scrollByPage</span>

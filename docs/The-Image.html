@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 14, 2020
+Compilation : December 17, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -93,8 +93,8 @@ Next: <a href="The-Change-Log.html" accesskey="n" rel="next">The Change Log</a>,
 <span id="The-Image-1"></span><h3 class="section">9.1 The Image</h3>
 
 <p>We already wrote about the Cuis-Smalltalk <em>image</em> (See <a href="Installing-and-configuring-Cuis_002dSmalltalk.html">Installing and configuring Cuis-Smalltalk</a>). When saving the state of the virtual machine in
-the image file, every single changes done in the environment will be
-included in the saved image: this includes the windows in the
+the image file, every single change done in the environment will be
+embodied in the saved image: this includes the windows in the
 environment, Workspace contents, newly written classes and methods,
 existing instances including the visual morphs, a debugging session
 with a System Browser, an Inspector, etc.
@@ -103,20 +103,20 @@ with a System Browser, an Inspector, etc.
 menu &rarr; <code>Save</code>... Alternatively <code>Save as...</code> saves
 the image under an alternate name provided by the user.
 </p>
-<p>Saving the image is the easiest and straightforward method to save
+<p>Saving the image is the easiest and most straightforward method to save
 your own code. But we can&rsquo;t really call that code management as your
-code is not saved in a dedicated file of its own but along the
-image. Moreover it will be unpractical to share your work with other
-person, through a version control system for example.
+code is not saved in a dedicated file of its own but mixed into other code in an
+image. Moreover it will be unpractical to share your work with others,
+for example via a version control system.
 </p>
 <p>For various reasons, an image may be in fuzzy state: the virtual
-machine may crash when running it or the environment may be in a lock
-down state. This is another drawback when using the image as your sole
-source code repository. The net result is loosing your work.
+machine may crash when running it, the file system may be unstable,
+or the environment may be in a lock
+down state. This is a drawback when using the image as your sole
+source code repository. The net result could be loosing your work.
 </p>
-<p>Another situation where you lost code is a virtual machine crash or
-you forget to save the image when quitting Cuis-Smalltalk. In the former
-situation, there is however a solution to recover your lost editing,
+<p>Where you lost code because of a virtual machine crash
+there is a solution to recover your lost editing,
 the <em>Change Log</em>.
 </p>
 

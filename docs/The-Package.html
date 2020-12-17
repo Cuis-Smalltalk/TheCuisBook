@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 14, 2020
+Compilation : December 17, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -94,17 +94,101 @@ Next: <a href="Daily-Workflow.html" accesskey="n" rel="next">Daily Workflow</a>,
 <span id="index-package-5"></span>
 <span id="index-class-14"></span>
 
-<p>A package can hold a set of classes part of the same class category;
-we already discussed it in a previous chapter, see <a href="Spacewar_0021-models.html#Spacewar_0021-package">Spacewar! package</a>.
+<p>A package can hold a set of classes part of the same class category.
 </p>
-<p>For the record, a package is defined with the class category we want
-to turn as a package. Our Spacewar! game classes are part of the class
-category <code>Spacewar</code>. To create the related package we open the
-Installed Package tool, after pressing the <code>new</code> button we just
-key in <code>Spacewar</code> in.
+<p>Let&rsquo;s save our <code>Morphic-Learning</code> category as a package
+using our Installed Packages Browser.
+</p>
+<p>...World menu &rarr; <code>Open...</code> &rarr;
+<code>Installed Packages</code>...
+</p>
+<div class="float"><span id="ch10_002dPackage_002dwith_002drequirement"></span>
+<div align="center"><img src="ch10-Package-with-requirement.png" alt="ch10-Package-with-requirement">
+</div>
+<div class="float-caption"><p><strong>Figure 9.7: </strong>Installed Packages Browser</p></div></div>
+<p>Note that we invoked <code>Feature require:
+'Morphic-Widgets-Extras'</code> and <code>Feature require:
+'VectorGraphics'</code> above.
 </p>
 <span id="index-package-6"></span>
-<p>But we can do more. We can include several class categories in one
+
+<p>Looking at the package names, we can observe several things of note:
+</p>
+<ul>
+<li> Each package is versioned; <em>VectorGraphics</em> has version
+  1, revision 180.
+  
+</li><li> There is a package <em>Collections-CompactArrays</em> which we
+  never asked for.
+  
+</li><li> Looking at the lower pane, note that the
+  Collections-CompactArrays package is <strong>required</strong> by package
+  VectorGraphics.
+  
+</li></ul>
+
+<p>Now this is important.  When a packaged Feature is required, it may
+specify that it also requires packages to work properly, and
+in fact to specify that they be up to a specific version level.
+</p>
+<p>This is the key to being able to
+safely compose packages which have requirements.
+</p>
+<p>OK, let&rsquo;s click on the <code>New</code> button and type Morphic-Learning
+into the prompt.  This results in a new package with the same name as
+our <code>Morphic-Learning</code> category.  Note that this is version
+1, revision 0 (1.0 at right) and that the package has yet to be saved.
+</p>
+<div class="float"><span id="ch10_002dNewPackage_002dMorphic_002dLearning"></span>
+<div align="center"><img src="ch10-NewPackage-Morphic-Learning.png" alt="ch10-NewPackage-Morphic-Learning">
+</div>
+<div class="float-caption"><p><strong>Figure 9.8: </strong>New Package &ndash; <code>Morphic-Learning</code></p></div></div>
+<p>Remember that to create our <code>ClockMorph</code> we required the
+packaged VectorGraphics Feature, so to be able to load our package
+which makes use of this we need to select our new package and
+click on the <code>add Requirement</code> button at center, right.
+</p>
+<p>This brings up a list of loaded packages to choose from.
+</p>
+<div class="float"><span id="ch10_002dAdd_002dRequirement"></span>
+<div align="center"><img src="ch10-Add-Requirement.png" alt="ch10-Add-Requirement">
+</div>
+<div class="float-caption"><p><strong>Figure 9.9: </strong>Select package (or Cuis base version) to require</p></div></div>
+<p>Now when we <code>save</code> our package, we see the pathname where the package
+file was created.  We can now safely email this file, check it into a version
+control system, make a copy to our backup thumb drive.
+</p>
+<div class="float"><span id="ch10_002dSaved_002dwith_002drequirement"></span>
+<div align="center"><img src="ch10-Saved-with-requirement.png" alt="ch10-Saved-with-requirement">
+</div>
+<div class="float-caption"><p><strong>Figure 9.10: </strong>Saved package &ndash; <code>Morphic-Learning</code></p></div></div>
+<p>As mentioned above, package files are just text files with a special format
+which Cuis-Smalltalk knows how to load.  If you open a File List browser and
+view the package file, you will see information on how the package
+was created, what it provides and requires, and, if you filled in the
+comment box in the Installed Packages browser, a description.
+</p>
+<div class="float"><span id="exeDescribePackage"></span>
+<blockquote class="indentedblock">
+<p><em>Type &ldquo;Morphic
+Toys&rdquo; into the comment box, re-save your package, and
+(re)select the package in a File List to see your package
+description.</em>
+</p></blockquote>
+
+
+<div class="float-caption"><p><strong>Exercise 9.1: </strong>Describe a package</p></div></div>
+<div class="float"><span id="exeSavePkgSpacewar"></span>
+<blockquote class="indentedblock">
+<p><em>If you have
+not already done so, create and save a <a href="Spacewar_0021-models.html#Spacewar_0021-package">Spacewar! package</a>.  There are no additional requirements to specify.</em>
+</p></blockquote>
+
+
+<div class="float-caption"><p><strong>Exercise 9.2: </strong>Save Spacewar! package</p></div></div>
+<span id="index-package-7"></span>
+<p>There are other interesting things we can do with packages.
+We can include several class categories in a single
 package. Consider we want to span our CuisBook classes in two
 categories <code>TheCuisBook-Models</code> and <code>TheCuisBook-Views</code>. A
 new package created with the name <code>TheCuisBook</code> includes these
@@ -130,29 +214,29 @@ on disk.</em>
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong>Exercise 9.1: </strong>Two class categories, one package</p></div></div>
-<span id="index-package-7"></span>
+<div class="float-caption"><p><strong>Exercise 9.3: </strong>Two class categories, one package</p></div></div>
+<span id="index-package-8"></span>
 <p>Imagine we need to print the page number of the <code>TheBook</code> table
 of contents as lower cased roman number, as we do with the printed
 version of this book. The code is very simple:
 </p>
-<div class="display">
-<pre class="display"><span class="sansserif">4 printStringRoman asLowercase
+<div class="example">
+<pre class="example"><span class="sansserif">4 printStringRoman asLowercase
 &rArr; &rsquo;iv&rsquo;</span>
 </pre></div>
 
 <p>Instead of invoking this sequence of messages each time we need it, we
  add a dedicated message to the <code>Integer</code> class:
 </p>
-<div class="display">
-<pre class="display"><span class="sansserif">Integer&gt;&gt;printStringToc
+<div class="example">
+<pre class="example"><span class="sansserif">Integer&gt;&gt;printStringToc
    &#x2191; self printStringRoman asLowercase</span>
 </pre></div>
 
 <p>Now within our <code>TheBook</code>&rsquo;s methods we just do things like:
 </p>
-<div class="display">
-<pre class="display"><span class="sansserif">../..
+<div class="example">
+<pre class="example"><span class="sansserif">../..
  aPage &#x2190; Page new.
  aPage number: 1 printStringToc.
  ../..</span>
@@ -162,12 +246,12 @@ version of this book. The code is very simple:
 package we extend the <code>Integer</code> class with a method
 <code>printStringToc</code>, however this method addition is part of the
 Cuis-Smalltalk core system and its associated default change set. See
-<a href="#ch10_002dChangeSetToCore">Figure 9.7</a>, the Change Sorter tool exactly shows that.
+<a href="#ch10_002dChangeSetToCore">Figure 9.11</a>, the Change Sorter tool exactly shows that.
 </p>
 <div class="float"><span id="ch10_002dChangeSetToCore"></span>
 <div align="center"><img src="ch10-ChangeSetToCore.png" alt="ch10-ChangeSetToCore">
 </div>
-<div class="float-caption"><p><strong>Figure 9.7: </strong>Change Sorter, supplementary method to core</p></div></div>
+<div class="float-caption"><p><strong>Figure 9.11: </strong>Change Sorter, supplementary method to core</p></div></div>
 <p>Therefore when saving our <code>TheBook</code> package this method is not
 included and it is lost when quitting Cuis-Smalltalk. To include it in our
 package we categorize it in a method category with the
@@ -185,7 +269,7 @@ to get an update on the package contents.
 <div class="float"><span id="ch10_002dBrowsePackageChange"></span>
 <div align="center"><img src="ch10-BrowsePackageChange.png" alt="ch10-BrowsePackageChange">
 </div>
-<div class="float-caption"><p><strong>Figure 9.8: </strong>Package with extension to the <code>Integer</code> class of the
+<div class="float-caption"><p><strong>Figure 9.12: </strong>Package with extension to the <code>Integer</code> class of the
 <code>Kernel-Numbers</code> system class
 category</p></div></div>
 <p>Observe how each category &ndash; class or method one &ndash; of an extension is

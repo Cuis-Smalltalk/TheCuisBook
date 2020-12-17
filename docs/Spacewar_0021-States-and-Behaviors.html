@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 14, 2020
+Compilation : December 17, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -141,7 +141,7 @@ game:
   is an <code>Array</code> instance, its size is fixed to two elements.
   
 </li><li> <code>torpedoes</code> is a collection of the fired torpedoes
-  in the game play. Their quantity is variable, a dynamic
+  in the game play. As this quantity is variable, a dynamic
   <code>OrderedCollection</code> makes sense.
 
 </li></ul>
@@ -203,7 +203,7 @@ regarding its variables are needed.
 <p>A few word regarding the euclidean coordinates: the origin of our
 orthonormal frame is the central star, its first vector is oriented
 toward the right of the screen, and the second one toward the top of
-the screen. This choice ease the computation of the ship acceleration,
+the screen. This choice eases the computation of the ship&rsquo;s acceleration,
 velocity and position.
 </p>
 <span id="Torpedo"></span><h3 class="heading"><code>Torpedo</code></h3>
@@ -212,7 +212,7 @@ velocity related to the ship velocity. Once the torpedo life span
 counter reaches zero, it self destructs.
 </p>
 <ul>
-<li> <code>position</code> is a 2D screen coordinates, a
+<li> <code>position</code> is a 2D screen coordinate, a
   <code>Point</code> instance. Unlike the ship it does not accelerate based
   on the gravity pull of the central star. Indeed, a torpedo does not
   come with a mass state.  For our purposes it is essentially
@@ -242,12 +242,12 @@ character. Finally, save the updated class definition with
 <kbd>Ctrl-s</kbd> shortcut:
 </p>
 <div class="float"><span id="torpedoClassVariables"></span>
-<div class="display">
-<pre class="display"><span class="sansserif">Object subclass: #Torpedo
-   instanceVariableNames: &rsquo;position velocity lifeSpan&rsquo;
-   classVariableNames: &rdquo;
-   poolDictionaries: &rdquo;
-   category: &rsquo;Spacewar!&rsquo;</span>
+<div class="example">
+<pre class="example">Object subclass: #Torpedo
+   instanceVariableNames: 'position velocity lifeSpan'
+   classVariableNames: ''
+   poolDictionaries: ''
+   category: 'Spacewar!'
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 3.14: </strong><code>Torpedo</code> class with its instance variables</p></div></div>
@@ -278,14 +278,16 @@ character. Finally, save the updated class definition with
 
 <p>To write these behaviors in the Browser, first select the class then
 the method category you want &ndash; when none, select <code>-- all
---</code>. In the code pane below appears a method template:
+--</code>.
+</p>
+<p>In the code pane below appears a method template:
 </p>
 <div class="float"><span id="methodTemplate"></span>
-<div class="display">
-<pre class="display"><span class="sansserif">messageSelectorAndArgumentNames
+<div class="example">
+<pre class="example">messageSelectorAndArgumentNames
    &quot;comment stating purpose of message&quot;
    | temporary variable names |
-   statements</span>
+   statements
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 3.15: </strong>Method template</p></div></div>
@@ -308,8 +310,8 @@ the method category you want &ndash; when none, select <code>-- all
 
 <p>The getter <code>mass</code> on <code>SpaceShip</code> is written as:
 </p>
-<div class="display">
-<pre class="display"><span class="sansserif">SpaceShip&gt;&gt;mass
+<div class="example">
+<pre class="example"><span class="sansserif">SpaceShip&gt;&gt;mass
    &#x2191; mass</span>
 </pre></div>
 
@@ -336,8 +338,8 @@ so a <em>setter</em> keyword message is necessary.
 To set the name of a space ship we add the
 following method:
 </p>
-<div class="display">
-<pre class="display"><span class="sansserif">SpaceShip&gt;&gt;name: aString
+<div class="example">
+<pre class="example"><span class="sansserif">SpaceShip&gt;&gt;name: aString
    name &#x2190; aString</span>
 </pre></div>
 
@@ -369,13 +371,13 @@ appropriate setters.</em>
 <p>Observe how we do not have a setter message for the space ship
 <code>mass</code> attribute. Indeed, it does not make sense to change
 the mass of a ship from another object. In fact, if we consider both
-player ship to be of equal mass, we should remove the <code>mass</code>
+player ships to be of equal mass, we should remove the <code>mass</code>
 variable and edit the <code>mass</code> method to return a literal number:
 </p>
 <div class="float"><span id="methodConstant"></span>
-<div class="display">
-<pre class="display"><span class="sansserif">SpaceShip&gt;&gt;mass
-   &#x2191; 1</span>
+<div class="example">
+<pre class="example">SpaceShip&gt;&gt;mass
+   &#x2191; 1
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 3.16: </strong>A method returning a constant</p></div></div>
@@ -424,13 +426,13 @@ instance variables. When we create a new space ship object we want to
 set its default position, speed, acceleration:
 </p>
 <div class="float"><span id="initSpaceShip"></span>
-<div class="display">
-<pre class="display"><span class="sansserif">SpaceShip&gt;&gt;initialize
+<div class="example">
+<pre class="example">SpaceShip&gt;&gt;initialize
    super initialize.
    heading &#x2190; Float halfPi.
    velocity &#x2190; 0 @ 0.
    position &#x2190; 100 @ 100.
-   acceleration &#x2190; 0</span>
+   acceleration &#x2190; 0
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 3.17: </strong>Initialize the space ship</p></div></div>

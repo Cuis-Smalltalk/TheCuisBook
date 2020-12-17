@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 14, 2020
+Compilation : December 17, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -122,8 +122,8 @@ create the necessary collections.
 <p>See below an incomplete implementation of this method:
 </p>
 <div class="float"><span id="initActors"></span>
-<div class="display">
-<pre class="display"><span class="sansserif">SpaceWar&gt;&gt;initializeActors
+<div class="example">
+<pre class="example">SpaceWar&gt;&gt;initializeActors
    centralStar &#x2190; CentralStar new.
    ../..
    ships first 
@@ -131,7 +131,7 @@ create the necessary collections.
       position: 200 @ 200.
    ships second
       color: Color red;
-      position: -200 @ -200</span>
+      position: -200 @ -200
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 4.17: </strong>Incomplete game initialization</p></div></div>
@@ -158,21 +158,21 @@ elapsed. The <code>t</code> parameter in the <code>#update:</code> message is
 this time interval.
 </p>
 <div class="float"><span id="torpedoMechanic"></span>
-<div class="display">
-<pre class="display"><span class="sansserif">Torpedo&gt;&gt;update: t
+<div class="example">
+<pre class="example">Torpedo&gt;&gt;update: t
 &quot;Update the torpedo position&quot;
    position &#x2190; velocity * t + position.
-   ../..</span>
+   ../..
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 4.18: </strong>Torpedo mechanic</p></div></div>
+<div class="float-caption"><p><strong>Example 4.18: </strong>Torpedo mechanics</p></div></div>
 <p>A space ship is put under the strain of the star&rsquo;s gravity pull and
 the acceleration of its engines. Therefore its velocity and position
 change accordingly to the mechanical laws of physics.
 </p>
 <div class="float"><span id="spaceShipMechanic"></span>
-<div class="display">
-<pre class="display"><span class="sansserif">SpaceShip&gt;&gt;update: t
+<div class="example">
+<pre class="example">SpaceShip&gt;&gt;update: t
 &quot;Update the ship position and velocity&quot;
    | ai ag newVelocity t |
    &quot;acceleration vectors&quot;
@@ -181,16 +181,17 @@ change accordingly to the mechanical laws of physics.
    newVelocity &#x2190; (ai + ag) * t + velocity.
    position &#x2190; (0.5 * (ai + ag) * t squared) + (velocity * t) + position.
    velocity &#x2190; newVelocity.
-   ../..</span>
+   ../..
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 4.19: </strong>Space ship mechanics</p></div></div>
 <blockquote class="indentedblock">
 <p>&nbsp;<img src="note.png" alt="note">
 <br>
-Remember, regarding arithmetic operators Cuis-Smalltalk does not
-follow the mathematics precedence. There are ordinary <strong>binary
-messages</strong> whose precedence are from the left to the right when there
+Remember that Smalltalk does not
+follow the mathematics precedence of arithmetic operators.
+These are seen as ordinary <strong>binary
+messages</strong> which are evaluated from the left to the right when there
 is no parenthesis. For example, in the code fragment
 <code>...(velocity * t)...</code>, the parenthesis are mandatory to get
 the expected computation.
@@ -202,20 +203,20 @@ actors. A <code>stepAt:</code> method is called at a regular interval of time
 determined by the <code>stepTime</code> method:
 </p>
 <div class="float"><span id="reflreshGamePlay"></span>
-<div class="display">
-<pre class="display"><span class="sansserif">SpaceWar&gt;&gt;stepTime
+<div class="example">
+<pre class="example">SpaceWar&gt;&gt;stepTime
 &quot;millisecond&quot;
    &#x2191; 20
 
 SpaceWar&gt;&gt;stepAt: millisecondSinceLast
    ../..
    ships do: [:each | each unpush].
-   ../..</span>
+   ../..
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 4.20: </strong>Regular refresh of the game play</p></div></div>
-<p>In the <code>stepAt:</code> method, we left out intentionally the details to
-update the ships and the torpedoes positions. Note: each ship is sent
+<p>In the <code>stepAt:</code> method, we intentionally left out the details to
+update the ship and torpedoe positions. Note: each ship is sent
 regularly an <code>#unpush</code> message to reset its previous <code>#push</code>
 acceleration.
 </p>
@@ -229,19 +230,19 @@ and the torpedoes positions and velocities.</em>
 <div class="float-caption"><p><strong>Exercise 4.18: </strong>Update all ships and torpedoes</p></div></div>
 
 <p>Among other things, the game play handles the collisions between the
-various protagonists. Enumerators are very handy.
+various protagonists. Enumerators are very handy for this.
 </p>
 <p>Ships are hold in array of size 2, we just iterate it with a <code>#do:</code>
 message and a dedicated block of code:
 </p>
 <div class="float"><span id="shipSunCollision"></span>
-<div class="display">
-<pre class="display"><span class="sansserif">SpaceWar&gt;&gt;collisionsShipsStar
+<div class="example">
+<pre class="example">SpaceWar&gt;&gt;collisionsShipsStar
    ships do: [:aShip | 
       (aShip morphPosition dist: centralStar morphPosition) &lt; 20 ifTrue: [
          aShip flashWith: Color red.
          self teleport: aShip]
-   ]</span>
+   ]
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 4.21: </strong>Collision between the ships and the Sun</p></div></div><hr>

@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 14, 2020
+Compilation : December 17, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -150,8 +150,8 @@ list.
 <p>From a Workspace, these methods are called with the message name sent
 directly to the class:
 </p>
-<div class="display">
-<pre class="display"><span class="sansserif">Float e
+<div class="example">
+<pre class="example"><span class="sansserif">Float e
 &rArr; 2.718281828459045
 Float epsilon
 &rArr; 2.220446049250313e-16
@@ -180,18 +180,18 @@ this menu go away.
 <code>Float</code>, it throws an error and opens the red debugger
 window. Just close the debug window for now to ignore the result.
 </p>
-<div class="display">
-<pre class="display"><span class="sansserif">3.14 pi
+<div class="example">
+<pre class="example"><span class="sansserif">3.14 pi
 &rArr; MessageNotUnderstood: SmallFloat64&gt;&gt;pi
 Float pi e
 &rArr; MessageNotUnderstood: SmallFloat64&gt;&gt;e</span>
 </pre></div>
 
 <p>Often these class methods are used to access constant value as seen in
-the previous example or to create a new instances:
+the previous example or to create a new instance:
 </p>
-<div class="display">
-<pre class="display"><span class="sansserif">OrderedCollection new
+<div class="example">
+<pre class="example"><span class="sansserif">OrderedCollection new
 &rArr; Create a new empty ordered collection
 Fraction numerator: 1 denominator: 3
 &rArr; 1/3 &quot;a fraction instance&quot;
@@ -216,8 +216,8 @@ is pressed to see this list.
 <p>In a Workspace, this methods are called with the message name sent
 directly to an instance:
 </p>
-<div class="display">
-<pre class="display"><span class="sansserif">-10.12 abs &rArr; 10.12
+<div class="example">
+<pre class="example"><span class="sansserif">-10.12 abs &rArr; 10.12
 3.14 cos &rArr; -0.9999987317275395
 -10.12 * 2 &rArr; -20.24</span>
 </pre></div>
@@ -225,8 +225,8 @@ directly to an instance:
 <p>Instance method message can not be sent directly to a class, you need
 to instantiate first an object:
 </p>
-<div class="display">
-<pre class="display"><span class="sansserif">Float cos
+<div class="example">
+<pre class="example"><span class="sansserif">Float cos
 &rArr; MessageNotUnderstood: Float class&gt;&gt;cos
 Fraction squared
 &rArr; MessageNotUnderstood: Fraction class&gt;&gt;squared
@@ -237,8 +237,8 @@ OrderedCollection add: 10
 <p>Of course you can mix both class and instance methods, as long as you
 send the message to the appropriate class or instance:
 </p>
-<div class="display">
-<pre class="display"><span class="sansserif">Float pi cos
+<div class="example">
+<pre class="example"><span class="sansserif">Float pi cos
 &rArr; -1.0
 Float e ln
 &rArr; 1.0 
@@ -254,8 +254,8 @@ methods. This portion of code updates the orientation of a torpedo
 according to its velocity vector:
 </p>
 <div class="float"><span id="torpedoOrientation"></span>
-<div class="display">
-<pre class="display"><span class="sansserif">self rotation: (velocity y arcTan: velocity x) + Float halfPi scale: 1</span>
+<div class="example">
+<pre class="example">self rotation: (velocity y arcTan: velocity x) + Float halfPi scale: 1
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 3.2: </strong>Aligning a torpedo with its velocity direction</p></div></div>

@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 14, 2020
+Compilation : December 17, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -120,8 +120,8 @@ class. Of course we need to use the System Browser:
 </li><li> In the <code>Method Category</code> pane, select the category
  <code>-- all --</code>. A method source code template shows up in the pane
  bellow:
-<div class="display">
-<pre class="display"><span class="sansserif">messageSelectorAndArgumentNames
+<div class="example">
+<pre class="example"><span class="sansserif">messageSelectorAndArgumentNames
   &quot;comment stating purpose of message&quot;
   | temporary variable names |
   statements</span>
@@ -136,16 +136,16 @@ class. Of course we need to use the System Browser:
 </p>
 
 <div class="float"><span id="initSpacewar"></span>
-<div class="display">
-<pre class="display"><span class="sansserif">SpaceWar&gt;&gt;initialize
+<div class="example">
+<pre class="example">SpaceWar&gt;&gt;initialize
   &quot;We want to capture keyboard and mouse events, 
   start the game loop(step) and initialize the actors.&quot;
   super initialize.
   color &#x2190; self defaultColor.
-  self setProperty: #&rsquo;handlesKeyboard&rsquo; toValue: true.
-  self setProperty: #&rsquo;handlesMouseOver:&rsquo; toValue: true.
+  self setProperty: #'handlesKeyboard' toValue: true.
+  self setProperty: #'handlesMouseOver:' toValue: true.
   self startSteppingStepTime: self stepTime.
-  self initializeActors</span>
+  self initializeActors
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 5.7: </strong>Initialize <code>SpaceWar</code></p></div></div>
@@ -176,8 +176,8 @@ of the <a href="Spacewar_0021-States-and-Behaviors.html#simpleControls">control 
 control methods of the <code>SpaceShip</code> class are rewritten as:
 </p>
 <div class="float"><span id="shipControls"></span>
-<div class="display">
-<pre class="display"><span class="sansserif">SpaceShip&gt;&gt;push
+<div class="example">
+<pre class="example">SpaceShip&gt;&gt;push
   &quot;Init an accelaration boost&quot;
   fuel isZero ifTrue: [&#x2191; self].
   fuel &#x2190; fuel - 1.
@@ -193,7 +193,7 @@ SpaceShip&gt;&gt;right
   
 SpaceShip&gt;&gt;left
   &quot;Rotate the ship to its left&quot;
-  self rotateBy: -0.1</span>
+  self rotateBy: -0.1
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 5.8: </strong>Ship controls</p></div></div>
@@ -206,15 +206,15 @@ category named <code>control</code>.</em>
 
 <div class="float-caption"><p><strong>Exercise 5.4: </strong>Categorize control methods</p></div></div>
 <p>Control will not be complete without the method to fire a torpedo. It
-is more complex as a torpedo must be correctly initialized,
-though. Indeed a space ship is most of the time in motion, and last
-but not the least, its heading and velocity direction are most of the
-time different. Therefore the torpedo must be set up according to the
-space ship position, heading and velocity before being fired.
+is more complex to correctly initialize a torpedo.
+This is because a space ship is typically in motion, and in addition
+its heading and velocity are changing frequently.
+Therefore the torpedo must be set up according to the current 
+space ship position, heading, and velocity before being fired.
 </p>
 <div class="float"><span id="fireTorpedo"></span>
-<div class="display">
-<pre class="display"><span class="sansserif">SpaceShip&gt;&gt;fireTorpedo
+<div class="example">
+<pre class="example">SpaceShip&gt;&gt;fireTorpedo
   &quot;Fire a torpedo in the direction of
   the ship heading with its velocity&quot;
   | torpedo | 
@@ -226,7 +226,7 @@ space ship position, heading and velocity before being fired.
     rotateBy: location radians;
     velocity: velocity;
     color: color muchLighter.
-  owner addTorpedo: torpedo</span>
+  owner addTorpedo: torpedo
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 5.9: </strong>Firing a torpedo from a space ship in motion</p></div></div>
@@ -257,8 +257,8 @@ accordingly? (Adapt from <a href="SpaceWar_0021-collections.html#shipSunCollisio
 torpedoes required two enumerators with nested blocks of code:
 </p>
 <div class="float"><span id="shipsTorpedoesCollision"></span>
-<div class="display">
-<pre class="display"><span class="sansserif">SpaceWar&gt;&gt;collisionsShipsTorpedoes
+<div class="example">
+<pre class="example">SpaceWar&gt;&gt;collisionsShipsTorpedoes
 ships do: [:aShip | 
   torpedoes do: [:aTorpedo |
     (aShip morphPosition dist: aTorpedo morphPosition) &lt; 15 ifTrue: [
@@ -267,7 +267,7 @@ ships do: [:aShip |
       self destroyTorpedo: aTorpedo.
       self teleport: aShip]
   ]
-]</span>
+]
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 5.10: </strong>Collision between the ships and the

@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 14, 2020
+Compilation : December 17, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -108,8 +108,8 @@ and collections, with blocks as arguments.
 <code>#ifTrue:</code>, <code>#ifFalse:</code> or <code>#ifTrue:ifFalse:</code> to the result
 of a boolean expression:
 </p>
-<div class="display">
-<pre class="display"><span class="sansserif">(17 * 13 &gt; 220)
+<div class="example">
+<pre class="example"><span class="sansserif">(17 * 13 &gt; 220)
   ifTrue: [ &rsquo;bigger&rsquo; ]
   ifFalse: [ &rsquo;smaller&rsquo; ]
 &rArr; &rsquo;bigger&rsquo;</span>
@@ -124,8 +124,8 @@ library. <code>Boolean</code> is the abstract superclass of the
 by considering the method <code>ifTrue:ifFalse:</code>, which takes two
 blocks as arguments:
 </p>
-<div class="display">
-<pre class="display"><span class="sansserif">(4 factorial &gt; 20) ifTrue: [ &rsquo;bigger&rsquo; ] ifFalse: [ &rsquo;smaller&rsquo; ]
+<div class="example">
+<pre class="example"><span class="sansserif">(4 factorial &gt; 20) ifTrue: [ &rsquo;bigger&rsquo; ] ifFalse: [ &rsquo;smaller&rsquo; ]
 &rArr; &rsquo;bigger&rsquo;</span>
 </pre></div>
 
@@ -133,12 +133,12 @@ blocks as arguments:
 concrete subclasses <code>True</code> and <code>False</code>:
 </p>
 <div class="float"><span id="ifTrueIfFalse"></span>
-<div class="display">
-<pre class="display"><span class="sansserif">True&gt;&gt;ifTrue: trueAlternativeBlock ifFalse: falseAlternativeBlock
+<div class="example">
+<pre class="example">True&gt;&gt;ifTrue: trueAlternativeBlock ifFalse: falseAlternativeBlock
   &#x2191; trueAlternativeBlock value
 
 False&gt;&gt;ifTrue: trueAlternativeBlock ifFalse: falseAlternativeBlock
-  &#x2191; falseAlternativeBlock value</span>
+  &#x2191; falseAlternativeBlock value
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 5.4: </strong>Implementations of ifTrue:ifFalse:</p></div></div>
@@ -151,10 +151,10 @@ in this way for <code>True</code> and <code>False</code>. Look at another
 example:
 </p>
 <div class="float"><span id="negation"></span>
-<div class="display">
-<pre class="display"><span class="sansserif">True&gt;&gt;not
-   &quot;Negation&mdash;-answer false since the receiver is true.&quot;
-   &#x2191; false</span>
+<div class="example">
+<pre class="example">True&gt;&gt;not
+   &quot;Negation----answer false since the receiver is true.&quot;
+   &#x2191; false
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 5.5: </strong>Implementing negation</p></div></div>
@@ -162,8 +162,8 @@ example:
 <code>ifTrue:</code>, <code>ifFalse:</code>, <code>ifFalse:ifTrue</code>. You also
 have the choice between eager and lazy conjunctions and disjunctions:
 </p>
-<div class="display">
-<pre class="display"><span class="sansserif">(1 &gt; 2) &amp; (3 &lt; 4)
+<div class="example">
+<pre class="example"><span class="sansserif">(1 &gt; 2) &amp; (3 &lt; 4)
 &rArr; false  &quot;must evaluate both sides&quot;
 (1 &gt; 2) and: [ 3 &lt; 4 ]
 &rArr; false  &quot;only evaluate receiver&quot;
@@ -203,14 +203,14 @@ lost in deep space. It depends on two conditions:
 <p>Of course, the condition #2 is only tested when condition #1 is true.
 </p>
 <div class="float"><span id="shipLost"></span>
-<div class="display">
-<pre class="display"><span class="sansserif">&quot;Are we out of screen?
+<div class="example">
+<pre class="example">&quot;Are we out of screen?
 If so we move the mobile to the other corner
 and slow it down by a factor of 2&quot;
 (self isInOuterSpace and: [self isGoingOuterSpace])
   ifTrue: [
      velocity &#x2190; velocity / 2.
-     self morphPosition: self morphPosition negated]</span>
+     self morphPosition: self morphPosition negated]
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 5.6: </strong>Ship lost in space</p></div></div>
@@ -224,16 +224,16 @@ or collections. Since the exit condition for a loop may be repeatedly
 evaluated, it should be a block rather than a boolean value. Here is
 an example of a very procedural loop:
 </p>
-<div class="display">
-<pre class="display"><span class="sansserif">n &#x2190; 1.
+<div class="example">
+<pre class="example"><span class="sansserif">n &#x2190; 1.
 [ n &lt; 1000 ] whileTrue: [ n &#x2190; n * 2 ].
 n &rArr; 1024</span>
 </pre></div>
 
 <p><code>#whileFalse:</code> reverses the exit condition:
 </p>
-<div class="display">
-<pre class="display"><span class="sansserif">n &#x2190; 1.
+<div class="example">
+<pre class="example"><span class="sansserif">n &#x2190; 1.
 [ n &gt; 1000 ] whileFalse: [ n &#x2190; n * 2 ].
 n &rArr; 1024</span>
 </pre></div>
@@ -243,8 +243,8 @@ category of the class <code>BlockClosure</code>.
 </p>
 <p><code>#timesRepeat:</code> offers a simple way to implement a fixed iteration:
 </p>
-<div class="display">
-<pre class="display"><span class="sansserif">n &#x2190; 1.
+<div class="example">
+<pre class="example"><span class="sansserif">n &#x2190; 1.
 10 timesRepeat: [ n &#x2190; n * 2 ].
 n &rArr; 1024</span>
 </pre></div>
@@ -254,8 +254,8 @@ as the initial value of a loop counter. The two arguments are the
 upper bound, and a block that takes the current value of the loop
 counter as its argument:
 </p>
-<div class="display">
-<pre class="display"><span class="sansserif">result &#x2190; String new.
+<div class="example">
+<pre class="example"><span class="sansserif">result &#x2190; String new.
 1 to: 10 do: [:n | result &#x2190; result, n printString, &rsquo; &rsquo;].
 result &rArr; &rsquo;1 2 3 4 5 6 7 8 9 10 &rsquo;</span>
 </pre></div>
@@ -278,7 +278,7 @@ Just type <kbd>Cmd-period</kbd> to get the Debugger.
 <h5><a id="FOOT19" href="#DOCF19">(19)</a></h3>
 <p>A
 singleton class is designed to have only one instance. Each of
-<code>True</code> and <code>False</code> classes has one instance,
+<code>True</code> and <code>False</code> classes has one instance, the values 
 <code>true</code> and <code>false</code>.</p>
 </div>
 <hr>

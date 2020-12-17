@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 14, 2020
+Compilation : December 17, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -140,8 +140,8 @@ box with the common name.
 <span id="index-number-19"></span>
 <p>Lets see how the <code>Fraction</code> class is declared:
 </p>
-<div class="display">
-<pre class="display"><span class="sansserif">Number subclass: #Fraction
+<div class="example">
+<pre class="example"><span class="sansserif">Number subclass: #Fraction
    instanceVariableNames: &rsquo;numerator denominator&rsquo;
    classVariableNames: &rdquo;
    poolDictionaries: &rdquo;
@@ -198,8 +198,8 @@ therefore looking at the method <code>/</code> in the <code>Integer</code>
 class explains how is instantiated the fraction. See part of this
 method:
 </p>
-<div class="display">
-<pre class="display"><span class="sansserif">/ aNumber
+<div class="example">
+<pre class="example"><span class="sansserif">/ aNumber
 &quot;Refer to the comment in Number / &quot;
 | quoRem |
 aNumber isInteger ifTrue:
@@ -219,16 +219,16 @@ is expected such a named method returns an instance of a
 <code>Fraction</code>.
 </p>
 <p>Try this out in a workspace:
-</p><div class="display">
-<pre class="display"><span class="sansserif">Fraction numerator: 24 denominator: 21
+</p><div class="example">
+<pre class="example"><span class="sansserif">Fraction numerator: 24 denominator: 21
 &rArr; 24/21</span>
 </pre></div>
 
 <p>Observe how the resulting fraction is not reduced. Whereas it is reduced
 when instantiated with the <code>#/</code> message:
 </p>
-<div class="display">
-<pre class="display"><span class="sansserif">24 / 21
+<div class="example">
+<pre class="example"><span class="sansserif">24 / 21
 &rArr; 8/7</span>
 </pre></div>
 
@@ -264,8 +264,8 @@ another class method.
 descendants of the <code>Number</code> class. We have already learned about the
 <code>#squared</code> message sent to integer and fraction instances:
 </p>
-<div class="display">
-<pre class="display"><span class="sansserif">16 squared &rArr; 256
+<div class="example">
+<pre class="example"><span class="sansserif">16 squared &rArr; 256
 (2 / 3) squared &rArr; 4/9</span>
 </pre></div>
 
@@ -276,8 +276,8 @@ called an <em>instance method</em>. This method is defined in both the
 </p>
 <span id="index-method-5"></span>
 <p>Let&rsquo;s examine this method in <code>Number</code>:
-</p><div class="display">
-<pre class="display"><span class="sansserif">Number&gt;&gt;squared
+</p><div class="example">
+<pre class="example"><span class="sansserif">Number&gt;&gt;squared
 &quot;Answer the receiver multiplied by itself.&quot;
    &#x2191; self * self</span>
 </pre></div>
@@ -288,8 +288,8 @@ object itself, here it is the value of the number. The &#x2191; (also
 <code>self * self</code>.
 </p>
 <p>Now let&rsquo;s examine this same method in <code>Fraction</code>:
-</p><div class="display">
-<pre class="display"><span class="sansserif">Fraction&gt;&gt;squared
+</p><div class="example">
+<pre class="example"><span class="sansserif">Fraction&gt;&gt;squared
    &#x2191; Fraction
       numerator: numerator squared
       denominator: denominator squared</span>
@@ -315,8 +315,8 @@ is invoked to respond to the message.
 <p>Still in the <code>Number</code> hierarchy, let&rsquo;s examine another example
 of polymorphism with the <code>#abs</code> message:
 </p>
-<div class="display">
-<pre class="display"><span class="sansserif">-10 abs &rArr; 10
+<div class="example">
+<pre class="example"><span class="sansserif">-10 abs &rArr; 10
 5.3 abs &rArr; 5.3
 (-5 / 3) abs &rArr; 5/3</span>
 </pre></div>
@@ -325,8 +325,8 @@ of polymorphism with the <code>#abs</code> message:
 explanation. There is the <code>#ifTrue:ifFalse:</code> we have not yet
 discussed so far, but the code is quite self-explanatory:
 </p>
-<div class="display">
-<pre class="display"><span class="sansserif">Number&gt;&gt;abs
+<div class="example">
+<pre class="example"><span class="sansserif">Number&gt;&gt;abs
 &quot;Answer a Number that is the absolute value (positive magnitude) of the 
 receiver.&quot;
    self &lt; 0
@@ -344,15 +344,15 @@ empty. Indeed, <strong>in the absence of explicitly returned value, the
 default returned value is the instance itself</strong>, in our situation the
 <code>LargePositiveInteger</code> instance:
 </p>
-<div class="display">
-<pre class="display"><span class="sansserif">LargePositiveInteger&gt;&gt;abs</span>
+<div class="example">
+<pre class="example"><span class="sansserif">LargePositiveInteger&gt;&gt;abs</span>
 </pre></div>
 
 <p>The <code>LargeNegativeInteger</code> knows it is negative and its absolute
 value is itself but with its sign reversed, that is <code>negated</code>:
 </p>
-<div class="display">
-<pre class="display"><span class="sansserif">LargeNegativeInteger&gt;&gt;abs
+<div class="example">
+<pre class="example"><span class="sansserif">LargeNegativeInteger&gt;&gt;abs
    &#x2191; self negated</span>
 </pre></div>
    
@@ -379,14 +379,14 @@ class with the <code>#class</code> message. Observe carefully the class
 returned in line 2 and 3:
 </p>
 <div class="float"><span id="askingClass"></span>
-<div class="display">
-<pre class="display"><span class="sansserif">1 class &rArr; SmallInteger 
+<div class="example">
+<pre class="example">1 class &rArr; SmallInteger 
 (1/3) class &rArr; Fraction 
 (6/2) class &rArr; SmallInteger 
 (1/3) asFloat class  &rArr; SmallFloat64 
 (1.0/3) class &rArr; SmallFloat64 
-&rsquo;Hello&rsquo; class &rArr; String 
-(&rsquo;Hello&rsquo; at: 1) class &rArr; Character</span>
+'Hello' class &rArr; String 
+('Hello' at: 1) class &rArr; Character
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 3.1: </strong>Asking the class of an instance</p></div></div>
