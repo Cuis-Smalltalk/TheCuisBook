@@ -103,7 +103,19 @@ How does that look?
 
 @figure{Rename @method{nose} to @method{noseDirection},ch11-06-noseDirection,8}
 
-OK, so there is more to explore, but this book is an @emph{introduction}
+@cuisNote{@clicksequence{World menu @click{} @label{Help}} is your friend.
+The @label{Terse Guide to Cuise} gives access to a large sample
+of code usages. The @label{Class Comment Browser} is an alternate
+way to find interesting class information.  There are also more notes
+on code maganement and how we use GitHub.}
+
+@cuisNote{We want to share with you! Please visit packages at the main @cuis{}
+repository at @url{https://github.com/Cuis-Smalltalk}, search GitHub
+for repositories with names starting with @strong{Cuis-Smalltalk-},
+and perhaps take a look at tutorials and information
+in @url{https://github.com/Cuis-Smalltalk/Learning-Cuis}.}
+
+There is much more to explore, but this book is an @emph{introduction}
 and we have to stop writing text somewhere.  This is a good place.
 We want to get back to writing code!
 And we look forward to seeing @emph{your} projects!
