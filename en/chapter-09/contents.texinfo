@@ -303,7 +303,7 @@ control system, make a copy to our backup thumb drive.
 @figure{Saved package -- @smalltalk{Morphic-Learning},ch10-Saved-with-requirement,11}
 
 As mentioned above, package files are just text files with a special format
-which Cuis knows how to load.  If you open a File List browser and
+which @cuis{} knows how to load.  If you open a File List browser and
 view the package file, you will see information on how the package
 was created, what it provides and requires, and, if you filled in the
 comment box in the Installed Packages browser, a description.
