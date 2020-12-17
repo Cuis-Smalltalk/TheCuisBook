@@ -22,28 +22,28 @@
 @figure{Placement,E-img1,8}
 
 @subheading @ref{concatenateCapitalize}
-@example
+@smallexample
 Transcript show: 'Hello ', 'my beloved ' capitalized, 'friend'
-@end example
+@end smallexample
 
 
 @subheading @ref{inverseSum}
-@example
+@smallexample
 1 + (1/2) + (1/3) + (1/4)
 @result{} 25/12 
-@end example
+@end smallexample
 
 @subheading @ref{capWordNumber}
 Several messages can be sent one after the other:
-@example
+@smallexample
 Transcript show: 2020 printStringWords capitalized 
-@end example
+@end smallexample
 
 @c Chapter 2
 @node The Message Way of Life (Solutions)
 @unnumberedsec The Message Way of Life
 @subheading @ref{helloBelle}
-@example
+@smallexample
 'Hello' 
    at: 1 put: $B;
    at: 2 put: $e;
@@ -51,13 +51,13 @@ Transcript show: 2020 printStringWords capitalized
    at: 4 put: $l;
    at: 5 put: $e;
    yourself
-@end example
+@end smallexample
 
 @subheading @ref{squaredSum}
-@example
+@smallexample
 1 + (1/2) squared + (1/3) squared + (1/4) squared
 @result{}  205 / 144
-@end example
+@end smallexample
 
 @subheading @ref{stringArith}
 From a System Browser, do from the left panel to the
@@ -75,30 +75,30 @@ definition for Float @textdegree{} 92 instance methods @textdegree{}
 34 class methods @textdegree{} 1280 total lines of code''
 
 @subheading @ref{cosTable}
-@example
+@smallexample
 0 to: Float twoPi by: 1/10 do: [:i |
    Transcript show: i cos; cr]
-@end example
+@end smallexample
 
 @subheading @ref{multiplyBy1024}
 1024 is not a random number. It is 2@sup{10} then written in base 2 :
 10000000000, it is also @smalltalk{1 << 10}:
 
-@example
-2^10 @result{} 1024
+@smallexample
+2@return{}10 @result{} 1024
 1024 printStringBase: 2 @result{} '10000000000'
 1 << 10 @result{} 1024 
-@end example
+@end smallexample
 
 Therefore, to multiply an integer by 1024, we shift left of 10 its digits:
 
-@example
+@smallexample
 360 << 10 @result{} 368640 
 360 * 1024 @result{} 368640 
-@end example
+@end smallexample
 
 @subheading @ref{exeFloatPrecision}
-@example
+@smallexample
 5.2 + 0.9  - 6.1
 @result{} 8.881784197001252e-16
 
@@ -107,13 +107,13 @@ Therefore, to multiply an integer by 1024, we shift left of 10 its digits:
 
 1.2 * 3  - 3.6
 @result{} -4.440892098500626e-16
-@end example
+@end smallexample
 
 @subheading @ref{exeZeroDivide}
 The system returns the error @smalltalk{ZeroDivide}, division by zero.
 
 @subheading @ref{exeFractionPrecision}
-@example
+@smallexample
 (52/10) + (9/10)  - (61/10)
 @result{} 0
 
@@ -122,41 +122,41 @@ The system returns the error @smalltalk{ZeroDivide}, division by zero.
 
 (12/10) * 3  - (36/10)
 @result{} 0
-@end example
+@end smallexample
 
 @subheading @ref{selectApples}
 There are different options, with slightly different results:
-@example
+@smallexample
 'There are 12 apples' select: [:i |i isLetter].
 @result{} 'Thereareapples' 
-@end example
+@end smallexample
 
 Not really satisfying. So another option:
-@example
+@smallexample
 'There are 12 apples' select: [:i |i isDigit not].
 @result{} 'There are  apples'
-@end example
+@end smallexample
 
 Or even a shorter option with the @msg{reject:} message:
-@example
+@smallexample
 'There are 12 apples' reject: [:i |i isDigit].
 @result{} 'There are  apples' 
-@end example
+@end smallexample
 
 @subheading @ref{formatString}
 In @class{String}, search for the method category @option{format}, there
 you find the @method{format:} method:
-@example
+@smallexample
 'Joe bought @{1@} apples and @{2@} oranges' format: #(5 4)
 @result{}  'Joe bought 5 apples and 4 oranges' 
-@end example
+@end smallexample
 
 
 
 @subheading @ref{spacewarVar}
 The @class{SpaceWar}, @class{CentralStar} and @class{SpaceShip}
 definitions with their added instance variable should look like:
-@example
+@smallexample
 Object subclass: #SpaceWar
    instanceVariableNames: 'centralStar ships torpedoes'
    classVariableNames: ''
@@ -175,31 +175,31 @@ Object subclass: #SpaceShip
    classVariableNames: ''
    poolDictionaries: ''
    category: 'Spacewar!'
-@end example
+@end smallexample
 
 @subheading @ref{spaceShipGetters}
-@example
+@smallexample
 SpaceShip>>position
-   ^ position
+   @return{} position
 
 SpaceShip>>velocity
-   ^ position
+   @return{} position
 
 SpaceShip>>mass
-   ^ mass
-@end example
+   @return{} mass
+@end smallexample
 
 @subheading @ref{spaceShipSetters}
-@example
+@smallexample
 SpaceShip>>position: aPoint
    position @assign{} aPoint
 
 SpaceShip>>velocity: aPoint
    velocity @assign{} aPoint
-@end example
+@end smallexample
 
 @subheading @ref{shipHeading}
-@example
+@smallexample
 SpaceShip>>left
 "Rotate the ship to its left"
    heading @assign{} heading + 0.1
@@ -207,10 +207,10 @@ SpaceShip>>left
 SpaceShip>>right
 "Rotate the ship to its right"
    heading @assign{} heading - 0.1
-@end example
+@end smallexample
 
 @subheading @ref{shipAcceleration}
-@example
+@smallexample
 SpaceShip>>push
 "Init an accelaration boost"
    acceleration @assign{} 10
@@ -218,15 +218,15 @@ SpaceShip>>push
 SpaceShip>>unpush
 "Stop the accelaration boost"
    acceleration @assign{} 0
-@end example
+@end smallexample
 
 
 @subheading @ref{initCentralStar}
-@example
+@smallexample
 CentralStar>>initialize
    super initialize.
    mass @assign{} 8000.
-@end example
+@end smallexample
 
 
 @c Chapter 4
@@ -236,149 +236,149 @@ CentralStar>>initialize
 Open the protocol browser on the class @class{String}, search for the
 method @method{allButFirst:} implemented in
 @class{SequenceableCollection}. Read its comment in its source code.
-@example
+@smallexample
 'Hello My Friend' allButFirst: 6
 @result{} 'My Friend'
-@end example
+@end smallexample
 
 @subheading @ref{exeNegativeIntegers}
-@example
+@smallexample
 (-80 to: 50) asArray
-@end example
+@end smallexample
 
 @subheading @ref{holeSet}
-@example
+@smallexample
 (1 to: 100) difference: (25 to: 75)
 @result{} #(1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21
 22 23 24 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91
 92 93 94 95 96 97 98 99 100) 
-@end example
+@end smallexample
 
 @subheading @ref{oddNumbers}
-@example
+@smallexample
 (-20 to: 45) select: [:z | z odd]
-@end example
+@end smallexample
 
 @subheading @ref{qtyPrime200}
-@example
+@smallexample
 ((101 to: 200) select: [:n | n isPrime]) size
 @result{} 21 
-@end example
+@end smallexample
 
 @subheading @ref{multiples7}
-@example
+@smallexample
 (1 to: 100) select:[:n | n isDivisibleBy: 7]
 @result{} #(7 14 21 28 35 42 49 56 63 70 77 84 91 98) 
-@end example
+@end smallexample
 
 @subheading @ref{oddNonPrime}
 This solution, based on set operations and multiple use of the
 @msg{select:} message, is mostly compatible with the knowledge
 acquired at this point of the book.
-@example
+@smallexample
 | primeNumbers nonPrimeNumbers |
-primeNumbers := (1 to: 100) select: [:n | n isPrime].
-nonPrimeNumbers := (1 to: 100) difference: primeNumbers.
+primeNumbers @assign{} (1 to: 100) select: [:n | n isPrime].
+nonPrimeNumbers @assign{} (1 to: 100) difference: primeNumbers.
 nonPrimeNumbers select: [:n | n odd]
 @result{} #(1 9 15 21 25 27 33 35 39 45 49 51 55 57 63 65 69 75
 77 81 85 87 91 93 95 99) 
-@end example
+@end smallexample
 
 A shorter solution with logical operations we have not discussed so
 far:
-@example
+@smallexample
 (1 to: 100) select:[:n | n isPrime not and: [n odd]]
-@end example
+@end smallexample
 
 @subheading @ref{decodeCipher}
-@example
+@smallexample
 'Zpvs!bsf!cptt' collect: [:c |
    (c asciiValue - 1) asCharacter]
 @result{} 'Your are a boss' 
-@end example
+@end smallexample
 
 @subheading @ref{alphabetCipher}
-@example
+@smallexample
 ($A to: $Z) collect: [:c |
    (c asciiValue - 65 + 3 \\ 26 + 65) asCharacter]
-@end example
+@end smallexample
 
 @subheading @ref{encodeCaesar}
 In the solution of @ref{alphabetCipher}, we just need to replace the
 characters interval with a string:
-@example
+@smallexample
 'SMALLTALKEXPRESSION' collect: [:c |
    (c asciiValue - 65 + 3 \\ 26 + 65) asCharacter]
 @result{} 'VPDOOWDONHASUHVVLRQ' 
-@end example
+@end smallexample
 
 @subheading @ref{decodeCaesar}
-@example
+@smallexample
   'DOHDMDFWDHVW' collect: [:c |
     (c asciiValue - 65 - 3 \\ 26 + 65) asCharacter]
 @result{} 'ALEAJACTAEST'
-@end example
+@end smallexample
 
 @subheading @ref{collFirst}
 The appropriate message is @msg{first:}, defined in the parent
 class @class{SequenceableCollection}. You need to use the protocol or
 hierarchy browser on @class{Array} to discover it:
 
-@example
+@smallexample
 array1 first: 2
 @result{} #(2 'Apple') 
-@end example
+@end smallexample
 
 @subheading @ref{fillArray}
 You could simply do a thumb:
 
-@example
+@smallexample
 array1 at: 1 put: 'kiwi'.
 array1 at: 2 put: 'kiwi'.
 array1 at: 3 put: 'kiwi'.
 array1 at: 4 put: 'kiwi'.
-@end example
+@end smallexample
 
 Or even a bit less thumb:
 
-@example
+@smallexample
 1 to: array1 size do: [:index |
    array1 at: index put: 'kiwi']
-@end example
+@end smallexample
 
 But if you search for carefully the @class{Array} protocol, you can
 just do:
 
-@example
+@smallexample
 array1 atAllPut: 'kiwi'.
-@end example
+@end smallexample
 
 @subheading @ref{addAfter}
 In the @class{OrderedCollection} protocol search for the method
 @method{add:after:}.
-@example
-coll1 := @{2 . 'Apple' . 2@@1 . 1/3 @} asOrderedCollection .		
+@smallexample
+coll1 @assign{} @{2 . 'Apple' . 2@@1 . 1/3 @} asOrderedCollection .		
 coll1 add: 'Orange' after: 'Apple'; yourself.
 @result{}  an OrderedCollection(2 'Apple' 'Orange' 2@@1 1/3) 
-@end example
+@end smallexample
 
 @subheading @ref{setLetters}
-@example
+@smallexample
 Set  new
    addAll: 'buenos d@'{@dotless{i}}as';
    addAll: 'bonjour';
    yourself.
 @result{}  a Set($e $j $o $a $u $b $  $@'{@dotless{i}} $r $d $n $s) 
-@end example
+@end smallexample
 
 @subheading @ref{nameColor}
-@example
+@smallexample
 colors keysDo: [:key |
    colors at: key put: key asString capitalized].
 colors
 @result{} a Dictionary(#blue->'Blue' #green->'Green' #red->'Red'
 #yellow->'Yellow' ) 
-@end example
+@end smallexample
 
 @subheading @ref{initActorsCollections}
 When the game starts there is no fired torpedoes, therefore
@@ -393,20 +393,20 @@ with two ships created in the argument message.
 For the readability, we split the code in several lines with the
 appropriate indentation.
 
-@example
+@smallexample
    torpedoes @assign{} OrderedCollection new.
    ships @assign{} Array 
       with: SpaceShip new
       with: SpaceShip new.
-@end example
+@end smallexample
 
 @subheading @ref{updateShipsTorpedoes}
-@example
+@smallexample
 SpaceWar>>stepAt: msSinceLast
   ships do: [:each | each update: msSinceLast / 1000 ].
   ships do: [:each | each unpush ].
   torpedoes do: [:each | each update: msSinceLast / 1000 ].
-@end example
+@end smallexample
 
 
 
@@ -414,14 +414,14 @@ SpaceWar>>stepAt: msSinceLast
 @node Control Flow Messaging (Solutions)
 @unnumberedsec Control Flow Messaging
 @subheading @ref{blockDivisor}
-@example
+@smallexample
 | divisors |
 divisors @assign{} [:x | (1 to: x) select: [:d | x \\ d = 0] ].
 divisors value: 60.
 @result{} #(1 2 3 4 5 6 10 12 15 20 30 60)
 divisors value: 45
 @result{} #(1 3 5 9 15 45)
-@end example
+@end smallexample
 
 @subheading @ref{implementingAndOr}
 Check the implementations in @class{Boolean}, @class{True} and
@@ -446,7 +446,7 @@ select @label{control} at the last step as this category now exists.
 We do not need an iterator to detect a collision between two
 ships. However we use an iterator to take action on each ship when a
 collision is detected.
-@example
+@smallexample
 SpaceWar>>collisionsShips
 | positionA position B |
    positionA @assign{} ships first morphPosition.
@@ -456,7 +456,7 @@ SpaceWar>>collisionsShips
          each flashWith: Color red.
          self teleport: each]
    ]
-@end example
+@end smallexample
 
 Local variables only used to ease the code source formatting in
 printed book.
@@ -464,7 +464,7 @@ printed book.
 @subheading @ref{torpedoSunCollision}
 You just need to pick the appropriate code snippets from the
 referenced exercise and examples.
-@example
+@smallexample
 SpaceWar>>collisionsTorpedoesStar
 | position |
    position @assign{} centralStar morphPosition.
@@ -472,7 +472,7 @@ SpaceWar>>collisionsTorpedoesStar
       (each morphPosition dist: position) < 8 ifTrue: [
          each flashWith: Color orange.
          self destroyTorpedo: each]]
-@end example
+@end smallexample
 
 
 @c Chapter 6
@@ -482,7 +482,7 @@ SpaceWar>>collisionsTorpedoesStar
 @subheading @ref{allActorsMorph}
 Just replace all @class{Object} occurrences with @class{Morph}:
 
-@example
+@smallexample
 Morph subclass: #SpaceWar
    instanceVariableNames: 'centralStar ships torpedoes'
    classVariableNames: ''
@@ -501,12 +501,12 @@ Morph subclass: #SpaceShip
    classVariableNames: ''
    poolDictionaries: ''
    category: 'Spacewar!'
-@end example
+@end smallexample
 
 
 @subheading @ref{refactoryShipTorpedo}
 
-@example
+@smallexample
 Mobile subclass: #SpaceShip
    instanceVariableNames: 'name heading fuel torpedoes'
    classVariableNames: ''
@@ -518,7 +518,7 @@ Mobile subclass: #Torpedo
    classVariableNames: ''
    poolDictionaries: ''
    category: 'Spacewar!'
-@end example
+@end smallexample
 
 
 @c Chapter 7
@@ -529,7 +529,7 @@ Mobile subclass: #Torpedo
 The @method{drawOn:} method is modified to draw two distinct,
 unconnected lines:
 
-@example
+@smallexample
 LineExampleMorph>>drawOn: aCanvas
    aCanvas strokeWidth: 20 color: Color green do: [
       aCanvas
@@ -537,7 +537,7 @@ LineExampleMorph>>drawOn: aCanvas
          lineToX: 200 y: 200;
          moveToX: 200 y: 0;
          lineToX: 0 y: 200 ]
-@end example
+@end smallexample
 
 Learn how the @msg{moveToX:y:} message moves the pencil to a given
 position with the pen up, then the @msg{lineToX:y:} asks the pencil to
@@ -546,15 +546,15 @@ draw from that previous position to this new position.
 @subheading @ref{exeRectMorph}
 We create a @class{RectangleExampleMorph}, subclass of
 @class{MovableMorph}:
-@example
+@smallexample
 MorphMovableMorph subclass: #RectangleExampleMorph
    instanceVariableNames: 'fillColor'
    classVariableNames: ''
    poolDictionaries: ''
    category: 'Morphic-Learning'
-@end example
+@end smallexample
 Then its necessary methods to initialize and to draw the morph:
-@example
+@smallexample
 initialize
    super initialize .
    fillColor @assign{} Color random alpha: 0.5
@@ -570,7 +570,7 @@ drawOn: aCanvas
             lineToX: 200 y: 100;
             lineToX: 0 y: 100;
             lineToX: 0 y: 0]
-@end example
+@end smallexample
 
 @figure{Several rectangle morphs,E-exeRectMorph,4}
 
@@ -583,7 +583,7 @@ around its top left corner, because this is where is the origin (0;0).
 We need to redefine its corners coordinates so its center position
 matches the origin (0;0):
 
-@example
+@smallexample
 drawOn: aCanvas
    aCanvas
       strokeWidth: 1
@@ -595,26 +595,26 @@ drawOn: aCanvas
             lineToX: 100 y: 50;
             lineToX: -100 y: 50;
             lineToX: -100 y: -50]
-@end example
+@end smallexample
 
 @figure{This rectangle rotates around its center,E-exeRotateRect2,3.5}
 
 @subheading @ref{exeCrossCenterMorph}
-@example
+@smallexample
 drawOn: aCanvas
    aCanvas strokeWidth: 20 color: Color green do: [aCanvas
       moveToX: -100 y: -100;
       lineToX: 100 y: 100;
       moveToX: 100 y: -100;
       lineToX: -100 y: 100]
-@end example
+@end smallexample
 
 
 @subheading @ref{exeFancyClock}
 Among the clock parts (submorphs) we only need to modify the drawing
 of the @class{ClockSecondHandMorph} class. The disc is surrounded with a
 thin red line and filled in yellow.
-@example
+@smallexample
 ClockSecondHandMorph>>drawOn: aCanvas
    aCanvas strokeWidth: 1.5 color: Color red do: [
       aCanvas
@@ -623,7 +623,7 @@ ClockSecondHandMorph>>drawOn: aCanvas
    aCanvas ellipseCenterX: 70 y: 0 rx: 3 ry: 3 
       borderWidth: 1 
       borderColor: Color red fillColor: Color yellow
-@end example
+@end smallexample
 
 
 @c Chapter 8
@@ -634,52 +634,52 @@ ClockSecondHandMorph>>drawOn: aCanvas
 The method @method{handlesMouseOver:}, implemented in the
 @class{SpaceWar} morph class, returns true so the game play is
 informed of mouse over events in dedicated methods.
-@example
+@smallexample
 SpaceWar>>handlesMouseOver: event
    @return{} true
-@end example
+@end smallexample
 
 @subheading @ref{mouseEnter}
 You need to browse the @method{Morph>>handlesMouseOver:} method and
 read the comment. It writes about a @msg{mouseEnter:} message; we
 implement the matching method in @class{SpaceWar} class with the
 behaviors previously described:
-@example
+@smallexample
 SpaceWar>>mouseEnter: event
    event hand newKeyboardFocus: self.	
    self startStepping
-@end example
+@end smallexample
 
 @subheading @ref{mouseLeave}
 The message @msg{mouseLeave:} is sent to our @class{SpaceWar} instance
 each time the mouse cursor move out (leaves) of the game
 play. Therefore we add the homonym method to the @class{SpaceWar}
 class:
-@example
+@smallexample
 SpaceWar>>mouseLeave: event
    event hand releaseKeyboardFocus: self.
    self stopStepping
-@end example
+@end smallexample
 
 @subheading @ref{keyboardEvent}
 The @msg{handlesKeyboard} message is sent to a morph to know if it
 wants to receive keyboard event. The morph responds true to this
 message to state its interest on keyboard event. We implement the
 method in the @class{SpaceWar} class:
-@example
+@smallexample
 SpaceWar>>handlesKeyboard
    @return{} true
-@end example
+@end smallexample
 
 @subheading @ref{secondShipControl}
 We designate the characters as @smalltalk{$w $a $s $d}. We append the
 code bellow to the method @method{SpaceWar>>keyStroke:}
-@example
+@smallexample
 key = $w ifTrue: [@return{} ships second push].
 key = $d ifTrue: [@return{} ships second right].
 key = $a ifTrue: [@return{} ships second left].
 key = $s ifTrue: [@return{} ships second fireTorpedo]
-@end example
+@end smallexample
 
 
 @c Chapter 9

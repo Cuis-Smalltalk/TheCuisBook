@@ -1,3 +1,10 @@
+@c Prefered settings
+@set cuisVersion 5.0#4253
+@codequoteundirected on
+@codequotebacktick on
+
+@setfilename TheCuisBook.info
+
 @c Macro definitions
 @macro cuis
 Cuis-Smalltalk
@@ -5,6 +12,10 @@ Cuis-Smalltalk
 
 @macro writers
 K. Dickey, H. Fernandes, J. Vuletich
+@end macro
+
+@macro thanks
+Thanks to Mauro Rizzi for the review of the book.
 @end macro
 
 @macro vm
@@ -45,13 +56,11 @@ K. Dickey, H. Fernandes, J. Vuletich
 @macro smalltalkExample{example}
 @iftex
    @sp 1
-@c   @cartouche
 @end iftex
-@display
+@smallexample
 @sansserif{\example\}
-@end display
+@end smallexample
 @iftex
-@c   @end cartouche
    @sp 1
 @end iftex
 @end macro
@@ -59,15 +68,9 @@ K. Dickey, H. Fernandes, J. Vuletich
 @c Smalltalk example with caption
 @macro smalltalkExampleCaption{caption,label,example}
 @float Example,\label\
-@iftex
-@c   @cartouche
-@end iftex
-@display
-@sansserif{\example\}
-@end display
-@iftex
-@c   @end cartouche
-@end iftex
+@smallexample
+\example\
+@end smallexample
 @caption{\caption\}
 @end float
 @iftex
@@ -82,7 +85,7 @@ K. Dickey, H. Fernandes, J. Vuletich
    @cartouche
 @end iftex
 @indentedblock
- \text\
+   \text\
 @end indentedblock
 @iftex
    @end cartouche

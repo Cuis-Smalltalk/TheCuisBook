@@ -559,8 +559,6 @@ needed, and stores it in the @smalltalk{privateDisplayBounds}
 variable. You don't need to worry about that variable at
 all.
 
-@todo{WRT: what is it?} 
-
 With respect to detecting if a Morph is being touched by the Hand,
 or more generally, if some pixel belongs to a Morph, truth is that during
 the drawing operation of a Morph, the framework indeed knows all the
@@ -577,29 +575,66 @@ flexible. They are not restricted to a conventional widget library,
 although such a library (rooted in @class{WidgetMorph}) is included
 and used for building all the Smalltalk tools.
 
-The examples we have explored use the VectorGraphics package. This
-package includes VectorCanvas and HybridCanvas classes. However,
-installing this package is not required for using the regular
-Smalltalk tools you have been using. The reason is that Cuis includes
-by default the @class{BitBltCanvas} class inherited from Squeak (and
-called @class{FormCanvas} there). @class{BitBltCanvas} doesn't support
-the vector graphics drawing operations and doesn't do anti-aliasing or
+The examples we have explored use the @label{VectorGraphics}
+package. This package includes @class{VectorCanvas} and
+@class{HybridCanvas} classes. However, installing this package is not
+required for using the regular Smalltalk tools you have been
+using. The reason is that @cuis{} includes by default the
+@class{BitBltCanvas} class inherited from Squeak (and called
+@class{FormCanvas} there). @class{BitBltCanvas} doesn't support the
+vector graphics drawing operations and doesn't do anti-aliasing or
 zooming. But it is mature, and it relies on the BitBlt operation that
-is included in the virtual machine. This means that it offers
-excellent performance.
+is included in the @vm{}. This means that it offers excellent
+performance.
 
-VectorGraphics is still in active development. When its drawing
-performance becomes good enough, it will be possible to draw all
-Morphs, completely replacing BitBltCanvas. Then, the UI customization
-option 'World' / 'Preferences...' / 'Font Sizes...' will no longer be
-needed, as all windows will be zoomable, in addition to resizable.
+@label{VectorGraphics} is still in active development. When its
+drawing performance will become good enough, it will be possible to
+draw all Morphs, completely replacing BitBltCanvas.  Then, the UI
 
-To further explore Cuis' Morphic, evaluate `Feature require: 'SVG'`,
-and then `SVGElementMorph examplesLion` and the other examples
-there. Also, be sure to try the example in the comment in
-#unicodeExamples.
-
+To further explore @cuis{}' Morphic, evaluate @smalltalk{Feature
+require: 'SVG'}, and then @smalltalk{SVGElementMorph examplesLion} and
+the other examples there. Also, be sure to try the example in the
+comment in the @method{unicodeExamples} method.
 
 @node Spacewar! Drawing
 @section Spacewar! Drawing
+For speed reason, our Spacewar! game does not use the
+@label{VectorGraphics} package. It relies on the BitBlt canvas. For
+this reason, each of our moprh should answer @smalltalk{false} to the
+@msg{requiresVectorCanvas} message:
 
+@smalltalkExampleCaption{We don't use @label{VectorGraphics} for performance reason, vectorGraphicsNo,
+Mobile>>requiresVectorCanvas
+   @return{} false
+
+CentralStar>>>requiresVectorCanvas
+   @return{} false
+
+SpaceWar>>>requiresVectorCanvas
+   @return{} false}
+
+Observe as @class{Mobile} being a superclass of @class{SpaceShip} and
+@class{Torpedo} makes the instances of these later classes to respond
+false to the @msg{requiresVectorCanvas} message.
+
+Because we use the bitmap canvas for the rendering of our morphs, each
+morph should knows about its extent. That way the collision detection
+between star, ships and torpedoes works properly.
+
+Therefore when one of our morph receives the @msg{morphExtent}
+message, it responds its extent, in its idle position when not
+rotated.
+
+@cindex backtick
+Our central has an extent of @smalltalk{30@@30}:
+
+@smalltalkExampleCaption{Central star extent, centralStarExtent,
+morphExtent
+   @return{} `30 @@ 30`}
+
+@todo{Explain properly the backtick below:}
+
+An expression surrounded with backticks @code{'`'} is turned as a kind
+of literal. It improves the performance of the method as the
+expression is only executed once, in the subsequent calls of the
+method the backtick-ed expressions are just remembered.
