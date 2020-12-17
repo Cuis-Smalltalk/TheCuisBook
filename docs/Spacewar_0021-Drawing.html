@@ -113,6 +113,7 @@ SpaceWar&gt;&gt;&gt;requiresVectorCanvas
 <code>Torpedo</code> makes the instances of these later classes to respond
 false to the <code>#requiresVectorCanvas</code> message.
 </p>
+<span id="Central-star"></span><h4 class="subsection">7.3.1 Central star</h4>
 <p>Because we use the bitmap canvas for the rendering of our morphs, each
 morph should knows about its extent. That way the collision detection
 between star, ships and torpedoes works properly.
@@ -122,7 +123,7 @@ message, it responds its extent, in its idle position when not
 rotated.
 </p>
 <span id="index-backtick"></span>
-<p>Our central has an extent of <code>30@30</code>:
+<p>Our central has an extent of <code>30 @ 30</code>:
 </p>
 <div class="float"><span id="centralStarExtent"></span>
 <div class="example">
@@ -170,6 +171,66 @@ independently of 0 to 2 units. The star does not look perfectly round.
 <div align="center"><img src="ch07-09-fluctuatingStar.gif" alt="ch07-09-fluctuatingStar">
 </div>
 <div class="float-caption"><p><strong>Figure 7.9: </strong>A star with a fluctuating size</p></div></div>
+<span id="Space-ship"></span><h4 class="subsection">7.3.2 Space ship</h4>
+<p>At the game start-up, the nose of the space ship is pointing to the
+top of the screen as seen in <a href="#ch07_002d10_002dShipDiagram">Figure 7.10</a> and the angle
+of its direction is therefore -90&deg;, while the angle of its
+rotation is 0&deg;. Remember the Y ordinate are oriented
+toward the bottom of the screen.
+</p>
+<div class="float"><span id="ch07_002d10_002dShipDiagram"></span>
+<div align="center"><img src="ch07-10-ShipDiagram.png" alt="ch07-10-ShipDiagram">
+</div>
+<div class="float-caption"><p><strong>Figure 7.10: </strong>Space hip diagram at game start-up</p></div></div>
+<p>Given the vertices as seen in <a href="#ch07_002d10_002dShipDiagram">Figure 7.10</a>, the extent is
+<code>20 @ 30</code>:
+</p>
+<div class="example">
+<pre class="example">SpaceShip&gt;&gt;morphExtent
+   &#x2191; `20 @ 30`
+</pre></div>
+
+<p>Then its <code>drawOn:</code> method is written as:
+</p>
+<div class="float"><span id="spaceShipDrawing"></span>
+<div class="example">
+<pre class="example">SpaceShip&gt;&gt;drawOn: canvas
+   | a b c d |
+   a &#x2190; 0 @ -15.
+   b &#x2190; -10 @ 15.
+   c &#x2190; 0 @ 10.
+   d &#x2190; 10 @ 15.
+   canvas line: a to: b width: 2 color: color.
+   canvas line: b to: c width: 2 color: color.
+   canvas line: c to: d width: 2 color: color.
+   canvas line: d to: a width: 2 color: color.
+   &quot;Draw gas exhaust&quot;
+   acceleration ifNotZero: [
+      canvas line: c to: 0 @ 35 width: 1 color: Color gray]
+</pre></div>
+
+<div class="float-caption"><p><strong>Example 7.6: </strong>Space ship drawing</p></div></div>
+<p>When there is an acceleration from the engine, we draw a small gray
+line to represent the gas exhaust.
+</p>
+<p>When the user turns the ship, the morph is rotated a bit:
+</p>
+<div class="example">
+<pre class="example">SpaceShip&gt;&gt;right
+&quot;Rotate the ship to its right&quot;
+   self rotateBy: 0.1
+
+SpaceShip&gt;&gt;left
+&quot;Rotate the ship to its left&quot;
+   self rotateBy: -0.1
+</pre></div>
+
+<p>Underneath, <code>MobileMorph</code> is equipped with an affine
+transformation to scale, rotate and translate the coordinated passed
+as argument to the drawing messages received by the canvas.
+</p>
+<span id="Torpedo"></span><h4 class="subsection">7.3.3 Torpedo</h4>
+
 <hr>
 <div class="header">
 <p>
