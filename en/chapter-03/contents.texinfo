@@ -560,6 +560,7 @@ integer. We already saw this variant in a previous section of this
 chapter.  Throwing a 6 face die 5 times can be simulated with
 an integer:
 
+@cindex number @subentry integer @subentry @method{atRandom}
 @smalltalkExampleCaption{Throwing a dice 5 times, playingDice,
 5 timesRepeat: [Transcript show: 6 atRandom; space]
 @result{} 1 2 4 6 2}

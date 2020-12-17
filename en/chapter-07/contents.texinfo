@@ -637,4 +637,36 @@ morphExtent
 An expression surrounded with backticks @code{'`'} is turned as a kind
 of literal. It improves the performance of the method as the
 expression is only executed once, in the subsequent calls of the
-method the backtick-ed expressions are just remembered.
+method the backtick-ed expressions are just remembered from their
+initial evaluation.
+
+@cindex number @subentry integer @subentry @method{atRandom}
+@cindex morph @subentry @method{drawOn:}
+
+As you learnt previously, a morph draws itself from its
+@method{drawOn:} method. We draw the star as an ellipse with randomly
+fluctuating x and y radius:
+
+@smalltalkExampleCaption{A star with a fluctuating size, centralStarDraw,
+drawOn: canvas
+   | radius |
+   radius @assign{} self morphExtent // 2.
+   canvas ellipseCenterX: 0
+      y:  0
+      rx: radius x + (2 atRandom - 1)
+      ry: radius y + (2 atRandom - 1)
+      borderWidth: 3 
+      borderColor: Color orange 
+      fillColor: Color yellow}
+
+The star diameters in the x and y directions are fluctuating
+independently of 0 to 2 units. The star does not look perfectly round.
+
+@iftex
+   @figure{A star with a fluctuating size,ch07-09-fluctuatingStar,5}
+@end iftex
+
+@ifhtml
+   @figureExt{A star with a fluctuating size,ch07-09-fluctuatingStar,10,.gif}
+@end ifhtml
+

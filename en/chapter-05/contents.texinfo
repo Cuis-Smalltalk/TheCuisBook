@@ -252,6 +252,7 @@ computation and assigning it to a variable:
 @exercise{Block to compute divisors,blockDivisor, @emph{How will you
 rewrite @ref{computeDivisors} to avoid code duplication?}}
 
+@cindex number @subentry integer @subentry @method{atRandom}
 The @smalltalk{SpaceWar>>teleport:} method contains a nice example
 using a block to avoid code duplication to generate random abscissa
 and ordinate coordinates. Each time a new coordinate is needed, the
