@@ -447,7 +447,13 @@ look like:
 @end enumerate
 
 
-@todo{Requirement/dependencies}
+@cuisNote{In addition to adding a package preload @emph{requirement},
+you can also select a requirement and @label{delete} or @label{update}
+it using the buttons at the lower right.  Sometimes a package changes
+which your code depends on and you have to change your code to accord.
+When this happens, to want to be sure to require the newer, changed
+version.  Selecting a requirement and pressing @label{update}
+will update the requirement to use the latest loaded package version.}
 
 
 @subsection Automate your image
