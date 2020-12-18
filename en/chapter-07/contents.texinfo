@@ -548,7 +548,6 @@ into a separate @class{ClockFaceMorph}, and make it submorph of the
 Clock. Then, you can rotate just the face, not the clock, and the
 clock will show fake time. Try it!
 
-
 You might have noted two things that seem missing, though: How to
 compute bounding rectangles for Morphs, and how to detect if a Morph
 is being hit by the Hand, so you can move it or get a halo. The
@@ -588,20 +587,24 @@ zooming. But it is mature, and it relies on the BitBlt operation that
 is included in the @vm{}. This means that it offers excellent
 performance.
 
-@label{VectorGraphics} is still in active development. When its
-drawing performance will become good enough, it will be possible to
-draw all Morphs, completely replacing BitBltCanvas.  Then, the UI
+@label{VectorGraphics} is still in active development. When its drawing
+performance becomes good enough, it will be able to draw all Morphs,
+completely replacing BitBltCanvas. Then, the UI customization option
+@clicksequence{World menu @click{} @label{Preferences...} @click{}
+@label{Font Sizes...}} will no longer be needed, as all windows will be
+zoomable, in addition to resizable.
 
 To further explore @cuis{}' Morphic, evaluate @smalltalk{Feature
 require: 'SVG'}, and then @smalltalk{SVGElementMorph examplesLion} and
 the other examples there. Also, be sure to try the example in the
-comment in the @method{unicodeExamples} method.
+comment in the @method{BitBltCanvas class>>unicodeExamples} and
+@method{BitBltCanvas class>>unicodeUtf32Examples} methods.
 
 @node Spacewar! Drawing
 @section Spacewar! Drawing
-For speed reason, our Spacewar! game does not use the
-@label{VectorGraphics} package. It relies on the BitBlt canvas. For
-this reason, each of our moprh should answer @smalltalk{false} to the
+For performance reasons, our Spacewar! game does not use the
+@label{VectorGraphics} package. It relies on the BitBlt canvas. Therefore,
+each of our moprh should answer @smalltalk{false} to the
 @msg{requiresVectorCanvas} message:
 
 @smalltalkExampleCaption{We don't use @label{VectorGraphics} for performance reason, vectorGraphicsNo,
@@ -636,11 +639,10 @@ CentralStar>>morphExtent
 
 @todo{Explain properly the backtick below:}
 
-An expression surrounded with backticks @code{'`'} is turned as a kind
-of literal. It improves the performance of the method as the
-expression is only executed once, in the subsequent calls of the
-method the backtick-ed expressions are just remembered from their
-initial evaluation.
+An expression surrounded with backticks @code{'`'} is evaluated only once,
+when the method is saved and compiled, and turned as a kind of literal.
+This improves the performance of the method as the expression not executed
+when the method is called: the pre-built linteral is used instead.
 
 @cindex number @subentry integer @subentry @method{atRandom}
 @cindex morph @subentry @method{drawOn:}
