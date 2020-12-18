@@ -27,8 +27,8 @@ handling richer content (D3.js and Matplotlib are examples), the
 result is not consistent, neither for developers nor for users.
 
 @cuis{} takes a different approach, pioneered by Smalltalk-80 and
-especially Self.
-@todo{Need a reference}.
+especially Self. We will get into detail in the next chapter,
+@emph{The Fundamentals of Morph}.  For now, let's deal with Morphs directly.
 
 We take the high quality Display for granted, as well as a mouse, finger or
 other pointing device. And we build on the objective of providing
@@ -37,7 +37,6 @@ designs yet to be invented. Additionally, in the usual Smalltalk way,
 all the framework code is available for study and modification. There
 are no third party libraries. Only the lowest level code is
 precompiled, but that still can be overriden or changed.
-
 
 Therefore every object you see in @cuis{} is a @class{Morph} or is
 composed of @class{Morph}s.  Basically, a @class{Morph} is an object
