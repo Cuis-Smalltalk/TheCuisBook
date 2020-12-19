@@ -603,18 +603,20 @@ are also handled. When a torpedo is just fired, its engine acceleration is
 huge then it decreases quickly.
 
 With the System Browser pointed to the @method{Torpedo>>update:}
-method, observe the @option{inheritance} button. It is light green, which
-indicates the message is sent to @smalltalk{super} too. This is a
-reminder the method supplies a specialized behavior. 
-The button tool tip explains the color hilight meanings within the method's text.
-When pressing the @option{inheritance} button, you browse all 
-implementations of the @method{update:} method within this inheritance chain.
+method, observe the @option{inheritance} button. It is light green,
+which indicates the message is sent to @smalltalk{super} too. This is
+a reminder the method supplies a specialized behavior.  The button
+tool tip explains the color hilight meanings within the method's text.
+When pressing the @option{inheritance} button, you browse all
+implementations of the @method{update:} method within this inheritance
+chain.
 
 @figure{Update's inheritance button,ch06-20-TorpedoUpdateInheritance,9}
 
 We already met an example of overriding when initializing a space ship
 instance -- see @ref{initSpaceShip}. In the context of our class
-refactoring, the @method{initialize} overriding spans the whole @class{Mobile} hierarchy:
+refactoring, the @method{initialize} overriding spans the whole
+@class{Mobile} hierarchy:
 
 @smalltalkExampleCaption{Initialize overriding in the @class{Mobile}
 hierarchy,initMobileHierarchy,Mobile>>initialize
@@ -638,15 +640,16 @@ initialization:
 @enumerate
 
  @item @strong{SpaceShip.} Its mechanical states are set with the
- @smalltalk{super initialize} and then the ship is resupplied with fuel and torpedos:
+ @smalltalk{super initialize} and then the ship is resupplied with
+ fuel and torpedos:
 
  @smalltalkExample{SpaceShip>>resupply
    fuel @assign{} 500.
    torpedoes @assign{} 20}
 
- @item @strong{Torpedo.} Inherited mechanical states initialized; add self-destroy
- sequence initialization and acceleration adjusted to mimic the torpedo
- boost at fire up.
+ @item @strong{Torpedo.} Inherited mechanical states initialized; add
+ self-destroy sequence initialization and acceleration adjusted to
+ mimic the torpedo boost at fire up.
 
 @end enumerate
 

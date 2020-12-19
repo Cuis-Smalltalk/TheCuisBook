@@ -745,7 +745,7 @@ correctly a newly fired torpedo, you just copy the orientation from
 its space ship:
 
 @smalltalkExample{SpaceShip>>fireTorpedo
-"Fire a torpedo in the direction of the ship heading with a combined
+"Fire a torpedo in the direction of the ship heading with its
 velocity"
    ../..
    torpedo @assign{} Torpedo new.
@@ -773,3 +773,111 @@ rotation of the torpedo:
    self rotation: (velocity y arcTan: velocity x) + Float halfPi.
    ../..}
    
+
+@cindex class @subentry instance variable @seeentry{variable}
+@cindex variable @subentry class instance
+@c refactoring of drawOn: explain class variable
+As you may have observed, the @class{SpaceShip} and @class{Torpedo}
+@method{drawOn:} methods share the same logic: drawing a polygon given
+its vertices. We likely want to push this common logic to their common
+ancestor, the @class{Mobile} class. It needs to know about its
+vertices, so we may want to add an instance variable
+@smalltalk{vertices} initialized in its sub classes with an array
+containing the points:
+
+@smalltalkExample{MovableMorph subclass: #Mobile
+   instanceVariableNames: 'acceleration color velocity vertices'
+   classVariableNames: ''
+   poolDictionaries: ''
+   category: 'Spacewar!'
+
+SpaceShip>>initialize
+   super initialize.
+   vertices @assign{} @{0@@-15 . -10@@15. 0@@10. 10@@15@}.
+   self resupply
+   
+Torpedo>>initialize
+   super initialize.
+   vertices @assign{} @{0@@-4 . -2@@4 . 2@@4@}.
+   lifeSpan @assign{} 500.
+   acceleration @assign{} 3000}
+
+However this is not a good idea. Imagine the game play with 200
+torpedoes, the vertices array will be duplicated 200 times with the
+same data! In that kind of situation, what you want is a @dfn{class
+instance variable} defined in the class side -- in contrast to the
+instance side where we have been coding until now.
+
+@smalltalkExampleCaption{@smalltalk{vertices} an instance variable in @class{Mobile} class, instanceVariableMobileClass,
+Mobile class
+   instanceVariableNames: 'vertices'}
+
+@enumerate
+
+ @item A class instance variable can be accessed and assigned only by
+ the class itself in a @dfn{class method}.
+
+ @item To access or to modify a class instance variable, an instance
+ asks to the class with dedicated messages triggering @dfn{class
+ methods}.
+
+ @item In the class hierarchy, each sub classes has a different class
+ instance variable -- in contrast with a class variable shared among
+ the sub classes (discussed later).
+
+ @item To edit the class methods, in the System Browser press the
+ @label{class} button under the class list.
+
+@end enumerate
+
+Once we declare our variable, we write an access method in the
+@class{Mobile class} for the @class{SpaceShip} and @class{Torpedo}
+instances:
+
+@smalltalkExample{Mobile class>>vertices
+   @return{} vertices}
+
+@cindex class @subentry initialize
+Next, each subclass is responsible to correctly initialize
+@smalltalk{vertices} with its @method{initialize} class method:
+
+@smalltalkExampleCaption{Initialize a class,initializeClass,
+SpaceShip class>>initialize
+"SpaceShip initialize"
+   vertices @assign{}  @{0@@-15 . -10@@15. 0@@10. 10@@15@}
+
+Torpedo class>>initialize
+"Torpedo initialize"
+   vertices @assign{} @{0@@-4 . -2@@4 . 2@@4@}}
+
+You edit these methods in the System Browser once you press the
+@label{class} button.
+
+When a class is installed in @cuis{}, its @method{initialize} class
+method is executed. Alternatively select the comment and execute it
+with @kbd{Ctrl-d}.
+
+In a Workspace observe to understand how behave a class instance
+variable:
+
+@smalltalkExampleCaption{A class instance variable value is not shared by the sub classes,classInstanceVar,
+SpaceShip vertices.
+@result{} nil 
+SpaceShip initialize.
+SpaceShip vertices.
+@result{} #(0@@-15 -10@@15 0@@10 10@@15) 
+
+Torpedo vertices.
+@result{} nil 
+Torpedo initialize.
+Torpedo vertices.
+@result{} #(0@@-4 -2@@4 2@@4)}
+
+
+@c Explain the difference with class variable
+
+A class variable is written capitalized in the argument of
+@smalltalk{classVariableNames:} keyword.
+
+
+@c refactoring of collision with display bounds

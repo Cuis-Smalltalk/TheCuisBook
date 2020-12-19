@@ -639,9 +639,9 @@ one in @class{SpaceShip} class:
 @smallexample
 Torpedo>>drawOn: canvas
    | a b c |
-   a @assign{} 0 @@ -8.
-   b @assign{} -2 @@ 0.
-   c @assign{} 2 @@ 0.
+   a @assign{} 0 @@ -4.
+   b @assign{} -2 @@ 4.
+   c @assign{} 2 @@ 4.
    canvas line: a to: b width: 2 color: color.
    canvas line: c to: b width: 2 color: color.
    canvas line: a to: c width: 2 color: color.
