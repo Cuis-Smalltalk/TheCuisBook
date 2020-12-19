@@ -603,9 +603,9 @@ comment in the @method{BitBltCanvas class>>unicodeExamples} and
 @node Spacewar! Drawing
 @section Spacewar! Drawing
 For performance reasons, our Spacewar! game does not use the
-@label{VectorGraphics} package. It relies on the BitBlt canvas. Therefore,
-each of our moprh should answer @smalltalk{false} to the
-@msg{requiresVectorCanvas} message:
+@label{VectorGraphics} package. It relies on the BitBlt
+canvas. Therefore, each of our moprh should answer @smalltalk{false}
+to the @msg{requiresVectorCanvas} message:
 
 @smalltalkExampleCaption{We don't use @label{VectorGraphics} for performance reason, vectorGraphicsNo,
 Mobile>>requiresVectorCanvas
@@ -681,7 +681,7 @@ of its direction is therefore -90@textdegree{}, while the angle of its
 rotation is 0@textdegree{}. Remember the Y ordinate are oriented
 toward the bottom of the screen.
 
-@figure{Space hip diagram at game start-up,ch07-10-ShipDiagram,4}
+@figure{Space ship diagram at game start-up,ch07-10-ShipDiagram,4}
 
 Given the vertices as seen in @ref{ch07-10-ShipDiagram}, the extent is
 @smalltalk{20 @@ 30}:
@@ -709,6 +709,7 @@ SpaceShip>>drawOn: canvas
 When there is an acceleration from the engine, we draw a small gray
 line to represent the gas exhaust.
 
+@cindex morph @subentry @method{rotateBy:}
 When the user turns the ship, the morph is rotated a bit:
 
 @smalltalkExample{SpaceShip>>right
@@ -727,3 +728,48 @@ as arguments to the drawing messages received by the canvas.
 
 @c Give the diagram of the torpedo, and as an exercise ask how to code
 @c its drawOn: and morphExtent methods
+
+Alike a space ship, when a torpedo is just instantiated its nose points
+in the direction of the top of the screen and its vertices are
+given by the @ref{ch07-11-TorpedoDiagram}.
+
+@figure{Torpedo diagram at game start-up,ch07-11-TorpedoDiagram,5}
+
+@exercise{Torpedo extent, exeTorpedoExtent, @emph{Given the vertices
+given by @ref{ch07-11-TorpedoDiagram}@comma{} how will you write its
+@method{morphExtent} method?}}
+
+@cindex morph @subentry @method{rotation:}
+A space ship and a torpedo share the same orientation.  To orient
+correctly a newly fired torpedo, you just copy the orientation from
+its space ship:
+
+@smalltalkExample{SpaceShip>>fireTorpedo
+"Fire a torpedo in the direction of the ship heading with a combined
+velocity"
+   ../..
+   torpedo @assign{} Torpedo new.
+   torpedo 
+      morphPosition: self morphPosition + self nose;
+      rotation: location radians; @r{"copy the rotation angle from ship"}
+      velocity: velocity;
+   ../..}
+
+@exercise{Torpedo drawing,exeTorpedoDrawing, @emph{How will you write
+the @class{Torpedo}'s @method{drawOn:} method?}}
+
+In the game play, a torpedo is always oriented in the direction of its
+velocity. While inaccurate, it produces a nice effect when a torpedo
+is pulled by the central star. When the torpedo's velocity vector is
+vertical, pointing to the top of the screen, its angle is
+-90@textdegree{} in the screen coordinates system. In that situation
+the torpedo is not rotated -- or 0@textdegree{} rotated -- therefore
+we add 90@textdegree{} to the velocity angle to get the matching
+rotation of the torpedo:
+
+@smalltalkExample{Torpedo>>update: t
+"Update the torpedo position"
+   ../..
+   self rotation: (velocity y arcTan: velocity x) + Float halfPi.
+   ../..}
+   

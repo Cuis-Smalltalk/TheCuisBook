@@ -626,6 +626,28 @@ ClockSecondHandMorph>>drawOn: aCanvas
 @end smallexample
 
 
+@subheading @ref{exeTorpedoExtent}
+The width of the torpedo is 4 pixels and its height 8 pixels:
+@smallexample
+Torpedo>>morphExtent
+   @return{} `4 @@ 8`
+@end smallexample
+
+@subheading @ref{exeTorpedoDrawing}
+The @class{Torpedo}'s @method{drawOn:} method is very similar to the
+one in @class{SpaceShip} class:
+@smallexample
+Torpedo>>drawOn: canvas
+   | a b c |
+   a @assign{} 0 @@ -8.
+   b @assign{} -2 @@ 0.
+   c @assign{} 2 @@ 0.
+   canvas line: a to: b width: 2 color: color.
+   canvas line: c to: b width: 2 color: color.
+   canvas line: a to: c width: 2 color: color.
+@end smallexample
+
+
 @c Chapter 8
 @node Events (Solutions)
 @unnumberedsec Events

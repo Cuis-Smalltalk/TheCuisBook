@@ -540,7 +540,7 @@ SpaceShip>>fireTorpedo
   torpedo @assign{} Torpedo new.
   torpedo 
     morphPosition: self morphPosition + self nose;
-    rotateBy: location radians;
+    rotation: location radians;
     velocity: velocity;
     color: color muchLighter.
   owner addTorpedo: torpedo}

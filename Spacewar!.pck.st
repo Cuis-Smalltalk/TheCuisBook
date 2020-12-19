@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4488] on 16 December 2020 at 9:41:36 pm'!
+'From Cuis 5.0 [latest update: #4488] on 19 December 2020 at 2:33:01 pm'!
 'Description '!
-!provides: 'Spacewar!!' 1 77!
+!provides: 'Spacewar!!' 1 78!
 SystemOrganization addCategory: 'Spacewar!!'!
 
 
@@ -145,9 +145,9 @@ isInOuterSpace
 "Is the mobile located in the outer space? (outside of the game play area)"
 	^(owner morphContainsPoint: self morphPosition) not! !
 
-!Mobile methodsFor: 'drawing' stamp: 'hlsf 12/16/2020 21:40:44'!
+!Mobile methodsFor: 'drawing' stamp: 'hlsf 12/19/2020 14:30:29'!
 drawOn: canvas
-	self drawShape: self morphLocalBounds corners color: Color white width: 1 		on: canvas! !
+"	self drawShape: self morphLocalBounds corners color: Color white width: 1 		on: canvas"! !
 
 !Mobile methodsFor: 'drawing' stamp: 'hlsf 12/16/2020 21:38:44'!
 drawShape: points color: aColor width: width on: canvas
@@ -161,7 +161,7 @@ morphExtent
 
 	^20@30! !
 
-!SpaceShip methodsFor: 'control' stamp: 'hlsf 10/1/2020 17:25:38'!
+!SpaceShip methodsFor: 'control' stamp: 'hlsf 12/19/2020 14:27:34'!
 fireTorpedo
 "Fire a torpedo in the direction of the ship heading with a combined velocity"
 	| torpedo | 
@@ -170,7 +170,7 @@ fireTorpedo
 	torpedo _ Torpedo new.
 	torpedo 
 		morphPosition: self morphPosition + self nose;
-		rotateBy: location radians;
+		rotation: location radians;
 		velocity: velocity;
 		color: color muchLighter .
 	owner addTorpedo: torpedo.! !
@@ -219,12 +219,12 @@ resupply
 	fuel _ 500.
 	torpedoes _ 20! !
 
-!Torpedo methodsFor: 'computing' stamp: 'hlsf 10/2/2020 21:15:54'!
+!Torpedo methodsFor: 'computing' stamp: 'hlsf 12/19/2020 14:29:52'!
 update: t
 "Update the torpedo position"
 	super update: t.
 	"orientate the torpedo in its velocity direction, nicer effect while inaccurate"
-	self rotation: (velocity y arcTan: velocity x) + Float halfPi scale: 1.
+	self rotation: (velocity y arcTan: velocity x) + Float halfPi.
 	lifeSpan _ lifeSpan - 1.
 	lifeSpan isZero ifTrue: [owner destroyTorpedo: self].
 	acceleration > 0 ifTrue: [acceleration _ acceleration - 1000].! !

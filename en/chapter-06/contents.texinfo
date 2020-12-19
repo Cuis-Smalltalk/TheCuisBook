@@ -581,7 +581,7 @@ See the @class{Torpedo>>update:} definition:
    super update: t.
    "orientate the torpedo in its velocity direction, nicer effect
    while inaccurate"
-   self rotation: (velocity y arcTan: velocity x) + Float halfPi scale: 1.
+   self rotation: (velocity y arcTan: velocity x) + Float halfPi.
    lifeSpan @assign{} lifeSpan - 1.
    ifeSpan isZero ifTrue: [owner destroyTorpedo: self].
    acceleration > 0 ifTrue: [acceleration @assign{} acceleration - 1000]}
