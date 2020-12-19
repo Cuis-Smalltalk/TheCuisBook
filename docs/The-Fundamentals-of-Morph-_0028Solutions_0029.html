@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 17, 2020
+Compilation : December 19, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -196,6 +196,28 @@ thin red line and filled in yellow.
    aCanvas ellipseCenterX: 70 y: 0 rx: 3 ry: 3 
       borderWidth: 1 
       borderColor: Color red fillColor: Color yellow
+</pre></div>
+
+
+<span id="exeTorpedoExtent-1"></span><h4 class="subheading"><a href="Spacewar_0021-Drawing.html#exeTorpedoExtent">Exercise 7.6</a></h4>
+<p>The width of the torpedo is 4 pixels and its height 8 pixels:
+</p><div class="example">
+<pre class="example">Torpedo&gt;&gt;morphExtent
+   &#x2191; `4 @ 8`
+</pre></div>
+
+<span id="exeTorpedoDrawing-1"></span><h4 class="subheading"><a href="Spacewar_0021-Drawing.html#exeTorpedoDrawing">Exercise 7.7</a></h4>
+<p>The <code>Torpedo</code>&rsquo;s <code>drawOn:</code> method is very similar to the
+one in <code>SpaceShip</code> class:
+</p><div class="example">
+<pre class="example">Torpedo&gt;&gt;drawOn: canvas
+   | a b c |
+   a &#x2190; 0 @ -8.
+   b &#x2190; -2 @ 0.
+   c &#x2190; 2 @ 0.
+   canvas line: a to: b width: 2 color: color.
+   canvas line: c to: b width: 2 color: color.
+   canvas line: a to: c width: 2 color: color.
 </pre></div>
 
 

@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 17, 2020
+Compilation : December 19, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -396,7 +396,7 @@ oriented programming there is this special mechanism named
    super update: t.
    &quot;orientate the torpedo in its velocity direction, nicer effect
    while inaccurate&quot;
-   self rotation: (velocity y arcTan: velocity x) + Float halfPi scale: 1.
+   self rotation: (velocity y arcTan: velocity x) + Float halfPi.
    lifeSpan &#x2190; lifeSpan - 1.
    ifeSpan isZero ifTrue: [owner destroyTorpedo: self].
    acceleration &gt; 0 ifTrue: [acceleration &#x2190; acceleration - 1000]

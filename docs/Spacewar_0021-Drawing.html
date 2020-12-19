@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 17, 2020
+Compilation : December 19, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -91,10 +91,10 @@ Previous: <a href="A-Clock-Morph.html" accesskey="p" rel="prev">A Clock Morph</a
 </div>
 <hr>
 <span id="Spacewar_0021-Drawing-1"></span><h3 class="section">7.3 Spacewar! Drawing</h3>
-<p>For speed reason, our Spacewar! game does not use the
-<code>VectorGraphics</code> package. It relies on the BitBlt canvas. For
-this reason, each of our moprh should answer <code>false</code> to the
-<code>#requiresVectorCanvas</code> message:
+<p>For performance reasons, our Spacewar! game does not use the
+<code>VectorGraphics</code> package. It relies on the BitBlt
+canvas. Therefore, each of our moprh should answer <code>false</code>
+to the <code>#requiresVectorCanvas</code> message:
 </p>
 <div class="float"><span id="vectorGraphicsNo"></span>
 <div class="example">
@@ -135,11 +135,10 @@ rotated.
 <span id="index-to-be-written_002c-Explain-properly-the-backtick-below_003a"></span>
 <p><strong>To be written.</strong> Explain properly the backtick below:
 </p>
-<p>An expression surrounded with backticks <code>'`'</code> is turned as a kind
-of literal. It improves the performance of the method as the
-expression is only executed once, in the subsequent calls of the
-method the backtick-ed expressions are just remembered from their
-initial evaluation.
+<p>An expression surrounded with backticks <code>'`'</code> is evaluated only once,
+when the method is saved and compiled, and turned as a kind of literal.
+This improves the performance of the method as the expression not executed
+when the method is called: the pre-built linteral is used instead.
 </p>
 <span id="index-number-38"></span>
 <span id="index-morph-22"></span>
@@ -181,7 +180,7 @@ toward the bottom of the screen.
 <div class="float"><span id="ch07_002d10_002dShipDiagram"></span>
 <div align="center"><img src="ch07-10-ShipDiagram.png" alt="ch07-10-ShipDiagram">
 </div>
-<div class="float-caption"><p><strong>Figure 7.10: </strong>Space hip diagram at game start-up</p></div></div>
+<div class="float-caption"><p><strong>Figure 7.10: </strong>Space ship diagram at game start-up</p></div></div>
 <p>Given the vertices as seen in <a href="#ch07_002d10_002dShipDiagram">Figure 7.10</a>, the extent is
 <code>20 @ 30</code>:
 </p>
@@ -213,6 +212,7 @@ toward the bottom of the screen.
 <p>When there is an acceleration from the engine, we draw a small gray
 line to represent the gas exhaust.
 </p>
+<span id="index-morph-23"></span>
 <p>When the user turns the ship, the morph is rotated a bit:
 </p>
 <div class="example">
@@ -226,11 +226,72 @@ SpaceShip&gt;&gt;left
 </pre></div>
 
 <p>Underneath, <code>MobileMorph</code> is equipped with an affine
-transformation to scale, rotate and translate the coordinated passed
-as argument to the drawing messages received by the canvas.
+transformation to scale, rotate and translate the coordinates passed
+as arguments to the drawing messages received by the canvas.
 </p>
 <span id="Torpedo"></span><h4 class="subsection">7.3.3 Torpedo</h4>
 
+
+<p>Alike a space ship, when a torpedo is just instantiated its nose points
+in the direction of the top of the screen and its vertices are
+given by the <a href="#ch07_002d11_002dTorpedoDiagram">Figure 7.11</a>.
+</p>
+<div class="float"><span id="ch07_002d11_002dTorpedoDiagram"></span>
+<div align="center"><img src="ch07-11-TorpedoDiagram.png" alt="ch07-11-TorpedoDiagram">
+</div>
+<div class="float-caption"><p><strong>Figure 7.11: </strong>Torpedo diagram at game start-up</p></div></div>
+<div class="float"><span id="exeTorpedoExtent"></span>
+<blockquote class="indentedblock">
+<p><em>Given the vertices
+given by <a href="#ch07_002d11_002dTorpedoDiagram">Figure 7.11</a>, how will you write its
+<code>morphExtent</code> method?</em>
+</p></blockquote>
+
+
+<div class="float-caption"><p><strong>Exercise 7.6: </strong>Torpedo extent</p></div></div>
+<span id="index-morph-24"></span>
+<p>A space ship and a torpedo share the same orientation.  To orient
+correctly a newly fired torpedo, you just copy the orientation from
+its space ship:
+</p>
+<div class="example">
+<pre class="example">SpaceShip&gt;&gt;fireTorpedo
+&quot;Fire a torpedo in the direction of the ship heading with a combined
+velocity&quot;
+   ../..
+   torpedo &#x2190; Torpedo new.
+   torpedo 
+      morphPosition: self morphPosition + self nose;
+      rotation: location radians; <span class="roman">&quot;copy the rotation angle from ship&quot;</span>
+      velocity: velocity;
+   ../..
+</pre></div>
+
+<div class="float"><span id="exeTorpedoDrawing"></span>
+<blockquote class="indentedblock">
+<p><em>How will you write
+the <code>Torpedo</code>&rsquo;s <code>drawOn:</code> method?</em>
+</p></blockquote>
+
+
+<div class="float-caption"><p><strong>Exercise 7.7: </strong>Torpedo drawing</p></div></div>
+<p>In the game play, a torpedo is always oriented in the direction of its
+velocity. While inaccurate, it produces a nice effect when a torpedo
+is pulled by the central star. When the torpedo&rsquo;s velocity vector is
+vertical, pointing to the top of the screen, its angle is
+-90&deg; in the screen coordinates system. In that situation
+the torpedo is not rotated &ndash; or 0&deg; rotated &ndash; therefore
+we add 90&deg; to the velocity angle to get the matching
+rotation of the torpedo:
+</p>
+<div class="example">
+<pre class="example">Torpedo&gt;&gt;update: t
+&quot;Update the torpedo position&quot;
+   ../..
+   self rotation: (velocity y arcTan: velocity x) + Float halfPi.
+   ../..
+</pre></div>
+   
 <hr>
 <div class="header">
 <p>

@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 17, 2020
+Compilation : December 19, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -310,7 +310,6 @@ into a separate <code>ClockFaceMorph</code>, and make it submorph of the
 Clock. Then, you can rotate just the face, not the clock, and the
 clock will show fake time. Try it!
 </p>
-
 <p>You might have noted two things that seem missing, though: How to
 compute bounding rectangles for Morphs, and how to detect if a Morph
 is being hit by the Hand, so you can move it or get a halo. The
@@ -350,14 +349,18 @@ zooming. But it is mature, and it relies on the BitBlt operation that
 is included in the <acronym>VM</acronym>. This means that it offers excellent
 performance.
 </p>
-<p><code>VectorGraphics</code> is still in active development. When its
-drawing performance will become good enough, it will be possible to
-draw all Morphs, completely replacing BitBltCanvas.  Then, the UI
+<p><code>VectorGraphics</code> is still in active development. When its drawing
+performance becomes good enough, it will be able to draw all Morphs,
+completely replacing BitBltCanvas. Then, the UI customization option
+World menu &rarr; <code>Preferences...</code> &rarr;
+<code>Font Sizes...</code> will no longer be needed, as all windows will be
+zoomable, in addition to resizable.
 </p>
 <p>To further explore Cuis-Smalltalk&rsquo; Morphic, evaluate <code>Feature
 require: 'SVG'</code>, and then <code>SVGElementMorph examplesLion</code> and
 the other examples there. Also, be sure to try the example in the
-comment in the <code>unicodeExamples</code> method.
+comment in the <code>BitBltCanvas class&gt;&gt;unicodeExamples</code> and
+<code>BitBltCanvas class&gt;&gt;unicodeUtf32Examples</code> methods.
 </p>
 <div class="footnote">
 <hr>

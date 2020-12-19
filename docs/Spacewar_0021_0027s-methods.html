@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 17, 2020
+Compilation : December 19, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -223,7 +223,7 @@ space ship position, heading, and velocity before being fired.
   torpedo &#x2190; Torpedo new.
   torpedo 
     morphPosition: self morphPosition + self nose;
-    rotateBy: location radians;
+    rotation: location radians;
     velocity: velocity;
     color: color muchLighter.
   owner addTorpedo: torpedo
