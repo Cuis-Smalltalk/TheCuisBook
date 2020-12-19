@@ -451,7 +451,7 @@ methods. This portion of code updates the orientation of a torpedo
 according to its velocity vector:
 
 @smalltalkExampleCaption{Aligning a torpedo with its velocity direction,torpedoOrientation,
-self rotation: (velocity y arcTan: velocity x) + Float halfPi scale: 1}
+self rotation: (velocity y arcTan: velocity x) + Float halfPi}
 
 With this brief introduction to the system browser, your are now
 equipped to explore the system classes.
