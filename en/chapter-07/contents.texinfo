@@ -826,12 +826,13 @@ side where we have been coding until now.
  with a @dfn{class variable} shared among the sub classes (discussed
  later).
 
- @item To edit the class methods, in the System Browser press the
- @label{class} button under the class list.
+ @item To edit the @emph{class} instance variables and @emph{class}
+ methods, in the System Browser press the @label{class} button under
+ the class list.
 
 @end enumerate
 
-First we declare our variable:
+First we declare our variable in the @class{Mobile class} definition:
 
 @smalltalkExampleCaption{@smalltalk{vertices} an instance variable in @class{Mobile class}, instanceVariableMobileClass,
 Mobile class
