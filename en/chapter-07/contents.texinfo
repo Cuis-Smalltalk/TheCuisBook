@@ -804,38 +804,50 @@ Torpedo>>initialize
 
 However this is not a good idea. Imagine the game play with 200
 torpedoes, the vertices array will be duplicated 200 times with the
-same data! In that kind of situation, what you want is a @dfn{class
-instance variable} defined in the class side -- in contrast to the
-instance side where we have been coding until now.
+same data!
 
-@smalltalkExampleCaption{@smalltalk{vertices} an instance variable in @class{Mobile} class, instanceVariableMobileClass,
-Mobile class
-   instanceVariableNames: 'vertices'}
+@subsubheading Class instance variable
+
+In that kind of situation, what you want is a @dfn{class instance
+variable} defined in the class side -- in contrast to the instance
+side where we have been coding until now.
 
 @enumerate
 
- @item A class instance variable can be accessed and assigned only by
- the class itself in a @dfn{class method}.
+ @item A @dfn{class instance variable} can be accessed and assigned
+ only by the class itself in a @dfn{class method}.
 
- @item To access or to modify a class instance variable, an instance
- asks to the class with dedicated messages triggering @dfn{class
- methods}.
+ @item To access a class instance variable, an instance class (i.e. a
+ fired torpedo) asks to the class with dedicated messages triggering
+ @dfn{class methods}.
 
- @item In the class hierarchy, each sub classes has a different class
- instance variable -- in contrast with a class variable shared among
- the sub classes (discussed later).
+ @item In the class hierarchy, each sub classes has a different value
+ for the same class instance variable -- in contrast
+ with a @dfn{class variable} shared among the sub classes (discussed
+ later).
 
  @item To edit the class methods, in the System Browser press the
  @label{class} button under the class list.
 
 @end enumerate
 
-Once we declare our variable, we write an access method in the
-@class{Mobile class} for the @class{SpaceShip} and @class{Torpedo}
-instances:
+First we declare our variable:
+
+@smalltalkExampleCaption{@smalltalk{vertices} an instance variable in @class{Mobile class}, instanceVariableMobileClass,
+Mobile class
+   instanceVariableNames: 'vertices'}
+
+Then we write an access method in the @class{Mobile class}, so
+@class{SpaceShip} and @class{Torpedo} instances can access it. You
+edit this method and the subsequent class methods in the System
+Browser, once you press the @label{class} button --
+@ref{ch07-12-browserClassSide}:
 
 @smalltalkExample{Mobile class>>vertices
    @return{} vertices}
+
+@figure{The class side of the System Browser,ch07-12-browserClassSide,12}
+
 
 @cindex class @subentry initialize
 Next, each subclass is responsible to correctly initialize
@@ -850,8 +862,6 @@ Torpedo class>>initialize
 "Torpedo initialize"
    vertices @assign{} @{0@@-4 . -2@@4 . 2@@4@}}
 
-You edit these methods in the System Browser once you press the
-@label{class} button.
 
 When a class is installed in @cuis{}, its @method{initialize} class
 method is executed. Alternatively select the comment and execute it
@@ -873,11 +883,29 @@ Torpedo initialize.
 Torpedo vertices.
 @result{} #(0@@-4 -2@@4 2@@4)}
 
+@c refactoring of collision with display bounds
+
 
 @c Explain the difference with class variable
+@subsubheading Class variable
+@cindex class @subentry variable @seeentry{variable}
+@cindex variable @subentry class
 
-A class variable is written capitalized in the argument of
-@smalltalk{classVariableNames:} keyword.
+A @dfn{class variable} is written capitalized in the argument of
+@smalltalk{classVariableNames:} keyword:
 
+@smalltalkExampleCaption{@smalltalk{Vertices} a class variable in @class{Mobile},classVariableMobile,MovableMorph subclass: #Mobile
+   instanceVariableNames: 'acceleration color velocity'
+   classVariableNames: 'Vertices'
+   poolDictionaries: ''
+   category: 'Spacewar!'}
 
-@c refactoring of collision with display bounds
+As a class instance variable it can be directly accessed from the
+class side and instances are grant access only with messages send to
+the class side. @strong{Contrary} to a class instance variable, its
+value is common the whole class hierarchy. 
+
+In Spacewar!, a class variable @smalltalk{Vertices} will have make the
+diagram common to a space ship and a torpedo. This is not what we
+wanted.
+
