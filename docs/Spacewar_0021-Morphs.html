@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 19, 2020
+Compilation : December 20, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -419,12 +419,13 @@ are also handled. When a torpedo is just fired, its engine acceleration is
 huge then it decreases quickly.
 </p>
 <p>With the System Browser pointed to the <code>Torpedo&gt;&gt;update:</code>
-method, observe the <samp>inheritance</samp> button. It is light green, which
-indicates the message is sent to <code>super</code> too. This is a
-reminder the method supplies a specialized behavior. 
-The button tool tip explains the color hilight meanings within the method&rsquo;s text.
-When pressing the <samp>inheritance</samp> button, you browse all 
-implementations of the <code>update:</code> method within this inheritance chain.
+method, observe the <samp>inheritance</samp> button. It is light green,
+which indicates the message is sent to <code>super</code> too. This is
+a reminder the method supplies a specialized behavior.  The button
+tool tip explains the color hilight meanings within the method&rsquo;s text.
+When pressing the <samp>inheritance</samp> button, you browse all
+implementations of the <code>update:</code> method within this inheritance
+chain.
 </p>
 <div class="float"><span id="ch06_002d20_002dTorpedoUpdateInheritance"></span>
 <div align="center"><img src="ch06-20-TorpedoUpdateInheritance.png" alt="ch06-20-TorpedoUpdateInheritance">
@@ -432,7 +433,8 @@ implementations of the <code>update:</code> method within this inheritance chain
 <div class="float-caption"><p><strong>Figure 6.14: </strong>Update&rsquo;s inheritance button</p></div></div>
 <p>We already met an example of overriding when initializing a space ship
 instance &ndash; see <a href="Spacewar_0021-States-and-Behaviors.html#initSpaceShip">Example 3.17</a>. In the context of our class
-refactoring, the <code>initialize</code> overriding spans the whole <code>Mobile</code> hierarchy:
+refactoring, the <code>initialize</code> overriding spans the whole
+<code>Mobile</code> hierarchy:
 </p>
 <div class="float"><span id="initMobileHierarchy"></span>
 <div class="example">
@@ -459,7 +461,8 @@ initialization:
 </p>
 <ol>
 <li> <strong>SpaceShip.</strong> Its mechanical states are set with the
- <code>super initialize</code> and then the ship is resupplied with fuel and torpedos:
+ <code>super initialize</code> and then the ship is resupplied with
+ fuel and torpedos:
 
 <div class="example">
 <pre class="example">SpaceShip&gt;&gt;resupply
@@ -467,9 +470,9 @@ initialization:
    torpedoes &#x2190; 20
 </pre></div>
 
-</li><li> <strong>Torpedo.</strong> Inherited mechanical states initialized; add self-destroy
- sequence initialization and acceleration adjusted to mimic the torpedo
- boost at fire up.
+</li><li> <strong>Torpedo.</strong> Inherited mechanical states initialized; add
+ self-destroy sequence initialization and acceleration adjusted to
+ mimic the torpedo boost at fire up.
 
 </li></ol>
 
