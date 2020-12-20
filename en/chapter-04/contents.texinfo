@@ -44,8 +44,9 @@ class itself and its parents is called its @dfn{protocol}.
 Again the browser is helpful to explore a class protocol. You have two
 options:
 
-@enumerate
 @cindex keyboard shortcut @subentry browse protocol (@kbd{Ctrl-p})
+@enumerate
+
    @item @strong{Explore the protocol.} In the class pane of the
    browser, do ...@clicksequence{select @class{String} class @click{}
    right mouse button @click{} @label{Browse protocol
