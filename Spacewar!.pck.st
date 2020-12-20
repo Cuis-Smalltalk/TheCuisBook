@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4488] on 19 December 2020 at 2:33:01 pm'!
+'From Cuis 5.0 [latest update: #4488] on 20 December 2020 at 9:34:22 pm'!
 'Description '!
-!provides: 'Spacewar!!' 1 78!
+!provides: 'Spacewar!!' 1 79!
 SystemOrganization addCategory: 'Spacewar!!'!
 
 
@@ -12,7 +12,7 @@ MovableMorph subclass: #Mobile
 	category: 'Spacewar!!'!
 !classDefinition: 'Mobile class' category: 'Spacewar!!'!
 Mobile class
-	instanceVariableNames: ''!
+	instanceVariableNames: 'vertices'!
 
 !classDefinition: #SpaceShip category: 'Spacewar!!'!
 Mobile subclass: #SpaceShip
@@ -145,16 +145,16 @@ isInOuterSpace
 "Is the mobile located in the outer space? (outside of the game play area)"
 	^(owner morphContainsPoint: self morphPosition) not! !
 
-!Mobile methodsFor: 'drawing' stamp: 'hlsf 12/19/2020 14:30:29'!
-drawOn: canvas
-"	self drawShape: self morphLocalBounds corners color: Color white width: 1 		on: canvas"! !
-
-!Mobile methodsFor: 'drawing' stamp: 'hlsf 12/16/2020 21:38:44'!
-drawShape: points color: aColor width: width on: canvas
+!Mobile methodsFor: 'drawing' stamp: 'hlsf 12/20/2020 13:20:13'!
+drawOn: canvas polygon: vertices
 	| size |
-	size _ points size.
-	points withIndexDo: [: aPoint :i |
-		canvas line: aPoint to: ( points at: (i  \\ size + 1) ) width: width color: aColor]! !
+	size _ vertices size.
+	vertices withIndexDo: [: aPoint :i |
+		canvas line: aPoint to: ( vertices at: (i  \\ size + 1) ) width: 2 color: color]! !
+
+!Mobile class methodsFor: 'as yet unclassified' stamp: 'hlsf 12/19/2020 23:21:09'!
+vertices
+	^ vertices ! !
 
 !SpaceShip methodsFor: 'accessing' stamp: 'hlsf 12/15/2020 21:06:01'!
 morphExtent
@@ -197,27 +197,34 @@ unpush
 "Stop the accelaration boost"
 	acceleration _ 0! !
 
-!SpaceShip methodsFor: 'drawing' stamp: 'hlsf 12/16/2020 21:39:07'!
+!SpaceShip methodsFor: 'drawing' stamp: 'hlsf 12/20/2020 15:18:30'!
 drawOn: canvas
-	self drawShape: {0@ -15 . -10@15. 0@ 10. 10@15} color: color width: 2 on: canvas.
+	| vertices  |
+	vertices _ self class vertices.
+	super drawOn: canvas polygon: vertices.
 	"Draw gas exhaust"
 	acceleration ifNotZero: [
-		canvas line: 0@10 to: 0@35 width: 1 color: Color gray].
-	super drawOn: canvas ! !
+		canvas line: vertices third to: 0@35 width: 1 color: Color gray].! !
 
 !SpaceShip methodsFor: 'drawing' stamp: 'hlsf 12/15/2020 21:16:09'!
 nose
 	^ self direction * 40! !
 
-!SpaceShip methodsFor: 'initialization' stamp: 'hlsf 10/1/2020 17:24:19'!
+!SpaceShip methodsFor: 'initialization' stamp: 'hlsf 12/19/2020 22:15:45'!
 initialize
 	super initialize.
+	vertices _ {0@ -15 . -10@15. 0@ 10. 10@15}.
 	self resupply! !
 
 !SpaceShip methodsFor: 'initialization' stamp: 'hlsf 10/1/2020 17:30:57'!
 resupply
 	fuel _ 500.
 	torpedoes _ 20! !
+
+!SpaceShip class methodsFor: 'as yet unclassified' stamp: 'hlsf 12/19/2020 23:21:16'!
+initialize
+"SpaceShip initialize"
+	vertices _ {0@-15 . -10@15. 0@10. 10@15}! !
 
 !Torpedo methodsFor: 'computing' stamp: 'hlsf 12/19/2020 14:29:52'!
 update: t
@@ -229,10 +236,9 @@ update: t
 	lifeSpan isZero ifTrue: [owner destroyTorpedo: self].
 	acceleration > 0 ifTrue: [acceleration _ acceleration - 1000].! !
 
-!Torpedo methodsFor: 'drawing' stamp: 'hlsf 12/16/2020 21:40:01'!
+!Torpedo methodsFor: 'drawing' stamp: 'hlsf 12/20/2020 13:19:16'!
 drawOn: canvas
-	self drawShape: {0@ -4 . 	-2@4 . 2@4} color: color width: 2 on: canvas.
-	super drawOn: canvas ! !
+	self drawOn: canvas polygon: self class vertices! !
 
 !Torpedo methodsFor: 'geometry' stamp: 'hlsf 12/15/2020 21:06:53'!
 morphExtent
@@ -243,6 +249,11 @@ initialize
 	super initialize.
 	lifeSpan _ 500.
 	acceleration _ 3000! !
+
+!Torpedo class methodsFor: 'as yet unclassified' stamp: 'hlsf 12/19/2020 23:21:22'!
+initialize
+"Torpedo initialize"
+	vertices _ {0@-4 . -2@4 . 2@4}! !
 
 !SpaceWar methodsFor: 'accessing' stamp: 'jmv 9/28/2020 10:41:48'!
 morphExtent
@@ -433,3 +444,5 @@ requiresVectorCanvas
 !CentralStar methodsFor: 'as yet unclassified' stamp: 'hlsf 12/15/2020 21:04:13'!
 morphExtent
 	^ `30 @ 30`! !
+SpaceShip initialize!
+Torpedo initialize!
