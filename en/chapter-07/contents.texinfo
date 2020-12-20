@@ -931,6 +931,10 @@ SpaceShip>>drawOn: canvas
    acceleration ifNotZero: [
       canvas line: vertices third to: 0@@35 width: 1 color: Color gray]}
 
+@exercise{Draw on @class{Mobile},exeDrawMobile, @emph{How will you
+write the @method{drawOn:polygon:} method in @class{Mobile}? Tip: use the
+iterator @method{withIndexDo:}.}}
+
 @c Explain the difference with class variable
 @subsubheading Class variable
 @cindex class @subentry variable @seeentry{variable}
@@ -939,7 +943,8 @@ SpaceShip>>drawOn: canvas
 A @dfn{class variable} is written capitalized in the argument of
 @smalltalk{classVariableNames:} keyword:
 
-@smalltalkExampleCaption{@smalltalk{Vertices} a class variable in @class{Mobile},classVariableMobile,MovableMorph subclass: #Mobile
+@smalltalkExampleCaption{@smalltalk{Vertices} a class variable in @class{Mobile},classVariableMobile,
+MovableMorph subclass: #Mobile
    instanceVariableNames: 'acceleration color velocity'
    classVariableNames: 'Vertices'
    poolDictionaries: ''
@@ -948,17 +953,37 @@ A @dfn{class variable} is written capitalized in the argument of
 As a class instance variable, it can be directly accessed from the
 class side and instances are grant access only with messages send to
 the class side. @strong{Contrary} to a class instance variable, its
-value is common the whole class hierarchy. 
+value is common in the whole class hierarchy. 
 
 In Spacewar!, a class variable @smalltalk{Vertices} will have make the
 diagram common to a space ship and a torpedo. This is not what we
 wanted.
-
 
 @c refactoring of collision with display bounds
 @subsection Collisions revisited
 
 VectorGraphics can detect morph collision at the pixel level. We are
 not that fortunate when using the BitBlt canvas, we have to rely on
-the rectangular morph extent computed depending on the morph rotation
-and scaling. The @msg{displayBounds} message is just what we need.
+the rectangular morph extent.  The @msg{displayBounds} message is just
+what we need: it answers the morph bounds in the display, a rectangle
+encompassing the morph given its rotation and scale.
+
+@figure{The display bounds of a space ship,ch07-13-shipDisplayBounds,7}
+
+In @ref{shipSunCollision}, we have a very naive approach for collision
+between the central star and the ships, based on distance between
+morphs. It was very inaccurate. When browsing the @class{Rectangle}
+class, you learn the @msg{intersects:} message can tell us if two
+rectangles overlap. This is what we need for a more accurate collision
+detection between the central star and the space ships:
+
+@smalltalkExampleCaption{Collision (accurate) between the ships and
+the Sun, accurateCollisionShipsSun,
+SpaceWar>>collisionsShipsStar
+   ships do: [:aShip | 
+      (aShip displayBounds intersects: centralStar displayBounds) ifTrue: [
+         aShip flashWith: Color red.
+         self teleport: aShip]]}
+
+@exercise{Accurate collision detection,exeAccurateDetection,
+@emph{Rewrite the three collision detection methods between space ships, torpedoes and the central star.}}
