@@ -31,7 +31,7 @@ for Squeak}.
 @menu
 * Going Vector::
 * A Clock Morph::
-* Spacewar! Drawing::
+* Back to Spacewar! Morphs::
 @end menu
 
 
@@ -600,8 +600,8 @@ the other examples there. Also, be sure to try the example in the
 comment in the @method{BitBltCanvas class>>unicodeExamples} and
 @method{BitBltCanvas class>>unicodeUtf32Examples} methods.
 
-@node Spacewar! Drawing
-@section Spacewar! Drawing
+@node Back to Spacewar! Morphs
+@section Back to Spacewar! Morphs
 For performance reasons, our Spacewar! game does not use the
 @label{VectorGraphics} package. It relies on the BitBlt
 canvas. Therefore, each of our moprh should answer @smalltalk{false}
@@ -774,6 +774,8 @@ rotation of the torpedo:
    ../..}
    
 
+@subsection Drawing revisited
+
 @cindex class @subentry instance variable @seeentry{variable}
 @cindex variable @subentry class instance
 @c refactoring of drawOn: explain class variable
@@ -832,17 +834,16 @@ side where we have been coding until now.
 
 @end enumerate
 
-First we declare our variable in the @class{Mobile class} definition:
+In the System Browser, we click the @label{class} button then we
+declare our variable in the @class{Mobile class} definition --
+@ref{ch07-12-browserClassSide}:
 
 @smalltalkExampleCaption{@smalltalk{vertices} an instance variable in @class{Mobile class}, instanceVariableMobileClass,
 Mobile class
    instanceVariableNames: 'vertices'}
 
 Then we write an access method in the @class{Mobile class}, so
-@class{SpaceShip} and @class{Torpedo} instances can access it. You
-edit this method and the subsequent class methods in the System
-Browser, once you press the @label{class} button --
-@ref{ch07-12-browserClassSide}:
+@class{SpaceShip} and @class{Torpedo} instances can access it:
 
 @smalltalkExample{Mobile class>>vertices
    @return{} vertices}
@@ -884,8 +885,51 @@ Torpedo initialize.
 Torpedo vertices.
 @result{} #(0@@-4 -2@@4 2@@4)}
 
-@c refactoring of collision with display bounds
+This is really the behavior we want: @class{SpaceShip} and
+@class{Torpedo} instances have a different diagram. However, every
+instances of a @class{SpaceShip} will have the same diagram, referring
+to the same @smalltalk{vertices} array (i.e. same location in the
+computer memory).
 
+@cindex class @subentry @method{class}
+Each instance asks its class side with the @msg{class} message:
+
+@smalltalkExample{aTorpedo class
+@result{} Torpedo
+self class
+@result{} SpaceShip}
+
+The @class{Torpedo}'s @method{drawOn:} is rewritten to access the
+vertices in its class side:
+
+@smalltalkExample{Torpedo>>drawOn: canvas
+   | vertices |
+   vertices @assign{} self class vertices.
+   canvas line: vertices first to: vertices second width: 2 color: color.
+   canvas line: vertices third to: vertices second width: 2 color: color.
+   canvas line: vertices first to: vertices third width: 2 color: color}
+
+@exercise{Space ship access to its diagram in class side,exeSpaceShipClassSideDiagram,
+@emph{How will you rewrite @class{SpaceShip}'s @method{drawOn:} to use the vertices in its class side?}}
+
+So far, we still have this redundancy in the @method{drawOn:}
+methods. What we want is @class{Mobile} to be responsible to draw the
+polygon given a vertices array: @smalltalk{self drawOn: canvas
+polygon: vertices}.
+
+The @class{SpaceShip} and @class{Torpedo}'s @method{drawOn:} will then
+be simply written as:
+
+@smalltalkExample{Torpedo>>drawOn: canvas
+   self drawOn: canvas polygon: self class vertices
+
+SpaceShip>>drawOn: canvas
+   | vertices |
+   vertices @assign{} self class vertices.
+   self drawOn: canvas polygon: vertices.
+   "Draw gas exhaust"
+   acceleration ifNotZero: [
+      canvas line: vertices third to: 0@@35 width: 1 color: Color gray]}
 
 @c Explain the difference with class variable
 @subsubheading Class variable
@@ -901,7 +945,7 @@ A @dfn{class variable} is written capitalized in the argument of
    poolDictionaries: ''
    category: 'Spacewar!'}
 
-As a class instance variable it can be directly accessed from the
+As a class instance variable, it can be directly accessed from the
 class side and instances are grant access only with messages send to
 the class side. @strong{Contrary} to a class instance variable, its
 value is common the whole class hierarchy. 
@@ -910,3 +954,11 @@ In Spacewar!, a class variable @smalltalk{Vertices} will have make the
 diagram common to a space ship and a torpedo. This is not what we
 wanted.
 
+
+@c refactoring of collision with display bounds
+@subsection Collisions revisited
+
+VectorGraphics can detect morph collision at the pixel level. We are
+not that fortunate when using the BitBlt canvas, we have to rely on
+the rectangular morph extent computed depending on the morph rotation
+and scaling. The @msg{displayBounds} message is just what we need.

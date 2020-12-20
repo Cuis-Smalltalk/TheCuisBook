@@ -647,6 +647,35 @@ Torpedo>>drawOn: canvas
    canvas line: a to: c width: 2 color: color.
 @end smallexample
 
+@subheading @ref{exeSpaceShipClassSideDiagram}
+We use a local variable because we use two times the vertices, one to
+draw the ship and a second time to draw the gas exhaust.
+@smallexample
+SpaceShip>>drawOn: canvas
+   | vertices  |
+   vertices @assign{} self class vertices.
+   canvas line: vertices first to: vertices second width: 2 color: color.
+   canvas line: vertices second to: vertices third width: 2 color: color.
+   canvas line: vertices third to: vertices fourth width: 2 color: color.
+   canvas line: vertices fourth to: vertices first width: 2 color: color.
+   "Draw gas exhaust"
+   acceleration ifNotZero: [
+      canvas line: vertices third to: 0@@35 width: 1 color: Color gray]
+@end smallexample
+
+
+@smallexample
+Mobile>>drawOn: canvas polygon: vertices
+   | size |
+   size @assign{} vertices size.
+   vertices withIndexDo: [: aPoint :i |
+      canvas
+         line: aPoint
+         to: ( vertices at: (i  \\ size + 1) )
+         width: 2
+         color: color]
+@end smallexample
+
 
 @c Chapter 8
 @node Events (Solutions)
@@ -702,7 +731,6 @@ key = $d ifTrue: [@return{} ships second right].
 key = $a ifTrue: [@return{} ships second left].
 key = $s ifTrue: [@return{} ships second fireTorpedo]
 @end smallexample
-
 
 @c Chapter 9
 @node Code Management (Solutions)
