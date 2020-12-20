@@ -103,14 +103,24 @@ font-family: serif;
 pre.format
 {
 font-family: serif;
-border: 1px solid #f7f700 ;
+border: 1px solid #4da71f;
 padding: 1em;
 color: black;
-background: rgba(248, 248, 2, 0.16);
+background: #a1cb81;
 border-radius: 4px;
 }
 
 blockquote
+{
+border: 1px solid #f7f700;
+margin: 1em 3em 1em 3em;
+background: rgba(248, 248, 2, 0.16);
+border-radius: 4px;
+padding: .25em .5em .25em .5em;
+}
+
+/* Used in Exercise styling */
+blockquote.indentedblock
 {
 border: 1px solid #f7f700 ;
 margin: 1em 3em 1em 3em;
@@ -118,6 +128,8 @@ background: rgba(248, 248, 2, 0.16);
 border-radius: 4px;
 padding: .25em .5em .25em .5em;
 }
+
+
 
 img
 {
@@ -148,6 +160,14 @@ margin-bottom: .5em;
 h1.chapter, h2.section, .subheading
 {
 margin-bottom: .375em;
+}
+
+h3.section {
+    border-bottom: 1px solid black;
+}
+
+h4.subsection {
+    margin-top: 3em;
 }
 
 h2.section, h3.section, h3.heading, h3.subsection, h2.appendix
@@ -189,6 +209,8 @@ div.header
     padding: 0.2em;
     border-top: 3px solid #85b75f;
     border-bottom: 3px solid #85b75f;
+    margin-left: -7%;
+    margin-right: -7%;
 }
 
 table.cartouche
@@ -201,6 +223,13 @@ table.cartouche
 p
 {
     margin: 1em 0em 1em 0em;
+}
+
+
+/* LINK */
+a {
+    color: #4da71f;
+    text-decoration: none;
 }
 
 a:link a:visited a:active {
@@ -319,12 +348,22 @@ pre.menu-comment
 tt.key{
     font-size: 120%;
 }
+
 code
 {
     font-family: revert;
     font-size: 120%;
     font-weight: bold;
     color: #033DA3;
+}
+
+code:hover
+{
+    font-family: revert;
+    font-size: 120%;
+    font-weight: bold;
+    color: #033DA3;
+    background: #85b461;
 }
 
 table.index-cp code
