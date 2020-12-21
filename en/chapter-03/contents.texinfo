@@ -65,7 +65,7 @@ the method invoked has the selector @smalltalk{#at:put:} and the arguments
 @smalltalk{1} and @smalltalk{$B}.  All selectors are symbols.
 
 Object instances are created -- @dfn{instantiated} --
-following a model or template. This model is known by its @dfn{Class}.
+following a model or template. This model is known as its @dfn{Class}.
 All instances of a class share the same methods and so react in the same ways.
 
 For example, there is one class @class{Fraction} but many
@@ -79,7 +79,7 @@ as we will now describe.
 @cindex instance variable
 A given class declares its internal variables -- states -- and the
 behavior by implementing the methods.  A variable is basically a named
-box which can hold any object.  Each instance of a class gets its own
+box which can hold any object.  Each instance variable of a class gets its own
 box with the common name.
 
 @cindex number @subentry rational fraction
@@ -99,8 +99,8 @@ own denominator.
 @cindex superclass
 From this declaration, we observe there is a hierarchy in
 the class definition: @class{Fraction} is a kind of
-@class{Number}. This means a fraction inherits the internal state --
-variables -- and behavior -- methods -- defined in the @class{Number}
+@class{Number}. This means a fraction inherits the internal state
+(variables) and behavior (methods) defined in the @class{Number}
 class. @class{Fraction} is called a @dfn{subclass} of @class{Number},
 and so naturally we call @class{Number} a @dfn{superclass} of @class{Fraction}.
 
@@ -220,8 +220,8 @@ Let's examine this method in @class{Number}:
 
 In an instance method source code, @smalltalk{self} refers to the
 object itself, here it is the value of the number. The @return{} (also
-@smalltalk{^}) symbol indicates to return the following value
-@smalltalk{self * self}.
+@smalltalk{^}) symbol indicates to @emph{return} the following value
+@smalltalk{self * self}.  One might pronounce @return{} as ``return''.
 
 Now let's examine this same method in @class{Fraction}:
 @smalltalkExample{Fraction>>squared
@@ -416,7 +416,7 @@ is pressed to see this list.
 
 @figure{Instance methods in @class{Float},ch03-floatInstanceSide,7}
 
-In a Workspace, this methods are called with the message name sent
+In a Workspace, these methods are called with the message name sent
 directly to an instance:
 
 @smalltalkExample{-10.12 abs @result{} 10.12
@@ -554,7 +554,7 @@ Float pi to: 5 by: 1/3 do: [:i | Transcript show: (i roundTo: 0.01) ; space]
 Now, in the @class{Integer} class, explore the method category
 @label{enumerating}, here is the @method{timesRepeat:}. When a
 portion of code needs to be executed several times
-@footnote{Understand repeated an integer number of times.}, without
+@footnote{More strictly, to be repeated an integer number of times.}, without
 the need of an index, the @msg{timesRepeat:} message is sent to an
 integer. We already saw this variant in a previous section of this
 chapter.  Throwing a 6 face die 5 times can be simulated with
@@ -572,7 +572,7 @@ Note: Expect a different result each time.
 @cindex number @subentry @method{to:}
 @cindex number @subentry @method{to:by:}
 
-Interval of numbers can be defined on their own, for future use:
+Intervals of numbers can be defined on their own, for future use:
 
 @smalltalkExampleCaption{Interval,interval,
 1 to: 10
@@ -581,7 +581,7 @@ Interval of numbers can be defined on their own, for future use:
 1 to: 10 by: 2
 @result{} (1 to: 9 by: 2)}
 
-Interval works with other object as character:
+Intervals work with other kinds of objects such as @class{Character}s:
 @smalltalkExample{$d to: $h
 @result{} #($d $e $f $g $h)}
 
@@ -599,9 +599,9 @@ collection:
 
 In Spacewar!, when a ship is destroyed it is teleported to a random
 position in the square game play area. Intervals are handy to pick 
-random coordinates. In the example bellow, the variable
-@smalltalk{randomCoordinate} holds a block of code -- called anonymous
-function in other languages; it picks up a random value in the
+random coordinates. In the example below, the variable
+@smalltalk{randomCoordinate} holds a block of code -- called an anonymous
+function in other languages. It picks a random value in the
 interval consisting of the game play area left and right extents:
 
 @smalltalkExampleCaption{Teleport ship, teleportShipInterval,
@@ -617,7 +617,9 @@ the interval [0 ; 2PI]@comma{} each 1/10. Output in the transcript.}}
 @c Integer bits representation and manpulation
 @cindex number @subentry integer @subentry base
 Integer numbers are represented in different bases when prefixed with
-the base and ``r''. When executing and printing @kbd{Ctrl-p} such a
+the base and ``r''. The @label{r} stands for radix, the base root by
+which the following number is interpreted.
+When executing and printing @kbd{Ctrl-p} such a
 number, it is immediately printed in the decimal base:
 
 @smalltalkExampleCaption{Integer represented in different base,integerBase,
@@ -766,7 +768,7 @@ to see common ways to group methods.
 
 Sometimes you may not see a category which helps right away.
 
-@cuisNote{If you expect a method selector to start with a character,
+@cuisNote{If you expect a method selector to start with a specific letter,
 click-select the @label{-- all --} method category, then move the
 cursor over the pane listing the method names.  Press this character,
 e.g. @smalltalk{$f}.  This will scroll the method pane to the first
@@ -889,15 +891,15 @@ regarding its variables are needed.
 @cindex @class{Point}
 @cindex coordinates
 
-  @item @smalltalk{position} is a 2D screen coordinates, a
-  location. Smalltalk proposes the @class{Point} class to represent
-  such object. It understands many mathematics operations as
-  operations on vectors; very useful for mechanical calculus.
+  @item @smalltalk{position} is a 2D screen coordinate, a
+  location. Smalltalk uses the @class{Point} class to represent
+  such objects. It understands many mathematics operations as
+  operations on vectors; very useful for mechanical calculations.
 
   A point is easily instantiated with the binary message @msg{@@} send
   to a number with another number as its argument: @smalltalk{100 @@
-  200} returns a @class{Point} instance representing the coordinates
-  (100;200).
+  200} returns a @class{Point} instance representing the
+  coordinates (x;y) = (100;200).
 
   The ship's @smalltalk{position} is regularly recomputed according to
   the law of the Galilean reference frame. The computation depends on
@@ -927,11 +929,11 @@ regarding its variables are needed.
 
 @end itemize
 
-A few word regarding the euclidean coordinates: the origin of our
+A few words regarding the euclidean coordinates: the origin of our
 orthonormal frame is the central star, its first vector is oriented
 toward the right of the screen, and the second one toward the top of
 the screen. This choice eases the computation of the ship's acceleration,
-velocity and position.
+velocity and position.  More on this below.
 
 @heading @class{Torpedo}
 A torpedo is launched or ``fired'' from a ship with an initial
@@ -1057,9 +1059,10 @@ following method:
 
 The @assign{} character is an assignment, it means the
 @smalltalk{name} instance variable is bound to the @smalltalk{aString}
-@class{String} object. To type in this symbol type @key{_} then space,
+object. 
+To type in this symbol type @key{_} then space,
 @cuis{} will turn it to left arrow symbol.  Alternatively write
-@smalltalk{name := aString}.
+@smalltalk{name := aString}.  One might pronounce @assign{} as ``gets''.
 
 Since @smalltalk{name} is an instance variable, each instance method
 knows to use the box for the name.  The meaning here is that we are
