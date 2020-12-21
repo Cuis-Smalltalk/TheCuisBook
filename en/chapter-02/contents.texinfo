@@ -107,7 +107,7 @@ with a lower case letter.
 Binary message selectors consist of one or more characters from the
 following set:
 
-@smalltalkExample{+ -- / \ * ~ < > = @@ % | & ? ,}
+@smalltalkExample{+ - / \ * ~ < > = @@ % | & ? ,}
 
 Keyword message selectors consist of a series of alphanumeric
 keywords, where each keyword starts with a lower-case letter and ends
@@ -135,9 +135,9 @@ is not 7. Parentheses must be used to alter the order of evaluation:
 @result{} 7}
 
 
-However, for mathematics clarity we may want to use parenthesis even
+However, for clarity of understanding we may want to use parenthesis even
 when not needed. In the Spacewar! code snippet below, the parenthesis
-are superfluous but improve understanding:
+are superfluous but improve comprehension:
 
 @smalltalkExampleCaption{Ship velocity,updateShipVelocity,
 newVelocity @assign{} (ai + ag) * t + velocity}
@@ -147,8 +147,8 @@ newVelocity @assign{} (ai + ag) * t + velocity}
 In the @ref{hello2}, the message @msg{show:} and @msg{newLine}
 are sent to the same @class{Transcript} entity. In such circumstance,
 we can use the @dfn{cascade} technique to avoid this repetition. The
-receiver @class{Transcript} is written once and the sent messages are
-separated by semicolon:
+receiver @class{Transcript} is written once and the cascade
+of sent messages are separated by semicolons:
 
 @smalltalkExampleCaption{Cascade of messages, helloCascade,
 Transcript
@@ -338,7 +338,8 @@ In the Spacewar! game, the central star is the source of a gravity
 field. According to the Newton's law of universal gravitation, any
 object with a mass -- a spaceship or a torpedo in the game -- is
 subjected to the gravitational force. We compute it as a vector to
-account its direction and magnitude. The game code extract below
+account for both its direction and and its magnitude.
+The game code snippit below
 shows a (simplified) mixed scalar and vector calculation done with message
 sending (See @ref{motionEquations}):
 
@@ -351,7 +352,9 @@ sending (See @ref{motionEquations}):
 @cindex browser
 
 Smalltalk organizes instance behaviors using classes.  
-A class is an object which holds a set of methods to be executed when it receives a message that is the name of one of these methods.
+A class is an object which holds a set of methods to be executed
+when one of its instances receives a message
+that is the name of one of these methods.
 
 The @dfn{System Browser}, in short the @dfn{Browser}, is a tool to
 rule all the classes in @cuis{}. It is both a tool to explore the
@@ -415,7 +418,7 @@ of @class{Number} adds methods (which define behaviors) unknown to an instance
 of @class{Magnitude}.  We will explore this in detail as we go forward.
 
 @cindex class @subentry comment
-To learn about the purpouse of a class, it is good practice to @strong{always}
+To learn about the purpose of a class, it is good practice to @strong{always}
 visit the class comment. Often a comment also comes with code
 examples to learn how to use the object; these code snippets can be
 selected and executed in place as done from a Workspace. In
@@ -587,6 +590,9 @@ You can also drag and drop the package file from your operating system
 over to the Squeak window, upon dropping the file over the window
 @cuis{} will ask you what you want to do with this package.
 To install it on your enviroment you can simply press "Install package".
+
+Or, you can open a Workspace, type in @smalltalk{Feature require: 'Spacewar!'}
+and @kbd{Ctrl-d} @emph{@b{D}o it}.
 
 Now, we have created and saved the package. Whenever you start with a
 fresh @cuis{} environment, you can load the game package.
