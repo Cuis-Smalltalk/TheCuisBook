@@ -167,7 +167,7 @@ ARM architecture. You need the specific @vm{} compiled for
 the combination of Operating System and CPU architecture
 your computer is based on.
 
-The image is a regular file feeding the @vm{} with all the objects
+The @emph{image} is a regular file feeding the @vm{} with all the objects
 defining the state of the virtual computer. These objects are
 classes, methods, instances of those classes as numbers, strings,
 windows, debuggers -- whatever existed when the state of the virtual
@@ -322,15 +322,15 @@ with @kbd{Ctrl-a} then @kbd{Ctrl-p} (@emph{@b{P}rint it}):
 29638952175999932299156089414639761565182862536979208272237582
 51185210916864000000000000000000000000}
 
-@cuis{} handles very large integer number without the need to use
-special type or method. To convince yourelf try the example bellow:
+@cuis{} handles very large integer numbers without requiring a
+special type declaration or method. To convince yourelf try the example bellow:
 @smalltalkExample{10000 factorial / 9999 factorial
 @result{} 10000}
 
 If you execute and print with @kbd{Ctrl-p} the code: @smalltalk{10000
 factorial}, you realize it takes far more time to print one factorial result 
 than to compute two factorials and divide them. The result is an integer
-as expected, not a decimal number answer as many computer languages
+as expected, not a scaled decimal number as many computer languages
 will return.
 
 @cindex number @subentry rational fraction
@@ -408,7 +408,7 @@ The Spacewar! game was initially developed in 1962 by Steve Russell on
 a DEC PDP-1 minicomputer. It is said to be the first known video game
 installed on several computers and it was very popular in the
 programming community in the 1960s. It was ported and rewritten
-several time to different hardware architectures and complemented with
+several times to different hardware architectures and complemented with
 additional features. @emph{Computer Space}, the first arcade video
 game cabinet was a clone of Spacewar!
 
