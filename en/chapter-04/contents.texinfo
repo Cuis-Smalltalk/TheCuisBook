@@ -123,6 +123,11 @@ instance:
 @smalltalkExample{'Hello My Friend' cos
 @result{} MesageNotUnderstood: Character>>cos}
 
+If you look at implementors of @method{cos}, you can
+find that @class{Collection} expects to apply @method{cos}
+to each member of a collection, hence a character is
+asked for its cosine.
+
 @cindex symbol
 @strong{Symbol.} A symbol is very like a string but it is unique and
 never duplicated.
@@ -226,10 +231,12 @@ msg := 5.
 Transcript show: msg printString, ' is a kind of '.
 Transcript show: msg class printString; newLine.}
 
-@cuisNote{This ease of use has a drawback: when sending a message to a
-variable bound to an object, the system does not check that the object
+@cuisNote{This ease of use has a drawback: when writing code to send
+a message to a
+variable bound to an object, the system does not check ahead of time
+that the object
 understands the message. Nevertheless there is a procedure to catch
-this kind of situation.}
+this kind of situation when the message is actually sent.}
 
 @node Fun with collections
 @section Fun with collections
@@ -311,7 +318,7 @@ array of integer numbers ranging from -80 to 50.}}
 @cindex collection @subentry @class{OrderedCollection}
 @cindex collection @subentry @method{add:}
 The size of an array is fixed, it can not grow. An
-@class{OrderedCollection} is a dynamic, ordered collection, it grows
+@class{OrderedCollection} is a dynamic, ordered collection. It grows
 when adding element with the @msg{add:} message:
 @smalltalkExampleCaption{Dynamic size collection,dynamicSize,
 | fibo | 
@@ -655,7 +662,7 @@ variable depending on added or removed elements.
 @cindex @class{OrderedCollection}
 
 @smalltalkExampleCaption{Collection with a variable size, createOrderedColl,
-coll1 := @{2 . 'Apple' . 2@@1 . 1/3 @} asOrdredCollection
+coll1 := @{2 . 'Apple' . 2@@1 . 1/3 @} asOrderedCollection
 coll2 := OrderedCollection with: 2 with: 'Apple' with: 2@@1 with: 1/3
 coll3 := OrderedCollection ofSize: 4}
 
@@ -792,7 +799,7 @@ Whenever you need to deal with more than one element of the same
 nature -- instances of the same class -- it is a clue to use a
 collection to hold them. Moreover, when these elements are of fixed
 quantity, it indicates more precisely you want to use an @class{Array}
-instance. It is a collection of fixed size, an @class{Array} can not
+instance. An @class{Array} is a collection of fixed size. It can not
 grow nor shrink.
 
 When this quantity is variable, you want to use an
