@@ -126,16 +126,9 @@ border: 1px solid #f7f700 ;
 margin: 1em 3em 1em 3em;
 background: rgba(248, 248, 2, 0.16);
 border-radius: 4px;
-padding: .25em 0.5em .25em 0.5em;
+padding: .25em .5em .25em .5em;
 }
 
-blockquote.indentedblock > p > img {
-    margin-top: 0;
-    margin-bottom: 0;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
 
 
 img

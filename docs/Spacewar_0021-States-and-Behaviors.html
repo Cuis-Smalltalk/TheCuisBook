@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 20, 2020
+Compilation : December 22, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -162,15 +162,15 @@ regarding its variables are needed.
 <span id="index-Point"></span>
 <span id="index-coordinates"></span>
 
-</li><li> <code>position</code> is a 2D screen coordinates, a
-  location. Smalltalk proposes the <code>Point</code> class to represent
-  such object. It understands many mathematics operations as
-  operations on vectors; very useful for mechanical calculus.
+</li><li> <code>position</code> is a 2D screen coordinate, a
+  location. Smalltalk uses the <code>Point</code> class to represent
+  such objects. It understands many mathematics operations as
+  operations on vectors; very useful for mechanical calculations.
 
 <p>A point is easily instantiated with the binary message <code>#@</code> send
   to a number with another number as its argument: <code>100 @
-  200</code> returns a <code>Point</code> instance representing the coordinates
-  (100;200).
+  200</code> returns a <code>Point</code> instance representing the
+  coordinates (x;y) = (100;200).
 </p>
 <p>The ship&rsquo;s <code>position</code> is regularly recomputed according to
   the law of the Galilean reference frame. The computation depends on
@@ -200,11 +200,11 @@ regarding its variables are needed.
 
 </li></ul>
 
-<p>A few word regarding the euclidean coordinates: the origin of our
+<p>A few words regarding the euclidean coordinates: the origin of our
 orthonormal frame is the central star, its first vector is oriented
 toward the right of the screen, and the second one toward the top of
 the screen. This choice eases the computation of the ship&rsquo;s acceleration,
-velocity and position.
+velocity and position.  More on this below.
 </p>
 <span id="Torpedo-1"></span><h3 class="heading"><code>Torpedo</code></h3>
 <p>A torpedo is launched or &ldquo;fired&rdquo; from a ship with an initial
@@ -345,9 +345,10 @@ following method:
 
 <p>The &#x2190; character is an assignment, it means the
 <code>name</code> instance variable is bound to the <code>aString</code>
-<code>String</code> object. To type in this symbol type <tt class="key">_</tt> then space,
+object. 
+To type in this symbol type <tt class="key">_</tt> then space,
 Cuis-Smalltalk will turn it to left arrow symbol.  Alternatively write
-<code>name := aString</code>.
+<code>name := aString</code>.  One might pronounce &#x2190; as &ldquo;gets&rdquo;.
 </p>
 <p>Since <code>name</code> is an instance variable, each instance method
 knows to use the box for the name.  The meaning here is that we are

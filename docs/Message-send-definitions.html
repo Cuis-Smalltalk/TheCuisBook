@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 20, 2020
+Compilation : December 22, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -126,7 +126,7 @@ with a lower case letter.
 following set:
 </p>
 <div class="example">
-<pre class="example">+ -- / \ * ~ &lt; &gt; = @ % | &amp; ? ,
+<pre class="example">+ - / \ * ~ &lt; &gt; = @ % | &amp; ? ,
 </pre></div>
 
 <p>Keyword message selectors consist of a series of alphanumeric
@@ -161,9 +161,9 @@ finally keyword messages, so:
 </pre></div>
 
 
-<p>However, for mathematics clarity we may want to use parenthesis even
+<p>However, for clarity of understanding we may want to use parenthesis even
 when not needed. In the Spacewar! code snippet below, the parenthesis
-are superfluous but improve understanding:
+are superfluous but improve comprehension:
 </p>
 <div class="float"><span id="updateShipVelocity"></span>
 <div class="example">
@@ -176,8 +176,8 @@ are superfluous but improve understanding:
 <p>In the <a href="Writing-your-first-scripts.html#hello2">Example 1.2</a>, the message <code>#show:</code> and <code>#newLine</code>
 are sent to the same <code>Transcript</code> entity. In such circumstance,
 we can use the <em>cascade</em> technique to avoid this repetition. The
-receiver <code>Transcript</code> is written once and the sent messages are
-separated by semicolon:
+receiver <code>Transcript</code> is written once and the cascade
+of sent messages are separated by semicolons:
 </p>
 <div class="float"><span id="helloCascade"></span>
 <div class="example">

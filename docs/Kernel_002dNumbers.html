@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 20, 2020
+Compilation : December 22, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -171,7 +171,7 @@ an integer:
 <span id="index-number-29"></span>
 <span id="index-number-30"></span>
 
-<p>Interval of numbers can be defined on their own, for future use:
+<p>Intervals of numbers can be defined on their own, for future use:
 </p>
 <div class="float"><span id="interval"></span>
 <div class="example">
@@ -183,7 +183,7 @@ an integer:
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 3.6: </strong>Interval</p></div></div>
-<p>Interval works with other object as character:
+<p>Intervals work with other kinds of objects such as <code>Character</code>s:
 </p><div class="example">
 <pre class="example">$d to: $h
 &rArr; #($d $e $f $g $h)
@@ -205,9 +205,9 @@ collection:
 
 <p>In Spacewar!, when a ship is destroyed it is teleported to a random
 position in the square game play area. Intervals are handy to pick 
-random coordinates. In the example bellow, the variable
-<code>randomCoordinate</code> holds a block of code &ndash; called anonymous
-function in other languages; it picks up a random value in the
+random coordinates. In the example below, the variable
+<code>randomCoordinate</code> holds a block of code &ndash; called an anonymous
+function in other languages. It picks a random value in the
 interval consisting of the game play area left and right extents:
 </p>
 <div class="float"><span id="teleportShipInterval"></span>
@@ -230,7 +230,9 @@ the interval [0 ; 2PI], each 1/10. Output in the transcript.</em>
 <div class="float-caption"><p><strong>Exercise 3.2: </strong>Cosine table</p></div></div>
 <span id="index-number-31"></span>
 <p>Integer numbers are represented in different bases when prefixed with
-the base and &ldquo;r&rdquo;. When executing and printing <kbd>Ctrl-p</kbd> such a
+the base and &ldquo;r&rdquo;. The <code>r</code> stands for radix, the base root by
+which the following number is interpreted.
+When executing and printing <kbd>Ctrl-p</kbd> such a
 number, it is immediately printed in the decimal base:
 </p>
 <div class="float"><span id="integerBase"></span>
@@ -387,7 +389,7 @@ it seems:
 <h4 class="footnotes-heading">Footnotes</h4>
 
 <h5><a id="FOOT13" href="#DOCF13">(13)</a></h3>
-<p>Understand repeated an integer number of times.</p>
+<p>More strictly, to be repeated an integer number of times.</p>
 <h5><a id="FOOT14" href="#DOCF14">(14)</a></h3>
 <p>Bases 20 and 60
 number representation are not exclusive to these civilisations,

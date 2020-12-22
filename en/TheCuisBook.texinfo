@@ -1,7 +1,7 @@
 \input texinfo @c -*-texinfo-*-
 @c %**start of header
 @settitle The Cuis-Smalltalk Book
-@set timeStamp Time-stamp: <2020-12-17 13:52:03 hilaire>
+@set timeStamp Time-stamp: <2020-12-21 19:25:25 hilaire>
 @include ../cuisMacro.texinfo
 
 @c @afourwide
@@ -75,7 +75,18 @@ Complete license: @url{https://creativecommons.org/licenses/by-sa/4.0/legalcode}
 @node Top
 
 @ifnottex
-@top @cuis
+@quotation
+I like it... It's nice and clean and simple and pretty. Nice stuff!
+@author Alan Kay
+@end quotation
+
+Cuis is a free Smalltalk-80 environment with a specific set of goals:
+being simple and powerful. It is also portable to any platform, fast
+and efficient.
+@*
+You are reading the Cuis Book!
+
+@top Table of Contents
 @end ifnottex
 
 @menu

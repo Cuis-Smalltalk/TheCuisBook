@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 20, 2020
+Compilation : December 22, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -120,7 +120,7 @@ the method invoked has the selector <code>#at:put:</code> and the arguments
 <code>1</code> and <code>$B</code>.  All selectors are symbols.
 </p>
 <p>Object instances are created &ndash; <em>instantiated</em> &ndash;
-following a model or template. This model is known by its <em>Class</em>.
+following a model or template. This model is known as its <em>Class</em>.
 All instances of a class share the same methods and so react in the same ways.
 </p>
 <p>For example, there is one class <code>Fraction</code> but many
@@ -134,7 +134,7 @@ as we will now describe.
 <span id="index-instance-variable"></span>
 <p>A given class declares its internal variables &ndash; states &ndash; and the
 behavior by implementing the methods.  A variable is basically a named
-box which can hold any object.  Each instance of a class gets its own
+box which can hold any object.  Each instance variable of a class gets its own
 box with the common name.
 </p>
 <span id="index-number-19"></span>
@@ -156,8 +156,8 @@ own denominator.
 <span id="index-superclass"></span>
 <p>From this declaration, we observe there is a hierarchy in
 the class definition: <code>Fraction</code> is a kind of
-<code>Number</code>. This means a fraction inherits the internal state &ndash;
-variables &ndash; and behavior &ndash; methods &ndash; defined in the <code>Number</code>
+<code>Number</code>. This means a fraction inherits the internal state
+(variables) and behavior (methods) defined in the <code>Number</code>
 class. <code>Fraction</code> is called a <em>subclass</em> of <code>Number</code>,
 and so naturally we call <code>Number</code> a <em>superclass</em> of <code>Fraction</code>.
 </p>
@@ -284,8 +284,8 @@ called an <em>instance method</em>. This method is defined in both the
 
 <p>In an instance method source code, <code>self</code> refers to the
 object itself, here it is the value of the number. The &#x2191; (also
-<code>^</code>) symbol indicates to return the following value
-<code>self * self</code>.
+<code>^</code>) symbol indicates to <em>return</em> the following value
+<code>self * self</code>.  One might pronounce &#x2191; as &ldquo;return&rdquo;.
 </p>
 <p>Now let&rsquo;s examine this same method in <code>Fraction</code>:
 </p><div class="example">
