@@ -55,6 +55,8 @@ This step is required until VectorGraphics becomes part of the base
 
 @cindex morph @subentry vector @subentry installation
 @smalltalkExample{Feature require: 'VectorGraphics'}
+@smalltalkExample{TrueTypeFontFamily read: DirectoryEntry smalltalkImageDirectory
+   / 'TrueTypeFonts' / 'DejaVu'/ 'DejaVuSans'}
 
 @subsection A first example
 
@@ -416,11 +418,11 @@ We create @class{ClockHourHandMorph}, the hand for the hours:
 @smalltalkExample{ClockHourHandMorph>>drawOn: aCanvas
    aCanvas fillColor: (Color black alpha: 0.6) do: [
       aCanvas
-         moveToX: -10 y: 0;
-         lineToX: 0 y: 5;
-         lineToX: 50 y: 0;
-         lineToX: 0 y: -5;
-         lineToX: -10 y: 0 ].}
+         moveToX: 0 y: 10;
+         lineToX: -5 y: 0;
+         lineToX: 0 y: -50;
+         lineToX: 5 y: 0;
+         lineToX: 0 y: 10 ].}
 
 You can start playing with them. We could use several instances of a
 single @class{ClockHandMorph}, or create several classes. Here we
@@ -445,11 +447,11 @@ We create @class{ClockMinuteHandMorph}, the hand for the minutes:
 @smalltalkExample{ClockMinuteHandMorph>>drawOn: aCanvas
    aCanvas fillColor: ((Color black) alpha: 0.6) do: [
       aCanvas
-         moveToX: -8 y: 0;
-         lineToX: 0 y: 4;
-         lineToX: 82 y: 0;
-         lineToX: 0 y: -4;
-         lineToX: -8 y: 0 ]}
+         moveToX: 0 y: 8;
+         lineToX: -4 y: 0;
+         lineToX: 0 y: -82;
+         lineToX: 4 y: 0;
+         lineToX: 0 y: 8 ]}
 
 And finally, the @class{ClockSecondHandMorph}, the hand for the seconds:
 
@@ -462,10 +464,10 @@ And finally, the @class{ClockSecondHandMorph}, the hand for the seconds:
 ...and its drawing method in the category @label{drawing}:
 
 @smalltalkExample{ClockSecondHandMorph>>drawOn: aCanvas
-   aCanvas strokeWidth: 1.5 color: Color red do: [
+   aCanvas strokeWidth: 2.5 color: Color red do: [
       aCanvas
          moveToX: 0 y: 0;
-         lineToX: 85 y: 0 ]}
+         lineToX: 0 y: -85 ]}
 
 Now, all that is needed is to put our clock parts together in
 @class{ClockMorph}. In its method category @label{initialization} add
@@ -500,9 +502,9 @@ method:
 @smalltalkExample{ClockMorph>>step
    | time |
    time @assign{} Time now.
-   hourHand rotationDegrees: time hour * 30 - 90.
-   minuteHand rotationDegrees: time minute * 6 - 90.
-   secondHand rotationDegrees: time second * 6 - 90.}
+   hourHand rotationDegrees: time hour * 30.
+   minuteHand rotationDegrees: time minute * 6.
+   secondHand rotationDegrees: time second * 6.}
 
 Take a look at how we update the clock hands.
 
@@ -522,14 +524,13 @@ positive angles go counterclockwise.
 
 So, how do we update the hands? For example, for the hour hand, one
 hour means 30 degrees, as 12 hours means 360 degrees or a whole
-turn. We multiply hours by 30 to get degrees. But for 0 the hand must
-point up, that is -90 degrees in our coordinate system. So we substract
-90. Minute and second hand work in a similar way, but as there are 60
-minutes in one hour, and 60 seconds in one minute, we need to multiply
-them by 6 to get degrees. As rotation is done around the origin, and the
-clock has set the origin at its center (@ref{clockDialDrawing}), there's no
-need to set the position of the hands. Their @smalltalk{0@@0} origin will
-therefore be at the clock @smalltalk{0@@0}, i.e. the center of the clock.
+turn. So, we multiply hours by 30 to get degrees. Minute and second hand
+work in a similar way, but as there are 60 minutes in one hour, and 60
+seconds in one minute, we need to multiply them by 6 to get degrees. As
+rotation is done around the origin, and the clock has set the origin at its
+center (@ref{clockDialDrawing}), there's no need to set the position of the
+hands. Their @smalltalk{0@@0} origin will therefore be at the clock
+@smalltalk{0@@0}, i.e. the center of the clock.
 
 @figure{A fancy clock morph,ch07-06-ExerciseClock,4}
 
