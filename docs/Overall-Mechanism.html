@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 22, 2020
+Compilation : December 23, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -130,7 +130,7 @@ example) button 2 up only.&quot;
 &quot;Use a property test to allow individual instances to dynamically
 specify this.&quot;
 
-   &#x2191; self hasProperty: #'handlesMouseDown:'
+   ^ self hasProperty: #'handlesMouseDown:'
 </pre></div>
 
 <p>As defined by default, this method and the other handlers
@@ -141,7 +141,7 @@ handle mouse down events, we just override the appropriate method to return true
 </p>
 <div class="example">
 <pre class="example">MyMorph&gt;&gt;&gt;&gt;handlesMouseDown: aMouseButtonEvent
-   &#x2191; true
+   ^ true
 </pre></div>
 
 <p>Now in the <code>events</code> <code>Morph</code>&rsquo;s method category, we find the

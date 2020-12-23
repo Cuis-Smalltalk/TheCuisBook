@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 22, 2020
+Compilation : December 23, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -239,8 +239,8 @@ can also be rotated and zoomed.
 <div class="example">
 <pre class="example">TriangleExampleMorph&gt;&gt;initialize
    super initialize.
-   borderColor &#x2190; Color random alpha: 0.8.
-   fillColor &#x2190; Color random alpha: 0.6.
+   borderColor := Color random alpha: 0.8.
+   fillColor := Color random alpha: 0.6.
 </pre></div>
 
 <p>In the <code>drawing</code> method category add:
@@ -345,13 +345,13 @@ make our triangle <em>alive</em>:
 <p>In the method category <code>stepping</code> define:
 </p><div class="example">
 <pre class="example">TriangleExampleMorph&gt;&gt;wantsSteps
-   &#x2191; true
+   ^ true
 </pre></div>
 
 <p>...and:
 </p><div class="example">
 <pre class="example">TriangleExampleMorph&gt;&gt;step
-   fillColor &#x2190; Color random.
+   fillColor := Color random.
    self redrawNeeded
 </pre></div>
 
@@ -362,7 +362,7 @@ interesting, edit the method:
 </p>
 <div class="example">
 <pre class="example">TriangleExampleMorph&gt;&gt;stepTime
-   &#x2191; 100
+   ^ 100
 </pre></div>
 
 <p>...and:
@@ -404,9 +404,9 @@ that looks.
 <div class="example">
 <pre class="example">TriangleExampleMorph&gt;&gt;initialize
    super initialize.
-   borderColor &#x2190; Color random alpha: 0.8.
-   fillColor &#x2190; Color random alpha: 0.6.
-   scaleBy &#x2190; 1.1
+   borderColor := Color random alpha: 0.8.
+   fillColor := Color random alpha: 0.6.
+   scaleBy := 1.1
 </pre></div>
 
 <p>Accept <code>scaleBy</code> as a new instance variable of the
@@ -417,8 +417,8 @@ that looks.
    self morphPosition: self morphPosition + (0.2@0).
    self rotateBy: 4 degreesToRadians.
    self scaleBy: scaleBy.
-   self scale &gt; 1.2 ifTrue: [scaleBy &#x2190; 0.9].
-   self scale &lt; 0.2 ifTrue: [scaleBy &#x2190; 1.1].
+   self scale &gt; 1.2 ifTrue: [scaleBy := 0.9].
+   self scale &lt; 0.2 ifTrue: [scaleBy := 1.1].
    self redrawNeeded
 </pre></div>
 
@@ -467,7 +467,7 @@ testing</code> of the class <code>LineExampleMorph</code>:
 
 <div class="example">
 <pre class="example">LineExampleMorph&gt;&gt;clipsSubmorphs
-   &#x2191; true
+   ^ true
 </pre></div>
 
 <p>The drawing of the triangle gets cut exactly at the bounds of the

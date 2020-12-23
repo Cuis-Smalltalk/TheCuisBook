@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 22, 2020
+Compilation : December 23, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -197,6 +197,11 @@ instance:
 &rArr; MesageNotUnderstood: Character&gt;&gt;cos
 </pre></div>
 
+<p>If you look at implementors of <code>cos</code>, you can
+find that <code>Collection</code> expects to apply <code>cos</code>
+to each member of a collection, hence a character is
+asked for its cosine.
+</p>
 <span id="index-symbol"></span>
 <p><strong>Symbol.</strong> A symbol is very like a string but it is unique and
 never duplicated.

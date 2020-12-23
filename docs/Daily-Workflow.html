@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 22, 2020
+Compilation : December 23, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -200,7 +200,7 @@ handling.
 <div class="example">
 <pre class="example">| list |
 &quot;Delete all windows but the taskbar&quot;
-list &#x2190; UISupervisor ui submorphs reject: [:aMorph |
+list := UISupervisor ui submorphs reject: [:aMorph |
    aMorph is: #TaskbarMorph].
 list do: [:each | each delete].
 </pre></div>
@@ -224,7 +224,7 @@ DarkTheme beCurrent.
 &quot;Adjust font size&quot;
 Preferences smallFonts.
 &quot;Adjust taskbar size&quot;
-morph &#x2190; UISupervisor ui submorphs first.
+morph := UISupervisor ui submorphs first.
 morph scale: 1 / 2.
 </pre></div>
 
@@ -244,9 +244,9 @@ in height make a quarter of the whole free area):
 <pre class="example">| list morph area extent |
 ../..
 &quot;Compute the available free space for windows placement&quot;
-area &#x2190; RealEstateAgent maximumUsableArea
+area := RealEstateAgent maximumUsableArea
    extendBy: 0 @ morph morphHeight negated.
-extent &#x2190; area extent // 2.
+extent := area extent // 2.
 </pre></div>
 
 <p>Now we are ready to install a few tools. First three browsers each
@@ -259,7 +259,7 @@ BrowserWindow openBrowser
 BrowserWindow openBrowser
    morphBounds: (area width // 2 @ 0 extent: extent).
 &quot;Open a System Browser on a specific class&quot;
-morph &#x2190; BrowserWindow openBrowser
+morph := BrowserWindow openBrowser
    morphBounds: (area extent // 2 extent: extent).
 morph model setClass: Integer selector: nil.
 </pre></div>
@@ -273,7 +273,7 @@ instance, we have to search it in the windows of the world.
 <div class="example">
 <pre class="example">&quot;Open a Workspace with some default contents&quot;
 Workspace openWorkspace.
-morph &#x2190; UISupervisor ui submorphs detect: [:aMorph |
+morph := UISupervisor ui submorphs detect: [:aMorph |
    aMorph class = WorkspaceWindow].
 morph model actualContents: '&quot;Some code&quot;
 1 + 2.

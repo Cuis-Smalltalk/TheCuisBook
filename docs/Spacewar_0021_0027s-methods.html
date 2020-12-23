@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 22, 2020
+Compilation : December 23, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -103,7 +103,7 @@ class. Of course we need to use the System Browser:
 ...World menu &rarr; <code>Open...</code> &rarr;
 <code>Browser</code>...
 </p>
-<p>As a reminder proceed as follow (if necessary observe
+<p>As a reminder, proceed as follows (if necessary observe
 <a href="A-brief-introduction-to-the-system-Browser.html#ch02_002dbrowserDetailed">Figure 2.1</a>):
 </p>
 <ol>
@@ -112,7 +112,7 @@ class. Of course we need to use the System Browser:
 
 </li><li> In the <code>Class</code> pane, select the class <code>SpaceWar</code>.
 
-</li><li> Bellow, click the <code>instance</code> button to expose the
+</li><li> Below, click the <code>instance</code> button to expose the
  instance side methods of the <code>SpaceWar</code> class. It is the
  default behavior of the browser anyway, so you can skip this step as
  long as you have not clicked on the <code>class</code> button.
@@ -141,7 +141,7 @@ class. Of course we need to use the System Browser:
   &quot;We want to capture keyboard and mouse events, 
   start the game loop(step) and initialize the actors.&quot;
   super initialize.
-  color &#x2190; self defaultColor.
+  color := self defaultColor.
   self setProperty: #'handlesKeyboard' toValue: true.
   self setProperty: #'handlesMouseOver:' toValue: true.
   self startSteppingStepTime: self stepTime.
@@ -179,13 +179,13 @@ control methods of the <code>SpaceShip</code> class are rewritten as:
 <div class="example">
 <pre class="example">SpaceShip&gt;&gt;push
   &quot;Init an accelaration boost&quot;
-  fuel isZero ifTrue: [&#x2191; self].
-  fuel &#x2190; fuel - 1.
-  acceleration &#x2190; 50
+  fuel isZero ifTrue: [^ self].
+  fuel := fuel - 1.
+  acceleration := 50
 
 SpaceShip&gt;&gt;unpush
   &quot;Stop the accelaration boost&quot;
-  acceleration &#x2190; 0
+  acceleration := 0
 
 SpaceShip&gt;&gt;right
   &quot;Rotate the ship to its right&quot;
@@ -218,9 +218,9 @@ space ship position, heading, and velocity before being fired.
   &quot;Fire a torpedo in the direction of
   the ship heading with its velocity&quot;
   | torpedo | 
-  torpedoes isZero ifTrue: [ &#x2191; self].
-  torpedoes &#x2190; torpedoes - 1.
-  torpedo &#x2190; Torpedo new.
+  torpedoes isZero ifTrue: [ ^ self].
+  torpedoes := torpedoes - 1.
+  torpedo := Torpedo new.
   torpedo 
     morphPosition: self morphPosition + self nose;
     rotation: location radians;

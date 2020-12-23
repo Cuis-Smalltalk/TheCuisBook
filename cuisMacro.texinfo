@@ -37,6 +37,9 @@ Thanks to Mauro Rizzi for the review of the book.
 
 @c Smalltalk code in a text flow
 
+@c for the printed manual, use arrow symbols for the returned value
+@c and the assignment
+@iftex
 @c up arrow, return symbol
 @macro return
 @U{2191}
@@ -45,6 +48,21 @@ Thanks to Mauro Rizzi for the review of the book.
 @macro assign
 @U{2190}
 @end macro
+@end iftex
+
+@c for the html manual use := and ^ symbol, so the user can copy and
+@c paste Smalltalk directly in Cuis
+@ifnottex
+@c up arrow, return symbol
+@macro return
+^
+@end macro
+@c left arrow, assignment
+@macro assign
+:=
+@end macro
+@end ifnottex
+
 @alias class=code
 @alias smalltalk=code
 @alias method=code

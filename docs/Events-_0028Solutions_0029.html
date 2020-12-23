@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 22, 2020
+Compilation : December 23, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -98,7 +98,7 @@ Next: <a href="Code-Management-_0028Solutions_0029.html" accesskey="n" rel="next
 informed of mouse over events in dedicated methods.
 </p><div class="example">
 <pre class="example">SpaceWar&gt;&gt;handlesMouseOver: event
-   &#x2191; true
+   ^ true
 </pre></div>
 
 <span id="mouseEnter-1"></span><h4 class="subheading"><a href="Spacewar_0021-Events.html#mouseEnter">Exercise 8.2</a></h4>
@@ -130,17 +130,17 @@ message to state its interest on keyboard event. We implement the
 method in the <code>SpaceWar</code> class:
 </p><div class="example">
 <pre class="example">SpaceWar&gt;&gt;handlesKeyboard
-   &#x2191; true
+   ^ true
 </pre></div>
 
 <span id="secondShipControl-1"></span><h4 class="subheading"><a href="Spacewar_0021-Events.html#secondShipControl">Exercise 8.5</a></h4>
 <p>We designate the characters as <code>$w $a $s $d</code>. We append the
 code bellow to the method <code>SpaceWar&gt;&gt;keyStroke:</code>
 </p><div class="example">
-<pre class="example">key = $w ifTrue: [&#x2191; ships second push].
-key = $d ifTrue: [&#x2191; ships second right].
-key = $a ifTrue: [&#x2191; ships second left].
-key = $s ifTrue: [&#x2191; ships second fireTorpedo]
+<pre class="example">key = $w ifTrue: [^ ships second push].
+key = $d ifTrue: [^ ships second right].
+key = $a ifTrue: [^ ships second left].
+key = $s ifTrue: [^ ships second fireTorpedo]
 </pre></div>
 
 

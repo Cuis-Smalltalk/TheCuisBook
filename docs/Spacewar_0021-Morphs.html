@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 22, 2020
+Compilation : December 23, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -148,7 +148,7 @@ to be subclasses of the <code>Morph</code> class.</em>
 
 <div class="float-caption"><p><strong>Exercise 6.1: </strong>Make all Morphs</p></div></div>
 <p>As explained in the previous sections of this chapter, a morph can be
-embedded in another game. In Spacewar!, a <code>SpaceWar</code> morph
+embedded within another morph. In Spacewar!, a <code>SpaceWar</code> morph
 instance presenting the game play, it is the <em>owner</em> of the central
 star, space ship and torpedo morphs. Put in other words, the central
 star, space ships and torpedoes are <em>submorphs</em> of a
@@ -161,16 +161,16 @@ star, space ships and torpedoes are <em>submorphs</em> of a
 <div class="float"><span id="initFullActors"></span>
 <div class="example">
 <pre class="example">SpaceWar&gt;&gt;initializeActors
-   centralStar &#x2190; CentralStar new.
+   centralStar := CentralStar new.
    self addMorph: centralStar.
    centralStar morphPosition: 0 @ 0.
-   ships &#x2190; Array 
+   ships := Array 
       with: (SpaceShip new color: Color white)
       with: (SpaceShip new color: Color red).
    self addAllMorphs: ships.
    ships first morphPosition: 200 @ -200.
    ships second morphPosition: -200 @ 200.
-   torpedoes &#x2190; OrderedCollection new
+   torpedoes := OrderedCollection new
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 6.3: </strong>Complete code to initialize the Spacewar! actors</p></div></div>
@@ -231,7 +231,7 @@ ship entities?
   torpedoes stock states.
 
 </li><li> They will have <em>different behaviors</em>: a
-  torpedo is self destroyed when its life span expires, a space ship
+  torpedo self destructs when its life span expires, a space ship
   fires torpedoes and accelerates as long as its fuel tank and its
   torpedoes count are not zero.
 
@@ -284,11 +284,11 @@ initialization and its mass:
 <div class="example">
 <pre class="example">Mobile&gt;&gt;initialize
   super initialize.
-  velocity &#x2190; 0 @ 0.
-  acceleration &#x2190; 0
+  velocity := 0 @ 0.
+  acceleration := 0
         
 Mobile&gt;&gt;mass
-  &#x2191; 1
+  ^ 1
 </pre></div>
 
 <p>The next methods to add are the ones relative to the physical
@@ -299,8 +299,8 @@ calculations. First, the code to calculate the gravity acceleration:
 <pre class="example">Mobile&gt;&gt;gravity
 &quot;Compute the gravity acceleration vector&quot;
    | position |
-   position &#x2190; self morphPosition.
-   &#x2191; -10 * self mass * owner starMass / (position r raisedTo: 3) * position
+   position := self morphPosition.
+   ^ -10 * self mass * owner starMass / (position r raisedTo: 3) * position
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 6.5: </strong>Calculate the gravity force</p></div></div>
@@ -316,7 +316,7 @@ calculations. First, the code to calculate the gravity acceleration:
 
 <div class="example">
 <pre class="example">SpaceWar&gt;&gt;starMass
-   &#x2191; centralStar mass
+   ^ centralStar mass
 </pre></div>
 
 </li><li> In <code>position r</code>, the <code>#r</code> message asks the radius
@@ -343,18 +343,18 @@ morph&rsquo;s way of accessing the mobile&rsquo;s position:
 &quot;Update the mobile position and velocity&quot;
   | ai ag newVelocity |
   &quot;acceleration vectors&quot;
-  ai &#x2190; acceleration * self direction.
-  ag &#x2190; self gravity.
-  newVelocity &#x2190; (ai + ag) * t + velocity.
+  ai := acceleration * self direction.
+  ag := self gravity.
+  newVelocity := (ai + ag) * t + velocity.
   self morphPosition:
      (0.5 * (ai + ag) * t squared)
      + (velocity * t)
      + self morphPosition.
-  velocity &#x2190; newVelocity.	
+  velocity := newVelocity.	
   &quot;Are we out of screen? If so we move the mobile to the other corner
   and slow it down by a factor of 2&quot;  
   (self isInOuterSpace and: [self isGoingOuterSpace]) ifTrue: [
-     velocity &#x2190; velocity / 2.
+     velocity := velocity / 2.
      self morphPosition: self morphPosition negated]
 </pre></div>
 
@@ -367,11 +367,11 @@ off into deep space:
 <pre class="example">Mobile&gt;&gt;isInOuterSpace
 &quot;Is the mobile located in the outer space? (outside of the game
 play area)&quot;
-   &#x2191; (owner morphContainsPoint: self morphPosition) not
+   ^ (owner morphContainsPoint: self morphPosition) not
 
 Mobile&gt;&gt;isGoingOuterSpace
 &quot;is the mobile going crazy in the direction of the outer space?&quot;
-   &#x2191; (self morphPosition dotProduct: velocity) &gt; 0
+   ^ (self morphPosition dotProduct: velocity) &gt; 0
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 6.7: </strong>Test when a mobile is &ldquo;spaced out&rdquo;</p></div></div>
@@ -397,13 +397,13 @@ oriented programming there is this special mechanism named
    &quot;orientate the torpedo in its velocity direction, nicer effect
    while inaccurate&quot;
    self rotation: (velocity y arcTan: velocity x) + Float halfPi.
-   lifeSpan &#x2190; lifeSpan - 1.
+   lifeSpan := lifeSpan - 1.
    ifeSpan isZero ifTrue: [owner destroyTorpedo: self].
-   acceleration &gt; 0 ifTrue: [acceleration &#x2190; acceleration - 1000]
+   acceleration &gt; 0 ifTrue: [acceleration := acceleration - 1000]
 </pre></div>
 
 <p>Here the <code>update:</code> method is specialized to the torpedo
-specific needs. The mechanic calculation done in <code>Mobile&gt;&gt;update:</code>
+specific needs. The mechanical calculation done in <code>Mobile&gt;&gt;update:</code>
 is still used to update the torpedo position and velocity: this is
 done by <code>super update: t</code>. We already discussed
 <code>super</code>. In the context of
@@ -440,9 +440,9 @@ refactoring, the <code>initialize</code> overriding spans the whole
 <div class="example">
 <pre class="example">Mobile&gt;&gt;initialize
    super initialize.
-   color &#x2190; Color gray.
-   velocity &#x2190; 0 @ 0.
-   acceleration &#x2190; 0
+   color := Color gray.
+   velocity := 0 @ 0.
+   acceleration := 0
 
 SpaceShip&gt;&gt;initialize
    super initialize.
@@ -450,8 +450,8 @@ SpaceShip&gt;&gt;initialize
 
 Torpedo&gt;&gt;initialize
    super initialize.
-   lifeSpan &#x2190; 500.
-   acceleration &#x2190; 4000
+   lifeSpan := 500.
+   acceleration := 4000
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 6.8: </strong>Initialize overriding in the <code>Mobile</code>
@@ -466,8 +466,8 @@ initialization:
 
 <div class="example">
 <pre class="example">SpaceShip&gt;&gt;resupply
-   fuel &#x2190; 500.
-   torpedoes &#x2190; 20
+   fuel := 500.
+   torpedoes := 20
 </pre></div>
 
 </li><li> <strong>Torpedo.</strong> Inherited mechanical states initialized; add

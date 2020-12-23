@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 22, 2020
+Compilation : December 23, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -99,13 +99,13 @@ to the <code>#requiresVectorCanvas</code> message:
 <div class="float"><span id="vectorGraphicsNo"></span>
 <div class="example">
 <pre class="example">Mobile&gt;&gt;requiresVectorCanvas
-   &#x2191; false
+   ^ false
 
 CentralStar&gt;&gt;&gt;requiresVectorCanvas
-   &#x2191; false
+   ^ false
 
 SpaceWar&gt;&gt;&gt;requiresVectorCanvas
-   &#x2191; false
+   ^ false
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 7.3: </strong>We don&rsquo;t use <code>VectorGraphics</code> for performance reason</p></div></div>
@@ -128,7 +128,7 @@ rotated.
 <div class="float"><span id="centralStarExtent"></span>
 <div class="example">
 <pre class="example">CentralStar&gt;&gt;morphExtent
-   &#x2191; `30 @ 30`
+   ^ `30 @ 30`
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 7.4: </strong>Central star extent</p></div></div>
@@ -151,7 +151,7 @@ fluctuating x and y radius:
 <div class="example">
 <pre class="example">CentralStar&gt;&gt;drawOn: canvas
    | radius |
-   radius &#x2190; self morphExtent // 2.
+   radius := self morphExtent // 2.
    canvas ellipseCenterX: 0
       y:  0
       rx: radius x + (2 atRandom - 1)
@@ -186,7 +186,7 @@ toward the bottom of the screen.
 </p>
 <div class="example">
 <pre class="example">SpaceShip&gt;&gt;morphExtent
-   &#x2191; `20 @ 30`
+   ^ `20 @ 30`
 </pre></div>
 
 <p>Then its <code>drawOn:</code> method is written as:
@@ -195,10 +195,10 @@ toward the bottom of the screen.
 <div class="example">
 <pre class="example">SpaceShip&gt;&gt;drawOn: canvas
    | a b c d |
-   a &#x2190; 0 @ -15.
-   b &#x2190; -10 @ 15.
-   c &#x2190; 0 @ 10.
-   d &#x2190; 10 @ 15.
+   a := 0 @ -15.
+   b := -10 @ 15.
+   c := 0 @ 10.
+   d := 10 @ 15.
    canvas line: a to: b width: 2 color: color.
    canvas line: b to: c width: 2 color: color.
    canvas line: c to: d width: 2 color: color.
@@ -259,7 +259,7 @@ its space ship:
 &quot;Fire a torpedo in the direction of the ship heading with its
 velocity&quot;
    ../..
-   torpedo &#x2190; Torpedo new.
+   torpedo := Torpedo new.
    torpedo 
       morphPosition: self morphPosition + self nose;
       rotation: location radians; <span class="roman">&quot;copy the rotation angle from ship&quot;</span>
@@ -314,14 +314,14 @@ containing the points:
 
 SpaceShip&gt;&gt;initialize
    super initialize.
-   vertices &#x2190; {0@-15 . -10@15. 0@10. 10@15}.
+   vertices := {0@-15 . -10@15. 0@10. 10@15}.
    self resupply
    
 Torpedo&gt;&gt;initialize
    super initialize.
-   vertices &#x2190; {0@-4 . -2@4 . 2@4}.
-   lifeSpan &#x2190; 500.
-   acceleration &#x2190; 3000
+   vertices := {0@-4 . -2@4 . 2@4}.
+   lifeSpan := 500.
+   acceleration := 3000
 </pre></div>
 
 <p>However this is not a good idea. Imagine the game play with 200
@@ -369,7 +369,7 @@ declare our variable in the <code>Mobile class</code> definition &ndash;
 </p>
 <div class="example">
 <pre class="example">Mobile class&gt;&gt;vertices
-   &#x2191; vertices
+   ^ vertices
 </pre></div>
 
 <div class="float"><span id="ch07_002d12_002dbrowserClassSide"></span>
@@ -385,11 +385,11 @@ declare our variable in the <code>Mobile class</code> definition &ndash;
 <div class="example">
 <pre class="example">SpaceShip class&gt;&gt;initialize
 &quot;SpaceShip initialize&quot;
-   vertices &#x2190;  {0@-15 . -10@15. 0@10. 10@15}
+   vertices :=  {0@-15 . -10@15. 0@10. 10@15}
 
 Torpedo class&gt;&gt;initialize
 &quot;Torpedo initialize&quot;
-   vertices &#x2190; {0@-4 . -2@4 . 2@4}
+   vertices := {0@-4 . -2@4 . 2@4}
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 7.8: </strong>Initialize a class</p></div></div>
@@ -439,7 +439,7 @@ vertices in its class side:
 <div class="example">
 <pre class="example">Torpedo&gt;&gt;drawOn: canvas
    | vertices |
-   vertices &#x2190; self class vertices.
+   vertices := self class vertices.
    canvas line: vertices first to: vertices second width: 2 color: color.
    canvas line: vertices third to: vertices second width: 2 color: color.
    canvas line: vertices first to: vertices third width: 2 color: color
@@ -466,7 +466,7 @@ be simply written as:
 
 SpaceShip&gt;&gt;drawOn: canvas
    | vertices |
-   vertices &#x2190; self class vertices.
+   vertices := self class vertices.
    self drawOn: canvas polygon: vertices.
    &quot;Draw gas exhaust&quot;
    acceleration ifNotZero: [

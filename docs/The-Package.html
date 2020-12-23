@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 22, 2020
+Compilation : December 23, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -230,14 +230,14 @@ version of this book. The code is very simple:
 </p>
 <div class="example">
 <pre class="example">Integer&gt;&gt;printStringToc
-   &#x2191; self printStringRoman asLowercase
+   ^ self printStringRoman asLowercase
 </pre></div>
 
 <p>Now within our <code>TheBook</code>&rsquo;s methods we just do things like:
 </p>
 <div class="example">
 <pre class="example">../..
- aPage &#x2190; Page new.
+ aPage := Page new.
  aPage number: 1 printStringToc.
  ../..
 </pre></div>

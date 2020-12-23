@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 22, 2020
+Compilation : December 23, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -212,8 +212,8 @@ matching <code>SpaceWar</code>&rsquo;s method <code>keyboardFocusChange:</code>
 <div class="example">
 <pre class="example">SpaceWar&gt;&gt;keyboardFocusChange: gotFocus
    gotFocus 
-      ifTrue: [color &#x2190; self defaultColor]
-      ifFalse: [color &#x2190; self defaultColor alpha: 0.5].
+      ifTrue: [color := self defaultColor]
+      ifFalse: [color := self defaultColor alpha: 0.5].
    self redrawNeeded
 </pre></div>
 
@@ -251,11 +251,11 @@ with the keyboard arrows when there are stroked:
 <div class="example">
 <pre class="example">SpaceWar&gt;&gt;keyStroke: event
    | key |
-   key &#x2190; event keyCharacter.
-   key = Character arrowUp ifTrue: [&#x2191; ships first push].
-   key = Character arrowRight ifTrue: [&#x2191; ships first right].
-   key = Character arrowLeft ifTrue: [&#x2191; ships first left].
-   key = Character arrowDown ifTrue: [&#x2191; ships first fireTorpedo].
+   key := event keyCharacter.
+   key = Character arrowUp ifTrue: [^ ships first push].
+   key = Character arrowRight ifTrue: [^ ships first right].
+   key = Character arrowLeft ifTrue: [^ ships first left].
+   key = Character arrowDown ifTrue: [^ ships first fireTorpedo].
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 8.2: </strong>Keystroke to control the first player ship</p></div></div>

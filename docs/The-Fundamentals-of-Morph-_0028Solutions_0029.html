@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 22, 2020
+Compilation : December 23, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -124,7 +124,7 @@ draw from that previous position to this new position.
 </p><div class="example">
 <pre class="example">initialize
    super initialize .
-   fillColor &#x2190; Color random alpha: 0.5
+   fillColor := Color random alpha: 0.5
 
 drawOn: aCanvas
    aCanvas
@@ -203,7 +203,7 @@ thin red line and filled in yellow.
 <p>The width of the torpedo is 4 pixels and its height 8 pixels:
 </p><div class="example">
 <pre class="example">Torpedo&gt;&gt;morphExtent
-   &#x2191; `4 @ 8`
+   ^ `4 @ 8`
 </pre></div>
 
 <span id="exeTorpedoDrawing-1"></span><h4 class="subheading"><a href="Back-to-Spacewar_0021-Morphs.html#exeTorpedoDrawing">Exercise 7.7</a></h4>
@@ -212,9 +212,9 @@ one in <code>SpaceShip</code> class:
 </p><div class="example">
 <pre class="example">Torpedo&gt;&gt;drawOn: canvas
    | a b c |
-   a &#x2190; 0 @ -4.
-   b &#x2190; -2 @ 4.
-   c &#x2190; 2 @ 4.
+   a := 0 @ -4.
+   b := -2 @ 4.
+   c := 2 @ 4.
    canvas line: a to: b width: 2 color: color.
    canvas line: c to: b width: 2 color: color.
    canvas line: a to: c width: 2 color: color.
@@ -226,7 +226,7 @@ draw the ship and a second time to draw the gas exhaust.
 </p><div class="example">
 <pre class="example">SpaceShip&gt;&gt;drawOn: canvas
    | vertices  |
-   vertices &#x2190; self class vertices.
+   vertices := self class vertices.
    canvas line: vertices first to: vertices second width: 2 color: color.
    canvas line: vertices second to: vertices third width: 2 color: color.
    canvas line: vertices third to: vertices fourth width: 2 color: color.
@@ -259,7 +259,7 @@ collection.
 <div class="example">
 <pre class="example">Mobile&gt;&gt;drawOn: canvas polygon: vertices
    | size |
-   size &#x2190; vertices size.
+   size := vertices size.
    vertices withIndexDo: [: aPoint :i |
       canvas
          line: aPoint

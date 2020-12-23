@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 22, 2020
+Compilation : December 23, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -204,7 +204,7 @@ method:
 | quoRem |
 aNumber isInteger ifTrue:
 ../..
-   ifFalse: [&#x2191; (Fraction numerator: self denominator: aNumber) reduced]].
+   ifFalse: [^ (Fraction numerator: self denominator: aNumber) reduced]].
 ../..
 </pre></div>
 
@@ -279,18 +279,18 @@ called an <em>instance method</em>. This method is defined in both the
 </p><div class="example">
 <pre class="example">Number&gt;&gt;squared
 &quot;Answer the receiver multiplied by itself.&quot;
-   &#x2191; self * self
+   ^ self * self
 </pre></div>
 
 <p>In an instance method source code, <code>self</code> refers to the
-object itself, here it is the value of the number. The &#x2191; (also
+object itself, here it is the value of the number. The ^ (also
 <code>^</code>) symbol indicates to <em>return</em> the following value
-<code>self * self</code>.  One might pronounce &#x2191; as &ldquo;return&rdquo;.
+<code>self * self</code>.  One might pronounce ^ as &ldquo;return&rdquo;.
 </p>
 <p>Now let&rsquo;s examine this same method in <code>Fraction</code>:
 </p><div class="example">
 <pre class="example">Fraction&gt;&gt;squared
-   &#x2191; Fraction
+   ^ Fraction
       numerator: numerator squared
       denominator: denominator squared
 </pre></div>
@@ -330,8 +330,8 @@ discussed so far, but the code is quite self-explanatory:
 &quot;Answer a Number that is the absolute value (positive magnitude) of the 
 receiver.&quot;
    self &lt; 0
-      ifTrue: [&#x2191; self negated]
-      ifFalse: [&#x2191; self]
+      ifTrue: [^ self negated]
+      ifFalse: [^ self]
 </pre></div>
 
 <p>This implementation will do just fine for the <code>Number</code>
@@ -353,7 +353,7 @@ value is itself but with its sign reversed, that is <code>negated</code>:
 </p>
 <div class="example">
 <pre class="example">LargeNegativeInteger&gt;&gt;abs
-   &#x2191; self negated
+   ^ self negated
 </pre></div>
    
 <p>These two overriding methods are more efficient as they avoid unnecessary

@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 22, 2020
+Compilation : December 23, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -93,11 +93,12 @@ Next: <a href="Spacewar_0021_0027s-methods.html" accesskey="n" rel="next">Spacew
 <span id="Control-flow-with-block-and-message-1"></span><h3 class="section">5.5 Control flow with block and message</h3>
 <span id="index-control-flow"></span>
 
-<p>Deciding to send this message instead of that one is called <em>control flow</em> &ndash;
+<p>Deciding to send <em>this</em> message instead of <em>that</em>
+one is called <em>control flow</em> &ndash;
 controlling the flow of a computation.
 Smalltalk offers no special constructs for control flow.
 Decision logic is expressed by sending messages to booleans, numbers
-and collections, with blocks as arguments.
+and collections with blocks as arguments.
 </p>
 <span id="Test"></span><h4 class="subheading">Test</h4>
 <span id="index-control-flow-1"></span>
@@ -135,10 +136,10 @@ concrete subclasses <code>True</code> and <code>False</code>:
 <div class="float"><span id="ifTrueIfFalse"></span>
 <div class="example">
 <pre class="example">True&gt;&gt;ifTrue: trueAlternativeBlock ifFalse: falseAlternativeBlock
-  &#x2191; trueAlternativeBlock value
+  ^ trueAlternativeBlock value
 
 False&gt;&gt;ifTrue: trueAlternativeBlock ifFalse: falseAlternativeBlock
-  &#x2191; falseAlternativeBlock value
+  ^ falseAlternativeBlock value
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 5.4: </strong>Implementations of ifTrue:ifFalse:</p></div></div>
@@ -154,12 +155,12 @@ example:
 <div class="example">
 <pre class="example">True&gt;&gt;not
    &quot;Negation----answer false since the receiver is true.&quot;
-   &#x2191; false
+   ^ false
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 5.5: </strong>Implementing negation</p></div></div>
 <p>Booleans offer several useful convenience methods, such as
-<code>ifTrue:</code>, <code>ifFalse:</code>, <code>ifFalse:ifTrue</code>. You also
+<code>ifTrue:</code>, <code>ifFalse:</code>, <code>ifFalse:ifTrue:</code>. You also
 have the choice between eager and lazy conjunctions and disjunctions:
 </p>
 <div class="example">
@@ -209,7 +210,7 @@ If so we move the mobile to the other corner
 and slow it down by a factor of 2&quot;
 (self isInOuterSpace and: [self isGoingOuterSpace])
   ifTrue: [
-     velocity &#x2190; velocity / 2.
+     velocity := velocity / 2.
      self morphPosition: self morphPosition negated]
 </pre></div>
 
@@ -225,16 +226,16 @@ evaluated, it should be a block rather than a boolean value. Here is
 an example of a very procedural loop:
 </p>
 <div class="example">
-<pre class="example">n &#x2190; 1.
-[ n &lt; 1000 ] whileTrue: [ n &#x2190; n * 2 ].
+<pre class="example">n := 1.
+[ n &lt; 1000 ] whileTrue: [ n := n * 2 ].
 n &rArr; 1024
 </pre></div>
 
 <p><code>#whileFalse:</code> reverses the exit condition:
 </p>
 <div class="example">
-<pre class="example">n &#x2190; 1.
-[ n &gt; 1000 ] whileFalse: [ n &#x2190; n * 2 ].
+<pre class="example">n := 1.
+[ n &gt; 1000 ] whileFalse: [ n := n * 2 ].
 n &rArr; 1024
 </pre></div>
 
@@ -244,8 +245,8 @@ category of the class <code>BlockClosure</code>.
 <p><code>#timesRepeat:</code> offers a simple way to implement a fixed iteration:
 </p>
 <div class="example">
-<pre class="example">n &#x2190; 1.
-10 timesRepeat: [ n &#x2190; n * 2 ].
+<pre class="example">n := 1.
+10 timesRepeat: [ n := n * 2 ].
 n &rArr; 1024
 </pre></div>
 
@@ -255,8 +256,8 @@ upper bound, and a block that takes the current value of the loop
 counter as its argument:
 </p>
 <div class="example">
-<pre class="example">result &#x2190; String new.
-1 to: 10 do: [:n | result &#x2190; result, n printString, ' '].
+<pre class="example">result := String new.
+1 to: 10 do: [:n | result := result, n printString, ' '].
 result &rArr; '1 2 3 4 5 6 7 8 9 10 '
 </pre></div>
 

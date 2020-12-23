@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 22, 2020
+Compilation : December 23, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -97,7 +97,7 @@ Previous: <a href="Collections-detailed.html" accesskey="p" rel="prev">Collectio
 nature &ndash; instances of the same class &ndash; it is a clue to use a
 collection to hold them. Moreover, when these elements are of fixed
 quantity, it indicates more precisely you want to use an <code>Array</code>
-instance. It is a collection of fixed size, an <code>Array</code> can not
+instance. An <code>Array</code> is a collection of fixed size. It can not
 grow nor shrink.
 </p>
 <p>When this quantity is variable, you want to use an
@@ -124,7 +124,7 @@ create the necessary collections.
 <div class="float"><span id="initActors"></span>
 <div class="example">
 <pre class="example">SpaceWar&gt;&gt;initializeActors
-   centralStar &#x2190; CentralStar new.
+   centralStar := CentralStar new.
    ../..
    ships first 
       color: Color green; 
@@ -161,7 +161,7 @@ this time interval.
 <div class="example">
 <pre class="example">Torpedo&gt;&gt;update: t
 &quot;Update the torpedo position&quot;
-   position &#x2190; velocity * t + position.
+   position := velocity * t + position.
    ../..
 </pre></div>
 
@@ -176,11 +176,11 @@ change accordingly to the mechanical laws of physics.
 &quot;Update the ship position and velocity&quot;
    | ai ag newVelocity t |
    &quot;acceleration vectors&quot;
-   ai &#x2190; acceleration * self direction.
-   ag &#x2190; self gravity.
-   newVelocity &#x2190; (ai + ag) * t + velocity.
-   position &#x2190; (0.5 * (ai + ag) * t squared) + (velocity * t) + position.
-   velocity &#x2190; newVelocity.
+   ai := acceleration * self direction.
+   ag := self gravity.
+   newVelocity := (ai + ag) * t + velocity.
+   position := (0.5 * (ai + ag) * t squared) + (velocity * t) + position.
+   velocity := newVelocity.
    ../..
 </pre></div>
 
@@ -206,7 +206,7 @@ determined by the <code>stepTime</code> method:
 <div class="example">
 <pre class="example">SpaceWar&gt;&gt;stepTime
 &quot;millisecond&quot;
-   &#x2191; 20
+   ^ 20
 
 SpaceWar&gt;&gt;stepAt: millisecondSinceLast
    ../..

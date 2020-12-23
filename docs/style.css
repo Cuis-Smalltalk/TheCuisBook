@@ -103,10 +103,10 @@ font-family: serif;
 pre.format
 {
 font-family: serif;
-border: 1px solid #4da71f;
+border: 1px solid  #f7f700;
 padding: 1em;
 color: black;
-background: #a1cb81;
+background:  rgba(248, 248, 2, 0.16);
 border-radius: 4px;
 }
 
@@ -189,13 +189,22 @@ div.footnote h4
 
 div.footnote h5
 {
+    display: inline;
     font-size: 80%;
     margin-bottom: -10px;
+    
 }
 div.footnote p
 {
     font-size: 90%;
+    display: inline;
 }
+div.footnote p::after
+{
+    content: '\A';
+    white-space: pre;
+}
+
 
 .subheading
 {

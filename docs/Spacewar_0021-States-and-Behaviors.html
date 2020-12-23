@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 22, 2020
+Compilation : December 23, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -312,7 +312,7 @@ the method category you want &ndash; when none, select <code>-- all
 </p>
 <div class="example">
 <pre class="example">SpaceShip&gt;&gt;mass
-   &#x2191; mass
+   ^ mass
 </pre></div>
 
 <p>The <code>SpaceShip&gt;&gt;</code> part is not valid code and should not be
@@ -340,15 +340,15 @@ following method:
 </p>
 <div class="example">
 <pre class="example">SpaceShip&gt;&gt;name: aString
-   name &#x2190; aString
+   name := aString
 </pre></div>
 
-<p>The &#x2190; character is an assignment, it means the
+<p>The := character is an assignment, it means the
 <code>name</code> instance variable is bound to the <code>aString</code>
 object. 
 To type in this symbol type <tt class="key">_</tt> then space,
 Cuis-Smalltalk will turn it to left arrow symbol.  Alternatively write
-<code>name := aString</code>.  One might pronounce &#x2190; as &ldquo;gets&rdquo;.
+<code>name := aString</code>.  One might pronounce := as &ldquo;gets&rdquo;.
 </p>
 <p>Since <code>name</code> is an instance variable, each instance method
 knows to use the box for the name.  The meaning here is that we are
@@ -378,7 +378,7 @@ variable and edit the <code>mass</code> method to return a literal number:
 <div class="float"><span id="methodConstant"></span>
 <div class="example">
 <pre class="example">SpaceShip&gt;&gt;mass
-   &#x2191; 1
+   ^ 1
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 3.16: </strong>A method returning a constant</p></div></div>
@@ -430,10 +430,10 @@ set its default position, speed, acceleration:
 <div class="example">
 <pre class="example">SpaceShip&gt;&gt;initialize
    super initialize.
-   heading &#x2190; Float halfPi.
-   velocity &#x2190; 0 @ 0.
-   position &#x2190; 100 @ 100.
-   acceleration &#x2190; 0
+   heading := Float halfPi.
+   velocity := 0 @ 0.
+   position := 100 @ 100.
+   acceleration := 0
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 3.17: </strong>Initialize the space ship</p></div></div>

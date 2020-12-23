@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 22, 2020
+Compilation : December 23, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -216,9 +216,9 @@ variables):
 <div class="example">
 <pre class="example">ClockMorph&gt;&gt;initialize
    super initialize.
-   self addMorph: (hourHand &#x2190; ClockHourHandMorph new).
-   self addMorph: (minuteHand &#x2190; ClockMinuteHandMorph new).
-   self addMorph: (secondHand &#x2190; ClockSecondHandMorph new)
+   self addMorph: (hourHand := ClockHourHandMorph new).
+   self addMorph: (minuteHand := ClockMinuteHandMorph new).
+   self addMorph: (secondHand := ClockSecondHandMorph new)
 </pre></div>
 
 <blockquote class="indentedblock">
@@ -245,7 +245,7 @@ method:
 </p>
 <div class="example">
 <pre class="example">ClockMorph&gt;&gt;wantsSteps
-   &#x2191; true
+   ^ true
 </pre></div>
 
 <p>...and:
@@ -253,7 +253,7 @@ method:
 <div class="example">
 <pre class="example">ClockMorph&gt;&gt;step
    | time |
-   time &#x2190; Time now.
+   time := Time now.
    hourHand rotationDegrees: time hour * 30 - 90.
    minuteHand rotationDegrees: time minute * 6 - 90.
    secondHand rotationDegrees: time second * 6 - 90.

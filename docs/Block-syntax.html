@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 22, 2020
+Compilation : December 23, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -97,7 +97,7 @@ Next: <a href="Control-flow-with-block-and-message.html" accesskey="n" rel="next
 block is essentially an anonymous function. A block is evaluated by
 sending it the message <code>#value</code>. The block answers the value of the
 last expression in its body, unless there is an explicit return (with
-&#x2191;), in which case it returns the value of the subsequent
+^), in which case it returns the value of the subsequent
 expression).
 </p>
 <div class="example">
@@ -130,7 +130,7 @@ vertical bars, just like local variable declarations in a
 method. Locals are declared after any arguments:
 </p>
 <div class="example">
-<pre class="example">[ :x :y | | z | z &#x2190; x + y. z ] value: 1 value: 2
+<pre class="example">[ :x :y | | z | z := x + y. z ] value: 1 value: 2
 &rArr; 3
 </pre></div>
 
@@ -145,7 +145,7 @@ to the variable x of its enclosing environment:
 </p>
 <div class="example">
 <pre class="example">|x|
-x &#x2190; 1.
+x := 1.
 [ :y | x + y ] value: 2
 &rArr; 3
 </pre></div>
@@ -160,8 +160,8 @@ as arguments just like any other object.
 <div class="float"><span id="computeDivisors"></span>
 <div class="example">
 <pre class="example">| n m |
-n &#x2190; 60.
-m &#x2190; 45.
+n := 60.
+m := 45.
 (1 to: n) select: [:d | n \ d = 0 ].
 &quot;&rArr; #(1 2 3 4 5 6 10 12 15 20 30 60)&quot;
 (1 to: m) select: [:d | m \ d = 0]
@@ -193,8 +193,8 @@ message <code>#value</code> is sent to the block of code:
   &quot;Teleport a ship at a random location&quot;
   | area randomCoordinate |
   aShip resupply.
-  area &#x2190; self morphLocalBounds insetBy: 20.
-  randomCoordinate &#x2190; [(area left to: area right) atRandom].
+  area := self morphLocalBounds insetBy: 20.
+  randomCoordinate := [(area left to: area right) atRandom].
   aShip 
     velocity: 0 @ 0;
     morphPosition: randomCoordinate value @ randomCoordinate value

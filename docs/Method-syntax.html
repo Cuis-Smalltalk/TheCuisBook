@@ -10,7 +10,7 @@ Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
 
 
 
-Compilation : December 22, 2020
+Compilation : December 23, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -115,11 +115,11 @@ involved &ndash; our first explanation was <a href="Spacewar_0021-States-and-Beh
 <pre class="example">SpaceWar&gt;&gt;keyStroke: event
 &quot;Check for any keyboard stroke, and take action accordingly&quot;
 | key |
-key &#x2190; event keyCharacter.
-key = Character arrowUp ifTrue: [&#x2191; ships first push].
-key = Character arrowRight ifTrue: [&#x2191; ships first right].
-key = Character arrowLeft ifTrue: [&#x2191; ships first left].
-key = Character arrowDown ifTrue: [&#x2191; ships first fireTorpedo]
+key := event keyCharacter.
+key = Character arrowUp ifTrue: [^ ships first push].
+key = Character arrowRight ifTrue: [^ ships first right].
+key = Character arrowLeft ifTrue: [^ ships first left].
+key = Character arrowDown ifTrue: [^ ships first fireTorpedo]
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 5.1: </strong>SpaceWar! key stroke</p></div></div>
@@ -127,7 +127,7 @@ key = Character arrowDown ifTrue: [&#x2191; ships first fireTorpedo]
 </p>
 <ul>
 <li> the method pattern, containing the name (<em>i.e.</em>,
- <code>keyStroke:</code>) and any arguments, here <code>event</code> is a
+ <code>keyStroke:</code>) and any arguments. Here <code>event</code> is a
  <code>KeyboardEvent</code>,
 
 </li><li> comments (these may occur anywhere, but the convention is to
@@ -140,7 +140,7 @@ key = Character arrowDown ifTrue: [&#x2191; ships first fireTorpedo]
 
 </li></ul>
 
-<p>The evaluation of any expression preceded by a &#x2191; (typed as ^)
+<p>The evaluation of any expression preceded by a ^ (typed as ^)
 will cause the method to exit at that point, returning the value of
 that expression. A method that terminates without explicitly returning
 the value of some expression will always return the current
