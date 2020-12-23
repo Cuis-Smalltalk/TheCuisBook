@@ -268,7 +268,7 @@ but subclass @class{EllipseMorph} with @smalltalk{#ColorClickEllipse}.
    instanceVariableNames: ''
    classVariableNames: ''
    poolDictionaries: ''
-   category: 'Spacewar!!'}
+   category: 'Spacewar!'}
 
 Save the class definition with @kbd{Ctrl-s}.
 
@@ -355,7 +355,7 @@ with its appropriate Morph counterpart.
 to be subclasses of the @class{Morph} class.}}
 
 As explained in the previous sections of this chapter, a morph can be
-embedded in another game. In Spacewar!, a @class{SpaceWar} morph
+embedded within another morph. In Spacewar!, a @class{SpaceWar} morph
 instance presenting the game play, it is the @emph{owner} of the central
 star, space ship and torpedo morphs. Put in other words, the central
 star, space ships and torpedoes are @emph{submorphs} of a
@@ -437,7 +437,7 @@ ship entities?
   torpedoes stock states.
 
   @item They will have @emph{different behaviors}: a
-  torpedo is self destroyed when its life span expires, a space ship
+  torpedo self destructs when its life span expires, a space ship
   fires torpedoes and accelerates as long as its fuel tank and its
   torpedoes count are not zero.
 
@@ -587,7 +587,7 @@ See the @class{Torpedo>>update:} definition:
    acceleration > 0 ifTrue: [acceleration @assign{} acceleration - 1000]}
 
 Here the @method{update:} method is specialized to the torpedo
-specific needs. The mechanic calculation done in @method{Mobile>>update:}
+specific needs. The mechanical calculation done in @method{Mobile>>update:}
 is still used to update the torpedo position and velocity: this is
 done by @smalltalk{super update: t}. We already discussed
 @smalltalk{super}. In the context of
