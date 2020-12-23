@@ -69,13 +69,13 @@ function prepareDestination {
     for dir in $chapters
     do
 	if [ -d $dir/img ]; then
-	    cp $dir/img/*.png "$1"
-   	    cp $dir/img/*.jpg "$1"
-       	    cp $dir/img/*.gif "$1"
+	    cp $dir/img/*.png "$1" 2> /dev/null
+   	    cp $dir/img/*.jpg "$1" 2> /dev/null
+       	    cp $dir/img/*.gif "$1" 2> /dev/null
 	fi
     done
-    cp ./img/*.png "$1"
-    cp ./img/*.jpg "$1"
+    cp ./img/*.png "$1" 2> /dev/null
+    cp ./img/*.jpg "$1" 2> /dev/null
     cd -
 }
 

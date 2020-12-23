@@ -6,13 +6,14 @@
 @raggedright
 Part of the syntax chapter from the @emph{Squeak by Example} book was
 borrowed and edited in the present book.
-
+@*
 Copyright @copyright{} 2007, 2008, 2009 by Andrew P. Black,
 St@'{e}phane Ducasse, Oscar Nierstrasz and Damien Pollet.
 @end raggedright
 
-@raggedright
+
 @subheading @ref{ch01-SpacewarPDP}
+@raggedright
 Spacewar running on PDP-1, Joi Ito, 12 May 2007 @*
 resized,
 https://www.flickr.com/photos/35034362831@@N01/494431001,
@@ -22,5 +23,15 @@ https://creativecommons.org/licenses/by/2.0/deed.en
 @subheading @ref{goldberg1,,Adele Goldberg quote}
 @raggedright
 Oral History of Adele Goldberg, Computer History Museum, 10 May 2010
+@end raggedright
+
+@subheading Cuis-Smalltalk mascot
+@raggedright
+The southern mountain cavy (Microcavia australis)
+is a species of South American rodent in the family Caviidae.
+@*
+@image{CuisLogo,1cm}
+@*
+Unknown author. Please contact us if you know the author.
 @end raggedright
 

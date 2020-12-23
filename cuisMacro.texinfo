@@ -99,15 +99,19 @@ Thanks to Mauro Rizzi for the review of the book.
 @c Exercise with caption
 @macro exercise{caption,label,text}
 @float Exercise,\label\
-@iftex
-   @cartouche
-@end iftex
 @indentedblock
-   \text\
-@end indentedblock
+@iftex
+@cartouche
+@tie{}@image{CuisLogoLarge,1cm}
+@end iftex
+@ifhtml
+@tie{}@image{CuisLogo,1cm}
+@end ifhtml
+\text\
 @iftex
    @end cartouche
 @end iftex
+@end indentedblock
 @caption{\caption\}
 @shortcaption{\caption\}
 @end float
@@ -167,15 +171,14 @@ Thanks to Mauro Rizzi for the review of the book.
 @macro cuisNote{aNote}
 @indentedblock
 @iftex
-   @cartouche
+@cartouche
 @end iftex
 @ifnotplaintext
 @tie{}@image{note,1cm}
-@*
 @end ifnotplaintext
 \aNote\
 @iftex
-   @end cartouche
+@end cartouche
 @end iftex
 @end indentedblock
 @end macro

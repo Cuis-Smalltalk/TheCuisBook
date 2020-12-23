@@ -103,10 +103,10 @@ font-family: serif;
 pre.format
 {
 font-family: serif;
-border: 1px solid #4da71f;
+border: 1px solid  #f7f700;
 padding: 1em;
 color: black;
-background: #a1cb81;
+background:  rgba(248, 248, 2, 0.16);
 border-radius: 4px;
 }
 
@@ -126,9 +126,16 @@ border: 1px solid #f7f700 ;
 margin: 1em 3em 1em 3em;
 background: rgba(248, 248, 2, 0.16);
 border-radius: 4px;
-padding: .25em .5em .25em .5em;
+padding: .25em 0.5em .25em 0.5em;
 }
 
+blockquote.indentedblock > p > img {
+    margin-top: 0;
+    margin-bottom: 0;
+    display: block;
+    margin-right: 0.5em;
+    float: left;
+}
 
 
 img
@@ -182,13 +189,22 @@ div.footnote h4
 
 div.footnote h5
 {
+    display: inline;
     font-size: 80%;
     margin-bottom: -10px;
+    
 }
 div.footnote p
 {
     font-size: 90%;
+    display: inline;
 }
+div.footnote p::after
+{
+    content: '\A';
+    white-space: pre;
+}
+
 
 .subheading
 {
