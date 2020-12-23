@@ -148,11 +148,11 @@ vector graphics, do ...World menu &rarr;
 <pre class="example">ClockHourHandMorph&gt;&gt;drawOn: aCanvas
    aCanvas fillColor: (Color black alpha: 0.6) do: [
       aCanvas
-         moveToX: -10 y: 0;
-         lineToX: 0 y: 5;
-         lineToX: 50 y: 0;
-         lineToX: 0 y: -5;
-         lineToX: -10 y: 0 ].
+         moveToX: 0 y: 10;
+         lineToX: -5 y: 0;
+         lineToX: 0 y: -50;
+         lineToX: 5 y: 0;
+         lineToX: 0 y: 10 ].
 </pre></div>
 
 <p>You can start playing with them. We could use several instances of a
@@ -181,11 +181,11 @@ bear with us while we finish building our clock.
 <pre class="example">ClockMinuteHandMorph&gt;&gt;drawOn: aCanvas
    aCanvas fillColor: ((Color black) alpha: 0.6) do: [
       aCanvas
-         moveToX: -8 y: 0;
-         lineToX: 0 y: 4;
-         lineToX: 82 y: 0;
-         lineToX: 0 y: -4;
-         lineToX: -8 y: 0 ]
+         moveToX: 0 y: 8;
+         lineToX: -4 y: 0;
+         lineToX: 0 y: -82;
+         lineToX: 4 y: 0;
+         lineToX: 0 y: 8 ]
 </pre></div>
 
 <p>And finally, the <code>ClockSecondHandMorph</code>, the hand for the seconds:
@@ -202,10 +202,10 @@ bear with us while we finish building our clock.
 </p>
 <div class="example">
 <pre class="example">ClockSecondHandMorph&gt;&gt;drawOn: aCanvas
-   aCanvas strokeWidth: 1.5 color: Color red do: [
+   aCanvas strokeWidth: 2.5 color: Color red do: [
       aCanvas
          moveToX: 0 y: 0;
-         lineToX: 85 y: 0 ]
+         lineToX: 0 y: -85 ]
 </pre></div>
 
 <p>Now, all that is needed is to put our clock parts together in
@@ -253,9 +253,9 @@ method:
 <pre class="example">ClockMorph&gt;&gt;step
    | time |
    time := Time now.
-   hourHand rotationDegrees: time hour * 30 - 90.
-   minuteHand rotationDegrees: time minute * 6 - 90.
-   secondHand rotationDegrees: time second * 6 - 90.
+   hourHand rotationDegrees: time hour * 30.
+   minuteHand rotationDegrees: time minute * 6.
+   secondHand rotationDegrees: time second * 6.
 </pre></div>
 
 <p>Take a look at how we update the clock hands.
@@ -276,14 +276,13 @@ positive angles go counterclockwise.
 </p>
 <p>So, how do we update the hands? For example, for the hour hand, one
 hour means 30 degrees, as 12 hours means 360 degrees or a whole
-turn. We multiply hours by 30 to get degrees. But for 0 the hand must
-point up, that is -90 degrees in our coordinate system. So we substract
-90. Minute and second hand work in a similar way, but as there are 60
-minutes in one hour, and 60 seconds in one minute, we need to multiply
-them by 6 to get degrees. As rotation is done around the origin, and the
-clock has set the origin at its center (<a href="#clockDialDrawing">Example 7.2</a>), there&rsquo;s no
-need to set the position of the hands. Their <code>0@0</code> origin will
-therefore be at the clock <code>0@0</code>, i.e. the center of the clock.
+turn. So, we multiply hours by 30 to get degrees. Minute and second hand
+work in a similar way, but as there are 60 minutes in one hour, and 60
+seconds in one minute, we need to multiply them by 6 to get degrees. As
+rotation is done around the origin, and the clock has set the origin at its
+center (<a href="#clockDialDrawing">Example 7.2</a>), there&rsquo;s no need to set the position of the
+hands. Their <code>0@0</code> origin will therefore be at the clock
+<code>0@0</code>, i.e. the center of the clock.
 </p>
 <div class="float"><span id="ch07_002d06_002dExerciseClock"></span>
 <div align="center"><img src="ch07-06-ExerciseClock.png" alt="ch07-06-ExerciseClock">
