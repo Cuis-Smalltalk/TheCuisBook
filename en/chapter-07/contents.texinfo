@@ -55,7 +55,8 @@ This step is required until VectorGraphics becomes part of the base
 
 @cindex morph @subentry vector @subentry installation
 @smalltalkExample{Feature require: 'VectorGraphics'}
-@smalltalkExample{TrueTypeFontFamily read: DirectoryEntry smalltalkImageDirectory / 'TrueTypeFonts' / 'DejaVu'/ 'DejaVuSans'}
+@smalltalkExample{TrueTypeFontFamily read: DirectoryEntry smalltalkImageDirectory
+   / 'TrueTypeFonts' / 'DejaVu'/ 'DejaVuSans'}
 
 @subsection A first example
 
