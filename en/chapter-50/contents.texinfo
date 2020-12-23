@@ -620,7 +620,7 @@ ClockSecondHandMorph>>drawOn: aCanvas
       aCanvas
          moveToX: 0 y: 0;
          lineToX: 85 y: 0 ].
-   aCanvas ellipseCenterX: 70 y: 0 rx: 3 ry: 3 
+   aCanvas ellipseCenterX: 0 y: -70 rx: 3 ry: 3 
       borderWidth: 1 
       borderColor: Color red fillColor: Color yellow
 @end smallexample
