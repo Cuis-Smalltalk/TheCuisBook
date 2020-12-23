@@ -147,7 +147,7 @@ Syntactically, a method consists of:
 @itemize
 
  @item the method pattern, containing the name (@emph{i.e.},
- @method{keyStroke:}) and any arguments, here @smalltalk{event} is a
+ @method{keyStroke:}) and any arguments. Here @smalltalk{event} is a
  @class{KeyboardEvent},
 
  @item comments (these may occur anywhere, but the convention is to
@@ -274,11 +274,12 @@ SpaceWar>>teleport: aShip
 @section Control flow with block and message
 @cindex control flow
 
-Deciding to send this message instead of that one is called @dfn{control flow} --
+Deciding to send @emph{this} message instead of @emph{that}
+one is called @dfn{control flow} --
 controlling the flow of a computation.
 Smalltalk offers no special constructs for control flow.
 Decision logic is expressed by sending messages to booleans, numbers
-and collections, with blocks as arguments.
+and collections with blocks as arguments.
 
 @subheading Test
 @cindex control flow @subentry test
@@ -333,7 +334,7 @@ True>>not
    @return{} false}
 
 Booleans offer several useful convenience methods, such as
-@method{ifTrue:}, @method{ifFalse:}, @method{ifFalse:ifTrue}. You also
+@method{ifTrue:}, @method{ifFalse:}, @method{ifFalse:ifTrue:}. You also
 have the choice between eager and lazy conjunctions and disjunctions:
 
 @smalltalkExample{(1 > 2) & (3 < 4)
@@ -439,7 +440,7 @@ class. Of course we need to use the System Browser:
 ...@clicksequence{World menu @click{} @label{Open...} @click{}
 @label{Browser}}...
 
-As a reminder proceed as follow (if necessary observe
+As a reminder, proceed as follows (if necessary observe
 @ref{ch02-browserDetailed}):
 
 @enumerate
@@ -449,7 +450,7 @@ As a reminder proceed as follow (if necessary observe
 
  @item In the @label{Class} pane, select the class @class{SpaceWar}.
 
- @item Bellow, click the @label{instance} button to expose the
+ @item Below, click the @label{instance} button to expose the
  instance side methods of the @class{SpaceWar} class. It is the
  default behavior of the browser anyway, so you can skip this step as
  long as you have not clicked on the @label{class} button.
