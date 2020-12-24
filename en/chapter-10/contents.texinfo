@@ -45,7 +45,9 @@ Again, we can use an Inspector on any object, and @class{Exception}s are
 no exception!  Now you know how to capture one when you need to.
 
 @class{Exception}s, like @class{MorphicEvent}s are a change,
-an exception, to typical control flow.  We noted above the special
+an exception, to typical control flow.
+
+We noted above the special
 pseudo-variable, @smalltalk{thisContext}.  Signalling an exception
 captures this.
 
@@ -91,7 +93,7 @@ Remove the result, then @kbd{Ctrl-a} (@emph{select @b{A}ll}) and
 
 The top pane in the debugger shows a view of the @dfn{execution stack}
 for this bit of execution context.  The way to think of this,
-the @dfn{model of execution} is that each time a method sends a message,
+the @dfn{model of execution}, is that each time a method sends a message,
 it and its current state, arguments and local variables, are placed on a
 @emph{stack} until the result of that message is received.  If that message
 causes another message to be sent, then the new state is pushed onto
@@ -116,7 +118,7 @@ point.
 The two rows of buttons above the code pane give additional views
 and control of how the execution processing is to proceed.
 
-Notable buttons in the second row.
+Notable buttons in the second row:
 
 @itemize
  @item @strong{Proceed} Continue execution
@@ -164,7 +166,7 @@ Let's look briefly at another way of doing this.
 A @dfn{breakpoint} is a place in code where one wishes to pause
 code processing and look around.  One does not always want to
 single step to find a problem, especially one that occurs only
-once in a while.  A Breakpoint set where the problem occurs
+once in a while.  A breakpoint set where the problem occurs
 is quite handy.
 
 In Smalltalk, one uses the @method{halt} method
@@ -219,5 +221,5 @@ Note that with great power comes great
 responsibility. @footnote{@url{https://quoteinvestigator.com/2015/07/23/great-power/}}  In an open system, you can place a breakpoint anywhere, including
 places which can break the user interface!
 For example, it could be a bad thing to put a breakpoint
-the the code for the Debugger!
+in the code for the Debugger!
 
