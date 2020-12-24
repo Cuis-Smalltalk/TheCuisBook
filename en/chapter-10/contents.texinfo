@@ -1,0 +1,223 @@
+@node Debug and Exception Handling
+@chapter Debug and Exception Handling
+
+@quotation
+Reactive Principle: Every component accessible to the user
+should be able to present itself in a meaningful way
+for observation and manipulation.
+@author Dan Ingalls
+@end quotation
+
+@* @* @* @*
+
+The quote above is worth repeating.
+
+We think of Morphs and ``data objects'' as able to present themselves
+to be inspected, but Smalltalk's runtime state is also presentable.
+
+We have seen how various exceptional situations cause the appearance of
+a debugger window.  Indeed, @class{Exception}s are also 
+objects which remember their context and can present it.  Above, we have
+seen how to generate @class{MessageNotUnderstood} and @class{ZeroDivide}
+Exception instances.
+
+This is another area where the actual mechanics are complex, but the basic ideas are simple.
+
+Exception instances, being objects, also have classes.  The @class{BlockClosure}
+has a method category @label{exceptions} which gathers some handy methods
+which allow one to @method{ensure:} cleanup or capture and use exceptions
+(@method{on:do:} and friends).
+
+@smalltalkExampleCaption{Ensure a FileStream is closed,ensure,
+FileEntry>>readStreamDo: blockWithArg 
+  "Raise FileDoesNotExistException if not found."
+  | stream result |
+  stream @assign{} self readStream.
+  @label{[} result @assign{} blockWithArg value: stream @label{]}
+	@method{ensure:} @label{[} stream ifNotNil: [ :s | s close ]@label{]}.
+  ^ result}
+
+Exceptions are created and @dfn{signal}ed.  Let's make one and look at it.
+
+@figure{Inspecting a @class{ZeroDivide} instance,ch10-01-ZeroDivide,8}
+
+Again, we can use an Inspector on any object, and @class{Exception}s are
+no exception!  Now you know how to capture one when you need to.
+
+@class{Exception}s, like @class{MorphicEvent}s are a change,
+an exception, to typical control flow.  We noted above the special
+pseudo-variable, @smalltalk{thisContext}.  Signalling an exception
+captures this.
+
+@smalltalkExampleCaption{Capture thisContext,signal,
+Exception>>signal
+
+  ^self signalIn: thisContext
+}
+
+Just as Smalltalk code has special view windows which we call @label{Browser}s,
+@class{Exception}s have an enhanced viewer we call the @label{Debugger}.
+Let us look at how to use this very useful viewer.
+
+First, we need a fairly simple code example to look at.  Please type
+or copy the following into a Workspace.
+
+@smalltalkExampleCaption{Names of Directory Entries,childNames,
+| fileNames |
+fileNames := OrderedCollection new.
+(DirectoryEntry smalltalkImageDirectory) 
+    childrenDo: [ :f | fileNames add: f name ].
+fileNames asArray.}
+
+Now, you can @kbd{Ctrl-a} (@emph{select @b{A}ll}) and
+@kbd{Ctrl-p} (@emph{select @b{P}rint-it}) to see the
+result.
+
+@figure{Names of files and directories in a Directory,ch10-02-DirChildNames,8}
+
+@cuisNote{The @class{String} class has
+several method category names
+starting with @label{fileman-} for converting pathnames (system
+names for files and directories) into @class{FileEntry}
+and @class{DirectoryEntry} objects.
+@method{String>>asFileEntry} gives examples.}
+
+Now that we know what to expect, let us step through processing of the code
+using the debugger.
+Remove the result, then @kbd{Ctrl-a} (@emph{select @b{A}ll}) and
+@kbd{Ctrl-Shift-D} (@emph{select @b{D}ebug-it}).
+
+@figure{Debug It,ch10-03-DebugIt,8}
+
+The top pane in the debugger shows a view of the @dfn{execution stack}
+for this bit of execution context.  The way to think of this,
+the @dfn{model of execution} is that each time a method sends a message,
+it and its current state, arguments and local variables, are placed on a
+@emph{stack} until the result of that message is received.  If that message
+causes another message to be sent, then the new state is pushed onto
+the stack.  When an result is returned, the @dfn{stack frame} is @emph{poped}
+and processing continues.  This works like a stack of trays in a cafateria.
+
+The stack frames are displayed to show the stacked receiver and method.
+The focus object, the receiver, for the selected stack frame has an
+inspector in the lower left debugger panes at the bottom or the window.
+
+The next two lower panes are an inspector for the
+arguments and local variables, or @dfn{temporaries}, of the context frame.
+
+The larger area displays the code being processed and
+hilights the next message to be sent.
+
+The stack of (framed) execution contexts gives a history of the
+computation so far.  You can select any frame, view instance values
+in the receiver, view the arguments and method variables at that
+point.
+
+The two rows of buttons above the code pane give additional views
+and control of how the execution processing is to proceed.
+
+Notable buttons in the second row.
+
+@itemize
+ @item @strong{Proceed} Continue execution
+ @item @strong{Restart} Start execution of the current method from the beginning
+ @*
+ You can edit a method shown in the code pane, save it, and restart it!
+ @item @strong{Into} Step Into the code of the next message send
+ @item @strong{Over} Step Over the message send
+ @*
+ Do the next message send, but stay in the current method
+@end itemize
+
+Now, we are going to play a bit.  If you get out of synch with the
+instructions here, just close the debugger and start with Debug-It again.
+
+As you @dfn{single step} the debugger, hilighting of the @emph{next} message
+send changes.  Press @kbd{Over} three times.  You should see the line
+starting with @emph{childrenDo:} hilighted.  Now press @kbd{Into}.
+
+@figure{Step Into,ch10-04-StepInto,8}
+
+@figure{Viewing Focus Object and Temporaries,ch10-05-FocusObjAndArgs,8}
+
+The stack area shows the focus object is a @class{DirectoryEntry}.
+Inspect its instance values by selecting lines in the lower
+left pane.
+
+The stack area shows the focus method is @method{DirectoryEntry>>childrenDo:}.
+This is the method displayed in the code pane.
+
+The argument to @method{childrenDo:} is @smalltalk{aBlock}.  There are no
+method variables to display.
+
+If you press @kbd{Over} again and @kbd{Into}, you should see the
+context where @method{do:} is being processed.
+
+This might be a good place to investigate the inspectors, look up and down the
+stack, and play around a bit.  By this time you should feel confident
+that you understand the basics of what is displayed here.
+
+You are in control!
+
+Let's look briefly at another way of doing this.
+
+A @dfn{breakpoint} is a place in code where one wishes to pause
+code processing and look around.  One does not always want to
+single step to find a problem, especially one that occurs only
+once in a while.  A Breakpoint set where the problem occurs
+is quite handy.
+
+In Smalltalk, one uses the @method{halt} method
+to set a breakpoint.  The message @smalltalk{#halt}
+is sent to an object which is the debugger's initial focus.
+
+Please change the Workspace code to add a @smalltalk{#halt} as follows.
+
+@smalltalkExampleCaption{Halt: Set a Breakpoint,breakpoint,
+| fileNames |
+fileNames := OrderedCollection new.
+(DirectoryEntry smalltalkImageDirectory) 
+    childrenDo: [ :f | fileNames add: f name. fileNames halt ].
+fileNames asArray.}
+
+@cuisNote{The object which receives the @smalltalk{#halt}
+message becomes the
+focus object of the debugger.}
+
+Let's again @kbd{Ctrl-a} (@emph{select @b{A}ll}) and
+@kbd{Ctrl-p} (@emph{select @b{P}rint-it}).
+
+@figure{Halt,ch10-06-Halt,8}
+
+Press @kbd{Over} twice to step over the breakpoint.
+
+@figure{Step Over Breakpoint,ch10-07-Over,8}
+
+Well, this looks familiar.  I know what to do here.
+
+Note that the @method{halt} is inside a loop.
+While in the loop, each time you
+press @kbd{Proceed} you will @emph{hit}
+the breakpoint in the next iteration of the loop.
+
+In many programming envionments, to make a change you need to
+kill a process, recompile code, then start a new process.
+
+Smalltalk is a @emph{live} environment.
+You can break, then change or write code (the @kbd{Create}
+button at mid-right), restart the stack frame,
+and continue processing -- all without
+unwinding the context stack!
+
+As an analogy, in many programming languages,
+it is like you stub your toe and visit a physician.
+The doctor says ``Yes. you stubbed your toe.'' then takes out
+a gun, shoots you, and sends your mother a note ``have another
+child.''  Smalltalk is much more friendly!
+
+Note that with great power comes great
+responsibility. @footnote{@url{https://quoteinvestigator.com/2015/07/23/great-power/}}  In an open system, you can place a breakpoint anywhere, including
+places which can break the user interface!
+For example, it could be a bad thing to put a breakpoint
+the the code for the Debugger!
+
