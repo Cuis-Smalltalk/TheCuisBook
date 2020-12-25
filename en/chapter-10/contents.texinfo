@@ -20,6 +20,7 @@ to be inspected, but Smalltalk's runtime state is also presentable.
 @menu
 * Inspecting the Unexpected::
 * The Debugger::
+* Halt!::
 @end menu
 
 @node Inspecting the Unexpected
@@ -193,6 +194,9 @@ that you understand the basics of what is displayed here.
 You are in control!
 
 Let's look briefly at another way of doing this.
+
+@node Halt!
+@section Halt!
 
 @cindex breakpoint @seeentry{Tools, debugger}
 @cindex tools @subentry debugger @subentry breakpoint
