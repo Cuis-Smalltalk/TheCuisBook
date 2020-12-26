@@ -14,8 +14,6 @@ used, they improve both code compactness and code understanding; two
 paradigms which may seem antagonistic. Since then, these innovations
 have percolated into many popular programming languages.
 
-@todo{historic context to collection/iterator}
-
 @menu
 * String -- a particular collection::
 * Fun with variables::
