@@ -641,7 +641,7 @@ CentralStar>>morphExtent
 @cuisNote{An expression surrounded with backticks @code{'`'}
 is evaluated only once,
 when the method is first saved and compiled.
-This creates kind of literal value and 
+This creates a compound literal value and 
 improves the performance of the method since the expression is not evaluated
 each time the method is called: the pre-built value is used instead.}
 
