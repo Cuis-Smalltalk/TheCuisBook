@@ -666,9 +666,9 @@ the integer 360 by 1024@comma{} without using the multiplication operation?}}
 
 We saw decimal numbers are written with a dot ``.'' to separate the
 integer and the decimal parts: @smalltalk{1.5}, @smalltalk{1235.021}
-or @smalltalk{0.5}. The number @smalltalk{0.00004} is more easily
-written @smalltalk{4e-5}; it means 4 preceded by 5 zeros or 4 as the
-fifth digit after the decimal dot.
+or @smalltalk{0.5}. The number @smalltalk{0.0000241} is more easily
+written with the scientific notation @smalltalk{2.41e-5}; it means 2
+preceded by 5 zeros or 2 as the fifth digit after the decimal dot.
 
 @cuisNote{Computers encode and store decimal numbers imprecisely. You
 need to be aware of that when doing computation and equality

@@ -45,8 +45,8 @@ FileEntry>>readStreamDo: blockWithArg
   "Raise FileDoesNotExistException if not found."
   | stream result |
   stream @assign{} self readStream.
-  @label{[} result @assign{} blockWithArg value: stream @label{]}
-	@method{ensure:} @label{[} stream ifNotNil: [ :s | s close ]@label{]}.
+  @b{[} result @assign{} blockWithArg value: stream @b{]}
+	@b{ensure:} @b{[} stream ifNotNil: [ :s | s close ]@b{]}.
   @return{} result}
 
 Exceptions are created and @dfn{signal}ed.  Let's make one and look at it.
