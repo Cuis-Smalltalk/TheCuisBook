@@ -967,7 +967,7 @@ overkill. It was an excuse to present the concept of class
 variable. Indeed the vertices of the space ship and torpedo diagrams
 are constant. We do not modify them. As we did with the mass of the
 space ship -- @ref{methodConstant} -- we can use a method returning a
-collection, surrounded with backtrick to improve efficiency.
+collection, surrounded with backtricks to improve efficiency.
 
 If the game came with an editor where the user redesigns the ship and
 torpedo diagrams, it will make sense to hold the vertices in a
@@ -978,7 +978,7 @@ SpaceShip>>vertices
    @return{} `@{0@@-15 . -10@@15. 0@@10. 10@@15@}`
    
 Torpedo>>vertices
-   @return{} @{0@@-4 . -2@@4 . 2@@4@}`}
+   @return{} `@{0@@-4 . -2@@4 . 2@@4@}`}
 
 Then in the drawing methods, we replace @smalltalk{self class
 vertices} by @smalltalk{self vertices}.
