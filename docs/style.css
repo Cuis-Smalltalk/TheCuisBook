@@ -37,13 +37,8 @@ sup {
 
 hr
 {
-    margin: 1em 0em 1em 0em;
-    background: url("lines-019.gif");
-    /* border-image-width: 100px; */
-    border-top: 33px solid transparent;
-    border-bottom: 0;
-    border-left: 0;
-    border-right:0;
+margin: 1em 0em 1em 0em;
+border-top: 2px solid #4ea823;
 }
 
 body
@@ -52,16 +47,15 @@ margin: 2% 7% 3% 7%;
 font-size: 100%;
 font-family: sans;
 text-align: justify;
-background: black;
-color: lightgrey;
+background: #FFFFFF;
 }
 
 div.smallexample, div.example
 {
-border: 4px solid green;
-background: lightgreen;
+border: 4px solid #eeef21;
+background: #fafaf1;
 margin: 1em 0em 1em 0em;
-color: black;
+color: #033DA3;
 border-radius: 8px;
 }
 
@@ -109,19 +103,18 @@ font-family: serif;
 pre.format
 {
 font-family: serif;
-border: 2px solid  red;
+border: 1px solid  #f7f700;
 padding: 1em;
 color: black;
-background:  lightpink;
+background:  rgba(248, 248, 2, 0.16);
 border-radius: 4px;
 }
 
 blockquote
 {
-border: 2px solid red;
+border: 1px solid #f7f700;
 margin: 1em 3em 1em 3em;
-background: lightpink;
-color: black;
+background: rgba(248, 248, 2, 0.16);
 border-radius: 4px;
 padding: .25em .5em .25em .5em;
 }
@@ -129,9 +122,9 @@ padding: .25em .5em .25em .5em;
 /* Used in Exercise styling */
 blockquote.indentedblock
 {
-border: 2px solid red ;
+border: 1px solid #f7f700 ;
 margin: 1em 3em 1em 3em;
-background: lightpink;
+background: rgba(248, 248, 2, 0.16);
 border-radius: 4px;
 padding: .25em 0.5em .25em 0.5em;
 }
@@ -154,13 +147,13 @@ margin-bottom: .5em;
 
 h1, h2, h3, h4, h5
 {
- color: lightgrey;
+ color: black;
 }
 
 h2.chapter, h2.unnumbered, h2.appendix
 {
     background-image: repeating-linear-gradient(#4da71f, #85b461); 
-    text-shadow: 0px 1px black;
+    text-shadow: 0px 1px white;
     border: 2px solid #4da71f;
     border-radius: 3px;
 }
@@ -177,7 +170,7 @@ margin-bottom: .375em;
 }
 
 h3.section {
-    border-bottom: 1px solid lightgrey;
+    border-bottom: 1px solid black;
 }
 
 h4.subsection {
@@ -228,10 +221,10 @@ div.header
 {
     color: white;
     font-size: 90%;
-    background: #ee697d;
+    background: #a1cb81;
     padding: 0.2em;
-    border-top: 3px solid red;
-    border-bottom: 3px solid red;
+    border-top: 3px solid #85b75f;
+    border-bottom: 3px solid #85b75f;
     margin-left: -7%;
     margin-right: -7%;
 }
@@ -272,8 +265,8 @@ div.header p a:link {
    text-decoration:none;
    color: black;
    text-shadow: 0px 1px white;
-   background: #ee697d;
-   border: 2px solid #ee697d;
+   background: #a1cb81;
+   border: 2px solid #a1cb81;
    border-radius: 8px;
 
 }
@@ -281,13 +274,13 @@ div.header p a:link {
 div.header p a:visited {
    text-decoration:none;
    color: black;
-   border: 2px solid #ee697d;
+   border: 2px solid #a1cb81;
 }
 div.header p a:hover {
     text-decoration:none;
     color: black;
-    background: red;
-    border: 2px solid red;
+    background: #85b75f;
+    border: 2px solid #85b75f;
 
 }
 
@@ -377,7 +370,7 @@ code
     font-family: revert;
     font-size: 120%;
     font-weight: bold;
-    color: red;
+    color: #033DA3;
 }
 
 code:hover
@@ -385,7 +378,7 @@ code:hover
     font-family: revert;
     font-size: 120%;
     font-weight: bold;
-    color: red;
+    color: #033DA3;
     background: #85b461;
 }
 
@@ -393,7 +386,7 @@ table.index-cp code
 {
     font-family: revert;
     font-size: 120%;
-    color: purple;
+    color: #033DA3;
 }
 
 

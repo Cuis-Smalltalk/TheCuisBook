@@ -1,16 +1,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This book is for Cuis-Smalltalk (5.0#4253), a free and modern
+<!-- This book is for Cuis-Smalltalk (5.0#4501), a free and modern
 implementation of the Smalltalk language and environment.
 
-Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
+Copyright (C) 2020 Ken Dickey, Hilaire Fernandes, Juan Vuletich
 
 
 
 
 
 
-Compilation : December 25, 2020
+Compilation : December 26, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -112,8 +112,8 @@ which allow one to <code>ensure:</code> cleanup or capture and use exceptions
   &quot;Raise FileDoesNotExistException if not found.&quot;
   | stream result |
   stream := self readStream.
-  <code>[</code> result := blockWithArg value: stream <code>]</code>
-	<code>ensure:</code> <code>[</code> stream ifNotNil: [ :s | s close ]<code>]</code>.
+  <b>[</b> result := blockWithArg value: stream <b>]</b>
+	<b>ensure:</b> <b>[</b> stream ifNotNil: [ :s | s close ]<b>]</b>.
   ^ result
 </pre></div>
 

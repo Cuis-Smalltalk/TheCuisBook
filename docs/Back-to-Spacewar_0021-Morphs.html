@@ -1,16 +1,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This book is for Cuis-Smalltalk (5.0#4253), a free and modern
+<!-- This book is for Cuis-Smalltalk (5.0#4501), a free and modern
 implementation of the Smalltalk language and environment.
 
-Copyright (C) 2020 K. Dickey, H. Fernandes, J. Vuletich
+Copyright (C) 2020 Ken Dickey, Hilaire Fernandes, Juan Vuletich
 
 
 
 
 
 
-Compilation : December 25, 2020
+Compilation : December 26, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -512,7 +512,32 @@ value is common in the whole class hierarchy.
 diagram common to a space ship and a torpedo. This is not what we
 wanted.
 </p>
-<span id="Collisions-revisited"></span><h4 class="subsection">7.3.5 Collisions revisited</h4>
+<span id="Drawing-simplified"></span><h4 class="subsection">7.3.5 Drawing simplified</h4>
+<p>Using a class variable in the present game design is a bit
+overkill. It was an excuse to present the concept of class
+variable. Indeed the vertices of the space ship and torpedo diagrams
+are constant. We do not modify them. As we did with the mass of the
+space ship &ndash; <a href="Spacewar_0021-States-and-Behaviors.html#methodConstant">Example 3.16</a> &ndash; we can use a method returning a
+collection, surrounded with backtricks to improve efficiency.
+</p>
+<p>If the game came with an editor where the user redesigns the ship and
+torpedo diagrams, it will make sense to hold the vertices in a
+variable.
+</p>
+<div class="float"><span id="verticesMethod"></span>
+<div class="example">
+<pre class="example">SpaceShip&gt;&gt;vertices
+   ^ `{0@-15 . -10@15. 0@10. 10@15}`
+   
+Torpedo&gt;&gt;vertices
+   ^ `{0@-4 . -2@4 . 2@4}`
+</pre></div>
+
+<div class="float-caption"><p><strong>Example 7.11: </strong>Vertices returned by an instance method</p></div></div>
+<p>Then in the drawing methods, we replace <code>self class
+vertices</code> by <code>self vertices</code>.
+</p>
+<span id="Collisions-revisited"></span><h4 class="subsection">7.3.6 Collisions revisited</h4>
 
 <p>VectorGraphics can detect morph collision at the pixel level. We are
 not that fortunate when using the BitBlt canvas, we have to rely on
@@ -540,7 +565,7 @@ detection between the central star and the space ships:
          self teleport: aShip]]
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 7.11: </strong>Collision (accurate) between the ships and
+<div class="float-caption"><p><strong>Example 7.12: </strong>Collision (accurate) between the ships and
 the Sun</p></div></div>
 <div class="float"><span id="exeAccurateDetection"></span>
 <blockquote class="indentedblock">
