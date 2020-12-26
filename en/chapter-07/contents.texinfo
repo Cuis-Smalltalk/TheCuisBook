@@ -642,7 +642,7 @@ CentralStar>>morphExtent
 is evaluated only once,
 when the method is first saved and compiled.
 This creates kind of literal value and 
-improves the performance of the method since the expression not evaluated
+improves the performance of the method since the expression is not evaluated
 each time the method is called: the pre-built value is used instead.}
 
 @cindex number @subentry integer @subentry @method{atRandom}
