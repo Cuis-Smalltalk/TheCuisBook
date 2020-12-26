@@ -1,9 +1,16 @@
+@settitle The Cuis-Smalltalk Book
 @c Prefered settings
-@set cuisVersion 5.0#4253
+@set cuisVersion 5.0#4501
 @codequoteundirected on
 @codequotebacktick on
-
+@c Remove ugly black rectangle
+@finalout
 @setfilename TheCuisBook.info
+@c @afourwide
+@c @afourlatex
+@c 7x9.25 inches 17.8x23.5 cm
+@smallbook
+
 
 @c Macro definitions
 @macro cuis
@@ -11,7 +18,7 @@ Cuis-Smalltalk
 @end macro
 
 @macro writers
-K. Dickey, H. Fernandes, J. Vuletich
+Ken Dickey, Hilaire Fernandes, Juan Vuletich
 @end macro
 
 @macro thanks
