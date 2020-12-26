@@ -618,17 +618,17 @@ CentralStar>>>requiresVectorCanvas
 SpaceWar>>>requiresVectorCanvas
    @return{} false}
 
-Observe as @class{Mobile} being a superclass of @class{SpaceShip} and
-@class{Torpedo} makes the instances of these later classes to respond
-false to the @msg{requiresVectorCanvas} message.
+By inheritance, @class{Mobile} being a superclass of @class{SpaceShip} and
+@class{Torpedo} means that instances of these later classes also respond
+@smalltalk{false} to the @msg{requiresVectorCanvas} message.
 
 @subsection Central star
 Because we use the bitmap canvas for the rendering of our morphs, each
 morph should knows about its extent. That way the collision detection
 between star, ships and torpedoes works properly.
 
-Therefore when one of our morph receives the @msg{morphExtent}
-message, it responds its extent, in its idle position when not
+When one of our morphs receives the @msg{morphExtent}
+message, it answers its extent in its idle position when not
 rotated.
 
 @cindex backtick
@@ -638,12 +638,12 @@ Our central has an extent of @smalltalk{30 @@ 30}:
 CentralStar>>morphExtent
    @return{} `30 @@ 30`}
 
-@todo{Explain properly the backtick below:}
-
-An expression surrounded with backticks @code{'`'} is evaluated only once,
-when the method is saved and compiled, and turned as a kind of literal.
-This improves the performance of the method as the expression not executed
-when the method is called: the pre-built linteral is used instead.
+@cuisNote{An expression surrounded with backticks @code{'`'}
+is evaluated only once,
+when the method is first saved and compiled.
+This creates kind of literal value and 
+improves the performance of the method since the expression not evaluated
+each time the method is called: the pre-built value is used instead.}
 
 @cindex number @subentry integer @subentry @method{atRandom}
 @cindex morph @subentry @method{drawOn:}
@@ -814,6 +814,9 @@ same data!
 In that kind of situation, what you want is a @dfn{class instance
 variable} defined in the class side -- in contrast to the instance
 side where we have been coding until now.
+
+We make use of the fact that all objects are instances of some class.
+The  @class{Mobile class} is an instance of the class @class{Class}!
 
 @enumerate
 
