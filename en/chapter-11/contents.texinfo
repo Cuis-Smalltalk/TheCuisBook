@@ -36,6 +36,12 @@ Sharing requires communicating intent.
 
 Good writing takes practice. Good writers read.
 
+
+@menu
+* Golden Rules of the Smalltalk Guild ::
+* Refactoring to Improve Understanding::
+@end menu
+
 @node Golden Rules of the Smalltalk Guild 
 @section Golden Rules of the Smalltalk Guild 
 

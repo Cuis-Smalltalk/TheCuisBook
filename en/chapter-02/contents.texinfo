@@ -586,10 +586,11 @@ environment, use the File List tool:
 
 @end enumerate
 
-You can also drag and drop the package file from your operating system 
+You can also drag and drop the package file from your operating system
 over to the Squeak window, upon dropping the file over the window
-@cuis{} will ask you what you want to do with this package.
-To install it on your enviroment you can simply press "Install package".
+@cuis{} will ask you what you want to do with this package.  To
+install it on your enviroment you can simply press @label{Install
+package}.
 
 Or, you can open a Workspace, type in @smalltalk{Feature require: 'Spacewar!'}
 and @kbd{Ctrl-d} @emph{@b{D}o it}.
