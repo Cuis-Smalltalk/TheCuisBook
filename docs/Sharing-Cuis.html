@@ -10,7 +10,7 @@ Copyright (C) 2020 Ken Dickey, Hilaire Fernandes, Juan Vuletich
 
 
 
-Compilation : December 26, 2020
+Compilation : December 27, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -59,7 +59,7 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="index.html" rel="up" title="Top">
-<link href="Documents-Copyright.html" rel="next" title="Documents Copyright">
+<link href="Golden-Rules-of-the-Smalltalk-Guild.html" rel="next" title="Golden Rules of the Smalltalk Guild">
 <link href="Halt_0021.html" rel="prev" title="Halt!">
 <style type="text/css">
 <!--
@@ -119,128 +119,21 @@ afraid to delegate, even to yourself.
 
 <p>This book is an invitation.
 </p>
-<p>We hope that you are using Cuis-Smalltalk to discover pathways of
-interest and are enjoying the journey.
-</p>
-<p>If so, at some point you have done something wonderful and probably 
-want to share it. 
-</p>
-<p>Good writing takes practice. Good writers read.
+<p>We hope that you are using Cuis-Smalltalk to discover pathways of interest
+and are enjoying the journey. If so, at some point you have done
+something wonderful and probably want to share it.
 </p>
 <p>Sharing requires communicating intent.
 </p>
-<p>Basic questions:
-</p><ul>
-<li> Are methods short and understandable?
- </li><li> Does a line of code read like a sentence?
- </li><li> Do method names say what they do, rather than how they do it?
- </li><li> Do class and instance variable names indicate their role(s)?
- </li><li> Are there useful class comments?
- </li><li> Can we make something simpler?  Leave something out?
-</li></ul>
+<p>Good writing takes practice. Good writers read.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="Golden-Rules-of-the-Smalltalk-Guild.html" accesskey="1">Golden Rules of the Smalltalk Guild</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Refactoring-to-Improve-Understanding.html" accesskey="2">Refactoring to Improve Understanding</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
 
-<p>Now, we have been doing Smalltalk code for a while
-and so tend to follow good practices, but let&rsquo;s
-take another look at our code and see
-if we can make it easier for a reader to understand.
-</p>
-<p>Browsing through the code, I note a method named <code>#left</code>, which seems perhaps
-like an abbreviation.  I can ask for <em>senders</em> to see how <code>#left</code> is used
-in code elsewhere.
-</p>
-<div class="float"><span id="ch11_002d01_002dSendersOfLeft"></span>
-<div align="center"><img src="ch11-01-SendersOfLeft.png" alt="ch11-01-SendersOfLeft">
-</div>
-<div class="float-caption"><p><strong>Figure 11.1: </strong>Senders of <code>left</code></p></div></div>
-<p>I notice that most uses of <code>#left</code> are to indicate a position,
-not take an action.  How can I fix that?
-</p>
-<p>Because people frequently want to change things for the better,
-there are a number of handy tools to help do this.
-</p>
-<p>Now I could look at our uses of <code>#left</code> in Spacewars!, but the Cuis IDE
-already knows how to do this!
-</p>
-<p>If I right-click on the Method Pane in the Browser, I get a context menu
-with selections to help me out. Here I choose <strong>Rename</strong>.
-</p>
-<div class="float"><span id="ch11_002d02_002dRenameLeft"></span>
-<div align="center"><img src="ch11-02-RenameLeft.png" alt="ch11-02-RenameLeft">
-</div>
-<div class="float-caption"><p><strong>Figure 11.2: </strong>Rename <code>left</code></p></div></div>
-<p>Now the tools that help us refactor code are quite powerful,
-so restraint is called for.  I don&rsquo;t want to change all
-uses of <code>#left</code> in the Cuis-Smalltalk system, just in the Spacewar! category.
-</p>
-<div class="float"><span id="ch11_002d03_002dRenameInCategory"></span>
-<div align="center"><img src="ch11-03-RenameInCategory.png" alt="ch11-03-RenameInCategory">
-</div>
-<div class="float-caption"><p><strong>Figure 11.3: </strong>Rename in Category</p></div></div>
-<p>Of course, when making changes one wants to see that the result is
-what one expects.
-</p>
-<div class="float"><span id="ch11_002d04_002dturnLeft"></span>
-<div align="center"><img src="ch11-04-turnLeft.png" alt="ch11-04-turnLeft">
-</div>
-<div class="float-caption"><p><strong>Figure 11.4: </strong>Results of Renaming</p></div></div>
-<p>As I am not perfect, I tend to save the Cuis-Smalltalk image before I make
-large changes using powerful tools.  If something happens that
-I did not want, I can then quit the image without saving and
-restart the saved image which remembers the world before I made the change.
-</p>
-<div class="float"><span id="exeRenameMethod"></span>
-<blockquote class="indentedblock">
-<p>&nbsp;<img src="CuisLogo.png" alt="CuisLogo">
-<em>Rename <code>#right</code> to
-<code>#turnRight</code>.</em>
-</p></blockquote>
-
-
-<div class="float-caption"><p><strong>Exercise 11.1: </strong>Renaming a method</p></div></div>
-<p>Looking around some more in the Browser, I notice the method SpaceShip&gt;&gt;nose.
-</p>
-<p>Where did I use this?  Ah, senders..
-</p>
-<div class="float"><span id="ch11_002d05_002dnoseSenders"></span>
-<div align="center"><img src="ch11-05-noseSenders.png" alt="ch11-05-noseSenders">
-</div>
-<div class="float-caption"><p><strong>Figure 11.5: </strong>Senders of <code>nose</code></p></div></div>
-<p>Hmmm, perhaps something more specific.  How about <code>#noseDirection</code>?
-How does that look?
-</p>
-<div class="float"><span id="ch11_002d06_002dnoseDirection"></span>
-<div align="center"><img src="ch11-06-noseDirection.png" alt="ch11-06-noseDirection">
-</div>
-<div class="float-caption"><p><strong>Figure 11.6: </strong>Rename <code>nose</code> to <code>noseDirection</code></p></div></div>
-<blockquote class="indentedblock">
-<p>&nbsp;<img src="note.png" alt="note">
-World menu &rarr; <code>Help</code> is your friend.
-The <code>Terse Guide to Cuise</code> gives access to a large sample
-of code usages. The <code>Class Comment Browser</code> is an alternate
-way to find interesting class information.  There are also more notes
-on code maganement and how we use GitHub.
-</p></blockquote>
-
-<blockquote class="indentedblock">
-<p>&nbsp;<img src="note.png" alt="note">
-We want to share with you! Please visit packages at the main Cuis-Smalltalk
-repository at <a href="https://github.com/Cuis-Smalltalk">https://github.com/Cuis-Smalltalk</a>, search GitHub
-for repositories with names starting with <strong>Cuis-Smalltalk-</strong>,
-and perhaps take a look at tutorials and information
-in <a href="https://github.com/Cuis-Smalltalk/Learning-Cuis">https://github.com/Cuis-Smalltalk/Learning-Cuis</a>.
-</p></blockquote>
-
-<p>There is much more to explore, but this book is an <em>introduction</em>
-and we have to stop writing text somewhere.  This is a good place.
-We want to get back to writing code!
-And we look forward to seeing <em>your</em> projects!
-</p>
-<p>Welcome to Cuis-Smalltalk!
-</p><hr>
-<div class="header">
-<p>
-Next: <a href="Documents-Copyright.html" accesskey="n" rel="next">Documents Copyright</a>, Previous: <a href="Debug-and-Exception-Handling.html" accesskey="p" rel="prev">Debug and Exception Handling</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
-</div>
 
 
 

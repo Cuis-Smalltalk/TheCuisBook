@@ -10,7 +10,7 @@ Copyright (C) 2020 Ken Dickey, Hilaire Fernandes, Juan Vuletich
 
 
 
-Compilation : December 26, 2020
+Compilation : December 27, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -109,17 +109,17 @@ SpaceWar&gt;&gt;&gt;requiresVectorCanvas
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 7.3: </strong>We don&rsquo;t use <code>VectorGraphics</code> for performance reason</p></div></div>
-<p>Observe as <code>Mobile</code> being a superclass of <code>SpaceShip</code> and
-<code>Torpedo</code> makes the instances of these later classes to respond
-false to the <code>#requiresVectorCanvas</code> message.
+<p>By inheritance, <code>Mobile</code> being a superclass of <code>SpaceShip</code> and
+<code>Torpedo</code> means that instances of these later classes also respond
+<code>false</code> to the <code>#requiresVectorCanvas</code> message.
 </p>
 <span id="Central-star"></span><h4 class="subsection">7.3.1 Central star</h4>
 <p>Because we use the bitmap canvas for the rendering of our morphs, each
 morph should knows about its extent. That way the collision detection
 between star, ships and torpedoes works properly.
 </p>
-<p>Therefore when one of our morph receives the <code>#morphExtent</code>
-message, it responds its extent, in its idle position when not
+<p>When one of our morphs receives the <code>#morphExtent</code>
+message, it answers its extent in its idle position when not
 rotated.
 </p>
 <span id="index-backtick"></span>
@@ -132,14 +132,16 @@ rotated.
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 7.4: </strong>Central star extent</p></div></div>
-<span id="index-to-be-written_002c-Explain-properly-the-backtick-below_003a"></span>
-<p><strong>To be written.</strong> Explain properly the backtick below:
-</p>
-<p>An expression surrounded with backticks <code>'`'</code> is evaluated only once,
-when the method is saved and compiled, and turned as a kind of literal.
-This improves the performance of the method as the expression not executed
-when the method is called: the pre-built linteral is used instead.
-</p>
+<blockquote class="indentedblock">
+<p>&nbsp;<img src="note.png" alt="note">
+An expression surrounded with backticks <code>'`'</code>
+is evaluated only once,
+when the method is first saved and compiled.
+This creates a compound literal value and 
+improves the performance of the method since the expression is not evaluated
+each time the method is called: the pre-built value is used instead.
+</p></blockquote>
+
 <span id="index-number-38"></span>
 <span id="index-morph-22"></span>
 
@@ -335,6 +337,9 @@ same data!
 <p>In that kind of situation, what you want is a <em>class instance
 variable</em> defined in the class side &ndash; in contrast to the instance
 side where we have been coding until now.
+</p>
+<p>We make use of the fact that all objects are instances of some class.
+The  <code>Mobile class</code> is an instance of the class <code>Class</code>!
 </p>
 <ol>
 <li> A <em>class instance variable</em> can be accessed and assigned
