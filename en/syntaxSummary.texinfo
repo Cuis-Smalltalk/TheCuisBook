@@ -145,7 +145,7 @@
  @smalltalk{:=} assigns an object to a variable. Sometimes you will
  see @assign{} used instead. Since this character is not present in the
  keyboard, you key in with the underscore character key. So,
- @smalltalk{x := 1} is the same as @smalltalk{x @assign{} 1} or
+ @smalltalk{x := 1} is the same as @smalltalk{x @U{2190} 1} or
  @smalltalk{x _ 1}.
 
  @cindex block
@@ -191,8 +191,8 @@
  @cindex returned value
  @item Method return.
 
- @return{} is used to return a value from a method. (You must type ^ to obtain
- the @return{} character.)
+ @U{2191} is used to return a value from a method. (You must type ^ to obtain
+ the @U{2191} character.)
 
  @cindex sequence
  @item Sequences of statements.
