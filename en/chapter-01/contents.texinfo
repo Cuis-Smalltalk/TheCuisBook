@@ -308,7 +308,7 @@ Transcript show: 'Hello '@comma{} 'my beloved '@comma{} 'friend'
 
 @exercise{Concatenate and capitalize, concatenateCapitalize,
 @emph{Add a message to modify @ref{concatenateStrings} to output
-'Hello MY BELOVED friends'}}
+'Hello MY BELOVED friends'.}}
 
 @subsection Fun with numbers
 @cindex number @subentry integer

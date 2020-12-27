@@ -315,7 +315,7 @@ description.}}
 
 @exercise{Save Spacewar! package,exeSavePkgSpacewar, @emph{If you have
 not already done so@comma{} create and save a @ref{Spacewar!
-package}.  There are no additional requirements to specify.}}
+package}. There are no additional requirements to specify.}}
 
 @c explain how to include class extension in a package
 @cindex package @subentry prefix

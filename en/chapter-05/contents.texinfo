@@ -560,7 +560,7 @@ torpedo-ship collisions.
 
 @exercise{Ships collision, shipCollision, @emph{How will you write the
 method to detect the collision between the two ships and take action
-accordingly? (Adapt from @ref{shipSunCollision})}}
+accordingly? (Adapt from @ref{shipSunCollision}).}}
 
 The detection between the two ships and the possible numerous
 torpedoes required two enumerators with nested blocks of code:

@@ -214,7 +214,7 @@ cascade, @smalltalk{$a} is returned as the result of the @msg{at:put:}
 message.
 
 @exercise{Hello to Belle,helloBelle, @emph{Replace each character of
-the string 'Hello' to become 'Belle'}}
+the string 'Hello' to become 'Belle'.}}
 
 @cindex character @subentry ascii
 Character can be converted to integer and integer to character:

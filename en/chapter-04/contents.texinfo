@@ -112,7 +112,7 @@ element. When inherited in @class{String}, those elements are
 Practice the tools and resolve the exercise bellow.
 
 @exercise{Cut a string, cutString,@emph{Find the appropriate
-method to transform 'Hello My Friend' into 'My Friend'}}
+method to transform 'Hello My Friend' into 'My Friend'.}}
 
 Beware, some messages in the @class{String} protocol may obviously not
 work. Observe below, the error is thrown on a @class{Character}
@@ -442,7 +442,7 @@ primeNumbers size}
 of prime numbers between 101 and 200.}}
 
 @exercise{Multiple of 7,multiples7,@emph{Build the list of the
-multiples to 7 bellow 100}}
+multiples to 7 bellow 100.}}
 
 @exercise{Odd and non prime integers,oddNonPrime,@emph{Build a
 collection of the odd integers in [1 ; 100] which are not prime.}}
@@ -470,7 +470,7 @@ in a new string. It is a simple cipher:
 @result{} 'Cpokpvs'}
 
 @exercise{Cipher decode,decodeCipher,@emph{Write the script to decode
-cipher 'Zpvs!bsf!cptt', it was encoded with @ref{simpleCipher}}}
+cipher 'Zpvs!bsf!cptt', it was encoded with @ref{simpleCipher}.}}
 
 @cindex Caesar cipher
 The Caesar's cipher is based on shifting letter to the right in the
@@ -480,7 +480,7 @@ in his private correspondence with a shift of 3.
 @exercise{Alphabet Caesar's cipher,alphabetCipher,@emph{Write a script
 to collect the alphabet upper letters representing the Caesar's
 cipher. The expected answers is} #($D $E $F $G $H $I $J $K $L $M $N $O
-$P $Q $R $S $T $U $V $W $X $Y $Z $A $B $C)}
+$P $Q $R $S $T $U $V $W $X $Y $Z $A $B $C).}
 
 Once you get the alphabet cipher right, you can encode your first
 message:
