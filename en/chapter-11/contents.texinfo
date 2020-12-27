@@ -36,12 +36,13 @@ Sharing requires communicating intent.
 
 Good writing takes practice. Good writers read.
 
-@node Golden Rules of the Smalltalk Guilde 
-@section Golden Rules of the Smalltalk Guilde 
+@node Golden Rules of the Smalltalk Guild 
+@section Golden Rules of the Smalltalk Guild 
 
 Basic questions, that appear to be the golden rules of the Smalltalk
-intergalactic guilde@footnote{@emph{Don't panic}, at this stage of the
-book, the authors are desperate to not have found the question.}:
+intergalactic guild@footnote{@emph{Don't panic}, at this stage of the
+book, the authors are desperate to not have found the only question
+that matter.}:
 
 @itemize
  @item Are methods short and understandable?
@@ -57,6 +58,10 @@ and so tend to follow good practices, but let's
 take another look at our code and see
 if we can make it easier for a reader to understand.
 
+
+@node Refactoring to Improve Understanding
+@section Refactoring to Improve Understanding
+@cindex refactoring
 Browsing through the code, I note a method named @msg{left}, which seems perhaps
 like an abbreviation.  I can ask for @emph{senders} to see how @msg{left} is used
 in code elsewhere.
@@ -77,9 +82,10 @@ with selections to help me out. Here I choose @strong{Rename}.
 
 @figure{Rename @method{left},ch11-02-RenameLeft,7}
 
-Now the tools that help us refactor code are quite powerful,
-so restraint is called for.  I don't want to change all
-uses of @msg{left} in the @cuis{} system, just in the Spacewar! category.
+Now the tools that help us refactor code are quite powerful, so
+restraint is called for.  I don't want to change all uses of
+@msg{left} in the @cuis{} system, just in the @label{Spacewar!}
+category.
 
 @figure{Rename in Category,ch11-03-RenameInCategory,7}
 
@@ -96,7 +102,8 @@ restart the saved image which remembers the world before I made the change.
 @exercise{Renaming a method, exeRenameMethod, @emph{Rename @msg{right} to
 @msg{turnRight}.}}
 
-Looking around some more in the Browser, I notice the method SpaceShip>>nose.
+Looking around some more in the Browser, I notice the method
+@method{SpaceShip>>nose}.
 
 Where did I use this?  Ah, senders..
 
