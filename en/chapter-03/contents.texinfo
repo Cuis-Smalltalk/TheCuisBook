@@ -70,7 +70,7 @@ All instances of a class share the same methods and so react in the same ways.
 
 For example, there is one class @class{Fraction} but many
 fractions (1/2, 1/3, 23/17, ...) which all behave the way
-we expect fractions to behave.  Class @class{Fraction}
+we expect fractions to behave.  The class @class{Fraction}
 and the classes it inherits from define this common behavior,
 as we will now describe.
 
@@ -125,7 +125,7 @@ message selector may be sent to objects of different Classes.  The
 specific class of the @emph{many} (poly) possible classes of the
 object receiving the message.
 
-Different kinds of objects all respond to the same @msg{printString}
+Different kinds of objects respond to the same @msg{printString}
 message in different, but appropriate ways.
 
 @c instance creation
@@ -139,7 +139,7 @@ and polymorphism.  Let us look into how this works.
 
 The number @smalltalk{5} is an integer receiving the message @msg{/},
 therefore looking at the method @method{/} in the @class{Integer}
-class explains how is instantiated the fraction. See part of this
+class we can see how the fraction is instatiated. See part of this
 method:
 
 @smalltalkExample{/ aNumber
@@ -750,7 +750,7 @@ and @class{Symbol}. @class{String} instances are collections of
 There are class side methods for non printable characters:
 @smalltalk{Character tab}, @smalltalk{Character lf}, etc.
 
-As each string is collection of characters, when enumerating a string we
+As each string is a collection of characters, when iterating a string we
 can use the @class{Character} instance methods:
 
 @smalltalkExampleCaption{Twelve apples,apples12,
@@ -766,7 +766,7 @@ reject the numeric characters.}}
 more than 200 methods. It is useful to browse these method categories
 to see common ways to group methods.
 
-Sometimes you may not see a category which helps right away.
+Sometimes you may not see a category related to what you're looking for right away.
 
 @cuisNote{If you expect a method selector to start with a specific letter,
 click-select the @label{-- all --} method category, then move the
@@ -876,7 +876,7 @@ game:
 
 @heading @class{CentralStar}
 
-Its unique instance variable, @smalltalk{mass}, is a number and likely
+Its unique instance variable, @smalltalk{mass}, is a number, most likely
 an @smalltalk{Integer}.
 
 @heading @class{SpaceShip}
@@ -903,8 +903,8 @@ regarding its variables are needed.
 
   The ship's @smalltalk{position} is regularly recomputed according to
   the law of the Galilean reference frame. The computation depends on
-  the ship velocity and the forces of the central star gravity pull
-  and engine boost.
+  the ship's velocity, it's current engine boost and the gravity pull
+  of the central star.
  
   @item @smalltalk{heading} is an angle in radians, the direction where
   the ship nose is pointing. It is therefore a @class{Float} number.
@@ -918,7 +918,7 @@ regarding its variables are needed.
   integer number.
   
   @item @smalltalk{torpedoes} is the quantity of available torpedoes
-  the play can fire. It is an @class{Integer} number.
+  the player can fire. It is an @class{Integer} number.
   
   @item @smalltalk{mass} is an @class{Integer} representing the ship
   mass.
@@ -931,7 +931,7 @@ regarding its variables are needed.
 
 A few words regarding the euclidean coordinates: the origin of our
 orthonormal frame is the central star, its first vector is oriented
-toward the right of the screen, and the second one toward the top of
+toward the right of the screen, and the second one towards the top of
 the screen. This choice eases the computation of the ship's acceleration,
 velocity and position.  More on this below.
 
