@@ -356,10 +356,10 @@ started with division and addition operations on integer, and we got
 an accurate result thanks to intermediate computation on rational
 numbers.
 
-@cuisNote{In the example, observe how the parenthesis are used
+@cuisNote{In the example, observe how the parentheses are used
 although in arithmetic calculation the division is operated first. With
 @cuis{} you need to specify the order of operations with
-parenthesis. We will explain why later.}
+parentheses. We will explain why later.}
 
 @exercise{Inverse sum,inverseSum, @emph{Write the code to compute the
 sum of the first four integer inverses.}}

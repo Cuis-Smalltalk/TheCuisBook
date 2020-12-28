@@ -54,8 +54,7 @@ fresh @cuis{} environment, the count of class instances is more than
 
 @cindex collection @subentry @method{inject:into:}
 @smalltalkExampleCaption{Calculating the number of entities, entitiesCount,
-ProtoObject allSubclasses inject: 0 into: [:count :class |
-   count + class allInstances size] 
+ProtoObject allSubclasses sum: [ :class | class allInstances size] 
 @result{} 152058}
 
 The count of classes, the models for the entities -- instances of the class @class{Class} -- is less than 600.
@@ -135,9 +134,9 @@ is not 7. Parentheses must be used to alter the order of evaluation:
 @result{} 7}
 
 
-However, for clarity of understanding we may want to use parenthesis even
-when not needed. In the Spacewar! code snippet below, the parenthesis
-are superfluous but improve comprehension:
+However, for clarity of understanding we may want to them even
+when not needed. In the Spacewar! code snippet below, the parentheses
+are superfluous make code easier to read:
 
 @smalltalkExampleCaption{Ship velocity,updateShipVelocity,
 newVelocity @assign{} (ai + ag) * t + velocity}
@@ -145,7 +144,7 @@ newVelocity @assign{} (ai + ag) * t + velocity}
 @cindex message  @subentry cascade
 @cindex cascade of messages
 In the @ref{hello2}, the message @msg{show:} and @msg{newLine}
-are sent to the same @class{Transcript} entity. In such circumstance,
+are sent to the same @class{Transcript} object. In such circumstance,
 we can use the @dfn{cascade} technique to avoid this repetition. The
 receiver @class{Transcript} is written once and the cascade
 of sent messages are separated by semicolons:
@@ -457,7 +456,7 @@ shows its source code, ready to be explored or edited. Often,
 you will find a small comment just after the method name, it will be
 surrounded by double quotes.
 
-Every entity knows its own class and will respond it when sent the message @smalltalk{#class}.
+Every object knows its own class and will respond it when sent the message @smalltalk{#class}.
 
 @cindex browser @subentry invoke from Workspace
 @cindex keyboard shortcut @subentry browse a class (@kbd{Ctrl-b})
