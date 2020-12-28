@@ -189,7 +189,7 @@ you create has different colors. And these colors are not completely
 opaque. This means that when you place your triangle over some other
 morph, you can see through it.
 
-@figure{A variety of triangle morphs@comma{} one decorated with its halo,ch07-02-Triangles,6} 
+@figure{A variety of triangle morphs@comma{} one decorated with its halo and coordinates system,ch07-02-Triangles,6} 
 
 
 @exercise{Rectangle morph, exeRectMorph, @emph{How will you write a
