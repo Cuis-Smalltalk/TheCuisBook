@@ -201,7 +201,7 @@ string length.
 
 @cindex string @subentry @method{at:put:}
 @cindex @method{yourself}
-To change one character, use the companion two keyword message
+To change one character, use the companion two keywords message
 @msg{at:put:}. The argument must be noted as a character:
 @smalltalkExample{'Hello' at: 2 put: $a; yourself
 @result{} 'Hallo'}
@@ -269,7 +269,8 @@ discuss how we name instances and methods to show intent and reduce surprise.
 
 Earlier, we discussed how @cuis{} knows about rational fractions.  The
 four arithmetic operations and mathematical functions are implemented
-with the binary messages understood by the rational numbers:
+with unary and binary messages understood by the rational numbers:
+
 @smalltalkExample {(15 / 14) * (21 / 5) @result{} 9 / 2
 (15 / 14) / ( 5 / 21) @result{} 9 /2 
 (3 / 4) squared @result{} 9 / 16
@@ -337,10 +338,9 @@ In the Spacewar! game, the central star is the source of a gravity
 field. According to the Newton's law of universal gravitation, any
 object with a mass -- a spaceship or a torpedo in the game -- is
 subjected to the gravitational force. We compute it as a vector to
-account for both its direction and and its magnitude.
-The game code snippit below
-shows a (simplified) mixed scalar and vector calculation done with message
-sending (See @ref{motionEquations}):
+account for both its direction and and its magnitude.  The game code
+snippet below shows a (simplified) mixed scalar and vector calculation
+done with message sending (See @ref{motionEquations}):
 
 @smalltalkExampleCaption{Computing the gravity force vector,gravityVector,
 -10 * self mass * owner starMass / (position r raisedTo: 3) * position}
