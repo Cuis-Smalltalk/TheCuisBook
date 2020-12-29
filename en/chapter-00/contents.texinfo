@@ -73,7 +73,7 @@ The reader can study @cuis{} from two versions of the book:
  requires you to be connected to the Internet, though.
 
  @item @strong{Offline.} It is a PDF version coming in one file you
- download and read offline. It can be printed as a nice book.
+ download and read offline. It can be printed as a nice paper book.
 
 @end itemize
 
