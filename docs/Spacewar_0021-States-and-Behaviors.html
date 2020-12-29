@@ -10,7 +10,7 @@ Copyright (C) 2020 Ken Dickey, Hilaire Fernandes, Juan Vuletich
 
 
 
-Compilation : December 28, 2020
+Compilation : December 29, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -147,7 +147,7 @@ game:
 
 <span id="CentralStar"></span><h3 class="heading"><code>CentralStar</code></h3>
 
-<p>Its unique instance variable, <code>mass</code>, is a number and likely
+<p>Its unique instance variable, <code>mass</code>, is a number, most likely
 an <code>Integer</code>.
 </p>
 <span id="SpaceShip"></span><h3 class="heading"><code>SpaceShip</code></h3>
@@ -173,8 +173,8 @@ regarding its variables are needed.
 </p>
 <p>The ship&rsquo;s <code>position</code> is regularly recomputed according to
   the law of the Galilean reference frame. The computation depends on
-  the ship velocity and the forces of the central star gravity pull
-  and engine boost.
+  the ship&rsquo;s velocity, it&rsquo;s current engine boost and the gravity pull
+  of the central star.
 </p> 
 </li><li> <code>heading</code> is an angle in radians, the direction where
   the ship nose is pointing. It is therefore a <code>Float</code> number.
@@ -188,7 +188,7 @@ regarding its variables are needed.
   integer number.
   
 </li><li> <code>torpedoes</code> is the quantity of available torpedoes
-  the play can fire. It is an <code>Integer</code> number.
+  the player can fire. It is an <code>Integer</code> number.
   
 </li><li> <code>mass</code> is an <code>Integer</code> representing the ship
   mass.
@@ -201,7 +201,7 @@ regarding its variables are needed.
 
 <p>A few words regarding the euclidean coordinates: the origin of our
 orthonormal frame is the central star, its first vector is oriented
-toward the right of the screen, and the second one toward the top of
+toward the right of the screen, and the second one towards the top of
 the screen. This choice eases the computation of the ship&rsquo;s acceleration,
 velocity and position.  More on this below.
 </p>
@@ -330,9 +330,9 @@ attributes.</em>
 
 
 <div class="float-caption"><p><strong>Exercise 3.10: </strong><code>SpaceShip</code> getter message</p></div></div>
-<span id="index-variable-1"></span>
 <span id="index-variable-2"></span>
 <span id="index-variable-3"></span>
+<span id="index-variable-4"></span>
 
 <p>Some instance variables need to be set from another entity,
 so a <em>setter</em> keyword message is necessary.

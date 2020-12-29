@@ -10,7 +10,7 @@ Copyright (C) 2020 Ken Dickey, Hilaire Fernandes, Juan Vuletich
 
 
 
-Compilation : December 28, 2020
+Compilation : December 29, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -161,9 +161,9 @@ finally keyword messages, so:
 </pre></div>
 
 
-<p>However, for clarity of understanding we may want to use parenthesis even
-when not needed. In the Spacewar! code snippet below, the parenthesis
-are superfluous but improve comprehension:
+<p>However, for clarity of understanding we may want to them even
+when not needed. In the Spacewar! code snippet below, the parentheses
+are superfluous make code easier to read:
 </p>
 <div class="float"><span id="updateShipVelocity"></span>
 <div class="example">
@@ -174,7 +174,7 @@ are superfluous but improve comprehension:
 <span id="index-message-7"></span>
 <span id="index-cascade-of-messages"></span>
 <p>In the <a href="Writing-your-first-scripts.html#hello2">Example 1.2</a>, the message <code>#show:</code> and <code>#newLine</code>
-are sent to the same <code>Transcript</code> entity. In such circumstance,
+are sent to the same <code>Transcript</code> object. In such circumstance,
 we can use the <em>cascade</em> technique to avoid this repetition. The
 receiver <code>Transcript</code> is written once and the cascade
 of sent messages are separated by semicolons:
