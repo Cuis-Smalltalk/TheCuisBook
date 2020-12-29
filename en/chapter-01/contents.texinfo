@@ -183,20 +183,21 @@ What makes @cuis{} special is the living entities in the image: its
 class population and arrangement, how the classes inherit from each
 other. The class count is typically less than 600.
 
-To get you started easily, we provide three
-archives@footnote{@url{http://github.com/Cuis-Smalltalk/BookResources}}
-for GNU/Linux, Mac OS X and Windows on Intel architecture. These
-archives come with the dedicated @vm{} and the image of @cuis{}
-@value{cuisVersion}. Into this image we pre-installed a few packages
-to make your life easier when you experience the examples and
-exercises of the book. By the time you read this book, @cuis{} will
-likely have evolved to have a newer version.  What you learn here
-should, however, be easily transferable.
+To get you started easily, we encourage you to install
+@url{https://sites.google.com/view/cuis-university/descargas,,Cuis-University}@footnote{@url{https://sites.google.com/view/cuis-university/descargas}}. Here
+you will find bundles for GNU/Linux, Mac OS X and Windows on Intel
+architecture. These bundles come with the dedicated @vm{} and a recent
+image of @cuis{}; as well packages ready to be installed to make your
+life easier when you experience the examples and exercises of the
+book. By the time you read this book, @cuis{} will likely have evolved
+to have a newer version.  What you learn here should, however, be
+easily transferable.
 
-To get @cuis{} running on your computer, follow the instructions in
-the @file{README} file accompanying the archive. Once you get @cuis{}
-running, read the information displayed on the windows. When you are
-done, you can close these windows and adjust @cuis{} to your
+To get @cuis{} running on your computer, extract the bundle and
+execute the run script on Windows/Linux -- @file{run.bat} or
+@file{run.sh} -- on OS X launch the Squeak application. Once you get
+@cuis{} running, read the information displayed on the windows. When
+you are done, you can close these windows and adjust @cuis{} to your
 preferences.
 
 @subsection Editing your preferences
