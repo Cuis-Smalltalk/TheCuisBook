@@ -10,7 +10,7 @@ Simple things should be simple and complex things should be possible.
 
 
 
-What would we expect if we ask for good support for building GUIs in a
+What would we expect if we asked for good support for building GUIs in a
 programming system?
 
 In @ref{Visual with Morph} we started with that same question, and

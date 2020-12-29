@@ -11,7 +11,7 @@ build lively interactive user interfaces.
 @* @* @* @*
 
 
-What would we expect if we ask for good support for building GUIs in a
+What would we expect if we asked for good support for building GUIs in a
 programming system?
 
 All modern computers (and phones, etc) have high resolution color
