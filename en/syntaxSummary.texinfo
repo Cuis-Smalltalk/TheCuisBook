@@ -139,7 +139,7 @@
  Vertical bars | | enclose the declaration of one or more local
  variables in a method (and also in a block).
 
- @cindex assignment
+ @cindex variable @subentry assignment
  @item Assignment.
 
  @smalltalk{:=} assigns an object to a variable. Sometimes you will

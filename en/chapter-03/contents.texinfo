@@ -213,13 +213,14 @@ called an @dfn{instance method}. This method is defined in both the
 @class{Number} and @class{Fraction} classes.
 
 @cindex method  @subentry returned value (explicit)
+@cindex returned value
 Let's examine this method in @class{Number}:
 @smalltalkExample{Number>>squared
 "Answer the receiver multiplied by itself."
    @return{} self * self}
 
 In an instance method source code, @smalltalk{self} refers to the
-object itself, here it is the value of the number. The @return{} (also
+object itself, here it is the value of the number. The @U{2191} (also
 @smalltalk{^}) symbol indicates to @emph{return} the following value
 @smalltalk{self * self}.  One might pronounce @return{} as ``return''.
 

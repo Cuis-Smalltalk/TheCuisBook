@@ -77,6 +77,9 @@ The reader can study @cuis{} from two versions of the book:
 
 @end itemize
 
+@cindex returned value
+@cindex variable @subentry assignment
+@cindex assignment @seeentry{variable}
 The code examples in the online version can be directly copied and
 pasted into @cuis{}. This is why the assignment character ``@U{2190}''
 you see in the developer @cuis{} window is printed as ``:='' in the
