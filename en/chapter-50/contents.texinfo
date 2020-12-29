@@ -4,6 +4,7 @@
 
 
 @menu
+* Preface (Solutions)::
 * Smallltalk Philosophy (Solutions)::
 * The Message Way of Life (Solutions)::
 * Class -- model of Communicating Entities (Solutions)::
@@ -14,6 +15,15 @@
 * Events (Solutions)::
 * Code Management (Solutions)::
 @end menu
+
+
+@c Preface
+
+@node Preface (Solutions)
+@unnumberedsec Preface
+@subheading @ref{exerciseExample} 
+In the seventies, four versions were developed: Smalltalk-71,
+Smalltalk-72, Smalltalk-76 and Smalltalk-80.
 
 @c Chapter 1
 @node Smallltalk Philosophy (Solutions)
