@@ -20,7 +20,7 @@ what rules they follow.
 
 @cindex moprh @subentry legacy
 The User Interface framework in @cuis{} is called Morphic. Morphic was
-origianlly created by Randy Smith and John Maloney as the
+originally created by Randy Smith and John Maloney as the
 @url{https://bibliography.selflanguage.org/_static/self4.0UserInterface.pdf,,UI
 for Self}. Later, John Maloney ported it to Smalltalk, to be used as
 the
