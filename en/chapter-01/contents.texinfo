@@ -302,17 +302,19 @@ world!'}. We capitalize it with the @msg{capitalized} message:
 @result{} 'Hello world!' }
 
 @cindex string @subentry @method{asUppercase}
-To convert all the characters in capital use the @msg{asUppercase}:
+To convert all the characters in capital use the @msg{asUppercase} message:
+
 @smalltalkExample{Transcript show: 'hello world!' asUppercase
 @result{} 'HELLO WORLD!'}
 
 @cindex string @subentry concatenate
 Two strings are concatenated with the @msg{,} message:
+
 @smalltalkExampleCaption{Concatenate strings, concatenateStrings,
 Transcript show: 'Hello '@comma{} 'my beloved '@comma{} 'friend'
 @result{} 'Hello my beloved friend'}
 
-@exercise{Concatenate and capitalize, concatenateCapitalize,
+@exercise{Concatenate and uppercase, concatenateUppercase,
 @emph{Add a message to modify @ref{concatenateStrings} to output
 'Hello MY BELOVED friends'.}}
 

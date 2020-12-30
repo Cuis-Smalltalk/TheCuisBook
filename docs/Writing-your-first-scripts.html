@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This book is for Cuis-Smalltalk (5.0#4501), a free and modern
+<!-- This book is for Cuis-Smalltalk (5.0#4506), a free and modern
 implementation of the Smalltalk language and environment.
 
 Copyright (C) 2020 Ken Dickey, Hilaire Fernandes, Juan Vuletich
@@ -10,7 +10,7 @@ Copyright (C) 2020 Ken Dickey, Hilaire Fernandes, Juan Vuletich
 
 
 
-Compilation : December 29, 2020
+Compilation : December 30, 2020
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -162,15 +162,24 @@ world!'</code>. We capitalize it with the <code>#capitalized</code> message:
 </pre></div>
 
 <span id="index-string-2"></span>
+<p>To convert all the characters in capital use the <code>#asUppercase</code> message:
+</p>
+<div class="example">
+<pre class="example">Transcript show: 'hello world!' asUppercase
+&rArr; 'HELLO WORLD!'
+</pre></div>
+
+<span id="index-string-3"></span>
 <p>Two strings are concatenated with the <code>#,</code> message:
-</p><div class="float"><span id="concatenateStrings"></span>
+</p>
+<div class="float"><span id="concatenateStrings"></span>
 <div class="example">
 <pre class="example">Transcript show: 'Hello ', 'my beloved ', 'friend'
 &rArr; 'Hello my beloved friend'
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 1.3: </strong>Concatenate strings</p></div></div>
-<div class="float"><span id="concatenateCapitalize"></span>
+<div class="float"><span id="concatenateUppercase"></span>
 <blockquote class="indentedblock">
 <p>&nbsp;<img src="CuisLogo.png" alt="CuisLogo">
 <em>Add a message to modify <a href="#concatenateStrings">Example 1.3</a> to output
@@ -178,7 +187,7 @@ world!'</code>. We capitalize it with the <code>#capitalized</code> message:
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong>Exercise 1.2: </strong>Concatenate and capitalize</p></div></div>
+<div class="float-caption"><p><strong>Exercise 1.2: </strong>Concatenate and uppercase</p></div></div>
 <span id="Fun-with-numbers"></span><h4 class="subsection">1.3.1 Fun with numbers</h4>
 <span id="index-number"></span>
 <span id="index-keyboard-shortcut-2"></span>
