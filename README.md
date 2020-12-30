@@ -10,6 +10,7 @@ examples then exercises with solutions in annexes.
 The contents of the book is entirely writen. We have not yet announce widely its release, we need reviewers feedbacks.
 
 HTML - https://cuis-smalltalk.github.io/TheCuisBook/
+
 PDF - https://github.com/Cuis-Smalltalk/TheCuisBook/releases/download/20201230/TheCuisBook.pdf
 
 
