@@ -7,7 +7,11 @@ The book comes with examples and exercises. The solutions of the
 exercises are in the annexes. We encourage writers to provides both
 examples then exercises with solutions in annexes.
 
-Draft: https://cuis-smalltalk.github.io/TheCuisBook/
+The contents of the book is entirely writen. We have not yet announce widely its release, we need reviewers feedbacks.
+
+HTML - https://cuis-smalltalk.github.io/TheCuisBook/
+PDF - https://github.com/Cuis-Smalltalk/TheCuisBook/releases/download/20201230/TheCuisBook.pdf
+
 
 ## License 
 
