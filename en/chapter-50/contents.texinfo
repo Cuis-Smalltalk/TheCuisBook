@@ -31,9 +31,9 @@ Smalltalk-72, Smalltalk-76 and Smalltalk-80.
 @subheading @ref{exePlacement}
 @figure{Placement,E-img1,8}
 
-@subheading @ref{concatenateCapitalize}
+@subheading @ref{concatenateUppercase}
 @smallexample
-Transcript show: 'Hello ', 'my beloved ' capitalized, 'friend'
+Transcript show: 'Hello ', 'my beloved ' asUppercase, 'friend'
 @end smallexample
 
 

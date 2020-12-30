@@ -297,9 +297,14 @@ language, it is a collection of characters. We already met string with
 our first script, it is enclosed in single quotes: @smalltalk{'hello
 world!'}. We capitalize it with the @msg{capitalized} message:
 
-@cindex string @subentry capitalized
+@cindex string @subentry @method{capitalized}
 @smalltalkExample{Transcript show: 'hello world!' capitalized
 @result{} 'Hello world!' }
+
+@cindex string @subentry @method{asUppercase}
+To convert all the characters in capital use the @msg{asUppercase}:
+@smalltalkExample{Transcript show: 'hello world!' asUppercase
+@result{} 'HELLO WORLD!'}
 
 @cindex string @subentry concatenate
 Two strings are concatenated with the @msg{,} message:
