@@ -73,7 +73,9 @@ The reader can study @cuis{} from two versions of the book:
  requires you to be connected to the Internet, though.
 
  @item @strong{Offline.} It is a PDF version coming in one file you
- download and read offline. It can be printed as a nice paper book.
+ download and read offline. It can be printed as a nice paper
+ book. Its most recent build is found at
+ @url{https://github.com/Cuis-Smalltalk/TheCuisBook}.
 
 @end itemize
 
@@ -88,7 +90,7 @@ online version of the book. The same applies with the return character
 
 In the offline PDF version, the code example are printed with the same
  assignment and return characters as seen in the @cuis{}
- windows. Coping and pasting does not work as expected, though.
+ windows. Coping and pasting also work as expected.
 
 The chapters comes with a lot of examples. Some can be copied and
 pasted in @cuis{}, we encourage you to do so, and in the process
