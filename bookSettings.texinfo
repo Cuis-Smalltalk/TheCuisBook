@@ -18,11 +18,11 @@ Cuis-Smalltalk
 @end macro
 
 @macro writers
-Ken Dickey, Hilaire Fernandes, Juan Vuletich
+Hilaire Fernandes with Ken Dickey & Juan Vuletich
 @end macro
 
 @macro thanks
-Thanks to Mauro Rizzi for the review of the book.
+Thanks to Mauro Rizzi  for the review of the book.
 @end macro
 
 @macro vm
