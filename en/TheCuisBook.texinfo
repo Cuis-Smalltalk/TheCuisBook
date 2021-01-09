@@ -1,6 +1,6 @@
 \input texinfo @c -*-texinfo-*-
 @c %**start of header
-@set timeStamp Time-stamp: <2021-01-09 15:13:36 hilaire>
+@set timeStamp Time-stamp: <2021-01-09 15:17:02 hilaire>
 @include ../bookSettings.texinfo
 @c %**end of header
 
@@ -105,7 +105,6 @@ You are reading the Cuis Book!
 
 @ifnottex
  @insertcopying
- @thanks
 @end ifnottex 
 
 @tex
