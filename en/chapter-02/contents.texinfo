@@ -338,7 +338,7 @@ In the Spacewar! game, the central star is the source of a gravity
 field. According to the Newton's law of universal gravitation, any
 object with a mass -- a spaceship or a torpedo in the game -- is
 subjected to the gravitational force. We compute it as a vector to
-account for both its direction and and its magnitude.  The game code
+account for both its direction and its magnitude.  The game code
 snippet below shows a (simplified) mixed scalar and vector calculation
 done with message sending (See @ref{motionEquations}):
 
@@ -533,7 +533,7 @@ declaration code do ...@clicksequence{right mouse click @click{}
 @label{Accept}}... @cuis{} will ask your initials and name
 if it hasn't before. Alternatively, you can just do @kbd{Ctrl-s} (@emph{@b{S}ave}).
 
-Then you repeat the process for each of @smalltalk{#StarShip},
+Then you repeat the process for each of @smalltalk{#SpaceShip},
 @smalltalk{#CentralStar} and @smalltalk{#Torpedo}. If necessary, to
 get another class code template, click the class category
 @label{Spacewar!}.

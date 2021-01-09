@@ -503,13 +503,13 @@ of the @ref{simpleControls,,control ship methods}. The definitive
 control methods of the @class{SpaceShip} class are rewritten as:
 
 @smalltalkExampleCaption{Ship controls, shipControls,SpaceShip>>push
-  "Init an accelaration boost"
+  "Init an acceleration boost"
   fuel isZero ifTrue: [@return{} self].
   fuel @assign{} fuel - 1.
   acceleration @assign{} 50
 
 SpaceShip>>unpush
-  "Stop the accelaration boost"
+  "Stop the acceleration boost"
   acceleration @assign{} 0
 
 SpaceShip>>right

@@ -279,7 +279,7 @@ allows us to create new ones.  Select ``event handling testing''.
 Then add the method @smalltalk{ColorClickEllipse>>handlesMouseDown:}.
 
 @smalltalkExample{handlesMouseDown: aMouseButtonEvent
-  "Answer that I do handle mouseDown events''
+  "Answer that I do handle mouseDown events"
   @return{} true
 }
 
@@ -639,7 +639,7 @@ initialization:
 
  @item @strong{SpaceShip.} Its mechanical states are set with the
  @smalltalk{super initialize} and then the ship is resupplied with
- fuel and torpedos:
+ fuel and torpedoes:
 
  @smalltalkExample{SpaceShip>>resupply
    fuel @assign{} 500.

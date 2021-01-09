@@ -982,7 +982,7 @@ Object subclass: #Torpedo
 
 @exercise{Instance variables of the Spacewar! protagonists, spacewarVar,
 @emph{Add the instance variables we discussed earlier to the
-@class{SpaceWar}, @class{CentralStar} and @class{StarShip} classes.}}
+@class{SpaceWar}, @class{CentralStar} and @class{SpaceShip} classes.}}
 
 
 @subsection Behaviors

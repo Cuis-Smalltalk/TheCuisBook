@@ -222,11 +222,11 @@ SpaceShip>>right
 @subheading @ref{shipAcceleration}
 @smallexample
 SpaceShip>>push
-"Init an accelaration boost"
+"Init an acceleration boost"
    acceleration @assign{} 10
 
 SpaceShip>>unpush
-"Stop the accelaration boost"
+"Stop the acceleration boost"
    acceleration @assign{} 0
 @end smallexample
 
