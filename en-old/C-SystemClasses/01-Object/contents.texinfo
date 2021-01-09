@@ -1,2 +1,0 @@
-@node The Object protocol
-@chapter The Object protocol

@@ -1,5 +1,0 @@
-@node Spacewar! -- Part Two
-@chapter Spacewar! -- Part Two
-
-Another excuse to discover some of the @cuis{} tools: the Debugger and
-the Changset.

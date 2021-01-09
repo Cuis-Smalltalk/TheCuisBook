@@ -1,2 +1,0 @@
-@node The process protocol
-@chapter The process protocol

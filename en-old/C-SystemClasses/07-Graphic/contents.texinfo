@@ -1,2 +1,0 @@
-@node The graphic protocol
-@chapter The graphic protocol

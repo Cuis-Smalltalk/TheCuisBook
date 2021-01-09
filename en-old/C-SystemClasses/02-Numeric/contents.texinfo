@@ -1,3 +1,0 @@
-@node The numeric protocol
-@chapter The numeric protocol
-@c including the Magnitude protocol

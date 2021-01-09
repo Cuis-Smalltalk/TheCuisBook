@@ -1,2 +1,0 @@
-@node The stream protocol
-@chapter The stream protocol

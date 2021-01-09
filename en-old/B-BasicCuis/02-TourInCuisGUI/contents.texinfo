@@ -1,5 +1,0 @@
-@node Spacewar! -- Part One
-@chapter Spacewar! -- Part One
-An excuse to discover some of the @cuis tools: the Browser and the
-Insepctor.
-

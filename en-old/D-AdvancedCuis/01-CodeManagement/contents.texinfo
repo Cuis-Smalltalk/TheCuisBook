@@ -1,2 +1,0 @@
-@node Code management
-@chapter Code management
