@@ -323,7 +323,7 @@ Transcript show: 'Hello '@comma{} 'my beloved '@comma{} 'friend'
 @cindex interger @seeentry{number}
 @cindex keyboard shortcut @subentry execute and print result (@kbd{Ctrl-p})
 
-In your Workspace, to compute a factorial execute the example bellow
+In your Workspace, to compute a factorial execute the example below
 with @kbd{Ctrl-a} then @kbd{Ctrl-p} (@emph{@b{P}rint it}):
 @smalltalkExample{100 factorial
 @result{}  9332621544394415268169923885626670049071596826438162146859
@@ -331,7 +331,7 @@ with @kbd{Ctrl-a} then @kbd{Ctrl-p} (@emph{@b{P}rint it}):
 51185210916864000000000000000000000000}
 
 @cuis{} handles very large integer numbers without requiring a
-special type declaration or method. To convince yourelf try the example bellow:
+special type declaration or method. To convince yourelf try the example below:
 @smalltalkExample{10000 factorial / 9999 factorial
 @result{} 10000}
 

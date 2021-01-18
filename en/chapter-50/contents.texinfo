@@ -775,7 +775,7 @@ SpaceWar>>handlesKeyboard
 
 @subheading @ref{secondShipControl}
 We designate the characters as @smalltalk{$w $a $s $d}. We append the
-code bellow to the method @method{SpaceWar>>keyStroke:}
+code below to the method @method{SpaceWar>>keyStroke:}
 @smallexample
 key = $w ifTrue: [@return{} ships second push].
 key = $d ifTrue: [@return{} ships second right].

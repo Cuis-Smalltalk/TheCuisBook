@@ -109,7 +109,7 @@ element. When inherited in @class{String}, those elements are
 @smalltalkExample{'1 + 3i' before: $i
 @result{} $3}
 
-Practice the tools and resolve the exercise bellow.
+Practice the tools and resolve the exercise below.
 
 @exercise{Cut a string, cutString,@emph{Find the appropriate
 method to transform 'Hello My Friend' into 'My Friend'.}}
@@ -442,7 +442,7 @@ primeNumbers size}
 of prime numbers between 101 and 200.}}
 
 @exercise{Multiple of 7,multiples7,@emph{Build the list of the
-multiples to 7 bellow 100.}}
+multiples to 7 below 100.}}
 
 @exercise{Odd and non prime integers,oddNonPrime,@emph{Build a
 collection of the odd integers in [1 ; 100] which are not prime.}}
@@ -457,7 +457,7 @@ know about some cubes:
 (1 to: 10) collect: [:n | n cubed]
 @result{} #(1 8 27 64 125 216 343 512 729 1000)}
 
-The collected elements can be of a different type. Bellow, a string is
+The collected elements can be of a different type. Below, a string is
 enumerated and integers are collected:
 
 @smalltalkExample{'Bonjour' collect: [:c | c asciiValue ]

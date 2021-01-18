@@ -358,7 +358,7 @@ are 4 control flow @msg{ifTrue:} messages. Each argument is a block of
 code and when evaluated, it explicitly returns an expression,
 therefore interrupting the method execution.
 
-In the code fragment of @ref{shipLost} bellow, we test if a ship is
+In the code fragment of @ref{shipLost} below, we test if a ship is
 lost in deep space. It depends on two conditions:
 @enumerate
 
@@ -457,7 +457,7 @@ As a reminder, proceed as follows (if necessary observe
 
  @item In the @label{Method Category} pane, select the category
  @label{-- all --}. A method source code template shows up in the pane
- bellow:
+ below:
 @smalltalkExample{messageSelectorAndArgumentNames
   "comment stating purpose of message"
   | temporary variable names |
