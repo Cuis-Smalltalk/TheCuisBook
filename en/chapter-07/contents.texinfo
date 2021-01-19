@@ -485,7 +485,7 @@ clock hands, the Cuis IDE will note this and ask what you want
 to do about it.  We want to declare the three missing names as instance
 variables.}
 
-@figure{Class methods in @class{Float},ch07-07-ClockMorph-initialize,8}
+@figure{Declaring unknown selectors as instance variables in current class,ch07-07-ClockMorph-initialize,8}
 
 Your @class{ClockMorph} class definition should now be complete!
 
