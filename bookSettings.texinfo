@@ -22,7 +22,7 @@ Hilaire Fernandes with Ken Dickey & Juan Vuletich
 @end macro
 
 @macro thanks
-Thanks to Mauro Rizzi & Tommy Pettersson for the reviews of the book.
+Thanks to David Lewis, Tommy Pettersson & Mauro Rizzi for the reviews of the book.
 @end macro
 
 @macro vm
