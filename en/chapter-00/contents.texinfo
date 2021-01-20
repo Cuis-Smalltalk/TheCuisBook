@@ -92,8 +92,8 @@ In the offline PDF version, the code example are printed with the same
  assignment and return characters as seen in the @cuis{}
  windows. Coping and pasting also work as expected.
 
-The chapters comes with a lot of examples. Some can be copied and
-pasted in @cuis{}, we encourage you to do so, and in the process
+The chapters come with many of examples. Some can be copied and
+pasted in @cuis{}, we encourage you to do this, and in the process
 modify them to explore by yourself. Other examples are code extracts
 which are not self sufficient to be executed as is; their purpose is
 to expose specific facets of the Smalltalk language.
@@ -116,7 +116,7 @@ Exercises are easily identified, there are presented by the @cuis{}
 mascot: @dfn{Cuis}, a South American rodent!
 
 @exercise{I am an example of an exercise,exerciseExample,
-@emph{Search the Internet how many versions of Smalltalk there was?}}
+@emph{Search the Internet: How many versions of Smalltalk are there?}}
 
 The solution of the exercises are presented in @ref{Solutions of the
 Exercises}.
