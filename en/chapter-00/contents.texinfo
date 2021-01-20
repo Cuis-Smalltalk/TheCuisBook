@@ -105,8 +105,11 @@ A typical example without a caption looks like:
 The same example with a caption comes with a number, a legend and it
 can be used as a reference elsewhere in the book:
 
-@smalltalkExampleCaption{I am an example of an example with a caption, exampleExample,
-100 factorial}
+@smalltalkExampleCaption{I am an example with a caption and result, exampleExample,
+100 factorial
+@result{}  9332621544394415268169923885626670049071596826438162146859
+29638952175999932299156089414639761565182862536979208272237582
+51185210916864000000000000000000000000}
 
 There are also a lot of exercises. Most are very
 easy, their intent is to give you an opportunity to apply what was
