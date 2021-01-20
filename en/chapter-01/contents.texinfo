@@ -202,7 +202,7 @@ preferences.
 
 The Cuis University distribution should work for most common platforms,
 but there are always more platform variants than we can test for.
-If you have a problem, here are two sources of information.  If you
+@strong{If you have a problem}, here are two sources of information.  If you
 do @emph{not} have a problem, you can ignore these for now.
 @itemize
 @item Current installation instructions at the GitHub Cuis Repository:
