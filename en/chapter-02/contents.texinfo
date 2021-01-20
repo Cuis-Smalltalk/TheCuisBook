@@ -63,6 +63,10 @@ The count of classes, the models for the entities -- instances of the class @cla
 Smalltalk allClasses size
 @result{} 586}
 
+@cuisNote{Because you are not using the base image but one used
+to teach classes, you will likely see
+a much larger number.}
+
 To be honest, in our previous chapter we skipped this important detail
 on Smalltalk design. We wrote about message sending without explaining
 much, we wanted you to discover this design informally.
@@ -444,7 +448,7 @@ as the menu indictes, use @kbd{Ctrl-f} (@emph{@b{F}ind}), to get a
 fill-in panel and type part of a class name to match.  Try it with
 @smalltalk{String}.}
 
-@exercise{Count of methods,stringArith,@emph{How many methods is there
+@exercise{Count of methods,stringArith,@emph{How many methods are there
 in the @strong{arithmetic} method category of the @class{String}
 class?}}
 
