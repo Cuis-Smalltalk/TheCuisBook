@@ -231,7 +231,7 @@ environment.
 @figure{Window options,ch01-img1a,7}
 
 The @label{resize...} option even offers more freedom to place the
-window. Resolve the following exercise:
+window. Try the following exercise:
 
 @exercise{Middle placement,exePlacement, @emph{Use the
 @label{resize...} option to place the Workspace centered on @cuis{}
@@ -262,7 +262,7 @@ doing here. Do ...@clicksequence{World menu @click{} @label{Open...}
 
 @figure{Transcript window with output,ch01-img2,3}
 
-This code comes in three parts:
+The workspace code comes in three parts:
 
 @itemize
 
@@ -365,12 +365,12 @@ an accurate result thanks to intermediate computation on rational
 numbers.
 
 @cuisNote{In the example, observe how the parentheses are used
-although in arithmetic calculation the division is operated first. With
+although in arithmetic calculation the division is performed first. With
 @cuis{} you need to specify the order of operations with
 parentheses. We will explain why later.}
 
 @exercise{Inverse sum,inverseSum, @emph{Write the code to compute the
-sum of the first four integer inverses.}}
+sum of the first four integer inverses. 4 inverted is 1/4}}
 
 Integers can be printed in different forms with the appropriate
 message:
@@ -389,11 +389,11 @@ words capitalized.}}
 
 @cindex number @subentry literal
 @cindex literal @subentry number
-Integer and float numbers we have played with are @dfn{Numeric
+The integer and float numbers we have played with are @dfn{Numeric
 Literals}. Literals are building blocks of the language and considered as
 constant expressions.  They literally are as they appear.
 
-There are syntax variants to write a number:
+There are several syntax variants which denote a number:
 
 @multitable @columnfractions .45 .55
 @headitem Numeric literal                    @tab What it represents
