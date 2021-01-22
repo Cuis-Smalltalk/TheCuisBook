@@ -100,17 +100,18 @@ are each moving just a bit, in sequence.
 @cindex event @subentry testing
 @cindex event @subentry handling
 In @ref{A brief introduction to Inspectors}, we explained how to set
-properties for morph instance to handle specific event. In this
-circumstance, one property informed @cuis{} we were interested by a
+properties for an individual morph instance to handle a
+specific event. In this
+case, one property informed @cuis{} we were interested by a
 given event (@smalltalk{#handlesMouseDown}), a second property defined
-the behavior with a block of code to execute when this event occurred.
+the behavior with a block of code to be executed each time this event occurred.
 
 Alternatively, to handle events in a given morph class, we define the
 behavior with instance methods. In the @class{Morph} class, observe
 the method categories @label{event} and @label{event handling
 testing}.
 
-In @label{event handling testing} is listed methods returning a
+Method catrgory @label{event handling testing} lists methods returning a
 Boolean to indicate if the instance should be notified by the
 event. Let's take a look at one of these methods,
 @method{handlesMouseDown:}, its comment is worth reading:
@@ -135,17 +136,20 @@ specify this."
    @return{} self hasProperty: #'handlesMouseDown:'}
 
 As defined by default, this method and the other handlers
-check to see if an instance has defined a like named property.
+check to see if an instance has defined a property with the same
+name as the standard method.
+So each individual instance can add its own behavior.
 
-In a morph class where we want all instances to
-handle mouse down events, we just override the appropriate method to return true:
+In a morph class where we want @emph{all} instances to
+handle mouse down events, we just override
+the appropriate method to return true:
 
 @smalltalkExample{MyMorph>>>>handlesMouseDown: aMouseButtonEvent
    @return{} true}
 
-Now in the @label{events} @class{Morph}'s method category, we find the
+Now in the @label{events} method category for class @class{Morph}, we find the
 handlers listed in the comment above. A @class{ScrollBar}, a kind of
-Morph to represent list scroll bar, scrolls its list contents when a
+Morph to represent a list's position control, scrolls its list contents when a
 mouse button 1 is pressed:
 
 @smalltalkExample{ScrollBar>>mouseButton1Down: aMouseBtnEvent position: eventPosition
