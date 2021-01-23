@@ -12,7 +12,7 @@ Thanks to David Lewis, Tommy Pettersson & Mauro Rizzi for the reviews of the boo
 
 
 
-Compilation : January 21, 2021
+Compilation : January 23, 2021
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -99,17 +99,18 @@ Next: <a href="Spacewar_0021-Events.html" accesskey="n" rel="next">Spacewar! Eve
 <span id="index-event-3"></span>
 <span id="index-event-4"></span>
 <p>In <a href="A-brief-introduction-to-Inspectors.html">A brief introduction to Inspectors</a>, we explained how to set
-properties for morph instance to handle specific event. In this
-circumstance, one property informed Cuis-Smalltalk we were interested by a
+properties for an individual morph instance to handle a
+specific event. In this
+case, one property informed Cuis-Smalltalk we were interested by a
 given event (<code>#handlesMouseDown</code>), a second property defined
-the behavior with a block of code to execute when this event occurred.
+the behavior with a block of code to be executed each time this event occurred.
 </p>
 <p>Alternatively, to handle events in a given morph class, we define the
 behavior with instance methods. In the <code>Morph</code> class, observe
 the method categories <code>event</code> and <code>event handling
 testing</code>.
 </p>
-<p>In <code>event handling testing</code> is listed methods returning a
+<p>Method catrgory <code>event handling testing</code> lists methods returning a
 Boolean to indicate if the instance should be notified by the
 event. Let&rsquo;s take a look at one of these methods,
 <code>handlesMouseDown:</code>, its comment is worth reading:
@@ -136,19 +137,22 @@ specify this.&quot;
 </pre></div>
 
 <p>As defined by default, this method and the other handlers
-check to see if an instance has defined a like named property.
+check to see if an instance has defined a property with the same
+name as the standard method.
+So each individual instance can add its own behavior.
 </p>
-<p>In a morph class where we want all instances to
-handle mouse down events, we just override the appropriate method to return true:
+<p>In a morph class where we want <em>all</em> instances to
+handle mouse down events, we just override
+the appropriate method to return true:
 </p>
 <div class="example">
 <pre class="example">MyMorph&gt;&gt;&gt;&gt;handlesMouseDown: aMouseButtonEvent
    ^ true
 </pre></div>
 
-<p>Now in the <code>events</code> <code>Morph</code>&rsquo;s method category, we find the
+<p>Now in the <code>events</code> method category for class <code>Morph</code>, we find the
 handlers listed in the comment above. A <code>ScrollBar</code>, a kind of
-Morph to represent list scroll bar, scrolls its list contents when a
+Morph to represent a list&rsquo;s position control, scrolls its list contents when a
 mouse button 1 is pressed:
 </p>
 <div class="example">
