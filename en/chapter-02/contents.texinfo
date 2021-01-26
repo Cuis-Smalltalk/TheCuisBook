@@ -137,10 +137,11 @@ is not 7. Parentheses must be used to alter the order of evaluation:
 @smalltalkExample{1 + (2 * 3)
 @result{} 7}
 
-
-However, for clarity of understanding we may want to them even
-when not needed. In the Spacewar! code snippet below, the parentheses
-are superfluous make code easier to read:
+Parenthesis can also be used to make potentially confusing code more
+clear. For example, the strict left to right evaluation order can be
+confusing when applied to mathematical expressions. In the Spacewar!
+code snippet below, the parentheses make it more clear that the
+addition happens first:
 
 @smalltalkExampleCaption{Ship velocity,updateShipVelocity,
 newVelocity @assign{} (ai + ag) * t + velocity}
