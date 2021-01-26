@@ -12,7 +12,7 @@ Thanks to David Lewis, Tommy Pettersson & Mauro Rizzi for the reviews of the boo
 
 
 
-Compilation : January 23, 2021
+Compilation : January 26, 2021
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -308,7 +308,7 @@ rotation of the torpedo:
 its vertices. We likely want to push this common logic to their common
 ancestor, the <code>Mobile</code> class. It needs to know about its
 vertices, so we may want to add an instance variable
-<code>vertices</code> initialized in its sub classes with an array
+<code>vertices</code> initialized in its subclasses with an array
 containing the points:
 </p>
 <div class="example">
@@ -320,7 +320,7 @@ containing the points:
 
 SpaceShip&gt;&gt;initialize
    super initialize.
-   vertices := {0@-15 . -10@15. 0@10. 10@15}.
+   vertices := {0@-15 . -10@15 . 0@10 . 10@15}.
    self resupply
    
 Torpedo&gt;&gt;initialize
@@ -347,14 +347,14 @@ The  <code>Mobile class</code> is an instance of the class <code>Class</code>!
 <li> A <em>class instance variable</em> can be accessed and assigned
  only by the class itself in a <em>class method</em>.
 
-</li><li> To access a class instance variable, an instance class (i.e. a
- fired torpedo) asks to the class with dedicated messages triggering
- <em>class methods</em>.
+</li><li> An entity (i.e. a fired torpedo) can access class instance
+ variables via <em>class methods</em>, by sending a message to a class
+ (i.e. <code>Torpedo</code>) rather than to itself or some other entity.
 
-</li><li> In the class hierarchy, each sub classes has a different value
- for the same class instance variable &ndash; in contrast
- with a <em>class variable</em> shared among the sub classes (discussed
- later).
+</li><li> In the class hierarchy, each subclass has its own instance
+ of the class instance variable, and can assign a different value to
+ it &ndash; in contrast with a <em>class variable</em> which is shared among
+ all the subclasses (discussed later).
 
 </li><li> To edit the <em>class</em> instance variables and <em>class</em>
  methods, in the System Browser press the <code>class</code> button under
@@ -394,7 +394,7 @@ declare our variable in the <code>Mobile class</code> definition &ndash;
 <div class="example">
 <pre class="example">SpaceShip class&gt;&gt;initialize
 &quot;SpaceShip initialize&quot;
-   vertices :=  {0@-15 . -10@15. 0@10. 10@15}
+   vertices :=  {0@-15 . -10@15 . 0@10 . 10@15}
 
 Torpedo class&gt;&gt;initialize
 &quot;Torpedo initialize&quot;
@@ -407,8 +407,8 @@ Torpedo class&gt;&gt;initialize
 method is executed. Alternatively select the comment and execute it
 with <kbd>Ctrl-d</kbd>.
 </p>
-<p>In a Workspace observe to understand how behave a class instance
-variable:
+<p>Experiment in a Workspace to understand how a class instance
+variable behaves:
 </p>
 <div class="float"><span id="classInstanceVar"></span>
 <div class="example">
@@ -425,7 +425,7 @@ Torpedo vertices.
 &rArr; #(0@-4 -2@4 2@4)
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 7.9: </strong>A class instance variable value is not shared by the sub classes</p></div></div>
+<div class="float-caption"><p><strong>Example 7.9: </strong>A class instance variable value is not shared by the subclasses</p></div></div>
 <p>This is really the behavior we want: <code>SpaceShip</code> and
 <code>Torpedo</code> instances have a different diagram. However, every
 instances of a <code>SpaceShip</code> will have the same diagram, referring
@@ -515,26 +515,24 @@ class side and instances are grant access only with messages send to
 the class side. <strong>Contrary</strong> to a class instance variable, its
 value is common in the whole class hierarchy. 
 </p>
-<p>In Spacewar!, a class variable <code>Vertices</code> will have make the
-diagram common to a space ship and a torpedo. This is not what we
-wanted.
+<p>In Spacewar!, a class variable <code>Vertices</code> will have the
+same diagram for a space ship and a torpedo. This is not what we
+want.
 </p>
 <span id="Drawing-simplified"></span><h4 class="subsection">7.3.5 Drawing simplified</h4>
 <p>Using a class variable in the present game design is a bit
 overkill. It was an excuse to present the concept of class
-variable. Indeed the vertices of the space ship and torpedo diagrams
+variables. If the game came with an editor where the user redesigns
+the ship and torpedo diagrams, it would make sense to hold the vertices
+in a variable. But our vertices of the space ship and torpedo diagrams
 are constant. We do not modify them. As we did with the mass of the
 space ship &ndash; <a href="Spacewar_0021-States-and-Behaviors.html#methodConstant">Example 3.16</a> &ndash; we can use a method returning a
 collection, surrounded with backtricks to improve efficiency.
 </p>
-<p>If the game came with an editor where the user redesigns the ship and
-torpedo diagrams, it will make sense to hold the vertices in a
-variable.
-</p>
 <div class="float"><span id="verticesMethod"></span>
 <div class="example">
 <pre class="example">SpaceShip&gt;&gt;vertices
-   ^ `{0@-15 . -10@15. 0@10. 10@15}`
+   ^ `{0@-15 . -10@15 . 0@10 . 10@15}`
    
 Torpedo&gt;&gt;vertices
    ^ `{0@-4 . -2@4 . 2@4}`
