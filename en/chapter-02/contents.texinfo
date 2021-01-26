@@ -205,13 +205,13 @@ string length.
 
 @cindex string @subentry @method{at:put:}
 @cindex @method{yourself}
-To change one character, use the companion two keywords message
+To change one character, use the companion two keyword message
 @msg{at:put:}. The argument must be noted as a character:
 @smalltalkExample{'Hello' at: 2 put: $a; yourself
 @result{} 'Hallo'}
 
 Observe the use of the cascade with the @msg{yourself} message.  A
-cascade sends following messages to the original receiver, so
+cascade sends the following messages to the original receiver, so
 @smalltalk{#yourself} returns the updated string.  Without the
 cascade, @smalltalk{$a} is returned as the result of the @msg{at:put:}
 message.
@@ -602,7 +602,7 @@ Now, we have created and saved the package. Whenever you start with a
 fresh @cuis{} environment, you can load the game package.
 
 The classes we defined are empty shells with neither state nor
-behavior. These will be filled in and refactored in the next
+behavior. These will be filled in and refactored in the following
 chapters.
 
 @subsection The Newtonian model
