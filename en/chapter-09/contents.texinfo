@@ -92,9 +92,9 @@ Workspace prints the result: @smalltalk{a TheBook}, an instance of a
 @class{TheBook} class.
 
 Now kill @cuis{} abruptly. On GNU/Linux, you can use the
-@command{xkill} command to terminate @cuis{} by pointing its window.
+@command{xkill} command to terminate @cuis{} by clicking at its window.
 
-Now start again @cuis{}, it immediately informs you there are unsaved
+Now start @cuis{} again, and it immediately informs you there are unsaved
 changes:
 
 @figure{@cuis{} informs about lost changes, ch10-RecoverLostChanges1,7}
@@ -120,7 +120,7 @@ From there you have three options:
   @figure{Manually select the changes to file in,ch10-RecoverLostChanges2,9}
 
   To file-in the changes related to the creation of the
-  @class{TheBook} class but the executed code in the Workspace, select
+  @class{TheBook} class but not the executed code in the Workspace, select
   the two lines related to class definition.
 
   The contextual menu (mouse right click) of the @label{Lost changes}
@@ -164,7 +164,7 @@ in a change set automatically created by the system. In
 @label{4439-CuisCore-AuthorName-2020Nov16-13h40m}.  In the left pane,
 each unsaved change set is marked with a @label{--->}. Here it tells us
 the change was not saved on disk. To save the change set, just use its
-contextual menu and use one of the @label{file out} entry. The change
+contextual menu and use one of the @label{file out} entries. The change
 set will be saved along the @cuis{} image under its system name with
 @label{AuthorName} substituated with the real author name.
 
@@ -219,9 +219,9 @@ manipulate it.
   added an instance variable @smalltalk{pages} and adjusted the
   @method{pages} methods accordingly. She filed out her changes then
   shared the file with you. Observe in @ref{ch10-ChangeList} how you
-  will review her changes with the Change List tool. Stroked in red
-  our code in the image to be removed and in green her changes to be
-  installed.
+  will review her changes with the Change List tool. Our code that
+  will be removed from the image is shown in red stroked, and her code
+  that will be installed is shown in green.
 
   @figure{Change List tool to review modifications to the image,ch10-ChangeList,8}
 
