@@ -147,11 +147,10 @@ newVelocity @assign{} (ai + ag) * t + velocity}
 
 @cindex message  @subentry cascade
 @cindex cascade of messages
-In the @ref{hello2}, the message @msg{show:} and @msg{newLine}
-are sent to the same @class{Transcript} object. In such circumstance,
-we can use the @dfn{cascade} technique to avoid this repetition. The
-receiver @class{Transcript} is written once and the cascade
-of sent messages are separated by semicolons:
+To send multiple messages same receiver a @dfn{cascade} can be used to
+state the receiver once, followed by the cascade of messages separated
+by semicolons. Here is our earlier @ref{hello2} code expressed with a
+cascade:
 
 @smalltalkExampleCaption{Cascade of messages, helloCascade,
 Transcript
@@ -159,7 +158,7 @@ Transcript
    newLine;
    show: 'I am Cuising'}
 
-Another example from the Spacewar! game:
+Another example of a cascade from the Spacewar! game:
 
 @smalltalkExampleCaption{Stop and teleport spaceship at a random position, teleportShip,
 aShip 
