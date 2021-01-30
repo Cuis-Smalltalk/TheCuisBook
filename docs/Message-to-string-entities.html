@@ -6,13 +6,14 @@ implementation of the Smalltalk language and environment.
 Copyright (C) 2020 Hilaire Fernandes with Ken Dickey & Juan Vuletich
 
 
-Thanks to David Lewis, Tommy Pettersson & Mauro Rizzi for the reviews of the book.
+Thanks to Matt Armstrong, David Lewis, Tommy Pettersson & Mauro Rizzi
+for the reviews of the book and suggestions to improve it.
 
 
 
 
 
-Compilation : January 26, 2021
+Compilation : January 30, 2021
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -117,7 +118,7 @@ string length.
 
 <span id="index-string-6"></span>
 <span id="index-yourself"></span>
-<p>To change one character, use the companion two keywords message
+<p>To change one character, use the companion two keyword message
 <code>#at:put:</code>. The argument must be noted as a character:
 </p><div class="example">
 <pre class="example">'Hello' at: 2 put: $a; yourself
@@ -125,7 +126,7 @@ string length.
 </pre></div>
 
 <p>Observe the use of the cascade with the <code>#yourself</code> message.  A
-cascade sends following messages to the original receiver, so
+cascade sends the following messages to the original receiver, so
 <code>#yourself</code> returns the updated string.  Without the
 cascade, <code>$a</code> is returned as the result of the <code>#at:put:</code>
 message.
