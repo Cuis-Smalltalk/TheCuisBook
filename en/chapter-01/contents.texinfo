@@ -1,5 +1,5 @@
-@node Smalltalk Philosophy
-@chapter Smalltalk Philosophy
+@node Beginnings
+@chapter Beginnings
 
 @quotation
 The computer is simply an instrument whose music is ideas.
