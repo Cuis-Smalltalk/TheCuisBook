@@ -102,7 +102,7 @@ are each moving just a bit, in sequence.
 In @ref{A brief introduction to Inspectors}, we explained how to set
 properties for an individual morph instance to handle a
 specific event. In this
-case, one property informed @cuis{} we were interested by a
+case, one property informed @cuis{} we were interested in a
 given event (@smalltalk{#handlesMouseDown}), a second property defined
 the behavior with a block of code to be executed each time this event occurred.
 
@@ -112,8 +112,8 @@ the method categories @label{event} and @label{event handling
 testing}.
 
 Method catrgory @label{event handling testing} lists methods returning a
-Boolean to indicate if the instance should be notified by the
-event. Let's take a look at one of these methods,
+Boolean to indicate if the instance should be notified about certain
+events. Let's take a look at one of these methods,
 @method{handlesMouseDown:}, its comment is worth reading:
 
 @smalltalkExample{Morph>>handlesMouseDown: aMouseButtonEvent
@@ -162,11 +162,12 @@ System Browser as described above.
 
 @node Spacewar! Events
 @section Spacewar! Events
-Obviously our Spacewar! game handles events. First to control the
-ships with the keyboard. Secondly, we want the game to pause/to resume
-when the mouse cursor moves out/in of the game play.
+Obviously our Spacewar! game handles events. Firstly we want to control the
+ships with the keyboard. Secondly, we want the game to pause
+when the mouse cursor moves out of the game play, and resume when it
+enters again.
 
-In our design, an unique morph, @class{SpaceWar} instance, models the
+In our design, a unique morph, @class{SpaceWar} instance, models the
 game play. Therefore we want this instance to handle the events
 described above.
 
@@ -177,12 +178,12 @@ described above.
 @subsubheading Mouse cursor enters game play
 @cindex event @subentry testing @subentry mouse over
 
-We want to catch event when the mouse cursor moves over our
+We want to catch events when the mouse cursor moves over our
 @class{SpaceWar} morph.
 
 @exercise{Get notified of mouse move-over event, handleMouseOver,
-@emph{Which method should returns true to let the game play be notified
-with dedicated messages the mouse cursor enters or leaves? In which
+@emph{Which method should return true to let the game play be notified
+with a dedicated messages that the mouse cursor enters or leaves? In which
 class should we implement this method?}}
 
 Once we make explicit we want the game play to receive mouse move-over
@@ -190,7 +191,7 @@ events, we need to set the behavior accordingly with dedicated
 methods.
 
 @cindex event @subentry handling @subentry mouse enter
-Each time the mouse cursor enters the game play, we want:
+Each time the mouse cursor enters the game play, we want to:
 
 @itemize
 
@@ -247,7 +248,7 @@ user the keyboard focus changed. In Spacewar! we change the game play
 background depending on the sate of the keyboard focus.
 
 In @ref{ch08-Focus}, at the left keyboard focus is on the game; at the
-right keyboard focus not on the game, it is paused and when can see
+right keyboard focus is not on the game, it is paused and we can see
 underneath.
 
 @figure{Spacewar! effect depending on the keyboard focus, ch08-Focus,12}
@@ -269,7 +270,7 @@ SpaceWar>>keyboardFocusChange: gotFocus
 @cindex event @subentry testing @subentry keyboard
 
 To control the space ships, we use the keyboard. Therefore we want the
-game play be notified of the keyboard events.
+game play to be notified of keyboard events.
 
 @exercise{Get notified of keyboard event, keyboardEvent, @emph{Find
 out which method should return true to let the game be notified of
@@ -297,8 +298,8 @@ with the keyboard arrows when there are stroked:
    key = Character arrowDown ifTrue: [@return{} ships first fireTorpedo].}
 
 The @method{arrowUp}, @method{arrowRight},.... are @class{Character}
-class method responding the special characters representing the
-arrows.
+class methods returning character codes representing the
+arrow keys.
 
 To control the second player ship, we use another classic arrangement
 in QWERTY keyboard controlled game:
@@ -306,8 +307,8 @@ WASD@footnote{@url{https://en.wikipedia.org/wiki/Arrow_keys#WASD_keys}}.
 
 @exercise{Keys to control the second player ship,secondShipControl,
 @emph{Append the additional code to @ref{firstShipControl} to control
-the second player ship with the keys WASD. As a reminder, an
-individual character writes as @smalltalk{$q}.}}
+the second player ship with the keys WASD. As a reminder, in Smalltalk
+the character code for q can be written as @smalltalk{$q}.}}
 
 
 

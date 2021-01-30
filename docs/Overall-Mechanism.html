@@ -6,13 +6,14 @@ implementation of the Smalltalk language and environment.
 Copyright (C) 2020 Hilaire Fernandes with Ken Dickey & Juan Vuletich
 
 
-Thanks to David Lewis, Tommy Pettersson & Mauro Rizzi for the reviews of the book.
+Thanks to Matt Armstrong, David Lewis, Tommy Pettersson & Mauro Rizzi
+for the reviews of the book and suggestions to improve it.
 
 
 
 
 
-Compilation : January 23, 2021
+Compilation : January 30, 2021
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -101,7 +102,7 @@ Next: <a href="Spacewar_0021-Events.html" accesskey="n" rel="next">Spacewar! Eve
 <p>In <a href="A-brief-introduction-to-Inspectors.html">A brief introduction to Inspectors</a>, we explained how to set
 properties for an individual morph instance to handle a
 specific event. In this
-case, one property informed Cuis-Smalltalk we were interested by a
+case, one property informed Cuis-Smalltalk we were interested in a
 given event (<code>#handlesMouseDown</code>), a second property defined
 the behavior with a block of code to be executed each time this event occurred.
 </p>
@@ -111,8 +112,8 @@ the method categories <code>event</code> and <code>event handling
 testing</code>.
 </p>
 <p>Method catrgory <code>event handling testing</code> lists methods returning a
-Boolean to indicate if the instance should be notified by the
-event. Let&rsquo;s take a look at one of these methods,
+Boolean to indicate if the instance should be notified about certain
+events. Let&rsquo;s take a look at one of these methods,
 <code>handlesMouseDown:</code>, its comment is worth reading:
 </p>
 <div class="example">

@@ -11,7 +11,7 @@ The contents of the book is entirely writen. We have not yet announce widely its
 
 HTML - https://cuis-smalltalk.github.io/TheCuisBook/
 
-PDF - https://github.com/Cuis-Smalltalk/TheCuisBook/releases/download/20201230/TheCuisBook.pdf
+PDF - https://github.com/Cuis-Smalltalk/TheCuisBook/releases/download/latestpdfbuild/TheCuisBook.pdf
 
 
 ## License 

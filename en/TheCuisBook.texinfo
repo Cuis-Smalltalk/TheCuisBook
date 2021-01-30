@@ -1,6 +1,6 @@
 \input texinfo @c -*-texinfo-*-
 @c %**start of header
-@set timeStamp Time-stamp: <2021-01-09 15:17:02 hilaire>
+@set timeStamp Time-stamp: <2021-01-30 19:59:38 hilaire>
 @include ../bookSettings.texinfo
 @c %**end of header
 
@@ -83,7 +83,7 @@ You are reading the Cuis Book!
 
 @menu
 * Preface::
-* Smalltalk Philosophy::
+* Beginnings::
 * The Message Way of Life::
 * Class - Model of Communicating Entities::
 * The Collection Way of Life::

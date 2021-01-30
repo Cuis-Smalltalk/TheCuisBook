@@ -785,7 +785,7 @@ As you may have observed, the @class{SpaceShip} and @class{Torpedo}
 its vertices. We likely want to push this common logic to their common
 ancestor, the @class{Mobile} class. It needs to know about its
 vertices, so we may want to add an instance variable
-@smalltalk{vertices} initialized in its sub classes with an array
+@smalltalk{vertices} initialized in its subclasses with an array
 containing the points:
 
 @smalltalkExample{MovableMorph subclass: #Mobile
@@ -796,7 +796,7 @@ containing the points:
 
 SpaceShip>>initialize
    super initialize.
-   vertices @assign{} @{0@@-15 . -10@@15. 0@@10. 10@@15@}.
+   vertices @assign{} @{0@@-15 . -10@@15 . 0@@10 . 10@@15@}.
    self resupply
    
 Torpedo>>initialize
@@ -823,14 +823,14 @@ The  @class{Mobile class} is an instance of the class @class{Class}!
  @item A @dfn{class instance variable} can be accessed and assigned
  only by the class itself in a @dfn{class method}.
 
- @item To access a class instance variable, an instance class (i.e. a
- fired torpedo) asks to the class with dedicated messages triggering
- @dfn{class methods}.
+ @item An entity (i.e. a fired torpedo) can access class instance
+ variables via @dfn{class methods}, by sending a message to a class
+ (i.e. @class{Torpedo}) rather than to itself or some other entity.
 
- @item In the class hierarchy, each sub classes has a different value
- for the same class instance variable -- in contrast
- with a @dfn{class variable} shared among the sub classes (discussed
- later).
+ @item In the class hierarchy, each subclass has its own instance
+ of the class instance variable, and can assign a different value to
+ it -- in contrast with a @dfn{class variable} which is shared among
+ all the subclasses (discussed later).
 
  @item To edit the @emph{class} instance variables and @emph{class}
  methods, in the System Browser press the @label{class} button under
@@ -862,7 +862,7 @@ Next, each subclass is responsible to correctly initialize
 @smalltalkExampleCaption{Initialize a class,initializeClass,
 SpaceShip class>>initialize
 "SpaceShip initialize"
-   vertices @assign{}  @{0@@-15 . -10@@15. 0@@10. 10@@15@}
+   vertices @assign{}  @{0@@-15 . -10@@15 . 0@@10 . 10@@15@}
 
 Torpedo class>>initialize
 "Torpedo initialize"
@@ -873,10 +873,10 @@ When a class is installed in @cuis{}, its @method{initialize} class
 method is executed. Alternatively select the comment and execute it
 with @kbd{Ctrl-d}.
 
-In a Workspace observe to understand how behave a class instance
-variable:
+Experiment in a Workspace to understand how a class instance
+variable behaves:
 
-@smalltalkExampleCaption{A class instance variable value is not shared by the sub classes,classInstanceVar,
+@smalltalkExampleCaption{A class instance variable value is not shared by the subclasses,classInstanceVar,
 SpaceShip vertices.
 @result{} nil 
 SpaceShip initialize.
@@ -959,26 +959,24 @@ class side and instances are grant access only with messages send to
 the class side. @strong{Contrary} to a class instance variable, its
 value is common in the whole class hierarchy. 
 
-In Spacewar!, a class variable @smalltalk{Vertices} will have make the
-diagram common to a space ship and a torpedo. This is not what we
-wanted.
+In Spacewar!, a class variable @smalltalk{Vertices} will have the
+same diagram for a space ship and a torpedo. This is not what we
+want.
 
 @c it can be simpler
 @subsection Drawing simplified
 Using a class variable in the present game design is a bit
 overkill. It was an excuse to present the concept of class
-variable. Indeed the vertices of the space ship and torpedo diagrams
+variables. If the game came with an editor where the user redesigns
+the ship and torpedo diagrams, it would make sense to hold the vertices
+in a variable. But our vertices of the space ship and torpedo diagrams
 are constant. We do not modify them. As we did with the mass of the
 space ship -- @ref{methodConstant} -- we can use a method returning a
 collection, surrounded with backtricks to improve efficiency.
 
-If the game came with an editor where the user redesigns the ship and
-torpedo diagrams, it will make sense to hold the vertices in a
-variable.
-
 @smalltalkExampleCaption{Vertices returned by an instance method, verticesMethod,
 SpaceShip>>vertices
-   @return{} `@{0@@-15 . -10@@15. 0@@10. 10@@15@}`
+   @return{} `@{0@@-15 . -10@@15 . 0@@10 . 10@@15@}`
    
 Torpedo>>vertices
    @return{} `@{0@@-4 . -2@@4 . 2@@4@}`}

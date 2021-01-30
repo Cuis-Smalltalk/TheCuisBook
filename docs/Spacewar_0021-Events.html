@@ -6,13 +6,14 @@ implementation of the Smalltalk language and environment.
 Copyright (C) 2020 Hilaire Fernandes with Ken Dickey & Juan Vuletich
 
 
-Thanks to David Lewis, Tommy Pettersson & Mauro Rizzi for the reviews of the book.
+Thanks to Matt Armstrong, David Lewis, Tommy Pettersson & Mauro Rizzi
+for the reviews of the book and suggestions to improve it.
 
 
 
 
 
-Compilation : January 23, 2021
+Compilation : January 30, 2021
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -93,11 +94,12 @@ Previous: <a href="Overall-Mechanism.html" accesskey="p" rel="prev">Overall Mech
 </div>
 <hr>
 <span id="Spacewar_0021-Events-1"></span><h3 class="section">8.3 Spacewar! Events</h3>
-<p>Obviously our Spacewar! game handles events. First to control the
-ships with the keyboard. Secondly, we want the game to pause/to resume
-when the mouse cursor moves out/in of the game play.
+<p>Obviously our Spacewar! game handles events. Firstly we want to control the
+ships with the keyboard. Secondly, we want the game to pause
+when the mouse cursor moves out of the game play, and resume when it
+enters again.
 </p>
-<p>In our design, an unique morph, <code>SpaceWar</code> instance, models the
+<p>In our design, a unique morph, <code>SpaceWar</code> instance, models the
 game play. Therefore we want this instance to handle the events
 described above.
 </p>
@@ -108,14 +110,14 @@ described above.
 <span id="Mouse-cursor-enters-game-play"></span><h4 class="subsubheading">Mouse cursor enters game play</h4>
 <span id="index-event-6"></span>
 
-<p>We want to catch event when the mouse cursor moves over our
+<p>We want to catch events when the mouse cursor moves over our
 <code>SpaceWar</code> morph.
 </p>
 <div class="float"><span id="handleMouseOver"></span>
 <blockquote class="indentedblock">
 <p>&nbsp;<img src="CuisLogo.png" alt="CuisLogo">
-<em>Which method should returns true to let the game play be notified
-with dedicated messages the mouse cursor enters or leaves? In which
+<em>Which method should return true to let the game play be notified
+with a dedicated messages that the mouse cursor enters or leaves? In which
 class should we implement this method?</em>
 </p></blockquote>
 
@@ -126,7 +128,7 @@ events, we need to set the behavior accordingly with dedicated
 methods.
 </p>
 <span id="index-event-7"></span>
-<p>Each time the mouse cursor enters the game play, we want:
+<p>Each time the mouse cursor enters the game play, we want to:
 </p>
 <ul>
 <li> <strong>Get keyboard focus.</strong> It follows the mouse cursor: the
@@ -201,7 +203,7 @@ user the keyboard focus changed. In Spacewar! we change the game play
 background depending on the sate of the keyboard focus.
 </p>
 <p>In <a href="#ch08_002dFocus">Figure 8.1</a>, at the left keyboard focus is on the game; at the
-right keyboard focus not on the game, it is paused and when can see
+right keyboard focus is not on the game, it is paused and we can see
 underneath.
 </p>
 <div class="float"><span id="ch08_002dFocus"></span>
@@ -228,7 +230,7 @@ matching <code>SpaceWar</code>&rsquo;s method <code>keyboardFocusChange:</code>
 <span id="index-event-10"></span>
 
 <p>To control the space ships, we use the keyboard. Therefore we want the
-game play be notified of the keyboard events.
+game play to be notified of keyboard events.
 </p>
 <div class="float"><span id="keyboardEvent"></span>
 <blockquote class="indentedblock">
@@ -266,8 +268,8 @@ with the keyboard arrows when there are stroked:
 
 <div class="float-caption"><p><strong>Example 8.2: </strong>Keystroke to control the first player ship</p></div></div>
 <p>The <code>arrowUp</code>, <code>arrowRight</code>,.... are <code>Character</code>
-class method responding the special characters representing the
-arrows.
+class methods returning character codes representing the
+arrow keys.
 </p>
 <p>To control the second player ship, we use another classic arrangement
 in QWERTY keyboard controlled game:
@@ -277,8 +279,8 @@ WASD<a id="DOCF23" href="#FOOT23"><sup>23</sup></a>.
 <blockquote class="indentedblock">
 <p>&nbsp;<img src="CuisLogo.png" alt="CuisLogo">
 <em>Append the additional code to <a href="#firstShipControl">Example 8.2</a> to control
-the second player ship with the keys WASD. As a reminder, an
-individual character writes as <code>$q</code>.</em>
+the second player ship with the keys WASD. As a reminder, in Smalltalk
+the character code for q can be written as <code>$q</code>.</em>
 </p></blockquote>
 
 
