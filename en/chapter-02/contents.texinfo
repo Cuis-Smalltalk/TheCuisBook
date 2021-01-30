@@ -148,10 +148,10 @@ newVelocity @assign{} (ai + ag) * t + velocity}
 
 @cindex message  @subentry cascade
 @cindex cascade of messages
-To send multiple messages same receiver a @dfn{cascade} can be used to
-state the receiver once, followed by the cascade of messages separated
-by semicolons. Here is our earlier @ref{hello2} code expressed with a
-cascade:
+To send multiple messages to the same receiver a @dfn{cascade} can be
+used to state the receiver once, followed by the cascade of messages
+separated by semicolons. Here is our earlier @ref{hello2} code
+expressed with a cascade:
 
 @smalltalkExampleCaption{Cascade of messages, helloCascade,
 Transcript
