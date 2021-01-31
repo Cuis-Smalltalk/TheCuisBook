@@ -368,6 +368,7 @@ code
     font-size: 120%;
     font-weight: bold;
     color: #033DA3;
+    border: 1px solid white;
 }
 
 code:hover
