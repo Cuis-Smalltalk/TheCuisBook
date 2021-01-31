@@ -152,7 +152,7 @@ h1, h2, h3, h4, h5
 
 h2.chapter, h2.unnumbered, h2.appendix
 {
-    text-shadow: 1px 1px gray;
+//    text-shadow: 1px 1px gray;
 }
 
 h1
@@ -261,7 +261,7 @@ div.header p a:link {
    padding: 3px;
    text-decoration:none;
    color: black;
-   text-shadow: 0px 1px gray;
+//   text-shadow: 0px 1px gray;
    background: #a1cb81;
    border: 2px solid #a1cb81;
    border-radius: 8px;
