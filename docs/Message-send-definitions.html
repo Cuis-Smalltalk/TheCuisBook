@@ -177,11 +177,10 @@ addition happens first:
 <div class="float-caption"><p><strong>Example 2.3: </strong>Ship velocity</p></div></div>
 <span id="index-message-7"></span>
 <span id="index-cascade-of-messages"></span>
-<p>In the <a href="Writing-your-first-scripts.html#hello2">Example 1.2</a>, the message <code>#show:</code> and <code>#newLine</code>
-are sent to the same <code>Transcript</code> object. In such circumstance,
-we can use the <em>cascade</em> technique to avoid this repetition. The
-receiver <code>Transcript</code> is written once and the cascade
-of sent messages are separated by semicolons:
+<p>To send multiple messages to the same receiver a <em>cascade</em> can be
+used to state the receiver once, followed by the cascade of messages
+separated by semicolons. Here is our earlier <a href="Writing-your-first-scripts.html#hello2">Example 1.2</a> code
+expressed with a cascade:
 </p>
 <div class="float"><span id="helloCascade"></span>
 <div class="example">
@@ -192,7 +191,7 @@ of sent messages are separated by semicolons:
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 2.4: </strong>Cascade of messages</p></div></div>
-<p>Another example from the Spacewar! game:
+<p>Another example of a cascade from the Spacewar! game:
 </p>
 <div class="float"><span id="teleportShip"></span>
 <div class="example">
