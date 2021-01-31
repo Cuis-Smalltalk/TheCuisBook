@@ -152,10 +152,7 @@ h1, h2, h3, h4, h5
 
 h2.chapter, h2.unnumbered, h2.appendix
 {
-    background-image: repeating-linear-gradient(#4da71f, #85b461); 
-    text-shadow: 0px 1px white;
-    border: 2px solid #4da71f;
-    border-radius: 3px;
+    text-shadow: 1px 1px gray;
 }
 
 h1
