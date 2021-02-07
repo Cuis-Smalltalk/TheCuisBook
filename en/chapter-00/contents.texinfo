@@ -92,11 +92,11 @@ In the offline PDF version, the code example are printed with the same
  assignment and return characters as seen in the @cuis{}
  windows. Coping and pasting also work as expected.
 
-The chapters come with many of examples. Some can be copied and
-pasted in @cuis{}, we encourage you to do this, and in the process
-modify them to explore by yourself. Other examples are code extracts
-which are not self sufficient to be executed as is; their purpose is
-to expose specific facets of the Smalltalk language.
+The chapters come with many examples. Some can be copied and pasted in
+@cuis{}, we encourage you to do this, and in the process modify them
+to explore by yourself. Other examples are code extracts which are not
+self sufficient to be executed as is; their purpose is to expose
+specific facets of the Smalltalk language.
 
 A typical example without a caption looks like:
 
