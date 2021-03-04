@@ -298,9 +298,10 @@ Transcript show: 'Hello World!'.
 Transcript newLine.
 Transcript show: 'I am Cuising'}
 
-In this three line script, observe how the lines are separated by a
-dot ``.''. This period is a line separator so it is not needed in the third line
-nor in a one line script. The message @msg{newLine} has no argument.
+In this three lines script, observe how the lines are separated by a
+dot ``.''. This period is a line separator so it is not needed in the
+third line nor in a one line script. The message @msg{newLine} has no
+argument.
 
 @cindex string
 A @dfn{String} is the way text is represented in a programming
