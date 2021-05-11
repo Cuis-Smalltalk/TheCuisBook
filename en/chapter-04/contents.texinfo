@@ -864,7 +864,7 @@ change accordingly to the mechanical laws of physics.
 @smalltalkExampleCaption{Space ship mechanics, spaceShipMechanic,
 SpaceShip>>update: t
 "Update the ship position and velocity"
-   | ai ag newVelocity t |
+   | ai ag newVelocity |
    "acceleration vectors"
    ai @assign{} acceleration * self direction.
    ag @assign{} self gravity.
