@@ -115,7 +115,7 @@ can be used as a reference elsewhere in the book:
 There are also a lot of exercises. Most are very easy; they intend to give you
 an opportunity to apply what you have just learned.
 
-Exercises are easily identified with the @cuis{} mascot: @dfn{Cuis},
+Exercises are easily identified by the @cuis{} mascot: @dfn{Cuis},
 a South American rodent!
 
 @exercise{I am an example of an exercise,exerciseExample,
