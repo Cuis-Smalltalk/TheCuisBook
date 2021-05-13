@@ -97,7 +97,7 @@ You are reading the Cuis Book!
 * Documents Copyright::
 * Summary of Syntax::
 * The Exercises::
-* Solutions of the Exercises::
+* Solutions to the Exercises::
 * The Examples::
 * The Figures::
 * Indexes::

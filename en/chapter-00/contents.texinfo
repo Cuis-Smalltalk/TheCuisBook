@@ -103,7 +103,7 @@ A typical example without a caption looks like:
 
 @smalltalkExample{100 factorial}
 
-The same example with a caption appears with a number, a legend, and it
+The same example with a caption appears with a number and title, and
 can be used as a reference elsewhere in the book:
 
 @smalltalkExampleCaption{I am an example with a caption and a result, exampleExample,
