@@ -64,14 +64,14 @@ The reader can study @cuis{} from two versions of the book:
 
 @itemize
 
- @item @strong{Online.} With a web browser at the
+ @item @strong{Online:} With a web browser at the
  @url{https://cuis-smalltalk.github.io/TheCuisBook} address. The book
  is structured in chapters and sections, displayed one at a time. It
  is a very flexible way to study the book: you can open several
  chapters and appendices on different tabs in your web browser. It
  requires you to be connected to the Internet, though.
 
- @item @strong{Offline.} In a single PDF file you download and read
+ @item @strong{Offline:} In a single PDF file you download and read
  offline. It can be printed as a nice paper book. The most recent
  build can be found at @url{https://github.com/Cuis-Smalltalk/TheCuisBook}.
 
@@ -81,9 +81,9 @@ The reader can study @cuis{} from two versions of the book:
 @cindex variable @subentry assignment
 @cindex assignment @seeentry{variable}
 
-The chapters come with many examples. Some can be copied and pasted in
-@cuis{}, we encourage you to do this, and in the process modify them
-to explore by yourself.
+The chapters come with many examples. Some can be copied and pasted into
+@cuis{}. We encourage you to do this, and in the process modify them
+to explore on your own.
 
 The code examples in the online version can be directly copied and
 pasted into @cuis{}. This is why the assignment character ``@U{2190}''
@@ -95,15 +95,15 @@ In the offline PDF version, the code examples are printed with the same
 assignment and return characters as seen in the @cuis{} windows. Copying
 and pasting also work as expected.
 
-Other examples are code extracts which are notself sufficient to be
-executed as is; their purpose is to expose specific facets of the Smalltalk
+Other examples are code extracts which are not self sufficient to be
+executed as is. Their purpose is to expose specific facets of the Smalltalk
 language.
 
 A typical example without a caption looks like:
 
 @smalltalkExample{100 factorial}
 
-The same example with a caption comes with a number, a legend and it
+The same example with a caption appears with a number, a legend, and it
 can be used as a reference elsewhere in the book:
 
 @smalltalkExampleCaption{I am an example with a caption and a result, exampleExample,
@@ -115,13 +115,13 @@ can be used as a reference elsewhere in the book:
 There are also a lot of exercises. Most are very easy; they intend to give you
 an opportunity to apply what you have just learned.
 
-Exercises are easily identified, they are presented with the @cuis{}
-mascot: @dfn{Cuis}, a South American rodent!
+Exercises are easily identified with the @cuis{} mascot: @dfn{Cuis},
+a South American rodent!
 
 @exercise{I am an example of an exercise,exerciseExample,
 @emph{Search the Internet: How many versions of Smalltalk are there?}}
 
-The solutions to the exercises are presented in @ref{Solutions of the
+The solutions to the exercises are presented in @ref{Solutions to the
 Exercises}.
 
 Happy reading!
