@@ -64,14 +64,14 @@ The reader can study @cuis{} from two versions of the book:
 
 @itemize
 
- @item @strong{Online:} With a web browser at the
+ @item @strong{Online.} With a web browser at the
  @url{https://cuis-smalltalk.github.io/TheCuisBook} address. The book
  is structured in chapters and sections, displayed one at a time. It
  is a very flexible way to study the book: you can open several
  chapters and appendices on different tabs in your web browser. It
  requires you to be connected to the Internet, though.
 
- @item @strong{Offline:} In a single PDF file you download and read
+ @item @strong{Offline.} In a single PDF file you download and read
  offline. It can be printed as a nice paper book. The most recent
  build can be found at @url{https://github.com/Cuis-Smalltalk/TheCuisBook}.
 
