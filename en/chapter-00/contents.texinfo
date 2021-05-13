@@ -19,13 +19,13 @@ is, and what it means to build software. As a consequence, Cuis is
 especially effective if these ideas resonate with you and, at least
 occasionally, you let them guide your thoughts and actions.
 
-In this book, we will go along with you as you explore, discover and
+In this book, we will accompany you as you explore, discover and
 learn about Cuis and Smalltalk.
 
 We don't assume knowledge of computer programming, but if you happen
-to have some experience with an Object Oriented or Functional language
+to have some experience with an Object-Oriented or Functional language
 you will recognize many concepts. If you don't have any programming
-experience, or you have coded in an imperative, closer to the metal
+experience or you have coded in an imperative, closer to the metal
 language, such as C or Assembly, many of the ideas may be new.
 
 In any case, especially during the first chapters, read this book and
@@ -36,25 +36,24 @@ programming is a thoughtful process.
 We understand software development as the activity of learning and
 documenting knowledge for ourselves and others to use, and also to be
 run on a computer. The fact that a computer can execute the software
-and produce useful solutions to some problem, is a consequence of the
+and produce useful solutions to some problem is a consequence of the
 knowledge being sound and relevant. Just making it work is not the
 important part!
 
-These ideas, that will be developed further along in the book you are
-reading, strongly shape Cuis and the experience of using it.  Amongst
-their most obvious consequences are a passion for reducing unneeded
-complexity, while providing a complete, live software development
-experience.
+These ideas strongly shape Cuis and the experience of using it, and
+we'll develop them further along in this book.  Amongst their most
+obvious consequences are a passion for reducing unneeded complexity,
+while providing a complete, live software development experience.
 
 This book is an introduction and invitation to explore Cuis.  We hope
 you will join us in this journey to use Cuis as a medium to express
-ideas and thoughts, to build cool stuff, and to make Cuis ever better.
+ideas and thoughts, to build cool stuff, and to make Cuis even better.
 
 @figure{Cuis,ch00-img1,12}
 
 To make your journey with this book more enjoyable, the
 @emph{Spacewar!}@footnote{@url{https://en.wikipedia.org/wiki/Spacewar!}}
-project is its recurring theme. It is distilled along the book in code
+project is its recurring theme. It is distilled into the book in code
 examples, exercises and dedicated chapters. At the end of the book,
 you will have written a replica of this historic video game.
 
@@ -65,63 +64,64 @@ The reader can study @cuis{} from two versions of the book:
 
 @itemize
 
- @item @strong{Online.} With a web browser at the
+ @item @strong{Online:} With a web browser at the
  @url{https://cuis-smalltalk.github.io/TheCuisBook} address. The book
  is structured in chapters and sections, displayed one at a time. It
  is a very flexible way to study the book: you can open several
  chapters and appendices on different tabs in your web browser. It
  requires you to be connected to the Internet, though.
 
- @item @strong{Offline.} It is a PDF version coming in one file you
- download and read offline. It can be printed as a nice paper
- book. Its most recent build is found at
- @url{https://github.com/Cuis-Smalltalk/TheCuisBook}.
+ @item @strong{Offline:} In a single PDF file you download and read
+ offline. It can be printed as a nice paper book. The most recent
+ build can be found at @url{https://github.com/Cuis-Smalltalk/TheCuisBook}.
 
 @end itemize
 
 @cindex returned value
 @cindex variable @subentry assignment
 @cindex assignment @seeentry{variable}
+
+The chapters come with many examples. Some can be copied and pasted into
+@cuis{}. We encourage you to do this, and in the process modify them
+to explore on your own.
+
 The code examples in the online version can be directly copied and
 pasted into @cuis{}. This is why the assignment character ``@U{2190}''
 you see in the developer @cuis{} window is printed as ``:='' in the
 online version of the book. The same applies with the return character
 ``@U{2191}'' printed as ``^'' in the online version.
 
-In the offline PDF version, the code example are printed with the same
- assignment and return characters as seen in the @cuis{}
- windows. Coping and pasting also work as expected.
+In the offline PDF version, the code examples are printed with the same
+assignment and return characters as seen in the @cuis{} windows. Copying
+and pasting also work as expected.
 
-The chapters come with many examples. Some can be copied and pasted in
-@cuis{}, we encourage you to do this, and in the process modify them
-to explore by yourself. Other examples are code extracts which are not
-self sufficient to be executed as is; their purpose is to expose
-specific facets of the Smalltalk language.
+Other examples are code extracts which are not self sufficient to be
+executed as is. Their purpose is to expose specific facets of the Smalltalk
+language.
 
 A typical example without a caption looks like:
 
 @smalltalkExample{100 factorial}
 
-The same example with a caption comes with a number, a legend and it
+The same example with a caption appears with a number and title, and
 can be used as a reference elsewhere in the book:
 
-@smalltalkExampleCaption{I am an example with a caption and result, exampleExample,
+@smalltalkExampleCaption{I am an example with a caption and a result, exampleExample,
 100 factorial
 @result{}  9332621544394415268169923885626670049071596826438162146859
 29638952175999932299156089414639761565182862536979208272237582
 51185210916864000000000000000000000000}
 
-There are also a lot of exercises. Most are very
-easy, their intent is to give you an opportunity to apply what was
-learned just before. The solution can be read in the appendix.
+There are also a lot of exercises. Most are very easy; they intend to give you
+an opportunity to apply what you have just learned.
 
-Exercises are easily identified, there are presented by the @cuis{}
-mascot: @dfn{Cuis}, a South American rodent!
+Exercises are easily identified by the @cuis{} mascot: @dfn{Cuis},
+a South American rodent!
 
 @exercise{I am an example of an exercise,exerciseExample,
 @emph{Search the Internet: How many versions of Smalltalk are there?}}
 
-The solution of the exercises are presented in @ref{Solutions of the
+The solutions to the exercises are presented in @ref{Solutions to the
 Exercises}.
 
 Happy reading!

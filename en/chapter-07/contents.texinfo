@@ -234,7 +234,7 @@ We will learn how to control all this with code and animate our morph.
 around one corner? If necessary rewrite your rectangle morph so it rotates
 around its center.}}
 
-In the solution we gave for the @ref{exeCrossMorph} (@ref{Solutions of
+In the solution we gave for the @ref{exeCrossMorph} (@ref{Solutions to
 the Exercises}), the cross origin is set to its top left. Therefore it
 rotates around this point.
 

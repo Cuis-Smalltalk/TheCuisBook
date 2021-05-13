@@ -1,6 +1,6 @@
-@c Solution of the exercises
-@node Solutions of the Exercises
-@appendix Solutions of the Exercises
+@c Solutions to the exercises
+@node Solutions to the Exercises
+@appendix Solutions to the Exercises
 
 
 @menu
