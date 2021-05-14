@@ -190,7 +190,7 @@ architecture. These bundles come with the dedicated @vm{} and a recent
 image of @cuis{}; as well packages ready to be installed to make your
 life easier when you experience the examples and exercises of the
 book. By the time you read this book, @cuis{} will likely have evolved
-to have a newer version.  What you learn here should, however, be
+to a newer version.  What you learn here should, however, be
 easily transferable.
 
 To get @cuis{} running on your computer, extract the bundle and
@@ -222,7 +222,7 @@ the @strong{font size}, the @strong{themes} whenever your prefer light
 or dark colouring. There are other preferences you can explore by
 yourself. Once you are done, do ...@clicksequence{World menu @click{}
 @label{Save}}... to make your preferences permanent. In this book, we
-keep the default @cuis{} theme, we suggest you to do the same so your
+keep the default @cuis{} theme, we suggest you do the same so your
 environment reflects the book screenshots.
 
 @figure{Set Preferences,ch01-Preferences,12}
@@ -234,24 +234,24 @@ of text editor to key in Smalltalk code you can execute
 immediately. Do ...@clicksequence{World menu @click{}
 @label{Open...} @click{} @label{Workspace}}...
 
-Now we ask @cuis{} to make the window's placement: click the blue icon
+Now we will ask @cuis{} to change the window's placement: click the blue icon
 (top left) to access the window option and experiment with the white
 area to place the Workspace window at the half left of the @cuis{}
 environment.
 
 @figure{Window options,ch01-img1a,7}
 
-The @label{resize...} option even offers more freedom to place the
+The @label{resize...} option offers even more freedom to place the
 window. Try the following exercise:
 
 @exercise{Middle placement,exePlacement, @emph{Use the
-@label{resize...} option to place the Workspace centered on @cuis{}
+@label{resize...} option to place the Workspace centered in the @cuis{}
 environment.}}
 
 @node Writing your first scripts
 @section Writing your first scripts
 In this section you will learn how to write simple scripts in the
-Workspace to get a taste and feeling about Smalltalk code. The
+Workspace to get a taste and feel for Smalltalk code. The
 examples are associated with small exercises to experiment with and
 accompanied with solutions in the annex. We intentionally keep the
 details of the syntax out of this section.
@@ -267,13 +267,13 @@ To execute this code, select it with the mouse and over it do
 ...@clicksequence{right mouse click @click{} @label{Do it (d)}}...
 You may now see nothing happen! Indeed to see the output, you need a
 @dfn{Transcript} window to be visible.  The @class{Transcript} is a
-place where programmer can send information for the user as we are
+place where a programmer can send information to the user as we are
 doing here. Do ...@clicksequence{World menu @click{} @label{Open...}
 @click{} @label{Transcript}}... and execute the code again.
 
 @figure{Transcript window with output,ch01-img2,3}
 
-The workspace code comes in three parts:
+The workspace code has three parts:
 
 @itemize
 
@@ -298,8 +298,8 @@ Transcript show: 'Hello World!'.
 Transcript newLine.
 Transcript show: 'I am Cuising'}
 
-In this three lines script, observe how the lines are separated by a
-dot ``.''. This period is a line separator so it is not needed in the
+In this three line script, observe how the lines are separated by a
+dot ``.''. This dot (or period) is a line separator so it is not needed in the
 third line nor in a one line script. The message @msg{newLine} has no
 argument.
 
@@ -314,7 +314,7 @@ world!'}. We capitalize it with the @msg{capitalized} message:
 @result{} 'Hello world!' }
 
 @cindex string @subentry @method{asUppercase}
-To convert all the characters in capital use the @msg{asUppercase} message:
+To convert all the characters to capitals use the @msg{asUppercase} message:
 
 @smalltalkExample{Transcript show: 'hello world!' asUppercase
 @result{} 'HELLO WORLD!'}
@@ -343,7 +343,7 @@ with @kbd{Ctrl-a} then @kbd{Ctrl-p} (@emph{@b{P}rint it}):
 51185210916864000000000000000000000000}
 
 @cuis{} handles very large integer numbers without requiring a
-special type declaration or method. To convince yourelf try the example below:
+special type declaration or method. To convince yourself try the example below:
 @smalltalkExample{10000 factorial / 9999 factorial
 @result{} 10000}
 
@@ -396,7 +396,7 @@ message:
 2020 printStringBase: 20 @result{} '510'}
 
 @exercise{Capitalize number as words,capWordNumber,@emph{Print 2020 as
-words capitalized.}}
+words, capitalized.}}
 
 
 @cindex number @subentry literal
@@ -432,7 +432,7 @@ several times to different hardware architectures and complemented with
 additional features. @emph{Computer Space}, the first arcade video
 game cabinet was a clone of Spacewar!
 
-@figure{Spacewar! game on DEC PDP-1 minicomputer,ch01-SpacewarPDP,7}
+@figure{Spacewar! game on a DEC PDP-1 minicomputer,ch01-SpacewarPDP,7}
 
 Wikipedia describes very precisely this space combat simulation game:
 
