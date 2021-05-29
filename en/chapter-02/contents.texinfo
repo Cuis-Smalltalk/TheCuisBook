@@ -188,7 +188,7 @@ return the object to which a message is sent, in this case the
 @cindex string @subentry character access
 
 Access to a character in a string is done with the keyword message
-@msg{at:} and its index position in the string as argument. Execute
+@msg{at:} and its index position in the string as the argument. Execute
 the following examples with the @kbd{Ctrl-p} shortcut:
 
 @smalltalkExample{'Hello' at: 1 @result{} $H
@@ -220,22 +220,22 @@ message.
 the string 'Hello' to become 'Belle'.}}
 
 @cindex character @subentry ascii
-Character can be converted to integer and integer to character:
+Characters can be converted to integers and integers to characters:
 @smalltalkExample{$A asciiValue @result{} 65
 (65 + 25) asCharacter @result{} $Z}
 
 @cindex string @subentry @method{shuffled}
 @cindex collection @subentry @method{shuffled}
-Shuffling a string is funny but without much use. Nevertheless,
-shuffling can apply to any kind of collection, not only to string, and it
-proves to be of some use as we may see later:
+Shuffling a string can be fun but not very useful. However,
+shuffling can apply to any kind of collection, not only to a string, and it
+will prove to be useful as we will see later:
 @smalltalkExample{'hello world' shuffled
 @result{} 'wod llreohl'}
-Note that results of each shuffle are different.
+Note that the results of each shuffle are different.
 
 @cindex string @subentry @method{asArray}
 @cindex message @subentry composition
-Messages naturally compose.
+Messages naturally compose:
 @smalltalkExample{'hello world' shuffled asArray
 @result{} #($h $d $l $  $o $w $e $l $l $o $r) }
 
@@ -255,12 +255,13 @@ which answers a sorted collection.
 @smalltalkExample{'hello world' sorted
 @result{} #($  $d $e $h $l $l $l $o $o $r $w)}
 
-Note that this breaks patterns.  We get a @class{String} result when giving 
-a @class{String} the message @smalltalk{#shuffled} but get an @class{Array}
-instance when giving a @class{String} instance the message @smalltalk{#sorted}.
+Note that this breaks the pattern of the result type.  We get a @class{String}
+result when sending a @class{String} the message @smalltalk{#shuffled} but get
+an @class{Array} result when sending a @class{String} the message
+@smalltalk{#sorted}.
 
-We take much care in Smalltalk to give names which reduce surprise, but there
-are cases, as here, where something odd happens.  We will discuss this
+We take great care in Smalltalk to create names which reduce surprise, but there
+are cases, as seen here, where something odd happens.  We will discuss this
 further when we look at different kinds of @class{Collection}s and
 discuss how we name instances and methods to show intent and reduce surprise.
 
@@ -287,8 +288,8 @@ sum of the squares of the inverse of the first four integers.}}
 If @cuis{} integer division returns a rational number, how do we find the
 result in decimal? One option is to write a number as a floating point literal,
 a @dfn{Float}.
-This kind of literal is written as the integer
-part and fractional parts are separated by a dot ``.'':
+This kind of literal is written with the integer
+and fractional parts separated by a dot ``.'':
 @smalltalkExample{ 15.0 / 4 @result{} 3.75
 15 / 4.0 @result{} 3.75}
 
@@ -307,7 +308,7 @@ the message @msg{//}:
 @result{} 3}
 
 @cindex number @subentry integer @subentry division reminder
-The modulo reminder of the Euclidean division is computed with the message
+The modulo remainder of the Euclidean division is computed with the message
 @msg{\\\\}:
 @smalltalkExample{15 \\\\ 4
 @result{} 3}
@@ -316,8 +317,8 @@ The modulo reminder of the Euclidean division is computed with the message
 @cindex number @subentry integer @subentry @method{even}
 @cindex number @subentry integer @subentry @method{isPrime}
 @cindex number @subentry integer @subentry @method{isDivisibleBy:}
-@cuis{} knows arithmetic operations to test if an integer is an odd,
-even, prime number or divider. You just send the appropriate unary or
+@cuis{} has arithmetic operations to test if an integer is odd, even,
+a prime number, or divisible by another. You just send the appropriate unary or
 keyword message to the number:
 
 @smalltalkExampleCaption{Testing on integer,integerBasicTest,
@@ -333,13 +334,13 @@ keyword message to the number:
 @cindex number @subentry integer @subentry @method{lcm:} (lest common multiple)
 With specific @dfn{keyword messages} you can compute the Least Common
 Multiple and Greatest Common Divisor. A keyword message is composed of
-one or several colon(s) ``:'' to insert argument(s):
+one or more colons ``:'' to insert one or more arguments:
 
 @smalltalkExample{12 lcm: 15 @result{} 60
 12 gcd: 15 @result{} 3}
 
 In the Spacewar! game, the central star is the source of a gravity
-field. According to the Newton's law of universal gravitation, any
+field. According to Newton's law of universal gravitation, any
 object with a mass -- a spaceship or a torpedo in the game -- is
 subjected to the gravitational force. We compute it as a vector to
 account for both its direction and its magnitude.  The game code
@@ -377,7 +378,7 @@ file system.  In @ref{ch02-browserDetailed}, the selected class
 category is @strong{Kernel-Numbers}, a group of classes we already
 started using. The term @strong{Kernel-} indicates it is part of
 fundamental categories, but it is only a convention. See the other
-categories as @strong{Kernel-Text} and @strong{Kernel-Chronology}
+categories such as @strong{Kernel-Text} and @strong{Kernel-Chronology}
 related to text and date entities.
 
 @cindex class  @subentry declaration
@@ -405,7 +406,7 @@ A few important points in this declaration:
    was sent to @class{Magnitude} to create this class.
 
    @item the @smalltalk{subclass:} argument @class{Number} is prefixed
-   with ``#'', it is a symbol, a kind of unique string. Indeed when
+   with ``#''. It is a symbol, a kind of unique string. Indeed when
    declaring the @class{Number} class, the system does not know about it
    yet, so it is named as a symbol.
 
@@ -430,7 +431,7 @@ to edit the comment of the selected class.
 
 @cindex method @subentry category
 To the right of the class panel is the method categories panel.
-A class may have tens of methods, so grouping
+A class may have many methods, so grouping
 them by category helps other users orient themselves in finding related methods.
 As a reference, @class{Number}
 has more than 100 instance side methods implemented in
@@ -444,7 +445,7 @@ the right.
 
 @cuisNote{A @clicksequence{right click} on the Class Category pane
 brings up its context menu.  You can select @label{find class ..} or,
-as the menu indictes, use @kbd{Ctrl-f} (@emph{@b{F}ind}), to get a
+as the menu indicates, use @kbd{Ctrl-f} (@emph{@b{F}ind}), to get a
 fill-in panel and type part of a class name to match.  Try it with
 @smalltalk{String}.}
 
@@ -454,13 +455,13 @@ class?}}
 
 
 @cindex method @subentry instance method
-In the Browser, once a method is selected -- in
+In the Browser, once a method is selected -- as in
 @ref{ch02-browserDetailed}, @method{abs} method -- the bottom part
 shows its source code, ready to be explored or edited. Often,
-you will find a small comment just after the method name, it will be
+you will find a small comment just after the method name,
 surrounded by double quotes.
 
-Every object knows its own class and will respond it when sent the message @smalltalk{#class}.
+Every object knows its own class and will respond with it when sent the message @smalltalk{#class}.
 
 @cindex browser @subentry invoke from Workspace
 @cindex keyboard shortcut @subentry browse a class (@kbd{Ctrl-b})
@@ -512,16 +513,16 @@ bring up a menu of operations you can apply which are specific to that
 pane.
 
 With the mouse pointer over the class category pane of the Browser --
-the most left one -- just do:
+the left-most one -- just do:
 
 ...@clicksequence{right mouse click @click{} @label{add item}}... then
 key in @emph{Spacewar!}
 
 
 @cindex class @subentry create (new)
-Once our new category is set, the Browser proposes on the method
-source code pane -- the bottom one -- a code template to create a new
-class in the @label{Spacewar!} category:
+Once our new category is created, the Browser proposes a code template in
+the method source code pane -- the bottom one -- to create a new class in
+the @label{Spacewar!} category:
 
 @smalltalkExample{Object subclass: #NameOfSubclass
    instanceVariableNames: ''
@@ -532,12 +533,12 @@ class in the @label{Spacewar!} category:
 @cindex keyboard shortcut @subentry save code (@kbd{Ctrl-s})
 We replace the symbol @smalltalk{#NameOfSubclass} with a symbol
 representing the name of the class we want to create. Let's start with
-@smalltalk{#SpaceWar}. To save the class, over the class
+@smalltalk{#SpaceWar}. To save our class, while over the class
 declaration code do ...@clicksequence{right mouse click @click{}
-@label{Accept}}... @cuis{} will ask your initials and name
+@label{Accept}}... @cuis{} will ask for your initials and name
 if it hasn't before. Alternatively, you can just do @kbd{Ctrl-s} (@emph{@b{S}ave}).
 
-Then you repeat the process for each of @smalltalk{#SpaceShip},
+Then simply repeat the process for each of @smalltalk{#SpaceShip},
 @smalltalk{#CentralStar} and @smalltalk{#Torpedo}. If necessary, to
 get another class code template, click the class category
 @label{Spacewar!}.
@@ -554,7 +555,7 @@ When done, your class category should be filled with four classes as in
 @cindex package @subentry save
 @cindex package @subentry tool
 Another important use case of a class category is to define a package
-to save code on file.  A package saves the code of the classes held in
+to save code to a file.  A package saves the code of the classes held in
 a given class category and a bit more, but more on that last point
 later. To create our @label{Spacewar!} package and save our game code
 we use the Installed Packages tool.
@@ -575,7 +576,7 @@ we use the Installed Packages tool.
 @figure{Installed Package window,ch02-InstalledPackages,8}
 
 @cindex package @subentry load @subentry by graphic interface
-A file @file{Spacewar!.pck.st} is created along the @cuis{} image
+A file @file{Spacewar!.pck.st} is created alongside the @cuis{} image
 file.  To install a package in a fresh @cuis{}
 environment, use the File List tool:
 
@@ -590,9 +591,9 @@ environment, use the File List tool:
 @end enumerate
 
 You can also drag and drop the package file from your operating system
-over to the Squeak window, upon dropping the file over the window
+over to the Squeak window. Upon dropping the file over the window
 @cuis{} will ask you what you want to do with this package.  To
-install it on your enviroment you can simply press @label{Install
+install it in your enviroment you can simply press @label{Install
 package}.
 
 Or, you can open a Workspace, type in @smalltalk{Feature require: 'Spacewar!'}
