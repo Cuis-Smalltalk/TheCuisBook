@@ -14,7 +14,7 @@ it.
 
 
 
-Compilation : May 13, 2021
+Compilation : May 29, 2021
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -123,7 +123,7 @@ file system.  In <a href="#ch02_002dbrowserDetailed">Figure 2.1</a>, the selecte
 category is <strong>Kernel-Numbers</strong>, a group of classes we already
 started using. The term <strong>Kernel-</strong> indicates it is part of
 fundamental categories, but it is only a convention. See the other
-categories as <strong>Kernel-Text</strong> and <strong>Kernel-Chronology</strong>
+categories such as <strong>Kernel-Text</strong> and <strong>Kernel-Chronology</strong>
 related to text and date entities.
 </p>
 <span id="index-class-2"></span>
@@ -152,7 +152,7 @@ below, the <code>Number</code> class declaration is:
    was sent to <code>Magnitude</code> to create this class.
 
 </li><li> the <code>subclass:</code> argument <code>Number</code> is prefixed
-   with &ldquo;#&rdquo;, it is a symbol, a kind of unique string. Indeed when
+   with &ldquo;#&rdquo;. It is a symbol, a kind of unique string. Indeed when
    declaring the <code>Number</code> class, the system does not know about it
    yet, so it is named as a symbol.
 
@@ -177,7 +177,7 @@ to edit the comment of the selected class.
 </p>
 <span id="index-method-1"></span>
 <p>To the right of the class panel is the method categories panel.
-A class may have tens of methods, so grouping
+A class may have many methods, so grouping
 them by category helps other users orient themselves in finding related methods.
 As a reference, <code>Number</code>
 has more than 100 instance side methods implemented in
@@ -192,7 +192,7 @@ the right.
 <p>&nbsp;<img src="note.png" alt="note">
 A right click on the Class Category pane
 brings up its context menu.  You can select <code>find class ..</code> or,
-as the menu indictes, use <kbd>Ctrl-f</kbd> (<em><b>F</b>ind</em>), to get a
+as the menu indicates, use <kbd>Ctrl-f</kbd> (<em><b>F</b>ind</em>), to get a
 fill-in panel and type part of a class name to match.  Try it with
 <code>String</code>.
 </p></blockquote>
@@ -209,13 +209,13 @@ class?</em>
 <div class="float-caption"><p><strong>Exercise 2.3: </strong>Count of methods</p></div></div>
 
 <span id="index-method-2"></span>
-<p>In the Browser, once a method is selected &ndash; in
+<p>In the Browser, once a method is selected &ndash; as in
 <a href="#ch02_002dbrowserDetailed">Figure 2.1</a>, <code>abs</code> method &ndash; the bottom part
 shows its source code, ready to be explored or edited. Often,
-you will find a small comment just after the method name, it will be
+you will find a small comment just after the method name,
 surrounded by double quotes.
 </p>
-<p>Every object knows its own class and will respond it when sent the message <code>#class</code>.
+<p>Every object knows its own class and will respond with it when sent the message <code>#class</code>.
 </p>
 <span id="index-browser-2"></span>
 <span id="index-keyboard-shortcut-4"></span>

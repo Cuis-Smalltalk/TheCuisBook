@@ -14,7 +14,7 @@ it.
 
 
 
-Compilation : May 13, 2021
+Compilation : May 29, 2021
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -124,8 +124,8 @@ sum of the squares of the inverse of the first four integers.</em>
 <p>If Cuis-Smalltalk integer division returns a rational number, how do we find the
 result in decimal? One option is to write a number as a floating point literal,
 a <em>Float</em>.
-This kind of literal is written as the integer
-part and fractional parts are separated by a dot &ldquo;.&rdquo;:
+This kind of literal is written with the integer
+and fractional parts separated by a dot &ldquo;.&rdquo;:
 </p><div class="example">
 <pre class="example">15.0 / 4 &rArr; 3.75
 15 / 4.0 &rArr; 3.75
@@ -150,7 +150,7 @@ the message <code>#//</code>:
 </pre></div>
 
 <span id="index-number-12"></span>
-<p>The modulo reminder of the Euclidean division is computed with the message
+<p>The modulo remainder of the Euclidean division is computed with the message
 <code>#\\</code>:
 </p><div class="example">
 <pre class="example">15 \\ 4
@@ -161,8 +161,8 @@ the message <code>#//</code>:
 <span id="index-number-14"></span>
 <span id="index-number-15"></span>
 <span id="index-number-16"></span>
-<p>Cuis-Smalltalk knows arithmetic operations to test if an integer is an odd,
-even, prime number or divider. You just send the appropriate unary or
+<p>Cuis-Smalltalk has arithmetic operations to test if an integer is odd, even,
+a prime number, or divisible by another. You just send the appropriate unary or
 keyword message to the number:
 </p>
 <div class="float"><span id="integerBasicTest"></span>
@@ -181,7 +181,7 @@ keyword message to the number:
 <span id="index-number-18"></span>
 <p>With specific <em>keyword messages</em> you can compute the Least Common
 Multiple and Greatest Common Divisor. A keyword message is composed of
-one or several colon(s) &ldquo;:&rdquo; to insert argument(s):
+one or more colons &ldquo;:&rdquo; to insert one or more arguments:
 </p>
 <div class="example">
 <pre class="example">12 lcm: 15 &rArr; 60
@@ -189,7 +189,7 @@ one or several colon(s) &ldquo;:&rdquo; to insert argument(s):
 </pre></div>
 
 <p>In the Spacewar! game, the central star is the source of a gravity
-field. According to the Newton&rsquo;s law of universal gravitation, any
+field. According to Newton&rsquo;s law of universal gravitation, any
 object with a mass &ndash; a spaceship or a torpedo in the game &ndash; is
 subjected to the gravitational force. We compute it as a vector to
 account for both its direction and its magnitude.  The game code

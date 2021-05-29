@@ -14,7 +14,7 @@ it.
 
 
 
-Compilation : May 13, 2021
+Compilation : May 29, 2021
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -122,16 +122,16 @@ bring up a menu of operations you can apply which are specific to that
 pane.
 </p>
 <p>With the mouse pointer over the class category pane of the Browser &ndash;
-the most left one &ndash; just do:
+the left-most one &ndash; just do:
 </p>
 <p>...right mouse click &rarr; <code>add item</code>... then
 key in <em>Spacewar!</em>
 </p>
 
 <span id="index-class-6"></span>
-<p>Once our new category is set, the Browser proposes on the method
-source code pane &ndash; the bottom one &ndash; a code template to create a new
-class in the <code>Spacewar!</code> category:
+<p>Once our new category is created, the Browser proposes a code template in
+the method source code pane &ndash; the bottom one &ndash; to create a new class in
+the <code>Spacewar!</code> category:
 </p>
 <div class="example">
 <pre class="example">Object subclass: #NameOfSubclass
@@ -144,12 +144,12 @@ class in the <code>Spacewar!</code> category:
 <span id="index-keyboard-shortcut-5"></span>
 <p>We replace the symbol <code>#NameOfSubclass</code> with a symbol
 representing the name of the class we want to create. Let&rsquo;s start with
-<code>#SpaceWar</code>. To save the class, over the class
+<code>#SpaceWar</code>. To save our class, while over the class
 declaration code do ...right mouse click &rarr;
-<code>Accept</code>... Cuis-Smalltalk will ask your initials and name
+<code>Accept</code>... Cuis-Smalltalk will ask for your initials and name
 if it hasn&rsquo;t before. Alternatively, you can just do <kbd>Ctrl-s</kbd> (<em><b>S</b>ave</em>).
 </p>
-<p>Then you repeat the process for each of <code>#SpaceShip</code>,
+<p>Then simply repeat the process for each of <code>#SpaceShip</code>,
 <code>#CentralStar</code> and <code>#Torpedo</code>. If necessary, to
 get another class code template, click the class category
 <code>Spacewar!</code>.
@@ -167,7 +167,7 @@ get another class code template, click the class category
 <span id="index-package-1"></span>
 <span id="index-package-2"></span>
 <p>Another important use case of a class category is to define a package
-to save code on file.  A package saves the code of the classes held in
+to save code to a file.  A package saves the code of the classes held in
 a given class category and a bit more, but more on that last point
 later. To create our <code>Spacewar!</code> package and save our game code
 we use the Installed Packages tool.
@@ -190,7 +190,7 @@ we use the Installed Packages tool.
 </div>
 <div class="float-caption"><p><strong>Figure 2.3: </strong>Installed Package window</p></div></div>
 <span id="index-package-3"></span>
-<p>A file <samp>Spacewar!.pck.st</samp> is created along the Cuis-Smalltalk image
+<p>A file <samp>Spacewar!.pck.st</samp> is created alongside the Cuis-Smalltalk image
 file.  To install a package in a fresh Cuis-Smalltalk
 environment, use the File List tool:
 </p>
@@ -204,9 +204,9 @@ environment, use the File List tool:
 </li></ol>
 
 <p>You can also drag and drop the package file from your operating system
-over to the Squeak window, upon dropping the file over the window
+over to the Squeak window. Upon dropping the file over the window
 Cuis-Smalltalk will ask you what you want to do with this package.  To
-install it on your enviroment you can simply press <code>Install
+install it in your enviroment you can simply press <code>Install
 package</code>.
 </p>
 <p>Or, you can open a Workspace, type in <code>Feature require: 'Spacewar!'</code>

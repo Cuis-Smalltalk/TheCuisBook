@@ -14,7 +14,7 @@ it.
 
 
 
-Compilation : May 13, 2021
+Compilation : May 29, 2021
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -98,7 +98,7 @@ Next: <a href="Messages-to-number-entities.html" accesskey="n" rel="next">Messag
 <span id="index-string-4"></span>
 
 <p>Access to a character in a string is done with the keyword message
-<code>#at:</code> and its index position in the string as argument. Execute
+<code>#at:</code> and its index position in the string as the argument. Execute
 the following examples with the <kbd>Ctrl-p</kbd> shortcut:
 </p>
 <div class="example">
@@ -142,7 +142,7 @@ the string &rsquo;Hello&rsquo; to become &rsquo;Belle&rsquo;.</em>
 
 <div class="float-caption"><p><strong>Exercise 2.1: </strong>Hello to Belle</p></div></div>
 <span id="index-character"></span>
-<p>Character can be converted to integer and integer to character:
+<p>Characters can be converted to integers and integers to characters:
 </p><div class="example">
 <pre class="example">$A asciiValue &rArr; 65
 (65 + 25) asCharacter &rArr; $Z
@@ -150,18 +150,18 @@ the string &rsquo;Hello&rsquo; to become &rsquo;Belle&rsquo;.</em>
 
 <span id="index-string-7"></span>
 <span id="index-collection-1"></span>
-<p>Shuffling a string is funny but without much use. Nevertheless,
-shuffling can apply to any kind of collection, not only to string, and it
-proves to be of some use as we may see later:
+<p>Shuffling a string can be fun but not very useful. However,
+shuffling can apply to any kind of collection, not only to a string, and it
+will prove to be useful as we will see later:
 </p><div class="example">
 <pre class="example">'hello world' shuffled
 &rArr; 'wod llreohl'
 </pre></div>
-<p>Note that results of each shuffle are different.
+<p>Note that the results of each shuffle are different.
 </p>
 <span id="index-string-8"></span>
 <span id="index-message-8"></span>
-<p>Messages naturally compose.
+<p>Messages naturally compose:
 </p><div class="example">
 <pre class="example">'hello world' shuffled asArray
 &rArr; #($h $d $l $  $o $w $e $l $l $o $r) 
@@ -187,12 +187,13 @@ which answers a sorted collection.
 &rArr; #($  $d $e $h $l $l $l $o $o $r $w)
 </pre></div>
 
-<p>Note that this breaks patterns.  We get a <code>String</code> result when giving 
-a <code>String</code> the message <code>#shuffled</code> but get an <code>Array</code>
-instance when giving a <code>String</code> instance the message <code>#sorted</code>.
+<p>Note that this breaks the pattern of the result type.  We get a <code>String</code>
+result when sending a <code>String</code> the message <code>#shuffled</code> but get
+an <code>Array</code> result when sending a <code>String</code> the message
+<code>#sorted</code>.
 </p>
-<p>We take much care in Smalltalk to give names which reduce surprise, but there
-are cases, as here, where something odd happens.  We will discuss this
+<p>We take great care in Smalltalk to create names which reduce surprise, but there
+are cases, as seen here, where something odd happens.  We will discuss this
 further when we look at different kinds of <code>Collection</code>s and
 discuss how we name instances and methods to show intent and reduce surprise.
 </p>
