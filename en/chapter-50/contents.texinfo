@@ -313,6 +313,23 @@ far:
    (c asciiValue - 65 + 3 \\ 26 + 65) asCharacter]
 @end smallexample
 
+Each character from A to Z is referenced by the @smalltalk{c} block
+parameter and converted to its Ascii
+value@footnote{@url{https://en.wikipedia.org/wiki/ASCII}}:
+@smalltalk{c asciiValue}. It is shifted of 65, so the A character
+counts as 0 and Z as 25 in the alphabet list. To apply the Caesar
+cipher, we send the message @smalltalk{+ 3} to the previous result.
+
+We are almost good, only the characters X, Y, Z will overflow the
+alphabet, indeed these characters will be ciphered as 26, 27, 28. To
+fix that we send @smalltalk{\\ 26} to the previous result, it is an
+old trick of programming: the reminder of the Euclidean division by 26
+frames the value between 0 and 25.
+
+Finally we shift back of 65 before converting from the Ascii value to
+the character.
+
+
 @subheading @ref{encodeCaesar}
 In the solution of @ref{alphabetCipher}, we just need to replace the
 characters interval with a string:

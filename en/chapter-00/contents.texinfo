@@ -55,7 +55,9 @@ To make your journey with this book more enjoyable, the
 @emph{Spacewar!}@footnote{@url{https://en.wikipedia.org/wiki/Spacewar!}}
 project is its recurring theme. It is distilled into the book in code
 examples, exercises and dedicated chapters. At the end of the book,
-you will have written a replica of this historic video game.
+you will have written a replica of this historic video game. The final
+@cuis{} package of this game can be downloaded from the book
+repository@footnote{@url{https://github.com/Cuis-Smalltalk/TheCuisBook/blob/master/Spacewar!.pck.st}}.
 
 
 @heading How to use the book
