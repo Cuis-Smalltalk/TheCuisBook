@@ -324,7 +324,9 @@ We are almost good, only the characters X, Y, Z will overflow the
 alphabet, indeed these characters will be ciphered as 26, 27, 28. To
 fix that we send @smalltalk{\\ 26} to the previous result, it is an
 old trick of programming: the reminder of the Euclidean division by 26
-frames the value between 0 and 25.
+frames the value between 0 and 25@footnote{It generalizes to the
+mathematics field of modular arithmetic,
+@url{https://www.wikiwand.com/en/Modular_arithmetic}}.
 
 Finally we shift back of 65 before converting from the Ascii value to
 the character.
