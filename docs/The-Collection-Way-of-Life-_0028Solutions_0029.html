@@ -14,7 +14,7 @@ it.
 
 
 
-Compilation : June 15, 2021
+Compilation : August 2, 2021
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -166,6 +166,23 @@ far:
    (c asciiValue - 65 + 3 \\ 26 + 65) asCharacter]
 </pre></div>
 
+<p>Each character from A to Z is referenced by the <code>c</code> block
+parameter and converted to its Ascii
+value<a id="DOCF27" href="#FOOT27"><sup>27</sup></a>:
+<code>c asciiValue</code>. It is shifted of 65, so the A character
+counts as 0 and Z as 25 in the alphabet list. To apply the Caesar
+cipher, we send the message <code>+ 3</code> to the previous result.
+</p>
+<p>We are almost good, only the characters X, Y, Z will overflow the
+alphabet, indeed these characters will be ciphered as 26, 27, 28. To
+fix that we send <code>\\ 26</code> to the previous result, it is an
+old trick of programming: the reminder of the Euclidean division by 26
+frames the value between 0 and 25<a id="DOCF28" href="#FOOT28"><sup>28</sup></a>.
+</p>
+<p>Finally we shift back of 65 before converting from the Ascii value to
+the character.
+</p>
+
 <span id="encodeCaesar-1"></span><h4 class="subheading"><a href="Fun-with-collections.html#encodeCaesar">Exercise 4.10</a></h4>
 <p>In the solution of <a href="Fun-with-collections.html#alphabetCipher">Exercise 4.9</a>, we just need to replace the
 characters interval with a string:
@@ -273,6 +290,17 @@ appropriate indentation.
 
 
 
+<div class="footnote">
+<hr>
+<h4 class="footnotes-heading">Footnotes</h4>
+
+<h5><a id="FOOT27" href="#DOCF27">(27)</a></h3>
+<p><a href="https://en.wikipedia.org/wiki/ASCII">https://en.wikipedia.org/wiki/ASCII</a></p>
+<h5><a id="FOOT28" href="#DOCF28">(28)</a></h3>
+<p>It generalizes to the
+mathematics field of modular arithmetic,
+<a href="https://www.wikiwand.com/en/Modular_arithmetic">https://www.wikiwand.com/en/Modular_arithmetic</a></p>
+</div>
 <hr>
 <div class="header">
 <p>
