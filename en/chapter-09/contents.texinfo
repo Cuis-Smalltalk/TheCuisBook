@@ -477,7 +477,9 @@ Things one may want to personalize in the image are:
 
 @end itemize
 
-@cindex line command option @subentry -s (run a script)
+@cindex command line option @subentry -s (run a script)
+@cindex start-up script
+
 We want to record these image preferences in a
 @file{setUpEnvironment.st} script to be executed at start up. On
 GNU/Linux, you ask @cuis{} to run a script with the @option{-s}, for
