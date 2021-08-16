@@ -14,7 +14,7 @@ it.
 
 
 
-Compilation : August 2, 2021
+Compilation : August 16, 2021
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -178,7 +178,9 @@ set up the image to fit our personal needs and taste.
 
 </li></ul>
 
-<span id="index-line-command-option"></span>
+<span id="index-command-line-option"></span>
+<span id="index-start_002dup-script"></span>
+
 <p>We want to record these image preferences in a
 <samp>setUpEnvironment.st</samp> script to be executed at start up. On
 GNU/Linux, you ask Cuis-Smalltalk to run a script with the <samp>-s</samp>, for
@@ -258,12 +260,15 @@ occupying a quarter of the screen:
 <div class="example">
 <pre class="example">&quot;Open a few System Browsers&quot;
 BrowserWindow openBrowser
-   morphBounds: (0 @ 0 extent: extent).
+   morphPosition: 0 @ 0;
+   morphExtent: extent.
 BrowserWindow openBrowser
-   morphBounds: (area width // 2 @ 0 extent: extent).
+   morphPosition: area width // 2 @ 0;
+   morphExtent: extent.
 &quot;Open a System Browser on a specific class&quot;
 morph := BrowserWindow openBrowser
-   morphBounds: (area extent // 2 extent: extent).
+   morphPosition: area extent // 2;
+   morphExtent: extent.
 morph model setClass: Integer selector: nil.
 </pre></div>
 
@@ -275,20 +280,18 @@ instance, we have to search it in the windows of the world.
 </p>
 <div class="example">
 <pre class="example">&quot;Open a Workspace with some default contents&quot;
-Workspace openWorkspace.
-morph := UISupervisor ui submorphs detect: [:aMorph |
-   aMorph class = WorkspaceWindow].
+morph := Workspace openWorkspace.
 morph model actualContents: '&quot;Some code&quot;
 1 + 2.
 &quot;Other code&quot;
 5 * 3.'.
-morph morphBounds:
-   (0 @ (area height // 2)
-      extent: extent x @ (2 / 3 * extent y)).
+morph
+   morphPosition: 0 @ (area height // 2);
+   morphExtent: extent x @ (2 / 3 * extent y).
 &quot;Open a transcript for logs&quot;
-TranscriptWindow openTranscript morphBounds: 
-   (0 @ (area height // 2 + (2 / 3 * extent y)) 
-      extent: extent x @ (1 / 3 * extent y )).
+TranscriptWindow openTranscript
+   morphPosition: 0 @ (area height // 2 + (2 / 3 * extent y));
+   morphExtent: extent x @ (1 / 3 * extent y).
 </pre></div>
 
 <p>Of course you should adjust the argument of the <code>#actualContents:</code>

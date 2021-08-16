@@ -552,12 +552,15 @@ occupying a quarter of the screen:
 
 @smalltalkExample{"Open a few System Browsers"
 BrowserWindow openBrowser
-   morphBounds: (0 @@ 0 extent: extent).
+   morphPosition: 0 @@ 0;
+   morphExtent: extent.
 BrowserWindow openBrowser
-   morphBounds: (area width // 2 @@ 0 extent: extent).
+   morphPosition: area width // 2 @@ 0;
+   morphExtent: extent.
 "Open a System Browser on a specific class"
 morph @assign{} BrowserWindow openBrowser
-   morphBounds: (area extent // 2 extent: extent).
+   morphPosition: area extent // 2;
+   morphExtent: extent.
 morph model setClass: Integer selector: nil.}
 
 Then in the remaining free quarter, we install a workspace occupying
@@ -567,20 +570,18 @@ when asking for a new Workspace, @cuis{} does not answer the created
 instance, we have to search it in the windows of the world.
 
 @smalltalkExample{"Open a Workspace with some default contents"
-Workspace openWorkspace.
-morph @assign{} UISupervisor ui submorphs detect: [:aMorph |
-   aMorph class = WorkspaceWindow].
+morph @assign{} Workspace openWorkspace.
 morph model actualContents: '"Some code"
 1 + 2.
 "Other code"
 5 * 3.'.
-morph morphBounds:
-   (0 @@ (area height // 2)
-      extent: extent x @@ (2 / 3 * extent y)).
+morph
+   morphPosition: 0 @@ (area height // 2);
+   morphExtent: extent x @@ (2 / 3 * extent y).
 "Open a transcript for logs"
-TranscriptWindow openTranscript morphBounds: 
-   (0 @@ (area height // 2 + (2 / 3 * extent y)) 
-      extent: extent x @@ (1 / 3 * extent y )).}
+TranscriptWindow openTranscript
+   morphPosition: 0 @@ (area height // 2 + (2 / 3 * extent y));
+   morphExtent: extent x @@ (1 / 3 * extent y).}
 
 Of course you should adjust the argument of the @msg{actualContents:}
 message to meaningful code for your usage.
