@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4488] on 20 December 2020 at 9:34:22 pm'!
+'From Cuis 5.0 [latest update: #4789] on 23 August 2021 at 12:02:46 pm'!
 'Description '!
-!provides: 'Spacewar!!' 1 79!
+!provides: 'Spacewar!!' 1 82!
 SystemOrganization addCategory: 'Spacewar!!'!
 
 
@@ -94,9 +94,9 @@ direction
 mass
 	^ 1! !
 
-!Mobile methodsFor: 'accessing' stamp: 'hlsf 10/1/2020 12:18:54'!
+!Mobile methodsFor: 'accessing' stamp: 'hlsf 8/23/2021 11:55:02'!
 velocity: aVector
-	velocity _ 	aVector ! !
+	velocity _ aVector ! !
 
 !Mobile methodsFor: 'computing' stamp: 'hlsf 10/1/2020 08:34:37'!
 gravity
@@ -106,7 +106,7 @@ gravity
 	^ [-10 * self mass * owner starMass / (position r raisedTo: 3) * position]
 		on: Error do: [0 @ 0]! !
 
-!Mobile methodsFor: 'computing' stamp: 'hlsf 10/1/2020 09:12:07'!
+!Mobile methodsFor: 'computing' stamp: 'hlsf 8/23/2021 11:52:21'!
 update: t
 "Update the mobile position and velocity "
 	| ai ag newVelocity |
@@ -114,15 +114,16 @@ update: t
 	ai _ acceleration * self direction.
 	ag _ self gravity.
 	newVelocity _ (ai + ag) * t + velocity.
-	self morphPosition: (0.5 * (ai + ag) * t squared) + (velocity * t) + self morphPosition.
-	velocity _ newVelocity .
+	self morphPosition: (0.5 * (ai + ag) * t squared) 
+		+ (velocity * t) 
+		+ self morphPosition.
+	velocity _ newVelocity.
 	
 	"Are we out of screen?
 	If so we move the mobile to the other corner and slow it down by a factor of 2"
-	(self isInOuterSpace and: [self isGoingOuterSpace])
-		ifTrue: [
-			velocity _ velocity / 2.
-			self morphPosition: self morphPosition negated]! !
+	(self isInOuterSpace and: [self isGoingOuterSpace]) ifTrue: [
+		velocity _ velocity / 2.
+		self morphPosition: self morphPosition negated]! !
 
 !Mobile methodsFor: 'geometry testing' stamp: 'hlsf 12/15/2020 21:03:38'!
 requiresVectorCanvas
@@ -145,12 +146,16 @@ isInOuterSpace
 "Is the mobile located in the outer space? (outside of the game play area)"
 	^(owner morphContainsPoint: self morphPosition) not! !
 
-!Mobile methodsFor: 'drawing' stamp: 'hlsf 12/20/2020 13:20:13'!
+!Mobile methodsFor: 'drawing' stamp: 'hlsf 8/23/2021 11:50:43'!
 drawOn: canvas polygon: vertices
 	| size |
 	size _ vertices size.
 	vertices withIndexDo: [: aPoint :i |
-		canvas line: aPoint to: ( vertices at: (i  \\ size + 1) ) width: 2 color: color]! !
+		canvas 
+			line: aPoint 
+			to: ( vertices at: (i  \\ size + 1) ) 
+			width: 2 
+			color: color] ! !
 
 !Mobile class methodsFor: 'as yet unclassified' stamp: 'hlsf 12/19/2020 23:21:09'!
 vertices
@@ -291,35 +296,35 @@ collisions
 	self collisionsShipsTorpedoes.
 	self collisionsShips ! !
 
-!SpaceWar methodsFor: 'collisions' stamp: 'hlsf 12/15/2020 21:10:22'!
+!SpaceWar methodsFor: 'collisions' stamp: 'hlsf 8/23/2021 11:56:44'!
 collisionsShips
-	(ships first displayBounds intersects: ships second displayBounds) 		ifTrue: [
+	(ships first displayBounds intersects: ships second displayBounds) ifTrue: [
 		ships do: [:each |
 			each flashWith: Color red.
-			self teleport: each]		]! !
+			self teleport: each] ]! !
 
-!SpaceWar methodsFor: 'collisions' stamp: 'hlsf 12/15/2020 20:46:09'!
+!SpaceWar methodsFor: 'collisions' stamp: 'hlsf 8/23/2021 12:02:18'!
 collisionsShipsStar
 	ships do: [:aShip | 
-		(aShip displayBounds intersects: centralStar displayBounds) 		ifTrue: [
+		(aShip displayBounds intersects: centralStar displayBounds) ifTrue: [
 			aShip flashWith: Color red.
 			self teleport: aShip]]! !
 
-!SpaceWar methodsFor: 'collisions' stamp: 'hlsf 12/15/2020 21:10:58'!
+!SpaceWar methodsFor: 'collisions' stamp: 'hlsf 8/23/2021 11:53:04'!
 collisionsShipsTorpedoes
 	ships do: [:aShip | 
 		torpedoes do: [:aTorpedo |
-		(aShip displayBounds intersects: aTorpedo displayBounds) 		ifTrue: [
+		(aShip displayBounds intersects: aTorpedo displayBounds) ifTrue: [
 			aShip flashWith: Color red.
 			aTorpedo flashWith: Color orange.
 			self destroyTorpedo: aTorpedo.
 			self teleport: aShip]]
 	]! !
 
-!SpaceWar methodsFor: 'collisions' stamp: 'hlsf 12/15/2020 21:11:28'!
+!SpaceWar methodsFor: 'collisions' stamp: 'hlsf 8/23/2021 12:02:28'!
 collisionsTorpedoesStar
 	torpedoes do: [:each | 
-		(each displayBounds intersects: centralStar displayBounds) 		ifTrue: [
+		(each displayBounds intersects: centralStar displayBounds) ifTrue: [
 			each flashWith: Color orange.
 			self destroyTorpedo: each]]! !
 
@@ -384,13 +389,13 @@ start the game loop(step) and initialize the actors."
 	self startSteppingStepTime: self stepTime.
 	self initializeActors.! !
 
-!SpaceWar methodsFor: 'initialization' stamp: 'hlsf 10/3/2020 11:45:38'!
+!SpaceWar methodsFor: 'initialization' stamp: 'hlsf 8/23/2021 11:53:32'!
 initializeActors
 	centralStar _ CentralStar new.
 	self addMorph: centralStar.
 	centralStar morphPosition: 0@0.
 	torpedoes _ OrderedCollection new.
-	ships _ Array 		with: SpaceShip new 		with: SpaceShip new.
+	ships _ Array with: SpaceShip new with: SpaceShip new.
 	self addAllMorphs: ships.
 	ships first 
 		morphPosition: 200 @ -200;
