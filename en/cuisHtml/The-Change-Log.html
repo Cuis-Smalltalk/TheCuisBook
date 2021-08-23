@@ -1,0 +1,199 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This book is for Cuis-Smalltalk (5.0#4506), a free and modern
+implementation of the Smalltalk language and environment.
+
+Copyright (C) 2020 Hilaire Fernandes with Ken Dickey & Juan Vuletich
+
+
+Thanks to Matt Armstrong, David Lewis, Tommy Pettersson, Mauro Rizzi &
+Stephen Smith for the reviews of the book and suggestions to improve
+it.
+
+
+
+
+
+Compilation : August 23, 2021
+
+Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
+
+
+
+The contents of this book are protected under Creative Commons
+Attribution-ShareAlike 4.0 International.
+
+You are free to:
+
+
+Share - copy and redistribute the material in any medium or
+format
+
+
+Adapt - remix, transform, and build upon the material for any
+purpose, even commercially.
+
+
+
+Under the following terms:
+
+
+Attribution. You must give appropriate credit, provide a link to
+the license, and indicate if changes were made. You may do so in any
+reasonable manner, but not in any way that suggests the licensor
+endorses you or your use.
+
+
+Share Alike. If you remix, transform, or build upon the material,
+you must distribute your contributions under the same license as the
+original.
+
+Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+ -->
+<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>The Change Log (The Cuis-Smalltalk Book)</title>
+
+<meta name="description" content="The Change Log (The Cuis-Smalltalk Book)">
+<meta name="keywords" content="The Change Log (The Cuis-Smalltalk Book)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Indexes.html" rel="index" title="Indexes">
+<link href="Code-Management.html" rel="up" title="Code Management">
+<link href="The-Change-Set.html" rel="next" title="The Change Set">
+<link href="The-Image.html" rel="prev" title="The Image">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="style.css">
+
+
+</head>
+
+<body lang="en">
+<span id="The-Change-Log"></span><div class="header">
+<p>
+Next: <a href="The-Change-Set.html" accesskey="n" rel="next">The Change Set</a>, Previous: <a href="The-Image.html" accesskey="p" rel="prev">The Image</a>, Up: <a href="Code-Management.html" accesskey="u" rel="up">Code Management</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="The-Change-Log-1"></span><h3 class="section">9.2 The Change Log</h3>
+<span id="index-change-log"></span>
+
+<p>Cuis-Smalltalk records any action occurring in the environment: the code you
+edit in the System Browser, the code you execute in a
+Workspace. Therefore, in the event of a Cuis-Smalltalk crash you can restore
+unsaved changes when you launch the same Cuis-Smalltalk image again. Let&rsquo;s explore
+this feature with a simple example.
+</p>
+<p>On a fresh Cuis-Smalltalk installation, create a new class category named
+<code>TheCuisBook</code> and within <code>TheBook</code> class:
+</p>
+<ul>
+<li> Over the class category pane of System Browser (at the most
+   left), do ...Right click &rarr; <code>add
+   items... (a)</code>... key in <code>TheCuisBook</code>.
+
+</li><li> Select this new class category and create the class
+  <code>TheBook</code> as a kind of <code>Object</code>: select the
+  <code>TheCuisBook</code> category then in the source code below edit the
+  class template to replace <code>#NameOfClass</code> with
+  <code>#TheBook</code> then save the class definition with
+  <kbd>Ctrl-s</kbd>.
+  
+</li></ul>
+
+<p>Open a Workspace, then key in the following code:
+</p>
+<div class="example">
+<pre class="example">| myBook |
+myBook := TheBook new
+</pre></div>
+
+<p>Cuis-Smalltalk does not save code you key in the Workspace, but code you
+execute. Let&rsquo;s execute this code: <kbd>Ctrl-a</kbd> then <kbd>Ctrl-p</kbd>, the
+Workspace prints the result: <code>a TheBook</code>, an instance of a
+<code>TheBook</code> class.
+</p>
+<p>Now kill Cuis-Smalltalk abruptly. On GNU/Linux, you can use the
+<code>xkill</code> command to terminate Cuis-Smalltalk by clicking at its window.
+</p>
+<p>Now start Cuis-Smalltalk again, and it immediately informs you there are unsaved
+changes:
+</p>
+<div class="float"><span id="ch10_002dRecoverLostChanges1"></span>
+<div align="center"><img src="ch10-RecoverLostChanges1.png" alt="ch10-RecoverLostChanges1">
+</div>
+<div class="float-caption"><p><strong>Figure 9.1: </strong>Cuis-Smalltalk informs about lost changes</p></div></div>
+<p>From there you have three options:
+</p>
+<ul>
+<li> <strong>Restore lost changes automatically.</strong> Cuis-Smalltalk will
+  apply all the changes: new class definitions, new methods; edited
+  class definitions and method source code; executed code (in
+  Workspaces or any places where code can be executed). Often this is
+  not really what you want to do, particularly the executed code.
+
+<span id="index-tools-4"></span>
+</li><li> <strong>Restore lost changes manually.</strong> In the subsequent
+  <code>Lost changes</code> window you are presented with the unsaved
+  changes, one per line, in chronological order, with the older ones
+  at the top of the list. You select each change (line) you want to
+  restore, then you apply your selection with the <code>file in
+  selections</code> button.
+
+<div class="float"><span id="ch10_002dRecoverLostChanges2"></span>
+<div align="center"><img src="ch10-RecoverLostChanges2.png" alt="ch10-RecoverLostChanges2">
+</div>
+<div class="float-caption"><p><strong>Figure 9.2: </strong>Manually select the changes to file in</p></div></div>
+<p>To file-in the changes related to the creation of the
+  <code>TheBook</code> class but not the executed code in the Workspace, select
+  the two lines related to class definition.
+</p>
+<p>The contextual menu (mouse right click) of the <code>Lost changes</code>
+  window offers a lot of options to filter the changes. Useful when
+  the batch of lost changes is important.
+</p>
+</li><li> <strong>Nothing.</strong> No changes are restored. Keep in mind that
+  unsaved changes aren&rsquo;t discarded until you save your image.
+
+<span id="index-tools-5"></span>
+<p>In case you change your mind and you want to recover changes, do
+  ...World menu &rarr; <code>Changes...</code>  &rarr;
+  <code>Recently logged Changes...</code>.
+</p>
+<p>The system presents you a list of image snapshots tagged with a date
+  stamp. Pick up the one occurring just before you lost your code,
+  most likely at the top of the list. Then in the <code>Recent
+  changes</code> window, you proceed as described earlier to cherry pick the
+  changes to restore.
+</p>
+</li></ul>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="The-Change-Set.html" accesskey="n" rel="next">The Change Set</a>, Previous: <a href="The-Image.html" accesskey="p" rel="prev">The Image</a>, Up: <a href="Code-Management.html" accesskey="u" rel="up">Code Management</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

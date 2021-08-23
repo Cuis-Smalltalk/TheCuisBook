@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This book is for Cuis-Smalltalk (5.0#4506), a free and modern
+implementation of the Smalltalk language and environment.
+
+Copyright (C) 2020 Hilaire Fernandes with Ken Dickey & Juan Vuletich
+
+
+Thanks to Matt Armstrong, David Lewis, Tommy Pettersson, Mauro Rizzi &
+Stephen Smith for the reviews of the book and suggestions to improve
+it.
+
+
+
+
+
+Compilation : August 23, 2021
+
+Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
+
+
+
+The contents of this book are protected under Creative Commons
+Attribution-ShareAlike 4.0 International.
+
+You are free to:
+
+
+Share - copy and redistribute the material in any medium or
+format
+
+
+Adapt - remix, transform, and build upon the material for any
+purpose, even commercially.
+
+
+
+Under the following terms:
+
+
+Attribution. You must give appropriate credit, provide a link to
+the license, and indicate if changes were made. You may do so in any
+reasonable manner, but not in any way that suggests the licensor
+endorses you or your use.
+
+
+Share Alike. If you remix, transform, or build upon the material,
+you must distribute your contributions under the same license as the
+original.
+
+Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+ -->
+<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>A brief introduction to Inspectors (The Cuis-Smalltalk Book)</title>
+
+<meta name="description" content="A brief introduction to Inspectors (The Cuis-Smalltalk Book)">
+<meta name="keywords" content="A brief introduction to Inspectors (The Cuis-Smalltalk Book)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Indexes.html" rel="index" title="Indexes">
+<link href="Visual-with-Morph.html" rel="up" title="Visual with Morph">
+<link href="Building-your-specialized-Morph.html" rel="next" title="Building your specialized Morph">
+<link href="Submorph.html" rel="prev" title="Submorph">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="style.css">
+
+
+</head>
+
+<body lang="en">
+<span id="A-brief-introduction-to-Inspectors"></span><div class="header">
+<p>
+Next: <a href="Building-your-specialized-Morph.html" accesskey="n" rel="next">Building your specialized Morph</a>, Previous: <a href="Submorph.html" accesskey="p" rel="prev">Submorph</a>, Up: <a href="Visual-with-Morph.html" accesskey="u" rel="up">Visual with Morph</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="A-brief-introduction-to-Inspectors-1"></span><h3 class="section">6.4 A brief introduction to Inspectors</h3>
+<p>To get the construction halo for an interior morph, just
+<kbd>Middle-Click</kbd> multiple times to &ldquo;drill down&rdquo; through the
+submorph hierarchy.
+</p>
+<div class="float"><span id="ch06_002d07_002dMiddleClickRect"></span>
+<div align="center"><img src="ch06-07-MiddleClickRect.png" alt="ch06-07-MiddleClickRect">
+</div>
+<div class="float-caption"><p><strong>Figure 6.6: </strong>Middle-Click for construction
+handles</p></div></div>
+<div class="float"><span id="ch06_002d08_002d2ndMidClckToSubmorph"></span>
+<div align="center"><img src="ch06-08-2ndMidClckToSubmorph.png" alt="ch06-08-2ndMidClckToSubmorph">
+</div>
+<div class="float-caption"><p><strong>Figure 6.7: </strong>Middle-Click again to descend into
+submorphs</p></div></div>
+<p>There is an orange handle on the right, just under the green
+<code>Duplicate</code> handle.  <kbd>Left-Click</kbd> this to get the
+<code>Debug</code> menu.  Use this menu to get an <em>Inspector</em> for the
+rect.
+</p>
+<span id="index-tools-3"></span>
+<p>Observe <a href="#ch06_002d11aColorClickOnRect">Figure 6.8</a>, on the left we have a pane for
+self, all inst vars, and the individual instance variables.  Clicking
+to select &ldquo;all inst vars&rdquo; and the values pane on the right shows
+that the owner of the rect is the ellipse and rect currently has no
+submorphs.
+</p>
+<p>The lower pane is a Smalltalk code editor, basically a workspace,
+where <code>self</code> is bound to the object we are inspecting.
+</p>
+<p>Inspectors work for every object by the way, not just morphs.
+</p>
+<div class="float"><span id="ch06_002d11aColorClickOnRect"></span>
+<div align="center"><img src="ch06-11aColorClickOnRect.png" alt="ch06-11aColorClickOnRect">
+</div>
+<div class="float-caption"><p><strong>Figure 6.8: </strong>Add instance specific behavior</p></div></div>
+<p>To add a behavior to all instances of a class, we create an instance
+method.  Here we are going to create a behavior for &ldquo;just this one
+<code>WidgetMorph</code> instance&rdquo;.
+</p>
+<span id="morphProperties"></span><span id="index-morph-4"></span>
+<p>In addition to instance variables, a morph can have any number of
+named <em>properties</em> which can be different for each morph.
+</p>
+<p>We add two properties here:
+</p>
+<div class="float"><span id="editMorphBehaviorInspector"></span>
+<div class="example">
+<pre class="example">self setProperty: #handlesMouseDown: toValue: true.
+self setProperty: #mouseButton1Up:localPosition:
+   toValue: [:ignoredEvent :ignoredPosition| self color: Color random]
+</pre></div>
+
+<div class="float-caption"><p><strong>Example 6.1: </strong>Edit the behavior of this morph from its Inspector</p></div></div>
+<p>These properties are special to the user interface.  You can find
+methods with these names in the <code>Morph</code> class to see what they
+do.
+</p>
+<p>After selecting the text and <code><b>D</b>o-it</code>, each time you
+<kbd>Left-Click</kbd> on the rect it changes color!
+</p>
+<p>Note that you can no longer move the ellipse by mouse-down on the
+rect, because the rect now takes the mouse event.  You have to
+mouse-down on the ellipse.  More on this below.
+</p>
+<span id="index-morph-5"></span>
+<p>One quick note on <code>Move</code> versus <code>Pick up</code>.  <code>Move</code>
+moves a submorph &ldquo;within&rdquo; its parent.  <code>Pick up</code> grabs a morph
+&ldquo;out&rdquo; of its parent.
+</p>
+<div class="float"><span id="ch06_002d09_002dMove_002dWithin"></span>
+<div align="center"><img src="ch06-09-Move-Within.png" alt="ch06-09-Move-Within">
+</div>
+<div class="float-caption"><p><strong>Figure 6.9: </strong>Move submorph within its parent</p></div></div>
+<div class="float"><span id="ch06_002d10_002dPickUp_002d2_002dMoveOut"></span>
+<div align="center"><img src="ch06-10-PickUp-2-MoveOut.png" alt="ch06-10-PickUp-2-MoveOut">
+</div>
+<div class="float-caption"><p><strong>Figure 6.10: </strong>Pick a submorph out of its parent</p></div></div>
+<p>Before we go on, let&rsquo;s use an inspector on the ellipse to change
+values of a couple of its instance variables.
+</p>
+<div class="float"><span id="ch06_002d12_002dInspectEllipse"></span>
+<div align="center"><img src="ch06-12-InspectEllipse.png" alt="ch06-12-InspectEllipse">
+</div>
+<div class="float-caption"><p><strong>Figure 6.11: </strong>Inspect instance variables of the ellipse</p></div></div>
+<p>Observe <a href="#ch06_002d14_002dSetBorderColor">Figure 6.12</a> and <a href="#editShapeInspector">Example 6.2</a>. In
+the lower pane of the inspector, code can be executed in the context
+of the inspected object. <code>self</code> refers to the instance. Here
+the pane contains code to set the borderWidth and the borderColor.
+</p>
+<div class="float"><span id="editShapeInspector"></span>
+<div class="example">
+<pre class="example">self borderWidth: 10.
+self borderColor: Color blue
+</pre></div>
+
+<div class="float-caption"><p><strong>Example 6.2: </strong>Edit the state of this ellipse from its Inspector</p></div></div>
+<div class="float"><span id="ch06_002d14_002dSetBorderColor"></span>
+<div align="center"><img src="ch06-14-SetBorderColor.png" alt="ch06-14-SetBorderColor">
+</div>
+<div class="float-caption"><p><strong>Figure 6.12: </strong>Use Inspector to set border color and
+border width</p></div></div>
+<p>In the typical case one wants to refine or change behaviors for all
+instances of a class.
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Building-your-specialized-Morph.html" accesskey="n" rel="next">Building your specialized Morph</a>, Previous: <a href="Submorph.html" accesskey="p" rel="prev">Submorph</a>, Up: <a href="Visual-with-Morph.html" accesskey="u" rel="up">Visual with Morph</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

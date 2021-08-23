@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This book is for Cuis-Smalltalk (5.0#4506), a free and modern
+implementation of the Smalltalk language and environment.
+
+Copyright (C) 2020 Hilaire Fernandes with Ken Dickey & Juan Vuletich
+
+
+Thanks to Matt Armstrong, David Lewis, Tommy Pettersson, Mauro Rizzi &
+Stephen Smith for the reviews of the book and suggestions to improve
+it.
+
+
+
+
+
+Compilation : August 23, 2021
+
+Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
+
+
+
+The contents of this book are protected under Creative Commons
+Attribution-ShareAlike 4.0 International.
+
+You are free to:
+
+
+Share - copy and redistribute the material in any medium or
+format
+
+
+Adapt - remix, transform, and build upon the material for any
+purpose, even commercially.
+
+
+
+Under the following terms:
+
+
+Attribution. You must give appropriate credit, provide a link to
+the license, and indicate if changes were made. You may do so in any
+reasonable manner, but not in any way that suggests the licensor
+endorses you or your use.
+
+
+Share Alike. If you remix, transform, or build upon the material,
+you must distribute your contributions under the same license as the
+original.
+
+Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+ -->
+<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Message to string entities (The Cuis-Smalltalk Book)</title>
+
+<meta name="description" content="Message to string entities (The Cuis-Smalltalk Book)">
+<meta name="keywords" content="Message to string entities (The Cuis-Smalltalk Book)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Indexes.html" rel="index" title="Indexes">
+<link href="The-Message-Way-of-Life.html" rel="up" title="The Message Way of Life">
+<link href="Messages-to-number-entities.html" rel="next" title="Messages to number entities">
+<link href="Message-send-definitions.html" rel="prev" title="Message send definitions">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="style.css">
+
+
+</head>
+
+<body lang="en">
+<span id="Message-to-string-entities"></span><div class="header">
+<p>
+Next: <a href="Messages-to-number-entities.html" accesskey="n" rel="next">Messages to number entities</a>, Previous: <a href="Message-send-definitions.html" accesskey="p" rel="prev">Message send definitions</a>, Up: <a href="The-Message-Way-of-Life.html" accesskey="u" rel="up">The Message Way of Life</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Message-to-string-entities-1"></span><h3 class="section">2.3 Message to string entities</h3>
+<span id="index-string-4"></span>
+
+<p>Access to a character in a string is done with the keyword message
+<code>#at:</code> and its index position in the string as the argument. Execute
+the following examples with the <kbd>Ctrl-p</kbd> shortcut:
+</p>
+<div class="example">
+<pre class="example">'Hello' at: 1 &rArr; $H
+'Hello' at: 5 &rArr; $o
+</pre></div>
+
+<p>Observe how a character is prefixed with the &ldquo;$&rdquo; symbol.
+</p>
+<p><strong>Caution.</strong> The index indicates position naturally from 1 to the
+string length.
+</p>
+<span id="index-string-5"></span>
+<div class="example">
+<pre class="example">'Hello' indexOf: $e
+&rArr; 2
+</pre></div>
+
+<span id="index-string-6"></span>
+<span id="index-yourself"></span>
+<p>To change one character, use the companion two keyword message
+<code>#at:put:</code>. The argument must be noted as a character:
+</p><div class="example">
+<pre class="example">'Hello' at: 2 put: $a; yourself
+&rArr; 'Hallo'
+</pre></div>
+
+<p>Observe the use of the cascade with the <code>#yourself</code> message.  A
+cascade sends the following messages to the original receiver, so
+<code>#yourself</code> returns the updated string.  Without the
+cascade, <code>$a</code> is returned as the result of the <code>#at:put:</code>
+message.
+</p>
+<div class="float"><span id="helloBelle"></span>
+<blockquote class="indentedblock">
+<p>&nbsp;<img src="CuisLogo.png" alt="CuisLogo">
+<em>Replace each character of
+the string &rsquo;Hello&rsquo; to become &rsquo;Belle&rsquo;.</em>
+</p></blockquote>
+
+
+<div class="float-caption"><p><strong>Exercise 2.1: </strong>Hello to Belle</p></div></div>
+<span id="index-character"></span>
+<p>Characters can be converted to integers and integers to characters:
+</p><div class="example">
+<pre class="example">$A asciiValue &rArr; 65
+(65 + 25) asCharacter &rArr; $Z
+</pre></div>
+
+<span id="index-string-7"></span>
+<span id="index-collection-1"></span>
+<p>Shuffling a string can be fun but not very useful. However,
+shuffling can apply to any kind of collection, not only to a string, and it
+will prove to be useful as we will see later:
+</p><div class="example">
+<pre class="example">'hello world' shuffled
+&rArr; 'wod llreohl'
+</pre></div>
+<p>Note that the results of each shuffle are different.
+</p>
+<span id="index-string-8"></span>
+<span id="index-message-8"></span>
+<p>Messages naturally compose:
+</p><div class="example">
+<pre class="example">'hello world' shuffled asArray
+&rArr; #($h $d $l $  $o $w $e $l $l $o $r) 
+</pre></div>
+
+<p>An <code>Array</code> literal starts with a hash or sharp character, <code>$#</code>
+and parentheses surround the elements of the array.
+In this case the elements are <code>Character</code>s, but they can
+be instances of any class.
+</p>
+<span id="index-string-9"></span>
+<p>Similarly, we can ask a string to sort its characters:
+</p><div class="example">
+<pre class="example">'hello world' sort
+&rArr; ' dehllloorw'
+</pre></div>
+
+<p>Like <code>#shuffled</code>, all collections answer to the message <code>#sorted</code>,
+which answers a sorted collection.
+<span id="index-string-10"></span>
+</p><div class="example">
+<pre class="example">'hello world' sorted
+&rArr; #($  $d $e $h $l $l $l $o $o $r $w)
+</pre></div>
+
+<p>Note that this breaks the pattern of the result type.  We get a <code>String</code>
+result when sending a <code>String</code> the message <code>#shuffled</code> but get
+an <code>Array</code> result when sending a <code>String</code> the message
+<code>#sorted</code>.
+</p>
+<p>We take great care in Smalltalk to create names which reduce surprise, but there
+are cases, as seen here, where something odd happens.  We will discuss this
+further when we look at different kinds of <code>Collection</code>s and
+discuss how we name instances and methods to show intent and reduce surprise.
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Messages-to-number-entities.html" accesskey="n" rel="next">Messages to number entities</a>, Previous: <a href="Message-send-definitions.html" accesskey="p" rel="prev">Message send definitions</a>, Up: <a href="The-Message-Way-of-Life.html" accesskey="u" rel="up">The Message Way of Life</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

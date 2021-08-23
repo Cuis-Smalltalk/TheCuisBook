@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This book is for Cuis-Smalltalk (5.0#4506), a free and modern
+implementation of the Smalltalk language and environment.
+
+Copyright (C) 2020 Hilaire Fernandes with Ken Dickey & Juan Vuletich
+
+
+Thanks to Matt Armstrong, David Lewis, Tommy Pettersson, Mauro Rizzi &
+Stephen Smith for the reviews of the book and suggestions to improve
+it.
+
+
+
+
+
+Compilation : August 23, 2021
+
+Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
+
+
+
+The contents of this book are protected under Creative Commons
+Attribution-ShareAlike 4.0 International.
+
+You are free to:
+
+
+Share - copy and redistribute the material in any medium or
+format
+
+
+Adapt - remix, transform, and build upon the material for any
+purpose, even commercially.
+
+
+
+Under the following terms:
+
+
+Attribution. You must give appropriate credit, provide a link to
+the license, and indicate if changes were made. You may do so in any
+reasonable manner, but not in any way that suggests the licensor
+endorses you or your use.
+
+
+Share Alike. If you remix, transform, or build upon the material,
+you must distribute your contributions under the same license as the
+original.
+
+Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+ -->
+<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Method syntax (The Cuis-Smalltalk Book)</title>
+
+<meta name="description" content="Method syntax (The Cuis-Smalltalk Book)">
+<meta name="keywords" content="Method syntax (The Cuis-Smalltalk Book)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Indexes.html" rel="index" title="Indexes">
+<link href="Control-Flow-Messaging.html" rel="up" title="Control Flow Messaging">
+<link href="Block-syntax.html" rel="next" title="Block syntax">
+<link href="Pseudo_002dvariables.html" rel="prev" title="Pseudo-variables">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="style.css">
+
+
+</head>
+
+<body lang="en">
+<span id="Method-syntax"></span><div class="header">
+<p>
+Next: <a href="Block-syntax.html" accesskey="n" rel="next">Block syntax</a>, Previous: <a href="Pseudo_002dvariables.html" accesskey="p" rel="prev">Pseudo-variables</a>, Up: <a href="Control-Flow-Messaging.html" accesskey="u" rel="up">Control Flow Messaging</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Method-syntax-1"></span><h3 class="section">5.3 Method syntax</h3>
+<span id="index-method-13"></span>
+
+<p>Whereas expressions may be evaluated anywhere in Cuis-Smalltalk (for example 
+in a workspace, in a debugger, or in a browser), methods are normally
+defined in the System Browser window or in the Debugger. Methods can
+also be filed in from an external medium, but this is not the usual
+way to program in Cuis-Smalltalk.
+</p>
+<p>Programs are developed one method at a time, in the context of a given
+class. A class is defined by sending a message to an existing class,
+asking it to create a subclass, so there is no special syntax required
+for defining classes. We are already farmiliar with this
+from previous examples.
+</p>
+<p>Let&rsquo;s take a another look to the method syntax when control flow is
+involved &ndash; our first explanation was <a href="Spacewar_0021-States-and-Behaviors.html">Spacewar! States and Behaviors</a>).
+</p>
+<p>Here is the method <code>keyStroke:</code> in the class <code>SpaceWar</code>.
+</p>
+<div class="float"><span id="spacewarKeyStroke"></span>
+<div class="example">
+<pre class="example">SpaceWar&gt;&gt;keyStroke: event
+&quot;Check for any keyboard stroke, and take action accordingly&quot;
+| key |
+key := event keyCharacter.
+key = Character arrowUp ifTrue: [^ ships first push].
+key = Character arrowRight ifTrue: [^ ships first right].
+key = Character arrowLeft ifTrue: [^ ships first left].
+key = Character arrowDown ifTrue: [^ ships first fireTorpedo]
+</pre></div>
+
+<div class="float-caption"><p><strong>Example 5.1: </strong>SpaceWar! key stroke</p></div></div>
+<p>Syntactically, a method consists of:
+</p>
+<ul>
+<li> the method pattern, containing the name (<em>i.e.</em>,
+ <code>keyStroke:</code>) and any arguments. Here <code>event</code> is a
+ <code>KeyboardEvent</code>,
+
+</li><li> comments (these may occur anywhere, but the convention is to
+ put one at the top that explains what the method does),
+ 
+</li><li> declarations of local variables (<em>i.e.</em>, <code>key</code>),
+
+</li><li> and any number of expressions separated by dots; here there are
+ 5.
+
+</li></ul>
+
+<p>The evaluation of any expression preceded by a ^ (typed as ^)
+will cause the method to exit at that point, returning the value of
+that expression. A method that terminates without explicitly returning
+the value of some expression will always return the current
+value of <code>self</code>.
+</p>
+<p>Arguments and local variables should always start with lower case
+letters. Names starting with upper-case letters are assumed to be
+global variables. Class names, like <code>Character</code>, for example,
+are simply global variables referring to the object representing
+that class.
+</p>
+<p>As you might suspect from <a href="Communicating-entities.html#classesCount">Example 2.2</a>, <code>Smalltalk allClasses size</code> just
+sends the <code>#allClasses</code> method to a dictionary named <code>Smalltalk</code>.
+As with any other object, you can inspect this dictionary.  You can note a case of
+self-reference here: the value of <code>Smalltalk at: #Smalltalk</code> is <code>Smalltalk</code>.
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Block-syntax.html" accesskey="n" rel="next">Block syntax</a>, Previous: <a href="Pseudo_002dvariables.html" accesskey="p" rel="prev">Pseudo-variables</a>, Up: <a href="Control-Flow-Messaging.html" accesskey="u" rel="up">Control Flow Messaging</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This book is for Cuis-Smalltalk (5.0#4506), a free and modern
+implementation of the Smalltalk language and environment.
+
+Copyright (C) 2020 Hilaire Fernandes with Ken Dickey & Juan Vuletich
+
+
+Thanks to Matt Armstrong, David Lewis, Tommy Pettersson, Mauro Rizzi &
+Stephen Smith for the reviews of the book and suggestions to improve
+it.
+
+
+
+
+
+Compilation : August 23, 2021
+
+Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
+
+
+
+The contents of this book are protected under Creative Commons
+Attribution-ShareAlike 4.0 International.
+
+You are free to:
+
+
+Share - copy and redistribute the material in any medium or
+format
+
+
+Adapt - remix, transform, and build upon the material for any
+purpose, even commercially.
+
+
+
+Under the following terms:
+
+
+Attribution. You must give appropriate credit, provide a link to
+the license, and indicate if changes were made. You may do so in any
+reasonable manner, but not in any way that suggests the licensor
+endorses you or your use.
+
+
+Share Alike. If you remix, transform, or build upon the material,
+you must distribute your contributions under the same license as the
+original.
+
+Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+ -->
+<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Spacewar! models (The Cuis-Smalltalk Book)</title>
+
+<meta name="description" content="Spacewar! models (The Cuis-Smalltalk Book)">
+<meta name="keywords" content="Spacewar! models (The Cuis-Smalltalk Book)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Indexes.html" rel="index" title="Indexes">
+<link href="The-Message-Way-of-Life.html" rel="up" title="The Message Way of Life">
+<link href="Class-_002d-Model-of-Communicating-Entities.html" rel="next" title="Class - Model of Communicating Entities">
+<link href="A-brief-introduction-to-the-system-Browser.html" rel="prev" title="A brief introduction to the system Browser">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="style.css">
+
+
+</head>
+
+<body lang="en">
+<span id="Spacewar_0021-models"></span><div class="header">
+<p>
+Previous: <a href="A-brief-introduction-to-the-system-Browser.html" accesskey="p" rel="prev">A brief introduction to the system Browser</a>, Up: <a href="The-Message-Way-of-Life.html" accesskey="u" rel="up">The Message Way of Life</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Spacewar_0021-models-1"></span><h3 class="section">2.6 Spacewar! models</h3>
+
+<span id="First-classes"></span><h4 class="subsection">2.6.1 First classes</h4>
+<p>In the last chapter we listed the protagonists of the game. Now, we
+propose a first implementation of the game model with a set of classes
+representing the involved entities:
+</p>
+<ol>
+<li> the game play &rArr; <code>SpaceWar</code> class,
+
+</li><li> a central star &rArr; <code>CentralStar</code> class,
+
+</li><li> two space ships &rArr; <code>SpaceShip</code> class,
+
+</li><li> torpedoes &rArr; <code>Torpedo</code> class.
+
+</li></ol>
+
+<span id="index-browser-3"></span>
+<span id="index-class-5"></span>
+<p>Before defining these classes in Cuis-Smalltalk, we want to create a
+dedicated class category to group them there.
+</p>
+<p>In any kind of Cuis-Smalltalk window, pressing right-click on a pane will typically
+bring up a menu of operations you can apply which are specific to that
+pane.
+</p>
+<p>With the mouse pointer over the class category pane of the Browser &ndash;
+the left-most one &ndash; just do:
+</p>
+<p>...right mouse click &rarr; <code>add item</code>... then
+key in <em>Spacewar!</em>
+</p>
+
+<span id="index-class-6"></span>
+<p>Once our new category is created, the Browser proposes a code template in
+the method source code pane &ndash; the bottom one &ndash; to create a new class in
+the <code>Spacewar!</code> category:
+</p>
+<div class="example">
+<pre class="example">Object subclass: #NameOfSubclass
+   instanceVariableNames: ''
+   classVariableNames: ''
+   poolDictionaries: ''
+   category: 'Spacewar!'
+</pre></div>
+
+<span id="index-keyboard-shortcut-5"></span>
+<p>We replace the symbol <code>#NameOfSubclass</code> with a symbol
+representing the name of the class we want to create. Let&rsquo;s start with
+<code>#SpaceWar</code>. To save our class, while over the class
+declaration code do ...right mouse click &rarr;
+<code>Accept</code>... Cuis-Smalltalk will ask for your initials and name
+if it hasn&rsquo;t before. Alternatively, you can just do <kbd>Ctrl-s</kbd> (<em><b>S</b>ave</em>).
+</p>
+<p>Then simply repeat the process for each of <code>#SpaceShip</code>,
+<code>#CentralStar</code> and <code>#Torpedo</code>. If necessary, to
+get another class code template, click the class category
+<code>Spacewar!</code>.
+</p>
+<p>When done, your class category should be filled with four classes as in
+<a href="#ch02_002dspacewarClassCategory">Figure 2.2</a>.
+</p>
+<div class="float"><span id="ch02_002dspacewarClassCategory"></span>
+<div align="center"><img src="ch02-spacewarClassCategory.png" alt="ch02-spacewarClassCategory">
+</div>
+<div class="float-caption"><p><strong>Figure 2.2: </strong>Spacewar! class category</p></div></div>
+
+<span id="Spacewar_0021-package"></span><span id="Spacewar_0021-package-1"></span><h4 class="subsection">2.6.2 Spacewar! package</h4>
+<span id="index-package"></span>
+<span id="index-package-1"></span>
+<span id="index-package-2"></span>
+<p>Another important use case of a class category is to define a package
+to save code to a file.  A package saves the code of the classes held in
+a given class category and a bit more, but more on that last point
+later. To create our <code>Spacewar!</code> package and save our game code
+we use the Installed Packages tool.
+</p>
+<ol>
+<li> Open the <em>Installed Packages</em> tool ...World
+  menu &rarr; <code>Open...</code> &rarr; <code>Installed
+  Packages</code>...
+
+</li><li> On the Installed Packages window, do ...click <code>new</code>
+  button &rarr; Input <em>Spacewar!</em> &rarr; <kbd>Return</kbd>...
+
+</li><li> Do ...select <code>Spacewar!</code> package &rarr;
+  <code>save</code> button...
+
+</li></ol>
+
+<div class="float"><span id="ch02_002dInstalledPackages"></span>
+<div align="center"><img src="ch02-InstalledPackages.png" alt="ch02-InstalledPackages">
+</div>
+<div class="float-caption"><p><strong>Figure 2.3: </strong>Installed Package window</p></div></div>
+<span id="index-package-3"></span>
+<p>A file <samp>Spacewar!.pck.st</samp> is created alongside the Cuis-Smalltalk image
+file.  To install a package in a fresh Cuis-Smalltalk
+environment, use the File List tool:
+</p>
+<ol>
+<li> Do ...World menu &rarr;
+  <code>Open...</code> &rarr; <code>File List</code>...
+
+</li><li> Search for the file <samp>Spacewar!.pck.st</samp> and click the
+  <code>install package</code> button  
+
+</li></ol>
+
+<p>You can also drag and drop the package file from your operating system
+over to the Squeak window. Upon dropping the file over the window
+Cuis-Smalltalk will ask you what you want to do with this package.  To
+install it in your enviroment you can simply press <code>Install
+package</code>.
+</p>
+<p>Or, you can open a Workspace, type in <code>Feature require: 'Spacewar!'</code>
+and <kbd>Ctrl-d</kbd> <em><b>D</b>o it</em>.
+</p>
+<p>Now, we have created and saved the package. Whenever you start with a
+fresh Cuis-Smalltalk environment, you can load the game package.
+</p>
+<p>The classes we defined are empty shells with neither state nor
+behavior. These will be filled in and refactored in the following
+chapters.
+</p>
+<span id="The-Newtonian-model"></span><h4 class="subsection">2.6.3 The Newtonian model</h4>
+<span id="newtonModel"></span><p>For an enjoyable game experience, the player ships must follow
+Newton&rsquo;s laws of motion. Acceleration, speed and position are computed
+according to these laws. The ships are subjected to two forces: the
+acceleration from the gravity pull of the central star and an inner
+acceleration coming from the ship engines.
+</p>
+<p>Later, we will learn how these equations are easily converted to
+computer calculations.
+</p>
+<div class="float"><span id="motionEquations"></span>
+<div align="center"><img src="motionEquations.png" alt="motionEquations">
+</div>
+<div class="float-caption"><p><strong>Figure 2.4: </strong>Equations of the accelerations, speed and position</p></div></div><hr>
+<div class="header">
+<p>
+Previous: <a href="A-brief-introduction-to-the-system-Browser.html" accesskey="p" rel="prev">A brief introduction to the system Browser</a>, Up: <a href="The-Message-Way-of-Life.html" accesskey="u" rel="up">The Message Way of Life</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

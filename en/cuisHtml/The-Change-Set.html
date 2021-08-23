@@ -1,0 +1,208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This book is for Cuis-Smalltalk (5.0#4506), a free and modern
+implementation of the Smalltalk language and environment.
+
+Copyright (C) 2020 Hilaire Fernandes with Ken Dickey & Juan Vuletich
+
+
+Thanks to Matt Armstrong, David Lewis, Tommy Pettersson, Mauro Rizzi &
+Stephen Smith for the reviews of the book and suggestions to improve
+it.
+
+
+
+
+
+Compilation : August 23, 2021
+
+Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
+
+
+
+The contents of this book are protected under Creative Commons
+Attribution-ShareAlike 4.0 International.
+
+You are free to:
+
+
+Share - copy and redistribute the material in any medium or
+format
+
+
+Adapt - remix, transform, and build upon the material for any
+purpose, even commercially.
+
+
+
+Under the following terms:
+
+
+Attribution. You must give appropriate credit, provide a link to
+the license, and indicate if changes were made. You may do so in any
+reasonable manner, but not in any way that suggests the licensor
+endorses you or your use.
+
+
+Share Alike. If you remix, transform, or build upon the material,
+you must distribute your contributions under the same license as the
+original.
+
+Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+ -->
+<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>The Change Set (The Cuis-Smalltalk Book)</title>
+
+<meta name="description" content="The Change Set (The Cuis-Smalltalk Book)">
+<meta name="keywords" content="The Change Set (The Cuis-Smalltalk Book)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Indexes.html" rel="index" title="Indexes">
+<link href="Code-Management.html" rel="up" title="Code Management">
+<link href="The-Package.html" rel="next" title="The Package">
+<link href="The-Change-Log.html" rel="prev" title="The Change Log">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="style.css">
+
+
+</head>
+
+<body lang="en">
+<span id="The-Change-Set"></span><div class="header">
+<p>
+Next: <a href="The-Package.html" accesskey="n" rel="next">The Package</a>, Previous: <a href="The-Change-Log.html" accesskey="p" rel="prev">The Change Log</a>, Up: <a href="Code-Management.html" accesskey="u" rel="up">Code Management</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="The-Change-Set-1"></span><h3 class="section">9.3 The Change Set</h3>
+<span id="index-change-set"></span>
+
+<p>On a fresh Cuis-Smalltalk installation, each code you edit in the System
+Browser is recorded in a <em>Change Set</em>,
+</p>
+<p>You browse a change set with a tool named the <em>Change Sorter</em>:
+...World menu &rarr; <code>Changes...</code>  &rarr;
+<code>Change Sorter</code>...
+</p>
+<div class="float"><span id="ch10_002dChangeSet1"></span>
+<div align="center"><img src="ch10-ChangeSet1.png" alt="ch10-ChangeSet1">
+</div>
+<div class="float-caption"><p><strong>Figure 9.3: </strong>The Change Sorter, class edit</p></div></div>
+<p>The <code>TheBook</code> class we added to Cuis-Smalltalk in the previous section
+is a change made to the core of the system. By default, it is recorded
+in a change set automatically created by the system. In
+<a href="#ch10_002dChangeSet1">Figure 9.3</a> at the top right, observe the class
+<code>TheBook</code>, it belongs to a change set named
+<code>4439-CuisCore-AuthorName-2020Nov16-13h40m</code>.  In the left pane,
+each unsaved change set is marked with a <code>---&gt;</code>. Here it tells us
+the change was not saved on disk. To save the change set, just use its
+contextual menu and use one of the <code>file out</code> entries. The change
+set will be saved along the Cuis-Smalltalk image under its system name with
+<code>AuthorName</code> substituated with the real author name.
+</p>
+<div class="float"><span id="ch10_002dChangeSet2"></span>
+<div align="center"><img src="ch10-ChangeSet2.png" alt="ch10-ChangeSet2">
+</div>
+<div class="float-caption"><p><strong>Figure 9.4: </strong>The Change Sorter, method edit</p></div></div>
+<p>Observe <a href="#ch10_002dChangeSet2">Figure 9.4</a>, after we added the method
+<code>pages</code> to the <code>TheBook</code> class, the middle pane lists the
+added or modified methods. When a method is selected its source code
+is printed in the bottom pane.
+</p>
+<p>Let&rsquo;s say we save the change set &ndash; <em>File out</em> entries in the
+change sorter tool menu. This creates a new file
+<samp>4451-CuisCore-HilaireFernandes-2020Nov14-21h08m-hlsf.001.cs.st</samp>
+along the Cuis-Smalltalk image file:
+</p>
+<div class="float"><span id="changeSetContents"></span>
+<div class="example">
+<pre class="example">From Cuis 5.0 [latest update: #4450] on 18 November 2020 at 9:05:09 am'!
+!classDefinition: #TheBook category: 'TheCuisBook'!
+Object subclass: #TheBook
+   instanceVariableNames: ''
+   classVariableNames: ''
+   poolDictionaries: ''
+   category: 'TheCuisBook'!
+
+!TheBook methodsFor: 'as yet unclassified' stamp: 'hlsf 11/18/2020 09:04:58'!
+pages
+   ^ 151! !
+</pre></div>
+
+<div class="float-caption"><p><strong>Example 9.1: </strong>Change set contents</p></div></div>
+<p>To load this change set back in a new image, you use the <em>File
+List</em> tool ...World menu &rarr; <code>Open</code> &rarr;
+<code>File List</code>... Browse the folder containing the change set file
+to load, then select it, from there you have three options to
+manipulate it.
+</p>
+<div class="float"><span id="ch10_002dFileListChangeSet"></span>
+<div align="center"><img src="ch10-FileListChangeSet.png" alt="ch10-FileListChangeSet">
+</div>
+<div class="float-caption"><p><strong>Figure 9.5: </strong>The File List tool, to install a change set and more</p></div></div>
+<ul>
+<li> <code>code</code>. It opens a kind of System Browser limited to
+  the code in the change set file. It is a very handy tool to read and
+  to learn the code from the change set.
+
+</li><li> <code>contents</code>. It opens a <em>Change List</em> tool to review
+  the modifications to the image this change set will produce once
+  installed. It also let you cherry pick the individual changes you
+  want to install and to discard. Each line you cherry pick represents
+  a class or a method addition/modification. Once you select the code
+  to install, press the <code>file in selections</code> button to proceed
+  with the installation.
+
+<p>Consider a co-developer modifying the <code>TheBook</code> class, she
+  added an instance variable <code>pages</code> and adjusted the
+  <code>pages</code> methods accordingly. She filed out her changes then
+  shared the file with you. Observe in <a href="#ch10_002dChangeList">Figure 9.6</a> how you
+  will review her changes with the Change List tool. Our code that
+  will be removed from the image is shown in red stroked, and her code
+  that will be installed is shown in green.
+</p>
+<div class="float"><span id="ch10_002dChangeList"></span>
+<div align="center"><img src="ch10-ChangeList.png" alt="ch10-ChangeList">
+</div>
+<div class="float-caption"><p><strong>Figure 9.6: </strong>Change List tool to review modifications to the image</p></div></div>
+</li><li> <code>install</code>. It just installs the complete change set
+  without interactivity.
+  
+</li></ul>
+
+<p>The change set way of managing the source code is used by the
+developers of Cuis-Smalltalk, to work on its core image. When you want to
+write an application, a dedicated tool or even a set of classes
+covering a specific domain, you really want to use something else to
+manage the code: a package.
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="The-Package.html" accesskey="n" rel="next">The Package</a>, Previous: <a href="The-Change-Log.html" accesskey="p" rel="prev">The Change Log</a>, Up: <a href="Code-Management.html" accesskey="u" rel="up">Code Management</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

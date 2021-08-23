@@ -1,0 +1,406 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This book is for Cuis-Smalltalk (5.0#4506), a free and modern
+implementation of the Smalltalk language and environment.
+
+Copyright (C) 2020 Hilaire Fernandes with Ken Dickey & Juan Vuletich
+
+
+Thanks to Matt Armstrong, David Lewis, Tommy Pettersson, Mauro Rizzi &
+Stephen Smith for the reviews of the book and suggestions to improve
+it.
+
+
+
+
+
+Compilation : August 23, 2021
+
+Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
+
+
+
+The contents of this book are protected under Creative Commons
+Attribution-ShareAlike 4.0 International.
+
+You are free to:
+
+
+Share - copy and redistribute the material in any medium or
+format
+
+
+Adapt - remix, transform, and build upon the material for any
+purpose, even commercially.
+
+
+
+Under the following terms:
+
+
+Attribution. You must give appropriate credit, provide a link to
+the license, and indicate if changes were made. You may do so in any
+reasonable manner, but not in any way that suggests the licensor
+endorses you or your use.
+
+
+Share Alike. If you remix, transform, or build upon the material,
+you must distribute your contributions under the same license as the
+original.
+
+Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+ -->
+<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Understanding Object Oriented Programming (The Cuis-Smalltalk Book)</title>
+
+<meta name="description" content="Understanding Object Oriented Programming (The Cuis-Smalltalk Book)">
+<meta name="keywords" content="Understanding Object Oriented Programming (The Cuis-Smalltalk Book)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Indexes.html" rel="index" title="Indexes">
+<link href="Class-_002d-Model-of-Communicating-Entities.html" rel="up" title="Class - Model of Communicating Entities">
+<link href="Explore-OOP-from-the-Browser.html" rel="next" title="Explore OOP from the Browser">
+<link href="Class-_002d-Model-of-Communicating-Entities.html" rel="prev" title="Class - Model of Communicating Entities">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="style.css">
+
+
+</head>
+
+<body lang="en">
+<span id="Understanding-Object-Oriented-Programming"></span><div class="header">
+<p>
+Next: <a href="Explore-OOP-from-the-Browser.html" accesskey="n" rel="next">Explore OOP from the Browser</a>, Up: <a href="Class-_002d-Model-of-Communicating-Entities.html" accesskey="u" rel="up">Class - Model of Communicating Entities</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Understanding-Object-Oriented-Programming-1"></span><h3 class="section">3.1 Understanding Object Oriented Programming</h3>
+
+<p>But just what is an object?
+</p>
+<p>At its simplest, an object has two components:
+</p>
+<ul>
+<li> <strong>Internal state.</strong> This is embodied by variable(s)
+   known only by the object. A variable only visible within the object
+   is called a <em>private</em> variable. As a consequence, it is impossible
+   &ndash; if the object decides so &ndash; to know the internal state of the object
+   from another object.
+
+</li><li> <strong>A repertoire of behaviors.</strong> These are the message(s)
+   an object instance responds to. When the object
+   receives a message it understands, it gets its behavior from a
+   method with that name known by its class or superclass.
+
+</li></ul>
+
+<span id="index-class-7"></span>
+<span id="index-subclass"></span>
+<span id="index-instance-1"></span>
+<span id="index-selector"></span>
+<p>The method name is called a <em>selector</em> because it is used to select
+which behavior is invoked. For example, in <code>'hello' at: 1 put: $B</code>,
+the method invoked has the selector <code>#at:put:</code> and the arguments
+<code>1</code> and <code>$B</code>.  All selectors are symbols.
+</p>
+<p>Object instances are created &ndash; <em>instantiated</em> &ndash;
+following a model or template. This model is known as its <em>Class</em>.
+All instances of a class share the same methods and so react in the same ways.
+</p>
+<p>For example, there is one class <code>Fraction</code> but many
+fractions (1/2, 1/3, 23/17, ...) which all behave the way
+we expect fractions to behave.  The class <code>Fraction</code>
+and the classes it inherits from define this common behavior,
+as we will now describe.
+</p>
+
+<span id="index-variable-1"></span>
+<span id="index-instance-variable"></span>
+<p>A given class declares its internal variables &ndash; states &ndash; and the
+behavior by implementing the methods.  A variable is basically a named
+box which can hold any object.  Each instance variable of a class gets its own
+box with the common name.
+</p>
+<span id="index-number-19"></span>
+<p>Lets see how the <code>Fraction</code> class is declared:
+</p>
+<div class="example">
+<pre class="example">Number subclass: #Fraction
+   instanceVariableNames: 'numerator denominator'
+   classVariableNames: ''
+   poolDictionaries: ''
+   category: 'Kernel-Numbers'
+</pre></div>
+
+<p>As expected there are two variables &ndash; named <em>instance variables</em>
+&ndash; to define the <code>numerator</code> and <code>denominator</code> of
+a fraction.  Each instance of fraction has its own numerator and its
+own denominator.
+</p>
+<span id="index-superclass"></span>
+<p>From this declaration, we observe there is a hierarchy in
+the class definition: <code>Fraction</code> is a kind of
+<code>Number</code>. This means a fraction inherits the internal state
+(variables) and behavior (methods) defined in the <code>Number</code>
+class. <code>Fraction</code> is called a <em>subclass</em> of <code>Number</code>,
+and so naturally we call <code>Number</code> a <em>superclass</em> of <code>Fraction</code>.
+</p>
+<span id="index-class-8"></span>
+<p>A Class specifies the behavior of all of its instances.  It is useful
+to be able to say <em>this object is like that object, but with these
+differences</em>.  We do this in Smalltalk by having classes inherit instance
+state and behavior from their parent Class.  This child, or subclass
+then specifies just the instance state and behavior that is different
+from its parent, retaining all the unmodified behaviours.
+</p>
+<p>This aspect of object oriented programming is called
+<em>inheritance</em>. In Cuis-Smalltalk, each class inherits from one parent
+class.
+</p>
+<span id="index-polymorphism"></span>
+
+<p>In Smalltalk, we say that each object decides for itself how it
+reponds to a message.  This is called <em>polymorphism</em>.  The same
+message selector may be sent to objects of different Classes.  The
+<em>shape</em> (morph) of the computation is different depending on the
+specific class of the <em>many</em> (poly) possible classes of the
+object receiving the message.
+</p>
+<p>Different kinds of objects respond to the same <code>#printString</code>
+message in different, but appropriate ways.
+</p>
+<span id="index-instance-2"></span>
+<span id="index-class-9"></span>
+<span id="index-method-3"></span>
+<p>We have already met fractions. Those fractions are objects called
+<em>instance</em>s of the class <code>Fraction</code>. To create an instance
+we wrote <code>5 / 4</code>, the mechanism is based on message sending
+and polymorphism.  Let us look into how this works.
+</p>
+<p>The number <code>5</code> is an integer receiving the message <code>#/</code>,
+therefore looking at the method <code>/</code> in the <code>Integer</code>
+class we can see how the fraction is instatiated. See part of this
+method:
+</p>
+<div class="example">
+<pre class="example">/ aNumber
+&quot;Refer to the comment in Number / &quot;
+| quoRem |
+aNumber isInteger ifTrue:
+../..
+   ifFalse: [^ (Fraction numerator: self denominator: aNumber) reduced]].
+../..
+</pre></div>
+
+<p>From this source code, we learn that in some situations, the method
+returns a fraction, reduced. We can expect that in some other
+situation an integer is returned, for example <code>6 / 2</code>.
+</p>
+<p>In the example, we observe the message <code>#numerator:denominator:</code> is
+sent to the class <code>Fraction</code>, such a message refers to a
+<em>class method</em> understood only by the <code>Fraction</code> class. It
+is expected such a named method returns an instance of a
+<code>Fraction</code>.
+</p>
+<p>Try this out in a workspace:
+</p><div class="example">
+<pre class="example">Fraction numerator: 24 denominator: 21
+&rArr; 24/21
+</pre></div>
+
+<p>Observe how the resulting fraction is not reduced. Whereas it is reduced
+when instantiated with the <code>#/</code> message:
+</p>
+<div class="example">
+<pre class="example">24 / 21
+&rArr; 8/7
+</pre></div>
+
+<p>A class method is often used to create a new instance from a class. In
+<a href="Fun-with-collections.html#forLoop">Example 4.7</a>, the message <code>#new</code> is sent to the class
+<code>OrderedCollection</code> to create a new empty collection;
+<em><code>new</code></em> is a class method.
+</p>
+<p>In <a href="Fun-with-collections.html#repeatLoop">Example 4.8</a>, the <code>#newFrom:</code> message is sent to the class
+<code>OrderedCollection</code> to create a new collection filled with
+elements from the array given in argument; <em><code>newFrom:</code></em> is
+another class method.
+</p>
+<span id="index-instance-3"></span>
+<span id="index-method-4"></span>
+<span id="index-polymorphism-1"></span>
+<p>Now observe the hierarchy of the Number class:
+</p>
+<div class="format">
+<pre class="format"><code>Number</code>
+   <code>Float</code>
+      <code>BoxedFloat64</code>
+      <code>SmallFloat64</code>
+   <code>Fraction</code>
+   <code>Integer</code>
+      <code>LargePositiveInteger</code>
+         <code>LargeNegativeInteger</code>
+      <code>SmallInteger</code>
+</pre></div>
+
+<span id="index-number-20"></span>
+<p><code>Float</code>, <code>Integer</code> and <code>Fraction</code> are direct
+descendants of the <code>Number</code> class. We have already learned about the
+<code>#squared</code> message sent to integer and fraction instances:
+</p>
+<div class="example">
+<pre class="example">16 squared &rArr; 256
+(2 / 3) squared &rArr; 4/9
+</pre></div>
+
+<p>As the <code>#squared</code> message is sent to <code>Integer</code> and
+<code>Fraction</code> instances, the associated <code>squared</code> method is
+called an <em>instance method</em>. This method is defined in both the
+<code>Number</code> and <code>Fraction</code> classes.
+</p>
+<span id="index-method-5"></span>
+<span id="index-returned-value-1"></span>
+<p>Let&rsquo;s examine this method in <code>Number</code>:
+</p><div class="example">
+<pre class="example">Number&gt;&gt;squared
+&quot;Answer the receiver multiplied by itself.&quot;
+   ^ self * self
+</pre></div>
+
+<p>In an instance method source code, <code>self</code> refers to the
+object itself, here it is the value of the number. The &#x2191; (also
+<code>^</code>) symbol indicates to <em>return</em> the following value
+<code>self * self</code>.  One might pronounce ^ as &ldquo;return&rdquo;.
+</p>
+<p>Now let&rsquo;s examine this same method in <code>Fraction</code>:
+</p><div class="example">
+<pre class="example">Fraction&gt;&gt;squared
+   ^ Fraction
+      numerator: numerator squared
+      denominator: denominator squared
+</pre></div>
+
+<p>Here a new fraction is instantiated with the original instance
+numerator and denominator being squared.
+This alternate <code>squared</code> method, ensures a fraction instance is
+returned.
+</p>
+<span id="index-method-6"></span>
+<span id="index-overriding"></span>
+<p>When the message <code>#squared</code> is sent to a number, different methods are
+executed depending on if the number is a fraction or another kind of
+number. Polymorphism means that the Class of each instance decides
+how it will repond to a particular message.
+Here, the <code>Fraction</code> class
+is <em>overriding</em> the <code>squared</code> method, defined above in the
+class hierarchy.  If a method is not overridden, an inherited method
+is invoked to respond to the message.
+</p>
+<span id="index-number-21"></span>
+<p>Still in the <code>Number</code> hierarchy, let&rsquo;s examine another example
+of polymorphism with the <code>#abs</code> message:
+</p>
+<div class="example">
+<pre class="example">-10 abs &rArr; 10
+5.3 abs &rArr; 5.3
+(-5 / 3) abs &rArr; 5/3
+</pre></div>
+
+<p>The implementation in <code>Number</code> does not need much
+explanation. There is the <code>#ifTrue:ifFalse:</code> we have not yet
+discussed so far, but the code is quite self-explanatory:
+</p>
+<div class="example">
+<pre class="example">Number&gt;&gt;abs
+&quot;Answer a Number that is the absolute value (positive magnitude) of the 
+receiver.&quot;
+   self &lt; 0
+      ifTrue: [^ self negated]
+      ifFalse: [^ self]
+</pre></div>
+
+<p>This implementation will do just fine for the <code>Number</code>
+subclasses. Nevertheless, there are several classes overriding it for
+specialized or optimized cases.
+</p>
+<span id="index-method-7"></span>
+<p>For example, regarding large positive integer, <code>abs</code> is
+empty. Indeed, <strong>in the absence of explicitly returned value, the
+default returned value is the instance itself</strong>, in our situation the
+<code>LargePositiveInteger</code> instance:
+</p>
+<div class="example">
+<pre class="example">LargePositiveInteger&gt;&gt;abs
+</pre></div>
+
+<p>The <code>LargeNegativeInteger</code> knows it is negative and its absolute
+value is itself but with its sign reversed, that is <code>negated</code>:
+</p>
+<div class="example">
+<pre class="example">LargeNegativeInteger&gt;&gt;abs
+   ^ self negated
+</pre></div>
+   
+<p>These two overriding methods are more efficient as they avoid unnecessary
+checks and ifTrue/ifFalse branches. Polymorphism is often used to avoid
+unnecessary checks and code branches.
+</p>
+<span id="index-keyboard-shortcut-6"></span>
+
+<blockquote class="indentedblock">
+<p>&nbsp;<img src="note.png" alt="note">
+If you select the text <code>abs</code> in a Browser or
+Workspace and right-click to get the context menu, you will find an
+entry <code>Implementors of it</code>.  You can select this or use
+<kbd>Ctrl-m</kbd> (<em>i<b>M</b>plementors</em>) to see how various methods for
+<code>#abs</code> use polymorphism to specialize their answer to
+produce the naturally expected result.
+</p></blockquote>
+
+<p>As an object instance is modeled by its class, it is possible to
+ask any object its
+class with the <code>#class</code> message. Observe carefully the class
+returned in line 2 and 3:
+</p>
+<div class="float"><span id="askingClass"></span>
+<div class="example">
+<pre class="example">1 class &rArr; SmallInteger 
+(1/3) class &rArr; Fraction 
+(6/2) class &rArr; SmallInteger 
+(1/3) asFloat class  &rArr; SmallFloat64 
+(1.0/3) class &rArr; SmallFloat64 
+'Hello' class &rArr; String 
+('Hello' at: 1) class &rArr; Character
+</pre></div>
+
+<div class="float-caption"><p><strong>Example 3.1: </strong>Asking the class of an instance</p></div></div>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Explore-OOP-from-the-Browser.html" accesskey="n" rel="next">Explore OOP from the Browser</a>, Up: <a href="Class-_002d-Model-of-Communicating-Entities.html" accesskey="u" rel="up">Class - Model of Communicating Entities</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

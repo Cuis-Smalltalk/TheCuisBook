@@ -1,0 +1,278 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This book is for Cuis-Smalltalk (5.0#4506), a free and modern
+implementation of the Smalltalk language and environment.
+
+Copyright (C) 2020 Hilaire Fernandes with Ken Dickey & Juan Vuletich
+
+
+Thanks to Matt Armstrong, David Lewis, Tommy Pettersson, Mauro Rizzi &
+Stephen Smith for the reviews of the book and suggestions to improve
+it.
+
+
+
+
+
+Compilation : August 23, 2021
+
+Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
+
+
+
+The contents of this book are protected under Creative Commons
+Attribution-ShareAlike 4.0 International.
+
+You are free to:
+
+
+Share - copy and redistribute the material in any medium or
+format
+
+
+Adapt - remix, transform, and build upon the material for any
+purpose, even commercially.
+
+
+
+Under the following terms:
+
+
+Attribution. You must give appropriate credit, provide a link to
+the license, and indicate if changes were made. You may do so in any
+reasonable manner, but not in any way that suggests the licensor
+endorses you or your use.
+
+
+Share Alike. If you remix, transform, or build upon the material,
+you must distribute your contributions under the same license as the
+original.
+
+Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+ -->
+<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>String -- a particular collection (The Cuis-Smalltalk Book)</title>
+
+<meta name="description" content="String -- a particular collection (The Cuis-Smalltalk Book)">
+<meta name="keywords" content="String -- a particular collection (The Cuis-Smalltalk Book)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Indexes.html" rel="index" title="Indexes">
+<link href="The-Collection-Way-of-Life.html" rel="up" title="The Collection Way of Life">
+<link href="Fun-with-variables.html" rel="next" title="Fun with variables">
+<link href="The-Collection-Way-of-Life.html" rel="prev" title="The Collection Way of Life">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="style.css">
+
+
+</head>
+
+<body lang="en">
+<span id="String-_002d_002d-a-particular-collection"></span><div class="header">
+<p>
+Next: <a href="Fun-with-variables.html" accesskey="n" rel="next">Fun with variables</a>, Up: <a href="The-Collection-Way-of-Life.html" accesskey="u" rel="up">The Collection Way of Life</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="String-_002d_002d-a-particular-collection-1"></span><h3 class="section">4.1 String &ndash; a particular collection</h3>
+<span id="index-class-10"></span>
+<span id="index-class-11"></span>
+<span id="index-protocol"></span>
+
+<p>The <code>String</code> class also inherits behavior from its
+ancestor classes. Indeed <code>String</code> is a subclass of
+<code>ArrayedCollection</code>. The direct consequence is that when
+searching for some specific behavior, you may need to explore the
+parent classes too. The whole behavior of a class, defined in the
+class itself and its parents is called its <em>protocol</em>.
+</p>
+<span id="index-browser-4"></span>
+<span id="index-browser-5"></span>
+<p>Again the browser is helpful to explore a class protocol. You have two
+options:
+</p>
+<span id="index-keyboard-shortcut-8"></span>
+<ol>
+<li> <strong>Explore the protocol.</strong> In the class pane of the
+   browser, do ...select <code>String</code> class &rarr;
+   right mouse button &rarr; <code>Browse protocol
+   (p)</code>... Alternatively, use the keyboard shortcut <kbd>Ctrl-p</kbd>.
+
+<div class="float"><span id="ch03_002dbrowseProtocol"></span>
+<div align="center"><img src="ch03-browseProtocol.png" alt="ch03-browseProtocol">
+</div>
+<div class="float-caption"><p><strong>Figure 4.1: </strong>Browse <code>String</code> protocol</p></div></div>
+<p>The new window is a protocol browser for the <code>String</code>
+   class. At the left, we see a hierarchy of the <code>String</code>&rsquo;s ancestor
+   classes.
+   At the right are the method selectors for strings and, in parenthesis,
+   the class where they are defined.  Methods defined in class
+   <code>String</code> itself are in bold characters.
+</p>
+<p>Selecting one class there only shows the protocol starting from
+   this class down to the <code>String</code> class. If you select
+   <code>String</code> in the left panel, you only see methods defined in
+   the <code>String</code> class itself.
+</p>
+<p>In <a href="#ch03_002dbrowseProtocol">Figure 4.1</a>, no specific class is selected,
+   therefore the whole <code>String</code> protocol is listed at the
+   right. The method <code>before:</code> implemented in
+   <code>SequenceableCollection</code> is selected and its source code is
+   displayed on the large bottom pane.
+</p>
+<span id="index-keyboard-shortcut-9"></span>
+</li><li> <strong>Explore the hierarchy.</strong> In the class pane of the
+   browser, do ...select <code>String</code> class &rarr;
+   right mouse button &rarr; <code>Browse hierarchy
+   (h)</code>... Alternatively, use the keyboard shortcut <kbd>Ctrl-h</kbd> or
+   the button <code>hierarchy</code> on the system browser.
+
+<div class="float"><span id="ch03_002dbrowseHierarchy"></span>
+<div align="center"><img src="ch03-browseHierarchy.png" alt="ch03-browseHierarchy">
+</div>
+<div class="float-caption"><p><strong>Figure 4.2: </strong>Browse the <code>String</code> hierarchy</p></div></div>
+<p>The hierarchy browser is very like the system browser with only two
+   differences:
+</p>
+<span id="index-class-12"></span>
+<ul>
+<li> At the far left, the class categories pane is absent,
+      
+</li><li> In the classes pane, the hierarchy of <code>String</code> is
+      printed. It makes easy to browse <code>String</code> parent and
+      child classes.
+
+</li></ul>
+
+</li></ol>
+
+<p>The hierarchy browser is a general tool for exploration. Unlike
+the protocol browser, it does not display the entire protocol
+of a class.  No inherited methods are shown, only those
+defined directly in the selected class. In <a href="#ch03_002dbrowseHierarchy">Figure 4.2</a>, the class
+<code>SequenceableCollection</code> is selected as well as its method
+<code>before:</code>.
+</p>
+<p>The <code>before:</code> method extracts from a collection the element before a specified
+element. When inherited in <code>String</code>, those elements are
+<code>Character</code> instances:
+</p>
+<div class="example">
+<pre class="example">'1 + 3i' before: $i
+&rArr; $3
+</pre></div>
+
+<p>Practice the tools and resolve the exercise below.
+</p>
+<div class="float"><span id="cutString"></span>
+<blockquote class="indentedblock">
+<p>&nbsp;<img src="CuisLogo.png" alt="CuisLogo">
+<em>Find the appropriate
+method to transform &rsquo;Hello My Friend&rsquo; into &rsquo;My Friend&rsquo;.</em>
+</p></blockquote>
+
+
+<div class="float-caption"><p><strong>Exercise 4.1: </strong>Cut a string</p></div></div>
+<p>Beware, some messages in the <code>String</code> protocol may obviously not
+work. Observe below, the error is thrown on a <code>Character</code>
+instance:
+</p>
+<div class="example">
+<pre class="example">'Hello My Friend' cos
+&rArr; MesageNotUnderstood: Character&gt;&gt;cos
+</pre></div>
+
+<p>If you look at implementors of <code>cos</code>, you can
+find that <code>Collection</code> expects to apply <code>cos</code>
+to each member of a collection, hence a character is
+asked for its cosine.
+</p>
+<span id="index-symbol"></span>
+<p><strong>Symbol.</strong> A symbol is very like a string but it is unique and
+never duplicated.
+Two references to <code>'hello'</code> might be to two or only
+one object depending computational history.  Two references
+to <code>#hello</code> are guarenteed to always refer to the same object.
+</p>
+<p>Symbols got their name because they are used as <em>symbolic constants</em>.
+You already observed how in the book we wrote message selectors as a symbol.
+We use symbols because each message name must uniquely index
+the code for a method.
+You will use a symbol when you need to name something uniquely.
+</p>
+<p>In the example below, the strings are not identical once
+duplicated &ndash; copying a string always results in a new string
+&ndash; however symbols are identical even when duplicated<a id="DOCF17" href="#FOOT17"><sup>17</sup></a>:
+</p>
+<div class="example">
+<pre class="example">'hello' == 'hello' copy
+&rArr; false 
+#hello  == #hello copy
+&rArr; true
+</pre></div>
+
+<p>Now you know.  Strings can be duplicated or changed, symbols can&rsquo;t.
+</p>
+<p>Symbols can contain space characters:
+</p>
+<div class="example">
+<pre class="example">'hello my friend' asSymbol
+&rArr; #'hello my friend'
+</pre></div>
+
+<p><code>Symbol</code> is a subclass of <code>String</code> and much of its behavior
+is inherited. As we learn about <code>String</code>s we
+are also learning quite a bit about symbols.
+</p>
+<p>Note that many <code>String</code> methods are defined to return strings.
+</p>
+<div class="example">
+<pre class="example">'hello my friend' class.
+&rArr; String
+#'hello my friend' class.
+&rArr; Symbol 
+#'hello my friend' asCamelCase
+&rArr; 'helloMyFriend'
+#'hello my friend' asCamelCase asSymbol 
+&rArr; #helloMyFriend
+</pre></div>
+
+
+<div class="footnote">
+<hr>
+<h4 class="footnotes-heading">Footnotes</h4>
+
+<h5><a id="FOOT17" href="#DOCF17">(17)</a></h3>
+<p>To be
+honest, copying a symbol just returns the original symbol.</p>
+</div>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Fun-with-variables.html" accesskey="n" rel="next">Fun with variables</a>, Up: <a href="The-Collection-Way-of-Life.html" accesskey="u" rel="up">The Collection Way of Life</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

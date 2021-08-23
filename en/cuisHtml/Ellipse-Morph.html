@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This book is for Cuis-Smalltalk (5.0#4506), a free and modern
+implementation of the Smalltalk language and environment.
+
+Copyright (C) 2020 Hilaire Fernandes with Ken Dickey & Juan Vuletich
+
+
+Thanks to Matt Armstrong, David Lewis, Tommy Pettersson, Mauro Rizzi &
+Stephen Smith for the reviews of the book and suggestions to improve
+it.
+
+
+
+
+
+Compilation : August 23, 2021
+
+Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
+
+
+
+The contents of this book are protected under Creative Commons
+Attribution-ShareAlike 4.0 International.
+
+You are free to:
+
+
+Share - copy and redistribute the material in any medium or
+format
+
+
+Adapt - remix, transform, and build upon the material for any
+purpose, even commercially.
+
+
+
+Under the following terms:
+
+
+Attribution. You must give appropriate credit, provide a link to
+the license, and indicate if changes were made. You may do so in any
+reasonable manner, but not in any way that suggests the licensor
+endorses you or your use.
+
+
+Share Alike. If you remix, transform, or build upon the material,
+you must distribute your contributions under the same license as the
+original.
+
+Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+ -->
+<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Ellipse Morph (The Cuis-Smalltalk Book)</title>
+
+<meta name="description" content="Ellipse Morph (The Cuis-Smalltalk Book)">
+<meta name="keywords" content="Ellipse Morph (The Cuis-Smalltalk Book)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Indexes.html" rel="index" title="Indexes">
+<link href="Visual-with-Morph.html" rel="up" title="Visual with Morph">
+<link href="Submorph.html" rel="next" title="Submorph">
+<link href="Installing-a-Package.html" rel="prev" title="Installing a Package">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="style.css">
+
+
+</head>
+
+<body lang="en">
+<span id="Ellipse-Morph"></span><div class="header">
+<p>
+Next: <a href="Submorph.html" accesskey="n" rel="next">Submorph</a>, Previous: <a href="Installing-a-Package.html" accesskey="p" rel="prev">Installing a Package</a>, Up: <a href="Visual-with-Morph.html" accesskey="u" rel="up">Visual with Morph</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Ellipse-Morph-1"></span><h3 class="section">6.2 Ellipse Morph</h3>
+<span id="index-morph"></span>
+<p>Let&rsquo;s start with one of the basic morphs, an <code>EllipseMorph</code>.
+You could write <code>EllipseMorph new openInWorld</code> and
+<code><b>D</b>o-it</code>, but we are doing visual things for now, so let&rsquo;s
+get a World Menu and select from <code>New Morph...</code> <code>Basic</code>
+submenu and drag onto the desktop.
+</p>
+<p>Every time one obtains a morph from a <code>New Morph...</code> submenu,
+one gets a different morph but made to a standard style.
+</p>
+<div class="float"><span id="ch06_002d01_002dEllipseMorphFromMenu"></span>
+<div align="center"><img src="ch06-01-EllipseMorphFromMenu.png" alt="ch06-01-EllipseMorphFromMenu">
+</div>
+<div class="float-caption"><p><strong>Figure 6.1: </strong>Select <code>EllipseMorph</code> from a
+menu</p></div></div>
+<p>The basic challenge of <em>user interface design</em> is
+to communicate visibility and control.
+Where am I?  What can I do here?
+</p>
+<p>One of the balance points in design is how to eliminate clutter.  One
+useful strategy is to reveal capabilities in context as they are
+needed.
+</p>
+<span id="index-morph-1"></span>
+<p>In the case of Cuis-Smalltalk, you have to know some basics because helpful
+tools are there but stay out of the way.  At any time you can
+<kbd>Right-Click</kbd> on the desktop to get the World Menu.  You can also
+<kbd>Middle-Click</kbd> on any <code>Morph</code> to get a <em>halo</em> of
+<em>construction handles</em>, which show up as small colored circular
+icons.  If you pause the cursor over one of these, you get a <em>tool
+tip</em>, a temporary text popup who&rsquo;s name should give a clue to its
+usage.
+</p>
+<p>If you click elsewhere the construction handles leave, but you can get them
+back at any time with a mouse click.
+</p>
+<div class="float"><span id="ch06_002d03_002dDragToEnlarge"></span>
+<div align="center"><img src="ch06-03-DragToEnlarge.png" alt="ch06-03-DragToEnlarge">
+</div>
+<div class="float-caption"><p><strong>Figure 6.2: </strong>Drag construction handle to change size</p></div></div>
+<p>Now that you know this, move the yellow lower right handle with tool
+tip <code>Change size</code> via <em>Click-Drag</em>.  Just hold down the
+left mouse button while the cursor is over the handle, move the cursor
+to the right and down, and release the mouse button.
+</p>
+<div class="float"><span id="ch06_002d04_002dEnlarged"></span>
+<div align="center"><img src="ch06-04-Enlarged.png" alt="ch06-04-Enlarged">
+</div>
+<div class="float-caption"><p><strong>Figure 6.3: </strong>A larger ellipse</p></div></div>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Submorph.html" accesskey="n" rel="next">Submorph</a>, Previous: <a href="Installing-a-Package.html" accesskey="p" rel="prev">Installing a Package</a>, Up: <a href="Visual-with-Morph.html" accesskey="u" rel="up">Visual with Morph</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This book is for Cuis-Smalltalk (5.0#4506), a free and modern
+implementation of the Smalltalk language and environment.
+
+Copyright (C) 2020 Hilaire Fernandes with Ken Dickey & Juan Vuletich
+
+
+Thanks to Matt Armstrong, David Lewis, Tommy Pettersson, Mauro Rizzi &
+Stephen Smith for the reviews of the book and suggestions to improve
+it.
+
+
+
+
+
+Compilation : August 23, 2021
+
+Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
+
+
+
+The contents of this book are protected under Creative Commons
+Attribution-ShareAlike 4.0 International.
+
+You are free to:
+
+
+Share - copy and redistribute the material in any medium or
+format
+
+
+Adapt - remix, transform, and build upon the material for any
+purpose, even commercially.
+
+
+
+Under the following terms:
+
+
+Attribution. You must give appropriate credit, provide a link to
+the license, and indicate if changes were made. You may do so in any
+reasonable manner, but not in any way that suggests the licensor
+endorses you or your use.
+
+
+Share Alike. If you remix, transform, or build upon the material,
+you must distribute your contributions under the same license as the
+original.
+
+Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+ -->
+<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Building your specialized Morph (The Cuis-Smalltalk Book)</title>
+
+<meta name="description" content="Building your specialized Morph (The Cuis-Smalltalk Book)">
+<meta name="keywords" content="Building your specialized Morph (The Cuis-Smalltalk Book)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Indexes.html" rel="index" title="Indexes">
+<link href="Visual-with-Morph.html" rel="up" title="Visual with Morph">
+<link href="Spacewar_0021-Morphs.html" rel="next" title="Spacewar! Morphs">
+<link href="A-brief-introduction-to-Inspectors.html" rel="prev" title="A brief introduction to Inspectors">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="style.css">
+
+
+</head>
+
+<body lang="en">
+<span id="Building-your-specialized-Morph"></span><div class="header">
+<p>
+Next: <a href="Spacewar_0021-Morphs.html" accesskey="n" rel="next">Spacewar! Morphs</a>, Previous: <a href="A-brief-introduction-to-Inspectors.html" accesskey="p" rel="prev">A brief introduction to Inspectors</a>, Up: <a href="Visual-with-Morph.html" accesskey="u" rel="up">Visual with Morph</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Building-your-specialized-Morph-1"></span><h3 class="section">6.5 Building your specialized Morph</h3>
+<span id="index-morph-6"></span>
+<p>Let&rsquo;s make a simple subclass which changes color when
+<kbd>Left-Click</kbd>ed.  Create a new class just as we did with Spacewar!
+but subclass <code>EllipseMorph</code> with <code>#ColorClickEllipse</code>.
+</p>
+<div class="example">
+<pre class="example">EllipseMorph subclass: #ColorClickEllipse
+   instanceVariableNames: ''
+   classVariableNames: ''
+   poolDictionaries: ''
+   category: 'Spacewar!'
+</pre></div>
+
+<p>Save the class definition with <kbd>Ctrl-s</kbd>.
+</p>
+<span id="index-event"></span>
+<p><kbd>Right-Click</kbd> on the <code>Message Category</code> pane and select
+<code>new category...</code>.  This brings up a number of selections and
+allows us to create new ones.  Select &ldquo;event handling testing&rdquo;.
+Then add the method <code>ColorClickEllipse&gt;&gt;handlesMouseDown:</code>.
+</p>
+<div class="example">
+<pre class="example">handlesMouseDown: aMouseButtonEvent
+  &quot;Answer that I do handle mouseDown events&quot;
+  ^ true
+
+</pre></div>
+
+<span id="index-event-1"></span>
+<p>Likewise, add a new catagory &ldquo;event handing&rdquo; and add the other
+method we need.
+</p>
+<div class="example">
+<pre class="example">mouseButton1Up: aMouseButtonEvent localPosition: localEventPosition
+   &quot;I ignore the mouseEvent information and change my color.&quot;
+   self color: Color random
+</pre></div>
+
+<p>Now, you have created a new Morph class and can select a
+<code>ColorClickEllipse</code> from the World Menu <code>New Morph..</code> and
+try it out.  These are fun to <kbd>Left-Click</kbd> on.  Make as many as
+you want!
+</p>
+<div class="float"><span id="ch06_002d15_002dColorClickEllipse"></span>
+<div align="center"><img src="ch06-15-ColorClickEllipse.png" alt="ch06-15-ColorClickEllipse">
+</div>
+<div class="float-caption"><p><strong>Figure 6.13: </strong>Obtain a <code>ColorClickEllipse</code></p></div></div>
+<p>Now you know how to specialize an individual morph, or make a whole
+new class of them!
+</p>
+
+
+
+
+</body>
+</html>

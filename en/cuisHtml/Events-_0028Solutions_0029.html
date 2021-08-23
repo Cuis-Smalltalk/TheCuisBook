@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This book is for Cuis-Smalltalk (5.0#4506), a free and modern
+implementation of the Smalltalk language and environment.
+
+Copyright (C) 2020 Hilaire Fernandes with Ken Dickey & Juan Vuletich
+
+
+Thanks to Matt Armstrong, David Lewis, Tommy Pettersson, Mauro Rizzi &
+Stephen Smith for the reviews of the book and suggestions to improve
+it.
+
+
+
+
+
+Compilation : August 23, 2021
+
+Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
+
+
+
+The contents of this book are protected under Creative Commons
+Attribution-ShareAlike 4.0 International.
+
+You are free to:
+
+
+Share - copy and redistribute the material in any medium or
+format
+
+
+Adapt - remix, transform, and build upon the material for any
+purpose, even commercially.
+
+
+
+Under the following terms:
+
+
+Attribution. You must give appropriate credit, provide a link to
+the license, and indicate if changes were made. You may do so in any
+reasonable manner, but not in any way that suggests the licensor
+endorses you or your use.
+
+
+Share Alike. If you remix, transform, or build upon the material,
+you must distribute your contributions under the same license as the
+original.
+
+Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+ -->
+<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Events (Solutions) (The Cuis-Smalltalk Book)</title>
+
+<meta name="description" content="Events (Solutions) (The Cuis-Smalltalk Book)">
+<meta name="keywords" content="Events (Solutions) (The Cuis-Smalltalk Book)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Indexes.html" rel="index" title="Indexes">
+<link href="Solutions-to-the-Exercises.html" rel="up" title="Solutions to the Exercises">
+<link href="Code-Management-_0028Solutions_0029.html" rel="next" title="Code Management (Solutions)">
+<link href="The-Fundamentals-of-Morph-_0028Solutions_0029.html" rel="prev" title="The Fundamentals of Morph (Solutions)">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="style.css">
+
+
+</head>
+
+<body lang="en">
+<span id="Events-_0028Solutions_0029"></span><div class="header">
+<p>
+Next: <a href="Code-Management-_0028Solutions_0029.html" accesskey="n" rel="next">Code Management (Solutions)</a>, Previous: <a href="The-Fundamentals-of-Morph-_0028Solutions_0029.html" accesskey="p" rel="prev">The Fundamentals of Morph (Solutions)</a>, Up: <a href="Solutions-to-the-Exercises.html" accesskey="u" rel="up">Solutions to the Exercises</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Events-2"></span><h3 class="unnumberedsec">Events</h3>
+
+<span id="handleMouseOver-1"></span><h4 class="subheading"><a href="Spacewar_0021-Events.html#handleMouseOver">Exercise 8.1</a></h4>
+<p>The method <code>handlesMouseOver:</code>, implemented in the
+<code>SpaceWar</code> morph class, returns true so the game play is
+informed of mouse over events in dedicated methods.
+</p><div class="example">
+<pre class="example">SpaceWar&gt;&gt;handlesMouseOver: event
+   ^ true
+</pre></div>
+
+<span id="mouseEnter-1"></span><h4 class="subheading"><a href="Spacewar_0021-Events.html#mouseEnter">Exercise 8.2</a></h4>
+<p>You need to browse the <code>Morph&gt;&gt;handlesMouseOver:</code> method and
+read the comment. It writes about a <code>#mouseEnter:</code> message; we
+implement the matching method in <code>SpaceWar</code> class with the
+behaviors previously described:
+</p><div class="example">
+<pre class="example">SpaceWar&gt;&gt;mouseEnter: event
+   event hand newKeyboardFocus: self.	
+   self startStepping
+</pre></div>
+
+<span id="mouseLeave-1"></span><h4 class="subheading"><a href="Spacewar_0021-Events.html#mouseLeave">Exercise 8.3</a></h4>
+<p>The message <code>#mouseLeave:</code> is sent to our <code>SpaceWar</code> instance
+each time the mouse cursor move out (leaves) of the game
+play. Therefore we add the homonym method to the <code>SpaceWar</code>
+class:
+</p><div class="example">
+<pre class="example">SpaceWar&gt;&gt;mouseLeave: event
+   event hand releaseKeyboardFocus: self.
+   self stopStepping
+</pre></div>
+
+<span id="keyboardEvent-1"></span><h4 class="subheading"><a href="Spacewar_0021-Events.html#keyboardEvent">Exercise 8.4</a></h4>
+<p>The <code>#handlesKeyboard</code> message is sent to a morph to know if it
+wants to receive keyboard event. The morph responds true to this
+message to state its interest on keyboard event. We implement the
+method in the <code>SpaceWar</code> class:
+</p><div class="example">
+<pre class="example">SpaceWar&gt;&gt;handlesKeyboard
+   ^ true
+</pre></div>
+
+<span id="secondShipControl-1"></span><h4 class="subheading"><a href="Spacewar_0021-Events.html#secondShipControl">Exercise 8.5</a></h4>
+<p>We designate the characters as <code>$w $a $s $d</code>. We append the
+code below to the method <code>SpaceWar&gt;&gt;keyStroke:</code>
+</p><div class="example">
+<pre class="example">key = $w ifTrue: [^ ships second push].
+key = $d ifTrue: [^ ships second right].
+key = $a ifTrue: [^ ships second left].
+key = $s ifTrue: [^ ships second fireTorpedo]
+</pre></div>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This book is for Cuis-Smalltalk (5.0#4506), a free and modern
+implementation of the Smalltalk language and environment.
+
+Copyright (C) 2020 Hilaire Fernandes with Ken Dickey & Juan Vuletich
+
+
+Thanks to Matt Armstrong, David Lewis, Tommy Pettersson, Mauro Rizzi &
+Stephen Smith for the reviews of the book and suggestions to improve
+it.
+
+
+
+
+
+Compilation : August 23, 2021
+
+Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
+
+
+
+The contents of this book are protected under Creative Commons
+Attribution-ShareAlike 4.0 International.
+
+You are free to:
+
+
+Share - copy and redistribute the material in any medium or
+format
+
+
+Adapt - remix, transform, and build upon the material for any
+purpose, even commercially.
+
+
+
+Under the following terms:
+
+
+Attribution. You must give appropriate credit, provide a link to
+the license, and indicate if changes were made. You may do so in any
+reasonable manner, but not in any way that suggests the licensor
+endorses you or your use.
+
+
+Share Alike. If you remix, transform, or build upon the material,
+you must distribute your contributions under the same license as the
+original.
+
+Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+ -->
+<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Halt! (The Cuis-Smalltalk Book)</title>
+
+<meta name="description" content="Halt! (The Cuis-Smalltalk Book)">
+<meta name="keywords" content="Halt! (The Cuis-Smalltalk Book)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Indexes.html" rel="index" title="Indexes">
+<link href="Debug-and-Exception-Handling.html" rel="up" title="Debug and Exception Handling">
+<link href="Sharing-Cuis.html" rel="next" title="Sharing Cuis">
+<link href="The-Debugger.html" rel="prev" title="The Debugger">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="style.css">
+
+
+</head>
+
+<body lang="en">
+<span id="Halt_0021"></span><div class="header">
+<p>
+Previous: <a href="The-Debugger.html" accesskey="p" rel="prev">The Debugger</a>, Up: <a href="Debug-and-Exception-Handling.html" accesskey="u" rel="up">Debug and Exception Handling</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Halt_0021-1"></span><h3 class="section">10.3 Halt!</h3>
+
+<span id="index-tools-7"></span>
+<span id="index-halt"></span>
+
+<p>A <em>breakpoint</em> is a place in code where one wishes to pause code
+processing and look around.  One does not always want to single step
+to find a problem, especially one that occurs only once in a while.  A
+breakpoint set where the problem occurs is quite handy.
+</p>
+<p>In Smalltalk, one uses the <code>halt</code> method to set a breakpoint.
+The message <code>#halt</code> is sent to an object which is the
+debugger&rsquo;s initial focus.
+</p>
+<p>Please change the Workspace code to add a <code>#halt</code> as follows.
+</p>
+<div class="float"><span id="breakpoint"></span>
+<div class="example">
+<pre class="example">| fileNames |
+fileNames := OrderedCollection new.
+(DirectoryEntry smalltalkImageDirectory) 
+    childrenDo: [ :f | fileNames add: f name. fileNames halt ].
+fileNames asArray.
+</pre></div>
+
+<div class="float-caption"><p><strong>Example 10.4: </strong>Halt: Set a Breakpoint</p></div></div>
+<blockquote class="indentedblock">
+<p>&nbsp;<img src="note.png" alt="note">
+The object which receives the <code>#halt</code> message
+becomes the focus object of the debugger.
+</p></blockquote>
+
+<p>Let&rsquo;s again <kbd>Ctrl-a</kbd> (<em>select <b>A</b>ll</em>) and <kbd>Ctrl-p</kbd>
+(<em>select <b>P</b>rint-it</em>).
+</p>
+<div class="float"><span id="ch10_002d06_002dHalt"></span>
+<div align="center"><img src="ch10-06-Halt.png" alt="ch10-06-Halt">
+</div>
+<div class="float-caption"><p><strong>Figure 10.6: </strong>Halt</p></div></div>
+<p>Press <kbd>Over</kbd> twice to step over the breakpoint.
+</p>
+<div class="float"><span id="ch10_002d07_002dOver"></span>
+<div align="center"><img src="ch10-07-Over.png" alt="ch10-07-Over">
+</div>
+<div class="float-caption"><p><strong>Figure 10.7: </strong>Step Over Breakpoint</p></div></div>
+<p>Well, this looks familiar.  I know what to do here.
+</p>
+<p>Note that the <code>halt</code> is inside a loop.  While in the loop, each
+time you press <kbd>Proceed</kbd> you will <em>hit</em> the breakpoint in the
+next iteration of the loop.
+</p>
+<p>In many programming envionments, to make a change you need to kill a
+process, recompile code, then start a new process.
+</p>
+<p>Smalltalk is a <em>live</em> environment.  You can break, then change or
+write code (the <kbd>Create</kbd> button at mid-right), restart the stack
+frame, and continue processing &ndash; all without unwinding the context
+stack!
+</p>
+<p>As an analogy, in many programming languages, it is like you stub your
+toe and visit a physician.  The doctor says &ldquo;Yes. you stubbed your
+toe.&rdquo; then takes out a gun, shoots you, and sends your mother a note
+&ldquo;have another child.&rdquo;  Smalltalk is much more friendly!
+</p>
+<p>Note that with great power comes great
+responsibility. <a id="DOCF25" href="#FOOT25"><sup>25</sup></a>
+In an open system, you can place a breakpoint anywhere, including
+places which can break the user interface!  For example, it could be a
+bad thing to put a breakpoint in the code for the Debugger!
+</p>
+<div class="footnote">
+<hr>
+<h4 class="footnotes-heading">Footnotes</h4>
+
+<h5><a id="FOOT25" href="#DOCF25">(25)</a></h3>
+<p><a href="https://quoteinvestigator.com/2015/07/23/great-power/">https://quoteinvestigator.com/2015/07/23/great-power/</a></p>
+</div>
+<hr>
+<div class="header">
+<p>
+Previous: <a href="The-Debugger.html" accesskey="p" rel="prev">The Debugger</a>, Up: <a href="Debug-and-Exception-Handling.html" accesskey="u" rel="up">Debug and Exception Handling</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>
