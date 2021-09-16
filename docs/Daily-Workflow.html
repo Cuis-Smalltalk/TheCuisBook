@@ -14,7 +14,7 @@ it.
 
 
 
-Compilation : August 23, 2021
+Compilation : September 16, 2021
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -231,17 +231,22 @@ Preferences smallFonts.
 &quot;Adjust taskbar size&quot;
 morph := UISupervisor ui submorphs first.
 morph scale: 1 / 2.
+Display fullScreenMode: true.
+self runningWorld doOneCycle.
 </pre></div>
 
 <p>We require Theme-Themes package; as it is not installed on the default
 image, it will be searched on the disk for installation. Regarding the
 taskbar access, remember we deleted all the morphs but the taskbar
 from the world, therefore the taskbar is really the first in the sub
-morphs collection of the world.
+morphs collection of the world. Finally, we update the scale of the
+taskbar and we request Cuis-Smalltalk to display itself full screen. As we
+changed several visual parts, we request one update cycle of the
+environment (i.e. the running world in Cuis-Smalltalk terminology).
 </p>
 <p>Before installing the tools, we ask a <code>RealEstateAgent</code> the free
 area. Sadly this agent does not take into consideration the area
-occupied by the task bar, so we need to tweak its answer. Then we
+occupied by the taskbar, so we need to tweak its answer. Then we
 compute a quarter of this free area extent (half in width and half
 in height make a quarter of the whole free area):
 </p>
