@@ -42,13 +42,13 @@ At its simplest, an object has two components:
 
 @itemize
 
-   @item @strong{Internal state.} This is embodied by variable(s)
-   known only by the object. A variable only visible within the object
+   @item @strong{Internal state.} This is embodied by variables
+   known only to the object. A variable only visible within the object
    is called a @dfn{private} variable. As a consequence, it is impossible
    -- if the object decides so -- to know the internal state of the object
    from another object.
 
-   @item @strong{A repertoire of behaviors.} These are the message(s)
+   @item @strong{A repertoire of behaviors.} These are the messages
    an object instance responds to. When the object
    receives a message it understands, it gets its behavior from a
    method with that name known by its class or superclass.
@@ -177,7 +177,7 @@ A class method is often used to create a new instance from a class. In
 
 In @ref{repeatLoop}, the @msg{newFrom:} message is sent to the class
 @class{OrderedCollection} to create a new collection filled with
-elements from the array given in argument; @emph{@method{newFrom:}} is
+elements from the array given in the argument; @emph{@method{newFrom:}} is
 another class method.
 
 @page
@@ -395,7 +395,7 @@ window. Just close the debug window for now to ignore the result.
 Float pi e
 @result{} MessageNotUnderstood: SmallFloat64>>e}
 
-Often these class methods are used to access constant value as seen in
+Often these class methods are used to access constant values as seen in
 the previous example or to create a new instance:
 
 @smalltalkExample{OrderedCollection new
@@ -424,8 +424,8 @@ directly to an instance:
 3.14 cos @result{} -0.9999987317275395
 -10.12 * 2 @result{} -20.24}
 
-Instance method message can not be sent directly to a class, you need
-to instantiate first an object:
+Instance method messages cannot be sent directly to a class, you need
+to instantiate an object first:
 
 @smalltalkExample{Float cos
 @result{} MessageNotUnderstood: Float class>>cos
@@ -447,21 +447,21 @@ OrderedCollection new add: Float pi; add: Float e; yourself
 @result{} an OrderedCollection(3.141592653589793 2.718281828459045) 
 }
 
-Here another example from Spacewar! mixing class and instance
+Here is another example from Spacewar! mixing class and instance
 methods. This portion of code updates the orientation of a torpedo
 according to its velocity vector:
 
 @smalltalkExampleCaption{Aligning a torpedo with its velocity direction,torpedoOrientation,
 self rotation: (velocity y arcTan: velocity x) + Float halfPi}
 
-With this brief introduction to the system browser, your are now
+With this brief introduction to the system browser, you are now
 equipped to explore the system classes.
 
 @node Cuis system classes
 @section Cuis system classes
-As we noted above, @cuis{} is a pure object oriented environment. This 
+As we noted above, @cuis{} is a pure object-oriented environment. This 
 means that every single entitiy you are dealing with is represented
-as an instances of a class written in @cuis{} itself. As a direct
+as an instance of a class written in @cuis{} itself. As a direct
 consequence, @cuis{} is mostly written in itself.  This means
 the entire system is open to you to learn and play with.
 
@@ -469,7 +469,7 @@ What we call system classes are models of fundamental objects. In
 other programming languages, these would be implemented in
 that language's standard library.
 
-In a truely open system, there is no real distinction between system
+In a truly open system, there is no real distinction between system
 classes and user classes, but it will help us to draw a boundary
 around the most used objects. Let's have a brief introduction to some
 fundamental Smalltalk classes and their most important methods.
@@ -510,7 +510,7 @@ the method categories.
 
 Let's suppose we want to round a float number. In @class{Number}, we
 explore the @strong{Truncation and round off} method category to
-discover several behaviors. The next things to do is to test these
+discover several behaviors. The next thing to do is to test these
 messages in a Workspace to discover the one we are searching for:
 
 @cindex number @subentry @method{roundTo:}
@@ -553,16 +553,16 @@ Float pi to: 5 by: 1/3 do: [:i | Transcript show: (i roundTo: 0.01) ; space]
 @cindex number @subentry integer @subentry @method{timesRepeat:}
 
 Now, in the @class{Integer} class, explore the method category
-@label{enumerating}, here is the @method{timesRepeat:}. When a
+@label{enumerating}, to find @method{timesRepeat:}. When a
 portion of code needs to be executed several times
 @footnote{More strictly, to be repeated an integer number of times.}, without
-the need of an index, the @msg{timesRepeat:} message is sent to an
+the need for an index, the @msg{timesRepeat:} message is sent to an
 integer. We already saw this variant in a previous section of this
 chapter.  Throwing a 6 face die 5 times can be simulated with
 an integer:
 
 @cindex number @subentry integer @subentry @method{atRandom}
-@smalltalkExampleCaption{Throwing a dice 5 times, playingDice,
+@smalltalkExampleCaption{Throwing a die 5 times, playingDice,
 5 timesRepeat: [Transcript show: 6 atRandom; space]
 @result{} 1 2 4 6 2}
 
@@ -603,7 +603,7 @@ position in the square game play area. Intervals are handy to pick
 random coordinates. In the example below, the variable
 @smalltalk{randomCoordinate} holds a block of code -- called an anonymous
 function in other languages. It picks a random value in the
-interval consisting of the game play area left and right extents:
+interval consisting of the gameplay area's left and right extents:
 
 @smalltalkExampleCaption{Teleport ship, teleportShipInterval,
 randomCoordinate @assign{} [(area left to: area right) atRandom].
@@ -613,26 +613,26 @@ aShip
 
 
 @exercise{Cosine table, cosTable, @emph{Compute the cosine values in
-the interval [0 ; 2PI]@comma{} each 1/10. Output in the transcript.}}
+the interval [0 ; 2PI]@comma{} each 1/10. Output the result in the transcript.}}
 
 @c Integer bits representation and manpulation
 @cindex number @subentry integer @subentry base
 Integer numbers are represented in different bases when prefixed with
 the base and ``r''. The @label{r} stands for radix, the base root by
 which the following number is interpreted.
-When executing and printing @kbd{Ctrl-p} such a
+When executing and printing @kbd{Ctrl-p} on such a
 number, it is immediately printed in the decimal base:
 
-@smalltalkExampleCaption{Integer represented in different base,integerBase,
+@smalltalkExampleCaption{Integer represented by different bases,integerBase,
 2r1111 @result{} 15
 16rF @result{} 15
 8r17 @result{} 15
 20rF @result{} 15
 10r15 @result{} 15}
 
-Writing numbers as Mayans or Babylonians@footnote{Bases 20 and 60
-number representation are not exclusive to these civilisations,
-although there are the most documented use cases.}:
+Writing numbers as Mayans or Babylonians@footnote{Base 20 and 60
+number representations are not exclusive to these civilisations,
+although they are the most documented use cases.}:
 
 @smalltalkExampleCaption{Counting like the ancients,countingAncients,
 "The Babylonians"
@@ -658,7 +658,7 @@ bits left and right is equivalent to multiplying by 2 and dividing by
 (2r1111 >> 1) printStringBase: 2 @result{} '111'
 2r1111 >> 1 @result{} 7}
 
-@exercise{Multiply by 1024,multiplyBy1024, @emph{How will you multiply
+@exercise{Multiply by 1024,multiplyBy1024, @emph{How would you multiply
 the integer 360 by 1024@comma{} without using the multiplication operation?}}
 
 
@@ -673,7 +673,7 @@ preceded by 5 zeros or 2 as the fifth digit after the decimal dot.
 
 @cuisNote{Computers encode and store decimal numbers imprecisely. You
 need to be aware of that when doing computation and equality
-comparison. Many systems hide these errors because there are very tiny
+comparisons. Many systems hide these errors because they are very tiny
 errors. @cuis{} does not hide this inaccuracy.  There is good
 information about this in the class comment of @class{Float}.}
 
@@ -687,11 +687,11 @@ not the case. The computer returns @smalltalk{5.55e-17}, or
 is an error.
 
 @exercise{Miscellaneous calculation errors with decimal
-number,exeFloatPrecision,@emph{Give 3 calculations showing errors compared
+numbers,exeFloatPrecision,@emph{Give 3 calculations showing errors compared
 to the expected results.}}
 
-When accuracy is absolutely mandatory use the Rational Numbers
-representation of @cuis{}.
+When accuracy is mandatory use the Rational Numbers
+representation in @cuis{}.
 
 @cindex number @subentry rational fraction
 
@@ -700,10 +700,10 @@ integers: do @kbd{Ctrl-p} on @smalltalk{5/2} @result{}
 @smalltalk{5/2}. @cuis{} returns a rational fraction, it does not compute a
 decimal.
 
-@exercise{Toward the infinite,exeZeroDivide, @emph{What happen when
+@exercise{Toward the infinite,exeZeroDivide, @emph{What happens when
 executing this code} @smalltalk{5/0}@emph{?}}
 
-Let's come back to our computer dyscalculia with decimal numbers. When
+Let's come back to our computer's dyscalculia with decimal numbers. When
 using the rational numbers, the @ref{FloatPrecision} becomes:
 
 @smalltalkExampleCaption{Calculation is correct using rational fractions!,FractionPrecision,
@@ -712,19 +712,19 @@ using the rational numbers, the @ref{FloatPrecision} becomes:
 
 This time we have the expected result. Under the covers the computer
 only does the calculations with integer components so no roundoff
-results. This is a fine example where solving some problem requires a
+results. This is a fine example where solving some problems requires a
 paradigm shift.
 
 @exercise{Fix the errors,exeFractionPrecision, @emph{Return to
-@ref{exeFloatPrecision} and use rational writing to represent decimal
-numbers. The errors are gone.}}
+@ref{exeFloatPrecision} and use rational numbers to represent decimal
+numbers. The errors will be resolved.}}
 
 @cindex number @subentry convertion
 @cuis{} knows how to convert a decimal number to a fraction, by
 sending the message @msg{asFraction}. We already acknowledged the
-computer dyscalculia trouble with decimal number, this is why when
+computer's dyscalculia with decimal numbers, this is why when
 asking for a fraction representation we have this strange answer. The
-internal computer represenation of @smalltalk{1.3} is not exactly as
+internal computer representation of @smalltalk{1.3} is not exactly as
 it seems:
 
 @smalltalkExample{(13/10) asFloat
