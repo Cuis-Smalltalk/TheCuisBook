@@ -83,8 +83,8 @@ In method category @label{drawing} add:
 @smalltalkExample{LineExampleMorph>>drawOn: aCanvas
    aCanvas strokeWidth: 20 color: Color green do: [
       aCanvas
-         moveToX: 100 y: 100;
-         lineToX: 400 y: 200 ].}
+         moveTo: 100 @@ 100;
+         lineTo: 400 @@ 200 ].}
 
 Now in a Workspace execute:
 @smalltalkExample{LineExampleMorph new openInWorld}
@@ -116,8 +116,8 @@ You might have already tried to click and drag on your Line, like you
 can do with regular windows and most other Morphs. If not, try
 now. But nothing happens! The reason is that our Morph is fixed in a
 place in the owner morph (the WorldMorph). It is fixed because
-@method{drawOn:} says it should be a line between @smalltalk{100@@100}
-and @smalltalk{400@@200}. Moving it around would mean modifying those
+@method{drawOn:} says it should be a line between @smalltalk{100 @@ 100}
+and @smalltalk{400 @@ 200}. Moving it around would mean modifying those
 points. One possible way to do that could be to store those points in instance
 variables.
 
@@ -174,10 +174,10 @@ In the @label{drawing} method category add:
 @smalltalkExample{TriangleExampleMorph>>drawOn: aCanvas
    aCanvas strokeWidth: 10 color: borderColor fillColor: fillColor do: [
       aCanvas
-         moveToX: 0 y: 100;
-         lineToX: 87 y: -50;
-         lineToX: -87 y: -50;
-         lineToX: 0 y: 100 ].}
+         moveTo: 0 @@ 100;
+         lineTo: 87 @@ -50;
+         lineTo: -87 @@ -50;
+         lineTo: 0 @@ 100 ].}
 
 Take a moment to understand that code, to guess what it will do. Now
 execute:
@@ -219,7 +219,7 @@ an Inspector or a Hierarchy Browser to study the morph.
 You also have a @label{Rotate} and @label{Change scale} handles. Try
 them! To use them, move your hand to the handle, and then press the
 mouse button and drag it. As you might have guessed, the rotate
-handles spins your morph around its @smalltalk{0@@0} coordinates
+handles spins your morph around its @smalltalk{0 @@ 0} coordinates
 (i.e. the origin of its own coordinate system). The scale handles
 controls the apparent zoom applied to your morph. Both scale and
 rotation (and also displacement, as when you move your morph around)
@@ -418,11 +418,11 @@ We create @class{ClockHourHandMorph}, the hand for the hours:
 @smalltalkExample{ClockHourHandMorph>>drawOn: aCanvas
    aCanvas fillColor: (Color black alpha: 0.6) do: [
       aCanvas
-         moveToX: 0 y: 10;
-         lineToX: -5 y: 0;
-         lineToX: 0 y: -50;
-         lineToX: 5 y: 0;
-         lineToX: 0 y: 10 ].}
+         moveTo: 0 @@ 10;
+         lineTo: -5 @@ 0;
+         lineTo: 0 @@ -50;
+         lineTo: 5 @@ 0;
+         lineTo: 0 @@ 10 ].}
 
 You can start playing with them. We could use several instances of a
 single @class{ClockHandMorph}, or create several classes. Here we
@@ -447,11 +447,11 @@ We create @class{ClockMinuteHandMorph}, the hand for the minutes:
 @smalltalkExample{ClockMinuteHandMorph>>drawOn: aCanvas
    aCanvas fillColor: ((Color black) alpha: 0.6) do: [
       aCanvas
-         moveToX: 0 y: 8;
-         lineToX: -4 y: 0;
-         lineToX: 0 y: -82;
-         lineToX: 4 y: 0;
-         lineToX: 0 y: 8 ]}
+         moveTo: 0 @@ 8;
+         lineTo: -4 @@ 0;
+         lineTo: 0 @@ -82;
+         lineTo: 4 @@ 0;
+         lineTo: 0 @@ 8 ]}
 
 And finally, the @class{ClockSecondHandMorph}, the hand for the seconds:
 
@@ -466,8 +466,8 @@ And finally, the @class{ClockSecondHandMorph}, the hand for the seconds:
 @smalltalkExample{ClockSecondHandMorph>>drawOn: aCanvas
    aCanvas strokeWidth: 2.5 color: Color red do: [
       aCanvas
-         moveToX: 0 y: 0;
-         lineToX: 0 y: -85 ]}
+         moveTo: 0 @@ 0;
+         lineTo: 0 @@ -85 ]}
 
 Now, all that is needed is to put our clock parts together in
 @class{ClockMorph}. In its method category @label{initialization} add
@@ -513,9 +513,9 @@ system for its own @method{drawOn:} method and also for its
 submorphs. This new coordinate system might include rotation or
 reflexion of the axis, and scaling of sizes, but by default they
 don't. This means that they just translate the origin, by specifying
-where in the owner point @smalltalk{0@@0} is to be located.
+where in the owner point @smalltalk{0 @@ 0} is to be located.
 
-The World coordinate system has @smalltalk{0@@0} at the top left
+The World coordinate system has @smalltalk{0 @@ 0} at the top left
 corner, with X coordinates increasing to the right, and Y coordinates
 increasing downwards. Positive rotations go clockwise. This is the
 usual convention in graphics frameworks. Note that this is different
@@ -529,8 +529,8 @@ work in a similar way, but as there are 60 minutes in one hour, and 60
 seconds in one minute, we need to multiply them by 6 to get degrees. As
 rotation is done around the origin, and the clock has set the origin at its
 center (@ref{clockDialDrawing}), there's no need to set the position of the
-hands. Their @smalltalk{0@@0} origin will therefore be at the clock
-@smalltalk{0@@0}, i.e. the center of the clock.
+hands. Their @smalltalk{0 @@ 0} origin will therefore be at the clock
+@smalltalk{0 @@ 0}, i.e. the center of the clock.
 
 @figure{A fancy clock morph,ch07-06-ExerciseClock,4}
 

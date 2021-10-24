@@ -14,7 +14,7 @@ it.
 
 
 
-Compilation : September 16, 2021
+Compilation : October 24, 2021
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -104,21 +104,21 @@ unconnected lines:
 <pre class="example">LineExampleMorph&gt;&gt;drawOn: aCanvas
    aCanvas strokeWidth: 20 color: Color green do: [
       aCanvas
-         moveToX: 0 y: 0;
-         lineToX: 200 y: 200;
-         moveToX: 200 y: 0;
-         lineToX: 0 y: 200 ]
+         moveTo: 0 @ 0;
+         lineTo: 200 @ 200;
+         moveTo: 200 @ 0;
+         lineTo: 0 @ 200 ]
 </pre></div>
 
-<p>Learn how the <code>#moveToX:y:</code> message moves the pencil to a given
-position with the pen up, then the <code>#lineToX:y:</code> asks the pencil to
+<p>Learn how the <code>#moveTo:</code> message moves the pencil to a given
+position with the pen up, then the <code>#lineTo:</code> asks the pencil to
 draw from that previous position to this new position.
 </p>
 <span id="exeRectMorph-1"></span><h4 class="subheading"><a href="Going-Vector.html#exeRectMorph">Exercise 7.2</a></h4>
 <p>We create a <code>RectangleExampleMorph</code>, subclass of
 <code>MovableMorph</code>:
 </p><div class="example">
-<pre class="example">MorphMovableMorph subclass: #RectangleExampleMorph
+<pre class="example">MovableMorph subclass: #RectangleExampleMorph
    instanceVariableNames: 'fillColor'
    classVariableNames: ''
    poolDictionaries: ''
@@ -136,11 +136,11 @@ drawOn: aCanvas
       color: Color blue
       fillColor: fillColor
       do: [
-         aCanvas moveToX: 0 y: 0;
-            lineToX: 200 y: 0;
-            lineToX: 200 y: 100;
-            lineToX: 0 y: 100;
-            lineToX: 0 y: 0]
+         aCanvas moveTo: 0 @ 0;
+            lineTo: 200 @ 0;
+            lineTo: 200 @ 100;
+            lineTo: 0 @ 100;
+            lineTo: 0 @ 0]
 </pre></div>
 
 <div class="float"><span id="E_002dexeRectMorph"></span>
@@ -165,11 +165,11 @@ matches the origin (0;0):
       color: Color blue
       fillColor: fillColor
       do: [
-         aCanvas moveToX: -100 y: -50;
-            lineToX: 100 y: -50;
-            lineToX: 100 y: 50;
-            lineToX: -100 y: 50;
-            lineToX: -100 y: -50]
+         aCanvas moveTo: -100 @ -50;
+            lineTo: 100 @ -50;
+            lineTo: 100 @ 50;
+            lineTo: -100 @ 50;
+            lineTo: -100 @ -50]
 </pre></div>
 
 <div class="float"><span id="E_002dexeRotateRect2"></span>
@@ -180,10 +180,10 @@ matches the origin (0;0):
 <div class="example">
 <pre class="example">drawOn: aCanvas
    aCanvas strokeWidth: 20 color: Color green do: [aCanvas
-      moveToX: -100 y: -100;
-      lineToX: 100 y: 100;
-      moveToX: 100 y: -100;
-      lineToX: -100 y: 100]
+      moveTo: -100 @ -100;
+      lineTo: 100 @ 100;
+      moveTo: 100 @ -100;
+      lineTo: -100 @ 100]
 </pre></div>
 
 
@@ -195,8 +195,8 @@ thin red line and filled in yellow.
 <pre class="example">ClockSecondHandMorph&gt;&gt;drawOn: aCanvas
    aCanvas strokeWidth: 1.5 color: Color red do: [
       aCanvas
-         moveToX: 0 y: 0;
-         lineToX: 85 y: 0 ].
+         moveTo: 0 @ 0;
+         lineTo: 85 @ 0 ].
    aCanvas ellipseCenterX: 0 y: -70 rx: 3 ry: 3 
       borderWidth: 1 
       borderColor: Color red fillColor: Color yellow

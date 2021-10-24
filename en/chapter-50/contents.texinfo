@@ -562,21 +562,21 @@ unconnected lines:
 LineExampleMorph>>drawOn: aCanvas
    aCanvas strokeWidth: 20 color: Color green do: [
       aCanvas
-         moveToX: 0 y: 0;
-         lineToX: 200 y: 200;
-         moveToX: 200 y: 0;
-         lineToX: 0 y: 200 ]
+         moveTo: 0 @@ 0;
+         lineTo: 200 @@ 200;
+         moveTo: 200 @@ 0;
+         lineTo: 0 @@ 200 ]
 @end smallexample
 
-Learn how the @msg{moveToX:y:} message moves the pencil to a given
-position with the pen up, then the @msg{lineToX:y:} asks the pencil to
+Learn how the @msg{moveTo:} message moves the pencil to a given
+position with the pen up, then the @msg{lineTo:} asks the pencil to
 draw from that previous position to this new position.
 
 @subheading @ref{exeRectMorph}
 We create a @class{RectangleExampleMorph}, subclass of
 @class{MovableMorph}:
 @smallexample
-MorphMovableMorph subclass: #RectangleExampleMorph
+MovableMorph subclass: #RectangleExampleMorph
    instanceVariableNames: 'fillColor'
    classVariableNames: ''
    poolDictionaries: ''
@@ -594,11 +594,11 @@ drawOn: aCanvas
       color: Color blue
       fillColor: fillColor
       do: [
-         aCanvas moveToX: 0 y: 0;
-            lineToX: 200 y: 0;
-            lineToX: 200 y: 100;
-            lineToX: 0 y: 100;
-            lineToX: 0 y: 0]
+         aCanvas moveTo: 0 @@ 0;
+            lineTo: 200 @@ 0;
+            lineTo: 200 @@ 100;
+            lineTo: 0 @@ 100;
+            lineTo: 0 @@ 0]
 @end smallexample
 
 @figure{Several rectangle morphs,E-exeRectMorph,4}
@@ -619,11 +619,11 @@ drawOn: aCanvas
       color: Color blue
       fillColor: fillColor
       do: [
-         aCanvas moveToX: -100 y: -50;
-            lineToX: 100 y: -50;
-            lineToX: 100 y: 50;
-            lineToX: -100 y: 50;
-            lineToX: -100 y: -50]
+         aCanvas moveTo: -100 @@ -50;
+            lineTo: 100 @@ -50;
+            lineTo: 100 @@ 50;
+            lineTo: -100 @@ 50;
+            lineTo: -100 @@ -50]
 @end smallexample
 
 @figure{This rectangle rotates around its center,E-exeRotateRect2,3.5}
@@ -632,10 +632,10 @@ drawOn: aCanvas
 @smallexample
 drawOn: aCanvas
    aCanvas strokeWidth: 20 color: Color green do: [aCanvas
-      moveToX: -100 y: -100;
-      lineToX: 100 y: 100;
-      moveToX: 100 y: -100;
-      lineToX: -100 y: 100]
+      moveTo: -100 @@ -100;
+      lineTo: 100 @@ 100;
+      moveTo: 100 @@ -100;
+      lineTo: -100 @@ 100]
 @end smallexample
 
 
@@ -647,8 +647,8 @@ thin red line and filled in yellow.
 ClockSecondHandMorph>>drawOn: aCanvas
    aCanvas strokeWidth: 1.5 color: Color red do: [
       aCanvas
-         moveToX: 0 y: 0;
-         lineToX: 85 y: 0 ].
+         moveTo: 0 @@ 0;
+         lineTo: 85 @@ 0 ].
    aCanvas ellipseCenterX: 0 y: -70 rx: 3 ry: 3 
       borderWidth: 1 
       borderColor: Color red fillColor: Color yellow

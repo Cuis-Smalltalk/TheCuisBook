@@ -14,7 +14,7 @@ it.
 
 
 
-Compilation : September 16, 2021
+Compilation : October 24, 2021
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -148,8 +148,8 @@ object:
 <pre class="example">LineExampleMorph&gt;&gt;drawOn: aCanvas
    aCanvas strokeWidth: 20 color: Color green do: [
       aCanvas
-         moveToX: 100 y: 100;
-         lineToX: 400 y: 200 ].
+         moveTo: 100 @ 100;
+         lineTo: 400 @ 200 ].
 </pre></div>
 
 <p>Now in a Workspace execute:
@@ -192,8 +192,8 @@ pixels?</em>
 can do with regular windows and most other Morphs. If not, try
 now. But nothing happens! The reason is that our Morph is fixed in a
 place in the owner morph (the WorldMorph). It is fixed because
-<code>drawOn:</code> says it should be a line between <code>100@100</code>
-and <code>400@200</code>. Moving it around would mean modifying those
+<code>drawOn:</code> says it should be a line between <code>100 @ 100</code>
+and <code>400 @ 200</code>. Moving it around would mean modifying those
 points. One possible way to do that could be to store those points in instance
 variables.
 </p>
@@ -260,10 +260,10 @@ can also be rotated and zoomed.
 <pre class="example">TriangleExampleMorph&gt;&gt;drawOn: aCanvas
    aCanvas strokeWidth: 10 color: borderColor fillColor: fillColor do: [
       aCanvas
-         moveToX: 0 y: 100;
-         lineToX: 87 y: -50;
-         lineToX: -87 y: -50;
-         lineToX: 0 y: 100 ].
+         moveTo: 0 @ 100;
+         lineTo: 87 @ -50;
+         lineTo: -87 @ -50;
+         lineTo: 0 @ 100 ].
 </pre></div>
 
 <p>Take a moment to understand that code, to guess what it will do. Now
@@ -316,7 +316,7 @@ an Inspector or a Hierarchy Browser to study the morph.
 <p>You also have a <code>Rotate</code> and <code>Change scale</code> handles. Try
 them! To use them, move your hand to the handle, and then press the
 mouse button and drag it. As you might have guessed, the rotate
-handles spins your morph around its <code>0@0</code> coordinates
+handles spins your morph around its <code>0 @ 0</code> coordinates
 (i.e. the origin of its own coordinate system). The scale handles
 controls the apparent zoom applied to your morph. Both scale and
 rotation (and also displacement, as when you move your morph around)

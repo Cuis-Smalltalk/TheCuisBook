@@ -14,7 +14,7 @@ it.
 
 
 
-Compilation : September 16, 2021
+Compilation : October 24, 2021
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -152,11 +152,11 @@ vector graphics, do ...World menu &rarr;
 <pre class="example">ClockHourHandMorph&gt;&gt;drawOn: aCanvas
    aCanvas fillColor: (Color black alpha: 0.6) do: [
       aCanvas
-         moveToX: 0 y: 10;
-         lineToX: -5 y: 0;
-         lineToX: 0 y: -50;
-         lineToX: 5 y: 0;
-         lineToX: 0 y: 10 ].
+         moveTo: 0 @ 10;
+         lineTo: -5 @ 0;
+         lineTo: 0 @ -50;
+         lineTo: 5 @ 0;
+         lineTo: 0 @ 10 ].
 </pre></div>
 
 <p>You can start playing with them. We could use several instances of a
@@ -185,11 +185,11 @@ bear with us while we finish building our clock.
 <pre class="example">ClockMinuteHandMorph&gt;&gt;drawOn: aCanvas
    aCanvas fillColor: ((Color black) alpha: 0.6) do: [
       aCanvas
-         moveToX: 0 y: 8;
-         lineToX: -4 y: 0;
-         lineToX: 0 y: -82;
-         lineToX: 4 y: 0;
-         lineToX: 0 y: 8 ]
+         moveTo: 0 @ 8;
+         lineTo: -4 @ 0;
+         lineTo: 0 @ -82;
+         lineTo: 4 @ 0;
+         lineTo: 0 @ 8 ]
 </pre></div>
 
 <p>And finally, the <code>ClockSecondHandMorph</code>, the hand for the seconds:
@@ -208,8 +208,8 @@ bear with us while we finish building our clock.
 <pre class="example">ClockSecondHandMorph&gt;&gt;drawOn: aCanvas
    aCanvas strokeWidth: 2.5 color: Color red do: [
       aCanvas
-         moveToX: 0 y: 0;
-         lineToX: 0 y: -85 ]
+         moveTo: 0 @ 0;
+         lineTo: 0 @ -85 ]
 </pre></div>
 
 <p>Now, all that is needed is to put our clock parts together in
@@ -269,9 +269,9 @@ system for its own <code>drawOn:</code> method and also for its
 submorphs. This new coordinate system might include rotation or
 reflexion of the axis, and scaling of sizes, but by default they
 don&rsquo;t. This means that they just translate the origin, by specifying
-where in the owner point <code>0@0</code> is to be located.
+where in the owner point <code>0 @ 0</code> is to be located.
 </p>
-<p>The World coordinate system has <code>0@0</code> at the top left
+<p>The World coordinate system has <code>0 @ 0</code> at the top left
 corner, with X coordinates increasing to the right, and Y coordinates
 increasing downwards. Positive rotations go clockwise. This is the
 usual convention in graphics frameworks. Note that this is different
@@ -285,8 +285,8 @@ work in a similar way, but as there are 60 minutes in one hour, and 60
 seconds in one minute, we need to multiply them by 6 to get degrees. As
 rotation is done around the origin, and the clock has set the origin at its
 center (<a href="#clockDialDrawing">Example 7.2</a>), there&rsquo;s no need to set the position of the
-hands. Their <code>0@0</code> origin will therefore be at the clock
-<code>0@0</code>, i.e. the center of the clock.
+hands. Their <code>0 @ 0</code> origin will therefore be at the clock
+<code>0 @ 0</code>, i.e. the center of the clock.
 </p>
 <div class="float"><span id="ch07_002d06_002dExerciseClock"></span>
 <div align="center"><img src="ch07-06-ExerciseClock.png" alt="ch07-06-ExerciseClock">
