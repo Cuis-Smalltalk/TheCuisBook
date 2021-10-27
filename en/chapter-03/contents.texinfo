@@ -703,7 +703,7 @@ decimal.
 @exercise{Toward the infinite,exeZeroDivide, @emph{What happen when
 executing this code} @smalltalk{5/0}@emph{?}}
 
-Let's come back to our computer dyscalculia with decimal numbers. When
+Let's come back to our computer's dyscalculia with decimal numbers. When
 using the rational numbers, the @ref{FloatPrecision} becomes:
 
 @smalltalkExampleCaption{Calculation is correct using rational fractions!,FractionPrecision,
@@ -722,7 +722,7 @@ numbers. The errors are gone.}}
 @cindex number @subentry convertion
 @cuis{} knows how to convert a decimal number to a fraction, by
 sending the message @msg{asFraction}. We already acknowledged the
-computer dyscalculia trouble with decimal numbers, this is why when
+computer's dyscalculia trouble with decimal numbers, this is why when
 asking for a fraction representation we have this strange answer. The
 internal computer represenation of @smalltalk{1.3} is not exactly as
 it seems:
