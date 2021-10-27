@@ -512,7 +512,7 @@ SpaceWar>>collisionsTorpedoesStar
 @unnumberedsec Visual with Morph
 
 @subheading @ref{allActorsMorph}
-Just replace all @class{Object} occurrences with @class{Morph}:
+Just replace all @class{Object} occurrences with @class{MovableMorph}:
 
 @smallexample
 MovableMorph subclass: #SpaceWar

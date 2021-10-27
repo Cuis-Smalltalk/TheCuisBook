@@ -105,7 +105,7 @@ the method categories.
 </p>
 <p>Let&rsquo;s suppose we want to round a float number. In <code>Number</code>, we
 explore the <strong>Truncation and round off</strong> method category to
-discover several behaviors. The next things to do is to test these
+discover several behaviors. The next thing to do is to test these
 messages in a Workspace to discover the one we are searching for:
 </p>
 <span id="index-number-22"></span>
@@ -152,10 +152,10 @@ Float pi to: 5 by: 1/3 do: [:i | Transcript show: (i roundTo: 0.01) ; space]
 <span id="index-number-26"></span>
 
 <p>Now, in the <code>Integer</code> class, explore the method category
-<code>enumerating</code>, here is the <code>timesRepeat:</code>. When a
+<code>enumerating</code>, to find <code>timesRepeat:</code>. When a
 portion of code needs to be executed several times
 <a id="DOCF14" href="#FOOT14"><sup>14</sup></a>, without
-the need of an index, the <code>#timesRepeat:</code> message is sent to an
+the need for an index, the <code>#timesRepeat:</code> message is sent to an
 integer. We already saw this variant in a previous section of this
 chapter.  Throwing a 6 face die 5 times can be simulated with
 an integer:
@@ -167,7 +167,7 @@ an integer:
 &rArr; 1 2 4 6 2
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 3.5: </strong>Throwing a dice 5 times</p></div></div>
+<div class="float-caption"><p><strong>Example 3.5: </strong>Throwing a die 5 times</p></div></div>
 <p>Note: Expect a different result each time.
 </p>
 <span id="index-Interval"></span>
@@ -212,7 +212,7 @@ position in the square game play area. Intervals are handy to pick
 random coordinates. In the example below, the variable
 <code>randomCoordinate</code> holds a block of code &ndash; called an anonymous
 function in other languages. It picks a random value in the
-interval consisting of the game play area left and right extents:
+interval consisting of the gameplay area&rsquo;s left and right extents:
 </p>
 <div class="float"><span id="teleportShipInterval"></span>
 <div class="example">
@@ -228,7 +228,7 @@ aShip
 <blockquote class="indentedblock">
 <p>&nbsp;<img src="CuisLogo.png" alt="CuisLogo">
 <em>Compute the cosine values in
-the interval [0 ; 2PI], each 1/10. Output in the transcript.</em>
+the interval [0 ; 2PI], each 1/10. Output the result in the transcript.</em>
 </p></blockquote>
 
 
@@ -237,7 +237,7 @@ the interval [0 ; 2PI], each 1/10. Output in the transcript.</em>
 <p>Integer numbers are represented in different bases when prefixed with
 the base and &ldquo;r&rdquo;. The <code>r</code> stands for radix, the base root by
 which the following number is interpreted.
-When executing and printing <kbd>Ctrl-p</kbd> such a
+When executing and printing <kbd>Ctrl-p</kbd> on such a
 number, it is immediately printed in the decimal base:
 </p>
 <div class="float"><span id="integerBase"></span>
@@ -249,7 +249,7 @@ number, it is immediately printed in the decimal base:
 10r15 &rArr; 15
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 3.8: </strong>Integer represented in different base</p></div></div>
+<div class="float-caption"><p><strong>Example 3.8: </strong>Integer represented by different bases</p></div></div>
 <p>Writing numbers as Mayans or Babylonians<a id="DOCF15" href="#FOOT15"><sup>15</sup></a>:
 </p>
 <div class="float"><span id="countingAncients"></span>
@@ -285,7 +285,7 @@ bits left and right is equivalent to multiplying by 2 and dividing by
 <div class="float"><span id="multiplyBy1024"></span>
 <blockquote class="indentedblock">
 <p>&nbsp;<img src="CuisLogo.png" alt="CuisLogo">
-<em>How will you multiply
+<em>How would you multiply
 the integer 360 by 1024, without using the multiplication operation?</em>
 </p></blockquote>
 
@@ -305,7 +305,7 @@ preceded by 5 zeros or 2 as the fifth digit after the decimal dot.
 <p>&nbsp;<img src="note.png" alt="note">
 Computers encode and store decimal numbers imprecisely. You
 need to be aware of that when doing computation and equality
-comparison. Many systems hide these errors because there are very tiny
+comparisons. Many systems hide these errors because they are very tiny
 errors. Cuis-Smalltalk does not hide this inaccuracy.  There is good
 information about this in the class comment of <code>Float</code>.
 </p></blockquote>
@@ -331,9 +331,9 @@ to the expected results.</em>
 
 
 <div class="float-caption"><p><strong>Exercise 3.4: </strong>Miscellaneous calculation errors with decimal
-number</p></div></div>
-<p>When accuracy is absolutely mandatory use the Rational Numbers
-representation of Cuis-Smalltalk.
+numbers</p></div></div>
+<p>When accuracy is mandatory use the Rational Numbers
+representation in Cuis-Smalltalk.
 </p>
 <span id="index-number-33"></span>
 
@@ -345,13 +345,13 @@ decimal.
 <div class="float"><span id="exeZeroDivide"></span>
 <blockquote class="indentedblock">
 <p>&nbsp;<img src="CuisLogo.png" alt="CuisLogo">
-<em>What happen when
+<em>What happens when
 executing this code</em> <code>5/0</code><em>?</em>
 </p></blockquote>
 
 
 <div class="float-caption"><p><strong>Exercise 3.5: </strong>Toward the infinite</p></div></div>
-<p>Let&rsquo;s come back to our computer dyscalculia with decimal numbers. When
+<p>Let&rsquo;s come back to our computer&rsquo;s dyscalculia with decimal numbers. When
 using the rational numbers, the <a href="#FloatPrecision">Example 3.11</a> becomes:
 </p>
 <div class="float"><span id="FractionPrecision"></span>
@@ -363,15 +363,15 @@ using the rational numbers, the <a href="#FloatPrecision">Example 3.11</a> becom
 <div class="float-caption"><p><strong>Example 3.12: </strong>Calculation is correct using rational fractions!</p></div></div>
 <p>This time we have the expected result. Under the covers the computer
 only does the calculations with integer components so no roundoff
-results. This is a fine example where solving some problem requires a
+results. This is a fine example where solving some problems requires a
 paradigm shift.
 </p>
 <div class="float"><span id="exeFractionPrecision"></span>
 <blockquote class="indentedblock">
 <p>&nbsp;<img src="CuisLogo.png" alt="CuisLogo">
 <em>Return to
-<a href="#exeFloatPrecision">Exercise 3.4</a> and use rational writing to represent decimal
-numbers. The errors are gone.</em>
+<a href="#exeFloatPrecision">Exercise 3.4</a> and use rational numbers to represent decimal
+numbers. The errors will be resolved.</em>
 </p></blockquote>
 
 
@@ -379,9 +379,9 @@ numbers. The errors are gone.</em>
 <span id="index-number-34"></span>
 <p>Cuis-Smalltalk knows how to convert a decimal number to a fraction, by
 sending the message <code>#asFraction</code>. We already acknowledged the
-computer dyscalculia trouble with decimal numbers, this is why when
+computer&rsquo;s dyscalculia with decimal numbers, this is why when
 asking for a fraction representation we have this strange answer. The
-internal computer represenation of <code>1.3</code> is not exactly as
+internal computer representation of <code>1.3</code> is not exactly as
 it seems:
 </p>
 <div class="example">
@@ -399,9 +399,9 @@ it seems:
 <h5><a id="FOOT14" href="#DOCF14">(14)</a></h3>
 <p>More strictly, to be repeated an integer number of times.</p>
 <h5><a id="FOOT15" href="#DOCF15">(15)</a></h3>
-<p>Bases 20 and 60
-number representation are not exclusive to these civilisations,
-although there are the most documented use cases.</p>
+<p>Base 20 and 60
+number representations are not exclusive to these civilisations,
+although they are the most documented use cases.</p>
 </div>
 <hr>
 <div class="header">
