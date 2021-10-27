@@ -240,9 +240,9 @@ Consider the example below to compute the divisors of an integer:
 @smalltalkExampleCaption{Compute divisors, computeDivisors,| n m |
 n @assign{} 60.
 m @assign{} 45.
-(1 to: n) select: [:d | n \\ d = 0 ].
+(1 to: n) select: [:d | n \\\\ d = 0 ].
 "@result{} #(1 2 3 4 5 6 10 12 15 20 30 60)"
-(1 to: m) select: [:d | m \\ d = 0]
+(1 to: m) select: [:d | m \\\\ d = 0]
 "@result{} #(1 3 5 9 15 45)"}
 
 The problem with this example is the code duplication in the divisor
@@ -487,9 +487,9 @@ As a reminder, proceed as follows (if necessary observe
 @end enumerate
 
 The newly created method shows up in the @label{Method} pane. You can
-  get it categorized automatically too: over the @label{Method
-  Category} ...@clicksequence{right click @click{} @label{categorize
-  all uncategorized (c)}}..
+  get it categorized automatically too: with the mouse, go over the
+  @label{Method Category} pane ...@clicksequence{right click @click{}
+  @label{categorize all uncategorized (c)}}..
 
 @exercise{Categorize a method,categorizeTeleport, @emph{In the
 @class{SpaceWar} class, add the @method{teleport:} method as defined
@@ -540,10 +540,10 @@ SpaceShip>>fireTorpedo
   torpedoes @assign{} torpedoes - 1.
   torpedo @assign{} Torpedo new.
   torpedo 
-    morphPosition: self morphPosition + self nose;
-    rotation: location radians;
+    position: position + self nose;
+    heading: heading;
     velocity: velocity;
-    color: color muchLighter.
+    color: self color muchLighter.
   owner addTorpedo: torpedo}
 
 

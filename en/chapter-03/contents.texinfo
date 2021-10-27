@@ -139,7 +139,7 @@ and polymorphism.  Let us look into how this works.
 
 The number @smalltalk{5} is an integer receiving the message @msg{/},
 therefore looking at the method @method{/} in the @class{Integer}
-class we can see how the fraction is instatiated. See part of this
+class we can see how the fraction is instantiated. See part of this
 method:
 
 @smalltalkExample{/ aNumber
@@ -722,7 +722,7 @@ numbers. The errors are gone.}}
 @cindex number @subentry convertion
 @cuis{} knows how to convert a decimal number to a fraction, by
 sending the message @msg{asFraction}. We already acknowledged the
-computer dyscalculia trouble with decimal number, this is why when
+computer dyscalculia trouble with decimal numbers, this is why when
 asking for a fraction representation we have this strange answer. The
 internal computer represenation of @smalltalk{1.3} is not exactly as
 it seems:
@@ -950,10 +950,13 @@ counter reaches zero, it self destructs.
   zero. Its position over time only depends on the torpedo velocity
   and its initial acceleration.
 
+  @item @smalltalk{heading} is an angle in radians, the direction
+  where the torpedo nose is pointing. Its value matches the ship
+  heading when fired, it is therefore a @class{Float} number too.
+
   @item @smalltalk{velocity} is a vector representing the
   instantaneous speed of the torpedo. It is constant over the torpedo
-  lifespan. Its direction matches the ship heading when fired. Again
-  velocity is kept as a @class{Point} instance.
+  lifespan. Again velocity is kept as a @class{Point} instance.
 
   @item @smalltalk{lifeSpan} is an integer number counter, when it
   reaches zero the torpedo self-destructs.
@@ -975,7 +978,7 @@ character. Finally, save the updated class definition with
 
 @smalltalkExampleCaption{@class{Torpedo} class with its instance variables,torpedoClassVariables,
 Object subclass: #Torpedo
-   instanceVariableNames: 'position velocity lifeSpan'
+   instanceVariableNames: 'position heading velocity lifeSpan'
    classVariableNames: ''
    poolDictionaries: ''
    category: 'Spacewar!'}
@@ -1076,9 +1079,9 @@ like to name the argument to show that we intend that the
 @class{String} class.
 
 @exercise{@class{SpaceShip} setter messages, spaceShipSetters,
-@emph{Ship @smalltalk{position} and @smalltalk{velocity} will need to
-be set at game start up or when a ship jumps in hyperspace.  Write the
-appropriate setters.}}
+@emph{Ship @smalltalk{position} and @smalltalk{velocity}, as well as
+torpedo @smalltalk{heading} will need to be set at game start up or
+when a ship jumps in hyperspace.  Write the appropriate setters.}}
 
 Observe how we do not have a setter message for the space ship
 @smalltalk{mass} attribute. Indeed, it does not make sense to change
@@ -1097,9 +1100,9 @@ A space ship controlled by the player understands messages to adjust
 its direction and acceleration@footnote{The velocity is a consequence
 of the accelerations applied to the space ship.}:
 
-@strong{Direction.} The ship heading is controlled with the @msg{left}
-  and @msg{right} messages. The former increments the
-  @smalltalk{heading} by 0.1 and the later decrements it by 0.1.
+@strong{Direction.} The ship's heading is controlled with the
+  @msg{left} and @msg{right} messages. The former decrements the
+  @smalltalk{heading} by 0.1 and the latter increments it by 0.1.
 
 @exercise{Methods to control ship heading, shipHeading, @emph{Write
   two methods named @method{left} and @method{right} to shift the ship
@@ -1149,6 +1152,5 @@ gravity pull of the central star.  Its nose points in direction of the
 top of the game display.
 
 
-@exercise{Initialize central star, initCentralStar, @emph{How will
-your write the method to initialize the central star with 8000 units
-of mass?}}
+@exercise{Initialize central star, initCentralStar, @emph{Write the
+method to initialize the central star with 8000 units of mass?}}

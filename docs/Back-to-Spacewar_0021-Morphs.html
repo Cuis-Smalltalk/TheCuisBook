@@ -14,7 +14,7 @@ it.
 
 
 
-Compilation : October 24, 2021
+Compilation : October 27, 2021
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -257,20 +257,18 @@ given by <a href="#ch07_002d11_002dTorpedoDiagram">Figure 7.11</a>, how will you
 
 <div class="float-caption"><p><strong>Exercise 7.6: </strong>Torpedo extent</p></div></div>
 <span id="index-morph-24"></span>
-<p>A space ship and a torpedo share the same orientation.  To orient
-correctly a newly fired torpedo, you just copy the orientation from
-its space ship:
+<p>A space ship and a just fired torpedo share the same orientation.  To
+orient correctly a newly fired torpedo, you just copy the orientation
+from its space ship. We edit the method as defined in
+<a href="Spacewar_0021_0027s-methods.html#fireTorpedo">Example 5.9</a>:
 </p>
 <div class="example">
 <pre class="example">SpaceShip&gt;&gt;fireTorpedo
-&quot;Fire a torpedo in the direction of the ship heading with its
-velocity&quot;
    ../..
    torpedo := Torpedo new.
    torpedo 
       morphPosition: self morphPosition + self nose;
-      rotation: location radians; <span class="roman">&quot;copy the rotation angle from ship&quot;</span>
-      velocity: velocity;
+      rotation: location radians; &quot;copy the rotation angle from ship&quot;
    ../..
 </pre></div>
 
@@ -517,10 +515,14 @@ class side and instances are grant access only with messages send to
 the class side. <strong>Contrary</strong> to a class instance variable, its
 value is common in the whole class hierarchy. 
 </p>
-<p>In Spacewar!, a class variable <code>Vertices</code> will have the
-same diagram for a space ship and a torpedo. This is not what we
-want.
+<p>In Spacewar!, a class variable <code>Vertices</code> will have the same
+diagram for a space ship and a torpedo. This is not what we want.
 </p>
+<div class="example">
+<pre class="example">SpaceShip&gt;&gt;vertices
+   ^ `{0@-15 . -10@15 . 0@10 . 10@15}`
+</pre></div>
+
 <span id="Drawing-simplified"></span><h4 class="subsection">7.3.5 Drawing simplified</h4>
 <p>Using a class variable in the present game design is a bit
 overkill. It was an excuse to present the concept of class
@@ -556,7 +558,7 @@ encompassing the morph given its rotation and scale.
 <div align="center"><img src="ch07-13-shipDisplayBounds.png" alt="ch07-13-shipDisplayBounds">
 </div>
 <div class="float-caption"><p><strong>Figure 7.13: </strong>The display bounds of a space ship</p></div></div>
-<p>In <a href="SpaceWar_0021-collections.html#shipSunCollision">Example 4.21</a>, we have a very naive approach for collision
+<p>In <a href="SpaceWar_0021-collections.html#shipSunCollision">Example 4.23</a>, we have a very naive approach for collision
 between the central star and the ships, based on distance between
 morphs. It was very inaccurate. When browsing the <code>Rectangle</code>
 class, you learn the <code>#intersects:</code> message can tell us if two

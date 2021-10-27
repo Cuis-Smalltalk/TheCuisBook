@@ -441,8 +441,8 @@ primeNumbers size}
 200,qtyPrime200,@emph{Modify @ref{qtyPrime100} to calculate the number
 of prime numbers between 101 and 200.}}
 
-@exercise{Multiple of 7,multiples7,@emph{Build the list of the
-multiples to 7 below 100.}}
+@exercise{Multiples of 7,multiples7,@emph{Build the list of the
+multiples of 7 below 100.}}
 
 @exercise{Odd and non prime integers,oddNonPrime,@emph{Build a
 collection of the odd integers in [1 ; 100] which are not prime.}}
@@ -470,7 +470,7 @@ in a new string. It is a simple cipher:
 @result{} 'Cpokpvs'}
 
 @exercise{Cipher decode,decodeCipher,@emph{Write the script to decode
-cipher 'Zpvs!bsf!cptt', it was encoded with @ref{simpleCipher}.}}
+cipher 'Zpv!bsf!b!cptt', it was encoded with @ref{simpleCipher}.}}
 
 @cindex Caesar cipher
 The Caesar's cipher is based on shifting letter to the right in the
@@ -641,8 +641,8 @@ array1 remove: 'Apple'
 
 Nevertheless, it is possible to fill at once an array:
 
-@exercise{Fill an array,fillArray, @emph{How will you fill at once
-@smalltalk{array1} with 'kiwi'?}}
+@exercise{Fill an array,fillArray, @emph{Fill every element in
+@smalltalk{array1} with 'kiwi' all at once?}}
 
 @cindex collection @subentry variable size
 @strong{Collection of variable size.}  Such collection are gathered in
@@ -690,7 +690,7 @@ set := Set new.
 set add: 1; add: Float pi; yourself
 @result{} a Set(3.141592653589793 1)}
 
-Non duplicate are guaranteed at best, even with number of different
+Non duplicate are guaranteed at least, even with number of different
 types. Observe how @smalltalk{1}, @smalltalk{3/3} and @smalltalk{1.0}
 are considered equal and not duplicated in the set:
 
@@ -781,7 +781,8 @@ There are other variants to explore by yourself.
 
 @exercise{Color by name, nameColor, @emph{With an appropriate
 enumerator, how will you edit the contents of the @smalltalk{colors}
-dictionary to replace its values with a nicely capitalized string?}}
+dictionary to replace its values with a nicely capitalized string
+representing the name of the color?}}
 
 @c The other kind of collection should be self-discoverable
 There are many more collections to explore. You now know enough to
@@ -826,11 +827,11 @@ SpaceWar>>initializeActors
    centralStar @assign{} CentralStar new.
    ../..
    ships first 
-      color: Color green; 
-      position: 200 @@ 200.
+      position: 200 @@ -200;
+      color: Color green. 
    ships second
-      color: Color red;
-      position: -200 @@ -200}
+      position: -200 @@ 200;
+      color: Color red}
 
 @exercise{Collections to hold the ships and torpedoes, initActorsCollections,
 @emph{The example above does not show the creation of the
@@ -880,6 +881,29 @@ messages} which are evaluated from the left to the right when there
 is no parenthesis. For example, in the code fragment
 @smalltalk{...(velocity * t)...}, the parenthesis are mandatory to get
 the expected computation.}
+
+@c Explain the direction and gravity methods.
+Observe in this previous method how the direction and the gravity are
+defined in two specific methods.
+
+The @msg{direction} message asks for the unit vector representing the
+noze direction of the spaceship:
+
+@smalltalkExampleCaption{Space ship direction method,spaceShipDirection,
+SpaceShip>>direction
+"I am an unit vector representing the noze direction of the mobile"
+   @return{} Point rho: 1 theta: location radians - Float halfPi}
+
+The @msg{gravity} message asks for the gravity vector the space ship
+is subjected to:
+
+@smalltalkExampleCaption{Space ship gravity,spaceShipGravity,
+SpaceShip>>gravity
+"Compute the gravity acceleration vector"
+   | position |
+   position _ self morphPosition.
+   @return{} [-10 * self mass * owner starMass / (position r raisedTo: 3) * position]
+      on: Error do: [0 @@ 0]}
 
 @c Explain the SpaceWar step method
 The game play is the responsibility of a @class{SpaceWar} instance. At

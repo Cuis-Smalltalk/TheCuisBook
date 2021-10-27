@@ -14,7 +14,7 @@ it.
 
 
 
-Compilation : October 24, 2021
+Compilation : October 27, 2021
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -155,9 +155,9 @@ far:
 
 <span id="decodeCipher-1"></span><h4 class="subheading"><a href="Fun-with-collections.html#decodeCipher">Exercise 4.8</a></h4>
 <div class="example">
-<pre class="example">'Zpvs!bsf!cptt' collect: [:c |
+<pre class="example">'Zpv!bsf!b!cptt' collect: [:c |
    (c asciiValue - 1) asCharacter]
-&rArr; 'Your are a boss' 
+&rArr; 'You are a boss' 
 </pre></div>
 
 <span id="alphabetCipher-1"></span><h4 class="subheading"><a href="Fun-with-collections.html#alphabetCipher">Exercise 4.9</a></h4>
@@ -168,7 +168,7 @@ far:
 
 <p>Each character from A to Z is referenced by the <code>c</code> block
 parameter and converted to its Ascii
-value<a id="DOCF27" href="#FOOT27"><sup>27</sup></a>:
+value<a id="DOCF28" href="#FOOT28"><sup>28</sup></a>:
 <code>c asciiValue</code>. It is shifted of 65, so the A character
 counts as 0 and Z as 25 in the alphabet list. To apply the Caesar
 cipher, we send the message <code>+ 3</code> to the previous result.
@@ -177,7 +177,7 @@ cipher, we send the message <code>+ 3</code> to the previous result.
 alphabet, indeed these characters will be ciphered as 26, 27, 28. To
 fix that we send <code>\\ 26</code> to the previous result, it is an
 old trick of programming: the reminder of the Euclidean division by 26
-frames the value between 0 and 25<a id="DOCF28" href="#FOOT28"><sup>28</sup></a>.
+frames the value between 0 and 25<a id="DOCF29" href="#FOOT29"><sup>29</sup></a>.
 </p>
 <p>Finally we shift back of 65 before converting from the Ascii value to
 the character.
@@ -294,9 +294,9 @@ appropriate indentation.
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h5><a id="FOOT27" href="#DOCF27">(27)</a></h3>
-<p><a href="https://en.wikipedia.org/wiki/ASCII">https://en.wikipedia.org/wiki/ASCII</a></p>
 <h5><a id="FOOT28" href="#DOCF28">(28)</a></h3>
+<p><a href="https://en.wikipedia.org/wiki/ASCII">https://en.wikipedia.org/wiki/ASCII</a></p>
+<h5><a id="FOOT29" href="#DOCF29">(29)</a></h3>
 <p>It generalizes to the
 mathematics field of modular arithmetic,
 <a href="https://www.wikiwand.com/en/Modular_arithmetic">https://www.wikiwand.com/en/Modular_arithmetic</a></p>

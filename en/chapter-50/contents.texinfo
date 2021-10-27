@@ -206,6 +206,9 @@ SpaceShip>>position: aPoint
 
 SpaceShip>>velocity: aPoint
    velocity @assign{} aPoint
+
+Torpedo>>heading: aFloat
+   heading @assign{} aFloat
 @end smallexample
 
 @subheading @ref{shipHeading}
@@ -302,9 +305,9 @@ far:
 
 @subheading @ref{decodeCipher}
 @smallexample
-'Zpvs!bsf!cptt' collect: [:c |
+'Zpv!bsf!b!cptt' collect: [:c |
    (c asciiValue - 1) asCharacter]
-@result{} 'Your are a boss' 
+@result{} 'You are a boss' 
 @end smallexample
 
 @subheading @ref{alphabetCipher}
@@ -512,19 +515,19 @@ SpaceWar>>collisionsTorpedoesStar
 Just replace all @class{Object} occurrences with @class{Morph}:
 
 @smallexample
-Morph subclass: #SpaceWar
+MovableMorph subclass: #SpaceWar
    instanceVariableNames: 'centralStar ships torpedoes'
    classVariableNames: ''
    poolDictionaries: ''
    category: 'Spacewar!'
 
-Morph subclass: #CentralStar
+MovableMorph subclass: #CentralStar
    instanceVariableNames: 'mass'
    classVariableNames: ''
    poolDictionaries: ''
    category: 'Spacewar!'
 
-Morph subclass: #SpaceShip
+MovableMorph subclass: #SpaceShip
    instanceVariableNames: 'name position heading velocity
       fuel torpedoes mass acceleration'
    classVariableNames: ''
@@ -537,7 +540,7 @@ Morph subclass: #SpaceShip
 
 @smallexample
 Mobile subclass: #SpaceShip
-   instanceVariableNames: 'name heading fuel torpedoes'
+   instanceVariableNames: 'name fuel torpedoes'
    classVariableNames: ''
    poolDictionaries: ''
    category: 'Spacewar!'

@@ -14,7 +14,7 @@ it.
 
 
 
-Compilation : October 24, 2021
+Compilation : October 27, 2021
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -100,19 +100,19 @@ Next: <a href="The-Fundamentals-of-Morph-_0028Solutions_0029.html" accesskey="n"
 <p>Just replace all <code>Object</code> occurrences with <code>Morph</code>:
 </p>
 <div class="example">
-<pre class="example">Morph subclass: #SpaceWar
+<pre class="example">MovableMorph subclass: #SpaceWar
    instanceVariableNames: 'centralStar ships torpedoes'
    classVariableNames: ''
    poolDictionaries: ''
    category: 'Spacewar!'
 
-Morph subclass: #CentralStar
+MovableMorph subclass: #CentralStar
    instanceVariableNames: 'mass'
    classVariableNames: ''
    poolDictionaries: ''
    category: 'Spacewar!'
 
-Morph subclass: #SpaceShip
+MovableMorph subclass: #SpaceShip
    instanceVariableNames: 'name position heading velocity
       fuel torpedoes mass acceleration'
    classVariableNames: ''
@@ -125,7 +125,7 @@ Morph subclass: #SpaceShip
 
 <div class="example">
 <pre class="example">Mobile subclass: #SpaceShip
-   instanceVariableNames: 'name heading fuel torpedoes'
+   instanceVariableNames: 'name fuel torpedoes'
    classVariableNames: ''
    poolDictionaries: ''
    category: 'Spacewar!'

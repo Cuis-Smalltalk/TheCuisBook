@@ -14,7 +14,7 @@ it.
 
 
 
-Compilation : October 24, 2021
+Compilation : October 27, 2021
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -131,11 +131,11 @@ create the necessary collections.
    centralStar := CentralStar new.
    ../..
    ships first 
-      color: Color green; 
-      position: 200 @ 200.
+      position: 200 @ -200;
+      color: Color green. 
    ships second
-      color: Color red;
-      position: -200 @ -200
+      position: -200 @ 200;
+      color: Color red
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 4.17: </strong>Incomplete game initialization</p></div></div>
@@ -201,6 +201,34 @@ is no parenthesis. For example, in the code fragment
 the expected computation.
 </p></blockquote>
 
+<p>Observe in this previous method how the direction and the gravity are
+defined in two specific methods.
+</p>
+<p>The <code>#direction</code> message asks for the unit vector representing the
+noze direction of the spaceship:
+</p>
+<div class="float"><span id="spaceShipDirection"></span>
+<div class="example">
+<pre class="example">SpaceShip&gt;&gt;direction
+&quot;I am an unit vector representing the noze direction of the mobile&quot;
+   ^ Point rho: 1 theta: location radians - Float halfPi
+</pre></div>
+
+<div class="float-caption"><p><strong>Example 4.20: </strong>Space ship direction method</p></div></div>
+<p>The <code>#gravity</code> message asks for the gravity vector the space ship
+is subjected to:
+</p>
+<div class="float"><span id="spaceShipGravity"></span>
+<div class="example">
+<pre class="example">SpaceShip&gt;&gt;gravity
+&quot;Compute the gravity acceleration vector&quot;
+   | position |
+   position _ self morphPosition.
+   ^ [-10 * self mass * owner starMass / (position r raisedTo: 3) * position]
+      on: Error do: [0 @ 0]
+</pre></div>
+
+<div class="float-caption"><p><strong>Example 4.21: </strong>Space ship gravity</p></div></div>
 <p>The game play is the responsibility of a <code>SpaceWar</code> instance. At
 a regular interval of time, it refreshes the states of the game
 actors. A <code>stepAt:</code> method is called at a regular interval of time
@@ -218,7 +246,7 @@ SpaceWar&gt;&gt;stepAt: millisecondSinceLast
    ../..
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 4.20: </strong>Regular refresh of the game play</p></div></div>
+<div class="float-caption"><p><strong>Example 4.22: </strong>Regular refresh of the game play</p></div></div>
 <p>In the <code>stepAt:</code> method, we intentionally left out the details to
 update the ship and torpedoe positions. Note: each ship is sent
 regularly an <code>#unpush</code> message to reset its previous <code>#push</code>
@@ -250,7 +278,7 @@ message and a dedicated block of code:
    ]
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 4.21: </strong>Collision between the ships and the Sun</p></div></div><hr>
+<div class="float-caption"><p><strong>Example 4.23: </strong>Collision between the ships and the Sun</p></div></div><hr>
 <div class="header">
 <p>
 Previous: <a href="Collections-detailed.html" accesskey="p" rel="prev">Collections detailed</a>, Up: <a href="The-Collection-Way-of-Life.html" accesskey="u" rel="up">The Collection Way of Life</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>

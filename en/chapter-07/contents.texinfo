@@ -741,19 +741,17 @@ given by @ref{ch07-11-TorpedoDiagram}@comma{} how will you write its
 @method{morphExtent} method?}}
 
 @cindex morph @subentry @method{rotation:}
-A space ship and a torpedo share the same orientation.  To orient
-correctly a newly fired torpedo, you just copy the orientation from
-its space ship:
+A space ship and a just fired torpedo share the same orientation.  To
+orient correctly a newly fired torpedo, you just copy the orientation
+from its space ship. We edit the method as defined in
+@ref{fireTorpedo}:
 
 @smalltalkExample{SpaceShip>>fireTorpedo
-"Fire a torpedo in the direction of the ship heading with its
-velocity"
    ../..
    torpedo @assign{} Torpedo new.
    torpedo 
       morphPosition: self morphPosition + self nose;
-      rotation: location radians; @r{"copy the rotation angle from ship"}
-      velocity: velocity;
+      rotation: location radians; "copy the rotation angle from ship"
    ../..}
 
 @exercise{Torpedo drawing,exeTorpedoDrawing, @emph{How will you write
@@ -959,9 +957,11 @@ class side and instances are grant access only with messages send to
 the class side. @strong{Contrary} to a class instance variable, its
 value is common in the whole class hierarchy. 
 
-In Spacewar!, a class variable @smalltalk{Vertices} will have the
-same diagram for a space ship and a torpedo. This is not what we
-want.
+In Spacewar!, a class variable @smalltalk{Vertices} will have the same
+diagram for a space ship and a torpedo. This is not what we want.
+
+@smalltalkExample{SpaceShip>>vertices
+   @return{} `@{0@@-15 . -10@@15 . 0@@10 . 10@@15@}`}
 
 @c it can be simpler
 @subsection Drawing simplified

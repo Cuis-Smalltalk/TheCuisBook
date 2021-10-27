@@ -331,28 +331,31 @@ graphic shape:
 Therefore it makes sense to turn these actors into kinds of
 @class{Morph}s, the visual entity of @cuis{}. To do so, point a System
 Browser to the class definition of each actor, replace the parent
-class @class{Object} by @class{Morph}, then save the class definition
-with @kbd{Ctrl-s}.
+class @class{Object} by @class{MovableMorph}@footnote{A
+@class{MovableMorph} is a kind of @class{Morph} with a supplementary
+@smalltalk{location} attribute; so it can be instructed to move in the
+screen.}, then save the class definition with @kbd{Ctrl-s}.
 
 For example, the torpedo class as seen in @ref{torpedoClassVariables}
 is edited as:
 
-@smalltalkExample{Morph subclass: #Torpedo
-   instanceVariableNames: 'position velocity lifeSpan'
+@smalltalkExample{MovableMorph subclass: #Torpedo
+   instanceVariableNames: 'position heading velocity lifeSpan'
    classVariableNames: ''
    poolDictionaries: ''
    category: 'Spacewar!'}
 
-Moreover, as you may have guessed, a Morph already knows about its
-position on screen -- it can be dragged in the screen with the mouse
-cursor. Therefore the @smalltalk{position} instance variable is
-redundant and should be removed. For now we keep it, it will be
-removed later when we will know how to replace each of its use cases
-with its appropriate Morph counterpart.
+Moreover, a movable Morph already knows about its position and
+orientation on screen -- it can be dragged in the screen and rotated
+with the mouse cursor. Therefore the @smalltalk{position} and
+@smalltalk{heading} instance variables are redundant and should be
+removed. For now we keep it, it will be removed later when we will
+know how to replace each of its use cases with its appropriate Morph
+counterpart.
 
 @exercise{Make all Morphs, allActorsMorph, @emph{Edit
 @smalltalk{SpaceWar}@comma{} @class{CentralStar} and @class{SpaceShip}
-to be subclasses of the @class{Morph} class.}}
+to be subclasses of the @class{MovableMorph} class.}}
 
 As explained in the previous sections of this chapter, a morph can be
 embedded within another morph. In Spacewar!, a @class{SpaceWar} morph
@@ -370,20 +373,22 @@ SpaceWar>>initializeActors
    centralStar @assign{} CentralStar new.
    self addMorph: centralStar.
    centralStar morphPosition: 0 @@ 0.
-   ships @assign{} Array 
-      with: (SpaceShip new color: Color white)
-      with: (SpaceShip new color: Color red).
+   torpedoes @assign{} OrderedCollection new.
+   ships @assign{} Array with: SpaceShip new with: SpaceShip new.
    self addAllMorphs: ships.
-   ships first morphPosition: 200 @@ -200.
-   ships second morphPosition: -200 @@ 200.
-   torpedoes @assign OrderedCollection new}
+   ships first 
+      morphPosition: 200 @@ -200;
+      color: Color green.
+   ships second 
+      morphPosition: -200 @@ 200;
+      color: Color red}
 
 There are two important messages: @msg{addMorph:} and
 @msg{morphPosition:}. The former asks to the receiver morph to embed
-its morph argument as a submorph, the later asks to set the receiver
+its morph argument as a submorph, the latter asks to set the receiver
 coordinates in its owner's reference frame. From reading the code, you
-deduce the origin of the owner reference frame is its middle,
-indeed our central star is in the middle of the game play.
+deduce the origin of the owner reference frame is its middle, indeed
+our central star is in the middle of the game play.
 
 There is a third message not written here, @msg{morphPosition}, to ask
 the coordinates of the receiver in its owner's reference frame.
@@ -424,11 +429,12 @@ ship entities?
 
 @enumerate
 
-  @item They will share @emph{common states} as the mass,
-  the position, the velocity and the acceleration.
+  @item They will share @emph{common states} as the mass, the
+  position, the heading, the velocity and the acceleration.
 
-  @item They will share @emph{common behaviors} as the
-  computation to update the position and velocity.
+  @item They will share @emph{common behaviors} as the necessary
+  computations to update the position, direction, gravity pull and
+  velocity.
 
   @item They will have @emph{different states}: a torpedo
   has a life span state while a space ship has fuel tank capacity and
@@ -455,17 +461,22 @@ code refactoring is to rework existing code to make it more elegant,
 understandable and logical.
 
 To do so, we will introduce a @class{Mobile} class, a kind of
- @class{Morph} with behaviors specific to a mobile object subjected to
- accelerations. Its states are the mass, position, velocity and
- acceleration. Well, as we are discussing refactoring, the mass state
- does not really makes sense in our game, indeed our mobile's mass is
- constant. We just need a method returning a literal number and we
- can then remove the @smalltalk{mobile} instance variable.
+ @class{MovableMorph} with behaviors specific to a mobile object
+ subjected to accelerations. Its states are the mass, position,
+ heading, velocity and acceleration. Well, as we are discussing
+ refactoring, the mass state does not really makes sense in our game,
+ indeed our mobile's mass is constant. We just need a method returning
+ a literal number and we can then remove the @smalltalk{mass} instance
+ variable. Moreover, as explained previously, a @class{MovableMorph}
+ instance already know about its position and heading, so we also
+ remove these two attributes, although there are common behaviors to a
+ Space ship and a torpedo.
 
 It results in this @class{Mobile} definition:
 
-@smalltalkExampleCaption{Mobile in the game play,mobileClass,Morph subclass: #Mobile
-   instanceVariableNames: 'velocity acceleration'
+@smalltalkExampleCaption{Mobile in the game play,mobileClass,
+MovableMorph subclass: #Mobile
+   instanceVariableNames: 'velocity acceleration color'
    classVariableNames: ''
    poolDictionaries: ''
    category: 'Spacewar!'}
@@ -511,8 +522,7 @@ This method deserves a few comments:
 
   @item In @smalltalk{position r}, the @msg{r} message asks the radius
   attribute of a point considered in polar coordinates. It is just its
-  length, norm. It is the distance between the mobile and the
-  central star.
+  length. It is the distance between the mobile and the central star.
 
   @item @smalltalk{* position} really means multiply the previous
   scalar value with a @class{Point}, hence a vector. Thus the returned
@@ -581,7 +591,7 @@ See the @class{Torpedo>>update:} definition:
    while inaccurate"
    self rotation: (velocity y arcTan: velocity x) + Float halfPi.
    lifeSpan @assign{} lifeSpan - 1.
-   ifeSpan isZero ifTrue: [owner destroyTorpedo: self].
+   lifeSpan isZero ifTrue: [owner destroyTorpedo: self].
    acceleration > 0 ifTrue: [acceleration @assign{} acceleration - 1000]}
 
 Here the @method{update:} method is specialized to the torpedo
@@ -595,10 +605,14 @@ and so on until the method
 is found, if not a @emph{Message Not Understood} error is signalled.
 
 Among the specific added behaviors, the torpedo orientation along its
-velocity vector is inaccurate but nice looking. The life span
-control, the self-destruction sequence, and the engine acceleration
-are also handled. When a torpedo is just fired, its engine acceleration is
-huge then it decreases quickly.
+velocity vector is inaccurate but nice looking. To orient accordingly
+a kind of @class{MovableMorph} as the torpedo, we use the
+@msg{rotation:} message whose method is defined in the
+@class{MovableMorph} class.
+
+The life span control, the self-destruction sequence, and the engine
+acceleration are also handled specifically. When a torpedo is just fired, its
+engine acceleration is huge then it decreases quickly.
 
 With the System Browser pointed to the @method{Torpedo>>update:}
 method, observe the @option{inheritance} button. It is light green,

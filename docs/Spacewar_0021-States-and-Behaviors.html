@@ -14,7 +14,7 @@ it.
 
 
 
-Compilation : October 24, 2021
+Compilation : October 27, 2021
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -222,10 +222,13 @@ counter reaches zero, it self destructs.
   zero. Its position over time only depends on the torpedo velocity
   and its initial acceleration.
 
+</li><li> <code>heading</code> is an angle in radians, the direction
+  where the torpedo nose is pointing. Its value matches the ship
+  heading when fired, it is therefore a <code>Float</code> number too.
+
 </li><li> <code>velocity</code> is a vector representing the
   instantaneous speed of the torpedo. It is constant over the torpedo
-  lifespan. Its direction matches the ship heading when fired. Again
-  velocity is kept as a <code>Point</code> instance.
+  lifespan. Again velocity is kept as a <code>Point</code> instance.
 
 </li><li> <code>lifeSpan</code> is an integer number counter, when it
   reaches zero the torpedo self-destructs.
@@ -247,7 +250,7 @@ character. Finally, save the updated class definition with
 <div class="float"><span id="torpedoClassVariables"></span>
 <div class="example">
 <pre class="example">Object subclass: #Torpedo
-   instanceVariableNames: 'position velocity lifeSpan'
+   instanceVariableNames: 'position heading velocity lifeSpan'
    classVariableNames: ''
    poolDictionaries: ''
    category: 'Spacewar!'
@@ -368,9 +371,9 @@ like to name the argument to show that we intend that the
 <div class="float"><span id="spaceShipSetters"></span>
 <blockquote class="indentedblock">
 <p>&nbsp;<img src="CuisLogo.png" alt="CuisLogo">
-<em>Ship <code>position</code> and <code>velocity</code> will need to
-be set at game start up or when a ship jumps in hyperspace.  Write the
-appropriate setters.</em>
+<em>Ship <code>position</code> and <code>velocity</code>, as well as
+torpedo <code>heading</code> will need to be set at game start up or
+when a ship jumps in hyperspace.  Write the appropriate setters.</em>
 </p></blockquote>
 
 
@@ -393,9 +396,9 @@ variable and edit the <code>mass</code> method to return a literal number:
 <p>A space ship controlled by the player understands messages to adjust
 its direction and acceleration<a id="DOCF16" href="#FOOT16"><sup>16</sup></a>:
 </p>
-<p><strong>Direction.</strong> The ship heading is controlled with the <code>#left</code>
-  and <code>#right</code> messages. The former increments the
-  <code>heading</code> by 0.1 and the later decrements it by 0.1.
+<p><strong>Direction.</strong> The ship&rsquo;s heading is controlled with the
+  <code>#left</code> and <code>#right</code> messages. The former decrements the
+  <code>heading</code> by 0.1 and the latter increments it by 0.1.
 </p>
 <div class="float"><span id="shipHeading"></span>
 <blockquote class="indentedblock">
@@ -462,9 +465,8 @@ top of the game display.
 <div class="float"><span id="initCentralStar"></span>
 <blockquote class="indentedblock">
 <p>&nbsp;<img src="CuisLogo.png" alt="CuisLogo">
-<em>How will
-your write the method to initialize the central star with 8000 units
-of mass?</em>
+<em>Write the
+method to initialize the central star with 8000 units of mass?</em>
 </p></blockquote>
 
 

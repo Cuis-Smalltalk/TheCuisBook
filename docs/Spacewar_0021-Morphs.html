@@ -14,7 +14,7 @@ it.
 
 
 
-Compilation : October 24, 2021
+Compilation : October 27, 2021
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -121,33 +121,33 @@ graphic shape:
 <p>Therefore it makes sense to turn these actors into kinds of
 <code>Morph</code>s, the visual entity of Cuis-Smalltalk. To do so, point a System
 Browser to the class definition of each actor, replace the parent
-class <code>Object</code> by <code>Morph</code>, then save the class definition
-with <kbd>Ctrl-s</kbd>.
+class <code>Object</code> by <code>MovableMorph</code><a id="DOCF21" href="#FOOT21"><sup>21</sup></a>, then save the class definition with <kbd>Ctrl-s</kbd>.
 </p>
 <p>For example, the torpedo class as seen in <a href="Spacewar_0021-States-and-Behaviors.html#torpedoClassVariables">Example 3.14</a>
 is edited as:
 </p>
 <div class="example">
-<pre class="example">Morph subclass: #Torpedo
-   instanceVariableNames: 'position velocity lifeSpan'
+<pre class="example">MovableMorph subclass: #Torpedo
+   instanceVariableNames: 'position heading velocity lifeSpan'
    classVariableNames: ''
    poolDictionaries: ''
    category: 'Spacewar!'
 </pre></div>
 
-<p>Moreover, as you may have guessed, a Morph already knows about its
-position on screen &ndash; it can be dragged in the screen with the mouse
-cursor. Therefore the <code>position</code> instance variable is
-redundant and should be removed. For now we keep it, it will be
-removed later when we will know how to replace each of its use cases
-with its appropriate Morph counterpart.
+<p>Moreover, a movable Morph already knows about its position and
+orientation on screen &ndash; it can be dragged in the screen and rotated
+with the mouse cursor. Therefore the <code>position</code> and
+<code>heading</code> instance variables are redundant and should be
+removed. For now we keep it, it will be removed later when we will
+know how to replace each of its use cases with its appropriate Morph
+counterpart.
 </p>
 <div class="float"><span id="allActorsMorph"></span>
 <blockquote class="indentedblock">
 <p>&nbsp;<img src="CuisLogo.png" alt="CuisLogo">
 <em>Edit
 <code>SpaceWar</code>, <code>CentralStar</code> and <code>SpaceShip</code>
-to be subclasses of the <code>Morph</code> class.</em>
+to be subclasses of the <code>MovableMorph</code> class.</em>
 </p></blockquote>
 
 
@@ -169,22 +169,24 @@ star, space ships and torpedoes are <em>submorphs</em> of a
    centralStar := CentralStar new.
    self addMorph: centralStar.
    centralStar morphPosition: 0 @ 0.
-   ships := Array 
-      with: (SpaceShip new color: Color white)
-      with: (SpaceShip new color: Color red).
+   torpedoes := OrderedCollection new.
+   ships := Array with: SpaceShip new with: SpaceShip new.
    self addAllMorphs: ships.
-   ships first morphPosition: 200 @ -200.
-   ships second morphPosition: -200 @ 200.
-   torpedoes := OrderedCollection new
+   ships first 
+      morphPosition: 200 @ -200;
+      color: Color green.
+   ships second 
+      morphPosition: -200 @ 200;
+      color: Color red
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 6.3: </strong>Complete code to initialize the Spacewar! actors</p></div></div>
 <p>There are two important messages: <code>#addMorph:</code> and
 <code>#morphPosition:</code>. The former asks to the receiver morph to embed
-its morph argument as a submorph, the later asks to set the receiver
+its morph argument as a submorph, the latter asks to set the receiver
 coordinates in its owner&rsquo;s reference frame. From reading the code, you
-deduce the origin of the owner reference frame is its middle,
-indeed our central star is in the middle of the game play.
+deduce the origin of the owner reference frame is its middle, indeed
+our central star is in the middle of the game play.
 </p>
 <p>There is a third message not written here, <code>#morphPosition</code>, to ask
 the coordinates of the receiver in its owner&rsquo;s reference frame.
@@ -214,7 +216,7 @@ gravity pull nor its engine acceleration. It is supposing its mass is
 zero which is unlikely. Of course the <code>Torpedo&gt;&gt;update:</code>
 method is simpler than the space ship counter part &ndash; see
 <a href="SpaceWar_0021-collections.html#torpedoMechanic">Example 4.18</a>. Nevertheless, it is more accurate and even more
-fun that the torpedoes are subjected to the gravity pull<a id="DOCF21" href="#FOOT21"><sup>21</sup></a> and its engine acceleration; an
+fun that the torpedoes are subjected to the gravity pull<a id="DOCF22" href="#FOOT22"><sup>22</sup></a> and its engine acceleration; an
 agile space ship pilot could use gravity assist to accelerate a
 torpedo fired with a path close to the central star.
 </p>
@@ -222,11 +224,12 @@ torpedo fired with a path close to the central star.
 ship entities?
 </p>
 <ol>
-<li> They will share <em>common states</em> as the mass,
-  the position, the velocity and the acceleration.
+<li> They will share <em>common states</em> as the mass, the
+  position, the heading, the velocity and the acceleration.
 
-</li><li> They will share <em>common behaviors</em> as the
-  computation to update the position and velocity.
+</li><li> They will share <em>common behaviors</em> as the necessary
+  computations to update the position, direction, gravity pull and
+  velocity.
 
 </li><li> They will have <em>different states</em>: a torpedo
   has a life span state while a space ship has fuel tank capacity and
@@ -253,19 +256,23 @@ code refactoring is to rework existing code to make it more elegant,
 understandable and logical.
 </p>
 <p>To do so, we will introduce a <code>Mobile</code> class, a kind of
- <code>Morph</code> with behaviors specific to a mobile object subjected to
- accelerations. Its states are the mass, position, velocity and
- acceleration. Well, as we are discussing refactoring, the mass state
- does not really makes sense in our game, indeed our mobile&rsquo;s mass is
- constant. We just need a method returning a literal number and we
- can then remove the <code>mobile</code> instance variable.
+ <code>MovableMorph</code> with behaviors specific to a mobile object
+ subjected to accelerations. Its states are the mass, position,
+ heading, velocity and acceleration. Well, as we are discussing
+ refactoring, the mass state does not really makes sense in our game,
+ indeed our mobile&rsquo;s mass is constant. We just need a method returning
+ a literal number and we can then remove the <code>mass</code> instance
+ variable. Moreover, as explained previously, a <code>MovableMorph</code>
+ instance already know about its position and heading, so we also
+ remove these two attributes, although there are common behaviors to a
+ Space ship and a torpedo.
 </p>
 <p>It results in this <code>Mobile</code> definition:
 </p>
 <div class="float"><span id="mobileClass"></span>
 <div class="example">
-<pre class="example">Morph subclass: #Mobile
-   instanceVariableNames: 'velocity acceleration'
+<pre class="example">MovableMorph subclass: #Mobile
+   instanceVariableNames: 'velocity acceleration color'
    classVariableNames: ''
    poolDictionaries: ''
    category: 'Spacewar!'
@@ -324,8 +331,7 @@ calculations. First, the code to calculate the gravity acceleration:
 
 </li><li> In <code>position r</code>, the <code>#r</code> message asks the radius
   attribute of a point considered in polar coordinates. It is just its
-  length, norm. It is the distance between the mobile and the
-  central star.
+  length. It is the distance between the mobile and the central star.
 
 </li><li> <code>* position</code> really means multiply the previous
   scalar value with a <code>Point</code>, hence a vector. Thus the returned
@@ -401,7 +407,7 @@ oriented programming there is this special mechanism named
    while inaccurate&quot;
    self rotation: (velocity y arcTan: velocity x) + Float halfPi.
    lifeSpan := lifeSpan - 1.
-   ifeSpan isZero ifTrue: [owner destroyTorpedo: self].
+   lifeSpan isZero ifTrue: [owner destroyTorpedo: self].
    acceleration &gt; 0 ifTrue: [acceleration := acceleration - 1000]
 </pre></div>
 
@@ -416,10 +422,14 @@ and so on until the method
 is found, if not a <em>Message Not Understood</em> error is signalled.
 </p>
 <p>Among the specific added behaviors, the torpedo orientation along its
-velocity vector is inaccurate but nice looking. The life span
-control, the self-destruction sequence, and the engine acceleration
-are also handled. When a torpedo is just fired, its engine acceleration is
-huge then it decreases quickly.
+velocity vector is inaccurate but nice looking. To orient accordingly
+a kind of <code>MovableMorph</code> as the torpedo, we use the
+<code>#rotation:</code> message whose method is defined in the
+<code>MovableMorph</code> class.
+</p>
+<p>The life span control, the self-destruction sequence, and the engine
+acceleration are also handled specifically. When a torpedo is just fired, its
+engine acceleration is huge then it decreases quickly.
 </p>
 <p>With the System Browser pointed to the <code>Torpedo&gt;&gt;update:</code>
 method, observe the <samp>inheritance</samp> button. It is light green,
@@ -494,6 +504,11 @@ the fundamentals of Morph.
 <h4 class="footnotes-heading">Footnotes</h4>
 
 <h5><a id="FOOT21" href="#DOCF21">(21)</a></h3>
+<p>A
+<code>MovableMorph</code> is a kind of <code>Morph</code> with a supplementary
+<code>location</code> attribute; so it can be instructed to move in the
+screen.</p>
+<h5><a id="FOOT22" href="#DOCF22">(22)</a></h3>
 <p>So a
 torpedo should come with a mass.</p>
 </div>
