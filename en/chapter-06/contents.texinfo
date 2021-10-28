@@ -557,13 +557,27 @@ Mobile>>update: t
      self morphPosition: self morphPosition negated]}
 
 Now we should add the two methods to detect when a mobile is heading
-off into deep space:
+off into deep space.
+
+But first we define the method @method{morphLocalBounds} in each of
+our Morph objects. It returns a @class{Rectangle} instance defined in
+the Morph coordinates by its origin and extent:
+
+@smalltalkExampleCaption{Bounds of our Morph objects,boundMorph,
+SpaceWar>>morphLocalBounds
+   @return{} -500 @@ -500 extent: 1000 @@ 1000
+
+CentralStar>>morphLocalBounds
+   @return{} Rectangle center: 0 @@ 0 extent: self morphExtent
+
+Mobile>>morphLocalBounds
+   @return{} Rectangle encompassing: self class vertices}
 
 @smalltalkExampleCaption{Test when a mobile is ``spaced out'',mobileDeepSpace,
 Mobile>>isInOuterSpace
 "Is the mobile located in the outer space? (outside of the game
 play area)"
-   @return{} (owner morphContainsPoint: self morphPosition) not
+   @return{} (owner morphLocalBounds containsPoint: self morphPosition) not
 
 Mobile>>isGoingOuterSpace
 "is the mobile going crazy in the direction of the outer space?"
@@ -572,8 +586,8 @@ Mobile>>isGoingOuterSpace
 As you see, these test methods are simple and short. When writing
 @cuis{} code, this is something we appreciate a lot and we do not
 hesitate to cut a long method in several small methods. It improves
-readability and code reuse. The @msg{morphContainsPoint:} message asks
-the receiver morph whether the point in argument is inside its shape.
+readability and code reuse. The @msg{containsPoint:} message asks the
+receiver rectangle whether the point in argument is inside its shape.
 
 @cindex overriding
 When a mobile is updated, its position and velocity are

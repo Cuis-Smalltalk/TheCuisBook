@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This book is for Cuis-Smalltalk (5.0#4506), a free and modern
+<!-- This book is for Cuis-Smalltalk (5.0#4954 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
 Copyright (C) 2020, 2021 Hilaire Fernandes with Ken Dickey & Juan Vuletich
@@ -14,7 +14,7 @@ it. It is very valuable.
 
 
 
-Compilation : October 27, 2021
+Compilation : October 28, 2021
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -369,26 +369,43 @@ morph&rsquo;s way of accessing the mobile&rsquo;s position:
 
 <div class="float-caption"><p><strong>Example 6.6: </strong><code>Mobile</code>&rsquo;s <code>update:</code> method</p></div></div>
 <p>Now we should add the two methods to detect when a mobile is heading
-off into deep space:
+off into deep space.
 </p>
+<p>But first we define the method <code>morphLocalBounds</code> in each of
+our Morph objects. It returns a <code>Rectangle</code> instance defined in
+the Morph coordinates by its origin and extent:
+</p>
+<div class="float"><span id="boundMorph"></span>
+<div class="example">
+<pre class="example">SpaceWar&gt;&gt;morphLocalBounds
+   ^ -500 @ -500 extent: 1000 @ 1000
+
+CentralStar&gt;&gt;morphLocalBounds
+   ^ Rectangle center: 0 @ 0 extent: self morphExtent
+
+Mobile&gt;&gt;morphLocalBounds
+   ^ Rectangle encompassing: self class vertices
+</pre></div>
+
+<div class="float-caption"><p><strong>Example 6.7: </strong>Bounds of our Morph objects</p></div></div>
 <div class="float"><span id="mobileDeepSpace"></span>
 <div class="example">
 <pre class="example">Mobile&gt;&gt;isInOuterSpace
 &quot;Is the mobile located in the outer space? (outside of the game
 play area)&quot;
-   ^ (owner morphContainsPoint: self morphPosition) not
+   ^ (owner morphLocalBounds containsPoint: self morphPosition) not
 
 Mobile&gt;&gt;isGoingOuterSpace
 &quot;is the mobile going crazy in the direction of the outer space?&quot;
    ^ (self morphPosition dotProduct: velocity) &gt; 0
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 6.7: </strong>Test when a mobile is &ldquo;spaced out&rdquo;</p></div></div>
+<div class="float-caption"><p><strong>Example 6.8: </strong>Test when a mobile is &ldquo;spaced out&rdquo;</p></div></div>
 <p>As you see, these test methods are simple and short. When writing
 Cuis-Smalltalk code, this is something we appreciate a lot and we do not
 hesitate to cut a long method in several small methods. It improves
-readability and code reuse. The <code>#morphContainsPoint:</code> message asks
-the receiver morph whether the point in argument is inside its shape.
+readability and code reuse. The <code>#containsPoint:</code> message asks the
+receiver rectangle whether the point in argument is inside its shape.
 </p>
 <span id="index-overriding-1"></span>
 <p>When a mobile is updated, its position and velocity are
@@ -467,7 +484,7 @@ Torpedo&gt;&gt;initialize
    acceleration := 4000
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 6.8: </strong>Initialize overriding in the <code>Mobile</code>
+<div class="float-caption"><p><strong>Example 6.9: </strong>Initialize overriding in the <code>Mobile</code>
 hierarchy</p></div></div>
 <p>Observe how each class is only responsible of its specific state
 initialization:

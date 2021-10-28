@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4789] on 23 August 2021 at 12:02:46 pm'!
+'From Cuis 5.0 [latest update: #4954] on 28 October 2021 at 10:34:32 pm'!
 'Description '!
-!provides: 'Spacewar!!' 1 82!
+!provides: 'Spacewar!!' 1 84!
 SystemOrganization addCategory: 'Spacewar!!'!
 
 
@@ -141,10 +141,10 @@ isGoingOuterSpace
 "is the mobile going crazy in direction of the outer space?"
 	^ (self morphPosition dotProduct: velocity) > 0 ! !
 
-!Mobile methodsFor: 'testing' stamp: 'hlsf 10/8/2020 22:21:40'!
+!Mobile methodsFor: 'testing' stamp: 'jmv 10/28/2021 15:04:22'!
 isInOuterSpace
 "Is the mobile located in the outer space? (outside of the game play area)"
-	^(owner morphContainsPoint: self morphPosition) not! !
+	^(owner morphLocalBounds containsPoint: self morphPosition) not! !
 
 !Mobile methodsFor: 'drawing' stamp: 'hlsf 8/23/2021 11:50:43'!
 drawOn: canvas polygon: vertices
@@ -156,6 +156,11 @@ drawOn: canvas polygon: vertices
 			to: ( vertices at: (i  \\ size + 1) ) 
 			width: 2 
 			color: color] ! !
+
+!Mobile methodsFor: 'geometry' stamp: 'jmv 10/28/2021 14:53:01'!
+morphLocalBounds
+
+	^Rectangle encompassing: self class vertices! !
 
 !Mobile class methodsFor: 'as yet unclassified' stamp: 'hlsf 12/19/2020 23:21:09'!
 vertices
@@ -303,12 +308,12 @@ collisionsShips
 			each flashWith: Color red.
 			self teleport: each] ]! !
 
-!SpaceWar methodsFor: 'collisions' stamp: 'hlsf 8/23/2021 12:02:18'!
+!SpaceWar methodsFor: 'collisions' stamp: 'hlsf 10/28/2021 22:31:57'!
 collisionsShipsStar
-	ships do: [:aShip | 
+	ships do: [ :aShip |
 		(aShip displayBounds intersects: centralStar displayBounds) ifTrue: [
 			aShip flashWith: Color red.
-			self teleport: aShip]]! !
+			self teleport: aShip ]]! !
 
 !SpaceWar methodsFor: 'collisions' stamp: 'hlsf 8/23/2021 11:53:04'!
 collisionsShipsTorpedoes
@@ -333,6 +338,18 @@ drawOn: aCanvas
 	aCanvas
 		fillRectangle: self morphLocalBounds
 		color: color! !
+
+!SpaceWar methodsFor: 'drawing' stamp: 'jmv 10/28/2021 14:57:27'!
+imageForm: extentOrNil depth: depth
+
+	| answerExtent answer auxCanvas |
+	answerExtent _ self morphExtent.
+	extentOrNil ifNotNil: [ answerExtent _ answerExtent min: extentOrNil * 4 ].
+	auxCanvas _ MorphicCanvas depth: depth over: (self morphPosition floor extent: answerExtent ceiling).
+	auxCanvas fullDraw: self.
+	answer _ auxCanvas form divideByAlpha.
+	extentOrNil ifNotNil: [ answer _ answer magnifyTo: extentOrNil ].
+	^answer! !
 
 !SpaceWar methodsFor: 'event handling testing' stamp: 'hlsf 11/1/2020 10:03:57'!
 handlesKeyboard
@@ -371,6 +388,10 @@ keyboardFocusChange: gotFocus
 		ifTrue: [color _ self defaultColor ]
 		ifFalse: [color _ self defaultColor alpha: 0.5].
 	self redrawNeeded.! !
+
+!SpaceWar methodsFor: 'geometry testing' stamp: 'hlsf 12/11/2020 13:00:49'!
+clipsSubmorphs
+	^ true! !
 
 !SpaceWar methodsFor: 'geometry testing' stamp: 'hlsf 12/15/2020 21:03:32'!
 requiresVectorCanvas
@@ -422,13 +443,18 @@ stepTime
 wantsSteps
 	^ true! !
 
-!SpaceWar methodsFor: 'as yet unclassified' stamp: 'hlsf 12/11/2020 13:00:49'!
-clipsSubmorphs
-	^ true! !
+!SpaceWar methodsFor: 'geometry' stamp: 'jmv 10/28/2021 14:48:34'!
+morphLocalBounds
+
+	^ -500 @ -500 extent: 1000@1000! !
 
 !CentralStar methodsFor: 'accessing' stamp: 'hlsf 10/8/2020 22:20:17'!
 mass
 	^ 8000! !
+
+!CentralStar methodsFor: 'accessing' stamp: 'hlsf 12/15/2020 21:04:13'!
+morphExtent
+	^ `30 @ 30`! !
 
 !CentralStar methodsFor: 'drawing' stamp: 'hlsf 12/15/2020 21:05:29'!
 drawOn: canvas
@@ -446,8 +472,9 @@ drawOn: canvas
 requiresVectorCanvas
 	^false! !
 
-!CentralStar methodsFor: 'as yet unclassified' stamp: 'hlsf 12/15/2020 21:04:13'!
-morphExtent
-	^ `30 @ 30`! !
+!CentralStar methodsFor: 'geometry' stamp: 'jmv 10/28/2021 14:55:55'!
+morphLocalBounds
+
+	^Rectangle center: 0@0 extent: self morphExtent! !
 SpaceShip initialize!
 Torpedo initialize!
