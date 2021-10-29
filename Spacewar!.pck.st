@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4954] on 28 October 2021 at 10:34:32 pm'!
+'From Cuis 5.0 [latest update: #4957] on 29 October 2021 at 7:05:05 pm'!
 'Description '!
-!provides: 'Spacewar!!' 1 84!
+!provides: 'Spacewar!!' 1 85!
 SystemOrganization addCategory: 'Spacewar!!'!
 
 
@@ -338,18 +338,6 @@ drawOn: aCanvas
 	aCanvas
 		fillRectangle: self morphLocalBounds
 		color: color! !
-
-!SpaceWar methodsFor: 'drawing' stamp: 'jmv 10/28/2021 14:57:27'!
-imageForm: extentOrNil depth: depth
-
-	| answerExtent answer auxCanvas |
-	answerExtent _ self morphExtent.
-	extentOrNil ifNotNil: [ answerExtent _ answerExtent min: extentOrNil * 4 ].
-	auxCanvas _ MorphicCanvas depth: depth over: (self morphPosition floor extent: answerExtent ceiling).
-	auxCanvas fullDraw: self.
-	answer _ auxCanvas form divideByAlpha.
-	extentOrNil ifNotNil: [ answer _ answer magnifyTo: extentOrNil ].
-	^answer! !
 
 !SpaceWar methodsFor: 'event handling testing' stamp: 'hlsf 11/1/2020 10:03:57'!
 handlesKeyboard
