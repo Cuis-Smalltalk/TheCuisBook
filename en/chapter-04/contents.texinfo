@@ -623,7 +623,7 @@ array1 at: 2 @result{} 'Apple'
 array2 at: 3 @result{} 2@@3
 array2 swap: 2 with: 4 @result{} #(2 1/3 2@@3 'Apple') 
 array1 at: 2 put: 'Orange'; yourself @result{} #(2 'Orange' $@@ 4)
-array1 indexOf: 'Apple' @result{} 2}
+array1 indexOf: 'Orange @result{} 2}
 
 Use the System Browser to discover alternative way to access elements
 of a collection.
@@ -887,11 +887,11 @@ Observe in this previous method how the direction and the gravity are
 defined in two specific methods.
 
 The @msg{direction} message asks for the unit vector representing the
-noze direction of the spaceship:
+nose direction of the spaceship:
 
 @smalltalkExampleCaption{Space ship direction method,spaceShipDirection,
 SpaceShip>>direction
-"I am an unit vector representing the noze direction of the mobile"
+"I am an unit vector representing the nose direction of the mobile"
    @return{} Point rho: 1 theta: location radians - Float halfPi}
 
 The @msg{gravity} message asks for the gravity vector the space ship
@@ -901,7 +901,7 @@ is subjected to:
 SpaceShip>>gravity
 "Compute the gravity acceleration vector"
    | position |
-   position _ self morphPosition.
+   position @assign{} self morphPosition.
    @return{} [-10 * self mass * owner starMass / (position r raisedTo: 3) * position]
       on: Error do: [0 @@ 0]}
 

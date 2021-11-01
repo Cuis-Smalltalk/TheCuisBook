@@ -14,7 +14,7 @@ it. It is very valuable.
 
 
 
-Compilation : October 30, 2021
+Compilation : November 1, 2021
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -205,12 +205,12 @@ the expected computation.
 defined in two specific methods.
 </p>
 <p>The <code>#direction</code> message asks for the unit vector representing the
-noze direction of the spaceship:
+nose direction of the spaceship:
 </p>
 <div class="float"><span id="spaceShipDirection"></span>
 <div class="example">
 <pre class="example">SpaceShip&gt;&gt;direction
-&quot;I am an unit vector representing the noze direction of the mobile&quot;
+&quot;I am an unit vector representing the nose direction of the mobile&quot;
    ^ Point rho: 1 theta: location radians - Float halfPi
 </pre></div>
 
@@ -223,7 +223,7 @@ is subjected to:
 <pre class="example">SpaceShip&gt;&gt;gravity
 &quot;Compute the gravity acceleration vector&quot;
    | position |
-   position _ self morphPosition.
+   position := self morphPosition.
    ^ [-10 * self mass * owner starMass / (position r raisedTo: 3) * position]
       on: Error do: [0 @ 0]
 </pre></div>
