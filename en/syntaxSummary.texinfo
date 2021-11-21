@@ -9,7 +9,8 @@
    @item @smalltalk{self}                       @tab @tab pseudo-variable
    @item @tab @tab
    @item @smalltalk{1}                          @tab @tab decimal integer
-   @item @smalltalk{2r101}                      @tab @tab binary integer
+   @item @smalltalk{2r101}                      @tab @tab binary integer (radix 2)
+   @item @smalltalk{16r1a}                      @tab @tab hexadecimal integer (radix 16)
    @item @smalltalk{1.5}                        @tab @tab floating point number
    @item @smalltalk{2.4e7}                      @tab @tab exponential notation
    @item @smalltalk{$a}                         @tab @tab the character ‘a’
