@@ -104,24 +104,27 @@ Previous: <a href="Daily-Workflow.html" accesskey="p" rel="prev">Daily Workflow<
 <p>In this chapter, you encountered files produced by the Cuis-Smalltalk
 management tools. Some come with the extension <samp>.pck.st</samp> and
 others with the extension <samp>.st</samp>. They both contain Smalltalk code
-but they serve different purpose.
+but serve different purposes.
 </p>
 <p>Files with extension <samp>.pck.st</samp> are Cuis-Smalltalk package files. They
 have a preamble with package information, like feature provided,
 version information, a description for the package and the package
 requirements.
 </p>
-<p>Package files can be installed &ndash; click on <code>install</code> button from
-the File List tool. When a package is installed, its dependencies are
-also installed and the loaded packaged appears in the Package List
-tool. Package files <samp>.pck.st</samp> are created using the Packages List
-tool in Cuis-Smalltalk.
+<p>Smalltalk code files can be installed by selecting them in the File
+List Browser and clicking on <code>install</code> button.
+</p>
+<p>When a package is installed, its dependencies are also installed and
+the loaded packaged appears in the Package List tool. Package files
+<samp>.pck.st</samp> are created using the Packages List tool in
+Cuis-Smalltalk.
 </p>
 <p>Files with extension <samp>.st</samp> contained serialized Smalltalk code &ndash;
 classes and methods. They are created when you <em>file out</em> a
-Smalltalk system category, class or method: ...Right
-click on a <em>System Browser</em> <strong>system category</strong>,
-<strong>class</strong> or <strong>method</strong> &rarr; <code>fileOut</code>.
+Smalltalk system category, class or method. You can serialize code in
+the <em>System Browser</em> by selecting a <strong>system
+category</strong>, <strong>class</strong> or <strong>method</strong> &rarr; right click and
+select <code>fileOut</code> from the context menu.
 </p>
 <p>Unlike <samp>.pck.st</samp> files, <samp>.st</samp> files don&rsquo;t contain any
 dependencies, description, or package information, only serialized
@@ -129,9 +132,10 @@ Smalltalk code. <samp>.st</samp> files are around since Smalltalk’s early
 days, while <samp>.pkg.st</samp> were added with the Cuis-Smalltalk package
 functionality.
 </p>
-
-
-
+<p>In addition to <em>install</em>, selecting a code file in the File List Browser
+also adds buttons to inspect the code and to treat code contents like
+a Change Sorter.
+</p>
 
 
 </body>

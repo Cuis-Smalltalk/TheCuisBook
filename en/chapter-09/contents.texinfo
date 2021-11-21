@@ -603,24 +603,27 @@ message to meaningful code for your usage.
 In this chapter, you encountered files produced by the @cuis{}
 management tools. Some come with the extension @file{.pck.st} and
 others with the extension @file{.st}. They both contain Smalltalk code
-but they serve different purpose.
+but serve different purposes.
 
 Files with extension @file{.pck.st} are @cuis{} package files. They
 have a preamble with package information, like feature provided,
 version information, a description for the package and the package
 requirements.
 
-Package files can be installed -- click on @label{install} button from
-the File List tool. When a package is installed, its dependencies are
-also installed and the loaded packaged appears in the Package List
-tool. Package files @file{.pck.st} are created using the Packages List
-tool in @cuis{}.
+Smalltalk code files can be installed by selecting them in the File
+List Browser and clicking on @label{install} button.
+
+When a package is installed, its dependencies are also installed and
+the loaded packaged appears in the Package List tool. Package files
+@file{.pck.st} are created using the Packages List tool in
+Cuis-Smalltalk.
 
 Files with extension @file{.st} contained serialized Smalltalk code --
 classes and methods. They are created when you @dfn{file out} a
-Smalltalk system category, class or method: ...@clicksequence{Right
-click on a @dfn{System Browser} @strong{system category},
-@strong{class} or @strong{method} @click{} @label{fileOut}}.
+Smalltalk system category, class or method. You can serialize code in
+@clicksequence{the @dfn{System Browser} by selecting a @strong{system
+category}, @strong{class} or @strong{method} @click{} right click and
+select @label{fileOut} from the context menu}.
 
 Unlike @file{.pck.st} files, @file{.st} files don't contain any
 dependencies, description, or package information, only serialized
@@ -628,7 +631,6 @@ Smalltalk code. @file{.st} files are around since Smalltalk’s early
 days, while @file{.pkg.st} were added with the @cuis{} package
 functionality.
 
-
-
-@c TOC
-@c * Gives a few script to automate your installation
+In addition to @dfn{install}, selecting a code file in the File List Browser
+also adds buttons to inspect the code and to treat code contents like
+a Change Sorter.
