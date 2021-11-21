@@ -22,9 +22,10 @@ Hilaire Fernandes with Ken Dickey & Juan Vuletich
 @end macro
 
 @macro thanks
-Thanks to Matt Armstrong, David Lewis, John McGarey, Tommy Pettersson, Mauro Rizzi &
-Stephen Smith for the reviews of the book and suggestions to improve
-it. It is very valuable.
+Thanks to Matt Armstrong, Bernhard Pieber, David Lewis, John McGarey,
+Mariano Montone, Tommy Pettersson, Mauro Rizzi & Stephen Smith for the
+reviews of the book, suggestions and borrowed texts to improve it . It
+is very valuable.
 @end macro
 
 @macro vm
@@ -75,7 +76,8 @@ it. It is very valuable.
 @alias class=code
 @alias smalltalk=code
 @alias method=code
-@alias label=command
+@c label of a button, string keyed in a text field
+@alias label=command 
 @macro msg{messageName}
 @code{#\messageName\}
 @end macro

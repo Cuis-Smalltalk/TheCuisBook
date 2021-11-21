@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This book is for Cuis-Smalltalk (5.0#4958 or later), a free and modern
+implementation of the Smalltalk language and environment.
+
+Copyright (C) 2020, 2021 Hilaire Fernandes with Ken Dickey & Juan Vuletich
+
+
+Thanks to Matt Armstrong, Bernhard Pieber, David Lewis, John McGarey,
+Mariano Montone, Tommy Pettersson, Mauro Rizzi & Stephen Smith for the
+reviews of the book, suggestions and borrowed texts to improve it . It
+is very valuable.
+
+
+
+
+
+Compilation : November 21, 2021
+
+Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
+
+
+
+The contents of this book are protected under Creative Commons
+Attribution-ShareAlike 4.0 International.
+
+You are free to:
+
+
+Share - copy and redistribute the material in any medium or
+format
+
+
+Adapt - remix, transform, and build upon the material for any
+purpose, even commercially.
+
+
+
+Under the following terms:
+
+
+Attribution. You must give appropriate credit, provide a link to
+the license, and indicate if changes were made. You may do so in any
+reasonable manner, but not in any way that suggests the licensor
+endorses you or your use.
+
+
+Share Alike. If you remix, transform, or build upon the material,
+you must distribute your contributions under the same license as the
+original.
+
+Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+ -->
+<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Source Code File (The Cuis-Smalltalk Book)</title>
+
+<meta name="description" content="Source Code File (The Cuis-Smalltalk Book)">
+<meta name="keywords" content="Source Code File (The Cuis-Smalltalk Book)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Indexes.html" rel="index" title="Indexes">
+<link href="Code-Management.html" rel="up" title="Code Management">
+<link href="Debug-and-Exception-Handling.html" rel="next" title="Debug and Exception Handling">
+<link href="Daily-Workflow.html" rel="prev" title="Daily Workflow">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="style.css">
+
+
+</head>
+
+<body lang="en">
+<span id="Source-Code-File"></span><div class="header">
+<p>
+Previous: <a href="Daily-Workflow.html" accesskey="p" rel="prev">Daily Workflow</a>, Up: <a href="Code-Management.html" accesskey="u" rel="up">Code Management</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Source-Code-File-1"></span><h3 class="section">9.6 Source Code File</h3>
+<span id="index-_002est"></span>
+<span id="index-_002epck_002est"></span>
+<span id="index-file-extension"></span>
+<span id="index-file-extension-1"></span>
+
+<p>In this chapter, you encountered files produced by the Cuis-Smalltalk
+management tools. Some come with the extension <samp>.pck.st</samp> and
+others with the extension <samp>.st</samp>. They both contain Smalltalk code
+but they serve different purpose.
+</p>
+<p>Files with extension <samp>.pck.st</samp> are Cuis-Smalltalk package files. They
+have a preamble with package information, like feature provided,
+version information, a description for the package and the package
+requirements.
+</p>
+<p>Package files can be installed &ndash; click on <code>install</code> button from
+the File List tool. When a package is installed, its dependencies are
+also installed and the loaded packaged appears in the Package List
+tool. Package files <samp>.pck.st</samp> are created using the Packages List
+tool in Cuis-Smalltalk.
+</p>
+<p>Files with extension <samp>.st</samp> contained serialized Smalltalk code &ndash;
+classes and methods. They are created when you <em>file out</em> a
+Smalltalk system category, class or method: ...Right
+click on a <em>System Browser</em> <strong>system category</strong>,
+<strong>class</strong> or <strong>method</strong> &rarr; <code>fileOut</code>.
+</p>
+<p>Unlike <samp>.pck.st</samp> files, <samp>.st</samp> files don&rsquo;t contain any
+dependencies, description, or package information, only serialized
+Smalltalk code. <samp>.st</samp> files are around since Smalltalk’s early
+days, while <samp>.pkg.st</samp> were added with the Cuis-Smalltalk package
+functionality.
+</p>
+
+
+
+
+
+</body>
+</html>

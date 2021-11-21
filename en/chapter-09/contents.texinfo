@@ -20,6 +20,7 @@ how you should manage the code of an application written with @cuis{}.
 * The Change Set::
 * The Package::
 * Daily Workflow::
+* Source Code File::
 @end menu
 
 @node The Image
@@ -280,10 +281,11 @@ in fact to specify that those packages be up to a specific version level.
 This is the key to being able to
 safely compose packages which have requirements.
 
-OK, let's click on the @label{New} button and type Morphic-Learning
-into the prompt.  This results in a new package with the same name as
-our @smalltalk{Morphic-Learning} category.  Note that this is version
-1, revision 0 (1.0 at right) and that the package has yet to be saved.
+OK, let's click on the @label{New} button and type
+@label{Morphic-Learning} into the prompt.  This results in a new
+package with the same name as our @smalltalk{Morphic-Learning}
+category.  Note that this is version 1, revision 0 (1.0 at right) and
+that the package has yet to be saved.
 
 @figure{New Package -- @smalltalk{Morphic-Learning},ch10-NewPackage-Morphic-Learning,11}
 
@@ -591,6 +593,40 @@ TranscriptWindow openTranscript
 Of course you should adjust the argument of the @msg{actualContents:}
 message to meaningful code for your usage.
 
+@node Source Code File
+@section Source Code File
+@cindex @file{.st}
+@cindex @file{.pck.st}
+@cindex file extension @subentry @file{.st}
+@cindex file extension @subentry @file{.st.pck}
+
+In this chapter, you encountered files produced by the @cuis{}
+management tools. Some come with the extension @file{.pck.st} and
+others with the extension @file{.st}. They both contain Smalltalk code
+but they serve different purpose.
+
+Files with extension @file{.pck.st} are @cuis{} package files. They
+have a preamble with package information, like feature provided,
+version information, a description for the package and the package
+requirements.
+
+Package files can be installed -- click on @label{install} button from
+the File List tool. When a package is installed, its dependencies are
+also installed and the loaded packaged appears in the Package List
+tool. Package files @file{.pck.st} are created using the Packages List
+tool in @cuis{}.
+
+Files with extension @file{.st} contained serialized Smalltalk code --
+classes and methods. They are created when you @dfn{file out} a
+Smalltalk system category, class or method: ...@clicksequence{Right
+click on a @dfn{System Browser} @strong{system category},
+@strong{class} or @strong{method} @click{} @label{fileOut}}.
+
+Unlike @file{.pck.st} files, @file{.st} files don't contain any
+dependencies, description, or package information, only serialized
+Smalltalk code. @file{.st} files are around since Smalltalk’s early
+days, while @file{.pkg.st} were added with the @cuis{} package
+functionality.
 
 
 
