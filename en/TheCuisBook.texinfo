@@ -1,6 +1,5 @@
 \input texinfo @c -*-texinfo-*-
 @c %**start of header
-@set timeStamp Time-stamp: <2021-09-16 13:32:04 hilaire>
 @include ../bookSettings.texinfo
 @c %**end of header
 

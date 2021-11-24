@@ -631,6 +631,9 @@ Smalltalk code. @file{.st} files are around since Smalltalk’s early
 days, while @file{.pkg.st} were added with the @cuis{} package
 functionality.
 
-In addition to @dfn{install}, selecting a code file in the File List Browser
-also adds buttons to inspect the code and to treat code contents like
-a Change Sorter.
+In addition to @dfn{install}, selecting a code file in the File List
+Browser also adds buttons to inspect the @dfn{code} and to treat code
+@dfn{contents} like a Change Sorter. When inspecting the code, a
+browser shows what code is different between the file and the running
+image and allows one to import individual classes or methods with the
+help of the context menu.
