@@ -176,7 +176,7 @@ Observe @ref{ch10-ChangeSet2}, after we added the method
 added or modified methods. When a method is selected its source code
 is printed in the bottom pane.
 
-Let's say we save the change set -- @dfn{File out} entries in the
+Let's say we save the change set -- @label{File out} entries in the
 change sorter tool menu. This creates a new file
 @file{4451-CuisCore-HilaireFernandes-2020Nov14-21h08m-hlsf.001.cs.st}
 along the @cuis{} image file:
@@ -621,7 +621,7 @@ Cuis-Smalltalk.
 Files with extension @file{.st} contained serialized Smalltalk code --
 classes and methods. They are created when you @dfn{file out} a
 Smalltalk system category, class or method. You can serialize code in
-@clicksequence{the @dfn{System Browser} by selecting a @strong{system
+@clicksequence{the System Browser by selecting a @strong{system
 category}, @strong{class} or @strong{method} @click{} right click and
 select @label{fileOut} from the context menu}.
 
@@ -631,9 +631,9 @@ Smalltalk code. @file{.st} files are around since Smalltalk’s early
 days, while @file{.pkg.st} were added with the @cuis{} package
 functionality.
 
-In addition to @dfn{install}, selecting a code file in the File List
-Browser also adds buttons to inspect the @dfn{code} and to treat code
-@dfn{contents} like a Change Sorter. When inspecting the code, a
+In addition to @label{install}, selecting a code file in the File List
+Browser also adds buttons to inspect the @label{code} and to treat code
+@label{contents} like a Change Sorter. When inspecting the code, a
 browser shows what code is different between the file and the running
 image and allows one to import individual classes or methods with the
 help of the context menu.
