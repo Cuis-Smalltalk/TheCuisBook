@@ -607,9 +607,9 @@ moves every second.} to an automatic Swiss clock@footnote{In an
 automatic clock, the hand for the seconds moves every fraction of a
 second. The smaller the fraction, the more premium the clock is.}:
 
-@smalltalkExample{MorphClock>>stepTime
-    ^ 100
-MorphClock>>step
+@smalltalkExample{ClockMorph>>stepTime
+    ^ 100 "milliseconds"
+ClockMorph>>step
 ../..
    secondHand rotationDegrees: (time second + (time nanoSecond * 1.0e-9))* 6}
 
