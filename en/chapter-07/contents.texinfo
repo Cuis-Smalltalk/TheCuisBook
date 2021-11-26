@@ -605,7 +605,7 @@ Before we leave this section, here is a two lines change to turn our
 Cuis quartz clock@footnote{In a quartz clock, the hand for the seconds
 moves every second.} to an automatic Swiss clock@footnote{In an
 automatic clock, the hand for the seconds moves every fraction of a
-second. The smaller the fraction, the more premium the clock is.}
+second. The smaller the fraction, the more premium the clock is.}:
 
 @smalltalkExample{MorphClock>>stepTime
     ^ 100
