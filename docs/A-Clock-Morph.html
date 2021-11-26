@@ -15,7 +15,7 @@ valuable.
 
 
 
-Compilation : November 24, 2021
+Compilation : November 26, 2021
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -260,7 +260,7 @@ method:
    time := Time now.
    hourHand rotationDegrees: time hour * 30.
    minuteHand rotationDegrees: time minute * 6.
-   secondHand rotationDegrees: time second * 6.
+   secondHand rotationDegrees: time second * 6
 </pre></div>
 
 <p>Take a look at how we update the clock hands.
@@ -366,13 +366,34 @@ the other examples there. Also, be sure to try the example in the
 comment in the <code>BitBltCanvas class&gt;&gt;unicodeExamples</code> and
 <code>BitBltCanvas class&gt;&gt;unicodeUtf32Examples</code> methods.
 </p>
+<p>Before we leave this section, here is a two lines change to turn our
+Cuis quartz clock<a id="DOCF25" href="#FOOT25"><sup>25</sup></a> to an automatic Swiss clock<a id="DOCF26" href="#FOOT26"><sup>26</sup></a>
+</p>
+<div class="example">
+<pre class="example">MorphClock&gt;&gt;stepTime
+    ^ 100
+MorphClock&gt;&gt;step
+../..
+   secondHand rotationDegrees: (time second + (time nanoSecond * 1.0e-9))* 6
+</pre></div>
+
+<p>Try to understand how these changes affect the behavior of the
+seconds&rsquo; hand and at which fraction of a second it is rotating.
+</p>
 <div class="footnote">
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
 <h5><a id="FOOT24" href="#DOCF24">(24)</a></h3>
 <p>You can select
-any other TrueType font from the ones available</p>
+any other TrueType font from the ones available.</p>
+<h5><a id="FOOT25" href="#DOCF25">(25)</a></h3>
+<p>In a quartz clock, the hand for the seconds
+moves every second.</p>
+<h5><a id="FOOT26" href="#DOCF26">(26)</a></h3>
+<p>In an
+automatic clock, the hand for the seconds moves every fraction of a
+second. The smaller the fraction, the more premium the clock is.</p>
 </div>
 <hr>
 <div class="header">

@@ -376,7 +376,7 @@ sophisticated morph. Let's build a @class{ClockMorph} as see in
 vector graphics, do ...@clicksequence{World menu @click{}
 @label{Preferences...} @click{} @label{Set System Font...} @click{}
 @label{DejaVu...} @click{} @label{DejaVuSans}}@footnote{You can select
-any other TrueType font from the ones available}.
+any other TrueType font from the ones available.}.
 
 
 @figure{A clock morph,ch07-05-Clock,4}
@@ -504,7 +504,7 @@ method:
    time @assign{} Time now.
    hourHand rotationDegrees: time hour * 30.
    minuteHand rotationDegrees: time minute * 6.
-   secondHand rotationDegrees: time second * 6.}
+   secondHand rotationDegrees: time second * 6}
 
 Take a look at how we update the clock hands.
 
@@ -600,6 +600,21 @@ require: 'SVG'}, and then @smalltalk{SVGElementMorph examplesLion} and
 the other examples there. Also, be sure to try the example in the
 comment in the @method{BitBltCanvas class>>unicodeExamples} and
 @method{BitBltCanvas class>>unicodeUtf32Examples} methods.
+
+Before we leave this section, here is a two lines change to turn our
+Cuis quartz clock@footnote{In a quartz clock, the hand for the seconds
+moves every second.} to an automatic Swiss clock@footnote{In an
+automatic clock, the hand for the seconds moves every fraction of a
+second. The smaller the fraction, the more premium the clock is.}
+
+@smalltalkExample{MorphClock>>stepTime
+    ^ 100
+MorphClock>>step
+../..
+   secondHand rotationDegrees: (time second + (time nanoSecond * 1.0e-9))* 6}
+
+Try to understand how these changes affect the behavior of the
+seconds' hand and at which fraction of a second it is rotating.
 
 @node Back to Spacewar! Morphs
 @section Back to Spacewar! Morphs
