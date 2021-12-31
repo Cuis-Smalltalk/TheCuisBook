@@ -1,11 +1,11 @@
 'From Cuis 5.0 [latest update: #4957] on 29 October 2021 at 7:05:05 pm'!
 'Description '!
-!provides: 'Spacewar!!' 1 85!
+!provides: 'Spacewar!!' 1 86!
 SystemOrganization addCategory: 'Spacewar!!'!
 
 
 !classDefinition: #Mobile category: 'Spacewar!!'!
-MovableMorph subclass: #Mobile
+PlacedMorph subclass: #Mobile
 	instanceVariableNames: 'acceleration color velocity'
 	classVariableNames: ''
 	poolDictionaries: ''
@@ -35,7 +35,7 @@ Torpedo class
 	instanceVariableNames: ''!
 
 !classDefinition: #SpaceWar category: 'Spacewar!!'!
-MovableMorph subclass: #SpaceWar
+PlacedMorph subclass: #SpaceWar
 	instanceVariableNames: 'color ships torpedoes centralStar'
 	classVariableNames: ''
 	poolDictionaries: ''
