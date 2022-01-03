@@ -512,22 +512,22 @@ SpaceWar>>collisionsTorpedoesStar
 @unnumberedsec Visual with Morph
 
 @subheading @ref{allActorsMorph}
-Just replace all @class{Object} occurrences with @class{MovableMorph}:
+Just replace all @class{Object} occurrences with @class{PlacedMorph}:
 
 @smallexample
-MovableMorph subclass: #SpaceWar
+PlacedMorph subclass: #SpaceWar
    instanceVariableNames: 'centralStar ships torpedoes'
    classVariableNames: ''
    poolDictionaries: ''
    category: 'Spacewar!'
 
-MovableMorph subclass: #CentralStar
+PlacedMorph subclass: #CentralStar
    instanceVariableNames: 'mass'
    classVariableNames: ''
    poolDictionaries: ''
    category: 'Spacewar!'
 
-MovableMorph subclass: #SpaceShip
+PlacedMorph subclass: #SpaceShip
    instanceVariableNames: 'name position heading velocity
       fuel torpedoes mass acceleration'
    classVariableNames: ''
@@ -577,9 +577,9 @@ draw from that previous position to this new position.
 
 @subheading @ref{exeRectMorph}
 We create a @class{RectangleExampleMorph}, subclass of
-@class{MovableMorph}:
+@class{PlacedMorph}:
 @smallexample
-MovableMorph subclass: #RectangleExampleMorph
+PlacedMorph subclass: #RectangleExampleMorph
    instanceVariableNames: 'fillColor'
    classVariableNames: ''
    poolDictionaries: ''
@@ -818,12 +818,12 @@ key = $s ifTrue: [@return{} ships second fireTorpedo]
 
   @item Create two classes, in each category: @class{TheCuisBook}
   subclass of @class{Object} and @class{TheBookMorph} subclass of
-  @class{MovableMorph}.
+  @class{PlacedMorph}.
 
   The two operations above are doable in one shot. Select any existing
   category and key in the class definition with the category name:
 
-  @smalltalkExample{MovableMorph subclass: #TheBookMorph
+  @smalltalkExample{PlacedMorph subclass: #TheBookMorph
    instanceVariableNames: ''
    classVariableNames: ''
    poolDictionaries: ''

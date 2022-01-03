@@ -123,7 +123,7 @@ variables.
 
 But now, we just want to code our morph in the simplest possible way,
 and still be able to move it around. The solution is to make it
-subclass of @class{MovableMorph}, instead of @class{Morph}.
+subclass of @class{PlacedMorph}, instead of @class{Morph}.
 
 @cindex morph @subentry @method{delete}
 To do this, first evaluate the code below to get rid of all LineExampleMorph instances:
@@ -132,14 +132,14 @@ To do this, first evaluate the code below to get rid of all LineExampleMorph ins
 LineExampleMorph allInstancesDo: [ :m | m delete]}
 
 Then, in the System Browser class declaration for LineExampleMorph, type
-@class{MovableMorph} instead of @class{Morph} and save. Now execute
+@class{PlacedMorph} instead of @class{Morph} and save. Now execute
 again:
 
 @smalltalkExample{LineExampleMorph new openInWorld}
 
 @cindex morph @subentry @smalltalk{location}
 You will get a line you can grab with the mouse and move it
-around. @class{MovableMorph} adds a new instance variable called
+around. @class{PlacedMorph} adds a new instance variable called
 @smalltalk{location}. If a morph has a @smalltalk{location}, it can be
 moved around, by modifying it. The @smalltalk{location} also defines a
 new local coordinate system. All the coordinates used in the
@@ -147,14 +147,14 @@ new local coordinate system. All the coordinates used in the
 system. That's why we don't need to modify the @method{drawOn:}
 method. @method{drawOn:} now tells how the morph should be drawn, but
 not where. The @smalltalk{location} also specifies a possible rotation
-and scale factor. This means that subinstances of @class{MovableMorph}
+and scale factor. This means that subinstances of @class{PlacedMorph}
 can also be rotated and zoomed.
 
 
 @subsection Filled morph
 Let's build another morph, to have more fun.
 
-@smalltalkExample{MovableMorph subclass: #TriangleExampleMorph
+@smalltalkExample{PlacedMorph subclass: #TriangleExampleMorph
    instanceVariableNames: 'borderColor fillColor'
    classVariableNames: ''
    poolDictionaries: ''
@@ -383,7 +383,7 @@ any other TrueType font from the ones available.}.
 
 Let's create @class{ClockMorph}, the dial clock :
 
-@smalltalkExample{MovableMorph subclass: #ClockMorph
+@smalltalkExample{PlacedMorph subclass: #ClockMorph
    instanceVariableNames: ''
    classVariableNames: ''
    poolDictionaries: ''
@@ -407,7 +407,7 @@ ClockMorph>>drawOn: aCanvas
 
 We create @class{ClockHourHandMorph}, the hand for the hours:
 
-@smalltalkExample{MovableMorph subclass: #ClockHourHandMorph
+@smalltalkExample{PlacedMorph subclass: #ClockHourHandMorph
    instanceVariableNames: ''
    classVariableNames: ''
    poolDictionaries: ''
@@ -436,7 +436,7 @@ bear with us while we finish building our clock.
 
 We create @class{ClockMinuteHandMorph}, the hand for the minutes:
 
-@smalltalkExample{MovableMorph subclass: #ClockMinuteHandMorph
+@smalltalkExample{PlacedMorph subclass: #ClockMinuteHandMorph
    instanceVariableNames: ''
    classVariableNames: ''
    poolDictionaries: ''
@@ -455,7 +455,7 @@ We create @class{ClockMinuteHandMorph}, the hand for the minutes:
 
 And finally, the @class{ClockSecondHandMorph}, the hand for the seconds:
 
-@smalltalkExample{MovableMorph subclass: #ClockSecondHandMorph
+@smalltalkExample{PlacedMorph subclass: #ClockSecondHandMorph
    instanceVariableNames: ''
    classVariableNames: ''
    poolDictionaries: ''
@@ -508,7 +508,7 @@ method:
 
 Take a look at how we update the clock hands.
 
-As we said before, any @class{MovableMorph} defines a coordinate
+As we said before, any @class{PlacedMorph} defines a coordinate
 system for its own @method{drawOn:} method and also for its
 submorphs. This new coordinate system might include rotation or
 reflexion of the axis, and scaling of sizes, but by default they
@@ -801,7 +801,7 @@ vertices, so we may want to add an instance variable
 @smalltalk{vertices} initialized in its subclasses with an array
 containing the points:
 
-@smalltalkExample{MovableMorph subclass: #Mobile
+@smalltalkExample{PlacedMorph subclass: #Mobile
    instanceVariableNames: 'acceleration color velocity vertices'
    classVariableNames: ''
    poolDictionaries: ''
@@ -961,7 +961,7 @@ A @dfn{class variable} is written capitalized in the argument of
 @smalltalk{classVariableNames:} keyword:
 
 @smalltalkExampleCaption{@smalltalk{Vertices} a class variable in @class{Mobile},classVariableMobile,
-MovableMorph subclass: #Mobile
+PlacedMorph subclass: #Mobile
    instanceVariableNames: 'acceleration color velocity'
    classVariableNames: 'Vertices'
    poolDictionaries: ''

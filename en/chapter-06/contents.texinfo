@@ -331,15 +331,16 @@ graphic shape:
 Therefore it makes sense to turn these actors into kinds of
 @class{Morph}s, the visual entity of @cuis{}. To do so, point a System
 Browser to the class definition of each actor, replace the parent
-class @class{Object} by @class{MovableMorph}@footnote{A
-@class{MovableMorph} is a kind of @class{Morph} with a supplementary
-@smalltalk{location} attribute; so it can be instructed to move in the
-screen.}, then save the class definition with @kbd{Ctrl-s}.
+class @class{Object} by @class{PlacedMorph}@footnote{A
+@class{PlacedMorph} is a kind of @class{Morph} with a supplementary
+@smalltalk{location} attribute; so it can be instructed to move, to
+scale and to rotate in the screen.}, then save the class definition
+with @kbd{Ctrl-s}.
 
 For example, the torpedo class as seen in @ref{torpedoClassVariables}
 is edited as:
 
-@smalltalkExample{MovableMorph subclass: #Torpedo
+@smalltalkExample{PlacedMorph subclass: #Torpedo
    instanceVariableNames: 'position heading velocity lifeSpan'
    classVariableNames: ''
    poolDictionaries: ''
@@ -355,7 +356,7 @@ counterpart.
 
 @exercise{Make all Morphs, allActorsMorph, @emph{Edit
 @smalltalk{SpaceWar}@comma{} @class{CentralStar} and @class{SpaceShip}
-to be subclasses of the @class{MovableMorph} class.}}
+to be subclasses of the @class{PlacedMorph} class.}}
 
 As explained in the previous sections of this chapter, a morph can be
 embedded within another morph. In Spacewar!, a @class{SpaceWar} morph
@@ -461,13 +462,13 @@ code refactoring is to rework existing code to make it more elegant,
 understandable and logical.
 
 To do so, we will introduce a @class{Mobile} class, a kind of
- @class{MovableMorph} with behaviors specific to a mobile object
+ @class{PlacedMorph} with behaviors specific to a mobile object
  subjected to accelerations. Its states are the mass, position,
  heading, velocity and acceleration. Well, as we are discussing
  refactoring, the mass state does not really makes sense in our game,
  indeed our mobile's mass is constant. We just need a method returning
  a literal number and we can then remove the @smalltalk{mass} instance
- variable. Moreover, as explained previously, a @class{MovableMorph}
+ variable. Moreover, as explained previously, a @class{PlacedMorph}
  instance already know about its position and heading, so we also
  remove these two attributes, although there are common behaviors to a
  Space ship and a torpedo.
@@ -475,7 +476,7 @@ To do so, we will introduce a @class{Mobile} class, a kind of
 It results in this @class{Mobile} definition:
 
 @smalltalkExampleCaption{Mobile in the game play,mobileClass,
-MovableMorph subclass: #Mobile
+PlacedMorph subclass: #Mobile
    instanceVariableNames: 'velocity acceleration color'
    classVariableNames: ''
    poolDictionaries: ''
@@ -620,9 +621,9 @@ is found, if not a @emph{Message Not Understood} error is signalled.
 
 Among the specific added behaviors, the torpedo orientation along its
 velocity vector is inaccurate but nice looking. To orient accordingly
-a kind of @class{MovableMorph} as the torpedo, we use the
+a kind of @class{PlacedMorph} as the torpedo, we use the
 @msg{rotation:} message whose method is defined in the
-@class{MovableMorph} class.
+@class{PlacedMorph} class.
 
 The life span control, the self-destruction sequence, and the engine
 acceleration are also handled specifically. When a torpedo is just fired, its
