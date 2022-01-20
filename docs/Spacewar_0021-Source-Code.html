@@ -1,9 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This book is for Cuis-Smalltalk (5.0#4958 or later), a free and modern
+<!-- This book is for Cuis-Smalltalk (6.0#5031 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
-Copyright (C) 2020, 2021 Hilaire Fernandes with Ken Dickey & Juan Vuletich
+Copyright (C) 2020, 2021, 2022 Hilaire Fernandes with Ken Dickey & Juan Vuletich
 
 
 Thanks to Matt Armstrong, Bernhard Pieber, David Lewis, John McGarey,
@@ -15,7 +15,7 @@ valuable.
 
 
 
-Compilation : November 26, 2021
+Compilation : January 20, 2022
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -100,12 +100,12 @@ Next: <a href="Indexes.html" accesskey="n" rel="next">Indexes</a>, Previous: <a 
 </p><div class="format">
 <pre class="verbatim">'From Cuis 5.0 [latest update: #4957] on 29 October 2021 at 7:05:05 pm'!
 'Description '!
-!provides: 'Spacewar!!' 1 85!
+!provides: 'Spacewar!!' 1 86!
 SystemOrganization addCategory: 'Spacewar!!'!
 
 
 !classDefinition: #Mobile category: 'Spacewar!!'!
-MovableMorph subclass: #Mobile
+PlacedMorph subclass: #Mobile
 	instanceVariableNames: 'acceleration color velocity'
 	classVariableNames: ''
 	poolDictionaries: ''
@@ -135,7 +135,7 @@ Torpedo class
 	instanceVariableNames: ''!
 
 !classDefinition: #SpaceWar category: 'Spacewar!!'!
-MovableMorph subclass: #SpaceWar
+PlacedMorph subclass: #SpaceWar
 	instanceVariableNames: 'color ships torpedoes centralStar'
 	classVariableNames: ''
 	poolDictionaries: ''

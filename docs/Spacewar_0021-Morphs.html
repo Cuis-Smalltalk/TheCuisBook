@@ -1,9 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This book is for Cuis-Smalltalk (5.0#4958 or later), a free and modern
+<!-- This book is for Cuis-Smalltalk (6.0#5031 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
-Copyright (C) 2020, 2021 Hilaire Fernandes with Ken Dickey & Juan Vuletich
+Copyright (C) 2020, 2021, 2022 Hilaire Fernandes with Ken Dickey & Juan Vuletich
 
 
 Thanks to Matt Armstrong, Bernhard Pieber, David Lewis, John McGarey,
@@ -15,7 +15,7 @@ valuable.
 
 
 
-Compilation : November 26, 2021
+Compilation : January 20, 2022
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -122,22 +122,23 @@ graphic shape:
 <p>Therefore it makes sense to turn these actors into kinds of
 <code>Morph</code>s, the visual entity of Cuis-Smalltalk. To do so, point a System
 Browser to the class definition of each actor, replace the parent
-class <code>Object</code> by <code>MovableMorph</code><a id="DOCF21" href="#FOOT21"><sup>21</sup></a>, then save the class definition with <kbd>Ctrl-s</kbd>.
+class <code>Object</code> by <code>PlacedMorph</code><a id="DOCF21" href="#FOOT21"><sup>21</sup></a>, then save the class definition
+with <kbd>Ctrl-s</kbd>.
 </p>
 <p>For example, the torpedo class as seen in <a href="Spacewar_0021-States-and-Behaviors.html#torpedoClassVariables">Example 3.14</a>
 is edited as:
 </p>
 <div class="example">
-<pre class="example">MovableMorph subclass: #Torpedo
+<pre class="example">PlacedMorph subclass: #Torpedo
    instanceVariableNames: 'position heading velocity lifeSpan'
    classVariableNames: ''
    poolDictionaries: ''
    category: 'Spacewar!'
 </pre></div>
 
-<p>Moreover, a movable Morph already knows about its position and
-orientation on screen &ndash; it can be dragged in the screen and rotated
-with the mouse cursor. Therefore the <code>position</code> and
+<p>Moreover, a placed Morph already knows about its position and
+orientation on screen &ndash; it can be dragged and moved in the screen and
+rotated with the mouse cursor. Therefore the <code>position</code> and
 <code>heading</code> instance variables are redundant and should be
 removed. For now we keep it, it will be removed later when we will
 know how to replace each of its use cases with its appropriate Morph
@@ -148,7 +149,7 @@ counterpart.
 <p>&nbsp;<img src="CuisLogo.png" alt="CuisLogo">
 <em>Edit
 <code>SpaceWar</code>, <code>CentralStar</code> and <code>SpaceShip</code>
-to be subclasses of the <code>MovableMorph</code> class.</em>
+to be subclasses of the <code>PlacedMorph</code> class.</em>
 </p></blockquote>
 
 
@@ -257,13 +258,13 @@ code refactoring is to rework existing code to make it more elegant,
 understandable and logical.
 </p>
 <p>To do so, we will introduce a <code>Mobile</code> class, a kind of
- <code>MovableMorph</code> with behaviors specific to a mobile object
+ <code>PlacedMorph</code> with behaviors specific to a mobile object
  subjected to accelerations. Its states are the mass, position,
  heading, velocity and acceleration. Well, as we are discussing
  refactoring, the mass state does not really makes sense in our game,
  indeed our mobile&rsquo;s mass is constant. We just need a method returning
  a literal number and we can then remove the <code>mass</code> instance
- variable. Moreover, as explained previously, a <code>MovableMorph</code>
+ variable. Moreover, as explained previously, a <code>PlacedMorph</code>
  instance already know about its position and heading, so we also
  remove these two attributes, although there are common behaviors to a
  Space ship and a torpedo.
@@ -272,7 +273,7 @@ understandable and logical.
 </p>
 <div class="float"><span id="mobileClass"></span>
 <div class="example">
-<pre class="example">MovableMorph subclass: #Mobile
+<pre class="example">PlacedMorph subclass: #Mobile
    instanceVariableNames: 'velocity acceleration color'
    classVariableNames: ''
    poolDictionaries: ''
@@ -441,9 +442,9 @@ is found, if not a <em>Message Not Understood</em> error is signalled.
 </p>
 <p>Among the specific added behaviors, the torpedo orientation along its
 velocity vector is inaccurate but nice looking. To orient accordingly
-a kind of <code>MovableMorph</code> as the torpedo, we use the
+a kind of <code>PlacedMorph</code> as the torpedo, we use the
 <code>#rotation:</code> message whose method is defined in the
-<code>MovableMorph</code> class.
+<code>PlacedMorph</code> class.
 </p>
 <p>The life span control, the self-destruction sequence, and the engine
 acceleration are also handled specifically. When a torpedo is just fired, its
@@ -523,9 +524,9 @@ the fundamentals of Morph.
 
 <h5><a id="FOOT21" href="#DOCF21">(21)</a></h3>
 <p>A
-<code>MovableMorph</code> is a kind of <code>Morph</code> with a supplementary
-<code>location</code> attribute; so it can be instructed to move in the
-screen.</p>
+<code>PlacedMorph</code> is a kind of <code>Morph</code> with a supplementary
+<code>location</code> attribute; so it can be instructed to move, to
+scale and to rotate in the screen.</p>
 <h5><a id="FOOT22" href="#DOCF22">(22)</a></h3>
 <p>So a
 torpedo should come with a mass.</p>

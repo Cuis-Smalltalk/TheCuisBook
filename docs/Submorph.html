@@ -1,9 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This book is for Cuis-Smalltalk (5.0#4958 or later), a free and modern
+<!-- This book is for Cuis-Smalltalk (6.0#5031 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
-Copyright (C) 2020, 2021 Hilaire Fernandes with Ken Dickey & Juan Vuletich
+Copyright (C) 2020, 2021, 2022 Hilaire Fernandes with Ken Dickey & Juan Vuletich
 
 
 Thanks to Matt Armstrong, Bernhard Pieber, David Lewis, John McGarey,
@@ -15,7 +15,7 @@ valuable.
 
 
 
-Compilation : November 26, 2021
+Compilation : January 20, 2022
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -101,19 +101,19 @@ Next: <a href="A-brief-introduction-to-Inspectors.html" accesskey="n" rel="next"
 <p>Morphs can contain other morphs.  These interior morphs are called
 <em>submorph</em>s of their containing morph. Again, you can do this by
 writing the software &ldquo;code&rdquo;, but let&rsquo;s do it directly with a
-<code>WidgetMorph</code>.
+<code>BoxedMorph</code>.
 </p>
-<p>First we obtain a <code>WidgetMorph</code> from the <code>New morph...</code>
-submenus. The <code>WidgetMorph</code> instance displays itself as a
+<p>First we obtain a <code>BoxedMorph</code> from the <code>New morph...</code>
+submenus. The <code>BoxedMorph</code> instance displays itself as a
 rect with a border.
 </p>
 <div class="float"><span id="ch06_002d05_002dAddRectangle"></span>
 <div align="center"><img src="ch06-05-AddRectangle.png" alt="ch06-05-AddRectangle">
 </div>
-<div class="float-caption"><p><strong>Figure 6.4: </strong>Obtain a <code>WidgetMorph</code></p></div></div>
+<div class="float-caption"><p><strong>Figure 6.4: </strong>Obtain a <code>BoxedMorph</code></p></div></div>
 <p>Now drag the rect over the ellipse and <kbd>Middle-Click</kbd> on the
 rect and click on the blue construction handle to gets the rect&rsquo;s
-<em>Morph Menu</em>.  Use the menu selection <code>embed into...</code> and
+<em>Morph Menu</em>.  Use the menu selection <code>embed into</code> and
 select the ellipse as its new parent.
 </p>
 <div class="float"><span id="ch06_002d06_002dEmbedRectIntoEllipse"></span>
@@ -129,7 +129,7 @@ the ellipse.
 mouse where the rect shows itself is just using the mouse on the
 ellipse.  This rect does not have many interesting behaviors.
 </p>
-<p>Let&rsquo;s add a behavior to just this one <code>WidgetMorph</code>.
+<p>Let&rsquo;s add a behavior to just this one <code>BoxedMorph</code>.
 </p>
 
 

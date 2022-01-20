@@ -62,30 +62,31 @@ But the basic ideas are quite simple.
 @node Installing a Package
 @section Installing a Package
 This chapter will require you to install the package
-@label{Morphic-Widgets-Extras}. To fetch this package from the web,
-you have two options:
+@label{UI-Base-Morphs.pck.st}, it is part of the
+@url{https://github.com/Cuis-Smalltalk/Cuis-Smalltalk-UI,,Cuis-Smalltalk-UI}
+project. To fetch this package from the web, you have two options:
 
 @enumerate
 
-  @item Grab the file 
-  @file{@url{https://github.com/Cuis-Smalltalk/Morphic/raw/master/Morphic-Widgets-Extras.pck.st,,Morphic-Widgets-Extras.pck.st}}
+  @item Grab the file
+  @file{@url{https://github.com/Cuis-Smalltalk/Cuis-Smalltalk-UI/raw/main/lib/UI-Base-Morphs.pck.st,,UI-Base-Morphs.pck.st}}
   and save it in the same folder as your @cuis{} image file.
 
   @item In the @cuis{} image folder, clone its Git repository:
 
 @example
-git clone https://github.com/Cuis-Smalltalk/Morphic.git  
+git clone git@@github.com:Cuis-Smalltalk/Cuis-Smalltalk-UI.git
 @end example
 
-  Along the @label{Morphic-Widgets-Extras} packages there are other
-  ones you can also discover in this repository.
+Along the @label{UI-Base-Morphs.pck.st} packages there are other ones
+you can also discover in this repository.
 
 @end enumerate
 
 @cindex package @subentry load @subentry by code
 Once done, in a Workspace execute the code to install the package:
 
-@smalltalkExample{Feature require: 'Morphic-Widgets-Extras'}
+@smalltalkExample{Feature require: 'UI-Base-Morphs'}
 
 Your @cuis{} environment is now equiped for the next sections of this
 chapter.
@@ -142,17 +143,17 @@ to the right and down, and release the mouse button.
 Morphs can contain other morphs.  These interior morphs are called
 @dfn{submorph}s of their containing morph. Again, you can do this by
 writing the software ``code'', but let's do it directly with a
-@class{WidgetMorph}.
+@class{BoxedMorph}.
 
-First we obtain a @class{WidgetMorph} from the @label{New morph...}
-submenus. The @class{WidgetMorph} instance displays itself as a
+First we obtain a @class{BoxedMorph} from the @label{New morph...}
+submenus. The @class{BoxedMorph} instance displays itself as a
 rect with a border.
 
-@figure{Obtain a @class{WidgetMorph},ch06-05-AddRectangle,7}
+@figure{Obtain a @class{BoxedMorph},ch06-05-AddRectangle,7}
 
 Now drag the rect over the ellipse and @kbd{Middle-Click} on the
 rect and click on the blue construction handle to gets the rect's
-@dfn{Morph Menu}.  Use the menu selection @label{embed into...} and
+@dfn{Morph Menu}.  Use the menu selection @label{embed into} and
 select the ellipse as its new parent.
 
 @figure{Make the rect a submorph of the
@@ -166,7 +167,7 @@ Indeed, the rect seems to have fused into the ellipse.  Using the
 mouse where the rect shows itself is just using the mouse on the
 ellipse.  This rect does not have many interesting behaviors.
 
-Let's add a behavior to just this one @class{WidgetMorph}.
+Let's add a behavior to just this one @class{BoxedMorph}.
 
 @node A brief introduction to Inspectors
 @section A brief introduction to Inspectors
@@ -202,7 +203,7 @@ Inspectors work for every object by the way, not just morphs.
 
 To add a behavior to all instances of a class, we create an instance
 method.  Here we are going to create a behavior for ``just this one
-@class{WidgetMorph} instance''.
+@class{BoxedMorph} instance''.
 
 @anchor{morphProperties}
 @cindex morph @subentry properties
@@ -346,9 +347,9 @@ is edited as:
    poolDictionaries: ''
    category: 'Spacewar!'}
 
-Moreover, a movable Morph already knows about its position and
-orientation on screen -- it can be dragged in the screen and rotated
-with the mouse cursor. Therefore the @smalltalk{position} and
+Moreover, a placed Morph already knows about its position and
+orientation on screen -- it can be dragged and moved in the screen and
+rotated with the mouse cursor. Therefore the @smalltalk{position} and
 @smalltalk{heading} instance variables are redundant and should be
 removed. For now we keep it, it will be removed later when we will
 know how to replace each of its use cases with its appropriate Morph

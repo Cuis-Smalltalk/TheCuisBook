@@ -1,9 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This book is for Cuis-Smalltalk (5.0#4958 or later), a free and modern
+<!-- This book is for Cuis-Smalltalk (6.0#5031 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
-Copyright (C) 2020, 2021 Hilaire Fernandes with Ken Dickey & Juan Vuletich
+Copyright (C) 2020, 2021, 2022 Hilaire Fernandes with Ken Dickey & Juan Vuletich
 
 
 Thanks to Matt Armstrong, Bernhard Pieber, David Lewis, John McGarey,
@@ -15,7 +15,7 @@ valuable.
 
 
 
-Compilation : November 26, 2021
+Compilation : January 20, 2022
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -200,7 +200,7 @@ variables.
 </p>
 <p>But now, we just want to code our morph in the simplest possible way,
 and still be able to move it around. The solution is to make it
-subclass of <code>MovableMorph</code>, instead of <code>Morph</code>.
+subclass of <code>PlacedMorph</code>, instead of <code>Morph</code>.
 </p>
 <span id="index-morph-11"></span>
 <p>To do this, first evaluate the code below to get rid of all LineExampleMorph instances:
@@ -212,7 +212,7 @@ subclass of <code>MovableMorph</code>, instead of <code>Morph</code>.
 
 <div class="float-caption"><p><strong>Example 7.1: </strong>Delete all instances of a given morph</p></div></div>
 <p>Then, in the System Browser class declaration for LineExampleMorph, type
-<code>MovableMorph</code> instead of <code>Morph</code> and save. Now execute
+<code>PlacedMorph</code> instead of <code>Morph</code> and save. Now execute
 again:
 </p>
 <div class="example">
@@ -221,7 +221,7 @@ again:
 
 <span id="index-morph-12"></span>
 <p>You will get a line you can grab with the mouse and move it
-around. <code>MovableMorph</code> adds a new instance variable called
+around. <code>PlacedMorph</code> adds a new instance variable called
 <code>location</code>. If a morph has a <code>location</code>, it can be
 moved around, by modifying it. The <code>location</code> also defines a
 new local coordinate system. All the coordinates used in the
@@ -229,7 +229,7 @@ new local coordinate system. All the coordinates used in the
 system. That&rsquo;s why we don&rsquo;t need to modify the <code>drawOn:</code>
 method. <code>drawOn:</code> now tells how the morph should be drawn, but
 not where. The <code>location</code> also specifies a possible rotation
-and scale factor. This means that subinstances of <code>MovableMorph</code>
+and scale factor. This means that subinstances of <code>PlacedMorph</code>
 can also be rotated and zoomed.
 </p>
 
@@ -237,7 +237,7 @@ can also be rotated and zoomed.
 <p>Let&rsquo;s build another morph, to have more fun.
 </p>
 <div class="example">
-<pre class="example">MovableMorph subclass: #TriangleExampleMorph
+<pre class="example">PlacedMorph subclass: #TriangleExampleMorph
    instanceVariableNames: 'borderColor fillColor'
    classVariableNames: ''
    poolDictionaries: ''

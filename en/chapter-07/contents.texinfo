@@ -573,7 +573,7 @@ The ideas we have outlined in this chapter are the fundamental ones in
 Morphic, and the framework is implemented in order to support
 them. Morphs (i.e. interactive graphic objects) are very general and
 flexible. They are not restricted to a conventional widget library,
-although such a library (rooted in @class{WidgetMorph}) is included
+although such a library (rooted in @class{BoxedMorph}) is included
 and used for building all the Smalltalk tools.
 
 The examples we have explored use the @label{VectorGraphics}

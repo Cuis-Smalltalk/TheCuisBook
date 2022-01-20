@@ -1,9 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This book is for Cuis-Smalltalk (5.0#4958 or later), a free and modern
+<!-- This book is for Cuis-Smalltalk (6.0#5031 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
-Copyright (C) 2020, 2021 Hilaire Fernandes with Ken Dickey & Juan Vuletich
+Copyright (C) 2020, 2021, 2022 Hilaire Fernandes with Ken Dickey & Juan Vuletich
 
 
 Thanks to Matt Armstrong, Bernhard Pieber, David Lewis, John McGarey,
@@ -15,7 +15,7 @@ valuable.
 
 
 
-Compilation : November 26, 2021
+Compilation : January 20, 2022
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -111,7 +111,7 @@ vector graphics, do ...World menu &rarr;
 <p>Let&rsquo;s create <code>ClockMorph</code>, the dial clock :
 </p>
 <div class="example">
-<pre class="example">MovableMorph subclass: #ClockMorph
+<pre class="example">PlacedMorph subclass: #ClockMorph
    instanceVariableNames: ''
    classVariableNames: ''
    poolDictionaries: ''
@@ -140,7 +140,7 @@ vector graphics, do ...World menu &rarr;
 <p>We create <code>ClockHourHandMorph</code>, the hand for the hours:
 </p>
 <div class="example">
-<pre class="example">MovableMorph subclass: #ClockHourHandMorph
+<pre class="example">PlacedMorph subclass: #ClockHourHandMorph
    instanceVariableNames: ''
    classVariableNames: ''
    poolDictionaries: ''
@@ -173,7 +173,7 @@ bear with us while we finish building our clock.
 <p>We create <code>ClockMinuteHandMorph</code>, the hand for the minutes:
 </p>
 <div class="example">
-<pre class="example">MovableMorph subclass: #ClockMinuteHandMorph
+<pre class="example">PlacedMorph subclass: #ClockMinuteHandMorph
    instanceVariableNames: ''
    classVariableNames: ''
    poolDictionaries: ''
@@ -196,7 +196,7 @@ bear with us while we finish building our clock.
 <p>And finally, the <code>ClockSecondHandMorph</code>, the hand for the seconds:
 </p>
 <div class="example">
-<pre class="example">MovableMorph subclass: #ClockSecondHandMorph
+<pre class="example">PlacedMorph subclass: #ClockSecondHandMorph
    instanceVariableNames: ''
    classVariableNames: ''
    poolDictionaries: ''
@@ -265,7 +265,7 @@ method:
 
 <p>Take a look at how we update the clock hands.
 </p>
-<p>As we said before, any <code>MovableMorph</code> defines a coordinate
+<p>As we said before, any <code>PlacedMorph</code> defines a coordinate
 system for its own <code>drawOn:</code> method and also for its
 submorphs. This new coordinate system might include rotation or
 reflexion of the axis, and scaling of sizes, but by default they
@@ -338,7 +338,7 @@ handle this extra complexity.
 Morphic, and the framework is implemented in order to support
 them. Morphs (i.e. interactive graphic objects) are very general and
 flexible. They are not restricted to a conventional widget library,
-although such a library (rooted in <code>WidgetMorph</code>) is included
+although such a library (rooted in <code>BoxedMorph</code>) is included
 and used for building all the Smalltalk tools.
 </p>
 <p>The examples we have explored use the <code>VectorGraphics</code>
