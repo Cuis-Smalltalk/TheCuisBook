@@ -514,11 +514,17 @@ SpaceShip>>unpush
 
 SpaceShip>>right
   "Rotate the ship to its right"
-  self rotateBy: 0.1
+  self heading: self heading + 0.1
   
 SpaceShip>>left
   "Rotate the ship to its left"
-  self rotateBy: -0.1}
+  self heading: self heading - 0.1}
+
+Observe the @method{right} and @method{left} methods, they are mostly
+identical to the ones asked in @ref{shipHeading}. We don't modify
+directly the @smalltalk{heading} attribute, we use the methods
+@method{heading:} and @method{heading} to read and write this
+information.
 
 @exercise{Categorize control methods,categorizeControls,
 @emph{Categorize the control methods in a newly created method
@@ -541,7 +547,7 @@ SpaceShip>>fireTorpedo
   torpedo @assign{} Torpedo new.
   torpedo 
     position: position + self nose;
-    heading: heading;
+    heading: self heading;
     velocity: velocity;
     color: self color muchLighter.
   owner addTorpedo: torpedo}

@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4957] on 29 October 2021 at 7:05:05 pm'!
+'From Cuis 6.0 [latest update: #5056] on 14 February 2022 at 2:11:23 pm'!
 'Description '!
-!provides: 'Spacewar!!' 1 86!
+!provides: 'Spacewar!!' 1 88!
 SystemOrganization addCategory: 'Spacewar!!'!
 
 
@@ -85,10 +85,18 @@ color: aColor
 		color _ aColor.
 		self redrawNeeded ]! !
 
-!Mobile methodsFor: 'accessing' stamp: 'hlsf 10/1/2020 09:12:27'!
+!Mobile methodsFor: 'accessing' stamp: 'hlsf 2/14/2022 13:48:54'!
 direction
 "I am an unit vector representing the noze direction of the mobile"
-	^Point rho: 1 theta: location radians - Float halfPi! !
+	^Point rho: 1 theta: self heading! !
+
+!Mobile methodsFor: 'accessing' stamp: 'hlsf 2/14/2022 13:48:44'!
+heading
+	^ location radians - Float halfPi! !
+
+!Mobile methodsFor: 'accessing' stamp: 'hlsf 2/14/2022 13:53:10'!
+heading: aHeading
+	self rotation: aHeading + Float halfPi! !
 
 !Mobile methodsFor: 'accessing' stamp: 'hlsf 10/1/2020 08:34:23'!
 mass
@@ -171,7 +179,7 @@ morphExtent
 
 	^20@30! !
 
-!SpaceShip methodsFor: 'control' stamp: 'hlsf 12/19/2020 14:27:34'!
+!SpaceShip methodsFor: 'control' stamp: 'hlsf 2/14/2022 13:53:33'!
 fireTorpedo
 "Fire a torpedo in the direction of the ship heading with a combined velocity"
 	| torpedo | 
@@ -180,15 +188,15 @@ fireTorpedo
 	torpedo _ Torpedo new.
 	torpedo 
 		morphPosition: self morphPosition + self nose;
-		rotation: location radians;
+		heading: self heading;
 		velocity: velocity;
 		color: color muchLighter .
 	owner addTorpedo: torpedo.! !
 
-!SpaceShip methodsFor: 'control' stamp: 'hlsf 9/16/2020 15:07:51'!
+!SpaceShip methodsFor: 'control' stamp: 'hlsf 2/14/2022 14:09:51'!
 left
 "Rotate the ship to its left"
-	self rotateBy: -0.1.! !
+	self heading: self heading - 0.1! !
 
 !SpaceShip methodsFor: 'control' stamp: 'hlsf 10/1/2020 17:26:59'!
 push
@@ -197,10 +205,10 @@ push
 	fuel _ fuel - 1.
 	acceleration _ 50! !
 
-!SpaceShip methodsFor: 'control' stamp: 'hlsf 9/16/2020 15:08:01'!
+!SpaceShip methodsFor: 'control' stamp: 'hlsf 2/14/2022 14:10:08'!
 right
 "Rotate the ship to its right"
-	self rotateBy: 0.1.! !
+	self heading: self heading + 0.1! !
 
 !SpaceShip methodsFor: 'control' stamp: 'hlsf 9/16/2020 15:08:18'!
 unpush
@@ -220,10 +228,9 @@ drawOn: canvas
 nose
 	^ self direction * 40! !
 
-!SpaceShip methodsFor: 'initialization' stamp: 'hlsf 12/19/2020 22:15:45'!
+!SpaceShip methodsFor: 'initialization' stamp: 'hlsf 2/14/2022 13:50:54'!
 initialize
 	super initialize.
-	vertices _ {0@ -15 . -10@15. 0@ 10. 10@15}.
 	self resupply! !
 
 !SpaceShip methodsFor: 'initialization' stamp: 'hlsf 10/1/2020 17:30:57'!
@@ -236,12 +243,12 @@ initialize
 "SpaceShip initialize"
 	vertices _ {0@-15 . -10@15. 0@10. 10@15}! !
 
-!Torpedo methodsFor: 'computing' stamp: 'hlsf 12/19/2020 14:29:52'!
+!Torpedo methodsFor: 'computing' stamp: 'hlsf 2/14/2022 13:57:57'!
 update: t
 "Update the torpedo position"
 	super update: t.
 	"orientate the torpedo in its velocity direction, nicer effect while inaccurate"
-	self rotation: (velocity y arcTan: velocity x) + Float halfPi.
+	self heading: (velocity y arcTan: velocity x).
 	lifeSpan _ lifeSpan - 1.
 	lifeSpan isZero ifTrue: [owner destroyTorpedo: self].
 	acceleration > 0 ifTrue: [acceleration _ acceleration - 1000].! !

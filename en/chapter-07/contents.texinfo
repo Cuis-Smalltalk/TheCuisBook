@@ -725,28 +725,49 @@ SpaceShip>>drawOn: canvas
 When there is an acceleration from the engine, we draw a small gray
 line to represent the gas exhaust.
 
-@cindex morph @subentry @method{rotateBy:}
-When the user turns the ship, the morph is rotated a bit:
+When the user turns the ship, the morph is rotated a bit by adjusting
+its heading:
 
 @smalltalkExample{SpaceShip>>right
 "Rotate the ship to its right"
-   self rotateBy: 0.1
+   self heading: self heading + 0.1
 
 SpaceShip>>left
 "Rotate the ship to its left"
-   self rotateBy: -0.1}
+   self heading: self heading - 0.1}
 
-Underneath, @class{MobileMorph} is equipped with an affine
+
+But how this heading affects the rotation of the morph?
+
+Underneath, the @class{MobileMorph} is equipped with an affine
 transformation to scale, rotate and translate the coordinates passed
 as arguments to the drawing messages received by the canvas.
+Therefore, our @method{heading} methods are defined to match this
+internal representation and we use the @method{rotation:} method from
+the @class{PacedMorph} class to rotate appropriately. The
+@smalltalk{location} attribute represents an affine transformation, we
+ask its rotation angle with the @msg{radians} message.
+
+@cindex morph @subentry @method{rotation:}
+@cindex morph @subentry @smalltalk{location}
+@smalltalkExample{Mobile>>heading
+   @return{} location radians - Float halfPi
+Mobile>>heading: aHeading
+   self rotation: aHeading + Float halfPi}
+
+When a mobile is vertical, pointing to the top of the screen, its
+heading is -90@textdegree{} (-pi/2) in the screen coordinates
+system. In that situation the mobile is not rotated -- or
+0@textdegree{} rotated -- therefore we add 90@textdegree{} (pi/2) to
+the heading to get the matching rotation angle of the mobile.
 
 @subsection Torpedo
 
 @c Give the diagram of the torpedo, and as an exercise ask how to code
 @c its drawOn: and morphExtent methods
 
-Alike a space ship, when a torpedo is just instantiated its nose points
-in the direction of the top of the screen and its vertices are
+Alike a space ship, when a torpedo is just instantiated its nose
+points in the direction of the top of the screen and its vertices are
 given by the @ref{ch07-11-TorpedoDiagram}.
 
 @figure{Torpedo diagram at game start-up,ch07-11-TorpedoDiagram,5}
@@ -755,38 +776,10 @@ given by the @ref{ch07-11-TorpedoDiagram}.
 given by @ref{ch07-11-TorpedoDiagram}@comma{} how will you write its
 @method{morphExtent} method?}}
 
-@cindex morph @subentry @method{rotation:}
-A space ship and a just fired torpedo share the same orientation.  To
-orient correctly a newly fired torpedo, you just copy the orientation
-from its space ship. We edit the method as defined in
-@ref{fireTorpedo}:
-
-@smalltalkExample{SpaceShip>>fireTorpedo
-   ../..
-   torpedo @assign{} Torpedo new.
-   torpedo 
-      morphPosition: self morphPosition + self nose;
-      rotation: location radians; "copy the rotation angle from ship"
-   ../..}
 
 @exercise{Torpedo drawing,exeTorpedoDrawing, @emph{How will you write
 the @class{Torpedo}'s @method{drawOn:} method?}}
 
-In the game play, a torpedo is always oriented in the direction of its
-velocity. While inaccurate, it produces a nice effect when a torpedo
-is pulled by the central star. When the torpedo's velocity vector is
-vertical, pointing to the top of the screen, its angle is
--90@textdegree{} in the screen coordinates system. In that situation
-the torpedo is not rotated -- or 0@textdegree{} rotated -- therefore
-we add 90@textdegree{} to the velocity angle to get the matching
-rotation of the torpedo:
-
-@smalltalkExample{Torpedo>>update: t
-"Update the torpedo position"
-   ../..
-   self rotation: (velocity y arcTan: velocity x) + Float halfPi.
-   ../..}
-   
 
 @subsection Drawing revisited
 

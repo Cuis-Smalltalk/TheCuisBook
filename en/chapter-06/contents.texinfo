@@ -605,7 +605,7 @@ See the @class{Torpedo>>update:} definition:
    super update: t.
    "orientate the torpedo in its velocity direction, nicer effect
    while inaccurate"
-   self rotation: (velocity y arcTan: velocity x) + Float halfPi.
+   self heading: (velocity y arcTan: velocity x).
    lifeSpan @assign{} lifeSpan - 1.
    lifeSpan isZero ifTrue: [owner destroyTorpedo: self].
    acceleration > 0 ifTrue: [acceleration @assign{} acceleration - 1000]}
@@ -622,9 +622,7 @@ is found, if not a @emph{Message Not Understood} error is signalled.
 
 Among the specific added behaviors, the torpedo orientation along its
 velocity vector is inaccurate but nice looking. To orient accordingly
-a kind of @class{PlacedMorph} as the torpedo, we use the
-@msg{rotation:} message whose method is defined in the
-@class{PlacedMorph} class.
+the torpedo, we adjust its heading with its velocity vector heading.
 
 The life span control, the self-destruction sequence, and the engine
 acceleration are also handled specifically. When a torpedo is just fired, its

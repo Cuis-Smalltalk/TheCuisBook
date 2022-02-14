@@ -892,7 +892,7 @@ nose direction of the spaceship:
 @smalltalkExampleCaption{Space ship direction method,spaceShipDirection,
 SpaceShip>>direction
 "I am an unit vector representing the nose direction of the mobile"
-   @return{} Point rho: 1 theta: location radians - Float halfPi}
+   @return{} Point rho: 1 theta: self heading}
 
 The @msg{gravity} message asks for the gravity vector the space ship
 is subjected to:
