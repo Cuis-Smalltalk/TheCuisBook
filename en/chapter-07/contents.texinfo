@@ -737,7 +737,7 @@ SpaceShip>>left
    self heading: self heading - 0.1}
 
 
-But how this heading affects the rotation of the morph?
+But how does this heading affect the rotation of the morph?
 
 Underneath, the @class{MobileMorph} is equipped with an affine
 transformation to scale, rotate and translate the coordinates passed
@@ -745,8 +745,8 @@ as arguments to the drawing messages received by the canvas.
 Therefore, our @method{heading} methods are defined to match this
 internal representation and we use the @method{rotation:} method from
 the @class{PacedMorph} class to rotate appropriately. The
-@smalltalk{location} attribute represents an affine transformation, we
-ask its rotation angle with the @msg{radians} message.
+@smalltalk{location} attribute represents an affine transformation, and we
+get its rotation angle with the @msg{radians} message.
 
 @cindex morph @subentry @method{rotation:}
 @cindex morph @subentry @smalltalk{location}
