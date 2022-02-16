@@ -15,7 +15,7 @@ valuable.
 
 
 
-Compilation : January 20, 2022
+Compilation : February 16, 2022
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -181,8 +181,11 @@ regarding its variables are needed.
   the ship&rsquo;s velocity, it&rsquo;s current engine boost and the gravity pull
   of the central star.
 </p> 
-</li><li> <code>heading</code> is an angle in radians, the direction where
-  the ship nose is pointing. It is therefore a <code>Float</code> number.
+</li><li> <code>heading</code> is an angle in radians, the direction
+  where the ship nose is pointing.  It is therefore a <code>Float</code>
+  number. At game start, the ships are oriented to the top, the
+  <code>heading</code> value is then -pi/2 radians; the oy axis is
+  oriented from the top to the bottom of the screen).
   
 </li><li> <code>velocity</code> is the vector representing the
   instantaneous speed of the ship. It is a <code>Point</code> instance.
@@ -442,7 +445,6 @@ set its default position, speed, acceleration:
 <div class="example">
 <pre class="example">SpaceShip&gt;&gt;initialize
    super initialize.
-   heading := Float halfPi.
    velocity := 0 @ 0.
    position := 100 @ 100.
    acceleration := 0
@@ -462,7 +464,16 @@ central star. It has no velocity nor internal acceleration &ndash; only the
 gravity pull of the central star.  Its nose points in direction of the
 top of the game display.
 </p>
-
+<p>You probably noticed there is no code to initialize the
+<code>heading</code>, something like <code>heading := Float
+halfPi negated</code> to orient the ship in the direction of the top of the
+screen. The truth is we don&rsquo;t need the <code>heading</code> attribute,
+this information will be provided by the class <code>Morph</code> used
+later as a parent class of <code>SpaceShip</code> and <code>Torpedo</code>.  At
+this time, the <code>heading</code> variable will be removed and we
+will define the heading behavior with the appropriate <code>heading</code>
+and <code>heading:</code> methods.
+</p>
 <div class="float"><span id="initCentralStar"></span>
 <blockquote class="indentedblock">
 <p>&nbsp;<img src="CuisLogo.png" alt="CuisLogo">

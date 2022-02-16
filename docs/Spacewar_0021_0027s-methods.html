@@ -15,7 +15,7 @@ valuable.
 
 
 
-Compilation : January 20, 2022
+Compilation : February 16, 2022
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -195,14 +195,20 @@ SpaceShip&gt;&gt;unpush
 
 SpaceShip&gt;&gt;right
   &quot;Rotate the ship to its right&quot;
-  self rotateBy: 0.1
+  self heading: self heading + 0.1
   
 SpaceShip&gt;&gt;left
   &quot;Rotate the ship to its left&quot;
-  self rotateBy: -0.1
+  self heading: self heading - 0.1
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 5.8: </strong>Ship controls</p></div></div>
+<p>Observe the <code>right</code> and <code>left</code> methods, they are mostly
+identical to the ones asked in <a href="Spacewar_0021-States-and-Behaviors.html#shipHeading">Exercise 3.12</a>. We don&rsquo;t modify
+directly the <code>heading</code> attribute, we use the methods
+<code>heading:</code> and <code>heading</code> to read and write this
+information.
+</p>
 <div class="float"><span id="categorizeControls"></span>
 <blockquote class="indentedblock">
 <p>&nbsp;<img src="CuisLogo.png" alt="CuisLogo">
@@ -230,7 +236,7 @@ space ship position, heading, and velocity before being fired.
   torpedo := Torpedo new.
   torpedo 
     position: position + self nose;
-    heading: heading;
+    heading: self heading;
     velocity: velocity;
     color: self color muchLighter.
   owner addTorpedo: torpedo

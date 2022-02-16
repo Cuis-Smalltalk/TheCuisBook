@@ -15,7 +15,7 @@ valuable.
 
 
 
-Compilation : January 20, 2022
+Compilation : February 16, 2022
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -219,28 +219,51 @@ toward the bottom of the screen.
 <p>When there is an acceleration from the engine, we draw a small gray
 line to represent the gas exhaust.
 </p>
-<span id="index-morph-23"></span>
-<p>When the user turns the ship, the morph is rotated a bit:
+<p>When the user turns the ship, the morph is rotated a bit by adjusting
+its heading:
 </p>
 <div class="example">
 <pre class="example">SpaceShip&gt;&gt;right
 &quot;Rotate the ship to its right&quot;
-   self rotateBy: 0.1
+   self heading: self heading + 0.1
 
 SpaceShip&gt;&gt;left
 &quot;Rotate the ship to its left&quot;
-   self rotateBy: -0.1
+   self heading: self heading - 0.1
 </pre></div>
 
-<p>Underneath, <code>MobileMorph</code> is equipped with an affine
+
+<p>But how does this heading affect the rotation of the morph?
+</p>
+<p>Underneath, the <code>MobileMorph</code> is equipped with an affine
 transformation to scale, rotate and translate the coordinates passed
 as arguments to the drawing messages received by the canvas.
+Therefore, our <code>heading</code> methods are defined to match this
+internal representation and we use the <code>rotation:</code> method from
+the <code>PacedMorph</code> class to rotate appropriately. The
+<code>location</code> attribute represents an affine transformation, and we
+get its rotation angle with the <code>#radians</code> message.
+</p>
+<span id="index-morph-23"></span>
+<span id="index-morph-24"></span>
+<div class="example">
+<pre class="example">Mobile&gt;&gt;heading
+   ^ location radians - Float halfPi
+Mobile&gt;&gt;heading: aHeading
+   self rotation: aHeading + Float halfPi
+</pre></div>
+
+<p>When a mobile is vertical, pointing to the top of the screen, its
+heading is -90&deg; (-pi/2) in the screen coordinates
+system. In that situation the mobile is not rotated &ndash; or
+0&deg; rotated &ndash; therefore we add 90&deg; (pi/2) to
+the heading to get the matching rotation angle of the mobile.
 </p>
 <span id="Torpedo"></span><h4 class="subsection">7.3.3 Torpedo</h4>
 
 
-<p>Alike a space ship, when a torpedo is just instantiated its nose points
-in the direction of the top of the screen and its vertices are
+<p>Alike a space ship, when a torpedo is just instantiated its nose
+points in the direction of the top of the screen and its vertices are
 given by the <a href="#ch07_002d11_002dTorpedoDiagram">Figure 7.11</a>.
 </p>
 <div class="float"><span id="ch07_002d11_002dTorpedoDiagram"></span>
@@ -257,21 +280,6 @@ given by <a href="#ch07_002d11_002dTorpedoDiagram">Figure 7.11</a>, how will you
 
 
 <div class="float-caption"><p><strong>Exercise 7.6: </strong>Torpedo extent</p></div></div>
-<span id="index-morph-24"></span>
-<p>A space ship and a just fired torpedo share the same orientation.  To
-orient correctly a newly fired torpedo, you just copy the orientation
-from its space ship. We edit the method as defined in
-<a href="Spacewar_0021_0027s-methods.html#fireTorpedo">Example 5.9</a>:
-</p>
-<div class="example">
-<pre class="example">SpaceShip&gt;&gt;fireTorpedo
-   ../..
-   torpedo := Torpedo new.
-   torpedo 
-      morphPosition: self morphPosition + self nose;
-      rotation: location radians; &quot;copy the rotation angle from ship&quot;
-   ../..
-</pre></div>
 
 <div class="float"><span id="exeTorpedoDrawing"></span>
 <blockquote class="indentedblock">
@@ -282,23 +290,6 @@ the <code>Torpedo</code>&rsquo;s <code>drawOn:</code> method?</em>
 
 
 <div class="float-caption"><p><strong>Exercise 7.7: </strong>Torpedo drawing</p></div></div>
-<p>In the game play, a torpedo is always oriented in the direction of its
-velocity. While inaccurate, it produces a nice effect when a torpedo
-is pulled by the central star. When the torpedo&rsquo;s velocity vector is
-vertical, pointing to the top of the screen, its angle is
--90&deg; in the screen coordinates system. In that situation
-the torpedo is not rotated &ndash; or 0&deg; rotated &ndash; therefore
-we add 90&deg; to the velocity angle to get the matching
-rotation of the torpedo:
-</p>
-<div class="example">
-<pre class="example">Torpedo&gt;&gt;update: t
-&quot;Update the torpedo position&quot;
-   ../..
-   self rotation: (velocity y arcTan: velocity x) + Float halfPi.
-   ../..
-</pre></div>
-   
 
 <span id="Drawing-revisited"></span><h4 class="subsection">7.3.4 Drawing revisited</h4>
 

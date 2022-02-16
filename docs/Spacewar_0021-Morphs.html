@@ -15,7 +15,7 @@ valuable.
 
 
 
-Compilation : January 20, 2022
+Compilation : February 16, 2022
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -424,7 +424,7 @@ oriented programming there is this special mechanism named
    super update: t.
    &quot;orientate the torpedo in its velocity direction, nicer effect
    while inaccurate&quot;
-   self rotation: (velocity y arcTan: velocity x) + Float halfPi.
+   self heading: (velocity y arcTan: velocity x).
    lifeSpan := lifeSpan - 1.
    lifeSpan isZero ifTrue: [owner destroyTorpedo: self].
    acceleration &gt; 0 ifTrue: [acceleration := acceleration - 1000]
@@ -442,9 +442,7 @@ is found, if not a <em>Message Not Understood</em> error is signalled.
 </p>
 <p>Among the specific added behaviors, the torpedo orientation along its
 velocity vector is inaccurate but nice looking. To orient accordingly
-a kind of <code>PlacedMorph</code> as the torpedo, we use the
-<code>#rotation:</code> message whose method is defined in the
-<code>PlacedMorph</code> class.
+the torpedo, we adjust its heading with its velocity vector heading.
 </p>
 <p>The life span control, the self-destruction sequence, and the engine
 acceleration are also handled specifically. When a torpedo is just fired, its
