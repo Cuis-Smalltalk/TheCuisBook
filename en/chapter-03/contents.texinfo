@@ -911,7 +911,7 @@ regarding its variables are needed.
   where the ship nose is pointing.  It is therefore a @class{Float}
   number. At game start, the ships are oriented to the top, the
   @smalltalk{heading} value is then -pi/2 radians; the oy axis is
-  oriented from the top to the bottom of the screen).
+  oriented from the top to the bottom of the screen.
   
   @item @smalltalk{velocity} is the vector representing the
   instantaneous speed of the ship. It is a @class{Point} instance.

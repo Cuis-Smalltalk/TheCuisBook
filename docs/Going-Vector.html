@@ -15,7 +15,7 @@ valuable.
 
 
 
-Compilation : February 16, 2022
+Compilation : January 5, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -109,18 +109,6 @@ the late 80&rsquo;s and late 90&rsquo;s respectively). Additionally, careful
 design of the framework relieves Morph programmers from much the
 complexity that was required, especially with regards to geometry.
 </p>
-<p>This step is required until VectorGraphics becomes part of the base
-Cuis-Smalltalk image:
-</p>
-<span id="index-morph-7"></span>
-<div class="example">
-<pre class="example">Feature require: 'VectorGraphics'
-</pre></div>
-<div class="example">
-<pre class="example">TrueTypeFontFamily read: DirectoryEntry smalltalkImageDirectory
-   / 'TrueTypeFonts' / 'DejaVu'/ 'DejaVuSans'
-</pre></div>
-
 <span id="A-first-example"></span><h4 class="subsection">7.1.1 A first example</h4>
 
 <p>Let&rsquo;s start with some examples. What we want is to build our own
@@ -143,8 +131,8 @@ object:
 
 <p>In method category <code>drawing</code> add:
 </p>
+<span id="index-morph-7"></span>
 <span id="index-morph-8"></span>
-<span id="index-morph-9"></span>
 <div class="example">
 <pre class="example">LineExampleMorph&gt;&gt;drawOn: aCanvas
    aCanvas strokeWidth: 20 color: Color green do: [
@@ -188,7 +176,7 @@ pixels?</em>
 <div class="float-caption"><p><strong>Exercise 7.1: </strong>Cross morph</p></div></div>
 
 <span id="Morph-you-can-move"></span><h4 class="subsection">7.1.2 Morph you can move</h4>
-<span id="index-morph-10"></span>
+<span id="index-morph-9"></span>
 <p>You might have already tried to click and drag on your Line, like you
 can do with regular windows and most other Morphs. If not, try
 now. But nothing happens! The reason is that our Morph is fixed in a
@@ -202,7 +190,7 @@ variables.
 and still be able to move it around. The solution is to make it
 subclass of <code>PlacedMorph</code>, instead of <code>Morph</code>.
 </p>
-<span id="index-morph-11"></span>
+<span id="index-morph-10"></span>
 <p>To do this, first evaluate the code below to get rid of all LineExampleMorph instances:
 </p>
 <div class="float"><span id="deleteMorphInstances"></span>
@@ -219,7 +207,7 @@ again:
 <pre class="example">LineExampleMorph new openInWorld
 </pre></div>
 
-<span id="index-morph-12"></span>
+<span id="index-morph-11"></span>
 <p>You will get a line you can grab with the mouse and move it
 around. <code>PlacedMorph</code> adds a new instance variable called
 <code>location</code>. If a morph has a <code>location</code>, it can be
@@ -255,8 +243,8 @@ can also be rotated and zoomed.
 
 <p>In the <code>drawing</code> method category add:
 </p>
+<span id="index-morph-12"></span>
 <span id="index-morph-13"></span>
-<span id="index-morph-14"></span>
 <div class="example">
 <pre class="example">TriangleExampleMorph&gt;&gt;drawOn: aCanvas
    aCanvas strokeWidth: 10 color: borderColor fillColor: fillColor do: [
@@ -350,11 +338,11 @@ its center?</em>
 
 <div class="float-caption"><p><strong>Exercise 7.4: </strong>Rotate the cross around its center</p></div></div>
 <span id="Animated-morph"></span><h4 class="subsection">7.1.4 Animated morph</h4>
-<span id="index-morph-15"></span>
+<span id="index-morph-14"></span>
 <p>Let&rsquo;s add two methods to our <code>TriangleExampleMorph</code> to
 make our triangle <em>alive</em>:
 </p>
-<span id="index-morph-16"></span>
+<span id="index-morph-15"></span>
 <p>In the method category <code>stepping</code> define:
 </p><div class="example">
 <pre class="example">TriangleExampleMorph&gt;&gt;wantsSteps
@@ -380,7 +368,7 @@ interesting, edit the method:
 
 <p>...and:
 </p>
-<span id="index-morph-17"></span>
+<span id="index-morph-16"></span>
 
 <div class="example">
 <pre class="example">TriangleExampleMorph&gt;&gt;step
@@ -397,7 +385,7 @@ that looks.
 </p>
 <p>Now try this:
 </p>
-<span id="index-morph-18"></span>
+<span id="index-morph-17"></span>
 
 <div class="example">
 <pre class="example">TriangleExampleMorph&gt;&gt;step
@@ -450,7 +438,7 @@ open a halo and interact with it.
 <div class="float-caption"><p><strong>Figure 7.3: </strong>Animated morph</p></div></div>
 
 <span id="Morph-in-morph"></span><h4 class="subsection">7.1.5 Morph in morph</h4>
-<span id="index-morph-19"></span>
+<span id="index-morph-18"></span>
 
 <p>Now, let&rsquo;s try something different. Grab one of your
 <code>LineExampleMorph</code>. With the halo, zoom it until it is about the
@@ -476,7 +464,7 @@ and the morphs can be moved, rotated or scaled independently.
 again. Now add the following method to category <code>geometry
 testing</code> of the class <code>LineExampleMorph</code>:
 </p>
-<span id="index-morph-20"></span>
+<span id="index-morph-19"></span>
 
 <div class="example">
 <pre class="example">LineExampleMorph&gt;&gt;clipsSubmorphs

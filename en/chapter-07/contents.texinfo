@@ -50,14 +50,6 @@ the late 80's and late 90's respectively). Additionally, careful
 design of the framework relieves Morph programmers from much the
 complexity that was required, especially with regards to geometry.
 
-This step is required until VectorGraphics becomes part of the base
-@cuis{} image:
-
-@cindex morph @subentry vector @subentry installation
-@smalltalkExample{Feature require: 'VectorGraphics'}
-@smalltalkExample{TrueTypeFontFamily read: DirectoryEntry smalltalkImageDirectory
-   / 'TrueTypeFonts' / 'DejaVu'/ 'DejaVuSans'}
-
 @subsection A first example
 
 Let's start with some examples. What we want is to build our own
