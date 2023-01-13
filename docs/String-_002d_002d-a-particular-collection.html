@@ -1,9 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This book is for Cuis-Smalltalk (6.0#5031 or later), a free and modern
+<!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
-Copyright (C) 2020, 2021, 2022 Hilaire Fernandes with Ken Dickey & Juan Vuletich
+Copyright (C) 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
 
 
 Thanks to Matt Armstrong, Bernhard Pieber, David Lewis, John McGarey,
@@ -15,7 +15,7 @@ valuable.
 
 
 
-Compilation : January 5, 2023
+Compilation : January 14, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -199,7 +199,7 @@ work. Observe below, the error is thrown on a <code>Character</code>
 instance:
 </p>
 <div class="example">
-<pre class="example">'Hello My Friend' cos
+<pre class="example">'Hello My Friend' asByteString cos
 &rArr; MesageNotUnderstood: Character&gt;&gt;cos
 </pre></div>
 
@@ -215,24 +215,24 @@ Two references to <code>'hello'</code> might be to two or only
 one object depending computational history.  Two references
 to <code>#hello</code> are guarenteed to always refer to the same object.
 </p>
-<p>Symbols got their name because they are used as <em>symbolic constants</em>.
-You already observed how in the book we wrote message selectors as a symbol.
-We use symbols because each message name must uniquely index
-the code for a method.
-You will use a symbol when you need to name something uniquely.
+<p>Symbols got their name because they are used as <em>symbolic
+constants</em>.  You already observed how in the book we wrote message
+selectors as a symbol.  We use symbols because each message name must
+uniquely index the code for a method.  You will use a symbol when you
+need to name something uniquely.
 </p>
-<p>In the example below, the strings are not identical once
-duplicated &ndash; copying a string always results in a new string
-&ndash; however symbols are identical even when duplicated<a id="DOCF17" href="#FOOT17"><sup>17</sup></a>:
+<p>In the example below, observe the same behavior with string. In
+Cuis-Smalltalk a string is an Unicode immutable object, copying a string
+returns the original string &ndash; same location in the computer memory:
 </p>
 <div class="example">
 <pre class="example">'hello' == 'hello' copy
-&rArr; false 
+&rArr; true 
 #hello  == #hello copy
 &rArr; true
 </pre></div>
 
-<p>Now you know.  Strings can be duplicated or changed, symbols can&rsquo;t.
+<p>Now you know.  Strings and symbol can&rsquo;t be duplicated nor changed.
 </p>
 <p>Symbols can contain space characters:
 </p>
@@ -259,14 +259,6 @@ are also learning quite a bit about symbols.
 </pre></div>
 
 
-<div class="footnote">
-<hr>
-<h4 class="footnotes-heading">Footnotes</h4>
-
-<h5><a id="FOOT17" href="#DOCF17">(17)</a></h3>
-<p>To be
-honest, copying a symbol just returns the original symbol.</p>
-</div>
 <hr>
 <div class="header">
 <p>

@@ -1,6 +1,6 @@
 @settitle The Cuis-Smalltalk Book
 @c Prefered settings
-@set cuisVersion 6.0#5031 or later
+@set cuisVersion 6.0#5608 or later
 @codequoteundirected on
 @codequotebacktick on
 @c Remove ugly black rectangle

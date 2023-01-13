@@ -118,7 +118,7 @@ Beware, some messages in the @class{String} protocol may obviously not
 work. Observe below, the error is thrown on a @class{Character}
 instance:
 
-@smalltalkExample{'Hello My Friend' cos
+@smalltalkExample{'Hello My Friend' asByteString cos
 @result{} MesageNotUnderstood: Character>>cos}
 
 If you look at implementors of @method{cos}, you can
@@ -133,23 +133,22 @@ Two references to @smalltalk{'hello'} might be to two or only
 one object depending computational history.  Two references
 to @smalltalk{#hello} are guarenteed to always refer to the same object.
 
-Symbols got their name because they are used as @dfn{symbolic constants}.
-You already observed how in the book we wrote message selectors as a symbol.
-We use symbols because each message name must uniquely index
-the code for a method.
-You will use a symbol when you need to name something uniquely.
+Symbols got their name because they are used as @dfn{symbolic
+constants}.  You already observed how in the book we wrote message
+selectors as a symbol.  We use symbols because each message name must
+uniquely index the code for a method.  You will use a symbol when you
+need to name something uniquely.
 
-In the example below, the strings are not identical once
-duplicated -- copying a string always results in a new string
--- however symbols are identical even when duplicated@footnote{To be
-honest, copying a symbol just returns the original symbol.}:
+In the example below, observe the same behavior with string. In
+@cuis{} a string is an Unicode immutable object, copying a string
+returns the original string -- same location in the computer memory:
 
 @smalltalkExample{'hello' == 'hello' copy
-@result{} false 
+@result{} true 
 #hello  == #hello copy
 @result{} true}
 
-Now you know.  Strings can be duplicated or changed, symbols can't.
+Now you know.  Strings and symbol can't be duplicated nor changed.
 
 Symbols can contain space characters:
 

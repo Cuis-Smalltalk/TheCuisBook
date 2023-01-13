@@ -1,9 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This book is for Cuis-Smalltalk (6.0#5031 or later), a free and modern
+<!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
-Copyright (C) 2020, 2021, 2022 Hilaire Fernandes with Ken Dickey & Juan Vuletich
+Copyright (C) 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
 
 
 Thanks to Matt Armstrong, Bernhard Pieber, David Lewis, John McGarey,
@@ -15,7 +15,7 @@ valuable.
 
 
 
-Compilation : January 5, 2023
+Compilation : January 14, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -98,13 +98,21 @@ Next: <a href="Messages-to-number-entities.html" accesskey="n" rel="next">Messag
 <span id="Message-to-string-entities-1"></span><h3 class="section">2.3 Message to string entities</h3>
 <span id="index-string-4"></span>
 
+<p><strong>Note.</strong> We wrote earlier a string is a collection of
+characters. It is true for byte string, where each character is
+encoded with a byte &ndash; a byte string. However since 2023, the default
+string format for Cuis-Smalltalk is Unicode (UTF-8) where each character can
+be encoded with 1, 2, 3 or 4 bytes. Therefore it is immutable and can
+not be indexed, it can be converted as byte string with the message
+<code>#asByteString</code>.
+</p>
 <p>Access to a character in a string is done with the keyword message
 <code>#at:</code> and its index position in the string as the argument. Execute
 the following examples with the <kbd>Ctrl-p</kbd> shortcut:
 </p>
 <div class="example">
 <pre class="example">'Hello' at: 1 &rArr; $H
-'Hello' at: 5 &rArr; $o
+'Hello' asByteString at: 5 &rArr; $o
 </pre></div>
 
 <p>Observe how a character is prefixed with the &ldquo;$&rdquo; symbol.
@@ -114,7 +122,7 @@ string length.
 </p>
 <span id="index-string-5"></span>
 <div class="example">
-<pre class="example">'Hello' indexOf: $e
+<pre class="example">'Hello' asByeString indexOf: $e
 &rArr; 2
 </pre></div>
 
@@ -123,7 +131,7 @@ string length.
 <p>To change one character, use the companion two keyword message
 <code>#at:put:</code>. The argument must be noted as a character:
 </p><div class="example">
-<pre class="example">'Hello' at: 2 put: $a; yourself
+<pre class="example">'Hello' asByteString at: 2 put: $a; yourself
 &rArr; 'Hallo'
 </pre></div>
 
@@ -155,7 +163,7 @@ the string &rsquo;Hello&rsquo; to become &rsquo;Belle&rsquo;.</em>
 shuffling can apply to any kind of collection, not only to a string, and it
 will prove to be useful as we will see later:
 </p><div class="example">
-<pre class="example">'hello world' shuffled
+<pre class="example">'hello world' asByteString shuffled
 &rArr; 'wod llreohl'
 </pre></div>
 <p>Note that the results of each shuffle are different.
@@ -164,8 +172,8 @@ will prove to be useful as we will see later:
 <span id="index-message-8"></span>
 <p>Messages naturally compose:
 </p><div class="example">
-<pre class="example">'hello world' shuffled asArray
-&rArr; #($h $d $l $  $o $w $e $l $l $o $r) 
+<pre class="example">'hello world' asByteString shuffled asArray
+&rArr; #($h $d $l $ (20) $o $w $e $l $l $o $r) 
 </pre></div>
 
 <p>An <code>Array</code> literal starts with a hash or sharp character, <code>$#</code>
@@ -173,19 +181,12 @@ and parentheses surround the elements of the array.
 In this case the elements are <code>Character</code>s, but they can
 be instances of any class.
 </p>
+<p>Like <code>#shuffled</code>, all collections answer to the message
+<code>#sorted</code>, which answers a sorted collection.
 <span id="index-string-9"></span>
-<p>Similarly, we can ask a string to sort its characters:
 </p><div class="example">
-<pre class="example">'hello world' sort
-&rArr; ' dehllloorw'
-</pre></div>
-
-<p>Like <code>#shuffled</code>, all collections answer to the message <code>#sorted</code>,
-which answers a sorted collection.
-<span id="index-string-10"></span>
-</p><div class="example">
-<pre class="example">'hello world' sorted
-&rArr; #($  $d $e $h $l $l $l $o $o $r $w)
+<pre class="example">'hello world' asByteString sorted
+&rArr; #($ (20) $d $e $h $l $l $l $o $o $r $w)
 </pre></div>
 
 <p>Note that this breaks the pattern of the result type.  We get a <code>String</code>

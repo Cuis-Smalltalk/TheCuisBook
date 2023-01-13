@@ -187,12 +187,20 @@ return the object to which a message is sent, in this case the
 @section Message to string entities
 @cindex string @subentry character access
 
+@strong{Note.} We wrote earlier a string is a collection of
+characters. It is true for byte string, where each character is
+encoded with a byte -- a byte string. However since 2023, the default
+string format for @cuis{} is Unicode (UTF-8) where each character can
+be encoded with 1, 2, 3 or 4 bytes. Therefore it is immutable and can
+not be indexed, it can be converted as byte string with the message
+@msg{asByteString}.
+
 Access to a character in a string is done with the keyword message
 @msg{at:} and its index position in the string as the argument. Execute
 the following examples with the @kbd{Ctrl-p} shortcut:
 
 @smalltalkExample{'Hello' at: 1 @result{} $H
-'Hello' at: 5 @result{} $o}
+'Hello' asByteString at: 5 @result{} $o}
 
 Observe how a character is prefixed with the ``$'' symbol.
 
@@ -200,14 +208,14 @@ Observe how a character is prefixed with the ``$'' symbol.
 string length.
 
 @cindex string @subentry @method{indexOf:}
-@smalltalkExample{'Hello' indexOf: $e
+@smalltalkExample{'Hello' asByeString indexOf: $e
 @result{} 2}
 
 @cindex string @subentry @method{at:put:}
 @cindex @method{yourself}
 To change one character, use the companion two keyword message
 @msg{at:put:}. The argument must be noted as a character:
-@smalltalkExample{'Hello' at: 2 put: $a; yourself
+@smalltalkExample{'Hello' asByteString at: 2 put: $a; yourself
 @result{} 'Hallo'}
 
 Observe the use of the cascade with the @msg{yourself} message.  A
@@ -229,31 +237,26 @@ Characters can be converted to integers and integers to characters:
 Shuffling a string can be fun but not very useful. However,
 shuffling can apply to any kind of collection, not only to a string, and it
 will prove to be useful as we will see later:
-@smalltalkExample{'hello world' shuffled
+@smalltalkExample{'hello world' asByteString shuffled
 @result{} 'wod llreohl'}
 Note that the results of each shuffle are different.
 
 @cindex string @subentry @method{asArray}
 @cindex message @subentry composition
 Messages naturally compose:
-@smalltalkExample{'hello world' shuffled asArray
-@result{} #($h $d $l $  $o $w $e $l $l $o $r) }
+@smalltalkExample{'hello world' asByteString shuffled asArray
+@result{} #($h $d $l $ (20) $o $w $e $l $l $o $r) }
 
 An @class{Array} literal starts with a hash or sharp character, @smalltalk{$#}
 and parentheses surround the elements of the array.
 In this case the elements are @class{Character}s, but they can
 be instances of any class.
 
-@cindex string @subentry @method{sort}
-Similarly, we can ask a string to sort its characters:
-@smalltalkExample{'hello world' sort
-@result{} ' dehllloorw'}
-
-Like @smalltalk{#shuffled}, all collections answer to the message @smalltalk{#sorted},
-which answers a sorted collection.
+Like @smalltalk{#shuffled}, all collections answer to the message
+@smalltalk{#sorted}, which answers a sorted collection.
 @cindex string @subentry @method{sorted}
-@smalltalkExample{'hello world' sorted
-@result{} #($  $d $e $h $l $l $l $o $o $r $w)}
+@smalltalkExample{'hello world' asByteString sorted
+@result{} #($ (20) $d $e $h $l $l $l $o $o $r $w)}
 
 Note that this breaks the pattern of the result type.  We get a @class{String}
 result when sending a @class{String} the message @smalltalk{#shuffled} but get
