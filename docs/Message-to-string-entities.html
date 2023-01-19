@@ -99,11 +99,10 @@ Next: <a href="Messages-to-number-entities.html" accesskey="n" rel="next">Messag
 <span id="index-string-4"></span>
 
 <p><strong>Note.</strong> We wrote earlier a string is a collection of
-characters. It is true for byte string, where each character is
-encoded with a byte &ndash; a byte string. However since 2023, the default
-string format for Cuis-Smalltalk is Unicode (UTF-8) where each character can
-be encoded with 1, 2, 3 or 4 bytes. Therefore it is immutable and can
-not be indexed, it can be converted as byte string with the message
+characters. There are 2 types  of strings in Cuis: byte strings and Unicode (UTF-8) strings, the latter being the default since 2023.  
+ In a byte string,  each character is encoded with a byte &ndash. In an Unicode string each character can
+be encoded with 1, 2, 3 or 4 bytes. It is immutable and can
+not be indexed, but it can be converted to byte string with the message
 <code>#asByteString</code>.
 </p>
 <p>Access to a character in a string is done with the keyword message
@@ -111,7 +110,7 @@ not be indexed, it can be converted as byte string with the message
 the following examples with the <kbd>Ctrl-p</kbd> shortcut:
 </p>
 <div class="example">
-<pre class="example">'Hello' at: 1 &rArr; $H
+<pre class="example">'Hello' at: 1 &rArr;  $H(000048) 
 'Hello' asByteString at: 5 &rArr; $o
 </pre></div>
 
@@ -122,7 +121,7 @@ string length.
 </p>
 <span id="index-string-5"></span>
 <div class="example">
-<pre class="example">'Hello' asByeString indexOf: $e
+<pre class="example">'Hello' asByteString indexOf: $e
 &rArr; 2
 </pre></div>
 
