@@ -1,6 +1,6 @@
-'From Cuis 6.0 [latest update: #5056] on 14 February 2022 at 2:11:23 pm'!
-'Description '!
-!provides: 'Spacewar!!' 1 88!
+'From Cuis 6.0 [latest update: #5661] on 15 February 2023 at 3:45:51 pm'!
+'Description SpaceWar!! game code'!
+!provides: 'Spacewar!!' 1 89!
 SystemOrganization addCategory: 'Spacewar!!'!
 
 
@@ -451,14 +451,12 @@ mass
 morphExtent
 	^ `30 @ 30`! !
 
-!CentralStar methodsFor: 'drawing' stamp: 'hlsf 12/15/2020 21:05:29'!
+!CentralStar methodsFor: 'drawing' stamp: 'KenD 2/15/2023 15:40:04'!
 drawOn: canvas
 	| radius |
 	radius _ self morphExtent // 2.
-	canvas ellipseCenterX: 0
-		y:  0
-		rx: radius x + (2 atRandom - 1)
-		ry: radius y + (2 atRandom - 1)
+	canvas ellipseCenter: 0 @ 0
+		radius: (radius x + (2 atRandom - 1)) @ (radius y + (2 atRandom - 1))
 		borderWidth: 3 
 		borderColor: Color orange 
 		fillColor: Color yellow ! !
