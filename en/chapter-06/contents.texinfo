@@ -567,7 +567,7 @@ the Morph coordinates by its origin and extent:
 
 @smalltalkExampleCaption{Bounds of our Morph objects,boundMorph,
 SpaceWar>>morphLocalBounds
-   @return{} -500 @@ -500 extent: 1000 @@ 1000
+   @return{} -300 @@ -300 extent: 600 @@ 600
 
 CentralStar>>morphLocalBounds
    @return{} Rectangle center: 0 @@ 0 extent: self morphExtent
@@ -608,7 +608,7 @@ See the @class{Torpedo>>update:} definition:
    self heading: (velocity y arcTan: velocity x).
    lifeSpan @assign{} lifeSpan - 1.
    lifeSpan isZero ifTrue: [owner destroyTorpedo: self].
-   acceleration > 0 ifTrue: [acceleration @assign{} acceleration - 1000]}
+   acceleration > 0 ifTrue: [acceleration @assign{} acceleration - 500]}
 
 Here the @method{update:} method is specialized to the torpedo
 specific needs. The mechanical calculation done in @method{Mobile>>update:}
@@ -658,7 +658,7 @@ SpaceShip>>initialize
 Torpedo>>initialize
    super initialize.
    lifeSpan @assign{} 500.
-   acceleration @assign{} 4000}
+   acceleration @assign{} 3000}
 
 Observe how each class is only responsible of its specific state
 initialization:
@@ -671,7 +671,7 @@ initialization:
 
  @smalltalkExample{SpaceShip>>resupply
    fuel @assign{} 500.
-   torpedoes @assign{} 20}
+   torpedoes @assign{} 10}
 
  @item @strong{Torpedo.} Inherited mechanical states initialized; add
  self-destroy sequence initialization and acceleration adjusted to

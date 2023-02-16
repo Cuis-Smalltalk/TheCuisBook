@@ -6,16 +6,16 @@ implementation of the Smalltalk language and environment.
 Copyright (C) 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
 
 
-Thanks to Matt Armstrong, Bernhard Pieber, David Lewis, John McGarey,
-Mariano Montone, Tommy Pettersson, Mauro Rizzi & Stephen Smith for the
-reviews of the book, suggestions and borrowed texts. It is very
-valuable.
+Thanks to Matt Armstrong, David Lewis, John McGarey, Mariano Montone,
+Ricardo Pacheco, Tommy Pettersson, Bernhard Pieber, Mauro Rizzi &
+Stephen Smith for the reviews of the book, suggestions and borrowed
+texts. It is very valuable.
 
 
 
 
 
-Compilation : February 15, 2023
+Compilation : February 16, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -262,16 +262,16 @@ with the keyboard arrows when there are stroked:
 <pre class="example">SpaceWar&gt;&gt;keyStroke: event
    | key |
    key := event keyCharacter.
-   key = Character arrowUp ifTrue: [^ ships first push].
-   key = Character arrowRight ifTrue: [^ ships first right].
-   key = Character arrowLeft ifTrue: [^ ships first left].
-   key = Character arrowDown ifTrue: [^ ships first fireTorpedo].
+   key = Character smalltalkUpArrow ifTrue: [^ ships first push].
+   key = Character smalltalkRightArrow ifTrue: [^ ships first right].
+   key = Character smalltalkLeftArrow ifTrue: [^ ships first left].
+   key = Character smalltalkDownArrow ifTrue: [^ ships first fireTorpedo].
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 8.2: </strong>Keystroke to control the first player ship</p></div></div>
-<p>The <code>arrowUp</code>, <code>arrowRight</code>,.... are <code>Character</code>
-class methods returning character codes representing the
-arrow keys.
+<p>The <code>smalltalkUpArrow</code>, <code>smalltalkRightArrow</code>,.... are
+<code>Character</code> class methods returning character codes representing
+the arrow keys.
 </p>
 <p>To control the second player ship, we use another classic arrangement
 in QWERTY keyboard controlled game:

@@ -1,6 +1,6 @@
-'From Cuis 6.0 [latest update: #5661] on 15 February 2023 at 3:45:51 pm'!
+'From Cuis 6.0 [latest update: #5661] on 16 February 2023 at 12:54:33 pm'!
 'Description SpaceWar!! game code'!
-!provides: 'Spacewar!!' 1 89!
+!provides: 'Spacewar!!' 1 91!
 SystemOrganization addCategory: 'Spacewar!!'!
 
 
@@ -133,10 +133,6 @@ update: t
 		velocity _ velocity / 2.
 		self morphPosition: self morphPosition negated]! !
 
-!Mobile methodsFor: 'geometry testing' stamp: 'hlsf 12/15/2020 21:03:38'!
-requiresVectorCanvas
-	^false! !
-
 !Mobile methodsFor: 'initialization' stamp: 'hlsf 10/1/2020 08:37:29'!
 initialize
 	super initialize.
@@ -173,11 +169,6 @@ morphLocalBounds
 !Mobile class methodsFor: 'as yet unclassified' stamp: 'hlsf 12/19/2020 23:21:09'!
 vertices
 	^ vertices ! !
-
-!SpaceShip methodsFor: 'accessing' stamp: 'hlsf 12/15/2020 21:06:01'!
-morphExtent
-
-	^20@30! !
 
 !SpaceShip methodsFor: 'control' stamp: 'hlsf 2/14/2022 13:53:33'!
 fireTorpedo
@@ -233,17 +224,17 @@ initialize
 	super initialize.
 	self resupply! !
 
-!SpaceShip methodsFor: 'initialization' stamp: 'hlsf 10/1/2020 17:30:57'!
+!SpaceShip methodsFor: 'initialization' stamp: 'hlsf 2/16/2023 11:54:41'!
 resupply
 	fuel _ 500.
-	torpedoes _ 20! !
+	torpedoes _ 10! !
 
 !SpaceShip class methodsFor: 'as yet unclassified' stamp: 'hlsf 12/19/2020 23:21:16'!
 initialize
 "SpaceShip initialize"
 	vertices _ {0@-15 . -10@15. 0@10. 10@15}! !
 
-!Torpedo methodsFor: 'computing' stamp: 'hlsf 2/14/2022 13:57:57'!
+!Torpedo methodsFor: 'computing' stamp: 'hlsf 2/16/2023 11:56:14'!
 update: t
 "Update the torpedo position"
 	super update: t.
@@ -251,15 +242,11 @@ update: t
 	self heading: (velocity y arcTan: velocity x).
 	lifeSpan _ lifeSpan - 1.
 	lifeSpan isZero ifTrue: [owner destroyTorpedo: self].
-	acceleration > 0 ifTrue: [acceleration _ acceleration - 1000].! !
+	acceleration > 0 ifTrue: [acceleration _ acceleration - 500].! !
 
 !Torpedo methodsFor: 'drawing' stamp: 'hlsf 12/20/2020 13:19:16'!
 drawOn: canvas
 	self drawOn: canvas polygon: self class vertices! !
-
-!Torpedo methodsFor: 'geometry' stamp: 'hlsf 12/15/2020 21:06:53'!
-morphExtent
-	^ 4 @ 8! !
 
 !Torpedo methodsFor: 'initialization' stamp: 'hlsf 12/15/2020 21:12:29'!
 initialize
@@ -271,10 +258,6 @@ initialize
 initialize
 "Torpedo initialize"
 	vertices _ {0@-4 . -2@4 . 2@4}! !
-
-!SpaceWar methodsFor: 'accessing' stamp: 'jmv 9/28/2020 10:41:48'!
-morphExtent
-	^500@500! !
 
 !SpaceWar methodsFor: 'accessing' stamp: 'hlsf 9/16/2020 16:41:40'!
 starMass
@@ -308,35 +291,35 @@ collisions
 	self collisionsShipsTorpedoes.
 	self collisionsShips ! !
 
-!SpaceWar methodsFor: 'collisions' stamp: 'hlsf 8/23/2021 11:56:44'!
+!SpaceWar methodsFor: 'collisions' stamp: 'hlsf 2/16/2023 12:53:43'!
 collisionsShips
-	(ships first displayBounds intersects: ships second displayBounds) ifTrue: [
+	(ships first collides: ships second) ifTrue: [
 		ships do: [:each |
 			each flashWith: Color red.
 			self teleport: each] ]! !
 
-!SpaceWar methodsFor: 'collisions' stamp: 'hlsf 10/28/2021 22:31:57'!
+!SpaceWar methodsFor: 'collisions' stamp: 'hlsf 2/16/2023 12:28:09'!
 collisionsShipsStar
 	ships do: [ :aShip |
-		(aShip displayBounds intersects: centralStar displayBounds) ifTrue: [
+		(aShip collides: centralStar) ifTrue: [
 			aShip flashWith: Color red.
 			self teleport: aShip ]]! !
 
-!SpaceWar methodsFor: 'collisions' stamp: 'hlsf 8/23/2021 11:53:04'!
+!SpaceWar methodsFor: 'collisions' stamp: 'hlsf 2/16/2023 12:30:08'!
 collisionsShipsTorpedoes
 	ships do: [:aShip | 
 		torpedoes do: [:aTorpedo |
-		(aShip displayBounds intersects: aTorpedo displayBounds) ifTrue: [
+		(aShip collides: aTorpedo) ifTrue: [
 			aShip flashWith: Color red.
 			aTorpedo flashWith: Color orange.
 			self destroyTorpedo: aTorpedo.
 			self teleport: aShip]]
 	]! !
 
-!SpaceWar methodsFor: 'collisions' stamp: 'hlsf 8/23/2021 12:02:28'!
+!SpaceWar methodsFor: 'collisions' stamp: 'hlsf 2/16/2023 12:30:19'!
 collisionsTorpedoesStar
 	torpedoes do: [:each | 
-		(each displayBounds intersects: centralStar displayBounds) ifTrue: [
+		(each collides: centralStar) ifTrue: [
 			each flashWith: Color orange.
 			self destroyTorpedo: each]]! !
 
@@ -354,14 +337,14 @@ handlesKeyboard
 handlesMouseOver: event
 	^ true! !
 
-!SpaceWar methodsFor: 'events' stamp: 'hlsf 10/25/2020 09:11:55'!
+!SpaceWar methodsFor: 'events' stamp: 'hlsf 2/16/2023 11:24:42'!
 keyStroke: event
 	| key |
 	key _ event keyCharacter.
-	key = Character arrowUp ifTrue: [^ ships first push].
-	key = Character arrowRight ifTrue: [^ ships first right].
-	key = Character arrowLeft ifTrue: [^ ships first left].
-	key = Character arrowDown ifTrue: [^ ships first fireTorpedo].
+	key = Character smalltalkUpArrow ifTrue: [^ ships first push].
+	key = Character smalltalkRightArrow ifTrue: [^ ships first right].
+	key = Character smalltalkLeftArrow ifTrue: [^ ships first left].
+	key = Character smalltalkDownArrow ifTrue: [^ ships first fireTorpedo].
 	key = $w ifTrue: [^ ships second push].
 	key =$d ifTrue: [^ ships second right].
 	key = $a ifTrue: [^ ships second left].
@@ -387,10 +370,6 @@ keyboardFocusChange: gotFocus
 !SpaceWar methodsFor: 'geometry testing' stamp: 'hlsf 12/11/2020 13:00:49'!
 clipsSubmorphs
 	^ true! !
-
-!SpaceWar methodsFor: 'geometry testing' stamp: 'hlsf 12/15/2020 21:03:32'!
-requiresVectorCanvas
-	^false! !
 
 !SpaceWar methodsFor: 'initialization' stamp: 'hlsf 9/10/2020 15:21:22'!
 defaultColor
@@ -438,10 +417,10 @@ stepTime
 wantsSteps
 	^ true! !
 
-!SpaceWar methodsFor: 'geometry' stamp: 'jmv 10/28/2021 14:48:34'!
+!SpaceWar methodsFor: 'geometry' stamp: 'hlsf 2/16/2023 11:38:27'!
 morphLocalBounds
 
-	^ -500 @ -500 extent: 1000@1000! !
+	^ -300 @ -300 extent: 600@600! !
 
 !CentralStar methodsFor: 'accessing' stamp: 'hlsf 10/8/2020 22:20:17'!
 mass
@@ -460,10 +439,6 @@ drawOn: canvas
 		borderWidth: 3 
 		borderColor: Color orange 
 		fillColor: Color yellow ! !
-
-!CentralStar methodsFor: 'geometry testing' stamp: 'hlsf 12/15/2020 21:03:47'!
-requiresVectorCanvas
-	^false! !
 
 !CentralStar methodsFor: 'geometry' stamp: 'jmv 10/28/2021 14:55:55'!
 morphLocalBounds

@@ -6,16 +6,16 @@ implementation of the Smalltalk language and environment.
 Copyright (C) 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
 
 
-Thanks to Matt Armstrong, Bernhard Pieber, David Lewis, John McGarey,
-Mariano Montone, Tommy Pettersson, Mauro Rizzi & Stephen Smith for the
-reviews of the book, suggestions and borrowed texts. It is very
-valuable.
+Thanks to Matt Armstrong, David Lewis, John McGarey, Mariano Montone,
+Ricardo Pacheco, Tommy Pettersson, Bernhard Pieber, Mauro Rizzi &
+Stephen Smith for the reviews of the book, suggestions and borrowed
+texts. It is very valuable.
 
 
 
 
 
-Compilation : February 15, 2023
+Compilation : February 16, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -380,7 +380,7 @@ the Morph coordinates by its origin and extent:
 <div class="float"><span id="boundMorph"></span>
 <div class="example">
 <pre class="example">SpaceWar&gt;&gt;morphLocalBounds
-   ^ -500 @ -500 extent: 1000 @ 1000
+   ^ -300 @ -300 extent: 600 @ 600
 
 CentralStar&gt;&gt;morphLocalBounds
    ^ Rectangle center: 0 @ 0 extent: self morphExtent
@@ -427,7 +427,7 @@ oriented programming there is this special mechanism named
    self heading: (velocity y arcTan: velocity x).
    lifeSpan := lifeSpan - 1.
    lifeSpan isZero ifTrue: [owner destroyTorpedo: self].
-   acceleration &gt; 0 ifTrue: [acceleration := acceleration - 1000]
+   acceleration &gt; 0 ifTrue: [acceleration := acceleration - 500]
 </pre></div>
 
 <p>Here the <code>update:</code> method is specialized to the torpedo
@@ -481,7 +481,7 @@ SpaceShip&gt;&gt;initialize
 Torpedo&gt;&gt;initialize
    super initialize.
    lifeSpan := 500.
-   acceleration := 4000
+   acceleration := 3000
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 6.9: </strong>Initialize overriding in the <code>Mobile</code>
@@ -497,7 +497,7 @@ initialization:
 <div class="example">
 <pre class="example">SpaceShip&gt;&gt;resupply
    fuel := 500.
-   torpedoes := 20
+   torpedoes := 10
 </pre></div>
 
 </li><li> <strong>Torpedo.</strong> Inherited mechanical states initialized; add

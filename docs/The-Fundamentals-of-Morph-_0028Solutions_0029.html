@@ -6,16 +6,16 @@ implementation of the Smalltalk language and environment.
 Copyright (C) 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
 
 
-Thanks to Matt Armstrong, Bernhard Pieber, David Lewis, John McGarey,
-Mariano Montone, Tommy Pettersson, Mauro Rizzi & Stephen Smith for the
-reviews of the book, suggestions and borrowed texts. It is very
-valuable.
+Thanks to Matt Armstrong, David Lewis, John McGarey, Mariano Montone,
+Ricardo Pacheco, Tommy Pettersson, Bernhard Pieber, Mauro Rizzi &
+Stephen Smith for the reviews of the book, suggestions and borrowed
+texts. It is very valuable.
 
 
 
 
 
-Compilation : February 15, 2023
+Compilation : February 16, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -279,18 +279,18 @@ intersection detection between the morphs&rsquo; display bounds:
 </p>
 <div class="example">
 <pre class="example">SpaceWar&gt;&gt;collisionsShips
-   (ships first displayBounds intersects: ships second displayBounds)
+   (ships first collides: ships second)
    ../..
 
 SpaceWar&gt;&gt;collisionsShipsTorpedoes
    ships do: [:aShip | 
       torpedoes do: [:aTorpedo |
-         (aShip displayBounds intersects: aTorpedo displayBounds)
+         (aShip collides: aTorpedo)
    ../..
 
 SpaceWar&gt;&gt;collisionsTorpedoesStar
    torpedoes do: [:each | 
-      (each displayBounds intersects: centralStar displayBounds)
+      (each collides: centralStar)
    ../..
 </pre></div>
 

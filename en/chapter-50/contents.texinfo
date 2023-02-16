@@ -734,18 +734,18 @@ intersection detection between the morphs' display bounds:
 
 @smallexample
 SpaceWar>>collisionsShips
-   (ships first displayBounds intersects: ships second displayBounds)
+   (ships first collides: ships second)
    ../..
 
 SpaceWar>>collisionsShipsTorpedoes
    ships do: [:aShip | 
       torpedoes do: [:aTorpedo |
-         (aShip displayBounds intersects: aTorpedo displayBounds)
+         (aShip collides: aTorpedo)
    ../..
 
 SpaceWar>>collisionsTorpedoesStar
    torpedoes do: [:each | 
-      (each displayBounds intersects: centralStar displayBounds)
+      (each collides: centralStar)
    ../..
 @end smallexample
 

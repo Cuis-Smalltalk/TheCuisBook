@@ -6,16 +6,16 @@ implementation of the Smalltalk language and environment.
 Copyright (C) 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
 
 
-Thanks to Matt Armstrong, Bernhard Pieber, David Lewis, John McGarey,
-Mariano Montone, Tommy Pettersson, Mauro Rizzi & Stephen Smith for the
-reviews of the book, suggestions and borrowed texts. It is very
-valuable.
+Thanks to Matt Armstrong, David Lewis, John McGarey, Mariano Montone,
+Ricardo Pacheco, Tommy Pettersson, Bernhard Pieber, Mauro Rizzi &
+Stephen Smith for the reviews of the book, suggestions and borrowed
+texts. It is very valuable.
 
 
 
 
 
-Compilation : February 15, 2023
+Compilation : February 16, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -96,39 +96,13 @@ Previous: <a href="A-Clock-Morph.html" accesskey="p" rel="prev">A Clock Morph</a
 </div>
 <hr>
 <span id="Back-to-Spacewar_0021-Morphs-1"></span><h3 class="section">7.3 Back to Spacewar! Morphs</h3>
-<p>For performance reasons, our Spacewar! game does not use the
-<code>VectorGraphics</code> package. It relies on the BitBlt
-canvas. Therefore, each of our moprh should answer <code>false</code>
-to the <code>#requiresVectorCanvas</code> message:
-</p>
-<div class="float"><span id="vectorGraphicsNo"></span>
-<div class="example">
-<pre class="example">Mobile&gt;&gt;requiresVectorCanvas
-   ^ false
 
-CentralStar&gt;&gt;&gt;requiresVectorCanvas
-   ^ false
-
-SpaceWar&gt;&gt;&gt;requiresVectorCanvas
-   ^ false
-</pre></div>
-
-<div class="float-caption"><p><strong>Example 7.3: </strong>We don&rsquo;t use <code>VectorGraphics</code> for performance reason</p></div></div>
-<p>By inheritance, <code>Mobile</code> being a superclass of <code>SpaceShip</code> and
-<code>Torpedo</code> means that instances of these later classes also respond
-<code>false</code> to the <code>#requiresVectorCanvas</code> message.
-</p>
 <span id="Central-star"></span><h4 class="subsection">7.3.1 Central star</h4>
-<p>Because we use the bitmap canvas for the rendering of our morphs, each
-morph should knows about its extent. That way the collision detection
-between star, ships and torpedoes works properly.
-</p>
-<p>When one of our morphs receives the <code>#morphExtent</code>
-message, it answers its extent in its idle position when not
-rotated.
-</p>
+
 <span id="index-backtick"></span>
-<p>Our central has an extent of <code>30 @ 30</code>:
+<p>Our central star has an extent of <code>30 @ 30</code> we need to use
+in several places in the code. Therefore it makes sense to define a
+dedicated method to answer this value:
 </p>
 <div class="float"><span id="centralStarExtent"></span>
 <div class="example">
@@ -136,15 +110,14 @@ rotated.
    ^ `30 @ 30`
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 7.4: </strong>Central star extent</p></div></div>
+<div class="float-caption"><p><strong>Example 7.3: </strong>Central star extent</p></div></div>
 <blockquote class="indentedblock">
 <p>&nbsp;<img src="note.png" alt="note">
-An expression surrounded with backticks <code>'`'</code>
-is evaluated only once,
-when the method is first saved and compiled.
-This creates a compound literal value and 
-improves the performance of the method since the expression is not evaluated
-each time the method is called: the pre-built value is used instead.
+An expression surrounded with backticks <code>'`'</code> is
+evaluated only once, when the method is first saved and compiled.
+This creates a compound literal value and improves the performance of
+the method since the expression is not evaluated each time the method
+is called: the pre-built value is used instead.
 </p></blockquote>
 
 <span id="index-number-38"></span>
@@ -166,7 +139,7 @@ fluctuating x and y radius:
       fillColor: Color yellow
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 7.5: </strong>A star with a fluctuating size</p></div></div>
+<div class="float-caption"><p><strong>Example 7.4: </strong>A star with a fluctuating size</p></div></div>
 <p>The star diameters in the x and y directions are fluctuating
 independently of 0 to 2 units. The star does not look perfectly round.
 </p>
@@ -185,16 +158,7 @@ toward the bottom of the screen.
 <div class="float"><span id="ch07_002d10_002dShipDiagram"></span>
 <div align="center"><img src="ch07-10-ShipDiagram.png" alt="ch07-10-ShipDiagram">
 </div>
-<div class="float-caption"><p><strong>Figure 7.10: </strong>Space ship diagram at game start-up</p></div></div>
-<p>Given the vertices as seen in <a href="#ch07_002d10_002dShipDiagram">Figure 7.10</a>, the extent is
-<code>20 @ 30</code>:
-</p>
-<div class="example">
-<pre class="example">SpaceShip&gt;&gt;morphExtent
-   ^ `20 @ 30`
-</pre></div>
-
-<p>Then its <code>drawOn:</code> method is written as:
+<div class="float-caption"><p><strong>Figure 7.10: </strong>Space ship diagram at game start-up</p></div></div><p>Then its <code>drawOn:</code> method is written as:
 </p>
 <div class="float"><span id="spaceShipDrawing"></span>
 <div class="example">
@@ -213,7 +177,7 @@ toward the bottom of the screen.
       canvas line: c to: 0 @ 35 width: 1 color: Color gray]
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 7.6: </strong>Space ship drawing</p></div></div>
+<div class="float-caption"><p><strong>Example 7.5: </strong>Space ship drawing</p></div></div>
 <p>When there is an acceleration from the engine, we draw a small gray
 line to represent the gas exhaust.
 </p>
@@ -362,7 +326,7 @@ declare our variable in the <code>Mobile class</code> definition &ndash;
    instanceVariableNames: 'vertices'
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 7.7: </strong><code>vertices</code> an instance variable in <code>Mobile class</code></p></div></div>
+<div class="float-caption"><p><strong>Example 7.6: </strong><code>vertices</code> an instance variable in <code>Mobile class</code></p></div></div>
 <p>Then we write an access method in the <code>Mobile class</code>, so
 <code>SpaceShip</code> and <code>Torpedo</code> instances can access it:
 </p>
@@ -391,7 +355,7 @@ Torpedo class&gt;&gt;initialize
    vertices := {0@-4 . -2@4 . 2@4}
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 7.8: </strong>Initialize a class</p></div></div>
+<div class="float-caption"><p><strong>Example 7.7: </strong>Initialize a class</p></div></div>
 
 <p>When a class is installed in Cuis-Smalltalk, its <code>initialize</code> class
 method is executed. Alternatively select the comment and execute it
@@ -415,7 +379,7 @@ Torpedo vertices.
 &rArr; #(0@-4 -2@4 2@4)
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 7.9: </strong>A class instance variable value is not shared by the subclasses</p></div></div>
+<div class="float-caption"><p><strong>Example 7.8: </strong>A class instance variable value is not shared by the subclasses</p></div></div>
 <p>This is really the behavior we want: <code>SpaceShip</code> and
 <code>Torpedo</code> instances have a different diagram. However, every
 instances of a <code>SpaceShip</code> will have the same diagram, referring
@@ -499,7 +463,7 @@ iterator <code>withIndexDo:</code>.</em>
    category: 'Spacewar!'
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 7.10: </strong><code>Vertices</code> a class variable in <code>Mobile</code></p></div></div>
+<div class="float-caption"><p><strong>Example 7.9: </strong><code>Vertices</code> a class variable in <code>Mobile</code></p></div></div>
 <p>As a class instance variable, it can be directly accessed from the
 class side and instances are grant access only with messages send to
 the class side. <strong>Contrary</strong> to a class instance variable, its
@@ -532,28 +496,29 @@ Torpedo&gt;&gt;vertices
    ^ `{0@-4 . -2@4 . 2@4}`
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 7.11: </strong>Vertices returned by an instance method</p></div></div>
+<div class="float-caption"><p><strong>Example 7.10: </strong>Vertices returned by an instance method</p></div></div>
 <p>Then in the drawing methods, we replace <code>self class
 vertices</code> by <code>self vertices</code>.
 </p>
 <span id="Collisions-revisited"></span><h4 class="subsection">7.3.6 Collisions revisited</h4>
-
-<p>VectorGraphics can detect morph collision at the pixel level. We are
-not that fortunate when using the BitBlt canvas, we have to rely on
-the rectangular morph extent.  The <code>#displayBounds</code> message is just
-what we need: it answers the morph bounds in the display, a rectangle
-encompassing the morph given its rotation and scale.
+<p>In <a href="SpaceWar_0021-collections.html#shipSunCollision">Example 4.23</a>, we have a very naive approach for collision
+between the central star and the ships, based on distance between
+morphs. It was very inaccurate.
+</p>
+<p>In bitmap games, a classic way to deal with collision detection is to
+look at the intersections of the rectangles surrounding the graphic
+objects. The <code>#displayBounds</code> message sent to a morph answers its
+bounds in the display, a rectangle encompassing the morph given its
+rotation and scale.
 </p>
 <div class="float"><span id="ch07_002d13_002dshipDisplayBounds"></span>
 <div align="center"><img src="ch07-13-shipDisplayBounds.png" alt="ch07-13-shipDisplayBounds">
 </div>
 <div class="float-caption"><p><strong>Figure 7.13: </strong>The display bounds of a space ship</p></div></div>
-<p>In <a href="SpaceWar_0021-collections.html#shipSunCollision">Example 4.23</a>, we have a very naive approach for collision
-between the central star and the ships, based on distance between
-morphs. It was very inaccurate. When browsing the <code>Rectangle</code>
-class, you learn the <code>#intersects:</code> message can tell us if two
-rectangles overlap. This is what we need for a more accurate collision
-detection between the central star and the space ships:
+<p>When browsing the <code>Rectangle</code> class, you learn the
+<code>#intersects:</code> message tells us if two rectangles overlap. This is
+what we need for a more accurate collision detection between the
+central star and the space ships:
 </p>
 <div class="float"><span id="accurateCollisionShipsSun"></span>
 <div class="example">
@@ -564,7 +529,24 @@ detection between the central star and the space ships:
          self teleport: aShip]]
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 7.12: </strong>Collision (accurate) between the ships and
+<div class="float-caption"><p><strong>Example 7.11: </strong>Collision (rectangle overlapping) between the ships and
+the Sun</p></div></div>
+
+<p>Nevertheless we use the VectorGraphics framework, its knows about the
+shape of each morph it is rendering. It uses this knowledge for
+collision detection at the pixel precision. We rewrite our detection
+method simpler with the <code>#collides:</code> message:
+</p>
+<div class="float"><span id="accuratePixelCollisionShipsSun"></span>
+<div class="example">
+<pre class="example">SpaceWar&gt;&gt;collisionsShipsStar
+   ships do: [:aShip | 
+      (aShip collides: centralStar) ifTrue: [
+         aShip flashWith: Color red.
+         self teleport: aShip]]
+</pre></div>
+
+<div class="float-caption"><p><strong>Example 7.12: </strong>Collision (pixel precision) between the ships and
 the Sun</p></div></div>
 <div class="float"><span id="exeAccurateDetection"></span>
 <blockquote class="indentedblock">

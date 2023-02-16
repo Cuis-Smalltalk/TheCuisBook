@@ -364,12 +364,13 @@ triangle,ch07-04-AnimatedAndClippedSubmorph,6}
 @section A Clock Morph
 With all the things we have already learned, we can build a more
 sophisticated morph. Let's build a @class{ClockMorph} as see in
-@ref{ch07-05-Clock}. In order to have a default text font based on
-vector graphics, do ...@clicksequence{World menu @click{}
-@label{Preferences...} @click{} @label{Set System Font...} @click{}
-@label{DejaVu...} @click{} @label{DejaVuSans}}@footnote{You can select
-any other TrueType font from the ones available.}.
+@ref{ch07-05-Clock}.
 
+@c In order to have a default text font based on
+@c vector graphics, do ...@clicksequence{World menu @click{}
+@c @label{Preferences...} @click{} @label{Set System Font...} @click{}
+@c @label{DejaVu...} @click{} @label{DejaVuSans}}@footnote{You can select
+@c any other TrueType font from the ones available.}.
 
 @figure{A clock morph,ch07-05-Clock,4}
 
@@ -570,35 +571,27 @@ although such a library (rooted in @class{BoxedMorph}) is included
 and used for building all the Smalltalk tools.
 
 The examples we have explored use the @label{VectorGraphics}
-package. This package includes @class{VectorCanvas} and
-@class{HybridCanvas} classes. However, installing this package is not
-required for using the regular Smalltalk tools you have been
-using. The reason is that @cuis{} includes by default the
-@class{BitBltCanvas} class inherited from Squeak (and called
-@class{FormCanvas} there). @class{BitBltCanvas} doesn't support the
-vector graphics drawing operations and doesn't do anti-aliasing or
+framework. It includes @class{VectorCanvas} and @class{HybridCanvas}
+classes. @cuis{} also includes the legacy @class{BitBltCanvas} class
+inherited from Squeak. @class{BitBltCanvas} doesn't support the vector
+graphics drawing operations and doesn't do anti-aliasing or
 zooming. But it is mature, and it relies on the BitBlt operation that
 is included in the @vm{}. This means that it offers excellent
 performance.
 
-@label{VectorGraphics} is still in active development. When its drawing
-performance becomes good enough, it will be able to draw all Morphs,
-completely replacing BitBltCanvas. Then, the UI customization option
-@clicksequence{World menu @click{} @label{Preferences...} @click{}
-@label{Font Sizes...}} will no longer be needed, as all windows will be
-zoomable, in addition to resizable.
-
 To further explore @cuis{}' Morphic, evaluate @smalltalk{Feature
-require: 'SVG'}, and then @smalltalk{SVGElementMorph examplesLion} and
-the other examples there. Also, be sure to try the example in the
-comment in the @method{BitBltCanvas class>>unicodeExamples} and
-@method{BitBltCanvas class>>unicodeUtf32Examples} methods.
+require: 'SVG'}, and then @smalltalk{SVGMainMorph exampleLion
+openInWorld} and the other examples there. Also, be sure to try the
+examples in the class category @label{Morphic-Examples}, among them
+execute @smalltalk{Sample10PythagorasTree new openInWorld} and play
+with the mouse wheel's up and down, left and right directions.
 
 Before we leave this section, here is a two lines change to turn our
 Cuis quartz clock@footnote{In a quartz clock, the hand for the seconds
 moves every second.} to an automatic Swiss clock@footnote{In an
 automatic clock, the hand for the seconds moves every fraction of a
-second. The smaller the fraction, the more premium the clock is.}:
+second. The smaller the fraction, the more premium the clock
+is.}@footnote{A Japanese automatic clock will be just fine too.}:
 
 @smalltalkExample{ClockMorph>>stepTime
     ^ 100 "milliseconds"
@@ -611,47 +604,23 @@ seconds' hand and at which fraction of a second it is rotating.
 
 @node Back to Spacewar! Morphs
 @section Back to Spacewar! Morphs
-For performance reasons, our Spacewar! game does not use the
-@label{VectorGraphics} package. It relies on the BitBlt
-canvas. Therefore, each of our moprh should answer @smalltalk{false}
-to the @msg{requiresVectorCanvas} message:
-
-@smalltalkExampleCaption{We don't use @label{VectorGraphics} for performance reason, vectorGraphicsNo,
-Mobile>>requiresVectorCanvas
-   @return{} false
-
-CentralStar>>>requiresVectorCanvas
-   @return{} false
-
-SpaceWar>>>requiresVectorCanvas
-   @return{} false}
-
-By inheritance, @class{Mobile} being a superclass of @class{SpaceShip} and
-@class{Torpedo} means that instances of these later classes also respond
-@smalltalk{false} to the @msg{requiresVectorCanvas} message.
 
 @subsection Central star
-Because we use the bitmap canvas for the rendering of our morphs, each
-morph should knows about its extent. That way the collision detection
-between star, ships and torpedoes works properly.
-
-When one of our morphs receives the @msg{morphExtent}
-message, it answers its extent in its idle position when not
-rotated.
 
 @cindex backtick
-Our central has an extent of @smalltalk{30 @@ 30}:
+Our central star has an extent of @smalltalk{30 @@ 30} we need to use
+in several places in the code. Therefore it makes sense to define a
+dedicated method to answer this value:
 
 @smalltalkExampleCaption{Central star extent, centralStarExtent,
 CentralStar>>morphExtent
    @return{} `30 @@ 30`}
 
-@cuisNote{An expression surrounded with backticks @code{'`'}
-is evaluated only once,
-when the method is first saved and compiled.
-This creates a compound literal value and 
-improves the performance of the method since the expression is not evaluated
-each time the method is called: the pre-built value is used instead.}
+@cuisNote{An expression surrounded with backticks @code{'`'} is
+evaluated only once, when the method is first saved and compiled.
+This creates a compound literal value and improves the performance of
+the method since the expression is not evaluated each time the method
+is called: the pre-built value is used instead.}
 
 @cindex number @subentry integer @subentry @method{atRandom}
 @cindex morph @subentry @method{drawOn:}
@@ -689,13 +658,6 @@ rotation is 0@textdegree{}. Remember the Y ordinate are oriented
 toward the bottom of the screen.
 
 @figure{Space ship diagram at game start-up,ch07-10-ShipDiagram,4}
-
-Given the vertices as seen in @ref{ch07-10-ShipDiagram}, the extent is
-@smalltalk{20 @@ 30}:
-
-@smalltalkExample{SpaceShip>>morphExtent
-   @return{} `20 @@ 30`}
-
 Then its @method{drawOn:} method is written as:
 
 @smalltalkExampleCaption{Space ship drawing,spaceShipDrawing,
@@ -985,27 +947,42 @@ vertices} by @smalltalk{self vertices}.
 
 @c refactoring of collision with display bounds
 @subsection Collisions revisited
+In @ref{shipSunCollision}, we have a very naive approach for collision
+between the central star and the ships, based on distance between
+morphs. It was very inaccurate.
 
-VectorGraphics can detect morph collision at the pixel level. We are
-not that fortunate when using the BitBlt canvas, we have to rely on
-the rectangular morph extent.  The @msg{displayBounds} message is just
-what we need: it answers the morph bounds in the display, a rectangle
-encompassing the morph given its rotation and scale.
+In bitmap games, a classic way to deal with collision detection is to
+look at the intersections of the rectangles surrounding the graphic
+objects. The @msg{displayBounds} message sent to a morph answers its
+bounds in the display, a rectangle encompassing the morph given its
+rotation and scale.
 
 @figure{The display bounds of a space ship,ch07-13-shipDisplayBounds,7}
 
-In @ref{shipSunCollision}, we have a very naive approach for collision
-between the central star and the ships, based on distance between
-morphs. It was very inaccurate. When browsing the @class{Rectangle}
-class, you learn the @msg{intersects:} message can tell us if two
-rectangles overlap. This is what we need for a more accurate collision
-detection between the central star and the space ships:
+When browsing the @class{Rectangle} class, you learn the
+@msg{intersects:} message tells us if two rectangles overlap. This is
+what we need for a more accurate collision detection between the
+central star and the space ships:
 
-@smalltalkExampleCaption{Collision (accurate) between the ships and
+@smalltalkExampleCaption{Collision (rectangle overlapping) between the ships and
 the Sun, accurateCollisionShipsSun,
 SpaceWar>>collisionsShipsStar
    ships do: [:aShip | 
       (aShip displayBounds intersects: centralStar displayBounds) ifTrue: [
+         aShip flashWith: Color red.
+         self teleport: aShip]]}
+
+
+Nevertheless we use the VectorGraphics framework, its knows about the
+shape of each morph it is rendering. It uses this knowledge for
+collision detection at the pixel precision. We rewrite our detection
+method simpler with the @msg{collides:} message:
+
+@smalltalkExampleCaption{Collision (pixel precision) between the ships and
+the Sun, accuratePixelCollisionShipsSun,
+SpaceWar>>collisionsShipsStar
+   ships do: [:aShip | 
+      (aShip collides: centralStar) ifTrue: [
          aShip flashWith: Color red.
          self teleport: aShip]]}
 

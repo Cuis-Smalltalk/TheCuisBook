@@ -22,10 +22,10 @@ Hilaire Fernandes with Ken Dickey & Juan Vuletich
 @end macro
 
 @macro thanks
-Thanks to Matt Armstrong, Bernhard Pieber, David Lewis, John McGarey,
-Mariano Montone, Tommy Pettersson, Mauro Rizzi & Stephen Smith for the
-reviews of the book, suggestions and borrowed texts. It is very
-valuable.
+Thanks to Matt Armstrong, David Lewis, John McGarey, Mariano Montone,
+Ricardo Pacheco, Tommy Pettersson, Bernhard Pieber, Mauro Rizzi &
+Stephen Smith for the reviews of the book, suggestions and borrowed
+texts. It is very valuable.
 @end macro
 
 @macro vm
