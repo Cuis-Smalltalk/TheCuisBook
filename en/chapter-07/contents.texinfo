@@ -387,7 +387,8 @@ Let's create @class{ClockMorph}, the dial clock :
 @smalltalkExampleCaption{Drawing the clock dial, clockDialDrawing,
 ClockMorph>>drawOn: aCanvas
    aCanvas
-      ellipseCenterX: 0 y: 0 rx: 100 ry: 100
+      ellipseCenter: 0@@0
+      radius: 100
       borderWidth: 10
       borderColor: Color lightCyan
       fillColor: Color veryVeryLightGray.
@@ -663,10 +664,8 @@ fluctuating x and y radius:
 CentralStar>>drawOn: canvas
    | radius |
    radius @assign{} self morphExtent // 2.
-   canvas ellipseCenterX: 0
-      y:  0
-      rx: radius x + (2 atRandom - 1)
-      ry: radius y + (2 atRandom - 1)
+   canvas ellipseCenter: 0 @@ 0
+      radius: (radius x + (2 atRandom - 1)) @@ (radius y + (2 atRandom - 1))
       borderWidth: 3 
       borderColor: Color orange 
       fillColor: Color yellow}
