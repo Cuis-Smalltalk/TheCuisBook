@@ -244,33 +244,31 @@ manage the code: a package.
 
 A package can hold a set of classes part of the same class category.
 
-Let's save our @smalltalk{Morphic-Learning} category as a package
-using our Installed Packages Browser.
+Let's save our @label{Morphic-Learning} category as a package using
+our Installed Packages Browser.
 
 ...@clicksequence{World menu @click{} @label{Open...} @click{}
 @label{Installed Packages}}...
 
 @figure{Installed Packages Browser,ch10-Package-with-requirement,11}
 
-Note that we invoked @smalltalk{Feature require:
-'Morphic-Widgets-Extras'} and @smalltalk{Feature require:
-'VectorGraphics'} above.
 
 @cindex package @subentry requirement
 
-Looking at the package names, we can observe several things of note:
+Note that we invoked @smalltalk{Feature require: 'SVG'}
+earlier. Looking at the package names, we can observe several things
+of note:
 
 @itemize
 
-  @item Each package is versioned; @emph{VectorGraphics} has version
-  1, revision 180.
+  @item Each package is versioned; @label{SVG} has version
+  1, revision 19.
   
-  @item There is a package @emph{Collections-CompactArrays} which we
-  never asked for.
+  @item There are packages @label{YAXO}, @label{Color-Extras} and
+  @label{LinearAlgebra} which we never asked for.
   
-  @item Looking at the lower pane, note that the
-  Collections-CompactArrays package is @strong{required} by package
-  VectorGraphics.
+  @item Looking at the lower pane, note that those packages are
+  @strong{required} by the package @label{SVG}.
   
 @end itemize
 
@@ -278,21 +276,22 @@ Now this is important.  When a packaged Feature is required, it may
 specify that it also requires other packages to work properly, and
 in fact to specify that those packages be up to a specific version level.
 
-This is the key to being able to
-safely compose packages which have requirements.
+This is the key to being able to safely compose packages which have
+requirements.
 
 OK, let's click on the @label{New} button and type
 @label{Morphic-Learning} into the prompt.  This results in a new
-package with the same name as our @smalltalk{Morphic-Learning}
-category.  Note that this is version 1, revision 0 (1.0 at right) and
-that the package has yet to be saved.
+package with the same name as our @label{Morphic-Learning} category.
+Note that this is version 1, revision 0 (1.0 at right) and that the
+package has yet to be saved.
 
-@figure{New Package -- @smalltalk{Morphic-Learning},ch10-NewPackage-Morphic-Learning,11}
+@figure{New Package -- @label{Morphic-Learning},ch10-NewPackage-Morphic-Learning,11}
 
-Remember that to create our @class{ClockMorph} we required the
-packaged VectorGraphics Feature, so to be able to load our package
-which makes use of this we need to select our new package and
-click on the @label{add Requirement} button at center, right.
+Let's say that in our clock morph we want to use color named as in the
+@label{Color-Extra} package. So to be able to load our
+@label{Morphic-Learning} package which makes use of this we need to
+select our new package and click on the @label{add Requirement} button
+at center, right.
 
 This brings up a list of loaded packages to choose from.
 
@@ -302,7 +301,7 @@ Now when we @label{save} our package, we see the pathname where the package
 file was created.  We can now safely email this file, check it into a version
 control system, make a copy to our backup thumb drive.
 
-@figure{Saved package -- @smalltalk{Morphic-Learning},ch10-Saved-with-requirement,11}
+@figure{Saved package -- @label{Morphic-Learning},ch10-Saved-with-requirement,11}
 
 As mentioned above, package files are just text files with a special format
 which @cuis{} knows how to load.  If you open a File List browser and

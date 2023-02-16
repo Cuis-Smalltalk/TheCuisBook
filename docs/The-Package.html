@@ -101,8 +101,8 @@ Next: <a href="Daily-Workflow.html" accesskey="n" rel="next">Daily Workflow</a>,
 
 <p>A package can hold a set of classes part of the same class category.
 </p>
-<p>Let&rsquo;s save our <code>Morphic-Learning</code> category as a package
-using our Installed Packages Browser.
+<p>Let&rsquo;s save our <code>Morphic-Learning</code> category as a package using
+our Installed Packages Browser.
 </p>
 <p>...World menu &rarr; <code>Open...</code> &rarr;
 <code>Installed Packages</code>...
@@ -111,24 +111,22 @@ using our Installed Packages Browser.
 <div align="center"><img src="ch10-Package-with-requirement.png" alt="ch10-Package-with-requirement">
 </div>
 <div class="float-caption"><p><strong>Figure 9.7: </strong>Installed Packages Browser</p></div></div>
-<p>Note that we invoked <code>Feature require:
-'Morphic-Widgets-Extras'</code> and <code>Feature require:
-'VectorGraphics'</code> above.
-</p>
+
 <span id="index-package-6"></span>
 
-<p>Looking at the package names, we can observe several things of note:
+<p>Note that we invoked <code>Feature require: 'SVG'</code>
+earlier. Looking at the package names, we can observe several things
+of note:
 </p>
 <ul>
-<li> Each package is versioned; <em>VectorGraphics</em> has version
-  1, revision 180.
+<li> Each package is versioned; <code>SVG</code> has version
+  1, revision 19.
   
-</li><li> There is a package <em>Collections-CompactArrays</em> which we
-  never asked for.
+</li><li> There are packages <code>YAXO</code>, <code>Color-Extras</code> and
+  <code>LinearAlgebra</code> which we never asked for.
   
-</li><li> Looking at the lower pane, note that the
-  Collections-CompactArrays package is <strong>required</strong> by package
-  VectorGraphics.
+</li><li> Looking at the lower pane, note that those packages are
+  <strong>required</strong> by the package <code>SVG</code>.
   
 </li></ul>
 
@@ -136,23 +134,24 @@ using our Installed Packages Browser.
 specify that it also requires other packages to work properly, and
 in fact to specify that those packages be up to a specific version level.
 </p>
-<p>This is the key to being able to
-safely compose packages which have requirements.
+<p>This is the key to being able to safely compose packages which have
+requirements.
 </p>
 <p>OK, let&rsquo;s click on the <code>New</code> button and type
 <code>Morphic-Learning</code> into the prompt.  This results in a new
-package with the same name as our <code>Morphic-Learning</code>
-category.  Note that this is version 1, revision 0 (1.0 at right) and
-that the package has yet to be saved.
+package with the same name as our <code>Morphic-Learning</code> category.
+Note that this is version 1, revision 0 (1.0 at right) and that the
+package has yet to be saved.
 </p>
 <div class="float"><span id="ch10_002dNewPackage_002dMorphic_002dLearning"></span>
 <div align="center"><img src="ch10-NewPackage-Morphic-Learning.png" alt="ch10-NewPackage-Morphic-Learning">
 </div>
 <div class="float-caption"><p><strong>Figure 9.8: </strong>New Package &ndash; <code>Morphic-Learning</code></p></div></div>
-<p>Remember that to create our <code>ClockMorph</code> we required the
-packaged VectorGraphics Feature, so to be able to load our package
-which makes use of this we need to select our new package and
-click on the <code>add Requirement</code> button at center, right.
+<p>Let&rsquo;s say that in our clock morph we want to use color named as in the
+<code>Color-Extra</code> package. So to be able to load our
+<code>Morphic-Learning</code> package which makes use of this we need to
+select our new package and click on the <code>add Requirement</code> button
+at center, right.
 </p>
 <p>This brings up a list of loaded packages to choose from.
 </p>
