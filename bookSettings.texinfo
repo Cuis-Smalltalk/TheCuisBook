@@ -23,9 +23,9 @@ Hilaire Fernandes with Ken Dickey & Juan Vuletich
 
 @macro thanks
 Thanks to Matt Armstrong, David Lewis, John McGarey, Mariano Montone,
-Ricardo Pacheco, Tommy Pettersson, Bernhard Pieber, Mauro Rizzi &
-Stephen Smith for the reviews of the book, suggestions and borrowed
-texts. It is very valuable.
+Ricardo Pacheco, Barry Perryman, Tommy Pettersson, Bernhard Pieber,
+Mauro Rizzi & Stephen Smith for the reviews of the book, suggestions
+and borrowed texts. It is very valuable.
 @end macro
 
 @macro vm

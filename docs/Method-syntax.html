@@ -7,15 +7,15 @@ Copyright (C) 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vu
 
 
 Thanks to Matt Armstrong, David Lewis, John McGarey, Mariano Montone,
-Ricardo Pacheco, Tommy Pettersson, Bernhard Pieber, Mauro Rizzi &
-Stephen Smith for the reviews of the book, suggestions and borrowed
-texts. It is very valuable.
+Ricardo Pacheco, Barry Perryman, Tommy Pettersson, Bernhard Pieber,
+Mauro Rizzi & Stephen Smith for the reviews of the book, suggestions
+and borrowed texts. It is very valuable.
 
 
 
 
 
-Compilation : February 16, 2023
+Compilation : February 21, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -121,10 +121,10 @@ involved &ndash; our first explanation was <a href="Spacewar_0021-States-and-Beh
 &quot;Check for any keyboard stroke, and take action accordingly&quot;
 | key |
 key := event keyCharacter.
-key = Character arrowUp ifTrue: [^ ships first push].
-key = Character arrowRight ifTrue: [^ ships first right].
-key = Character arrowLeft ifTrue: [^ ships first left].
-key = Character arrowDown ifTrue: [^ ships first fireTorpedo]
+key = Character smalltalkUpArrowUp ifTrue: [^ ships first push].
+key = Character smalltalkRightArrow ifTrue: [^ ships first right].
+key = Character smalltalkLeftArrow ifTrue: [^ ships first left].
+key = Character smalltalkDownArrow ifTrue: [^ ships first fireTorpedo]
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 5.1: </strong>SpaceWar! key stroke</p></div></div>
