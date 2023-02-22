@@ -119,12 +119,14 @@ involved &ndash; our first explanation was <a href="Spacewar_0021-States-and-Beh
 <div class="example">
 <pre class="example">SpaceWar&gt;&gt;keyStroke: event
 &quot;Check for any keyboard stroke, and take action accordingly&quot;
-| key |
-key := event keyCharacter.
-key = Character smalltalkUpArrow ifTrue: [^ ships first push].
-key = Character smalltalkRightArrow ifTrue: [^ ships first right].
-key = Character smalltalkLeftArrow ifTrue: [^ ships first left].
-key = Character smalltalkDownArrow ifTrue: [^ ships first fireTorpedo]
+   | key |
+   key := event keyCharacter.
+   event isArrowUp ifTrue: [^ ships first push].
+   event isArrowRight ifTrue: [^ ships first right].
+   event isArrowLeft ifTrue: [^ ships first left].
+   event isArrowDown ifTrue: [^ ships first fireTorpedo].
+   key = $w ifTrue: [^ ships second push].
+   ...
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 5.1: </strong>SpaceWar! key stroke</p></div></div>

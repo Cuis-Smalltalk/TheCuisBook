@@ -1,6 +1,6 @@
-'From Cuis 6.0 [latest update: #5661] on 16 February 2023 at 12:54:33 pm'!
+'From Cuis 6.0 [latest update: #5661] on 22 February 2023 at 9:33:46 pm'!
 'Description SpaceWar!! game code'!
-!provides: 'Spacewar!!' 1 91!
+!provides: 'Spacewar!!' 1 92!
 SystemOrganization addCategory: 'Spacewar!!'!
 
 
@@ -337,14 +337,14 @@ handlesKeyboard
 handlesMouseOver: event
 	^ true! !
 
-!SpaceWar methodsFor: 'events' stamp: 'hlsf 2/16/2023 11:24:42'!
+!SpaceWar methodsFor: 'events' stamp: 'hlsf 2/22/2023 21:31:48'!
 keyStroke: event
 	| key |
+	event isArrowUp ifTrue: [^ ships first push].
+	event isArrowRight ifTrue: [^ ships first right].
+	event isArrowLeft ifTrue: [^ ships first left].
+	event isArrowDown ifTrue: [^ ships first fireTorpedo].
 	key _ event keyCharacter.
-	key = Character smalltalkUpArrow ifTrue: [^ ships first push].
-	key = Character smalltalkRightArrow ifTrue: [^ ships first right].
-	key = Character smalltalkLeftArrow ifTrue: [^ ships first left].
-	key = Character smalltalkDownArrow ifTrue: [^ ships first fireTorpedo].
 	key = $w ifTrue: [^ ships second push].
 	key =$d ifTrue: [^ ships second right].
 	key = $a ifTrue: [^ ships second left].

@@ -254,25 +254,21 @@ message, it receives the messages <code>#keyUp:</code>, <code>#keyDown:</code> a
 </p>
 <p>The argument of these messages is a <code>KeyboardEvent</code> object to
 which, among other things, you can ask the <code>#keyCharacter</code> of the
-pressed key. The first player ship &ndash; the green one &ndash; is controlled
-with the keyboard arrows when there are stroked:
+pressed key or test about some special keys as the keyboard
+arrows. The first player ship &ndash; the green one &ndash; is controlled with
+the keyboard arrows when there are stroked:
 </p>
 <div class="float"><span id="firstShipControl"></span>
 <div class="example">
 <pre class="example">SpaceWar&gt;&gt;keyStroke: event
-   | key |
-   key := event keyCharacter.
-   key = Character smalltalkUpArrow ifTrue: [^ ships first push].
-   key = Character smalltalkRightArrow ifTrue: [^ ships first right].
-   key = Character smalltalkLeftArrow ifTrue: [^ ships first left].
-   key = Character smalltalkDownArrow ifTrue: [^ ships first fireTorpedo].
+   event isArrowUp ifTrue: [^ ships first push].
+   event isArrowRight ifTrue: [^ ships first right].
+   event isArrowLeft ifTrue: [^ ships first left].
+   event isArrowDown ifTrue: [^ ships first fireTorpedo].
+   ...
 </pre></div>
 
 <div class="float-caption"><p><strong>Example 8.2: </strong>Keystroke to control the first player ship</p></div></div>
-<p>The <code>smalltalkUpArrow</code>, <code>smalltalkRightArrow</code>,.... are
-<code>Character</code> class methods returning character codes representing
-the arrow keys.
-</p>
 <p>To control the second player ship, we use another classic arrangement
 in QWERTY keyboard controlled game:
 WASD<a id="DOCF28" href="#FOOT28"><sup>28</sup></a>.
