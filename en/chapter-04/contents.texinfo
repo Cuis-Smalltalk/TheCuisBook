@@ -151,10 +151,11 @@ Now you know.  A symbol can't be duplicated nor changed.
 
 @cindex string @subentry Unicode
 @cindex Unicode
-@cuisNote{In @cuis{}, strings with characters out of the Ascii range
-are encoded as @class{UnicodeString} object. There are immutable
-objects, copying such an object returns the original object -- same
-location in the computer memory. Observe the example bellow.}
+@cuisNote{In @cuis{}, strings with characters out of the
+@acronym{ASCII} table are encoded as @class{UnicodeString}
+object. There are immutable objects, copying such an object returns
+the original object -- same location in the computer memory. Observe
+the example bellow.}
 
 @smalltalkExample{'sur' class
 @result{} String 
