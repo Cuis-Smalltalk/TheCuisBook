@@ -8,14 +8,14 @@ Copyright (C) 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vu
 
 Thanks to Matt Armstrong, David Lewis, John McGarey, Mariano Montone,
 Ricardo Pacheco, Barry Perryman, Tommy Pettersson, Bernhard Pieber,
-Mauro Rizzi & Stephen Smith for the reviews of the book, suggestions
-and borrowed texts. It is very valuable.
+Mauro Rizzi, Stephen Smith & Ignacio Sniechowski for the reviews of
+the book, suggestions and borrowed texts. It is very valuable.
 
 
 
 
 
-Compilation : February 21, 2023
+Compilation : February 22, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -97,14 +97,14 @@ Next: <a href="Messages-to-number-entities.html" accesskey="n" rel="next">Messag
 <hr>
 <span id="Message-to-string-entities-1"></span><h3 class="section">2.3 Message to string entities</h3>
 <span id="index-string-4"></span>
-
-<p><strong>Note.</strong> We wrote earlier a string is a collection of
-characters. It is true for byte string, where each character is
-encoded with a byte &ndash; a byte string. However since 2023, the default
-string format for Cuis-Smalltalk is Unicode (UTF-8) where each character can
-be encoded with 1, 2, 3 or 4 bytes. Therefore it is immutable and can
-not be indexed, it can be converted as byte string with the message
-<code>#asByteString</code>.
+<span id="index-string-5"></span>
+<span id="index-Unicode"></span>
+<p><strong>Note.</strong> We wrote earlier a <code>String</code> is a collection of
+characters, where each character is encoded with a byte<a id="DOCF13" href="#FOOT13"><sup>13</sup></a>, a byte
+string. When a string contains an accentuated character or any other
+character not in the <acronym>ASCII</acronym> table<a id="DOCF14" href="#FOOT14"><sup>14</sup></a> it is encoded in
+Unicode (<acronym>UTF-8</acronym>) where each character can be encoded with 1,
+2, 3 or 4 bytes.
 </p>
 <p>Access to a character in a string is done with the keyword message
 <code>#at:</code> and its index position in the string as the argument. Execute
@@ -112,7 +112,7 @@ the following examples with the <kbd>Ctrl-p</kbd> shortcut:
 </p>
 <div class="example">
 <pre class="example">'Hello' at: 1 &rArr; $H
-'Hello' asByteString at: 5 &rArr; $o
+'Hello' at: 5 &rArr; $o
 </pre></div>
 
 <p>Observe how a character is prefixed with the &ldquo;$&rdquo; symbol.
@@ -120,18 +120,18 @@ the following examples with the <kbd>Ctrl-p</kbd> shortcut:
 <p><strong>Caution.</strong> The index indicates position naturally from 1 to the
 string length.
 </p>
-<span id="index-string-5"></span>
+<span id="index-string-6"></span>
 <div class="example">
-<pre class="example">'Hello' asByeString indexOf: $e
+<pre class="example">'Hello' indexOf: $e
 &rArr; 2
 </pre></div>
 
-<span id="index-string-6"></span>
+<span id="index-string-7"></span>
 <span id="index-yourself"></span>
 <p>To change one character, use the companion two keyword message
 <code>#at:put:</code>. The argument must be noted as a character:
 </p><div class="example">
-<pre class="example">'Hello' asByteString at: 2 put: $a; yourself
+<pre class="example">'Hello' at: 2 put: $a; yourself
 &rArr; 'Hallo'
 </pre></div>
 
@@ -150,6 +150,25 @@ the string &rsquo;Hello&rsquo; to become &rsquo;Belle&rsquo;.</em>
 
 
 <div class="float-caption"><p><strong>Exercise 2.1: </strong>Hello to Belle</p></div></div>
+<span id="index-string-8"></span>
+<span id="index-Unicode-1"></span>
+<p>Now observe carefully the behavior when manipulating a string encoded
+as Unicode. It is immutable and can not be indexed, it can be
+converted as byte string with the message <code>#asByteString</code>:
+</p>
+<div class="example">
+<pre class="example">'paragüas' class
+&rArr; UnicodeString
+'paragüas' at: 6
+&rArr; $ü
+'paragüas' at: 6 put: $u
+&rArr; Error
+'paragüas' asByteString class
+&rArr; String
+'paragüas' asByteString at: 6 put: $u; yourself
+&rArr; 'paraguas'
+</pre></div>
+
 <span id="index-character"></span>
 <p>Characters can be converted to integers and integers to characters:
 </p><div class="example">
@@ -157,22 +176,22 @@ the string &rsquo;Hello&rsquo; to become &rsquo;Belle&rsquo;.</em>
 (65 + 25) asCharacter &rArr; $Z
 </pre></div>
 
-<span id="index-string-7"></span>
+<span id="index-string-9"></span>
 <span id="index-collection-1"></span>
 <p>Shuffling a string can be fun but not very useful. However,
 shuffling can apply to any kind of collection, not only to a string, and it
 will prove to be useful as we will see later:
 </p><div class="example">
-<pre class="example">'hello world' asByteString shuffled
+<pre class="example">'hello world' shuffled
 &rArr; 'wod llreohl'
 </pre></div>
 <p>Note that the results of each shuffle are different.
 </p>
-<span id="index-string-8"></span>
+<span id="index-string-10"></span>
 <span id="index-message-8"></span>
 <p>Messages naturally compose:
 </p><div class="example">
-<pre class="example">'hello world' asByteString shuffled asArray
+<pre class="example">'hello world' shuffled asArray
 &rArr; #($h $d $l $ (20) $o $w $e $l $l $o $r) 
 </pre></div>
 
@@ -183,9 +202,9 @@ be instances of any class.
 </p>
 <p>Like <code>#shuffled</code>, all collections answer to the message
 <code>#sorted</code>, which answers a sorted collection.
-<span id="index-string-9"></span>
+<span id="index-string-11"></span>
 </p><div class="example">
-<pre class="example">'hello world' asByteString sorted
+<pre class="example">'hello world' sorted
 &rArr; #($ (20) $d $e $h $l $l $l $o $o $r $w)
 </pre></div>
 
@@ -199,6 +218,20 @@ are cases, as seen here, where something odd happens.  We will discuss this
 further when we look at different kinds of <code>Collection</code>s and
 discuss how we name instances and methods to show intent and reduce surprise.
 </p>
+<div class="footnote">
+<hr>
+<h4 class="footnotes-heading">Footnotes</h4>
+
+<h5><a id="FOOT13" href="#DOCF13">(13)</a></h3>
+<p>A
+byte is encoded with 8 bits, each one with a value of 0 or 1.</p>
+<h5><a id="FOOT14" href="#DOCF14">(14)</a></h3>
+<p><acronym>ASCII</acronym>
+has just 128 code points, of which only 95 are printable characters,
+which severely limited its scope. All modern computer systems instead
+use Unicode, which has millions of code points, but the first 128 of
+these are the same as the ASCII set. (Wikipedia)</p>
+</div>
 <hr>
 <div class="header">
 <p>

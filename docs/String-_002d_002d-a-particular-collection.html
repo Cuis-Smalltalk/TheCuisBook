@@ -8,14 +8,14 @@ Copyright (C) 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vu
 
 Thanks to Matt Armstrong, David Lewis, John McGarey, Mariano Montone,
 Ricardo Pacheco, Barry Perryman, Tommy Pettersson, Bernhard Pieber,
-Mauro Rizzi & Stephen Smith for the reviews of the book, suggestions
-and borrowed texts. It is very valuable.
+Mauro Rizzi, Stephen Smith & Ignacio Sniechowski for the reviews of
+the book, suggestions and borrowed texts. It is very valuable.
 
 
 
 
 
-Compilation : February 21, 2023
+Compilation : February 22, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -100,9 +100,10 @@ Next: <a href="Fun-with-variables.html" accesskey="n" rel="next">Fun with variab
 <span id="index-class-11"></span>
 <span id="index-protocol"></span>
 
-<p>The <code>String</code> class also inherits behavior from its
-ancestor classes. Indeed <code>String</code> is a subclass of
-<code>ArrayedCollection</code>. The direct consequence is that when
+<p>The <code>String</code> class also inherits behavior from its ancestor
+classes. Indeed <code>String</code> is a subclass of
+<code>CharacterSequence</code>, itself a subclass of
+<code>SequenceCollection</code> . The direct consequence is that when
 searching for some specific behavior, you may need to explore the
 parent classes too. The whole behavior of a class, defined in the
 class itself and its parents is called its <em>protocol</em>.
@@ -199,7 +200,7 @@ work. Observe below, the error is thrown on a <code>Character</code>
 instance:
 </p>
 <div class="example">
-<pre class="example">'Hello My Friend' asByteString cos
+<pre class="example">'Hello My Friend' cos
 &rArr; MesageNotUnderstood: Character&gt;&gt;cos
 </pre></div>
 
@@ -221,19 +222,40 @@ selectors as a symbol.  We use symbols because each message name must
 uniquely index the code for a method.  You will use a symbol when you
 need to name something uniquely.
 </p>
-<p>In the example below, observe the same behavior with string. In
-Cuis-Smalltalk a string is an Unicode immutable object, copying a string
-returns the original string &ndash; same location in the computer memory:
+<p>In the example below, observe the same behavior with string:
 </p>
 <div class="example">
 <pre class="example">'hello' == 'hello' copy
-&rArr; true 
+&rArr; false
 #hello  == #hello copy
 &rArr; true
 </pre></div>
 
-<p>Now you know.  Strings and symbol can&rsquo;t be duplicated nor changed.
+<p>Now you know.  A symbol can&rsquo;t be duplicated nor changed.
 </p>
+<span id="index-string-13"></span>
+<span id="index-Unicode-2"></span>
+<blockquote class="indentedblock">
+<p>&nbsp;<img src="note.png" alt="note">
+In Cuis-Smalltalk, strings with characters out of the Ascii range
+are encoded as <code>UnicodeString</code> object. There are immutable
+objects, copying such an object returns the original object &ndash; same
+location in the computer memory. Observe the example bellow.
+</p></blockquote>
+
+<div class="example">
+<pre class="example">'sur' class
+&rArr; String 
+'sur' == 'sur' copy
+&rArr; false
+'sûr' class
+&rArr; UnicodeString 
+'sûr' == 'sûr' copy
+&rArr;true
+</pre></div>
+
+
+
 <p>Symbols can contain space characters:
 </p>
 <div class="example">

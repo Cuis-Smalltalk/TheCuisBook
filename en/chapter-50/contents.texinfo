@@ -54,7 +54,7 @@ Transcript show: 2020 printStringWords capitalized
 @unnumberedsec The Message Way of Life
 @subheading @ref{helloBelle}
 @smallexample
-'Hello' asByteString
+'Hello' 
    at: 1 put: $B;
    at: 2 put: $e;
    at: 3 put: $l;

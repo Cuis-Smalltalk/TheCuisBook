@@ -8,14 +8,14 @@ Copyright (C) 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vu
 
 Thanks to Matt Armstrong, David Lewis, John McGarey, Mariano Montone,
 Ricardo Pacheco, Barry Perryman, Tommy Pettersson, Bernhard Pieber,
-Mauro Rizzi & Stephen Smith for the reviews of the book, suggestions
-and borrowed texts. It is very valuable.
+Mauro Rizzi, Stephen Smith & Ignacio Sniechowski for the reviews of
+the book, suggestions and borrowed texts. It is very valuable.
 
 
 
 
 
-Compilation : February 21, 2023
+Compilation : February 22, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -169,7 +169,7 @@ far:
 
 <p>Each character from A to Z is referenced by the <code>c</code> block
 parameter and converted to its Ascii
-value<a id="DOCF29" href="#FOOT29"><sup>29</sup></a>:
+value<a id="DOCF31" href="#FOOT31"><sup>31</sup></a>:
 <code>c asciiValue</code>. It is shifted of 65, so the A character
 counts as 0 and Z as 25 in the alphabet list. To apply the Caesar
 cipher, we send the message <code>+ 3</code> to the previous result.
@@ -178,7 +178,7 @@ cipher, we send the message <code>+ 3</code> to the previous result.
 alphabet, indeed these characters will be ciphered as 26, 27, 28. To
 fix that we send <code>\\ 26</code> to the previous result, it is an
 old trick of programming: the reminder of the Euclidean division by 26
-frames the value between 0 and 25<a id="DOCF30" href="#FOOT30"><sup>30</sup></a>.
+frames the value between 0 and 25<a id="DOCF32" href="#FOOT32"><sup>32</sup></a>.
 </p>
 <p>Finally we shift back of 65 before converting from the Ascii value to
 the character.
@@ -295,9 +295,9 @@ appropriate indentation.
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h5><a id="FOOT29" href="#DOCF29">(29)</a></h3>
+<h5><a id="FOOT31" href="#DOCF31">(31)</a></h3>
 <p><a href="https://en.wikipedia.org/wiki/ASCII">https://en.wikipedia.org/wiki/ASCII</a></p>
-<h5><a id="FOOT30" href="#DOCF30">(30)</a></h3>
+<h5><a id="FOOT32" href="#DOCF32">(32)</a></h3>
 <p>It generalizes to the
 mathematics field of modular arithmetic,
 <a href="https://www.wikiwand.com/en/Modular_arithmetic">https://www.wikiwand.com/en/Modular_arithmetic</a></p>
