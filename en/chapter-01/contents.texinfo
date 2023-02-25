@@ -181,7 +181,7 @@ without recompilation.  This is what @dfn{portability} means to us.
 
 What makes @cuis{} special is the living entities in the image: its
 class population and arrangement, how the classes inherit from each
-other. The class count is typically less than 600.
+other. The class count is typically less than 700.
 
 To get you started easily, we encourage you to install
 @url{https://sites.google.com/view/cuis-university/descargas,,Cuis-University}@footnote{@url{https://sites.google.com/view/cuis-university/descargas}}. Here
