@@ -57,11 +57,11 @@ fresh @cuis{} environment, the count of class instances is more than
 ProtoObject allSubclasses sum: [ :class | class allInstances size] 
 @result{} 152058}
 
-The count of classes, the models for the entities -- instances of the class @class{Class} -- is less than 600.
+The count of classes, the models for the entities -- instances of the class @class{Class} -- is less than 700.
 
 @smalltalkExampleCaption{Calculating the number of classes, classesCount,
 Smalltalk allClasses size
-@result{} 586}
+@result{} 671}
 
 @cuisNote{Because you are not using the base image but one used
 to teach classes, you will likely see
