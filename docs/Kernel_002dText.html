@@ -1,5 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
@@ -9,13 +12,13 @@ Copyright (C) 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vu
 Thanks to Matt Armstrong, David Lewis, John McGarey, Mariano Montone,
 Ricardo Pacheco, Barry Perryman, Tommy Pettersson, Bernhard Pieber,
 Mauro Rizzi, Stephen Smith & Ignacio Sniechowski for the reviews of
-the book, suggestions and borrowed texts. It is very valuable.
+the book, suggestions and borrowed texts. Your help is very valuable.
 
 
 
 
 
-Compilation : February 25, 2023
+Compilation : February 27, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -51,9 +54,6 @@ original.
 
 Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
  -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Kernel-Text (The Cuis-Smalltalk Book)</title>
 
 <meta name="description" content="Kernel-Text (The Cuis-Smalltalk Book)">
@@ -61,6 +61,8 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="Class-_002d-Model-of-Communicating-Entities.html" rel="up" title="Class - Model of Communicating Entities">
@@ -68,11 +70,11 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="Kernel_002dNumbers.html" rel="prev" title="Kernel-Numbers">
 <style type="text/css">
 <!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
@@ -81,6 +83,7 @@ pre.menu-preformatted {font-family: serif}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -90,29 +93,30 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Kernel_002dText"></span><div class="header">
+<div class="section" id="Kernel_002dText">
+<div class="header">
 <p>
-Next: <a href="Spacewar_0021-States-and-Behaviors.html" accesskey="n" rel="next">Spacewar! States and Behaviors</a>, Previous: <a href="Kernel_002dNumbers.html" accesskey="p" rel="prev">Kernel-Numbers</a>, Up: <a href="Class-_002d-Model-of-Communicating-Entities.html" accesskey="u" rel="up">Class - Model of Communicating Entities</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Spacewar_0021-States-and-Behaviors.html" accesskey="n" rel="next">Spacewar! States and Behaviors</a>, Previous: <a href="Kernel_002dNumbers.html" accesskey="p" rel="prev">Kernel-Numbers</a>, Up: <a href="Class-_002d-Model-of-Communicating-Entities.html" accesskey="u" rel="up">Class, Model of Communicating Entities</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <span id="Kernel_002dText-1"></span><h3 class="section">3.5 Kernel-Text</h3>
-<p>Notably, this category contains classes <code>Character</code>, <code>String</code>
-and <code>Symbol</code>. <code>String</code> instances are collections of
-<code>Character</code> instances.
+<p>Notably, this category contains classes <code>Character</code>, <code>String</code> and <code>Symbol</code>. <code>String</code> instances are collections of <code>Character</code> instances. All these are limited to the small <acronym>ASCII</acronym> character set. The corresponding classes that can handle the much larger Unicode character set are <code>UnicodeCodePoint</code>, <code>UnicodeString</code> and <code>UnicodeSymbol</code>. As stated before, the Unicode classes can also handle <acronym>ASCII</acronym>, and they are interchangeable. You usually don&rsquo;t need to care about which flavor (<acronym>ASCII</acronym> or Unicode) an instance actually is.
 </p>
-<span id="index-character-1"></span>
-<p><strong>Character.</strong> An individual character is written prefixed with a
-&ldquo;$&rdquo;, for example: <code>$A</code>. It can be defined with the class side method
-<code>numericValue:</code> or converted from an integer instance with the
-<code>#asCharacter</code>:
+<span id="index-character-2"></span>
+<p><strong>Character/UnicodeCodePoint.</strong> An individual character is written prefixed with a &ldquo;$&rdquo;, for example: <code>$A</code> or <code>$φ</code>. It can be defined with the class side method <code>codePoint:</code>. Note, however, that you can ask Character only about valid Characters. It is generally safer to ask UnicodeCodePoint instead:
 </p>
 <div class="example">
-<pre class="example">Character numericValue: 65 &rArr; $A
-65 asCharacter &rArr; $A
+<pre class="example">Character codePoint: 65 &rArr; $A
+Character codePoint: 966 &rArr; nil
+UnicodeCodePoint codePoint: 966 &rArr; $φ
 </pre></div>
 
 <p>There are class side methods for non printable characters:
 <code>Character tab</code>, <code>Character lf</code>, etc.
+</p>
+<p>Additionally, <code>UnicodeCodePoint</code> defines a <code>#namedCharactersMap</code>, that lets you enter many Unicode characters easily, like:
+</p>
+<p><code>\leftright</code> then press spacebar.
 </p>
 <p>As each string is a collection of characters, when iterating a string we
 can use the <code>Character</code> instance methods:
@@ -134,7 +138,7 @@ reject the numeric characters.</em>
 
 <div class="float-caption"><p><strong>Exercise 3.7: </strong>Select apples</p></div></div>
 <span id="index-method-11"></span>
-<span id="index-string-12"></span>
+<span id="index-string-11"></span>
 <p><strong>String.</strong> <code>String</code> is a very large class, it comes with
 more than 200 methods. It is useful to browse these method categories
 to see common ways to group methods.
@@ -206,10 +210,11 @@ string of the form &rsquo;Joe bought XX apples and YY oranges&rsquo; to the form
 
 
 <div class="float-caption"><p><strong>Exercise 3.8: </strong>Format a string</p></div></div>
+</div>
 <hr>
 <div class="header">
 <p>
-Next: <a href="Spacewar_0021-States-and-Behaviors.html" accesskey="n" rel="next">Spacewar! States and Behaviors</a>, Previous: <a href="Kernel_002dNumbers.html" accesskey="p" rel="prev">Kernel-Numbers</a>, Up: <a href="Class-_002d-Model-of-Communicating-Entities.html" accesskey="u" rel="up">Class - Model of Communicating Entities</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Spacewar_0021-States-and-Behaviors.html">Spacewar! States and Behaviors</a>, Previous: <a href="Kernel_002dNumbers.html">Kernel-Numbers</a>, Up: <a href="Class-_002d-Model-of-Communicating-Entities.html">Class, Model of Communicating Entities</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

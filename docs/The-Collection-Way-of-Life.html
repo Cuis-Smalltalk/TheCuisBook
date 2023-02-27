@@ -1,5 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
@@ -9,13 +12,13 @@ Copyright (C) 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vu
 Thanks to Matt Armstrong, David Lewis, John McGarey, Mariano Montone,
 Ricardo Pacheco, Barry Perryman, Tommy Pettersson, Bernhard Pieber,
 Mauro Rizzi, Stephen Smith & Ignacio Sniechowski for the reviews of
-the book, suggestions and borrowed texts. It is very valuable.
+the book, suggestions and borrowed texts. Your help is very valuable.
 
 
 
 
 
-Compilation : February 25, 2023
+Compilation : February 27, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -51,9 +54,6 @@ original.
 
 Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
  -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>The Collection Way of Life (The Cuis-Smalltalk Book)</title>
 
 <meta name="description" content="The Collection Way of Life (The Cuis-Smalltalk Book)">
@@ -61,18 +61,20 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="index.html" rel="up" title="Top">
-<link href="String-_002d_002d-a-particular-collection.html" rel="next" title="String -- a particular collection">
-<link href="Spacewar_0021-States-and-Behaviors.html" rel="prev" title="Spacewar! States and Behaviors">
+<link href="Control-Flow-Messaging.html" rel="next" title="Control Flow Messaging">
+<link href="Class-_002d-Model-of-Communicating-Entities.html" rel="prev" title="Class - Model of Communicating Entities">
 <style type="text/css">
 <!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
@@ -81,6 +83,7 @@ pre.menu-preformatted {font-family: serif}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -90,9 +93,10 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="The-Collection-Way-of-Life"></span><div class="header">
+<div class="chapter" id="The-Collection-Way-of-Life">
+<div class="header">
 <p>
-Next: <a href="Control-Flow-Messaging.html" accesskey="n" rel="next">Control Flow Messaging</a>, Previous: <a href="Class-_002d-Model-of-Communicating-Entities.html" accesskey="p" rel="prev">Class - Model of Communicating Entities</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Control-Flow-Messaging.html" accesskey="n" rel="next">Control Flow Messaging</a>, Previous: <a href="Class-_002d-Model-of-Communicating-Entities.html" accesskey="p" rel="prev">Class, Model of Communicating Entities</a>, Up: <a href="index.html" accesskey="u" rel="up">Table of Contents</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <span id="The-Collection-Way-of-Life-1"></span><h2 class="chapter">4 The Collection Way of Life</h2>
@@ -110,19 +114,15 @@ used, they improve both code compactness and code understanding; two
 paradigms which may seem antagonistic. Since then, these innovations
 have percolated into many popular programming languages.
 </p>
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="String-_002d_002d-a-particular-collection.html" accesskey="1">String -- a particular collection</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Fun-with-variables.html" accesskey="2">Fun with variables</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Fun-with-collections.html" accesskey="3">Fun with collections</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Collections-detailed.html" accesskey="4">Collections detailed </a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="SpaceWar_0021-collections.html" accesskey="5">SpaceWar! collections</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 
+<ul class="section-toc">
+<li><a href="String-_002d_002d-a-particular-collection.html" accesskey="1">String &ndash; a particular collection</a></li>
+<li><a href="Fun-with-variables.html" accesskey="2">Fun with variables</a></li>
+<li><a href="Fun-with-collections.html" accesskey="3">Fun with collections</a></li>
+<li><a href="Collections-detailed.html" accesskey="4">Collections detailed</a></li>
+<li><a href="SpaceWar_0021-collections.html" accesskey="5">SpaceWar! collections</a></li>
+</ul>
+</div>
 
 
 

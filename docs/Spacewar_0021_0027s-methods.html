@@ -1,5 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
@@ -9,13 +12,13 @@ Copyright (C) 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vu
 Thanks to Matt Armstrong, David Lewis, John McGarey, Mariano Montone,
 Ricardo Pacheco, Barry Perryman, Tommy Pettersson, Bernhard Pieber,
 Mauro Rizzi, Stephen Smith & Ignacio Sniechowski for the reviews of
-the book, suggestions and borrowed texts. It is very valuable.
+the book, suggestions and borrowed texts. Your help is very valuable.
 
 
 
 
 
-Compilation : February 25, 2023
+Compilation : February 27, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -51,9 +54,6 @@ original.
 
 Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
  -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Spacewar!'s methods (The Cuis-Smalltalk Book)</title>
 
 <meta name="description" content="Spacewar!'s methods (The Cuis-Smalltalk Book)">
@@ -61,18 +61,19 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="Control-Flow-Messaging.html" rel="up" title="Control Flow Messaging">
-<link href="Visual-with-Morph.html" rel="next" title="Visual with Morph">
 <link href="Control-flow-with-block-and-message.html" rel="prev" title="Control flow with block and message">
 <style type="text/css">
 <!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
@@ -81,6 +82,7 @@ pre.menu-preformatted {font-family: serif}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -90,7 +92,8 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Spacewar_0021_0027s-methods"></span><div class="header">
+<div class="section" id="Spacewar_0021_0027s-methods">
+<div class="header">
 <p>
 Previous: <a href="Control-flow-with-block-and-message.html" accesskey="p" rel="prev">Control flow with block and message</a>, Up: <a href="Control-Flow-Messaging.html" accesskey="u" rel="up">Control Flow Messaging</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
@@ -100,7 +103,13 @@ Previous: <a href="Control-flow-with-block-and-message.html" accesskey="p" rel="
 Spacewar! game. We will write some more and learn how to categorize
 them.
 </p>
-<span id="Initializing-the-game-play"></span><h4 class="subsection">5.6.1 Initializing the game play</h4>
+<ul class="section-toc">
+<li><a href="#Initializing-the-game-play" accesskey="1">Initializing the game play</a></li>
+<li><a href="#Space-ship-controls" accesskey="2">Space ship controls</a></li>
+<li><a href="#Collisions" accesskey="3">Collisions</a></li>
+</ul>
+<div class="subsection" id="Initializing-the-game-play">
+<h4 class="subsection">5.6.1 Initializing the game play</h4>
 <span id="index-method-14"></span>
 
 <p>We want to add the <code>initialize</code> method to our <code>SpaceWar</code>
@@ -175,7 +184,9 @@ method category.</em>
 
 
 <div class="float-caption"><p><strong>Exercise 5.3: </strong>Categorize a method</p></div></div>
-<span id="Space-ship-controls"></span><h4 class="subsection">5.6.2 Space ship controls</h4>
+</div>
+<div class="subsection" id="Space-ship-controls">
+<h4 class="subsection">5.6.2 Space ship controls</h4>
 
 <p>In a previous chapter, you wrote as an exercise simple implementation
 of the <a href="Spacewar_0021-States-and-Behaviors.html#simpleControls">control ship methods</a>. The definitive
@@ -249,7 +260,9 @@ space ship position, heading, and velocity before being fired.
 </div>
 <div class="float-caption"><p><strong>Figure 5.1: </strong>Spacewar! torpedoes around</p></div></div>
 
-<span id="Collisions"></span><h4 class="subsection">5.6.3 Collisions</h4>
+</div>
+<div class="subsection" id="Collisions">
+<h4 class="subsection">5.6.3 Collisions</h4>
 <p>In a previous chapter we gave a small taste of the collision detection
 code between the space ships and the central star. It relies on
 iterator, block of code and control flow.
@@ -299,10 +312,12 @@ and the central star and take action accordingly. (Adapt from
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong>Exercise 5.6: </strong>Collision between the torpedoes and the Sun</p></div></div><hr>
+<div class="float-caption"><p><strong>Exercise 5.6: </strong>Collision between the torpedoes and the Sun</p></div></div></div>
+</div>
+<hr>
 <div class="header">
 <p>
-Previous: <a href="Control-flow-with-block-and-message.html" accesskey="p" rel="prev">Control flow with block and message</a>, Up: <a href="Control-Flow-Messaging.html" accesskey="u" rel="up">Control Flow Messaging</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Previous: <a href="Control-flow-with-block-and-message.html">Control flow with block and message</a>, Up: <a href="Control-Flow-Messaging.html">Control Flow Messaging</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

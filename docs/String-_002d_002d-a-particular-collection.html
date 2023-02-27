@@ -1,5 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
@@ -9,13 +12,13 @@ Copyright (C) 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vu
 Thanks to Matt Armstrong, David Lewis, John McGarey, Mariano Montone,
 Ricardo Pacheco, Barry Perryman, Tommy Pettersson, Bernhard Pieber,
 Mauro Rizzi, Stephen Smith & Ignacio Sniechowski for the reviews of
-the book, suggestions and borrowed texts. It is very valuable.
+the book, suggestions and borrowed texts. Your help is very valuable.
 
 
 
 
 
-Compilation : February 25, 2023
+Compilation : February 27, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -51,9 +54,6 @@ original.
 
 Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
  -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>String -- a particular collection (The Cuis-Smalltalk Book)</title>
 
 <meta name="description" content="String -- a particular collection (The Cuis-Smalltalk Book)">
@@ -61,18 +61,19 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="The-Collection-Way-of-Life.html" rel="up" title="The Collection Way of Life">
 <link href="Fun-with-variables.html" rel="next" title="Fun with variables">
-<link href="The-Collection-Way-of-Life.html" rel="prev" title="The Collection Way of Life">
 <style type="text/css">
 <!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
@@ -81,6 +82,7 @@ pre.menu-preformatted {font-family: serif}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -90,7 +92,8 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="String-_002d_002d-a-particular-collection"></span><div class="header">
+<div class="section" id="String-_002d_002d-a-particular-collection">
+<div class="header">
 <p>
 Next: <a href="Fun-with-variables.html" accesskey="n" rel="next">Fun with variables</a>, Up: <a href="The-Collection-Way-of-Life.html" accesskey="u" rel="up">The Collection Way of Life</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
@@ -233,27 +236,13 @@ need to name something uniquely.
 
 <p>Now you know.  A symbol can&rsquo;t be duplicated nor changed.
 </p>
-<span id="index-string-13"></span>
+<span id="index-string-12"></span>
 <span id="index-Unicode-2"></span>
 <blockquote class="indentedblock">
 <p>&nbsp;<img src="note.png" alt="note">
-In Cuis-Smalltalk, strings with characters out of the
-<acronym>ASCII</acronym> table are encoded as <code>UnicodeString</code>
-object. There are immutable objects, copying such an object returns
-the original object &ndash; same location in the computer memory. Observe
-the example bellow.
+In Cuis-Smalltalk, strings with characters not part of the <acronym>ASCII</acronym> table are usually instances of <code>UnicodeString</code>.
+In the same way, you may get an instance of <code>UnicodeSymbol</code>  and not <code>Symbol</code>, or <code>UnicodeCodePoint</code> and not <code>Character</code>. You usually don&rsquo;t need to care about this. The <acronym>ASCII</acronym> and Unicode classes provide the same services.
 </p></blockquote>
-
-<div class="example">
-<pre class="example">'sur' class
-&rArr; String 
-'sur' == 'sur' copy
-&rArr; false
-'sûr' class
-&rArr; UnicodeString 
-'sûr' == 'sûr' copy
-&rArr;true
-</pre></div>
 
 
 
@@ -282,10 +271,11 @@ are also learning quite a bit about symbols.
 </pre></div>
 
 
+</div>
 <hr>
 <div class="header">
 <p>
-Next: <a href="Fun-with-variables.html" accesskey="n" rel="next">Fun with variables</a>, Up: <a href="The-Collection-Way-of-Life.html" accesskey="u" rel="up">The Collection Way of Life</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Fun-with-variables.html">Fun with variables</a>, Up: <a href="The-Collection-Way-of-Life.html">The Collection Way of Life</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

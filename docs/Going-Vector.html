@@ -1,5 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
@@ -9,13 +12,13 @@ Copyright (C) 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vu
 Thanks to Matt Armstrong, David Lewis, John McGarey, Mariano Montone,
 Ricardo Pacheco, Barry Perryman, Tommy Pettersson, Bernhard Pieber,
 Mauro Rizzi, Stephen Smith & Ignacio Sniechowski for the reviews of
-the book, suggestions and borrowed texts. It is very valuable.
+the book, suggestions and borrowed texts. Your help is very valuable.
 
 
 
 
 
-Compilation : February 25, 2023
+Compilation : February 27, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -51,9 +54,6 @@ original.
 
 Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
  -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Going Vector (The Cuis-Smalltalk Book)</title>
 
 <meta name="description" content="Going Vector (The Cuis-Smalltalk Book)">
@@ -61,18 +61,19 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="The-Fundamentals-of-Morph.html" rel="up" title="The Fundamentals of Morph">
 <link href="A-Clock-Morph.html" rel="next" title="A Clock Morph">
-<link href="The-Fundamentals-of-Morph.html" rel="prev" title="The Fundamentals of Morph">
 <style type="text/css">
 <!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
@@ -81,6 +82,7 @@ pre.menu-preformatted {font-family: serif}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -90,7 +92,8 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Going-Vector"></span><div class="header">
+<div class="section" id="Going-Vector">
+<div class="header">
 <p>
 Next: <a href="A-Clock-Morph.html" accesskey="n" rel="next">A Clock Morph</a>, Up: <a href="The-Fundamentals-of-Morph.html" accesskey="u" rel="up">The Fundamentals of Morph</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
@@ -109,7 +112,15 @@ the late 80&rsquo;s and late 90&rsquo;s respectively). Additionally, careful
 design of the framework relieves Morph programmers from much the
 complexity that was required, especially with regards to geometry.
 </p>
-<span id="A-first-example"></span><h4 class="subsection">7.1.1 A first example</h4>
+<ul class="section-toc">
+<li><a href="#A-first-example" accesskey="1">A first example</a></li>
+<li><a href="#Morph-you-can-move" accesskey="2">Morph you can move</a></li>
+<li><a href="#Filled-morph" accesskey="3">Filled morph</a></li>
+<li><a href="#Animated-morph" accesskey="4">Animated morph</a></li>
+<li><a href="#Morph-in-morph" accesskey="5">Morph in morph</a></li>
+</ul>
+<div class="subsection" id="A-first-example">
+<h4 class="subsection">7.1.1 A first example</h4>
 
 <p>Let&rsquo;s start with some examples. What we want is to build our own
 graphic objects, or Morphs. A Morph class is part of the Morph
@@ -175,7 +186,9 @@ pixels?</em>
 
 <div class="float-caption"><p><strong>Exercise 7.1: </strong>Cross morph</p></div></div>
 
-<span id="Morph-you-can-move"></span><h4 class="subsection">7.1.2 Morph you can move</h4>
+</div>
+<div class="subsection" id="Morph-you-can-move">
+<h4 class="subsection">7.1.2 Morph you can move</h4>
 <span id="index-morph-9"></span>
 <p>You might have already tried to click and drag on your Line, like you
 can do with regular windows and most other Morphs. If not, try
@@ -221,7 +234,9 @@ and scale factor. This means that subinstances of <code>PlacedMorph</code>
 can also be rotated and zoomed.
 </p>
 
-<span id="Filled-morph"></span><h4 class="subsection">7.1.3 Filled morph</h4>
+</div>
+<div class="subsection" id="Filled-morph">
+<h4 class="subsection">7.1.3 Filled morph</h4>
 <p>Let&rsquo;s build another morph, to have more fun.
 </p>
 <div class="example">
@@ -337,7 +352,9 @@ its center?</em>
 
 
 <div class="float-caption"><p><strong>Exercise 7.4: </strong>Rotate the cross around its center</p></div></div>
-<span id="Animated-morph"></span><h4 class="subsection">7.1.4 Animated morph</h4>
+</div>
+<div class="subsection" id="Animated-morph">
+<h4 class="subsection">7.1.4 Animated morph</h4>
 <span id="index-morph-14"></span>
 <p>Let&rsquo;s add two methods to our <code>TriangleExampleMorph</code> to
 make our triangle <em>alive</em>:
@@ -437,7 +454,9 @@ open a halo and interact with it.
 </div>
 <div class="float-caption"><p><strong>Figure 7.3: </strong>Animated morph</p></div></div>
 
-<span id="Morph-in-morph"></span><h4 class="subsection">7.1.5 Morph in morph</h4>
+</div>
+<div class="subsection" id="Morph-in-morph">
+<h4 class="subsection">7.1.5 Morph in morph</h4>
 <span id="index-morph-18"></span>
 
 <p>Now, let&rsquo;s try something different. Grab one of your
@@ -455,7 +474,7 @@ independently of the line. Also note that when you grab the triangle
 with your hand (not using the halo), you grab the
 line&nbsp;+&nbsp;triangle composite. You can&rsquo;t just drag the triangle
 away. For this, you need the triangle&rsquo;s halo. Use its <code>Move</code>
-handle<a id="DOCF24" href="#FOOT24"><sup>24</sup></a> to position it without <em>getting it out</em> of the line. Use
+handle<a id="DOCF22" href="#FOOT22"><sup>22</sup></a> to position it without <em>getting it out</em> of the line. Use
 its <code>Pick up</code> handle to take it with the hand and drop
 it in the world. Now, the triangle is no a longer submorph of the line,
 and the morphs can be moved, rotated or scaled independently.
@@ -481,18 +500,20 @@ make a part of their contents visible, but might have other uses too.
 <div class="float-caption"><p><strong>Figure 7.4: </strong>An animated and clipped submorph
 triangle</p></div></div>
 
+</div>
+</div>
 <div class="footnote">
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h5><a id="FOOT24" href="#DOCF24">(24)</a></h3>
+<h5><a id="FOOT22" href="#DOCF22">(22)</a></h5>
 <p>By now, it is likely that the triangle has walked quite
 a bit!</p>
 </div>
 <hr>
 <div class="header">
 <p>
-Next: <a href="A-Clock-Morph.html" accesskey="n" rel="next">A Clock Morph</a>, Up: <a href="The-Fundamentals-of-Morph.html" accesskey="u" rel="up">The Fundamentals of Morph</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="A-Clock-Morph.html">A Clock Morph</a>, Up: <a href="The-Fundamentals-of-Morph.html">The Fundamentals of Morph</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

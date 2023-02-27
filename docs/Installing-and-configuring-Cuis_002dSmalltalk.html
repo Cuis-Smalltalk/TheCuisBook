@@ -1,5 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
@@ -9,13 +12,13 @@ Copyright (C) 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vu
 Thanks to Matt Armstrong, David Lewis, John McGarey, Mariano Montone,
 Ricardo Pacheco, Barry Perryman, Tommy Pettersson, Bernhard Pieber,
 Mauro Rizzi, Stephen Smith & Ignacio Sniechowski for the reviews of
-the book, suggestions and borrowed texts. It is very valuable.
+the book, suggestions and borrowed texts. Your help is very valuable.
 
 
 
 
 
-Compilation : February 25, 2023
+Compilation : February 27, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -51,9 +54,6 @@ original.
 
 Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
  -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Installing and configuring Cuis-Smalltalk (The Cuis-Smalltalk Book)</title>
 
 <meta name="description" content="Installing and configuring Cuis-Smalltalk (The Cuis-Smalltalk Book)">
@@ -61,6 +61,8 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="Beginnings.html" rel="up" title="Beginnings">
@@ -68,11 +70,11 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="Historical-Context.html" rel="prev" title="Historical Context">
 <style type="text/css">
 <!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
@@ -81,6 +83,7 @@ pre.menu-preformatted {font-family: serif}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -90,7 +93,8 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Installing-and-configuring-Cuis_002dSmalltalk"></span><div class="header">
+<div class="section" id="Installing-and-configuring-Cuis_002dSmalltalk">
+<div class="header">
 <p>
 Next: <a href="Writing-your-first-scripts.html" accesskey="n" rel="next">Writing your first scripts</a>, Previous: <a href="Historical-Context.html" accesskey="p" rel="prev">Historical Context</a>, Up: <a href="Beginnings.html" accesskey="u" rel="up">Beginnings</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
@@ -155,7 +159,12 @@ do <em>not</em> have a problem, you can ignore these for now.
 <a href="https://lists.cuis.st/mailman/listinfo/cuis-dev">https://lists.cuis.st/mailman/listinfo/cuis-dev</a>
 </li></ul>
 
-<span id="Editing-your-preferences"></span><h4 class="subsection">1.2.1 Editing your preferences</h4>
+<ul class="section-toc">
+<li><a href="#Editing-your-preferences" accesskey="1">Editing your preferences</a></li>
+<li><a href="#Fun-with-window-placement" accesskey="2">Fun with window placement</a></li>
+</ul>
+<div class="subsection" id="Editing-your-preferences">
+<h4 class="subsection">1.2.1 Editing your preferences</h4>
 <p>Once you read the information on the default windows, the next thing
 you want to do is to adjust visual properties to fit your preferences
 and needs. To do so, access the World menu
@@ -173,7 +182,9 @@ environment reflects the book screenshots.
 <div align="center"><img src="ch01-Preferences.png" alt="ch01-Preferences">
 </div>
 <div class="float-caption"><p><strong>Figure 1.1: </strong>Set Preferences</p></div></div>
-<span id="Fun-with-window-placement"></span><h4 class="subsection">1.2.2 Fun with window placement</h4>
+</div>
+<div class="subsection" id="Fun-with-window-placement">
+<h4 class="subsection">1.2.2 Fun with window placement</h4>
 <span id="index-tools"></span>
 <p>The first tool to discover is the <em>Workspace</em> tool. It is a kind
 of text editor to key in Smalltalk code you can execute
@@ -181,7 +192,7 @@ immediately. Do ...World menu &rarr;
 <code>Open...</code> &rarr; <code>Workspace</code>...
 </p>
 <p>Now we will ask Cuis-Smalltalk to change the window&rsquo;s placement: click the blue icon
-(top left) to access the window option and experiment with the white
+(top left) to access the window&rsquo;s options menu and experiment with the white
 area to place the Workspace window at the half left of the Cuis-Smalltalk
 environment.
 </p>
@@ -202,17 +213,19 @@ environment.</em>
 
 
 <div class="float-caption"><p><strong>Exercise 1.1: </strong>Middle placement</p></div></div>
+</div>
+</div>
 <div class="footnote">
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h5><a id="FOOT12" href="#DOCF12">(12)</a></h3>
+<h5><a id="FOOT12" href="#DOCF12">(12)</a></h5>
 <p><a href="https://sites.google.com/view/cuis-university/descargas">https://sites.google.com/view/cuis-university/descargas</a></p>
 </div>
 <hr>
 <div class="header">
 <p>
-Next: <a href="Writing-your-first-scripts.html" accesskey="n" rel="next">Writing your first scripts</a>, Previous: <a href="Historical-Context.html" accesskey="p" rel="prev">Historical Context</a>, Up: <a href="Beginnings.html" accesskey="u" rel="up">Beginnings</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Writing-your-first-scripts.html">Writing your first scripts</a>, Previous: <a href="Historical-Context.html">Historical Context</a>, Up: <a href="Beginnings.html">Beginnings</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

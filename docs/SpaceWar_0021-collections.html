@@ -1,5 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
@@ -9,13 +12,13 @@ Copyright (C) 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vu
 Thanks to Matt Armstrong, David Lewis, John McGarey, Mariano Montone,
 Ricardo Pacheco, Barry Perryman, Tommy Pettersson, Bernhard Pieber,
 Mauro Rizzi, Stephen Smith & Ignacio Sniechowski for the reviews of
-the book, suggestions and borrowed texts. It is very valuable.
+the book, suggestions and borrowed texts. Your help is very valuable.
 
 
 
 
 
-Compilation : February 25, 2023
+Compilation : February 27, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -51,9 +54,6 @@ original.
 
 Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
  -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>SpaceWar! collections (The Cuis-Smalltalk Book)</title>
 
 <meta name="description" content="SpaceWar! collections (The Cuis-Smalltalk Book)">
@@ -61,18 +61,19 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="The-Collection-Way-of-Life.html" rel="up" title="The Collection Way of Life">
-<link href="Control-Flow-Messaging.html" rel="next" title="Control Flow Messaging">
 <link href="Collections-detailed.html" rel="prev" title="Collections detailed">
 <style type="text/css">
 <!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
@@ -81,6 +82,7 @@ pre.menu-preformatted {font-family: serif}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -90,14 +92,20 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="SpaceWar_0021-collections"></span><div class="header">
+<div class="section" id="SpaceWar_0021-collections">
+<div class="header">
 <p>
 Previous: <a href="Collections-detailed.html" accesskey="p" rel="prev">Collections detailed</a>, Up: <a href="The-Collection-Way-of-Life.html" accesskey="u" rel="up">The Collection Way of Life</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <span id="SpaceWar_0021-collections-1"></span><h3 class="section">4.5 SpaceWar! collections</h3>
 
-<span id="Instantiate-collections"></span><h4 class="subsection">4.5.1 Instantiate collections</h4>
+<ul class="section-toc">
+<li><a href="#Instantiate-collections" accesskey="1">Instantiate collections</a></li>
+<li><a href="#Collections-in-action" accesskey="2">Collections in action</a></li>
+</ul>
+<div class="subsection" id="Instantiate-collections">
+<h4 class="subsection">4.5.1 Instantiate collections</h4>
 <p>Whenever you need to deal with more than one element of the same
 nature &ndash; instances of the same class &ndash; it is a clue to use a
 collection to hold them. Moreover, when these elements are of fixed
@@ -152,7 +160,9 @@ instantiated and if necessary populated.</em>
 
 <div class="float-caption"><p><strong>Exercise 4.17: </strong>Collections to hold the ships and torpedoes</p></div></div>
 
-<span id="Collections-in-action"></span><h4 class="subsection">4.5.2 Collections in action</h4>
+</div>
+<div class="subsection" id="Collections-in-action">
+<h4 class="subsection">4.5.2 Collections in action</h4>
 
 <p>The space ship and the torpedo objects are responsible of their
 internal states. They understand the <code>#update:</code> message to recompute
@@ -279,10 +289,12 @@ message and a dedicated block of code:
    ]
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 4.23: </strong>Collision between the ships and the Sun</p></div></div><hr>
+<div class="float-caption"><p><strong>Example 4.23: </strong>Collision between the ships and the Sun</p></div></div></div>
+</div>
+<hr>
 <div class="header">
 <p>
-Previous: <a href="Collections-detailed.html" accesskey="p" rel="prev">Collections detailed</a>, Up: <a href="The-Collection-Way-of-Life.html" accesskey="u" rel="up">The Collection Way of Life</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Previous: <a href="Collections-detailed.html">Collections detailed</a>, Up: <a href="The-Collection-Way-of-Life.html">The Collection Way of Life</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

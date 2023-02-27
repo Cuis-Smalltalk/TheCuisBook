@@ -1,5 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
@@ -9,13 +12,13 @@ Copyright (C) 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vu
 Thanks to Matt Armstrong, David Lewis, John McGarey, Mariano Montone,
 Ricardo Pacheco, Barry Perryman, Tommy Pettersson, Bernhard Pieber,
 Mauro Rizzi, Stephen Smith & Ignacio Sniechowski for the reviews of
-the book, suggestions and borrowed texts. It is very valuable.
+the book, suggestions and borrowed texts. Your help is very valuable.
 
 
 
 
 
-Compilation : February 25, 2023
+Compilation : February 27, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -51,9 +54,6 @@ original.
 
 Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
  -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>The Collection Way of Life (Solutions) (The Cuis-Smalltalk Book)</title>
 
 <meta name="description" content="The Collection Way of Life (Solutions) (The Cuis-Smalltalk Book)">
@@ -61,6 +61,8 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="Solutions-to-the-Exercises.html" rel="up" title="Solutions to the Exercises">
@@ -68,11 +70,11 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="Class-_002d_002d-model-of-Communicating-Entities-_0028Solutions_0029.html" rel="prev" title="Class -- model of Communicating Entities (Solutions)">
 <style type="text/css">
 <!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
@@ -81,6 +83,7 @@ pre.menu-preformatted {font-family: serif}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -90,9 +93,10 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="The-Collection-Way-of-Life-_0028Solutions_0029"></span><div class="header">
+<div class="unnumberedsec" id="The-Collection-Way-of-Life-_0028Solutions_0029">
+<div class="header">
 <p>
-Next: <a href="Control-Flow-Messaging-_0028Solutions_0029.html" accesskey="n" rel="next">Control Flow Messaging (Solutions)</a>, Previous: <a href="Class-_002d_002d-model-of-Communicating-Entities-_0028Solutions_0029.html" accesskey="p" rel="prev">Class -- model of Communicating Entities (Solutions)</a>, Up: <a href="Solutions-to-the-Exercises.html" accesskey="u" rel="up">Solutions to the Exercises</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Control-Flow-Messaging-_0028Solutions_0029.html" accesskey="n" rel="next">Control Flow Messaging</a>, Previous: <a href="Class-_002d_002d-model-of-Communicating-Entities-_0028Solutions_0029.html" accesskey="p" rel="prev">Class, model of Communicating Entities</a>, Up: <a href="Solutions-to-the-Exercises.html" accesskey="u" rel="up">Solutions to the Exercises</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <span id="The-Collection-Way-of-Life-2"></span><h3 class="unnumberedsec">The Collection Way of Life</h3>
@@ -169,7 +173,7 @@ far:
 
 <p>Each character from A to Z is referenced by the <code>c</code> block
 parameter and converted to its Ascii
-value<a id="DOCF31" href="#FOOT31"><sup>31</sup></a>:
+value<a id="DOCF29" href="#FOOT29"><sup>29</sup></a>:
 <code>c asciiValue</code>. It is shifted of 65, so the A character
 counts as 0 and Z as 25 in the alphabet list. To apply the Caesar
 cipher, we send the message <code>+ 3</code> to the previous result.
@@ -178,7 +182,7 @@ cipher, we send the message <code>+ 3</code> to the previous result.
 alphabet, indeed these characters will be ciphered as 26, 27, 28. To
 fix that we send <code>\\ 26</code> to the previous result, it is an
 old trick of programming: the reminder of the Euclidean division by 26
-frames the value between 0 and 25<a id="DOCF32" href="#FOOT32"><sup>32</sup></a>.
+frames the value between 0 and 25<a id="DOCF30" href="#FOOT30"><sup>30</sup></a>.
 </p>
 <p>Finally we shift back of 65 before converting from the Ascii value to
 the character.
@@ -291,13 +295,14 @@ appropriate indentation.
 
 
 
+</div>
 <div class="footnote">
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h5><a id="FOOT31" href="#DOCF31">(31)</a></h3>
+<h5><a id="FOOT29" href="#DOCF29">(29)</a></h5>
 <p><a href="https://en.wikipedia.org/wiki/ASCII">https://en.wikipedia.org/wiki/ASCII</a></p>
-<h5><a id="FOOT32" href="#DOCF32">(32)</a></h3>
+<h5><a id="FOOT30" href="#DOCF30">(30)</a></h5>
 <p>It generalizes to the
 mathematics field of modular arithmetic,
 <a href="https://www.wikiwand.com/en/Modular_arithmetic">https://www.wikiwand.com/en/Modular_arithmetic</a></p>
@@ -305,7 +310,7 @@ mathematics field of modular arithmetic,
 <hr>
 <div class="header">
 <p>
-Next: <a href="Control-Flow-Messaging-_0028Solutions_0029.html" accesskey="n" rel="next">Control Flow Messaging (Solutions)</a>, Previous: <a href="Class-_002d_002d-model-of-Communicating-Entities-_0028Solutions_0029.html" accesskey="p" rel="prev">Class -- model of Communicating Entities (Solutions)</a>, Up: <a href="Solutions-to-the-Exercises.html" accesskey="u" rel="up">Solutions to the Exercises</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Control-Flow-Messaging-_0028Solutions_0029.html">Control Flow Messaging</a>, Previous: <a href="Class-_002d_002d-model-of-Communicating-Entities-_0028Solutions_0029.html">Class, model of Communicating Entities</a>, Up: <a href="Solutions-to-the-Exercises.html">Solutions to the Exercises</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

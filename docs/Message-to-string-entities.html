@@ -1,5 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
@@ -9,13 +12,13 @@ Copyright (C) 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vu
 Thanks to Matt Armstrong, David Lewis, John McGarey, Mariano Montone,
 Ricardo Pacheco, Barry Perryman, Tommy Pettersson, Bernhard Pieber,
 Mauro Rizzi, Stephen Smith & Ignacio Sniechowski for the reviews of
-the book, suggestions and borrowed texts. It is very valuable.
+the book, suggestions and borrowed texts. Your help is very valuable.
 
 
 
 
 
-Compilation : February 25, 2023
+Compilation : February 27, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -51,9 +54,6 @@ original.
 
 Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
  -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Message to string entities (The Cuis-Smalltalk Book)</title>
 
 <meta name="description" content="Message to string entities (The Cuis-Smalltalk Book)">
@@ -61,6 +61,8 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="The-Message-Way-of-Life.html" rel="up" title="The Message Way of Life">
@@ -68,11 +70,11 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="Message-send-definitions.html" rel="prev" title="Message send definitions">
 <style type="text/css">
 <!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
@@ -81,6 +83,7 @@ pre.menu-preformatted {font-family: serif}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -90,7 +93,8 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Message-to-string-entities"></span><div class="header">
+<div class="section" id="Message-to-string-entities">
+<div class="header">
 <p>
 Next: <a href="Messages-to-number-entities.html" accesskey="n" rel="next">Messages to number entities</a>, Previous: <a href="Message-send-definitions.html" accesskey="p" rel="prev">Message send definitions</a>, Up: <a href="The-Message-Way-of-Life.html" accesskey="u" rel="up">The Message Way of Life</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
@@ -99,12 +103,18 @@ Next: <a href="Messages-to-number-entities.html" accesskey="n" rel="next">Messag
 <span id="index-string-4"></span>
 <span id="index-string-5"></span>
 <span id="index-Unicode"></span>
-<p><strong>Note.</strong> We wrote earlier a <code>String</code> is a collection of
-characters, where each character is encoded with a byte<a id="DOCF13" href="#FOOT13"><sup>13</sup></a>, a byte
-string. When a string contains an accentuated character or any other
-character not in the <acronym>ASCII</acronym> table<a id="DOCF14" href="#FOOT14"><sup>14</sup></a> it is encoded in
-Unicode (<acronym>UTF-8</acronym>) where each character can be encoded with 1,
-2, 3 or 4 bytes.
+<p>As previously stated, a <code>String</code> is a sequence of <code>Character</code> 
+elements, and repersents plain Text (without any formatting).
+</p>
+<p>In Cuis, as in most programming languages, <code>String</code> literals are a convenient syntax for creating <code>String</code> instances. These are some examples of <code>String</code> literals:
+</p>
+<div class="example">
+<pre class="example">'Hello World!'.
+'Accented letters: cigüeña, camión, déjà, deçà, forêt, coïncidence'.
+'Non-latin (Greek) letters: Λορεμ ιπσθμ δολορ σιτ αμετ'.
+</pre></div>
+
+<p>The first example is an instance of <code>String</code>. This class is used for String literals if all Characters are in the limited <acronym>ASCII</acronym> character set. The following examples contain non-<acronym>ASCII</acronym> Characters. For these, an instance of <code>UnicodeString</code> is used instead.  You usually don&rsquo;t need to care about this: Instances of <code>String</code> and <code>UnicodeString</code> understand the same messages, so they are interchangeable.
 </p>
 <p>Access to a character in a string is done with the keyword message
 <code>#at:</code> and its index position in the string as the argument. Execute
@@ -117,8 +127,7 @@ the following examples with the <kbd>Ctrl-p</kbd> shortcut:
 
 <p>Observe how a character is prefixed with the &ldquo;$&rdquo; symbol.
 </p>
-<p><strong>Caution.</strong> The index indicates position naturally from 1 to the
-string length.
+<p><strong>Caution.</strong> The index indicates position, naturally starting from 1, and is valid up to the string length.
 </p>
 <span id="index-string-6"></span>
 <div class="example">
@@ -150,33 +159,24 @@ the string &rsquo;Hello&rsquo; to become &rsquo;Belle&rsquo;.</em>
 
 
 <div class="float-caption"><p><strong>Exercise 2.1: </strong>Hello to Belle</p></div></div>
-<span id="index-string-8"></span>
-<span id="index-Unicode-1"></span>
-<p>Now observe carefully the behavior when manipulating a string encoded
-as Unicode. It is immutable and can not be indexed, it can be
-converted as byte string with the message <code>#asByteString</code>:
-</p>
-<div class="example">
-<pre class="example">'paragüas' class
-&rArr; UnicodeString
-'paragüas' at: 6
-&rArr; $ü
-'paragüas' at: 6 put: $u
-&rArr; Error
-'paragüas' asByteString class
-&rArr; String
-'paragüas' asByteString at: 6 put: $u; yourself
-&rArr; 'paraguas'
-</pre></div>
-
 <span id="index-character"></span>
-<p>Characters can be converted to integers and integers to characters:
+<p>Characters that are part of the <acronym>ASCII</acronym> character set can be asked for their <acronym>ASCII</acronym> code. Conversely, given an <acronym>ASCII</acronym> code, we canask for the corresponding <code>Character</code>:
 </p><div class="example">
 <pre class="example">$A asciiValue &rArr; 65
-(65 + 25) asCharacter &rArr; $Z
+Character asciiValue: 65 + 25 &rArr; $Z
 </pre></div>
 
-<span id="index-string-9"></span>
+<span id="index-character-1"></span>
+<span id="index-Unicode-1"></span>
+<p>But Characters that are not part of <acronym>ASCII</acronym> don&rsquo;t have an <acronym>ASCII</acronym>. In general, it is better to use Unicode code points instead:
+</p><div class="example">
+<pre class="example">$A codePoint &rArr; 65
+UnicodeCodePoint codePoint: 65 + 25 &rArr; $Z
+$φ codePoint &rArr; 966
+UnicodeCodePoint codePoint: 966 &rArr; $φ
+</pre></div>
+
+<span id="index-string-8"></span>
 <span id="index-collection-1"></span>
 <p>Shuffling a string can be fun but not very useful. However,
 shuffling can apply to any kind of collection, not only to a string, and it
@@ -187,12 +187,12 @@ will prove to be useful as we will see later:
 </pre></div>
 <p>Note that the results of each shuffle are different.
 </p>
-<span id="index-string-10"></span>
+<span id="index-string-9"></span>
 <span id="index-message-8"></span>
 <p>Messages naturally compose:
 </p><div class="example">
 <pre class="example">'hello world' shuffled asArray
-&rArr; #($h $d $l $ (20) $o $w $e $l $l $o $r) 
+&rArr; #($h $d $l $ &quot;20&quot; $o $w $e $l $l $o $r) 
 </pre></div>
 
 <p>An <code>Array</code> literal starts with a hash or sharp character, <code>$#</code>
@@ -202,40 +202,17 @@ be instances of any class.
 </p>
 <p>Like <code>#shuffled</code>, all collections answer to the message
 <code>#sorted</code>, which answers a sorted collection.
-<span id="index-string-11"></span>
+<span id="index-string-10"></span>
 </p><div class="example">
 <pre class="example">'hello world' sorted
-&rArr; #($ (20) $d $e $h $l $l $l $o $o $r $w)
+&rArr; ' dehllloorw'
 </pre></div>
 
-<p>Note that this breaks the pattern of the result type.  We get a <code>String</code>
-result when sending a <code>String</code> the message <code>#shuffled</code> but get
-an <code>Array</code> result when sending a <code>String</code> the message
-<code>#sorted</code>.
-</p>
-<p>We take great care in Smalltalk to create names which reduce surprise, but there
-are cases, as seen here, where something odd happens.  We will discuss this
-further when we look at different kinds of <code>Collection</code>s and
-discuss how we name instances and methods to show intent and reduce surprise.
-</p>
-<div class="footnote">
-<hr>
-<h4 class="footnotes-heading">Footnotes</h4>
-
-<h5><a id="FOOT13" href="#DOCF13">(13)</a></h3>
-<p>A
-byte is encoded with 8 bits, each one with a value of 0 or 1.</p>
-<h5><a id="FOOT14" href="#DOCF14">(14)</a></h3>
-<p><acronym>ASCII</acronym>
-has just 128 code points, of which only 95 are printable characters,
-which severely limited its scope. All modern computer systems instead
-use Unicode, which has millions of code points, but the first 128 of
-these are the same as the ASCII set. (Wikipedia)</p>
 </div>
 <hr>
 <div class="header">
 <p>
-Next: <a href="Messages-to-number-entities.html" accesskey="n" rel="next">Messages to number entities</a>, Previous: <a href="Message-send-definitions.html" accesskey="p" rel="prev">Message send definitions</a>, Up: <a href="The-Message-Way-of-Life.html" accesskey="u" rel="up">The Message Way of Life</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Messages-to-number-entities.html">Messages to number entities</a>, Previous: <a href="Message-send-definitions.html">Message send definitions</a>, Up: <a href="The-Message-Way-of-Life.html">The Message Way of Life</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 
 
