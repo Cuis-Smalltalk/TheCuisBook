@@ -194,8 +194,8 @@ elements, and repersents plain Text (without any formatting).
 In Cuis, as in most programming languages, @class{String} literals are a convenient syntax for creating @class{String} instances. These are some examples of @class{String} literals:
 
 @smalltalkExample{'Hello World!'.
-'A String Literal can include accented letters: cigüeña, camión, déjà, deçà, forêt, coïncidence'.
-'A String Literal can include non-latin letters: Выходные в Санкт-Петербурге, Οἱ δὲ Φοίνιϰες οὗτοι οἱ σὺν Κάδμῳ ἀπιϰόμενοι'.}
+'Accented letters: cigüeña, camión, déjà, deçà, forêt, coïncidence'.
+'Non-latin (Greek) letters: Λορεμ ιπσθμ δολορ σιτ αμετ'.}
 
 The first example is an instance of @class{String}. This class is used for String literals if all Characters are in the limited @acronym{ASCII} character set. The following examples contain non-@acronym{ASCII} Characters. For these, an instance of @class{UnicodeString} is used instead.  You usually don't need to care about this: Instances of @class{String} and @class{UnicodeString} understand the same messages, so they are interchangeable.
 

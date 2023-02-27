@@ -747,8 +747,9 @@ UnicodeCodePoint codePoint: 966 @result{} $φ}
 There are class side methods for non printable characters:
 @smalltalk{Character tab}, @smalltalk{Character lf}, etc.
 
-Additionally, @class{UnicodeCodePoint} defines a @msg{namedCharactersMap}, that lets you enter many Unicode characters easily, like
-@smalltalk{\leftright}, then press spacebar.
+Additionally, @class{UnicodeCodePoint} defines a @msg{namedCharactersMap}, that lets you enter many Unicode characters easily, like:
+
+@smalltalk{\leftright} then press spacebar.
 
 As each string is a collection of characters, when iterating a string we
 can use the @class{Character} instance methods:
