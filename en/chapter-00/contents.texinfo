@@ -30,7 +30,7 @@ language, such as C or Assembly, many of the ideas may be new.
 
 In any case, especially during the first chapters, read this book and
 follow the examples with an open mind. A new point of view on what
-software development means this will be an enriching experience.  For us,
+software development means will be an enriching experience.  For us,
 programming is a thoughtful process.
 
 We understand software development as the activity of learning and
