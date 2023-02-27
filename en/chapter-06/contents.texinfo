@@ -416,7 +416,7 @@ Based on these mathematics, we wrote the @smalltalk{SpaceShip>>update:}
 method to update the ship position according to the elapsed time --
 see @ref{spaceShipMechanic}.
 
-So far in our model, a torpedo is not subjected to the central start
+So far in our model, a torpedo is not subjected to the central star
 gravity pull nor its engine acceleration. It is supposing its mass is
 zero which is unlikely. Of course the @smalltalk{Torpedo>>update:}
 method is simpler than the space ship counter part -- see
