@@ -151,20 +151,8 @@ Now you know.  A symbol can't be duplicated nor changed.
 
 @cindex string @subentry Unicode
 @cindex Unicode
-@cuisNote{In @cuis{}, strings with characters out of the
-@acronym{ASCII} table are encoded as @class{UnicodeString}
-object. There are immutable objects, copying such an object returns
-the original object -- same location in the computer memory. Observe
-the example bellow.}
-
-@smalltalkExample{'sur' class
-@result{} String 
-'sur' == 'sur' copy
-@result{} false
-'sûr' class
-@result{} UnicodeString 
-'sûr' == 'sûr' copy
-@result{}true}
+@cuisNote{In @cuis{}, strings with characters out of the @acronym{ASCII} table are usually instances of @class{UnicodeString}.
+In the same way, you may get and instance of @class{UnicodeSymbol}  and not @class{Symbol}, or @class{UnicodeCodePoint} and not @class{Character}. You usually don't need to care about this. The @acronym{ASCII} and Unicode classes provide the same services.}
 
 
 
