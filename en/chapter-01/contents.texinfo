@@ -235,7 +235,7 @@ immediately. Do ...@clicksequence{World menu @click{}
 @label{Open...} @click{} @label{Workspace}}...
 
 Now we will ask @cuis{} to change the window's placement: click the blue icon
-(top left) to access the window option and experiment with the white
+(top left) to access the window's options menu and experiment with the white
 area to place the Workspace window at the half left of the @cuis{}
 environment.
 
@@ -253,7 +253,7 @@ environment.}}
 In this section you will learn how to write simple scripts in the
 Workspace to get a taste and feel for Smalltalk code. The
 examples are associated with small exercises to experiment with and
-accompanied with solutions in the annex. We intentionally keep the
+accompanied with solutions in the appendix. We intentionally kept the
 details of the syntax out of this section.
 
 In a Workspace, the usual @emph{Hello World!} program can be written
@@ -348,7 +348,7 @@ special type declaration or method. To convince yourself try the example below:
 @result{} 10000}
 
 If you execute and print with @kbd{Ctrl-p} the code: @smalltalk{10000
-factorial}, you realize it takes far more time to print one factorial result 
+factorial}, you will see that it takes far more time to print one factorial result 
 than to compute two factorials and divide them. The result is an integer
 as expected, not a scaled decimal number as many computer languages
 will return.

@@ -47,7 +47,7 @@ Complete license: @url{https://creativecommons.org/licenses/by-sa/4.0/legalcode}
 
 @titlepage
 @title The @cuis{} book
-@subtitle Introduce to Programming with Smalltalk
+@subtitle Introduction to Programming with Smalltalk
 @author @writers{}
 
 @iftex
