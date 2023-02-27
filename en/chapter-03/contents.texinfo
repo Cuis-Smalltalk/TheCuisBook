@@ -735,21 +735,20 @@ it seems:
 
 @node Kernel-Text
 @section Kernel-Text
-Notably, this category contains classes @class{Character}, @class{String}
-and @class{Symbol}. @class{String} instances are collections of
-@class{Character} instances.
+Notably, this category contains classes @class{Character}, @class{String} and @class{Symbol}. @class{String} instances are collections of @class{Character} instances. All these are limited to the small @acronym{ASCII} character set. The corresponding classes that can handle the much larger Unicode character set are @class{UnicodeCodePoint}, @class{UnicodeString} and @class{UnicodeSymbol}. As stated before, the Unicode classes can also handle @acronym{ASCII}, and they are interchangeable. You usually don't need to care about which flavor (@acronym{ASCII} or Unicode) an instance actually is.
 
 @cindex character
-@strong{Character.} An individual character is written prefixed with a
-``$'', for example: @smalltalk{$A}. It can be defined with the class side method
-@method{numericValue:} or converted from an integer instance with the
-@msg{asCharacter}:
+@strong{Character/UnicodeCodePoint.} An individual character is written prefixed with a ``$'', for example: @smalltalk{$A} or @smalltalk{$φ}. It can be defined with the class side method @method{codePoint:}. Note, however, that you can ask Character only about valid Characters. It is generally safer to ask UnicodeCodePoint instead:
 
-@smalltalkExample{Character numericValue: 65 @result{} $A
-65 asCharacter @result{} $A}
+@smalltalkExample{Character codePoint: 65 @result{} $A
+Character codePoint: 966 @result{} nil
+UnicodeCodePoint codePoint: 966 @result{} $φ}
 
 There are class side methods for non printable characters:
 @smalltalk{Character tab}, @smalltalk{Character lf}, etc.
+
+Additionally, @class{UnicodeCodePoint} defines a @msg{namedCharactersMap}, that lets you enter many Unicode characters easily, like
+@smalltalk{\leftright}, then press spacebar.
 
 As each string is a collection of characters, when iterating a string we
 can use the @class{Character} instance methods:
