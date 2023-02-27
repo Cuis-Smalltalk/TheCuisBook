@@ -188,17 +188,16 @@ return the object to which a message is sent, in this case the
 @cindex string @subentry character access
 @cindex string @subentry Unicode
 @cindex Unicode
-@strong{Note.} We wrote earlier a @class{String} is a collection of
-characters, where each character is encoded with a byte@footnote{A
-byte is encoded with 8 bits, each one with a value of 0 or 1.}, a byte
-string. When a string contains an accentuated character or any other
-character not in the @acronym{ASCII} table@footnote{@acronym{ASCII}
-has just 128 code points, of which only 95 are printable characters,
-which severely limited its scope. All modern computer systems instead
-use Unicode, which has millions of code points, but the first 128 of
-these are the same as the ASCII set. (Wikipedia)} it is encoded in
-Unicode (@acronym{UTF-8}) where each character can be encoded with 1,
-2, 3 or 4 bytes.
+As previously stated, a @class{String} is a sequence of @class{Character} 
+elements, and repersents plain Text (without any formatting).
+
+In Cuis, as in most programming languages, @class{String} literals are a convenient syntax for creating @class{String} instances. These are some examples of @class{String} literals:
+
+@smalltalkExample{'Hello World!'.
+'A String Literal can include accented letters: cigüeña, camión, déjà, deçà, forêt, coïncidence'.
+'A String Literal can include non-latin letters: Выходные в Санкт-Петербурге, Οἱ δὲ Φοίνιϰες οὗτοι οἱ σὺν Κάδμῳ ἀπιϰόμενοι'.}
+
+The first example is an instance of @class{String}. This class is used for String literals if all Characters are in the limited @acronym{ASCII} character set. The following examples contain non-@acronym{ASCII} Characters. For these, an instance of @class{UnicodeString} is used instead.  You usually don't need to care about this: Instances of @class{String} and @class{UnicodeString} understand the same messages, so they are interchangeable.
 
 Access to a character in a string is done with the keyword message
 @msg{at:} and its index position in the string as the argument. Execute
@@ -209,8 +208,7 @@ the following examples with the @kbd{Ctrl-p} shortcut:
 
 Observe how a character is prefixed with the ``$'' symbol.
 
-@strong{Caution.} The index indicates position naturally from 1 to the
-string length.
+@strong{Caution.} The index indicates position, naturally starting from 1, and is valid up to the string length.
 
 @cindex string @subentry @method{indexOf:}
 @smalltalkExample{'Hello' indexOf: $e
@@ -232,27 +230,18 @@ message.
 @exercise{Hello to Belle,helloBelle, @emph{Replace each character of
 the string 'Hello' to become 'Belle'.}}
 
-@cindex string @subentry Unicode
-@cindex Unicode
-Now observe carefully the behavior when manipulating a string encoded
-as Unicode. It is immutable and can not be indexed, it can be
-converted as byte string with the message @msg{asByteString}:
-
-@smalltalkExample{'paragüas' class
-@result{} UnicodeString
-'paragüas' at: 6
-@result{} $ü
-'paragüas' at: 6 put: $u
-@result{} Error
-'paragüas' asByteString class
-@result{} String
-'paragüas' asByteString at: 6 put: $u; yourself
-@result{} 'paraguas'}
-
 @cindex character @subentry ascii
-Characters can be converted to integers and integers to characters:
+Characters that are part of the @acronym{ASCII} character set can be asked for their @acronym{ASCII} code. Conversely, given an @acronym{ASCII} code, we canask for the corresponding @class{Character}:
 @smalltalkExample{$A asciiValue @result{} 65
-(65 + 25) asCharacter @result{} $Z}
+Character asciiValue: 65 + 25 @result{} $Z}
+
+@cindex character @subentry Unicode
+@cindex Unicode
+But Characters that are not part of @acronym{ASCII} don't have an @acronym{ASCII}. In general, it is better to use Unicode code points instead:
+@smalltalkExample{$A codePoint @result{} 65
+UnicodeCodePoint codePoint: 65 + 25 @result{} $Z
+$π codePoint @result{} 960
+UnicodeCodePoint codePoint: 960 @result{} $π}
 
 @cindex string @subentry @method{shuffled}
 @cindex collection @subentry @method{shuffled}
@@ -267,7 +256,7 @@ Note that the results of each shuffle are different.
 @cindex message @subentry composition
 Messages naturally compose:
 @smalltalkExample{'hello world' shuffled asArray
-@result{} #($h $d $l $ (20) $o $w $e $l $l $o $r) }
+@result{} #($h $d $l $ "20" $o $w $e $l $l $o $r) }
 
 An @class{Array} literal starts with a hash or sharp character, @smalltalk{$#}
 and parentheses surround the elements of the array.
@@ -278,17 +267,7 @@ Like @smalltalk{#shuffled}, all collections answer to the message
 @smalltalk{#sorted}, which answers a sorted collection.
 @cindex string @subentry @method{sorted}
 @smalltalkExample{'hello world' sorted
-@result{} #($ (20) $d $e $h $l $l $l $o $o $r $w)}
-
-Note that this breaks the pattern of the result type.  We get a @class{String}
-result when sending a @class{String} the message @smalltalk{#shuffled} but get
-an @class{Array} result when sending a @class{String} the message
-@smalltalk{#sorted}.
-
-We take great care in Smalltalk to create names which reduce surprise, but there
-are cases, as seen here, where something odd happens.  We will discuss this
-further when we look at different kinds of @class{Collection}s and
-discuss how we name instances and methods to show intent and reduce surprise.
+@result{} ' dehllloorw'}
 
 @node Messages to number entities
 @section Messages to number entities
