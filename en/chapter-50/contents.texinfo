@@ -606,41 +606,6 @@ drawOn: aCanvas
 
 @figure{Several rectangle morphs,E-exeRectMorph,4}
 
-@subheading @ref{exeRotateRect}
-The rectangle we defined in the solution of @ref{exeRectMorph} rotates
-around its top left corner, because this is where is the origin (0;0).
-
-@figure{This rectangle rotates around its top left corner,E-exeRotateRect1,4}
-
-We need to redefine its corners coordinates so its center position
-matches the origin (0;0):
-
-@smallexample
-drawOn: aCanvas
-   aCanvas
-      strokeWidth: 1
-      color: Color blue
-      fillColor: fillColor
-      do: [
-         aCanvas moveTo: -100 @@ -50;
-            lineTo: 100 @@ -50;
-            lineTo: 100 @@ 50;
-            lineTo: -100 @@ 50;
-            lineTo: -100 @@ -50]
-@end smallexample
-
-@figure{This rectangle rotates around its center,E-exeRotateRect2,3.5}
-
-@subheading @ref{exeCrossCenterMorph}
-@smallexample
-drawOn: aCanvas
-   aCanvas strokeWidth: 20 color: Color green do: [aCanvas
-      moveTo: -100 @@ -100;
-      lineTo: 100 @@ 100;
-      moveTo: 100 @@ -100;
-      lineTo: -100 @@ 100]
-@end smallexample
-
 
 @subheading @ref{exeFancyClock}
 Among the clock parts (submorphs) we only need to modify the drawing

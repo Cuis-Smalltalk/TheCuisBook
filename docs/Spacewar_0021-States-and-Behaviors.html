@@ -1,8 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
@@ -54,6 +51,9 @@ original.
 
 Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
  -->
+<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Spacewar! States and Behaviors (The Cuis-Smalltalk Book)</title>
 
 <meta name="description" content="Spacewar! States and Behaviors (The Cuis-Smalltalk Book)">
@@ -61,19 +61,18 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="Class-_002d-Model-of-Communicating-Entities.html" rel="up" title="Class - Model of Communicating Entities">
+<link href="The-Collection-Way-of-Life.html" rel="next" title="The Collection Way of Life">
 <link href="Kernel_002dText.html" rel="prev" title="Kernel-Text">
 <style type="text/css">
 <!--
-a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
@@ -82,7 +81,6 @@ pre.menu-preformatted {font-family: serif}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
-span:hover a.copiable-anchor {visibility: visible}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -92,22 +90,14 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<div class="section" id="Spacewar_0021-States-and-Behaviors">
-<div class="header">
+<span id="Spacewar_0021-States-and-Behaviors"></span><div class="header">
 <p>
-Previous: <a href="Kernel_002dText.html" accesskey="p" rel="prev">Kernel-Text</a>, Up: <a href="Class-_002d-Model-of-Communicating-Entities.html" accesskey="u" rel="up">Class, Model of Communicating Entities</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Previous: <a href="Kernel_002dText.html" accesskey="p" rel="prev">Kernel-Text</a>, Up: <a href="Class-_002d-Model-of-Communicating-Entities.html" accesskey="u" rel="up">Class - Model of Communicating Entities</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <span id="Spacewar_0021-States-and-Behaviors-1"></span><h3 class="section">3.6 Spacewar! States and Behaviors</h3>
 
-<ul class="section-toc">
-<li><a href="#The-game-states" accesskey="1">The game states</a></li>
-<li><a href="#Instance-variables" accesskey="2">Instance variables</a></li>
-<li><a href="#Behaviors" accesskey="3">Behaviors</a></li>
-<li><a href="#Initializing" accesskey="4">Initializing</a></li>
-</ul>
-<div class="subsection" id="The-game-states">
-<h4 class="subsection">3.6.1 The game states</h4>
+<span id="The-game-states"></span><h4 class="subsection">3.6.1 The game states</h4>
 <p>After defining the classes involved in the game design, we now define
  several states of these classes:
 </p>
@@ -249,9 +239,7 @@ counter reaches zero, it self destructs.
 
 </li></ul>
 
-</div>
-<div class="subsection" id="Instance-variables">
-<h4 class="subsection">3.6.2 Instance variables</h4>
+<span id="Instance-variables"></span><h4 class="subsection">3.6.2 Instance variables</h4>
 <p>In the previous chapter, we explained how to define the four classes
 <code>SpaceWar</code>, <code>CentralStar</code>, <code>SpaceShip</code> and
 <code>Torpedo</code>. In this section, we will add to the these definitions
@@ -283,9 +271,7 @@ character. Finally, save the updated class definition with
 
 <div class="float-caption"><p><strong>Exercise 3.9: </strong>Instance variables of the Spacewar! protagonists</p></div></div>
 
-</div>
-<div class="subsection" id="Behaviors">
-<h4 class="subsection">3.6.3 Behaviors</h4>
+<span id="Behaviors"></span><h4 class="subsection">3.6.3 Behaviors</h4>
 <span id="index-message-9"></span>
 <span id="index-message-10"></span>
 <p>Some of these states need to be accessed from other entities:
@@ -444,9 +430,7 @@ its direction and acceleration<a id="DOCF16" href="#FOOT16"><sup>16</sup></a>:
 
 <div class="float-caption"><p><strong>Exercise 3.13: </strong>Methods to control ship acceleration</p></div></div>
 
-</div>
-<div class="subsection" id="Initializing">
-<h4 class="subsection">3.6.4 Initializing</h4>
+<span id="Initializing"></span><h4 class="subsection">3.6.4 Initializing</h4>
 <span id="index-initialize"></span>
 <p>When an instance is created, for example <code>SpaceShip new</code>, it
 is automatically initialized: the message <code>#initialize</code> is sent to
@@ -498,20 +482,18 @@ method to initialize the central star with 8000 units of mass?</em>
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong>Exercise 3.14: </strong>Initialize central star</p></div></div></div>
-</div>
-<div class="footnote">
+<div class="float-caption"><p><strong>Exercise 3.14: </strong>Initialize central star</p></div></div><div class="footnote">
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h5><a id="FOOT16" href="#DOCF16">(16)</a></h5>
+<h5><a id="FOOT16" href="#DOCF16">(16)</a></h3>
 <p>The velocity is a consequence
 of the accelerations applied to the space ship.</p>
 </div>
 <hr>
 <div class="header">
 <p>
-Previous: <a href="Kernel_002dText.html">Kernel-Text</a>, Up: <a href="Class-_002d-Model-of-Communicating-Entities.html">Class, Model of Communicating Entities</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Previous: <a href="Kernel_002dText.html" accesskey="p" rel="prev">Kernel-Text</a>, Up: <a href="Class-_002d-Model-of-Communicating-Entities.html" accesskey="u" rel="up">Class - Model of Communicating Entities</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

@@ -234,16 +234,27 @@ the string 'Hello' to become 'Belle'.}}
 Characters that are part of the @acronym{ASCII} character set can be
 asked for their @acronym{ASCII} code. Conversely, given an
 @acronym{ASCII} code, we can ask for the corresponding
-@class{Character}: @smalltalkExample{$A asciiValue @result{} 65
-Character asciiValue: 65 + 25 @result{} $Z}
+@class{Character}:
+
+@smalltalkExample{$A asciiValue
+@result{} 65
+Character asciiValue: 65 + 25
+@result{} $Z}
 
 @cindex character @subentry Unicode
 @cindex Unicode
 But Characters that are not part of @acronym{ASCII} don't have an
 @acronym{ASCII}. In general, it is better to use Unicode code points
-instead: @smalltalkExample{$A codePoint @result{} 65 UnicodeCodePoint
-codePoint: 65 + 25 @result{} $Z $φ codePoint @result{} 966
-UnicodeCodePoint codePoint: 966 @result{} $φ}
+instead:
+
+@smalltalkExample{$A codePoint
+@result{} 65
+UnicodeCodePoint codePoint: 65 + 25
+@result{} $Z
+$φ codePoint
+@result{} 966
+UnicodeCodePoint codePoint: 966
+@result{} $φ}
 
 @cindex string @subentry @method{shuffled}
 @cindex collection @subentry @method{shuffled}

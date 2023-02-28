@@ -1,8 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
@@ -54,6 +51,9 @@ original.
 
 Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
  -->
+<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Spacewar! models (The Cuis-Smalltalk Book)</title>
 
 <meta name="description" content="Spacewar! models (The Cuis-Smalltalk Book)">
@@ -61,19 +61,18 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="The-Message-Way-of-Life.html" rel="up" title="The Message Way of Life">
+<link href="Class-_002d-Model-of-Communicating-Entities.html" rel="next" title="Class - Model of Communicating Entities">
 <link href="A-brief-introduction-to-the-system-Browser.html" rel="prev" title="A brief introduction to the system Browser">
 <style type="text/css">
 <!--
-a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
@@ -82,7 +81,6 @@ pre.menu-preformatted {font-family: serif}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
-span:hover a.copiable-anchor {visibility: visible}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -92,21 +90,14 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<div class="section" id="Spacewar_0021-models">
-<div class="header">
+<span id="Spacewar_0021-models"></span><div class="header">
 <p>
 Previous: <a href="A-brief-introduction-to-the-system-Browser.html" accesskey="p" rel="prev">A brief introduction to the system Browser</a>, Up: <a href="The-Message-Way-of-Life.html" accesskey="u" rel="up">The Message Way of Life</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <span id="Spacewar_0021-models-1"></span><h3 class="section">2.6 Spacewar! models</h3>
 
-<ul class="section-toc">
-<li><a href="#First-classes" accesskey="1">First classes</a></li>
-<li><a href="#Spacewar_0021-package-1" accesskey="2">Spacewar! package</a></li>
-<li><a href="#The-Newtonian-model" accesskey="3">The Newtonian model</a></li>
-</ul>
-<div class="subsection" id="First-classes">
-<h4 class="subsection">2.6.1 First classes</h4>
+<span id="First-classes"></span><h4 class="subsection">2.6.1 First classes</h4>
 <p>In the last chapter we listed the protagonists of the game. Now, we
 propose a first implementation of the game model with a set of classes
 representing the involved entities:
@@ -172,9 +163,7 @@ get another class code template, click the class category
 </div>
 <div class="float-caption"><p><strong>Figure 2.2: </strong>Spacewar! class category</p></div></div>
 
-<span id="Spacewar_0021-package"></span></div>
-<div class="subsection" id="Spacewar_0021-package-1">
-<h4 class="subsection">2.6.2 Spacewar! package</h4>
+<span id="Spacewar_0021-package"></span><span id="Spacewar_0021-package-1"></span><h4 class="subsection">2.6.2 Spacewar! package</h4>
 <span id="index-package"></span>
 <span id="index-package-1"></span>
 <span id="index-package-2"></span>
@@ -231,9 +220,7 @@ fresh Cuis-Smalltalk environment, you can load the game package.
 behavior. These will be filled in and refactored in the following
 chapters.
 </p>
-</div>
-<div class="subsection" id="The-Newtonian-model">
-<h4 class="subsection">2.6.3 The Newtonian model</h4>
+<span id="The-Newtonian-model"></span><h4 class="subsection">2.6.3 The Newtonian model</h4>
 <span id="newtonModel"></span><p>For an enjoyable game experience, the player ships must follow
 Newton&rsquo;s laws of motion. Acceleration, speed and position are computed
 according to these laws. The ships are subjected to two forces: the
@@ -246,12 +233,10 @@ computer calculations.
 <div class="float"><span id="motionEquations"></span>
 <div align="center"><img src="motionEquations.png" alt="motionEquations">
 </div>
-<div class="float-caption"><p><strong>Figure 2.4: </strong>Equations of the accelerations, speed and position</p></div></div></div>
-</div>
-<hr>
+<div class="float-caption"><p><strong>Figure 2.4: </strong>Equations of the accelerations, speed and position</p></div></div><hr>
 <div class="header">
 <p>
-Previous: <a href="A-brief-introduction-to-the-system-Browser.html">A brief introduction to the system Browser</a>, Up: <a href="The-Message-Way-of-Life.html">The Message Way of Life</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Previous: <a href="A-brief-introduction-to-the-system-Browser.html" accesskey="p" rel="prev">A brief introduction to the system Browser</a>, Up: <a href="The-Message-Way-of-Life.html" accesskey="u" rel="up">The Message Way of Life</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

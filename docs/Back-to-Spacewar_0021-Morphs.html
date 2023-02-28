@@ -1,8 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
@@ -54,6 +51,9 @@ original.
 
 Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
  -->
+<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Back to Spacewar! Morphs (The Cuis-Smalltalk Book)</title>
 
 <meta name="description" content="Back to Spacewar! Morphs (The Cuis-Smalltalk Book)">
@@ -61,19 +61,18 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="The-Fundamentals-of-Morph.html" rel="up" title="The Fundamentals of Morph">
+<link href="Events.html" rel="next" title="Events">
 <link href="A-Clock-Morph.html" rel="prev" title="A Clock Morph">
 <style type="text/css">
 <!--
-a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
@@ -82,7 +81,6 @@ pre.menu-preformatted {font-family: serif}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
-span:hover a.copiable-anchor {visibility: visible}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -92,24 +90,14 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<div class="section" id="Back-to-Spacewar_0021-Morphs">
-<div class="header">
+<span id="Back-to-Spacewar_0021-Morphs"></span><div class="header">
 <p>
 Previous: <a href="A-Clock-Morph.html" accesskey="p" rel="prev">A Clock Morph</a>, Up: <a href="The-Fundamentals-of-Morph.html" accesskey="u" rel="up">The Fundamentals of Morph</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <span id="Back-to-Spacewar_0021-Morphs-1"></span><h3 class="section">7.3 Back to Spacewar! Morphs</h3>
 
-<ul class="section-toc">
-<li><a href="#Central-star" accesskey="1">Central star</a></li>
-<li><a href="#Space-ship" accesskey="2">Space ship</a></li>
-<li><a href="#Torpedo" accesskey="3">Torpedo</a></li>
-<li><a href="#Drawing-revisited" accesskey="4">Drawing revisited</a></li>
-<li><a href="#Drawing-simplified" accesskey="5">Drawing simplified</a></li>
-<li><a href="#Collisions-revisited" accesskey="6">Collisions revisited</a></li>
-</ul>
-<div class="subsection" id="Central-star">
-<h4 class="subsection">7.3.1 Central star</h4>
+<span id="Central-star"></span><h4 class="subsection">7.3.1 Central star</h4>
 
 <span id="index-backtick"></span>
 <p>Our central star has an extent of <code>30 @ 30</code> we need to use
@@ -133,7 +121,7 @@ is called: the pre-built value is used instead.
 </p></blockquote>
 
 <span id="index-number-38"></span>
-<span id="index-morph-21"></span>
+<span id="index-morph-22"></span>
 
 <p>As you learnt previously, a morph draws itself from its
 <code>drawOn:</code> method. We draw the star as an ellipse with randomly
@@ -160,9 +148,7 @@ independently of 0 to 2 units. The star does not look perfectly round.
 <div align="center"><img src="ch07-09-fluctuatingStar.gif" alt="ch07-09-fluctuatingStar">
 </div>
 <div class="float-caption"><p><strong>Figure 7.9: </strong>A star with a fluctuating size</p></div></div>
-</div>
-<div class="subsection" id="Space-ship">
-<h4 class="subsection">7.3.2 Space ship</h4>
+<span id="Space-ship"></span><h4 class="subsection">7.3.2 Space ship</h4>
 <p>At the game start-up, the nose of the space ship is pointing to the
 top of the screen as seen in <a href="#ch07_002d10_002dShipDiagram">Figure 7.10</a> and the angle
 of its direction is therefore -90&deg;, while the angle of its
@@ -220,8 +206,8 @@ the <code>PacedMorph</code> class to rotate appropriately. The
 <code>location</code> attribute represents an affine transformation, and we
 get its rotation angle with the <code>#radians</code> message.
 </p>
-<span id="index-morph-22"></span>
 <span id="index-morph-23"></span>
+<span id="index-morph-24"></span>
 <div class="example">
 <pre class="example">Mobile&gt;&gt;heading
    ^ location radians - Float halfPi
@@ -235,9 +221,7 @@ system. In that situation the mobile is not rotated &ndash; or
 0&deg; rotated &ndash; therefore we add 90&deg; (pi/2) to
 the heading to get the matching rotation angle of the mobile.
 </p>
-</div>
-<div class="subsection" id="Torpedo">
-<h4 class="subsection">7.3.3 Torpedo</h4>
+<span id="Torpedo"></span><h4 class="subsection">7.3.3 Torpedo</h4>
 
 
 <p>Alike a space ship, when a torpedo is just instantiated its nose
@@ -257,7 +241,7 @@ given by <a href="#ch07_002d11_002dTorpedoDiagram">Figure 7.11</a>, how will you
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong>Exercise 7.6: </strong>Torpedo extent</p></div></div>
+<div class="float-caption"><p><strong>Exercise 7.4: </strong>Torpedo extent</p></div></div>
 
 <div class="float"><span id="exeTorpedoDrawing"></span>
 <blockquote class="indentedblock">
@@ -267,11 +251,9 @@ the <code>Torpedo</code>&rsquo;s <code>drawOn:</code> method?</em>
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong>Exercise 7.7: </strong>Torpedo drawing</p></div></div>
+<div class="float-caption"><p><strong>Exercise 7.5: </strong>Torpedo drawing</p></div></div>
 
-</div>
-<div class="subsection" id="Drawing-revisited">
-<h4 class="subsection">7.3.4 Drawing revisited</h4>
+<span id="Drawing-revisited"></span><h4 class="subsection">7.3.4 Drawing revisited</h4>
 
 <span id="index-class-14"></span>
 <span id="index-variable-7"></span>
@@ -433,7 +415,7 @@ vertices in its class side:
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong>Exercise 7.8: </strong>Space ship access to its diagram in class side</p></div></div>
+<div class="float-caption"><p><strong>Exercise 7.6: </strong>Space ship access to its diagram in class side</p></div></div>
 <p>So far, we still have this redundancy in the <code>drawOn:</code>
 methods. What we want is <code>Mobile</code> to be responsible to draw the
 polygon given a vertices array: <code>self drawOn: canvas
@@ -464,7 +446,7 @@ iterator <code>withIndexDo:</code>.</em>
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong>Exercise 7.9: </strong>Draw on <code>Mobile</code></p></div></div>
+<div class="float-caption"><p><strong>Exercise 7.7: </strong>Draw on <code>Mobile</code></p></div></div>
 <span id="Class-variable"></span><h4 class="subsubheading">Class variable</h4>
 <span id="index-class-17"></span>
 <span id="index-variable-8"></span>
@@ -495,9 +477,7 @@ diagram for a space ship and a torpedo. This is not what we want.
    ^ `{0@-15 . -10@15 . 0@10 . 10@15}`
 </pre></div>
 
-</div>
-<div class="subsection" id="Drawing-simplified">
-<h4 class="subsection">7.3.5 Drawing simplified</h4>
+<span id="Drawing-simplified"></span><h4 class="subsection">7.3.5 Drawing simplified</h4>
 <p>Using a class variable in the present game design is a bit
 overkill. It was an excuse to present the concept of class
 variables. If the game came with an editor where the user redesigns
@@ -520,9 +500,7 @@ Torpedo&gt;&gt;vertices
 <p>Then in the drawing methods, we replace <code>self class
 vertices</code> by <code>self vertices</code>.
 </p>
-</div>
-<div class="subsection" id="Collisions-revisited">
-<h4 class="subsection">7.3.6 Collisions revisited</h4>
+<span id="Collisions-revisited"></span><h4 class="subsection">7.3.6 Collisions revisited</h4>
 <p>In <a href="SpaceWar_0021-collections.html#shipSunCollision">Example 4.23</a>, we have a very naive approach for collision
 between the central star and the ships, based on distance between
 morphs. It was very inaccurate.
@@ -577,12 +555,10 @@ the Sun</p></div></div>
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong>Exercise 7.10: </strong>Accurate collision detection</p></div></div></div>
-</div>
-<hr>
+<div class="float-caption"><p><strong>Exercise 7.8: </strong>Accurate collision detection</p></div></div><hr>
 <div class="header">
 <p>
-Previous: <a href="A-Clock-Morph.html">A Clock Morph</a>, Up: <a href="The-Fundamentals-of-Morph.html">The Fundamentals of Morph</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Previous: <a href="A-Clock-Morph.html" accesskey="p" rel="prev">A Clock Morph</a>, Up: <a href="The-Fundamentals-of-Morph.html" accesskey="u" rel="up">The Fundamentals of Morph</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

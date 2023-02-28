@@ -1,8 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
@@ -54,6 +51,9 @@ original.
 
 Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
  -->
+<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Spacewar! Morphs (The Cuis-Smalltalk Book)</title>
 
 <meta name="description" content="Spacewar! Morphs (The Cuis-Smalltalk Book)">
@@ -61,19 +61,18 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="Visual-with-Morph.html" rel="up" title="Visual with Morph">
+<link href="The-Fundamentals-of-Morph.html" rel="next" title="The Fundamentals of Morph">
 <link href="Building-your-specialized-Morph.html" rel="prev" title="Building your specialized Morph">
 <style type="text/css">
 <!--
-a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
@@ -82,7 +81,6 @@ pre.menu-preformatted {font-family: serif}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
-span:hover a.copiable-anchor {visibility: visible}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -92,20 +90,14 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<div class="section" id="Spacewar_0021-Morphs">
-<div class="header">
+<span id="Spacewar_0021-Morphs"></span><div class="header">
 <p>
 Previous: <a href="Building-your-specialized-Morph.html" accesskey="p" rel="prev">Building your specialized Morph</a>, Up: <a href="Visual-with-Morph.html" accesskey="u" rel="up">Visual with Morph</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <span id="Spacewar_0021-Morphs-1"></span><h3 class="section">6.6 Spacewar! Morphs</h3>
 
-<ul class="section-toc">
-<li><a href="#All-Morphs" accesskey="1">All Morphs</a></li>
-<li><a href="#The-art-of-refactoring" accesskey="2">The art of refactoring</a></li>
-</ul>
-<div class="subsection" id="All-Morphs">
-<h4 class="subsection">6.6.1 All Morphs</h4>
+<span id="All-Morphs"></span><h4 class="subsection">6.6.1 All Morphs</h4>
 <p>Previously we defined the actors of the game as subclasses of the very
 general <code>Object</code> class (See
 <a href="Spacewar_0021-States-and-Behaviors.html#torpedoClassVariables">Example 3.14</a>). However the game play, the central star,
@@ -209,9 +201,7 @@ morphPosition</code> and each time we need to modify the position we write
 <code>self morphPosition: newPosition</code>. More on that later.
 </p>
 
-</div>
-<div class="subsection" id="The-art-of-refactoring">
-<h4 class="subsection">6.6.2 The art of refactoring</h4>
+<span id="The-art-of-refactoring"></span><h4 class="subsection">6.6.2 The art of refactoring</h4>
 <span id="index-refactoring"></span>
 
 <p>In our <a href="Spacewar_0021-models.html#newtonModel">newtonian model</a> we explained the
@@ -526,25 +516,23 @@ already described previously in <a href="Spacewar_0021_0027s-methods.html#shipCo
 is drawn in the game play, this will be discussed in a next chapter on
 the fundamentals of Morph.
 </p>
-</div>
-</div>
 <div class="footnote">
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h5><a id="FOOT20" href="#DOCF20">(20)</a></h5>
+<h5><a id="FOOT20" href="#DOCF20">(20)</a></h3>
 <p>A
 <code>PlacedMorph</code> is a kind of <code>Morph</code> with a supplementary
 <code>location</code> attribute; so it can be instructed to move, to
 scale and to rotate in the screen.</p>
-<h5><a id="FOOT21" href="#DOCF21">(21)</a></h5>
+<h5><a id="FOOT21" href="#DOCF21">(21)</a></h3>
 <p>So a
 torpedo should come with a mass.</p>
 </div>
 <hr>
 <div class="header">
 <p>
-Previous: <a href="Building-your-specialized-Morph.html">Building your specialized Morph</a>, Up: <a href="Visual-with-Morph.html">Visual with Morph</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Previous: <a href="Building-your-specialized-Morph.html" accesskey="p" rel="prev">Building your specialized Morph</a>, Up: <a href="Visual-with-Morph.html" accesskey="u" rel="up">Visual with Morph</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

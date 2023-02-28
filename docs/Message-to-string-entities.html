@@ -1,8 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
@@ -54,6 +51,9 @@ original.
 
 Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
  -->
+<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Message to string entities (The Cuis-Smalltalk Book)</title>
 
 <meta name="description" content="Message to string entities (The Cuis-Smalltalk Book)">
@@ -61,8 +61,6 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="The-Message-Way-of-Life.html" rel="up" title="The Message Way of Life">
@@ -70,11 +68,11 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="Message-send-definitions.html" rel="prev" title="Message send definitions">
 <style type="text/css">
 <!--
-a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
@@ -83,7 +81,6 @@ pre.menu-preformatted {font-family: serif}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
-span:hover a.copiable-anchor {visibility: visible}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -93,8 +90,7 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<div class="section" id="Message-to-string-entities">
-<div class="header">
+<span id="Message-to-string-entities"></span><div class="header">
 <p>
 Next: <a href="Messages-to-number-entities.html" accesskey="n" rel="next">Messages to number entities</a>, Previous: <a href="Message-send-definitions.html" accesskey="p" rel="prev">Message send definitions</a>, Up: <a href="The-Message-Way-of-Life.html" accesskey="u" rel="up">The Message Way of Life</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
@@ -163,19 +159,30 @@ the string &rsquo;Hello&rsquo; to become &rsquo;Belle&rsquo;.</em>
 <p>Characters that are part of the <acronym>ASCII</acronym> character set can be
 asked for their <acronym>ASCII</acronym> code. Conversely, given an
 <acronym>ASCII</acronym> code, we can ask for the corresponding
-<code>Character</code>: </p><div class="example">
-<pre class="example">$A asciiValue &rArr; 65
-Character asciiValue: 65 + 25 &rArr; $Z
+<code>Character</code>:
+</p>
+<div class="example">
+<pre class="example">$A asciiValue
+&rArr; 65
+Character asciiValue: 65 + 25
+&rArr; $Z
 </pre></div>
 
 <span id="index-character-1"></span>
 <span id="index-Unicode-1"></span>
 <p>But Characters that are not part of <acronym>ASCII</acronym> don&rsquo;t have an
 <acronym>ASCII</acronym>. In general, it is better to use Unicode code points
-instead: </p><div class="example">
-<pre class="example">$A codePoint &rArr; 65 UnicodeCodePoint
-codePoint: 65 + 25 &rArr; $Z $φ codePoint &rArr; 966
-UnicodeCodePoint codePoint: 966 &rArr; $φ
+instead:
+</p>
+<div class="example">
+<pre class="example">$A codePoint
+&rArr; 65
+UnicodeCodePoint codePoint: 65 + 25
+&rArr; $Z
+$φ codePoint
+&rArr; 966
+UnicodeCodePoint codePoint: 966
+&rArr; $φ
 </pre></div>
 
 <span id="index-string-8"></span>
@@ -210,11 +217,10 @@ be instances of any class.
 &rArr; ' dehllloorw'
 </pre></div>
 
-</div>
 <hr>
 <div class="header">
 <p>
-Next: <a href="Messages-to-number-entities.html">Messages to number entities</a>, Previous: <a href="Message-send-definitions.html">Message send definitions</a>, Up: <a href="The-Message-Way-of-Life.html">The Message Way of Life</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Messages-to-number-entities.html" accesskey="n" rel="next">Messages to number entities</a>, Previous: <a href="Message-send-definitions.html" accesskey="p" rel="prev">Message send definitions</a>, Up: <a href="The-Message-Way-of-Life.html" accesskey="u" rel="up">The Message Way of Life</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

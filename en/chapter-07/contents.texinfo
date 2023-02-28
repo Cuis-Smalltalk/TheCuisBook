@@ -118,7 +118,8 @@ and still be able to move it around. The solution is to make it
 subclass of @class{PlacedMorph}, instead of @class{Morph}.
 
 @cindex morph @subentry @method{delete}
-To do this, first evaluate the code below to get rid of all LineExampleMorph instances:
+To do this, first evaluate the code below to get rid of all
+LineExampleMorph instances:
 
 @smalltalkExampleCaption{Delete all instances of a given morph,deleteMorphInstances,
 LineExampleMorph allInstancesDo: [ :m | m delete]}
@@ -211,28 +212,23 @@ an Inspector or a Hierarchy Browser to study the morph.
 You also have a @label{Rotate} and @label{Change scale} handles. Try
 them! To use them, move your hand to the handle, and then press the
 mouse button and drag it. As you might have guessed, the rotate
-handles spins your morph around its @smalltalk{0 @@ 0} coordinates
-(i.e. the origin of its own coordinate system). The scale handles
-controls the apparent zoom applied to your morph. Both scale and
-rotation (and also displacement, as when you move your morph around)
-are implemented by modifying the inner coordinate system defined by
-your morph. Displacement, rotation and scale are floating point
-numbers, and thus not limited to integers.
+handles spins your morph around the center of its surrounding
+rectangle. The scale handles controls the apparent zoom
+applied to your morph. Both scale and rotation (and also displacement,
+as when you move your morph around) are implemented by modifying the
+inner coordinate system defined by your morph. Displacement, rotation
+and scale are floating point numbers, and thus not limited to
+integers.
 
-We will learn how to control all this with code and animate our morph.
+@cindex morph @subentry @method{rotationCenter}
+To change the center of rotation of a Morph, you override the method
+@method{rotationCenter} accordingly:
 
-@exercise{Rotate your rectangle morph arround its center,exeRotateRect,
-@emph{Rotate your rectangle morph. Does it rotate around its center or
-around one corner? If necessary rewrite your rectangle morph so it rotates
-around its center.}}
+@smalltalkExample{RectangleExampleMorph>>rotationCenter
+   @return 0 @@ 0}
 
-In the solution we gave for the @ref{exeCrossMorph} (@ref{Solutions to
-the Exercises}), the cross origin is set to its top left. Therefore it
-rotates around this point.
-
-@exercise{Rotate the cross around its center,exeCrossCenterMorph,
-@emph{How will you rewrite the @method{drawOn:} so it rotates around
-its center?}}
+Observe how our rectangle morph now reacts to the rotation handle. We
+will learn how to control all this with code and animate our morph.
 
 @subsection Animated morph
 @cindex morph @subentry animated
