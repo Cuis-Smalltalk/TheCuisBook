@@ -18,7 +18,7 @@ the book, suggestions and borrowed texts. Your help is very valuable.
 
 
 
-Compilation : February 27, 2023
+Compilation : February 28, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -160,19 +160,21 @@ the string &rsquo;Hello&rsquo; to become &rsquo;Belle&rsquo;.</em>
 
 <div class="float-caption"><p><strong>Exercise 2.1: </strong>Hello to Belle</p></div></div>
 <span id="index-character"></span>
-<p>Characters that are part of the <acronym>ASCII</acronym> character set can be asked for their <acronym>ASCII</acronym> code. Conversely, given an <acronym>ASCII</acronym> code, we canask for the corresponding <code>Character</code>:
-</p><div class="example">
+<p>Characters that are part of the <acronym>ASCII</acronym> character set can be
+asked for their <acronym>ASCII</acronym> code. Conversely, given an
+<acronym>ASCII</acronym> code, we can ask for the corresponding
+<code>Character</code>: </p><div class="example">
 <pre class="example">$A asciiValue &rArr; 65
 Character asciiValue: 65 + 25 &rArr; $Z
 </pre></div>
 
 <span id="index-character-1"></span>
 <span id="index-Unicode-1"></span>
-<p>But Characters that are not part of <acronym>ASCII</acronym> don&rsquo;t have an <acronym>ASCII</acronym>. In general, it is better to use Unicode code points instead:
-</p><div class="example">
-<pre class="example">$A codePoint &rArr; 65
-UnicodeCodePoint codePoint: 65 + 25 &rArr; $Z
-$φ codePoint &rArr; 966
+<p>But Characters that are not part of <acronym>ASCII</acronym> don&rsquo;t have an
+<acronym>ASCII</acronym>. In general, it is better to use Unicode code points
+instead: </p><div class="example">
+<pre class="example">$A codePoint &rArr; 65 UnicodeCodePoint
+codePoint: 65 + 25 &rArr; $Z $φ codePoint &rArr; 966
 UnicodeCodePoint codePoint: 966 &rArr; $φ
 </pre></div>
 
