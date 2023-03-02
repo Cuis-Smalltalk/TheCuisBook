@@ -144,11 +144,11 @@
  @cindex variable @subentry assignment
  @item Assignment.
 
- @smalltalk{:=} assigns an object to a variable. Sometimes you will
- see @assign{} used instead. Since this character is not present in the
- keyboard, you key in with the underscore character key. So,
- @smalltalk{x := 1} is the same as @smalltalk{x @U{2190} 1} or
- @smalltalk{x _ 1}.
+ @smalltalk{:=} assigns an object to a variable. In the printed
+ version of the book we wrote @U{2190} instead. Since this character
+ is not present in the keyboard, you key in with the underscore
+ character key. So, @smalltalk{x := 1} is the same as @smalltalk{x
+ @U{2190} 1} or @smalltalk{x _ 1}.
 
  @cindex block
  @item Blocks.

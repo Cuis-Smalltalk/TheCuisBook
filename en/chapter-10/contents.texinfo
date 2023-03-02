@@ -215,7 +215,7 @@ Please change the Workspace code to add a @smalltalk{#halt} as follows.
 
 @smalltalkExampleCaption{Halt: Set a Breakpoint,breakpoint,
 | fileNames |
-fileNames := OrderedCollection new.
+fileNames @assign{} OrderedCollection new.
 (DirectoryEntry smalltalkImageDirectory) 
     childrenDo: [ :f | fileNames add: f name. fileNames halt ].
 fileNames asArray.}

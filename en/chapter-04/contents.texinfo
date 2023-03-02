@@ -227,10 +227,10 @@ variable bound to an object too.
 Any object responds to the message @msg{printString}.
 
 @smalltalkExample{| msg |
-msg := 'hello world!'.
+msg @assign{} 'hello world!'.
 Transcript show: msg capitalized printString, ' is a kind of '.
 Transcript show: msg class printString; newLine.
-msg := 5.
+msg @assign{} 5.
 Transcript show: msg printString, ' is a kind of '.
 Transcript show: msg class printString; newLine.}
 
@@ -325,7 +325,7 @@ The size of an array is fixed, it can not grow. An
 when adding element with the @msg{add:} message:
 @smalltalkExampleCaption{Dynamic size collection,dynamicSize,
 | fibo | 
-fibo := OrderedCollection newFrom: #(1 1 2 3).
+fibo @assign{} OrderedCollection newFrom: #(1 1 2 3).
 fibo add: 5;
    add: 8;
    add: 13;
@@ -412,8 +412,8 @@ A block of code can be saved in a variable, passed as a parameter, and
 can be used multiple times.
 @smalltalkExample{
 | add2 |
- add2 := [:n| n + 2].
- @{ add2 value: 2. add2 value: 7 @}.
+add2 @assign{} [:n| n + 2].
+@{ add2 value: 2. add2 value: 7 @}.
 @result{}  #(4 9)}
 
 
@@ -439,7 +439,7 @@ resulting collection:
 For more clarity, we use a variable named @smalltalk{primeNumbers} to
 remember about the prime numbers list we build:
 @smalltalkExample{| primeNumbers |
-primeNumbers := (1 to: 100) select: [:n | n isPrime].
+primeNumbers @assign{} (1 to: 100) select: [:n | n isPrime].
 primeNumbers size}
 
 @exercise{Number of prime number between 101 and
@@ -507,7 +507,7 @@ the keyword message @msg{to:do:}, the last argument is a block of code
 executed for each index:
 @smalltalkExampleCaption{A @emph{for} loop,forLoop,
 | sequence |
-sequence := OrderedCollection new.
+sequence @assign{} OrderedCollection new.
 1 to: 10 do: [:k | sequence add: 1 / k].
 sequence
 @result{} an OrderedCollection(1 1/2 1/3 1/4 1/5 1/6 1/7 1/8 1/9 1/10)}
@@ -528,7 +528,7 @@ A repeated loop without index or any collection is written with the
 @msg{timesRepeat:} message send to an integer:
 @smalltalkExampleCaption{A @emph{repeat} loop, repeatLoop,
 | fibo |
-fibo := OrderedCollection newFrom: #(1 1).
+fibo @assign{} OrderedCollection newFrom: #(1 1).
 10 timesRepeat: [
    fibo add: (fibo last + fibo atLast: 2)].
 fibo
@@ -603,10 +603,10 @@ delete elements to an array.
 There are different ways to create @class{Array} instance:
 
 @smalltalkExampleCaption{Collection with a fixed size,createArray,
-array1 := #(2 'Apple' $@@ 4) "create at compile time"
-array1b := @{2 . 'Apple' . 2@@1 . 1/3 @} "created a execution time"
-array2 := Array with: 2 with: 'Apple' with: 2@@3 with: 1/3.
-array3 := Array ofSize: 4 "an empty array with a 4 element capacity"}
+array1 @assign{} #(2 'Apple' $@@ 4) "create at compile time"
+array1b @assign{} @{2 . 'Apple' . 2@@1 . 1/3 @} "created a execution time"
+array2 @assign{} Array with: 2 with: 'Apple' with: 2@@3 with: 1/3.
+array3 @assign{} Array ofSize: 4 "an empty array with a 4 element capacity"}
 
 Array @smalltalk{array1} and @smalltalk{array1b} are bit
 different. The former one is created and filled with its contents at
@@ -665,9 +665,9 @@ variable depending on added or removed elements.
 @cindex @class{OrderedCollection}
 
 @smalltalkExampleCaption{Collection with a variable size, createOrderedColl,
-coll1 := @{2 . 'Apple' . 2@@1 . 1/3 @} asOrderedCollection
-coll2 := OrderedCollection with: 2 with: 'Apple' with: 2@@1 with: 1/3
-coll3 := OrderedCollection ofSize: 4}
+coll1 @assign{} @{2 . 'Apple' . 2@@1 . 1/3 @} asOrderedCollection
+coll2 @assign{} OrderedCollection with: 2 with: 'Apple' with: 2@@1 with: 1/3
+coll3 @assign{} OrderedCollection ofSize: 4}
 
 The access to elements is identical to an @class{Array}
 instance, but dynamic collections allow you to add and remove elements:
@@ -691,7 +691,7 @@ elements. The order of the element is not guaranteed, though. Observe
 how pi is the first element of the set:
 
 @smalltalkExampleCaption{Set collection, setCollection,
-set := Set new.
+set @assign{} Set new.
 set add: 1; add: Float pi; yourself
 @result{} a Set(3.141592653589793 1)}
 
@@ -700,7 +700,7 @@ types. Observe how @smalltalk{1}, @smalltalk{3/3} and @smalltalk{1.0}
 are considered equal and not duplicated in the set:
 
 @smalltalkExampleCaption{Set@comma{} without duplicates, setWithoutDuplicates,
-set := Set new.
+set @assign{} Set new.
 set add: 1; add: Float pi; add: 3/3; add: 1/3; add: 1.0; yourself
 @result{} a Set(1/3 3.141592653589793 1)}
 
@@ -743,16 +743,16 @@ To compile a list of colors:
 
 @smalltalkExampleCaption{Dictionary of colors, colorDict,
 | colors |
-colors := Dictionary new.
+colors @assign{} Dictionary new.
 colors
    add: #red -> Color red;
    add: #blue -> Color blue;
    add: #green -> Color green}
 
 There are shorter descriptions:
-@smalltalkExample{colors := Dictionary newFrom:
+@smalltalkExample{colors @assign{} Dictionary newFrom:
    @{#red -> Color red . #blue -> Color blue . #green -> Color green@}.
-colors := @{#red -> Color red . #blue -> Color blue .
+colors @assign{} @{#red -> Color red . #blue -> Color blue .
    #green -> Color green@} asDictionary}
 
 You access color by symbols:
