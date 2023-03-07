@@ -119,7 +119,7 @@ class.
 @cindex polymorphism
 
 In Smalltalk, we say that each object decides for itself how it
-reponds to a message.  This is called @dfn{polymorphism}.  The same
+responds to a message.  This is called @dfn{polymorphism}.  The same
 message selector may be sent to objects of different Classes.  The
 @emph{shape} (morph) of the computation is different depending on the
 specific class of the @emph{many} (poly) possible classes of the
@@ -545,8 +545,9 @@ polymorphically with most kinds of number:
 1/10 to: 5/3 by: 1/2 do: [:i | Transcript show: i; space]
 @result{} (1/10) (3/5) (11/10) (8/5) (1/10) (3/5) (11/10) (8/5) 
 
-Float pi to: 5 by: 1/3 do: [:i | Transcript show: (i roundTo: 0.01) ; space]
-@result{} 3.14 3.47 3.81 4.14 4.47 4.81}
+Float pi to: 5 by: 1/3 do: [:i | Transcript show: i; space]
+@result{} 3.141592653589793 3.4749259869231266 3.80825932025646
+4.141592653589793 4.474925986923126 4.808259320256459}
 
 @cindex loop  @subentry repeat
 @cindex repeat @seeentry{loop}
