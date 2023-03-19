@@ -206,6 +206,7 @@ handling.
 <div class="example">
 <pre class="example">| list |
 &quot;Delete all windows but the taskbar&quot;
+self runningWorld doOneCycleNow.
 list := UISupervisor ui submorphs reject: [:aMorph |
    aMorph is: #TaskbarMorph].
 list do: [:each | each delete].
