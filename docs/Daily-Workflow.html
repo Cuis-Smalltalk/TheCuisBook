@@ -15,7 +15,7 @@ the book, suggestions and borrowed texts. Your help is very valuable.
 
 
 
-Compilation : March 7, 2023
+Compilation : March 19, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -228,9 +228,9 @@ from the world.
 Feature require: #'Theme-Themes'.
 DarkTheme beCurrent.
 &quot;Adjust font size&quot;
-Preferences smallFonts.
+Preferences at: #guiElementsSize put: #smallFonts.
 &quot;Adjust taskbar size&quot;
-morph := UISupervisor ui submorphs first.
+morph := UISupervisor ui taskbar.
 morph scale: 1 / 2.
 Display fullScreenMode: true.
 self runningWorld doOneCycle.

@@ -524,9 +524,9 @@ Next, we change the preferences:
 Feature require: #'Theme-Themes'.
 DarkTheme beCurrent.
 "Adjust font size"
-Preferences smallFonts.
+Preferences at: #guiElementsSize put: #smallFonts.
 "Adjust taskbar size"
-morph @assign{} UISupervisor ui submorphs first.
+morph @assign{} UISupervisor ui taskbar.
 morph scale: 1 / 2.
 Display fullScreenMode: true.
 self runningWorld doOneCycle.}
