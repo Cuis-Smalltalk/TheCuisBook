@@ -504,6 +504,7 @@ Let's start by removing the open windows:
 
 @smalltalkExample{| list |
 "Delete all windows but the taskbar"
+self runningWorld doOneCycleNow.
 list @assign{} UISupervisor ui submorphs reject: [:aMorph |
    aMorph is: #TaskbarMorph].
 list do: [:each | each delete].}
