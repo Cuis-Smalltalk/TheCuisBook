@@ -530,7 +530,7 @@ Preferences at: #guiElementsSize put: #smallFonts.
 morph @assign{} UISupervisor ui taskbar.
 morph scale: 1 / 2.
 Display fullScreenMode: true.
-self runningWorld doOneCycle.}
+self runningWorld doOneCycleNow.}
 
 We require Theme-Themes package; as it is not installed on the default
 image, it will be searched on the disk for installation. Regarding the
