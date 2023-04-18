@@ -525,7 +525,7 @@ Next, we change the preferences:
 Feature require: #'Theme-Themes'.
 DarkTheme beCurrent.
 "Adjust font size"
-Preferences at: #guiElementsSize put: #smallFonts.
+Preferences at: #defaultFontSize put: 12.
 "Adjust taskbar size"
 morph @assign{} UISupervisor ui taskbar.
 morph scale: 1 / 2.
