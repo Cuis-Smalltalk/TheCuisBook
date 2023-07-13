@@ -287,9 +287,9 @@ Like @smalltalk{#shuffled}, all collections answer to the message
 @cindex number @subentry root
 @cindex number @subentry @method{sqrt}
 @cindex number @subentry @method{squared}
-@cindex number @subentry rational fraction @subentry operations
+@cindex number @subentry rational (fraction) @subentry operations
 
-Earlier, we discussed how @cuis{} knows about rational fractions.  The
+Earlier, we discussed how @cuis{} knows about rational numbers.  The
 four arithmetic operations and mathematical functions are implemented
 with unary and binary messages understood by the rational numbers:
 

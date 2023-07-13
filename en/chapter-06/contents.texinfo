@@ -62,14 +62,14 @@ But the basic ideas are quite simple.
 @node Installing a Package
 @section Installing a Package
 This chapter will require you to install the package
-@label{UI-Base-Morphs.pck.st}, it is part of the
+@label{UI-Shapes.pck.st}, it is part of the
 @url{https://github.com/Cuis-Smalltalk/Cuis-Smalltalk-UI,,Cuis-Smalltalk-UI}
 project. To fetch this package from the web, you have two options:
 
 @enumerate
 
   @item Grab the file
-  @file{@url{https://github.com/Cuis-Smalltalk/Cuis-Smalltalk-UI/raw/main/lib/UI-Base-Morphs.pck.st,,UI-Base-Morphs.pck.st}}
+  @file{@url{https://github.com/Cuis-Smalltalk/Cuis-Smalltalk-UI/raw/main/tools/UI-Shapes.pck.st,,UI-Shapes.pck.st}}
   and save it in the same folder as your @cuis{} image file.
 
   @item In the @cuis{} image folder, clone its Git repository:
@@ -78,7 +78,7 @@ project. To fetch this package from the web, you have two options:
 git clone git@@github.com:Cuis-Smalltalk/Cuis-Smalltalk-UI.git
 @end example
 
-Along the @label{UI-Base-Morphs.pck.st} packages there are other ones
+Along the @label{UI-Shapes.pck.st} packages there are other ones
 you can also discover in this repository.
 
 @end enumerate
@@ -86,7 +86,7 @@ you can also discover in this repository.
 @cindex package @subentry load @subentry by code
 Once done, in a Workspace execute the code to install the package:
 
-@smalltalkExample{Feature require: 'UI-Base-Morphs'}
+@smalltalkExample{Feature require: 'UI-Shapes}
 
 Your @cuis{} environment is now equiped for the next sections of this
 chapter.

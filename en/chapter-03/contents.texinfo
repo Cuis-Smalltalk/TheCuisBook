@@ -82,7 +82,7 @@ behavior by implementing the methods.  A variable is basically a named
 box which can hold any object.  Each instance variable of a class gets its own
 box with the common name.
 
-@cindex number @subentry rational fraction
+@cindex number @subentry rational (fraction)
 Lets see how the @class{Fraction} class is declared:
 
 @smalltalkExample{Number subclass: #Fraction
@@ -694,11 +694,11 @@ to the expected results.}}
 When accuracy is mandatory use the Rational Numbers
 representation in @cuis{}.
 
-@cindex number @subentry rational fraction
+@cindex number @subentry rational (fraction)
 
 A rational number is written with the division symbol between two
 integers: do @kbd{Ctrl-p} on @smalltalk{5/2} @result{}
-@smalltalk{5/2}. @cuis{} returns a rational fraction, it does not compute a
+@smalltalk{5/2}. @cuis{} returns a rational number, it does not compute a
 decimal.
 
 @exercise{Toward the infinite,exeZeroDivide, @emph{What happens when
@@ -707,7 +707,7 @@ executing this code} @smalltalk{5/0}@emph{?}}
 Let's come back to our computer's dyscalculia with decimal numbers. When
 using the rational numbers, the @ref{FloatPrecision} becomes:
 
-@smalltalkExampleCaption{Calculation is correct using rational fractions!,FractionPrecision,
+@smalltalkExampleCaption{Calculation is correct using fractions!,FractionPrecision,
 (1/10) + (2/10) - (3/10)
 @result{} 0}
 
