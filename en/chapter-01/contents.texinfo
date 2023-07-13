@@ -353,8 +353,8 @@ than to compute two factorials and divide them. The result is an integer
 as expected, not a scaled decimal number as many computer languages
 will return.
 
-@cindex number @subentry rational fraction
-@cindex rational fraction @seeentry{number}
+@cindex number @subentry rational (fraction)
+@cindex rational (fraction) @seeentry{number}
 @cindex fraction @seeentry{number}
 
 As we are discussing division, you may not get the result you expect:
@@ -363,8 +363,8 @@ As we are discussing division, you may not get the result you expect:
 
 It looks like @cuis{} is lazy because it does not answer the decimal
 number @smalltalk{3.75} as we were expecting. In fact @cuis{} wants to
-be as accurate as possible, and its answer is a rational fraction! After
-all, fractions are just division we are too lazy -- because it
+be as accurate as possible, and its answer is a rational number! After
+all, a fraction is just a division we are too lazy -- because it
 is troublesome -- to compute, @cuis{} does just that!
 
 Try out this to understand what is happening underneath:
