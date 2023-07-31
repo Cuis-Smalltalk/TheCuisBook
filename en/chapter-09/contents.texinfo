@@ -24,6 +24,7 @@ how you should manage the code of an application written with @cuis{}.
 @end menu
 
 @node The Image
+@anchor{ch09-Image}
 @section The Image
 
 We already wrote about the @cuis{} @dfn{image} (@xref{Installing and
@@ -38,21 +39,20 @@ At any time, the user can save the image with ...@clicksequence{World
 menu @click{} @label{Save}}... Alternatively @label{Save as...} saves
 the image under an alternate name provided by the user.
 
-Saving the image is the easiest and most straightforward method to save
-your own code. But we can't really call that code management as your
-code is not saved in a dedicated file of its own but mixed into other code in an
-image. Moreover it will be unpractical to share your work with others,
-for example via a version control system.
+Saving the image is the easiest and most straightforward method to
+save your own code. But we can't really call that code management as
+your code is not saved in a dedicated file of its own but mixed into
+other code in an image. Moreover it will be unpractical to share your
+work with others, for example via a version control system.
 
 For various reasons, an image may be in fuzzy state: the virtual
-machine may crash when running it, the file system may be unstable,
-or the environment may be in a lock
-down state. This is a drawback when using the image as your sole
-source code repository. The net result could be loosing your work.
+machine may crash when running it, the file system may be unstable, or
+the environment may be in a lock down state. This is a drawback when
+using the image as your sole source code repository. The net result
+could be loosing your work.
 
-Where you lost code because of a virtual machine crash
-there is a solution to recover your lost editing,
-the @dfn{Change Log}.
+Where you lost code because of a virtual machine crash there is a
+solution to recover your lost editing, the @dfn{Change Log}.
 
 @node The Change Log
 @section The Change Log
@@ -637,3 +637,13 @@ Browser also adds buttons to inspect the @label{code} and to treat code
 browser shows what code is different between the file and the running
 image and allows one to import individual classes or methods with the
 help of the context menu.
+
+
+@cuisNote{Not to save the image is just best practice advice for you
+when your primary goal is to create new code. We already discussed the
+caveats of saving the image concerning code management (@xref{ch09-Image,,The Image}).
+But from time to time, you'll find yourself in the position
+of an explorer when you open multiple code browsers and workplaces to
+figure something out. In this case, the state of the system, the open
+windows and code snippets, holds the value you care about, and saving
+the image is the right way to preserve the system's state.}

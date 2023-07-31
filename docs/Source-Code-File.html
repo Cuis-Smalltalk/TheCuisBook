@@ -6,16 +6,17 @@ implementation of the Smalltalk language and environment.
 Copyright (C) 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
 
 
-Thanks to Matt Armstrong, David Lewis, John McGarey, Mariano Montone,
-Ricardo Pacheco, Barry Perryman, Tommy Pettersson, Bernhard Pieber,
-Mauro Rizzi, Stephen Smith & Ignacio Sniechowski for the reviews of
-the book, suggestions and borrowed texts. Your help is very valuable.
+Thanks to Matt Armstrong, Szabolcs Komáromi, David Lewis, John
+McGarey, Mariano Montone, Ricardo Pacheco, Barry Perryman, Tommy
+Pettersson, Bernhard Pieber, Mauro Rizzi, Stephen Smith & Ignacio
+Sniechowski for the reviews of the book, suggestions and borrowed
+texts. Your help is very valuable.
 
 
 
 
 
-Compilation : July 13, 2023
+Compilation : July 31, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -138,7 +139,20 @@ Browser also adds buttons to inspect the <code>code</code> and to treat code
 browser shows what code is different between the file and the running
 image and allows one to import individual classes or methods with the
 help of the context menu.
-</p><hr>
+</p>
+
+<blockquote class="indentedblock">
+<p>&nbsp;<img src="note.png" alt="note">
+Not to save the image is just best practice advice for you
+when your primary goal is to create new code. We already discussed the
+caveats of saving the image concerning code management (See <a href="The-Image.html#ch09_002dImage">The Image</a>).
+But from time to time, you&rsquo;ll find yourself in the position
+of an explorer when you open multiple code browsers and workplaces to
+figure something out. In this case, the state of the system, the open
+windows and code snippets, holds the value you care about, and saving
+the image is the right way to preserve the system&rsquo;s state.
+</p></blockquote>
+<hr>
 <div class="header">
 <p>
 Previous: <a href="Daily-Workflow.html" accesskey="p" rel="prev">Daily Workflow</a>, Up: <a href="Code-Management.html" accesskey="u" rel="up">Code Management</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>

@@ -6,16 +6,17 @@ implementation of the Smalltalk language and environment.
 Copyright (C) 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
 
 
-Thanks to Matt Armstrong, David Lewis, John McGarey, Mariano Montone,
-Ricardo Pacheco, Barry Perryman, Tommy Pettersson, Bernhard Pieber,
-Mauro Rizzi, Stephen Smith & Ignacio Sniechowski for the reviews of
-the book, suggestions and borrowed texts. Your help is very valuable.
+Thanks to Matt Armstrong, Szabolcs Komáromi, David Lewis, John
+McGarey, Mariano Montone, Ricardo Pacheco, Barry Perryman, Tommy
+Pettersson, Bernhard Pieber, Mauro Rizzi, Stephen Smith & Ignacio
+Sniechowski for the reviews of the book, suggestions and borrowed
+texts. Your help is very valuable.
 
 
 
 
 
-Compilation : July 13, 2023
+Compilation : July 31, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -95,7 +96,7 @@ ul.no-bullet {list-style: none}
 Next: <a href="The-Change-Log.html" accesskey="n" rel="next">The Change Log</a>, Up: <a href="Code-Management.html" accesskey="u" rel="up">Code Management</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="The-Image-1"></span><h3 class="section">9.1 The Image</h3>
+<span id="ch09_002dImage"></span><span id="The-Image-1"></span><h3 class="section">9.1 The Image</h3>
 
 <p>We already wrote about the Cuis-Smalltalk <em>image</em> (See <a href="Installing-and-configuring-Cuis_002dSmalltalk.html">Installing and configuring Cuis-Smalltalk</a>). When saving the state of the virtual machine in
 the image file, every single change done in the environment will be
@@ -108,21 +109,20 @@ with a System Browser, an Inspector, etc.
 menu &rarr; <code>Save</code>... Alternatively <code>Save as...</code> saves
 the image under an alternate name provided by the user.
 </p>
-<p>Saving the image is the easiest and most straightforward method to save
-your own code. But we can&rsquo;t really call that code management as your
-code is not saved in a dedicated file of its own but mixed into other code in an
-image. Moreover it will be unpractical to share your work with others,
-for example via a version control system.
+<p>Saving the image is the easiest and most straightforward method to
+save your own code. But we can&rsquo;t really call that code management as
+your code is not saved in a dedicated file of its own but mixed into
+other code in an image. Moreover it will be unpractical to share your
+work with others, for example via a version control system.
 </p>
 <p>For various reasons, an image may be in fuzzy state: the virtual
-machine may crash when running it, the file system may be unstable,
-or the environment may be in a lock
-down state. This is a drawback when using the image as your sole
-source code repository. The net result could be loosing your work.
+machine may crash when running it, the file system may be unstable, or
+the environment may be in a lock down state. This is a drawback when
+using the image as your sole source code repository. The net result
+could be loosing your work.
 </p>
-<p>Where you lost code because of a virtual machine crash
-there is a solution to recover your lost editing,
-the <em>Change Log</em>.
+<p>Where you lost code because of a virtual machine crash there is a
+solution to recover your lost editing, the <em>Change Log</em>.
 </p>
 
 
