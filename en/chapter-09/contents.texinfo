@@ -648,6 +648,7 @@ browsers and workplaces to figure something out. In this case, the
 state of the system, the open windows and code snippets, holds the
 value you care about, and saving the image is the right way to
 preserve the system's state.@footnote{For more insight regarding the
-policy of saving the image, read this discussion from the Cuis
-community
-@url{https://lists.cuis.st/mailman/archives/cuis-dev/2023-July/007841.html}}}
+policy of saving the image, read this discussion in the Cuis community
+@url{https://lists.cuis.st/mailman/archives/cuis-dev/2023-July/007841.html,there}
+and
+@url{https://lists.cuis.st/mailman/archives/cuis-dev/2023-August/007884.html,there}}}
