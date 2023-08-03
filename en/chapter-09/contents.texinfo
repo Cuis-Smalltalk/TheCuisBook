@@ -641,9 +641,13 @@ help of the context menu.
 
 @cuisNote{Not to save the image is just best practice advice for you
 when your primary goal is to create new code. We already discussed the
-caveats of saving the image concerning code management (@xref{ch09-Image,,The Image}).
-But from time to time, you'll find yourself in the position
-of an explorer when you open multiple code browsers and workplaces to
-figure something out. In this case, the state of the system, the open
-windows and code snippets, holds the value you care about, and saving
-the image is the right way to preserve the system's state.}
+caveats of saving the image concerning code management
+(@xref{ch09-Image,,The Image}).  But from time to time, you'll find
+yourself in the position of an explorer when you open multiple code
+browsers and workplaces to figure something out. In this case, the
+state of the system, the open windows and code snippets, holds the
+value you care about, and saving the image is the right way to
+preserve the system's state.@footnote{For more insight regarding the
+policy of saving the image, read this discussion from the Cuis
+community
+@url{https://lists.cuis.st/mailman/archives/cuis-dev/2023-July/007841.html}}}
