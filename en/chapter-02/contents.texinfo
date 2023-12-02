@@ -467,7 +467,7 @@ fill-in panel and type part of a class name to match.  Try it with
 @smalltalk{String}.}
 
 @exercise{Count of methods,stringArith,@emph{How many methods are there
-in the @strong{arithmetic} method category of the @class{String}
+in the @strong{arithmetic} method category of the @class{CharacterSequence}
 class?}}
 
 
