@@ -1,9 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
-Copyright (C) 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
+Copyright © 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
 
 
 Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
@@ -16,7 +19,7 @@ texts. Your help is very valuable.
 
 
 
-Compilation : December 2, 2023
+Compilation : December 30, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -52,9 +55,6 @@ original.
 
 Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
  -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Control Flow Messaging (Solutions) (The Cuis-Smalltalk Book)</title>
 
 <meta name="description" content="Control Flow Messaging (Solutions) (The Cuis-Smalltalk Book)">
@@ -62,6 +62,8 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="Solutions-to-the-Exercises.html" rel="up" title="Solutions to the Exercises">
@@ -69,20 +71,7 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="The-Collection-Way-of-Life-_0028Solutions_0029.html" rel="prev" title="The Collection Way of Life (Solutions)">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -91,15 +80,16 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Control-Flow-Messaging-_0028Solutions_0029"></span><div class="header">
+<div class="unnumberedsec-level-extent" id="Control-Flow-Messaging-_0028Solutions_0029">
+<div class="nav-panel">
 <p>
-Next: <a href="Visual-with-Morph-_0028Solutions_0029.html" accesskey="n" rel="next">Visual with Morph (Solutions)</a>, Previous: <a href="The-Collection-Way-of-Life-_0028Solutions_0029.html" accesskey="p" rel="prev">The Collection Way of Life (Solutions)</a>, Up: <a href="Solutions-to-the-Exercises.html" accesskey="u" rel="up">Solutions to the Exercises</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Visual-with-Morph-_0028Solutions_0029.html" accesskey="n" rel="next">Visual with Morph</a>, Previous: <a href="The-Collection-Way-of-Life-_0028Solutions_0029.html" accesskey="p" rel="prev">The Collection Way of Life</a>, Up: <a href="Solutions-to-the-Exercises.html" accesskey="u" rel="up">Solutions to the Exercises</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Control-Flow-Messaging-2"></span><h3 class="unnumberedsec">Control Flow Messaging</h3>
-<span id="blockDivisor-1"></span><h4 class="subheading"><a href="Block-syntax.html#blockDivisor">Exercise 5.1</a></h4>
-<div class="example">
-<pre class="example">| divisors |
+<h3 class="unnumberedsec" id="Control-Flow-Messaging-2">Control Flow Messaging</h3>
+<h4 class="subheading" id="blockDivisor-1"><a class="ref" href="Block-syntax.html#blockDivisor">Exercise 5.1</a></h4>
+<div class="example smallexample">
+<pre class="example-preformatted">| divisors |
 divisors := [:x | (1 to: x) select: [:d | x \\ d = 0] ].
 divisors value: 60.
 &rArr; #(1 2 3 4 5 6 10 12 15 20 30 60)
@@ -107,31 +97,31 @@ divisors value: 45
 &rArr; #(1 3 5 9 15 45)
 </pre></div>
 
-<span id="implementingAndOr-1"></span><h4 class="subheading"><a href="Control-flow-with-block-and-message.html#implementingAndOr">Exercise 5.2</a></h4>
-<p>Check the implementations in <code>Boolean</code>, <code>True</code> and
-<code>False</code>.
+<h4 class="subheading" id="implementingAndOr-1"><a class="ref" href="Control-flow-with-block-and-message.html#implementingAndOr">Exercise 5.2</a></h4>
+<p>Check the implementations in <code class="code">Boolean</code>, <code class="code">True</code> and
+<code class="code">False</code>.
 </p>
-<span id="categorizeTeleport-1"></span><h4 class="subheading"><a href="Spacewar_0021_0027s-methods.html#categorizeTeleport">Exercise 5.3</a></h4>
-<p>Once the method is edited and saved, in the <code>Method</code> pane select
-its name <code>teleport:</code> then do ...right click
-&rarr; <code>more...</code> &rarr; <code>change category...</code> &rarr;
-<code>events</code>...
+<h4 class="subheading" id="categorizeTeleport-1"><a class="ref" href="Spacewar_0021_0027s-methods.html#categorizeTeleport">Exercise 5.3</a></h4>
+<p>Once the method is edited and saved, in the <code class="command">Method</code> pane select
+its name <code class="command">teleport:</code> then do ...right click
+&rarr; <code class="command">more...</code> &rarr; <code class="command">change category...</code> &rarr;
+<code class="command">events</code>...
 </p>
-<span id="categorizeControls-1"></span><h4 class="subheading"><a href="Spacewar_0021_0027s-methods.html#categorizeControls">Exercise 5.4</a></h4>
-<p>In the <code>Method</code> pane, select one uncategorized control method,
-then do ...right click &rarr; <code>more...</code>
-&rarr; <code>change category</code> &rarr; <code>new...</code> key-in
-<code>control</code>.
+<h4 class="subheading" id="categorizeControls-1"><a class="ref" href="Spacewar_0021_0027s-methods.html#categorizeControls">Exercise 5.4</a></h4>
+<p>In the <code class="command">Method</code> pane, select one uncategorized control method,
+then do ...right click &rarr; <code class="command">more...</code>
+&rarr; <code class="command">change category</code> &rarr; <code class="command">new...</code> key-in
+<code class="command">control</code>.
 </p>
 <p>To categorized the remaining uncategorized control methods, repeat but
-select <code>control</code> at the last step as this category now exists.
+select <code class="command">control</code> at the last step as this category now exists.
 </p>
-<span id="shipCollision-1"></span><h4 class="subheading"><a href="Spacewar_0021_0027s-methods.html#shipCollision">Exercise 5.5</a></h4>
+<h4 class="subheading" id="shipCollision-1"><a class="ref" href="Spacewar_0021_0027s-methods.html#shipCollision">Exercise 5.5</a></h4>
 <p>We do not need an iterator to detect a collision between two
 ships. However we use an iterator to take action on each ship when a
 collision is detected.
-</p><div class="example">
-<pre class="example">SpaceWar&gt;&gt;collisionsShips
+</p><div class="example smallexample">
+<pre class="example-preformatted">SpaceWar&gt;&gt;collisionsShips
 | positionA position B |
    positionA := ships first morphPosition.
    positionB := ships second  morphPosition.
@@ -145,11 +135,11 @@ collision is detected.
 <p>Local variables only used to ease the code source formatting in
 printed book.
 </p>
-<span id="torpedoSunCollision-1"></span><h4 class="subheading"><a href="Spacewar_0021_0027s-methods.html#torpedoSunCollision">Exercise 5.6</a></h4>
+<h4 class="subheading" id="torpedoSunCollision-1"><a class="ref" href="Spacewar_0021_0027s-methods.html#torpedoSunCollision">Exercise 5.6</a></h4>
 <p>You just need to pick the appropriate code snippets from the
 referenced exercise and examples.
-</p><div class="example">
-<pre class="example">SpaceWar&gt;&gt;collisionsTorpedoesStar
+</p><div class="example smallexample">
+<pre class="example-preformatted">SpaceWar&gt;&gt;collisionsTorpedoesStar
 | position |
    position := centralStar morphPosition.
    torpedoes do: [:each | 
@@ -159,10 +149,11 @@ referenced exercise and examples.
 </pre></div>
 
 
+</div>
 <hr>
-<div class="header">
+<div class="nav-panel">
 <p>
-Next: <a href="Visual-with-Morph-_0028Solutions_0029.html" accesskey="n" rel="next">Visual with Morph (Solutions)</a>, Previous: <a href="The-Collection-Way-of-Life-_0028Solutions_0029.html" accesskey="p" rel="prev">The Collection Way of Life (Solutions)</a>, Up: <a href="Solutions-to-the-Exercises.html" accesskey="u" rel="up">Solutions to the Exercises</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Visual-with-Morph-_0028Solutions_0029.html">Visual with Morph</a>, Previous: <a href="The-Collection-Way-of-Life-_0028Solutions_0029.html">The Collection Way of Life</a>, Up: <a href="Solutions-to-the-Exercises.html">Solutions to the Exercises</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

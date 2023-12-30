@@ -1,9 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
-Copyright (C) 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
+Copyright © 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
 
 
 Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
@@ -16,7 +19,7 @@ texts. Your help is very valuable.
 
 
 
-Compilation : December 2, 2023
+Compilation : December 30, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -52,9 +55,6 @@ original.
 
 Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
  -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Events (The Cuis-Smalltalk Book)</title>
 
 <meta name="description" content="Events (The Cuis-Smalltalk Book)">
@@ -62,27 +62,16 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="index.html" rel="up" title="Top">
-<link href="System-Events.html" rel="next" title="System Events">
-<link href="Back-to-Spacewar_0021-Morphs.html" rel="prev" title="Back to Spacewar! Morphs">
+<link href="Code-Management.html" rel="next" title="Code Management">
+<link href="The-Fundamentals-of-Morph.html" rel="prev" title="The Fundamentals of Morph">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
-div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
+div.center {text-align:center}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -91,23 +80,24 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Events"></span><div class="header">
+<div class="chapter-level-extent" id="Events">
+<div class="nav-panel">
 <p>
-Next: <a href="Code-Management.html" accesskey="n" rel="next">Code Management</a>, Previous: <a href="The-Fundamentals-of-Morph.html" accesskey="p" rel="prev">The Fundamentals of Morph</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Code-Management.html" accesskey="n" rel="next">Code Management</a>, Previous: <a href="The-Fundamentals-of-Morph.html" accesskey="p" rel="prev">The Fundamentals of Morph</a>, Up: <a href="index.html" accesskey="u" rel="up">Table of Contents</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Events-1"></span><h2 class="chapter">8 Events</h2>
+<h2 class="chapter" id="Events-1">8 Events</h2>
 
-<blockquote>
+<blockquote class="quotation">
 <p>When I used to read fairy tales, I fancied that kind of thing never
 happened, and now here I am in the middle of one!
 </p></blockquote>
-<div align="center">&mdash; <em>Lewis Carroll, Alice in Wonderland</em>
+<div class="center">&mdash; <em class="emph">Lewis Carroll, Alice in Wonderland</em>
 </div>
 <br> <br> <br> <br>
 
 
-<span id="What-just-happened_003f"></span><h3 class="heading">What just happened?</h3>
+<h3 class="heading" id="What-just-happened_003f">What just happened?</h3>
 
 <p>We talked above about control flow, how one makes decisions about what
 to do in making calculations.  We talked about this like the entire
@@ -117,23 +107,21 @@ so.
 <p>Computers may be fast at some calculations, but they are only so fast,
 and when there are many things to do, one shares and takes turns.
 </p>
-<p>So aside from <em>do this and then do that</em>, <em>event</em>s happen.
+<p>So aside from <em class="emph">do this and then do that</em>, <em class="dfn">event</em>s happen.
 </p>
 <p>Also, a computer may be fast enough that it literally has
-<em>nothing</em> to do.  What does it do then?  When a processor
-<em>goes to sleep</em>, how do we get its attention?
+<em class="emph">nothing</em> to do.  What does it do then?  When a processor
+<em class="emph">goes to sleep</em>, how do we get its attention?
 </p>
 <p>You are reading the right chapter to know.
 </p>
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="System-Events.html" accesskey="1">System Events</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Overall-Mechanism.html" accesskey="2">Overall Mechanism</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Spacewar_0021-Events.html" accesskey="3">Spacewar! Events</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 
+<ul class="mini-toc">
+<li><a href="System-Events.html" accesskey="1">System Events</a></li>
+<li><a href="Overall-Mechanism.html" accesskey="2">Overall Mechanism</a></li>
+<li><a href="Spacewar_0021-Events.html" accesskey="3">Spacewar! Events</a></li>
+</ul>
+</div>
 
 
 

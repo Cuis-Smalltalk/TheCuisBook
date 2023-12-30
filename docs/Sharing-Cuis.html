@@ -1,9 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
-Copyright (C) 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
+Copyright © 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
 
 
 Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
@@ -16,7 +19,7 @@ texts. Your help is very valuable.
 
 
 
-Compilation : December 2, 2023
+Compilation : December 30, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -52,9 +55,6 @@ original.
 
 Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
  -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Sharing Cuis (The Cuis-Smalltalk Book)</title>
 
 <meta name="description" content="Sharing Cuis (The Cuis-Smalltalk Book)">
@@ -62,27 +62,16 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="index.html" rel="up" title="Top">
-<link href="Golden-Rules-of-the-Smalltalk-Guild.html" rel="next" title="Golden Rules of the Smalltalk Guild">
-<link href="Halt_0021.html" rel="prev" title="Halt!">
+<link href="Documents-Copyright.html" rel="next" title="Documents Copyright">
+<link href="Debug-and-Exception-Handling.html" rel="prev" title="Debug and Exception Handling">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
-div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
+div.center {text-align:center}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -91,33 +80,34 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Sharing-Cuis"></span><div class="header">
+<div class="chapter-level-extent" id="Sharing-Cuis">
+<div class="nav-panel">
 <p>
-Next: <a href="Documents-Copyright.html" accesskey="n" rel="next">Documents Copyright</a>, Previous: <a href="Debug-and-Exception-Handling.html" accesskey="p" rel="prev">Debug and Exception Handling</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Documents-Copyright.html" accesskey="n" rel="next">Documents Copyright</a>, Previous: <a href="Debug-and-Exception-Handling.html" accesskey="p" rel="prev">Debug and Exception Handling</a>, Up: <a href="index.html" accesskey="u" rel="up">Table of Contents</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Sharing-Cuis-1"></span><h2 class="chapter">11 Sharing Cuis</h2>
+<h2 class="chapter" id="Sharing-Cuis-1">11 Sharing Cuis</h2>
 
-<blockquote>
+<blockquote class="quotation">
 <p>Programming is hardly ever a solitary communion between one man and
 one machine. Caring about other people is a conscious decision, and
 one that requires practice.
 </p></blockquote>
-<div align="center">&mdash; <em>Kent Beck, <a href="https://1lib.us/book/2083614/6104eb">&ldquo;Smalltalk Best Practice Patterns&rdquo;(1997)</a></em>
+<div class="center">&mdash; <em class="emph">Kent Beck, <a class="url" href="https://1lib.us/book/2083614/6104eb">&ldquo;Smalltalk Best Practice Patterns&rdquo;(1997)</a></em>
 </div>
 
-<blockquote>
+<blockquote class="quotation">
 <p>Programming remains an intensively collaborative process between
 groups of program readers and writers.
 </p></blockquote>
-<div align="center">&mdash; <em>Dave Thomas, <a href="http://rmod-files.lille.inria.fr/FreeBooks/WithStyle/SmalltalkWithStyle.pdf">&ldquo;Smalltalk With Style&rdquo;(1996)</a></em>
+<div class="center">&mdash; <em class="emph">Dave Thomas, <a class="url" href="http://rmod-files.lille.inria.fr/FreeBooks/WithStyle/SmalltalkWithStyle.pdf">&ldquo;Smalltalk With Style&rdquo;(1996)</a></em>
 </div>
-<blockquote>
+<blockquote class="quotation">
 <p>Let your code talk — Names matter. Let the code say what it means.
 Introduce a method for everything that needs to be done. Donʼt be
 afraid to delegate, even to yourself.
 </p></blockquote>
-<div align="center">&mdash; <em>Oscar Nierstrasz, <a href="http://scg.unibe.ch/download/st/07BestPractice.pdf">&ldquo;Best Practice Patterns - talk slides&rdquo;(2009)</a></em>
+<div class="center">&mdash; <em class="emph">Oscar Nierstrasz, <a class="url" href="http://scg.unibe.ch/download/st/07BestPractice.pdf">&ldquo;Best Practice Patterns - talk slides&rdquo;(2009)</a></em>
 </div>
 
 <br> <br> <br> <br>
@@ -134,13 +124,12 @@ something wonderful and probably want to share it.
 <p>Good writing takes practice. Good writers read.
 </p>
 
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="Golden-Rules-of-the-Smalltalk-Guild.html" accesskey="1">Golden Rules of the Smalltalk Guild </a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Refactoring-to-Improve-Understanding.html" accesskey="2">Refactoring to Improve Understanding</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 
+<ul class="mini-toc">
+<li><a href="Golden-Rules-of-the-Smalltalk-Guild.html" accesskey="1">Golden Rules of the Smalltalk Guild</a></li>
+<li><a href="Refactoring-to-Improve-Understanding.html" accesskey="2">Refactoring to Improve Understanding</a></li>
+</ul>
+</div>
 
 
 

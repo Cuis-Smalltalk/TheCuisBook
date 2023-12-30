@@ -1,9 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
-Copyright (C) 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
+Copyright © 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
 
 
 Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
@@ -16,7 +19,7 @@ texts. Your help is very valuable.
 
 
 
-Compilation : December 2, 2023
+Compilation : December 30, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -52,9 +55,6 @@ original.
 
 Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
  -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Spacewar! Events (The Cuis-Smalltalk Book)</title>
 
 <meta name="description" content="Spacewar! Events (The Cuis-Smalltalk Book)">
@@ -62,27 +62,18 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="Events.html" rel="up" title="Events">
-<link href="Code-Management.html" rel="next" title="Code Management">
 <link href="Overall-Mechanism.html" rel="prev" title="Overall Mechanism">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
+div.center {text-align:center}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
+ul.mark-bullet {list-style-type: disc}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -91,177 +82,185 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Spacewar_0021-Events"></span><div class="header">
+<div class="section-level-extent" id="Spacewar_0021-Events">
+<div class="nav-panel">
 <p>
 Previous: <a href="Overall-Mechanism.html" accesskey="p" rel="prev">Overall Mechanism</a>, Up: <a href="Events.html" accesskey="u" rel="up">Events</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Spacewar_0021-Events-1"></span><h3 class="section">8.3 Spacewar! Events</h3>
+<h3 class="section" id="Spacewar_0021-Events-1">8.3 Spacewar! Events</h3>
 <p>Obviously our Spacewar! game handles events. Firstly we want to control the
 ships with the keyboard. Secondly, we want the game to pause
 when the mouse cursor moves out of the game play, and resume when it
 enters again.
 </p>
-<p>In our design, a unique morph, <code>SpaceWar</code> instance, models the
+<p>In our design, a unique morph, <code class="code">SpaceWar</code> instance, models the
 game play. Therefore we want this instance to handle the events
 described above.
 </p>
-<span id="Mouse-event"></span><h4 class="subsection">8.3.1 Mouse event</h4>
-<span id="index-event-5"></span>
-<span id="index-mouse"></span>
+<ul class="mini-toc">
+<li><a href="#Mouse-event" accesskey="1">Mouse event</a></li>
+<li><a href="#Keyboard-event" accesskey="2">Keyboard event</a></li>
+</ul>
+<div class="subsection-level-extent" id="Mouse-event">
+<h4 class="subsection">8.3.1 Mouse event</h4>
+<a class="index-entry-id" id="index-event-5"></a>
+<a class="index-entry-id" id="index-mouse"></a>
 
-<span id="Mouse-cursor-enters-game-play"></span><h4 class="subsubheading">Mouse cursor enters game play</h4>
-<span id="index-event-6"></span>
+<h4 class="subsubheading" id="Mouse-cursor-enters-game-play">Mouse cursor enters game play</h4>
+<a class="index-entry-id" id="index-event-6"></a>
 
 <p>We want to catch events when the mouse cursor moves over our
-<code>SpaceWar</code> morph.
+<code class="code">SpaceWar</code> morph.
 </p>
-<div class="float"><span id="handleMouseOver"></span>
+<div class="float" id="handleMouseOver">
 <blockquote class="indentedblock">
-<p>&nbsp;<img src="CuisLogo.png" alt="CuisLogo">
-<em>Which method should return true to let the game play be notified
+<p>&nbsp;<img class="image" src="CuisLogo.png" alt="CuisLogo">
+<em class="emph">Which method should return true to let the game play be notified
 with a dedicated messages that the mouse cursor enters or leaves? In which
 class should we implement this method?</em>
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong>Exercise 8.1: </strong>Get notified of mouse move-over event</p></div></div>
+<div class="caption"><p><strong class="strong">Exercise 8.1: </strong>Get notified of mouse move-over event</p></div></div>
 <p>Once we make explicit we want the game play to receive mouse move-over
 events, we need to set the behavior accordingly with dedicated
 methods.
 </p>
-<span id="index-event-7"></span>
+<a class="index-entry-id" id="index-event-7"></a>
 <p>Each time the mouse cursor enters the game play, we want to:
 </p>
-<ul>
-<li> <strong>Get keyboard focus.</strong> It follows the mouse cursor: the
+<ul class="itemize mark-bullet">
+<li><strong class="strong">Get keyboard focus.</strong> It follows the mouse cursor: the
   keyboard input goes to the morph under the mouse cursor. In Cuis-Smalltalk,
-  the mouse cursor is modeled as a <code>HandMorph</code> instance, an
+  the mouse cursor is modeled as a <code class="code">HandMorph</code> instance, an
   event object (see event classes hierarchy at the beginning of this
   chapter). An event object is interrogated about its hand with the
-  <code>#hand</code> message. All in all, we want the keyboard focus to be
+  <code class="code">#hand</code> message. All in all, we want the keyboard focus to be
   targeted toward our game play when the mouse enters:
 
-<div class="example">
-<pre class="example">event hand newKeyboardFocus: self
+<div class="example smallexample">
+<pre class="example-preformatted">event hand newKeyboardFocus: self
 </pre></div>
 
-</li><li> <strong>Resume the game.</strong> The continuous update of the game is
+</li><li><strong class="strong">Resume the game.</strong> The continuous update of the game is
   done through a dedicated process stepping mechanism, which will
   be discussed in the next chapter. The game play just asks itself to
   resume stepping:
-  <div class="example">
-<pre class="example">self startStepping
+  <div class="example smallexample">
+<pre class="example-preformatted">self startStepping
 </pre></div>
 </li></ul>
 
-<div class="float"><span id="mouseEnter"></span>
+<div class="float" id="mouseEnter">
 <blockquote class="indentedblock">
-<p>&nbsp;<img src="CuisLogo.png" alt="CuisLogo">
-<em>Which message is
+<p>&nbsp;<img class="image" src="CuisLogo.png" alt="CuisLogo">
+<em class="emph">Which message is
 sent to the game play to be notified the mouse cursor enters the game
 play area?  How should the matching method be written?</em>
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong>Exercise 8.2: </strong>Handle mouse enter event</p></div></div>
-<span id="Mouse-cursor-leaves-game-play"></span><h4 class="subsubheading">Mouse cursor leaves game play</h4>
-<span id="index-event-8"></span>
+<div class="caption"><p><strong class="strong">Exercise 8.2: </strong>Handle mouse enter event</p></div></div>
+<h4 class="subsubheading" id="Mouse-cursor-leaves-game-play">Mouse cursor leaves game play</h4>
+<a class="index-entry-id" id="index-event-8"></a>
 
 <p>We also want to be informed when the mouse cursor leaves our
-<code>SpaceWar</code> morph. Thanks to the work done in
-<a href="#handleMouseOver">Exercise 8.1</a>, we already informed Cuis-Smalltalk we want to be
+<code class="code">SpaceWar</code> morph. Thanks to the work done in
+<a class="ref" href="#handleMouseOver">Exercise 8.1</a>, we already informed Cuis-Smalltalk we want to be
 notified of mouse movement over the game play. However we need to code
 the behavior when the mouse cursor leaves the game play:
 </p>
-<ul>
-<li> <strong>Release keyboard focus.</strong> We tell Cuis-Smalltalk the game play
+<ul class="itemize mark-bullet">
+<li><strong class="strong">Release keyboard focus.</strong> We tell Cuis-Smalltalk the game play
   does not want keyboard focus:
 
-<div class="example">
-<pre class="example">event hand releaseKeyboardFocus: self
+<div class="example smallexample">
+<pre class="example-preformatted">event hand releaseKeyboardFocus: self
 </pre></div>
 
-</li><li> <strong>Pause the game.</strong> We stop the continuous
-  <em>stepping</em> update of the game:
+</li><li><strong class="strong">Pause the game.</strong> We stop the continuous
+  <em class="emph">stepping</em> update of the game:
 
-<div class="example">
-<pre class="example">self stopStepping
+<div class="example smallexample">
+<pre class="example-preformatted">self stopStepping
 </pre></div>
 
 </li></ul>
 
-<div class="float"><span id="mouseLeave"></span>
+<div class="float" id="mouseLeave">
 <blockquote class="indentedblock">
-<p>&nbsp;<img src="CuisLogo.png" alt="CuisLogo">
-<em>Which message is
+<p>&nbsp;<img class="image" src="CuisLogo.png" alt="CuisLogo">
+<em class="emph">Which message is
 sent to the game play to be notified the mouse cursor leaves the game
 play area?  How should we write the overridden method?</em>
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong>Exercise 8.3: </strong>Handle mouse leave event</p></div></div>
+<div class="caption"><p><strong class="strong">Exercise 8.3: </strong>Handle mouse leave event</p></div></div>
 <p>In graphic user interface, a visual effect is often used to inform the
 user the keyboard focus changed. In Spacewar! we change the game play
 background depending on the sate of the keyboard focus.
 </p>
-<p>In <a href="#ch08_002dFocus">Figure 8.1</a>, at the left keyboard focus is on the game; at the
+<p>In <a class="ref" href="#ch08_002dFocus">Figure 8.1</a>, at the left keyboard focus is on the game; at the
 right keyboard focus is not on the game, it is paused and we can see
 underneath.
 </p>
-<div class="float"><span id="ch08_002dFocus"></span>
-<div align="center"><img src="ch08-Focus.png" alt="ch08-Focus">
+<div class="float" id="ch08_002dFocus">
+<div class="center"><img class="image" src="ch08-Focus.png" alt="ch08-Focus">
 </div>
-<div class="float-caption"><p><strong>Figure 8.1: </strong>Spacewar! effect depending on the keyboard focus</p></div></div>
-<p>In the Morph framework, the <code>#keyboardFocusChange:</code> message is sent
+<div class="caption"><p><strong class="strong">Figure 8.1: </strong>Spacewar! effect depending on the keyboard focus</p></div></div>
+<p>In the Morph framework, the <code class="code">#keyboardFocusChange:</code> message is sent
 to the morph losing or gaining the keyboard focus, its parameter is a
-Boolean. Therefore we implement the <a href="#ch08_002dFocus">Figure 8.1</a> behavior in the
-matching <code>SpaceWar</code>&rsquo;s method <code>keyboardFocusChange:</code>
+Boolean. Therefore we implement the <a class="ref" href="#ch08_002dFocus">Figure 8.1</a> behavior in the
+matching <code class="code">SpaceWar</code>&rsquo;s method <code class="code">keyboardFocusChange:</code>
 </p>
-<div class="float"><span id="keyboardFocusEffect"></span>
-<div class="example">
-<pre class="example">SpaceWar&gt;&gt;keyboardFocusChange: gotFocus
+<div class="float" id="keyboardFocusEffect">
+<div class="example smallexample">
+<pre class="example-preformatted">SpaceWar&gt;&gt;keyboardFocusChange: gotFocus
    gotFocus 
       ifTrue: [color := self defaultColor]
       ifFalse: [color := self defaultColor alpha: 0.5].
    self redrawNeeded
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 8.1: </strong>Spacewar! keyboard focus effect</p></div></div>
-<span id="Keyboard-event"></span><h4 class="subsection">8.3.2 Keyboard event</h4>
-<span id="index-event-9"></span>
-<span id="index-event-10"></span>
+<div class="caption"><p><strong class="strong">Example 8.1: </strong>Spacewar! keyboard focus effect</p></div></div>
+</div>
+<div class="subsection-level-extent" id="Keyboard-event">
+<h4 class="subsection">8.3.2 Keyboard event</h4>
+<a class="index-entry-id" id="index-event-9"></a>
+<a class="index-entry-id" id="index-event-10"></a>
 
 <p>To control the space ships, we use the keyboard. Therefore we want the
 game play to be notified of keyboard events.
 </p>
-<div class="float"><span id="keyboardEvent"></span>
+<div class="float" id="keyboardEvent">
 <blockquote class="indentedblock">
-<p>&nbsp;<img src="CuisLogo.png" alt="CuisLogo">
-<em>Find
+<p>&nbsp;<img class="image" src="CuisLogo.png" alt="CuisLogo">
+<em class="emph">Find
 out which method should return true to let the game be notified of
 keyboard event.</em>
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong>Exercise 8.4: </strong>Get notified of keyboard event</p></div></div>
-<span id="index-event-11"></span>
+<div class="caption"><p><strong class="strong">Exercise 8.4: </strong>Get notified of keyboard event</p></div></div>
+<a class="index-entry-id" id="index-event-11"></a>
 <p>We can decide to be notified of the key down or key up event and also
-key down then up event (<em>key stroke</em>). As long as our
-<code>SpaceWar</code> morph responds true to the <code>#handlesKeyboard</code>
-message, it receives the messages <code>#keyUp:</code>, <code>#keyDown:</code> and
-<code>#keyStroke:</code>. By default, the matching methods in the
-<code>Morph</code> class do nothing.
+key down then up event (<em class="dfn">key stroke</em>). As long as our
+<code class="code">SpaceWar</code> morph responds true to the <code class="code">#handlesKeyboard</code>
+message, it receives the messages <code class="code">#keyUp:</code>, <code class="code">#keyDown:</code> and
+<code class="code">#keyStroke:</code>. By default, the matching methods in the
+<code class="code">Morph</code> class do nothing.
 </p>
-<p>The argument of these messages is a <code>KeyboardEvent</code> object to
-which, among other things, you can ask the <code>#keyCharacter</code> of the
+<p>The argument of these messages is a <code class="code">KeyboardEvent</code> object to
+which, among other things, you can ask the <code class="code">#keyCharacter</code> of the
 pressed key or test about some special keys as the keyboard
 arrows. The first player ship &ndash; the green one &ndash; is controlled with
 the keyboard arrows when there are stroked:
 </p>
-<div class="float"><span id="firstShipControl"></span>
-<div class="example">
-<pre class="example">SpaceWar&gt;&gt;keyStroke: event
+<div class="float" id="firstShipControl">
+<div class="example smallexample">
+<pre class="example-preformatted">SpaceWar&gt;&gt;keyStroke: event
    event isArrowUp ifTrue: [^ ships first push].
    event isArrowRight ifTrue: [^ ships first right].
    event isArrowLeft ifTrue: [^ ships first left].
@@ -269,34 +268,36 @@ the keyboard arrows when there are stroked:
    ...
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 8.2: </strong>Keystroke to control the first player ship</p></div></div>
+<div class="caption"><p><strong class="strong">Example 8.2: </strong>Keystroke to control the first player ship</p></div></div>
 <p>To control the second player ship, we use another classic arrangement
 in QWERTY keyboard controlled game:
-WASD<a id="DOCF26" href="#FOOT26"><sup>26</sup></a>.
+WASD<a class="footnote" id="DOCF26" href="#FOOT26"><sup>26</sup></a>.
 </p>
-<div class="float"><span id="secondShipControl"></span>
+<div class="float" id="secondShipControl">
 <blockquote class="indentedblock">
-<p>&nbsp;<img src="CuisLogo.png" alt="CuisLogo">
-<em>Append the additional code to <a href="#firstShipControl">Example 8.2</a> to control
+<p>&nbsp;<img class="image" src="CuisLogo.png" alt="CuisLogo">
+<em class="emph">Append the additional code to <a class="ref" href="#firstShipControl">Example 8.2</a> to control
 the second player ship with the keys WASD. As a reminder, in Smalltalk
-the character code for q can be written as <code>$q</code>.</em>
+the character code for q can be written as <code class="code">$q</code>.</em>
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong>Exercise 8.5: </strong>Keys to control the second player ship</p></div></div>
+<div class="caption"><p><strong class="strong">Exercise 8.5: </strong>Keys to control the second player ship</p></div></div>
 
 
-<div class="footnote">
+</div>
+</div>
+<div class="footnotes-segment">
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h5><a id="FOOT26" href="#DOCF26">(26)</a></h3>
-<p><a href="https://en.wikipedia.org/wiki/Arrow_keys#WASD_keys">https://en.wikipedia.org/wiki/Arrow_keys#WASD_keys</a></p>
+<h5 class="footnote-body-heading"><a id="FOOT26" href="#DOCF26">(26)</a></h5>
+<p><a class="url" href="https://en.wikipedia.org/wiki/Arrow_keys#WASD_keys">https://en.wikipedia.org/wiki/Arrow_keys#WASD_keys</a></p>
 </div>
 <hr>
-<div class="header">
+<div class="nav-panel">
 <p>
-Previous: <a href="Overall-Mechanism.html" accesskey="p" rel="prev">Overall Mechanism</a>, Up: <a href="Events.html" accesskey="u" rel="up">Events</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Previous: <a href="Overall-Mechanism.html">Overall Mechanism</a>, Up: <a href="Events.html">Events</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

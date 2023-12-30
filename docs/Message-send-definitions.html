@@ -1,9 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
-Copyright (C) 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
+Copyright © 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
 
 
 Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
@@ -16,7 +19,7 @@ texts. Your help is very valuable.
 
 
 
-Compilation : December 2, 2023
+Compilation : December 30, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -52,9 +55,6 @@ original.
 
 Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
  -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Message send definitions (The Cuis-Smalltalk Book)</title>
 
 <meta name="description" content="Message send definitions (The Cuis-Smalltalk Book)">
@@ -62,6 +62,8 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="The-Message-Way-of-Life.html" rel="up" title="The Message Way of Life">
@@ -69,20 +71,9 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="Communicating-entities.html" rel="prev" title="Communicating entities">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
+kbd.kbd {font-style: oblique}
+ul.mark-bullet {list-style-type: disc}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -91,37 +82,38 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Message-send-definitions"></span><div class="header">
+<div class="section-level-extent" id="Message-send-definitions">
+<div class="nav-panel">
 <p>
 Next: <a href="Message-to-string-entities.html" accesskey="n" rel="next">Message to string entities</a>, Previous: <a href="Communicating-entities.html" accesskey="p" rel="prev">Communicating entities</a>, Up: <a href="The-Message-Way-of-Life.html" accesskey="u" rel="up">The Message Way of Life</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Message-send-definitions-1"></span><h3 class="section">2.2 Message send definitions</h3>
-<span id="index-message-2"></span>
+<h3 class="section" id="Message-send-definitions-1">2.2 Message send definitions</h3>
+<a class="index-entry-id" id="index-message-2"></a>
 
 <p>There are three kinds of messages in Cuis-Smalltalk:
 </p>
-<span id="index-message-3"></span>
+<a class="index-entry-id" id="index-message-3"></a>
 
-<ul>
-<li> <strong>Unary messages</strong> take no argument.
+<ul class="itemize mark-bullet">
+<li><strong class="strong">Unary messages</strong> take no argument.
  <br>
- In <code>1 factorial</code> the message <code>#factorial</code> is sent to the
- object <code>1</code>.
+ In <code class="code">1 factorial</code> the message <code class="code">#factorial</code> is sent to the
+ object <code class="code">1</code>.
 
-<span id="index-message-4"></span>
-</li><li> <strong>Binary messages</strong> take exactly one argument.
+<a class="index-entry-id" id="index-message-4"></a>
+</li><li><strong class="strong">Binary messages</strong> take exactly one argument.
  <br> 
- In <code>1 + 2</code> the message <code>#+</code> is sent to the object
- <code>1</code> with the argument <code>2</code>.
+ In <code class="code">1 + 2</code> the message <code class="code">#+</code> is sent to the object
+ <code class="code">1</code> with the argument <code class="code">2</code>.
 
-<span id="index-message-5"></span>
-</li><li> <strong>Keyword messages</strong> take an arbitrary number of
+<a class="index-entry-id" id="index-message-5"></a>
+</li><li><strong class="strong">Keyword messages</strong> take an arbitrary number of
  arguments.
  <br> 
- In <code>2 raisedTo: 6 modulo: 10</code> the message consisting of the
- message selector <code>#raisedTo:modulo:</code> and the arguments
- <code>6</code> and <code>10</code> is sent to the object <code>2</code>.
+ In <code class="code">2 raisedTo: 6 modulo: 10</code> the message consisting of the
+ message selector <code class="code">#raisedTo:modulo:</code> and the arguments
+ <code class="code">6</code> and <code class="code">10</code> is sent to the object <code class="code">2</code>.
 
 </li></ul>
 
@@ -131,38 +123,38 @@ with a lower case letter.
 <p>Binary message selectors consist of one or more characters from the
 following set:
 </p>
-<div class="example">
-<pre class="example">+ - / \ * ~ &lt; &gt; = @ % | &amp; ? ,
+<div class="example smallexample">
+<pre class="example-preformatted">+ - / \ * ~ &lt; &gt; = @ % | &amp; ? ,
 </pre></div>
 
 <p>Keyword message selectors consist of a series of alphanumeric
 keywords, where each keyword starts with a lower-case letter and ends
 with a colon.
 </p>
-<span id="index-message-6"></span>
+<a class="index-entry-id" id="index-message-6"></a>
 <p>Unary messages have the highest precedence, then binary messages, and
 finally keyword messages, so:
 </p>
-<div class="example">
-<pre class="example">2 raisedTo: 1 + 3 factorial
+<div class="example smallexample">
+<pre class="example-preformatted">2 raisedTo: 1 + 3 factorial
 &rArr; 128
 </pre></div>
 
-<p>First we send <code>factorial</code> to <code>3</code>, then we send
-<code>+ 6</code> to <code>1</code>, and finally we send
-<code>raisedTo: 7</code> to <code>2</code>.
+<p>First we send <code class="code">factorial</code> to <code class="code">3</code>, then we send
+<code class="code">+ 6</code> to <code class="code">1</code>, and finally we send
+<code class="code">raisedTo: 7</code> to <code class="code">2</code>.
 </p>
 <p>Precedence aside, evaluation is strictly from left to right, so
 </p>
-<div class="example">
-<pre class="example">1 + 2 * 3
+<div class="example smallexample">
+<pre class="example-preformatted">1 + 2 * 3
 &rArr; 9
 </pre></div>
 
 <p>is not 7. Parentheses must be used to alter the order of evaluation:
 </p>
-<div class="example">
-<pre class="example">1 + (2 * 3)
+<div class="example smallexample">
+<pre class="example-preformatted">1 + (2 * 3)
 &rArr; 7
 </pre></div>
 
@@ -172,61 +164,62 @@ confusing when applied to mathematical expressions. In the Spacewar!
 code snippet below, the parentheses make it more clear that the
 addition happens first:
 </p>
-<div class="float"><span id="updateShipVelocity"></span>
-<div class="example">
-<pre class="example">newVelocity := (ai + ag) * t + velocity
+<div class="float" id="updateShipVelocity">
+<div class="example smallexample">
+<pre class="example-preformatted">newVelocity := (ai + ag) * t + velocity
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 2.3: </strong>Ship velocity</p></div></div>
-<span id="index-message-7"></span>
-<span id="index-cascade-of-messages"></span>
-<p>To send multiple messages to the same receiver a <em>cascade</em> can be
+<div class="caption"><p><strong class="strong">Example 2.3: </strong>Ship velocity</p></div></div>
+<a class="index-entry-id" id="index-message-7"></a>
+<a class="index-entry-id" id="index-cascade-of-messages"></a>
+<p>To send multiple messages to the same receiver a <em class="dfn">cascade</em> can be
 used to state the receiver once, followed by the cascade of messages
-separated by semicolons. Here is our earlier <a href="Writing-your-first-scripts.html#hello2">Example 1.2</a> code
+separated by semicolons. Here is our earlier <a class="ref" href="Writing-your-first-scripts.html#hello2">Example 1.2</a> code
 expressed with a cascade:
 </p>
-<div class="float"><span id="helloCascade"></span>
-<div class="example">
-<pre class="example">Transcript
+<div class="float" id="helloCascade">
+<div class="example smallexample">
+<pre class="example-preformatted">Transcript
    show: 'Hello World!';
    newLine;
    show: 'I am Cuising'
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 2.4: </strong>Cascade of messages</p></div></div>
+<div class="caption"><p><strong class="strong">Example 2.4: </strong>Cascade of messages</p></div></div>
 <p>Another example of a cascade from the Spacewar! game:
 </p>
-<div class="float"><span id="teleportShip"></span>
-<div class="example">
-<pre class="example">aShip 
+<div class="float" id="teleportShip">
+<div class="example smallexample">
+<pre class="example-preformatted">aShip 
    velocity: 0 @ 0;
    morphPosition: randomCoordinate value @ randomCoordinate value
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 2.5: </strong>Stop and teleport spaceship at a random position</p></div></div>
+<div class="caption"><p><strong class="strong">Example 2.5: </strong>Stop and teleport spaceship at a random position</p></div></div>
 <p>Observe the text here is formatted to ease code understanding. It is possible to
 write the cascade of messages in one line, but it reduces the
 readability of the code:
 </p>
-<div class="example">
-<pre class="example">Transcript show: 'Hello World!'; newLine; show: 'I am Cuising'
+<div class="example smallexample">
+<pre class="example-preformatted">Transcript show: 'Hello World!'; newLine; show: 'I am Cuising'
 </pre></div>
 
-<p>The <code>Transcript</code> class is frequently helpful in presenting
+<p>The <code class="code">Transcript</code> class is frequently helpful in presenting
 useful information when developing an application. An alternative to
-the <kbd>Ctrl-d</kbd> (<em><b>D</b>o it</em>) shortcut is <kbd>Ctrl-p</kbd>
-(<em><b>P</b>rint it</em>), which executes the script and prints the result
+the <kbd class="kbd">Ctrl-d</kbd> (<em class="emph"><b class="b">D</b>o it</em>) shortcut is <kbd class="kbd">Ctrl-p</kbd>
+(<em class="emph"><b class="b">P</b>rint it</em>), which executes the script and prints the result
 direcly in the Workspace.
 </p>
-<p>In the <a href="#helloCascade">Example 2.4</a>, we have requested no special result.  Selecting the
-text and typing <kbd>Ctrl-p</kbd> results in the default, which is to
+<p>In the <a class="ref" href="#helloCascade">Example 2.4</a>, we have requested no special result.  Selecting the
+text and typing <kbd class="kbd">Ctrl-p</kbd> results in the default, which is to
 return the object to which a message is sent, in this case the
-<code>Transcript</code>.
+<code class="code">Transcript</code>.
 </p>
+</div>
 <hr>
-<div class="header">
+<div class="nav-panel">
 <p>
-Next: <a href="Message-to-string-entities.html" accesskey="n" rel="next">Message to string entities</a>, Previous: <a href="Communicating-entities.html" accesskey="p" rel="prev">Communicating entities</a>, Up: <a href="The-Message-Way-of-Life.html" accesskey="u" rel="up">The Message Way of Life</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Message-to-string-entities.html">Message to string entities</a>, Previous: <a href="Communicating-entities.html">Communicating entities</a>, Up: <a href="The-Message-Way-of-Life.html">The Message Way of Life</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

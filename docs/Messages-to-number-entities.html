@@ -1,9 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
-Copyright (C) 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
+Copyright © 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
 
 
 Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
@@ -16,7 +19,7 @@ texts. Your help is very valuable.
 
 
 
-Compilation : December 2, 2023
+Compilation : December 30, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -52,9 +55,6 @@ original.
 
 Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
  -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Messages to number entities (The Cuis-Smalltalk Book)</title>
 
 <meta name="description" content="Messages to number entities (The Cuis-Smalltalk Book)">
@@ -62,6 +62,8 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="The-Message-Way-of-Life.html" rel="up" title="The Message Way of Life">
@@ -69,20 +71,8 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="Message-to-string-entities.html" rel="prev" title="Message to string entities">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -91,85 +81,86 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Messages-to-number-entities"></span><div class="header">
+<div class="section-level-extent" id="Messages-to-number-entities">
+<div class="nav-panel">
 <p>
 Next: <a href="A-brief-introduction-to-the-system-Browser.html" accesskey="n" rel="next">A brief introduction to the system Browser</a>, Previous: <a href="Message-to-string-entities.html" accesskey="p" rel="prev">Message to string entities</a>, Up: <a href="The-Message-Way-of-Life.html" accesskey="u" rel="up">The Message Way of Life</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Messages-to-number-entities-1"></span><h3 class="section">2.4 Messages to number entities</h3>
-<span id="index-number-6"></span>
-<span id="index-number-7"></span>
-<span id="index-number-8"></span>
-<span id="index-number-9"></span>
+<h3 class="section" id="Messages-to-number-entities-1">2.4 Messages to number entities</h3>
+<a class="index-entry-id" id="index-number-6"></a>
+<a class="index-entry-id" id="index-number-7"></a>
+<a class="index-entry-id" id="index-number-8"></a>
+<a class="index-entry-id" id="index-number-9"></a>
 
 <p>Earlier, we discussed how Cuis-Smalltalk knows about rational numbers.  The
 four arithmetic operations and mathematical functions are implemented
 with unary and binary messages understood by the rational numbers:
 </p>
-<div class="example">
-<pre class="example">(15 / 14) * (21 / 5) &rArr; 9 / 2
+<div class="example smallexample">
+<pre class="example-preformatted">(15 / 14) * (21 / 5) &rArr; 9 / 2
 (15 / 14) / ( 5 / 21) &rArr; 9 /2 
 (3 / 4) squared &rArr; 9 / 16
 (25 / 4) sqrt &rArr; 5 / 2
 </pre></div>
 
-<div class="float"><span id="squaredSum"></span>
+<div class="float" id="squaredSum">
 <blockquote class="indentedblock">
-<p>&nbsp;<img src="CuisLogo.png" alt="CuisLogo">
-<em>Write the code to compute the
+<p>&nbsp;<img class="image" src="CuisLogo.png" alt="CuisLogo">
+<em class="emph">Write the code to compute the
 sum of the squares of the inverse of the first four integers.</em>
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong>Exercise 2.2: </strong>Sum of the squares</p></div></div>
-<span id="index-number-10"></span>
+<div class="caption"><p><strong class="strong">Exercise 2.2: </strong>Sum of the squares</p></div></div>
+<a class="index-entry-id" id="index-number-10"></a>
 <p>If Cuis-Smalltalk integer division returns a rational number, how do we find the
 result in decimal? One option is to write a number as a floating point literal,
-a <em>Float</em>.
+a <em class="dfn">Float</em>.
 This kind of literal is written with the integer
 and fractional parts separated by a dot &ldquo;.&rdquo;:
-</p><div class="example">
-<pre class="example">15.0 / 4 &rArr; 3.75
+</p><div class="example smallexample">
+<pre class="example-preformatted">15.0 / 4 &rArr; 3.75
 15 / 4.0 &rArr; 3.75
 </pre></div>
 
 <p>Another option is to convert an integer to a float with the
-<code>#asFloat</code> message. It is very useful when the integer is in a
+<code class="code">#asFloat</code> message. It is very useful when the integer is in a
 variable:
 </p>
-<div class="example">
-<pre class="example">15 asFloat / 4
+<div class="example smallexample">
+<pre class="example-preformatted">15 asFloat / 4
 &rArr; 3.75
 </pre></div>
 
-<span id="index-number-11"></span>
+<a class="index-entry-id" id="index-number-11"></a>
 <p>You can also ask for division with truncation to
 get an integer result using 
-the message <code>#//</code>:
-</p><div class="example">
-<pre class="example">15 // 4
+the message <code class="code">#//</code>:
+</p><div class="example smallexample">
+<pre class="example-preformatted">15 // 4
 &rArr; 3
 </pre></div>
 
-<span id="index-number-12"></span>
+<a class="index-entry-id" id="index-number-12"></a>
 <p>The modulo remainder of the Euclidean division is computed with the message
-<code>#\\</code>:
-</p><div class="example">
-<pre class="example">15 \\ 4
+<code class="code">#\\</code>:
+</p><div class="example smallexample">
+<pre class="example-preformatted">15 \\ 4
 &rArr; 3
 </pre></div>
 
-<span id="index-number-13"></span>
-<span id="index-number-14"></span>
-<span id="index-number-15"></span>
-<span id="index-number-16"></span>
+<a class="index-entry-id" id="index-number-13"></a>
+<a class="index-entry-id" id="index-number-14"></a>
+<a class="index-entry-id" id="index-number-15"></a>
+<a class="index-entry-id" id="index-number-16"></a>
 <p>Cuis-Smalltalk has arithmetic operations to test if an integer is odd, even,
 a prime number, or divisible by another. You just send the appropriate unary or
 keyword message to the number:
 </p>
-<div class="float"><span id="integerBasicTest"></span>
-<div class="example">
-<pre class="example">25 odd &rArr; true
+<div class="float" id="integerBasicTest">
+<div class="example smallexample">
+<pre class="example-preformatted">25 odd &rArr; true
 25 even &rArr; false
 25 isPrime &rArr; false
 23 isPrime &rArr; true
@@ -178,15 +169,15 @@ keyword message to the number:
 117 isDivisibleBy: 9 &rArr; true
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 2.6: </strong>Testing on integer</p></div></div>
-<span id="index-number-17"></span>
-<span id="index-number-18"></span>
-<p>With specific <em>keyword messages</em> you can compute the Least Common
+<div class="caption"><p><strong class="strong">Example 2.6: </strong>Testing on integer</p></div></div>
+<a class="index-entry-id" id="index-number-17"></a>
+<a class="index-entry-id" id="index-number-18"></a>
+<p>With specific <em class="dfn">keyword messages</em> you can compute the Least Common
 Multiple and Greatest Common Divisor. A keyword message is composed of
 one or more colons &ldquo;:&rdquo; to insert one or more arguments:
 </p>
-<div class="example">
-<pre class="example">12 lcm: 15 &rArr; 60
+<div class="example smallexample">
+<pre class="example-preformatted">12 lcm: 15 &rArr; 60
 12 gcd: 15 &rArr; 3
 </pre></div>
 
@@ -196,18 +187,19 @@ object with a mass &ndash; a spaceship or a torpedo in the game &ndash; is
 subjected to the gravitational force. We compute it as a vector to
 account for both its direction and its magnitude.  The game code
 snippet below shows a (simplified) mixed scalar and vector calculation
-done with message sending (See <a href="Spacewar_0021-models.html#motionEquations">Figure 2.4</a>):
+done with message sending (See <a class="ref" href="Spacewar_0021-models.html#motionEquations">Figure 2.4</a>):
 </p>
-<div class="float"><span id="gravityVector"></span>
-<div class="example">
-<pre class="example">-10 * self mass * owner starMass / (position r raisedTo: 3) * position
+<div class="float" id="gravityVector">
+<div class="example smallexample">
+<pre class="example-preformatted">-10 * self mass * owner starMass / (position r raisedTo: 3) * position
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 2.7: </strong>Computing the gravity force vector</p></div></div>
+<div class="caption"><p><strong class="strong">Example 2.7: </strong>Computing the gravity force vector</p></div></div>
+</div>
 <hr>
-<div class="header">
+<div class="nav-panel">
 <p>
-Next: <a href="A-brief-introduction-to-the-system-Browser.html" accesskey="n" rel="next">A brief introduction to the system Browser</a>, Previous: <a href="Message-to-string-entities.html" accesskey="p" rel="prev">Message to string entities</a>, Up: <a href="The-Message-Way-of-Life.html" accesskey="u" rel="up">The Message Way of Life</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="A-brief-introduction-to-the-system-Browser.html">A brief introduction to the system Browser</a>, Previous: <a href="Message-to-string-entities.html">Message to string entities</a>, Up: <a href="The-Message-Way-of-Life.html">The Message Way of Life</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

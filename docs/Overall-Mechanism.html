@@ -1,9 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
-Copyright (C) 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
+Copyright © 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
 
 
 Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
@@ -16,7 +19,7 @@ texts. Your help is very valuable.
 
 
 
-Compilation : December 2, 2023
+Compilation : December 30, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -52,9 +55,6 @@ original.
 
 Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
  -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Overall Mechanism (The Cuis-Smalltalk Book)</title>
 
 <meta name="description" content="Overall Mechanism (The Cuis-Smalltalk Book)">
@@ -62,6 +62,8 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="Events.html" rel="up" title="Events">
@@ -69,20 +71,7 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="System-Events.html" rel="prev" title="System Events">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -91,36 +80,37 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Overall-Mechanism"></span><div class="header">
+<div class="section-level-extent" id="Overall-Mechanism">
+<div class="nav-panel">
 <p>
 Next: <a href="Spacewar_0021-Events.html" accesskey="n" rel="next">Spacewar! Events</a>, Previous: <a href="System-Events.html" accesskey="p" rel="prev">System Events</a>, Up: <a href="Events.html" accesskey="u" rel="up">Events</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Overall-Mechanism-1"></span><h3 class="section">8.2 Overall Mechanism</h3>
+<h3 class="section" id="Overall-Mechanism-1">8.2 Overall Mechanism</h3>
 
 
 
-<span id="index-event-3"></span>
-<span id="index-event-4"></span>
-<p>In <a href="A-brief-introduction-to-Inspectors.html">A brief introduction to Inspectors</a>, we explained how to set
+<a class="index-entry-id" id="index-event-3"></a>
+<a class="index-entry-id" id="index-event-4"></a>
+<p>In <a class="ref" href="A-brief-introduction-to-Inspectors.html">A brief introduction to Inspectors</a>, we explained how to set
 properties for an individual morph instance to handle a
 specific event. In this
 case, one property informed Cuis-Smalltalk we were interested in a
-given event (<code>#handlesMouseDown</code>), a second property defined
+given event (<code class="code">#handlesMouseDown</code>), a second property defined
 the behavior with a block of code to be executed each time this event occurred.
 </p>
 <p>Alternatively, to handle events in a given morph class, we define the
-behavior with instance methods. In the <code>Morph</code> class, observe
-the method categories <code>event</code> and <code>event handling
+behavior with instance methods. In the <code class="code">Morph</code> class, observe
+the method categories <code class="command">event</code> and <code class="command">event handling
 testing</code>.
 </p>
-<p>Method catrgory <code>event handling testing</code> lists methods returning a
+<p>Method catrgory <code class="command">event handling testing</code> lists methods returning a
 Boolean to indicate if the instance should be notified about certain
 events. Let&rsquo;s take a look at one of these methods,
-<code>handlesMouseDown:</code>, its comment is worth reading:
+<code class="code">handlesMouseDown:</code>, its comment is worth reading:
 </p>
-<div class="example">
-<pre class="example">Morph&gt;&gt;handlesMouseDown: aMouseButtonEvent
+<div class="example smallexample">
+<pre class="example-preformatted">Morph&gt;&gt;handlesMouseDown: aMouseButtonEvent
 &quot;Do I want to receive mouseButton messages ?
 - #mouseButton1Down:localPosition:
 - #mouseButton1Up:localPosition:
@@ -145,22 +135,22 @@ check to see if an instance has defined a property with the same
 name as the standard method.
 So each individual instance can add its own behavior.
 </p>
-<p>In a morph class where we want <em>all</em> instances to
+<p>In a morph class where we want <em class="emph">all</em> instances to
 handle mouse down events, we just override
 the appropriate method to return true:
 </p>
-<div class="example">
-<pre class="example">MyMorph&gt;&gt;&gt;&gt;handlesMouseDown: aMouseButtonEvent
+<div class="example smallexample">
+<pre class="example-preformatted">MyMorph&gt;&gt;&gt;&gt;handlesMouseDown: aMouseButtonEvent
    ^ true
 </pre></div>
 
-<p>Now in the <code>events</code> method category for class <code>Morph</code>, we find the
-handlers listed in the comment above. A <code>ScrollBar</code>, a kind of
+<p>Now in the <code class="command">events</code> method category for class <code class="code">Morph</code>, we find the
+handlers listed in the comment above. A <code class="code">ScrollBar</code>, a kind of
 Morph to represent a list&rsquo;s position control, scrolls its list contents when a
 mouse button 1 is pressed:
 </p>
-<div class="example">
-<pre class="example">ScrollBar&gt;&gt;mouseButton1Down: aMouseBtnEvent position: eventPosition
+<div class="example smallexample">
+<pre class="example-preformatted">ScrollBar&gt;&gt;mouseButton1Down: aMouseBtnEvent position: eventPosition
 &quot;Update visual feedback&quot;
    self setNextDirectionFromEvent: aMouseBtnEvent.
    self scrollByPage
@@ -169,10 +159,11 @@ mouse button 1 is pressed:
 <p>To discover other events available for your morph, explore with the
 System Browser as described above.
 </p>
+</div>
 <hr>
-<div class="header">
+<div class="nav-panel">
 <p>
-Next: <a href="Spacewar_0021-Events.html" accesskey="n" rel="next">Spacewar! Events</a>, Previous: <a href="System-Events.html" accesskey="p" rel="prev">System Events</a>, Up: <a href="Events.html" accesskey="u" rel="up">Events</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Spacewar_0021-Events.html">Spacewar! Events</a>, Previous: <a href="System-Events.html">System Events</a>, Up: <a href="Events.html">Events</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

@@ -1,9 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
-Copyright (C) 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
+Copyright © 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
 
 
 Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
@@ -16,7 +19,7 @@ texts. Your help is very valuable.
 
 
 
-Compilation : December 2, 2023
+Compilation : December 30, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -52,9 +55,6 @@ original.
 
 Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
  -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Installing a Package (The Cuis-Smalltalk Book)</title>
 
 <meta name="description" content="Installing a Package (The Cuis-Smalltalk Book)">
@@ -62,27 +62,15 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="Visual-with-Morph.html" rel="up" title="Visual with Morph">
 <link href="Ellipse-Morph.html" rel="next" title="Ellipse Morph">
-<link href="Visual-with-Morph.html" rel="prev" title="Visual with Morph">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -91,43 +79,45 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Installing-a-Package"></span><div class="header">
+<div class="section-level-extent" id="Installing-a-Package">
+<div class="nav-panel">
 <p>
 Next: <a href="Ellipse-Morph.html" accesskey="n" rel="next">Ellipse Morph</a>, Up: <a href="Visual-with-Morph.html" accesskey="u" rel="up">Visual with Morph</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Installing-a-Package-1"></span><h3 class="section">6.1 Installing a Package</h3>
+<h3 class="section" id="Installing-a-Package-1">6.1 Installing a Package</h3>
 <p>This chapter will require you to install the package
-<code>UI-Shapes.pck.st</code>, it is part of the
-<a href="https://github.com/Cuis-Smalltalk/Cuis-Smalltalk-UI">Cuis-Smalltalk-UI</a>
+<code class="command">UI-Shapes.pck.st</code>, it is part of the
+<a class="url" href="https://github.com/Cuis-Smalltalk/Cuis-Smalltalk-UI">Cuis-Smalltalk-UI</a>
 project. To fetch this package from the web, you have two options:
 </p>
-<ol>
+<ol class="enumerate">
 <li> Grab the file
-  <samp><a href="https://github.com/Cuis-Smalltalk/Cuis-Smalltalk-UI/raw/main/tools/UI-Shapes.pck.st">UI-Shapes.pck.st</a></samp>
+  <samp class="file"><a class="url" href="https://github.com/Cuis-Smalltalk/Cuis-Smalltalk-UI/raw/main/tools/UI-Shapes.pck.st">UI-Shapes.pck.st</a></samp>
   and save it in the same folder as your Cuis-Smalltalk image file.
 
 </li><li> In the Cuis-Smalltalk image folder, clone its Git repository:
 
 <div class="example">
-<pre class="example">git clone git@github.com:Cuis-Smalltalk/Cuis-Smalltalk-UI.git
+<pre class="example-preformatted">git clone git@github.com:Cuis-Smalltalk/Cuis-Smalltalk-UI.git
 </pre></div>
 
-<p>Along the <code>UI-Shapes.pck.st</code> packages there are other ones
+<p>Along the <code class="command">UI-Shapes.pck.st</code> packages there are other ones
 you can also discover in this repository.
 </p>
 </li></ol>
 
-<span id="index-package-4"></span>
+<a class="index-entry-id" id="index-package-4"></a>
 <p>Once done, in a Workspace execute the code to install the package:
 </p>
-<div class="example">
-<pre class="example">Feature require: 'UI-Shapes
+<div class="example smallexample">
+<pre class="example-preformatted">Feature require: 'UI-Shapes
 </pre></div>
 
 <p>Your Cuis-Smalltalk environment is now equiped for the next sections of this
 chapter.
 </p>
+</div>
 
 
 

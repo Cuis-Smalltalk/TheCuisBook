@@ -1,9 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
-Copyright (C) 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
+Copyright © 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
 
 
 Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
@@ -16,7 +19,7 @@ texts. Your help is very valuable.
 
 
 
-Compilation : December 2, 2023
+Compilation : December 30, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -52,9 +55,6 @@ original.
 
 Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
  -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Visual with Morph (The Cuis-Smalltalk Book)</title>
 
 <meta name="description" content="Visual with Morph (The Cuis-Smalltalk Book)">
@@ -62,27 +62,16 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="index.html" rel="up" title="Top">
-<link href="Installing-a-Package.html" rel="next" title="Installing a Package">
-<link href="Spacewar_0021_0027s-methods.html" rel="prev" title="Spacewar!'s methods">
+<link href="The-Fundamentals-of-Morph.html" rel="next" title="The Fundamentals of Morph">
+<link href="Control-Flow-Messaging.html" rel="prev" title="Control Flow Messaging">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
-div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
+div.center {text-align:center}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -91,18 +80,19 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Visual-with-Morph"></span><div class="header">
+<div class="chapter-level-extent" id="Visual-with-Morph">
+<div class="nav-panel">
 <p>
-Next: <a href="The-Fundamentals-of-Morph.html" accesskey="n" rel="next">The Fundamentals of Morph</a>, Previous: <a href="Control-Flow-Messaging.html" accesskey="p" rel="prev">Control Flow Messaging</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="The-Fundamentals-of-Morph.html" accesskey="n" rel="next">The Fundamentals of Morph</a>, Previous: <a href="Control-Flow-Messaging.html" accesskey="p" rel="prev">Control Flow Messaging</a>, Up: <a href="index.html" accesskey="u" rel="up">Table of Contents</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Visual-with-Morph-1"></span><h2 class="chapter">6 Visual with Morph</h2>
+<h2 class="chapter" id="Visual-with-Morph-1">6 Visual with Morph</h2>
 
-<blockquote>
+<blockquote class="quotation">
 <p>Morphic is a user interface framework that makes it easy and fun to
 build lively interactive user interfaces.
 </p></blockquote>
-<div align="center">&mdash; <em>John   Maloney</em>
+<div class="center">&mdash; <em class="emph">John   Maloney</em>
 </div>
 
 <br> <br> <br> <br>
@@ -125,7 +115,7 @@ result is not consistent, neither for developers nor for users.
 </p>
 <p>Cuis-Smalltalk takes a different approach, pioneered by Smalltalk-80 and
 especially Self. We will get into detail in the next chapter,
-<em>The Fundamentals of Morph</em>.  For now, let&rsquo;s deal with Morphs directly.
+<em class="emph">The Fundamentals of Morph</em>.  For now, let&rsquo;s deal with Morphs directly.
 </p>
 <p>We take the high quality Display for granted, as well as a mouse, finger or
 other pointing device. And we build on the objective of providing
@@ -135,37 +125,32 @@ all the framework code is available for study and modification. There
 are no third party libraries. Only the lowest level code is
 precompiled, but that still can be overriden or changed.
 </p>
-<p>Therefore every object you see in Cuis-Smalltalk is a <code>Morph</code> or is
-composed of <code>Morph</code>s.  Basically, a <code>Morph</code> is an object
+<p>Therefore every object you see in Cuis-Smalltalk is a <code class="code">Morph</code> or is
+composed of <code class="code">Morph</code>s.  Basically, a <code class="code">Morph</code> is an object
 with state and behavior that can also depict itself on a computer
 display screen.
 </p>
 <p>Because Morphs are useful, when you look at
-class <code>Morph</code> in a Hierarchy Browser you will
+class <code class="code">Morph</code> in a Hierarchy Browser you will
 see a large number of methods and many, many subclasses.
 But the basic ideas are quite simple.
 </p>
 
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="Installing-a-Package.html" accesskey="1">Installing a Package</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Ellipse-Morph.html" accesskey="2">Ellipse Morph</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Submorph.html" accesskey="3">Submorph</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="A-brief-introduction-to-Inspectors.html" accesskey="4">A brief introduction to Inspectors</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Building-your-specialized-Morph.html" accesskey="5">Building your specialized Morph</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Spacewar_0021-Morphs.html" accesskey="6">Spacewar! Morphs</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 
 
+<ul class="mini-toc">
+<li><a href="Installing-a-Package.html" accesskey="1">Installing a Package</a></li>
+<li><a href="Ellipse-Morph.html" accesskey="2">Ellipse Morph</a></li>
+<li><a href="Submorph.html" accesskey="3">Submorph</a></li>
+<li><a href="A-brief-introduction-to-Inspectors.html" accesskey="4">A brief introduction to Inspectors</a></li>
+<li><a href="Building-your-specialized-Morph.html" accesskey="5">Building your specialized Morph</a></li>
+<li><a href="Spacewar_0021-Morphs.html" accesskey="6">Spacewar! Morphs</a></li>
+</ul>
+</div>
 <hr>
-<div class="header">
+<div class="nav-panel">
 <p>
-Next: <a href="The-Fundamentals-of-Morph.html" accesskey="n" rel="next">The Fundamentals of Morph</a>, Previous: <a href="Control-Flow-Messaging.html" accesskey="p" rel="prev">Control Flow Messaging</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="The-Fundamentals-of-Morph.html">The Fundamentals of Morph</a>, Previous: <a href="Control-Flow-Messaging.html">Control Flow Messaging</a>, Up: <a href="index.html">Table of Contents</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

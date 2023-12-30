@@ -1,9 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
-Copyright (C) 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
+Copyright © 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
 
 
 Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
@@ -16,7 +19,7 @@ texts. Your help is very valuable.
 
 
 
-Compilation : December 2, 2023
+Compilation : December 30, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -52,9 +55,6 @@ original.
 
 Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
  -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Communicating entities (The Cuis-Smalltalk Book)</title>
 
 <meta name="description" content="Communicating entities (The Cuis-Smalltalk Book)">
@@ -62,27 +62,16 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="The-Message-Way-of-Life.html" rel="up" title="The Message Way of Life">
 <link href="Message-send-definitions.html" rel="next" title="Message send definitions">
-<link href="The-Message-Way-of-Life.html" rel="prev" title="The Message Way of Life">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -91,57 +80,58 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Communicating-entities"></span><div class="header">
+<div class="section-level-extent" id="Communicating-entities">
+<div class="nav-panel">
 <p>
 Next: <a href="Message-send-definitions.html" accesskey="n" rel="next">Message send definitions</a>, Up: <a href="The-Message-Way-of-Life.html" accesskey="u" rel="up">The Message Way of Life</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Communicating-entities-1"></span><h3 class="section">2.1 Communicating entities</h3>
+<h3 class="section" id="Communicating-entities-1">2.1 Communicating entities</h3>
 
-<span id="index-message"></span>
-<span id="index-message-1"></span>
-<span id="index-instance"></span>
-<span id="index-class"></span>
+<a class="index-entry-id" id="index-message"></a>
+<a class="index-entry-id" id="index-message-1"></a>
+<a class="index-entry-id" id="index-instance"></a>
+<a class="index-entry-id" id="index-class"></a>
 <p>When a given entity receives a message from another entity, it
 triggers a specific behavior.  The receiving entity of the message is
-called the <em>receiver</em> and the sending entity, the <em>sender</em>. In
-Cuis-Smalltalk terminology, an entity is called an <em>instance of a class</em>,
-a <em>class instance</em>, or simply an <em>instance</em>.  A <em>class</em> is
+called the <em class="dfn">receiver</em> and the sending entity, the <em class="dfn">sender</em>. In
+Cuis-Smalltalk terminology, an entity is called an <em class="dfn">instance of a class</em>,
+a <em class="dfn">class instance</em>, or simply an <em class="dfn">instance</em>.  A <em class="dfn">class</em> is
 a kind of model for an entity.
 </p>
-<span id="index-method"></span>
+<a class="index-entry-id" id="index-method"></a>
 <p>The behavior is defined internally in the receiver and it can be
 triggered from any instance.
-<strong>Behaviors are invoked only by messages sent between entities</strong>.
+<strong class="strong">Behaviors are invoked only by messages sent between entities</strong>.
 An entity may send a message to
-itself. A behavior is defined in a class and is called a <em>method</em>.
+itself. A behavior is defined in a class and is called a <em class="dfn">method</em>.
 </p>
-<span id="index-garbage-collection"></span>
+<a class="index-entry-id" id="index-garbage-collection"></a>
 <p>This results in a huge cloud of entities communicating with each other
 through message sending. New entities are instantiated when needed
 then automatically garbage collected when no longer required. On a
 fresh Cuis-Smalltalk environment, the count of class instances is more than
 150000.
 </p>
-<span id="index-collection"></span>
-<div class="float"><span id="entitiesCount"></span>
-<div class="example">
-<pre class="example">ProtoObject allSubclasses sum: [ :class | class allInstances size] 
+<a class="index-entry-id" id="index-collection"></a>
+<div class="float" id="entitiesCount">
+<div class="example smallexample">
+<pre class="example-preformatted">ProtoObject allSubclasses sum: [ :class | class allInstances size] 
 &rArr; 152058
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 2.1: </strong>Calculating the number of entities</p></div></div>
-<p>The count of classes, the models for the entities &ndash; instances of the class <code>Class</code> &ndash; is less than 700.
+<div class="caption"><p><strong class="strong">Example 2.1: </strong>Calculating the number of entities</p></div></div>
+<p>The count of classes, the models for the entities &ndash; instances of the class <code class="code">Class</code> &ndash; is less than 700.
 </p>
-<div class="float"><span id="classesCount"></span>
-<div class="example">
-<pre class="example">Smalltalk allClasses size
+<div class="float" id="classesCount">
+<div class="example smallexample">
+<pre class="example-preformatted">Smalltalk allClasses size
 &rArr; 671
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 2.2: </strong>Calculating the number of classes</p></div></div>
+<div class="caption"><p><strong class="strong">Example 2.2: </strong>Calculating the number of classes</p></div></div>
 <blockquote class="indentedblock">
-<p>&nbsp;<img src="note.png" alt="note">
+<p>&nbsp;<img class="image" src="note.png" alt="note">
 Because you are not using the base image but one used
 to teach classes, you will likely see
 a much larger number.
@@ -154,10 +144,11 @@ The scripts you
 read and wrote were all about entities communicating with each other
 through messages.
 </p>
+</div>
 <hr>
-<div class="header">
+<div class="nav-panel">
 <p>
-Next: <a href="Message-send-definitions.html" accesskey="n" rel="next">Message send definitions</a>, Up: <a href="The-Message-Way-of-Life.html" accesskey="u" rel="up">The Message Way of Life</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Message-send-definitions.html">Message send definitions</a>, Up: <a href="The-Message-Way-of-Life.html">The Message Way of Life</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

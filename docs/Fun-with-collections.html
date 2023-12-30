@@ -1,9 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
-Copyright (C) 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
+Copyright © 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
 
 
 Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
@@ -16,7 +19,7 @@ texts. Your help is very valuable.
 
 
 
-Compilation : December 2, 2023
+Compilation : December 30, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -52,9 +55,6 @@ original.
 
 Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
  -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Fun with collections (The Cuis-Smalltalk Book)</title>
 
 <meta name="description" content="Fun with collections (The Cuis-Smalltalk Book)">
@@ -62,6 +62,8 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="The-Collection-Way-of-Life.html" rel="up" title="The Collection Way of Life">
@@ -69,20 +71,9 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="Fun-with-variables.html" rel="prev" title="Fun with variables">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
+ul.mark-bullet {list-style-type: disc}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -91,85 +82,86 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Fun-with-collections"></span><div class="header">
+<div class="section-level-extent" id="Fun-with-collections">
+<div class="nav-panel">
 <p>
 Next: <a href="Collections-detailed.html" accesskey="n" rel="next">Collections detailed</a>, Previous: <a href="Fun-with-variables.html" accesskey="p" rel="prev">Fun with variables</a>, Up: <a href="The-Collection-Way-of-Life.html" accesskey="u" rel="up">The Collection Way of Life</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Fun-with-collections-1"></span><h3 class="section">4.3 Fun with collections</h3>
+<h3 class="section" id="Fun-with-collections-1">4.3 Fun with collections</h3>
 <p>A Collection is a grouping of objects. Arrays and Lists are
-collections.  We already know a <code>String</code> is a collection;
+collections.  We already know a <code class="code">String</code> is a collection;
 precisely a collection of characters.  Many kinds of Collection have
 similar behaviors.
 </p>
-<span id="index-Array"></span>
-<p>An <code>Array</code> is a fixed size collection, and unlike a string it can
-contain any kind of literal enclosed in <code>#(&nbsp;)</code>:
-</p><div class="example">
-<pre class="example">&quot;array of numbers&quot;
+<a class="index-entry-id" id="index-Array"></a>
+<p>An <code class="code">Array</code> is a fixed size collection, and unlike a string it can
+contain any kind of literal enclosed in <code class="code">#(&nbsp;)</code>:
+</p><div class="example smallexample">
+<pre class="example-preformatted">&quot;array of numbers&quot;
 #(1 3 5 7 11 1.1)
 &quot;array of mixed literals&quot;
 #(1 'friend' $&amp; 'al')
 </pre></div>
 
-<p>An Array is constructed directly using well formed <em>literal</em> elements.
+<p>An Array is constructed directly using well formed <em class="emph">literal</em> elements.
 We will get to the meaning of this last statement when we discuss
 details of the Smalltalk language.
 </p>
 <p>For now, just note that using non-literal expressions to construct an
 array will not work as expected:
-</p><div class="example">
-<pre class="example">#(1 2/3)
+</p><div class="example smallexample">
+<pre class="example-preformatted">#(1 2/3)
 &rArr; #(1 2 #/ 3)
 </pre></div>
 
-<span id="index-array"></span>
-<p>Indeed, the <code>$/</code> is interpreted as a literal symbol and we get
+<a class="index-entry-id" id="index-array"></a>
+<p>Indeed, the <code class="code">$/</code> is interpreted as a literal symbol and we get
 basic components of &ldquo;2 / 3&rdquo; but this text is not
 interpreted as a fraction. To get a fraction
-inserted in the array, you use a <em>run-time array</em> or <em>dynamic
-array</em>, whose elements <em>are</em> expressions separated by dots and surrounded
-with <code>{ }</code>:
+inserted in the array, you use a <em class="dfn">run-time array</em> or <em class="dfn">dynamic
+array</em>, whose elements <em class="emph">are</em> expressions separated by dots and surrounded
+with <code class="code">{ }</code>:
 </p>
-<div class="example">
-<pre class="example">{1 . 2/3 . 7.5}
+<div class="example smallexample">
+<pre class="example-preformatted">{1 . 2/3 . 7.5}
 &rArr; #(1 2/3 7.5)
 </pre></div>
 
-<span id="index-array-1"></span>
-<span id="index-array-2"></span>
+<a class="index-entry-id" id="index-array-1"></a>
+<a class="index-entry-id" id="index-array-2"></a>
 <p>With an array filled with numbers you can request information and
 arithmetic operations:
-</p><div class="example">
-<pre class="example">#(1 2 3 4) size &rArr; 4
+</p><div class="example smallexample">
+<pre class="example-preformatted">#(1 2 3 4) size &rArr; 4
 #(1 2 3 4) + 10 &rArr; #(11 12 13 14)
 #(1 2 3 4) / 10 &rArr; #(1/10 1/5 3/10 2/5)
 </pre></div>
 
-<span id="index-collection-2"></span>
+<a class="index-entry-id" id="index-collection-2"></a>
 <p>Mathematical operations work as well:
-</p><div class="example">
-<pre class="example">#(1 2 3 4) squared &rArr; #(1 4 9 16)
+</p><div class="example smallexample">
+<pre class="example-preformatted">#(1 2 3 4) squared &rArr; #(1 4 9 16)
 #(0 30 45 60) degreeCos
 &rArr; #(1.0 0.8660254037844386
 0.7071067811865475 0.49999999999999994)
 </pre></div>
 
-<span id="index-array-3"></span>
+<a class="index-entry-id" id="index-array-3"></a>
 <p>Basic statistical methods can be used directly on array of numbers:
 </p>
-<div class="example">
-<pre class="example">#(7.5 3.5 8.9) mean &rArr; 6.633333333333333 
+<div class="example smallexample">
+<pre class="example-preformatted">#(7.5 3.5 8.9) mean &rArr; 6.633333333333333 
 #(7.5 3.5 8.9) range &rArr; 5.4
 #(7.5 3.5 8.9) min &rArr; 3.5
 #(7.5 3.5 8.9) max &rArr; 8.9
 </pre></div>
 
 <p>To get an array of natural numbers from 1 to 100, we use the keyword
-message <code>#to:</code>
+message <code class="code">#to:</code>
 </p>
-<div class="example">
-<pre class="example">(1 to: 100) asArray
+<div class="example smallexample">
+<pre class="example-preformatted">(1 to: 100) asArray
 &rArr; #(1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22
 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45
 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68
@@ -177,28 +169,28 @@ message <code>#to:</code>
 92 93 94 95 96 97 98 99 100)
 </pre></div>
 
-<p>In this line of code, the message <code>#to:</code> is sent to <code>1</code>
-with the argument <code>100</code>. It returns an interval object. The
-message <code>#asArray</code> sent to the interval returns an array.
+<p>In this line of code, the message <code class="code">#to:</code> is sent to <code class="code">1</code>
+with the argument <code class="code">100</code>. It returns an interval object. The
+message <code class="code">#asArray</code> sent to the interval returns an array.
 </p>
-<div class="float"><span id="exeNegativeIntegers"></span>
+<div class="float" id="exeNegativeIntegers">
 <blockquote class="indentedblock">
-<p>&nbsp;<img src="CuisLogo.png" alt="CuisLogo">
-<em>Create an
+<p>&nbsp;<img class="image" src="CuisLogo.png" alt="CuisLogo">
+<em class="emph">Create an
 array of integer numbers ranging from -80 to 50.</em>
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong>Exercise 4.2: </strong>Negative integer numbers</p></div></div>
-<span id="index-collection-3"></span>
-<span id="index-collection-4"></span>
-<span id="index-collection-5"></span>
+<div class="caption"><p><strong class="strong">Exercise 4.2: </strong>Negative integer numbers</p></div></div>
+<a class="index-entry-id" id="index-collection-3"></a>
+<a class="index-entry-id" id="index-collection-4"></a>
+<a class="index-entry-id" id="index-collection-5"></a>
 <p>The size of an array is fixed, it can not grow. An
-<code>OrderedCollection</code> is a dynamic, ordered collection. It grows
-when adding element with the <code>#add:</code> message:
-</p><div class="float"><span id="dynamicSize"></span>
-<div class="example">
-<pre class="example">| fibo | 
+<code class="code">OrderedCollection</code> is a dynamic, ordered collection. It grows
+when adding element with the <code class="code">#add:</code> message:
+</p><div class="float" id="dynamicSize">
+<div class="example smallexample">
+<pre class="example-preformatted">| fibo | 
 fibo := OrderedCollection newFrom: #(1 1 2 3).
 fibo add: 5;
    add: 8;
@@ -208,14 +200,14 @@ fibo
 &rArr; an OrderedCollection(1 1 2 3 5 8 13 21)
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 4.1: </strong>Dynamic size collection</p></div></div>
-<span id="index-collection-6"></span>
-<span id="index-collection-7"></span>
-<span id="index-collection-8"></span>
+<div class="caption"><p><strong class="strong">Example 4.1: </strong>Dynamic size collection</p></div></div>
+<a class="index-entry-id" id="index-collection-6"></a>
+<a class="index-entry-id" id="index-collection-7"></a>
+<a class="index-entry-id" id="index-collection-8"></a>
 <p>Index access to the elements of a collection is done with a variety of
 messages. The index naturally ranges from 1 to the collection size:
-</p><div class="example">
-<pre class="example">fibo at: 1 &rArr; 1
+</p><div class="example smallexample">
+<pre class="example-preformatted">fibo at: 1 &rArr; 1
 fibo at: 6 &rArr; 5
 fibo last &rArr; 21
 fibo indexOf: 2 &rArr; 3
@@ -223,16 +215,16 @@ fibo at: fibo size &rArr; 21
 </pre></div>
 
 
-<span id="Playing-with-enumerators"></span><h4 class="subheading">Playing with enumerators</h4>
+<h4 class="subheading" id="Playing-with-enumerators">Playing with enumerators</h4>
 <p>A collection comes with a set of helpful methods named
 enumerators. Enumerators operate on each element of a collection.
 </p>
-<span id="index-collection-9"></span>
+<a class="index-entry-id" id="index-collection-9"></a>
 <p>Set operations between two collections are computed with the
-<code>#union:</code>, <code>#intersection:</code> and <code>#difference:</code> messages.
-</p><div class="float"><span id="setOpe"></span>
-<div class="example">
-<pre class="example">#(1 2 3 4 5) intersection: #(3 4 5 6 7)
+<code class="code">#union:</code>, <code class="code">#intersection:</code> and <code class="code">#difference:</code> messages.
+</p><div class="float" id="setOpe">
+<div class="example smallexample">
+<pre class="example-preformatted">#(1 2 3 4 5) intersection: #(3 4 5 6 7)
 &rArr; #(3 4 5)
 #(1 2 3 4 5) union: #(3 4 5 6 7)
 &rArr; a Set(5 4 3 2 7 1 6) 
@@ -240,66 +232,66 @@ enumerators. Enumerators operate on each element of a collection.
 &rArr; #(1 2)
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 4.2: </strong>Set operations</p></div></div>
-<div class="float"><span id="holeSet"></span>
+<div class="caption"><p><strong class="strong">Example 4.2: </strong>Set operations</p></div></div>
+<div class="float" id="holeSet">
 <blockquote class="indentedblock">
-<p>&nbsp;<img src="CuisLogo.png" alt="CuisLogo">
-<em>Construct the array of the
+<p>&nbsp;<img class="image" src="CuisLogo.png" alt="CuisLogo">
+<em class="emph">Construct the array of the
 numbers 1,...,24,76,...,100.</em>
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong>Exercise 4.3: </strong>Hole in a set</p></div></div>
+<div class="caption"><p><strong class="strong">Exercise 4.3: </strong>Hole in a set</p></div></div>
 <p>Set operations work with any kind of object. Comparing objects
 deserves its own section.
 </p>
-<div class="example">
-<pre class="example">#(1 2 3 'e' 5) intersection: #(3.0 4 6 7 'e')
+<div class="example smallexample">
+<pre class="example-preformatted">#(1 2 3 'e' 5) intersection: #(3.0 4 6 7 'e')
 &rArr; #(3 'e')
 </pre></div>
 
-<span id="index-collection-10"></span>
-<span id="index-collection-11"></span>
-<span id="index-block"></span>
-<p>To select the prime numbers from 1 to 100, we use the <code>#select:</code>
+<a class="index-entry-id" id="index-collection-10"></a>
+<a class="index-entry-id" id="index-collection-11"></a>
+<a class="index-entry-id" id="index-block"></a>
+<p>To select the prime numbers from 1 to 100, we use the <code class="code">#select:</code>
 enumerator. This message is sent to a collection, then it will select
 each element of the collection returning true to a test condition:
 </p>
-<div class="float"><span id="prime100"></span>
-<div class="example">
-<pre class="example">(1 to: 100) select: [ :n | n isPrime ]
+<div class="float" id="prime100">
+<div class="example smallexample">
+<pre class="example-preformatted">(1 to: 100) select: [ :n | n isPrime ]
 &rArr;  #(2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71
 73 79 83 89 97)
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 4.3: </strong>Select prime numbers between 1 and 100</p></div></div>
-<p>This example introduces the message <code>#select:</code> and block of code, a
+<div class="caption"><p><strong class="strong">Example 4.3: </strong>Select prime numbers between 1 and 100</p></div></div>
+<p>This example introduces the message <code class="code">#select:</code> and block of code, a
 primordial constituent element of the Cuis-Smalltalk model. A block of code,
 delimited by square brackets, is a piece of code for later
 execution(s). Let&rsquo;s explain how this script is evaluated:
 </p>
-<ul>
-<li> <code>(1 to: 100)</code> is evaluated as an interval
+<ul class="itemize mark-bullet">
+<li><code class="code">(1 to: 100)</code> is evaluated as an interval
 
-</li><li> the block of code <code>[:n | n isPrime]</code> is instantiated (created)
+</li><li>the block of code <code class="code">[:n | n isPrime]</code> is instantiated (created)
 
-</li><li> the message <code>#select:</code> is sent to the interval with the
+</li><li>the message <code class="code">#select:</code> is sent to the interval with the
  block of code as the argument
-<span id="index-block-1"></span>
- </li><li> in the <code>select:</code> method, for each integer of the
+<a class="index-entry-id" id="index-block-1"></a>
+ </li><li>in the <code class="code">select:</code> method, for each integer of the
  interval, the block of code is invoked with its parameter
- <code>n</code> set to the integer value.  A <em>block parameter</em>
- starts with a colon, &ldquo;:&rdquo;, and is an ordinary identifer <a id="DOCF17" href="#FOOT17"><sup>17</sup></a>.  Then, each time <code>n
- isPrime</code> evaluates to true, the <code>n</code> value is added to a new
- collection answered when the <code>select:</code> method finished
+ <code class="code">n</code> set to the integer value.  A <em class="dfn">block parameter</em>
+ starts with a colon, &ldquo;:&rdquo;, and is an ordinary identifer <a class="footnote" id="DOCF17" href="#FOOT17"><sup>17</sup></a>.  Then, each time <code class="code">n
+ isPrime</code> evaluates to true, the <code class="code">n</code> value is added to a new
+ collection answered when the <code class="code">select:</code> method finished
  testing each element of the collection.
 
 </li></ul>
 
 <p>A block of code can be saved in a variable, passed as a parameter, and
 can be used multiple times.
-</p><div class="example">
-<pre class="example">| add2 |
+</p><div class="example smallexample">
+<pre class="example-preformatted">| add2 |
 add2 := [:n| n + 2].
 { add2 value: 2. add2 value: 7 }.
 &rArr;  #(4 9)
@@ -311,182 +303,182 @@ the need of index.  By this we mean that they are simple to get right.
 We like simple!
 </p>
 <p>To get an idea of how useful enumerators are, take a browse at the
-<code>Collection</code> class in the method category <code>enumerating</code>.
+<code class="code">Collection</code> class in the method category <code class="code">enumerating</code>.
 </p>
-<div class="float"><span id="oddNumbers"></span>
+<div class="float" id="oddNumbers">
 <blockquote class="indentedblock">
-<p>&nbsp;<img src="CuisLogo.png" alt="CuisLogo">
-<em>Select the odd number between
+<p>&nbsp;<img class="image" src="CuisLogo.png" alt="CuisLogo">
+<em class="emph">Select the odd number between
 -20 and 45.</em>
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong>Exercise 4.4: </strong>Odd integers</p></div></div>
+<div class="caption"><p><strong class="strong">Exercise 4.4: </strong>Odd integers</p></div></div>
 <p>You want to know the number of prime numbers under 100.  Just send the
-message <code>#size</code> to the answered collection at <a href="#prime100">Example 4.3</a>. The
-parenthesis are mandatory to ensure <code>#size</code> is sent last to the
+message <code class="code">#size</code> to the answered collection at <a class="ref" href="#prime100">Example 4.3</a>. The
+parenthesis are mandatory to ensure <code class="code">#size</code> is sent last to the
 resulting collection:
 </p>
-<div class="float"><span id="qtyPrime100"></span>
-<div class="example">
-<pre class="example">( (1 to: 100) select: [:n | n isPrime] ) size
+<div class="float" id="qtyPrime100">
+<div class="example smallexample">
+<pre class="example-preformatted">( (1 to: 100) select: [:n | n isPrime] ) size
 &rArr; 25
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 4.4: </strong>Quantity of prime numbers between 1 and
+<div class="caption"><p><strong class="strong">Example 4.4: </strong>Quantity of prime numbers between 1 and
 100</p></div></div>
-<p>For more clarity, we use a variable named <code>primeNumbers</code> to
+<p>For more clarity, we use a variable named <code class="code">primeNumbers</code> to
 remember about the prime numbers list we build:
-</p><div class="example">
-<pre class="example">| primeNumbers |
+</p><div class="example smallexample">
+<pre class="example-preformatted">| primeNumbers |
 primeNumbers := (1 to: 100) select: [:n | n isPrime].
 primeNumbers size
 </pre></div>
 
-<div class="float"><span id="qtyPrime200"></span>
+<div class="float" id="qtyPrime200">
 <blockquote class="indentedblock">
-<p>&nbsp;<img src="CuisLogo.png" alt="CuisLogo">
-<em>Modify <a href="#qtyPrime100">Example 4.4</a> to calculate the number
+<p>&nbsp;<img class="image" src="CuisLogo.png" alt="CuisLogo">
+<em class="emph">Modify <a class="ref" href="#qtyPrime100">Example 4.4</a> to calculate the number
 of prime numbers between 101 and 200.</em>
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong>Exercise 4.5: </strong>Number of prime number between 101 and
+<div class="caption"><p><strong class="strong">Exercise 4.5: </strong>Number of prime number between 101 and
 200</p></div></div>
-<div class="float"><span id="multiples7"></span>
+<div class="float" id="multiples7">
 <blockquote class="indentedblock">
-<p>&nbsp;<img src="CuisLogo.png" alt="CuisLogo">
-<em>Build the list of the
+<p>&nbsp;<img class="image" src="CuisLogo.png" alt="CuisLogo">
+<em class="emph">Build the list of the
 multiples of 7 below 100.</em>
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong>Exercise 4.6: </strong>Multiples of 7</p></div></div>
-<div class="float"><span id="oddNonPrime"></span>
+<div class="caption"><p><strong class="strong">Exercise 4.6: </strong>Multiples of 7</p></div></div>
+<div class="float" id="oddNonPrime">
 <blockquote class="indentedblock">
-<p>&nbsp;<img src="CuisLogo.png" alt="CuisLogo">
-<em>Build a
+<p>&nbsp;<img class="image" src="CuisLogo.png" alt="CuisLogo">
+<em class="emph">Build a
 collection of the odd integers in [1 ; 100] which are not prime.</em>
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong>Exercise 4.7: </strong>Odd and non prime integers</p></div></div>
-<span id="index-collection-12"></span>
-<p>A sister enumerator to <code>#select:</code> is <code>#collect:</code>. It returns a
+<div class="caption"><p><strong class="strong">Exercise 4.7: </strong>Odd and non prime integers</p></div></div>
+<a class="index-entry-id" id="index-collection-12"></a>
+<p>A sister enumerator to <code class="code">#select:</code> is <code class="code">#collect:</code>. It returns a
 new collection of the same size, with each element transformed by a
 block of code. When searching perfect cubic roots, it is useful to
 know about some cubes:
 </p>
-<div class="float"><span id="cubesCollect"></span>
-<div class="example">
-<pre class="example">(1 to: 10) collect: [:n | n cubed]
+<div class="float" id="cubesCollect">
+<div class="example smallexample">
+<pre class="example-preformatted">(1 to: 10) collect: [:n | n cubed]
 &rArr; #(1 8 27 64 125 216 343 512 729 1000)
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 4.5: </strong>Collect cubes</p></div></div>
+<div class="caption"><p><strong class="strong">Example 4.5: </strong>Collect cubes</p></div></div>
 <p>The collected elements can be of a different type. Below, a string is
 enumerated and integers are collected:
 </p>
-<div class="example">
-<pre class="example">'Bonjour' collect: [:c | c asciiValue ]
+<div class="example smallexample">
+<pre class="example-preformatted">'Bonjour' collect: [:c | c asciiValue ]
 &rArr;  #(66 111 110 106 111 117 114)
 </pre></div>
 
 <p>We can shift the ascii value, convert back to character then collect
 in a new string. It is a simple cipher:
-</p><div class="float"><span id="simpleCipher"></span>
-<div class="example">
-<pre class="example">'Bonjour' collect: [:c | (c asciiValue + 1) asCharacter ]
+</p><div class="float" id="simpleCipher">
+<div class="example smallexample">
+<pre class="example-preformatted">'Bonjour' collect: [:c | (c asciiValue + 1) asCharacter ]
 &rArr; 'Cpokpvs'
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 4.6: </strong>Simple cipher</p></div></div>
-<div class="float"><span id="decodeCipher"></span>
+<div class="caption"><p><strong class="strong">Example 4.6: </strong>Simple cipher</p></div></div>
+<div class="float" id="decodeCipher">
 <blockquote class="indentedblock">
-<p>&nbsp;<img src="CuisLogo.png" alt="CuisLogo">
-<em>Write the script to decode
-cipher &rsquo;Zpv!bsf!b!cptt&rsquo;, it was encoded with <a href="#simpleCipher">Example 4.6</a>.</em>
+<p>&nbsp;<img class="image" src="CuisLogo.png" alt="CuisLogo">
+<em class="emph">Write the script to decode
+cipher &rsquo;Zpv!bsf!b!cptt&rsquo;, it was encoded with <a class="ref" href="#simpleCipher">Example 4.6</a>.</em>
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong>Exercise 4.8: </strong>Cipher decode</p></div></div>
-<span id="index-Caesar-cipher"></span>
+<div class="caption"><p><strong class="strong">Exercise 4.8: </strong>Cipher decode</p></div></div>
+<a class="index-entry-id" id="index-Caesar-cipher"></a>
 <p>The Caesar&rsquo;s cipher is based on shifting letter to the right in the
 alphabet order.  The method is named after Julius Caesar, who used it
 in his private correspondence with a shift of 3.
 </p>
-<div class="float"><span id="alphabetCipher"></span>
+<div class="float" id="alphabetCipher">
 <blockquote class="indentedblock">
-<p>&nbsp;<img src="CuisLogo.png" alt="CuisLogo">
-<em>Write a script
+<p>&nbsp;<img class="image" src="CuisLogo.png" alt="CuisLogo">
+<em class="emph">Write a script
 to collect the alphabet upper letters representing the Caesar&rsquo;s
 cipher. The expected answers is</em> #($D $E $F $G $H $I $J $K $L $M $N $O
 $P $Q $R $S $T $U $V $W $X $Y $Z $A $B $C).
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong>Exercise 4.9: </strong>Alphabet Caesar&rsquo;s cipher</p></div></div>
+<div class="caption"><p><strong class="strong">Exercise 4.9: </strong>Alphabet Caesar&rsquo;s cipher</p></div></div>
 <p>Once you get the alphabet cipher right, you can encode your first
 message:
-</p><div class="float"><span id="encodeCaesar"></span>
+</p><div class="float" id="encodeCaesar">
 <blockquote class="indentedblock">
-<p>&nbsp;<img src="CuisLogo.png" alt="CuisLogo">
-<em>Encode the
+<p>&nbsp;<img class="image" src="CuisLogo.png" alt="CuisLogo">
+<em class="emph">Encode the
 phrase &rsquo;SMALLTALKEXPRESSION&rsquo;.</em>
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong>Exercise 4.10: </strong>Encode with Caesar&rsquo;s cipher</p></div></div>
+<div class="caption"><p><strong class="strong">Exercise 4.10: </strong>Encode with Caesar&rsquo;s cipher</p></div></div>
 <p>And decode message:
 </p>
-<div class="float"><span id="decodeCaesar"></span>
+<div class="float" id="decodeCaesar">
 <blockquote class="indentedblock">
-<p>&nbsp;<img src="CuisLogo.png" alt="CuisLogo">
-<em>Decode this famous quotation attributed to Julius Caesar &rsquo;DOHDMDFWDHVW&rsquo;.</em>
+<p>&nbsp;<img class="image" src="CuisLogo.png" alt="CuisLogo">
+<em class="emph">Decode this famous quotation attributed to Julius Caesar &rsquo;DOHDMDFWDHVW&rsquo;.</em>
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong>Exercise 4.11: </strong>Decode with Caesar&rsquo;s cipher</p></div></div>
-<span id="Fun-with-loops"></span><h4 class="subheading">Fun with loops</h4>
+<div class="caption"><p><strong class="strong">Exercise 4.11: </strong>Decode with Caesar&rsquo;s cipher</p></div></div>
+<h4 class="subheading" id="Fun-with-loops">Fun with loops</h4>
 <p>Collection can be iterated with traditional loops: there is a whole
-family of <em>repeat</em>, <em>while</em> and <em>for</em> loops.
+family of <em class="emph">repeat</em>, <em class="emph">while</em> and <em class="emph">for</em> loops.
 </p>
-<span id="index-loop-3"></span>
-<span id="index-number-35"></span>
-<p>A simple <em>for</em> loop between two integer values is written with
-the keyword message <code>#to:do:</code>, the last argument is a block of code
+<a class="index-entry-id" id="index-loop-3"></a>
+<a class="index-entry-id" id="index-number-35"></a>
+<p>A simple <em class="emph">for</em> loop between two integer values is written with
+the keyword message <code class="code">#to:do:</code>, the last argument is a block of code
 executed for each index:
-</p><div class="float"><span id="forLoop"></span>
-<div class="example">
-<pre class="example">| sequence |
+</p><div class="float" id="forLoop">
+<div class="example smallexample">
+<pre class="example-preformatted">| sequence |
 sequence := OrderedCollection new.
 1 to: 10 do: [:k | sequence add: 1 / k].
 sequence
 &rArr; an OrderedCollection(1 1/2 1/3 1/4 1/5 1/6 1/7 1/8 1/9 1/10)
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 4.7: </strong>A <em>for</em> loop</p></div></div>
-<span id="index-collection-13"></span>
+<div class="caption"><p><strong class="strong">Example 4.7: </strong>A <em class="emph">for</em> loop</p></div></div>
+<a class="index-entry-id" id="index-collection-13"></a>
 <p>A collect writes more concisely, though:
-</p><div class="example">
-<pre class="example">(1 to: 10) collect: [:k | 1 / k]
+</p><div class="example smallexample">
+<pre class="example-preformatted">(1 to: 10) collect: [:k | 1 / k]
 </pre></div>
 
-<span id="index-loop-4"></span>
-<span id="index-number-36"></span>
+<a class="index-entry-id" id="index-loop-4"></a>
+<a class="index-entry-id" id="index-number-36"></a>
 <p>To step with a different value than 1, a third numeric argument is
 inserted:
-</p><div class="example">
-<pre class="example">1 to: 10 by: 0.5 do: [:k | sequence add: 1 / k]
+</p><div class="example smallexample">
+<pre class="example-preformatted">1 to: 10 by: 0.5 do: [:k | sequence add: 1 / k]
 </pre></div>
 
-<span id="index-loop-5"></span>
-<span id="index-Fibonacci-sequence"></span>
+<a class="index-entry-id" id="index-loop-5"></a>
+<a class="index-entry-id" id="index-Fibonacci-sequence"></a>
 <p>A repeated loop without index or any collection is written with the
-<code>#timesRepeat:</code> message send to an integer:
-</p><div class="float"><span id="repeatLoop"></span>
-<div class="example">
-<pre class="example">| fibo |
+<code class="code">#timesRepeat:</code> message send to an integer:
+</p><div class="float" id="repeatLoop">
+<div class="example smallexample">
+<pre class="example-preformatted">| fibo |
 fibo := OrderedCollection newFrom: #(1 1).
 10 timesRepeat: [
    fibo add: (fibo last + fibo atLast: 2)].
@@ -494,12 +486,12 @@ fibo
 &rArr; an OrderedCollection(1 1 2 3 5 8 13 21 34 55 89 144)
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 4.8: </strong>A <em>repeat</em> loop</p></div></div>
-<span id="index-collection-14"></span>
+<div class="caption"><p><strong class="strong">Example 4.8: </strong>A <em class="emph">repeat</em> loop</p></div></div>
+<a class="index-entry-id" id="index-collection-14"></a>
 <p>The quotient of consecutive Fibonacci terms converge toward the golden
 value:
-</p><div class="example">
-<pre class="example">fibo pairsDo: [:i :j |
+</p><div class="example smallexample">
+<pre class="example-preformatted">fibo pairsDo: [:i :j |
    Transcript show: (j / i ) asFloat ; cr]
 &rArr; 1.0
 &rArr; 1.5
@@ -510,20 +502,21 @@ value:
 </pre></div>
 
 
-<div class="footnote">
+</div>
+<div class="footnotes-segment">
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h5><a id="FOOT17" href="#DOCF17">(17)</a></h3>
+<h5 class="footnote-body-heading"><a id="FOOT17" href="#DOCF17">(17)</a></h5>
 <p>An
- <em>identifier</em> is just a word that starts in a lower case letter
+ <em class="dfn">identifier</em> is just a word that starts in a lower case letter
  and consists of upper and lower case letters and decimal digits.  All
  variable names are identifiers</p>
 </div>
 <hr>
-<div class="header">
+<div class="nav-panel">
 <p>
-Next: <a href="Collections-detailed.html" accesskey="n" rel="next">Collections detailed</a>, Previous: <a href="Fun-with-variables.html" accesskey="p" rel="prev">Fun with variables</a>, Up: <a href="The-Collection-Way-of-Life.html" accesskey="u" rel="up">The Collection Way of Life</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Collections-detailed.html">Collections detailed</a>, Previous: <a href="Fun-with-variables.html">Fun with variables</a>, Up: <a href="The-Collection-Way-of-Life.html">The Collection Way of Life</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

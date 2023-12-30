@@ -1,9 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
-Copyright (C) 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
+Copyright © 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
 
 
 Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
@@ -16,7 +19,7 @@ texts. Your help is very valuable.
 
 
 
-Compilation : December 2, 2023
+Compilation : December 30, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -52,9 +55,6 @@ original.
 
 Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
  -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>The Fundamentals of Morph (Solutions) (The Cuis-Smalltalk Book)</title>
 
 <meta name="description" content="The Fundamentals of Morph (Solutions) (The Cuis-Smalltalk Book)">
@@ -62,6 +62,8 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="Solutions-to-the-Exercises.html" rel="up" title="Solutions to the Exercises">
@@ -69,20 +71,9 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="Visual-with-Morph-_0028Solutions_0029.html" rel="prev" title="Visual with Morph (Solutions)">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
+div.center {text-align:center}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
+ul.mark-bullet {list-style-type: disc}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -91,19 +82,20 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="The-Fundamentals-of-Morph-_0028Solutions_0029"></span><div class="header">
+<div class="unnumberedsec-level-extent" id="The-Fundamentals-of-Morph-_0028Solutions_0029">
+<div class="nav-panel">
 <p>
-Next: <a href="Events-_0028Solutions_0029.html" accesskey="n" rel="next">Events (Solutions)</a>, Previous: <a href="Visual-with-Morph-_0028Solutions_0029.html" accesskey="p" rel="prev">Visual with Morph (Solutions)</a>, Up: <a href="Solutions-to-the-Exercises.html" accesskey="u" rel="up">Solutions to the Exercises</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Events-_0028Solutions_0029.html" accesskey="n" rel="next">Events</a>, Previous: <a href="Visual-with-Morph-_0028Solutions_0029.html" accesskey="p" rel="prev">Visual with Morph</a>, Up: <a href="Solutions-to-the-Exercises.html" accesskey="u" rel="up">Solutions to the Exercises</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="The-Fundamentals-of-Morph-2"></span><h3 class="unnumberedsec">The Fundamentals of Morph</h3>
+<h3 class="unnumberedsec" id="The-Fundamentals-of-Morph-2">The Fundamentals of Morph</h3>
 
-<span id="exeCrossMorph-1"></span><h4 class="subheading"><a href="Going-Vector.html#exeCrossMorph">Exercise 7.1</a></h4>
-<p>The <code>drawOn:</code> method is modified to draw two distinct,
+<h4 class="subheading" id="exeCrossMorph-1"><a class="ref" href="Going-Vector.html#exeCrossMorph">Exercise 7.1</a></h4>
+<p>The <code class="code">drawOn:</code> method is modified to draw two distinct,
 unconnected lines:
 </p>
-<div class="example">
-<pre class="example">LineExampleMorph&gt;&gt;drawOn: aCanvas
+<div class="example smallexample">
+<pre class="example-preformatted">LineExampleMorph&gt;&gt;drawOn: aCanvas
    aCanvas strokeWidth: 20 color: Color green do: [
       aCanvas
          moveTo: 0 @ 0;
@@ -112,23 +104,23 @@ unconnected lines:
          lineTo: 0 @ 200 ]
 </pre></div>
 
-<p>Learn how the <code>#moveTo:</code> message moves the pencil to a given
-position with the pen up, then the <code>#lineTo:</code> asks the pencil to
+<p>Learn how the <code class="code">#moveTo:</code> message moves the pencil to a given
+position with the pen up, then the <code class="code">#lineTo:</code> asks the pencil to
 draw from that previous position to this new position.
 </p>
-<span id="exeRectMorph-1"></span><h4 class="subheading"><a href="Going-Vector.html#exeRectMorph">Exercise 7.2</a></h4>
-<p>We create a <code>RectangleExampleMorph</code>, subclass of
-<code>PlacedMorph</code>:
-</p><div class="example">
-<pre class="example">PlacedMorph subclass: #RectangleExampleMorph
+<h4 class="subheading" id="exeRectMorph-1"><a class="ref" href="Going-Vector.html#exeRectMorph">Exercise 7.2</a></h4>
+<p>We create a <code class="code">RectangleExampleMorph</code>, subclass of
+<code class="code">PlacedMorph</code>:
+</p><div class="example smallexample">
+<pre class="example-preformatted">PlacedMorph subclass: #RectangleExampleMorph
    instanceVariableNames: 'fillColor'
    classVariableNames: ''
    poolDictionaries: ''
    category: 'Morphic-Learning'
 </pre></div>
 <p>Then its necessary methods to initialize and to draw the morph:
-</p><div class="example">
-<pre class="example">initialize
+</p><div class="example smallexample">
+<pre class="example-preformatted">initialize
    super initialize .
    fillColor := Color random alpha: 0.5
 
@@ -145,17 +137,17 @@ drawOn: aCanvas
             lineTo: 0 @ 0]
 </pre></div>
 
-<div class="float"><span id="E_002dexeRectMorph"></span>
-<div align="center"><img src="E-exeRectMorph.png" alt="E-exeRectMorph">
+<div class="float" id="E_002dexeRectMorph">
+<div class="center"><img class="image" src="E-exeRectMorph.png" alt="E-exeRectMorph">
 </div>
-<div class="float-caption"><p><strong>Figure D.2: </strong>Several rectangle morphs</p></div></div>
+<div class="caption"><p><strong class="strong">Figure D.2: </strong>Several rectangle morphs</p></div></div>
 
-<span id="exeFancyClock-1"></span><h4 class="subheading"><a href="A-Clock-Morph.html#exeFancyClock">Exercise 7.3</a></h4>
+<h4 class="subheading" id="exeFancyClock-1"><a class="ref" href="A-Clock-Morph.html#exeFancyClock">Exercise 7.3</a></h4>
 <p>Among the clock parts (submorphs) we only need to modify the drawing
-of the <code>ClockSecondHandMorph</code> class. The disc is surrounded with a
+of the <code class="code">ClockSecondHandMorph</code> class. The disc is surrounded with a
 thin red line and filled in yellow.
-</p><div class="example">
-<pre class="example">ClockSecondHandMorph&gt;&gt;drawOn: aCanvas
+</p><div class="example smallexample">
+<pre class="example-preformatted">ClockSecondHandMorph&gt;&gt;drawOn: aCanvas
    aCanvas strokeWidth: 1.5 color: Color red do: [
       aCanvas
          moveTo: 0 @ 0;
@@ -166,18 +158,18 @@ thin red line and filled in yellow.
 </pre></div>
 
 
-<span id="exeTorpedoExtent-1"></span><h4 class="subheading"><a href="Back-to-Spacewar_0021-Morphs.html#exeTorpedoExtent">Exercise 7.4</a></h4>
+<h4 class="subheading" id="exeTorpedoExtent-1"><a class="ref" href="Back-to-Spacewar_0021-Morphs.html#exeTorpedoExtent">Exercise 7.4</a></h4>
 <p>The width of the torpedo is 4 pixels and its height 8 pixels:
-</p><div class="example">
-<pre class="example">Torpedo&gt;&gt;morphExtent
+</p><div class="example smallexample">
+<pre class="example-preformatted">Torpedo&gt;&gt;morphExtent
    ^ `4 @ 8`
 </pre></div>
 
-<span id="exeTorpedoDrawing-1"></span><h4 class="subheading"><a href="Back-to-Spacewar_0021-Morphs.html#exeTorpedoDrawing">Exercise 7.5</a></h4>
-<p>The <code>Torpedo</code>&rsquo;s <code>drawOn:</code> method is very similar to the
-one in <code>SpaceShip</code> class:
-</p><div class="example">
-<pre class="example">Torpedo&gt;&gt;drawOn: canvas
+<h4 class="subheading" id="exeTorpedoDrawing-1"><a class="ref" href="Back-to-Spacewar_0021-Morphs.html#exeTorpedoDrawing">Exercise 7.5</a></h4>
+<p>The <code class="code">Torpedo</code>&rsquo;s <code class="code">drawOn:</code> method is very similar to the
+one in <code class="code">SpaceShip</code> class:
+</p><div class="example smallexample">
+<pre class="example-preformatted">Torpedo&gt;&gt;drawOn: canvas
    | a b c |
    a := 0 @ -4.
    b := -2 @ 4.
@@ -187,11 +179,11 @@ one in <code>SpaceShip</code> class:
    canvas line: a to: c width: 2 color: color.
 </pre></div>
 
-<span id="exeSpaceShipClassSideDiagram-1"></span><h4 class="subheading"><a href="Back-to-Spacewar_0021-Morphs.html#exeSpaceShipClassSideDiagram">Exercise 7.6</a></h4>
+<h4 class="subheading" id="exeSpaceShipClassSideDiagram-1"><a class="ref" href="Back-to-Spacewar_0021-Morphs.html#exeSpaceShipClassSideDiagram">Exercise 7.6</a></h4>
 <p>We use a local variable because we use two times the vertices, one to
 draw the ship and a second time to draw the gas exhaust.
-</p><div class="example">
-<pre class="example">SpaceShip&gt;&gt;drawOn: canvas
+</p><div class="example smallexample">
+<pre class="example-preformatted">SpaceShip&gt;&gt;drawOn: canvas
    | vertices  |
    vertices := self class vertices.
    canvas line: vertices first to: vertices second width: 2 color: color.
@@ -203,28 +195,28 @@ draw the ship and a second time to draw the gas exhaust.
       canvas line: vertices third to: 0@35 width: 1 color: Color gray]
 </pre></div>
 
-<span id="exeDrawMobile-1"></span><h4 class="subheading"><a href="Back-to-Spacewar_0021-Morphs.html#exeDrawMobile">Exercise 7.7</a></h4>
-<p>You need both to iterate each vertex of the <code>vertices</code> array
+<h4 class="subheading" id="exeDrawMobile-1"><a class="ref" href="Back-to-Spacewar_0021-Morphs.html#exeDrawMobile">Exercise 7.7</a></h4>
+<p>You need both to iterate each vertex of the <code class="code">vertices</code> array
 and access the subsequent vertex by index. The arithmetic reminder
-operation <code>#\\</code> is needed to keep the index in the boundary of the
+operation <code class="code">#\\</code> is needed to keep the index in the boundary of the
 collection.
 </p>
-<p>When <code>size</code> is 4 (Space ship diagram), the argument
-<code>(i \\ size + 1)</code> takes alternatively the following values:
+<p>When <code class="code">size</code> is 4 (Space ship diagram), the argument
+<code class="code">(i \\ size + 1)</code> takes alternatively the following values:
 </p>
-<ul>
-<li> <strong>i = 1</strong> =&gt; 1 \\ 4 + 1 = 1 + 1 = <strong>2</strong>
+<ul class="itemize mark-bullet">
+<li><strong class="strong">i = 1</strong> =&gt; 1 \\ 4 + 1 = 1 + 1 = <strong class="strong">2</strong>
 
-</li><li> <strong>i = 2</strong> =&gt; 2 \\ 4 + 1 = 2 + 1 = <strong>3</strong>
+</li><li><strong class="strong">i = 2</strong> =&gt; 2 \\ 4 + 1 = 2 + 1 = <strong class="strong">3</strong>
 
-</li><li> <strong>i = 3</strong> =&gt; 3 \\ 4 + 1 = 3 + 1 = <strong>4</strong>
+</li><li><strong class="strong">i = 3</strong> =&gt; 3 \\ 4 + 1 = 3 + 1 = <strong class="strong">4</strong>
 
-</li><li> <strong>i = 4</strong> =&gt; 4 \\ 4 + 1 = 0 + 1 = <strong>1</strong>
+</li><li><strong class="strong">i = 4</strong> =&gt; 4 \\ 4 + 1 = 0 + 1 = <strong class="strong">1</strong>
 
 </li></ul>
 
-<div class="example">
-<pre class="example">Mobile&gt;&gt;drawOn: canvas polygon: vertices
+<div class="example smallexample">
+<pre class="example-preformatted">Mobile&gt;&gt;drawOn: canvas polygon: vertices
    | size |
    size := vertices size.
    vertices withIndexDo: [: aPoint :i |
@@ -235,12 +227,12 @@ collection.
          color: color]
 </pre></div>
 
-<span id="exeAccurateDetection-1"></span><h4 class="subheading"><a href="Back-to-Spacewar_0021-Morphs.html#exeAccurateDetection">Exercise 7.8</a></h4>
+<h4 class="subheading" id="exeAccurateDetection-1"><a class="ref" href="Back-to-Spacewar_0021-Morphs.html#exeAccurateDetection">Exercise 7.8</a></h4>
 <p>Just replace each morph position distance approach with the
 intersection detection between the morphs&rsquo; display bounds:
 </p>
-<div class="example">
-<pre class="example">SpaceWar&gt;&gt;collisionsShips
+<div class="example smallexample">
+<pre class="example-preformatted">SpaceWar&gt;&gt;collisionsShips
    (ships first collides: ships second)
    ../..
 
@@ -257,10 +249,11 @@ SpaceWar&gt;&gt;collisionsTorpedoesStar
 </pre></div>
 
 
+</div>
 <hr>
-<div class="header">
+<div class="nav-panel">
 <p>
-Next: <a href="Events-_0028Solutions_0029.html" accesskey="n" rel="next">Events (Solutions)</a>, Previous: <a href="Visual-with-Morph-_0028Solutions_0029.html" accesskey="p" rel="prev">Visual with Morph (Solutions)</a>, Up: <a href="Solutions-to-the-Exercises.html" accesskey="u" rel="up">Solutions to the Exercises</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Events-_0028Solutions_0029.html">Events</a>, Previous: <a href="Visual-with-Morph-_0028Solutions_0029.html">Visual with Morph</a>, Up: <a href="Solutions-to-the-Exercises.html">Solutions to the Exercises</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

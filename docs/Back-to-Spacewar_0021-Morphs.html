@@ -1,9 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
-Copyright (C) 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
+Copyright © 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
 
 
 Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
@@ -16,7 +19,7 @@ texts. Your help is very valuable.
 
 
 
-Compilation : December 2, 2023
+Compilation : December 30, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -52,9 +55,6 @@ original.
 
 Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
  -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Back to Spacewar! Morphs (The Cuis-Smalltalk Book)</title>
 
 <meta name="description" content="Back to Spacewar! Morphs (The Cuis-Smalltalk Book)">
@@ -62,27 +62,18 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="The-Fundamentals-of-Morph.html" rel="up" title="The Fundamentals of Morph">
-<link href="Events.html" rel="next" title="Events">
 <link href="A-Clock-Morph.html" rel="prev" title="A Clock Morph">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
+div.center {text-align:center}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
+kbd.kbd {font-style: oblique}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -91,46 +82,56 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Back-to-Spacewar_0021-Morphs"></span><div class="header">
+<div class="section-level-extent" id="Back-to-Spacewar_0021-Morphs">
+<div class="nav-panel">
 <p>
 Previous: <a href="A-Clock-Morph.html" accesskey="p" rel="prev">A Clock Morph</a>, Up: <a href="The-Fundamentals-of-Morph.html" accesskey="u" rel="up">The Fundamentals of Morph</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Back-to-Spacewar_0021-Morphs-1"></span><h3 class="section">7.3 Back to Spacewar! Morphs</h3>
+<h3 class="section" id="Back-to-Spacewar_0021-Morphs-1">7.3 Back to Spacewar! Morphs</h3>
 
-<span id="Central-star"></span><h4 class="subsection">7.3.1 Central star</h4>
+<ul class="mini-toc">
+<li><a href="#Central-star" accesskey="1">Central star</a></li>
+<li><a href="#Space-ship" accesskey="2">Space ship</a></li>
+<li><a href="#Torpedo" accesskey="3">Torpedo</a></li>
+<li><a href="#Drawing-revisited" accesskey="4">Drawing revisited</a></li>
+<li><a href="#Drawing-simplified" accesskey="5">Drawing simplified</a></li>
+<li><a href="#Collisions-revisited" accesskey="6">Collisions revisited</a></li>
+</ul>
+<div class="subsection-level-extent" id="Central-star">
+<h4 class="subsection">7.3.1 Central star</h4>
 
-<span id="index-backtick"></span>
-<p>Our central star has an extent of <code>30 @ 30</code> we need to use
+<a class="index-entry-id" id="index-backtick"></a>
+<p>Our central star has an extent of <code class="code">30 @ 30</code> we need to use
 in several places in the code. Therefore it makes sense to define a
 dedicated method to answer this value:
 </p>
-<div class="float"><span id="centralStarExtent"></span>
-<div class="example">
-<pre class="example">CentralStar&gt;&gt;morphExtent
+<div class="float" id="centralStarExtent">
+<div class="example smallexample">
+<pre class="example-preformatted">CentralStar&gt;&gt;morphExtent
    ^ `30 @ 30`
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 7.3: </strong>Central star extent</p></div></div>
+<div class="caption"><p><strong class="strong">Example 7.3: </strong>Central star extent</p></div></div>
 <blockquote class="indentedblock">
-<p>&nbsp;<img src="note.png" alt="note">
-An expression surrounded with backticks <code>'`'</code> is
+<p>&nbsp;<img class="image" src="note.png" alt="note">
+An expression surrounded with backticks <code class="code">'`'</code> is
 evaluated only once, when the method is first saved and compiled.
 This creates a compound literal value and improves the performance of
 the method since the expression is not evaluated each time the method
 is called: the pre-built value is used instead.
 </p></blockquote>
 
-<span id="index-number-38"></span>
-<span id="index-morph-22"></span>
+<a class="index-entry-id" id="index-number-38"></a>
+<a class="index-entry-id" id="index-morph-22"></a>
 
 <p>As you learnt previously, a morph draws itself from its
-<code>drawOn:</code> method. We draw the star as an ellipse with randomly
+<code class="code">drawOn:</code> method. We draw the star as an ellipse with randomly
 fluctuating x and y radius:
 </p>
-<div class="float"><span id="centralStarDraw"></span>
-<div class="example">
-<pre class="example">CentralStar&gt;&gt;drawOn: canvas
+<div class="float" id="centralStarDraw">
+<div class="example smallexample">
+<pre class="example-preformatted">CentralStar&gt;&gt;drawOn: canvas
    | radius |
    radius := self morphExtent // 2.
    canvas ellipseCenter: 0 @ 0
@@ -140,30 +141,32 @@ fluctuating x and y radius:
       fillColor: Color yellow
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 7.4: </strong>A star with a fluctuating size</p></div></div>
+<div class="caption"><p><strong class="strong">Example 7.4: </strong>A star with a fluctuating size</p></div></div>
 <p>The star diameters in the x and y directions are fluctuating
 independently of 0 to 2 units. The star does not look perfectly round.
 </p>
 
-<div class="float"><span id="ch07_002d09_002dfluctuatingStar"></span>
-<div align="center"><img src="ch07-09-fluctuatingStar.gif" alt="ch07-09-fluctuatingStar">
+<div class="float" id="ch07_002d09_002dfluctuatingStar">
+<div class="center"><img class="image" src="ch07-09-fluctuatingStar.gif" alt="ch07-09-fluctuatingStar">
 </div>
-<div class="float-caption"><p><strong>Figure 7.9: </strong>A star with a fluctuating size</p></div></div>
-<span id="Space-ship"></span><h4 class="subsection">7.3.2 Space ship</h4>
+<div class="caption"><p><strong class="strong">Figure 7.9: </strong>A star with a fluctuating size</p></div></div>
+</div>
+<div class="subsection-level-extent" id="Space-ship">
+<h4 class="subsection">7.3.2 Space ship</h4>
 <p>At the game start-up, the nose of the space ship is pointing to the
-top of the screen as seen in <a href="#ch07_002d10_002dShipDiagram">Figure 7.10</a> and the angle
+top of the screen as seen in <a class="ref" href="#ch07_002d10_002dShipDiagram">Figure 7.10</a> and the angle
 of its direction is therefore -90&deg;, while the angle of its
 rotation is 0&deg;. Remember the Y ordinate are oriented
 toward the bottom of the screen.
 </p>
-<div class="float"><span id="ch07_002d10_002dShipDiagram"></span>
-<div align="center"><img src="ch07-10-ShipDiagram.png" alt="ch07-10-ShipDiagram">
+<div class="float" id="ch07_002d10_002dShipDiagram">
+<div class="center"><img class="image" src="ch07-10-ShipDiagram.png" alt="ch07-10-ShipDiagram">
 </div>
-<div class="float-caption"><p><strong>Figure 7.10: </strong>Space ship diagram at game start-up</p></div></div><p>Then its <code>drawOn:</code> method is written as:
+<div class="caption"><p><strong class="strong">Figure 7.10: </strong>Space ship diagram at game start-up</p></div></div><p>Then its <code class="code">drawOn:</code> method is written as:
 </p>
-<div class="float"><span id="spaceShipDrawing"></span>
-<div class="example">
-<pre class="example">SpaceShip&gt;&gt;drawOn: canvas
+<div class="float" id="spaceShipDrawing">
+<div class="example smallexample">
+<pre class="example-preformatted">SpaceShip&gt;&gt;drawOn: canvas
    | a b c d |
    a := 0 @ -15.
    b := -10 @ 15.
@@ -178,15 +181,15 @@ toward the bottom of the screen.
       canvas line: c to: 0 @ 35 width: 1 color: Color gray]
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 7.5: </strong>Space ship drawing</p></div></div>
+<div class="caption"><p><strong class="strong">Example 7.5: </strong>Space ship drawing</p></div></div>
 <p>When there is an acceleration from the engine, we draw a small gray
 line to represent the gas exhaust.
 </p>
 <p>When the user turns the ship, the morph is rotated a bit by adjusting
 its heading:
 </p>
-<div class="example">
-<pre class="example">SpaceShip&gt;&gt;right
+<div class="example smallexample">
+<pre class="example-preformatted">SpaceShip&gt;&gt;right
 &quot;Rotate the ship to its right&quot;
    self heading: self heading + 0.1
 
@@ -198,19 +201,19 @@ SpaceShip&gt;&gt;left
 
 <p>But how does this heading affect the rotation of the morph?
 </p>
-<p>Underneath, the <code>MobileMorph</code> is equipped with an affine
+<p>Underneath, the <code class="code">MobileMorph</code> is equipped with an affine
 transformation to scale, rotate and translate the coordinates passed
 as arguments to the drawing messages received by the canvas.
-Therefore, our <code>heading</code> methods are defined to match this
-internal representation and we use the <code>rotation:</code> method from
-the <code>PacedMorph</code> class to rotate appropriately. The
-<code>location</code> attribute represents an affine transformation, and we
-get its rotation angle with the <code>#radians</code> message.
+Therefore, our <code class="code">heading</code> methods are defined to match this
+internal representation and we use the <code class="code">rotation:</code> method from
+the <code class="code">PacedMorph</code> class to rotate appropriately. The
+<code class="code">location</code> attribute represents an affine transformation, and we
+get its rotation angle with the <code class="code">#radians</code> message.
 </p>
-<span id="index-morph-23"></span>
-<span id="index-morph-24"></span>
-<div class="example">
-<pre class="example">Mobile&gt;&gt;heading
+<a class="index-entry-id" id="index-morph-23"></a>
+<a class="index-entry-id" id="index-morph-24"></a>
+<div class="example smallexample">
+<pre class="example-preformatted">Mobile&gt;&gt;heading
    ^ location radians - Float halfPi
 Mobile&gt;&gt;heading: aHeading
    self rotation: aHeading + Float halfPi
@@ -222,52 +225,56 @@ system. In that situation the mobile is not rotated &ndash; or
 0&deg; rotated &ndash; therefore we add 90&deg; (pi/2) to
 the heading to get the matching rotation angle of the mobile.
 </p>
-<span id="Torpedo"></span><h4 class="subsection">7.3.3 Torpedo</h4>
+</div>
+<div class="subsection-level-extent" id="Torpedo">
+<h4 class="subsection">7.3.3 Torpedo</h4>
 
 
 <p>Alike a space ship, when a torpedo is just instantiated its nose
 points in the direction of the top of the screen and its vertices are
-given by the <a href="#ch07_002d11_002dTorpedoDiagram">Figure 7.11</a>.
+given by the <a class="ref" href="#ch07_002d11_002dTorpedoDiagram">Figure 7.11</a>.
 </p>
-<div class="float"><span id="ch07_002d11_002dTorpedoDiagram"></span>
-<div align="center"><img src="ch07-11-TorpedoDiagram.png" alt="ch07-11-TorpedoDiagram">
+<div class="float" id="ch07_002d11_002dTorpedoDiagram">
+<div class="center"><img class="image" src="ch07-11-TorpedoDiagram.png" alt="ch07-11-TorpedoDiagram">
 </div>
-<div class="float-caption"><p><strong>Figure 7.11: </strong>Torpedo diagram at game start-up</p></div></div>
-<div class="float"><span id="exeTorpedoExtent"></span>
+<div class="caption"><p><strong class="strong">Figure 7.11: </strong>Torpedo diagram at game start-up</p></div></div>
+<div class="float" id="exeTorpedoExtent">
 <blockquote class="indentedblock">
-<p>&nbsp;<img src="CuisLogo.png" alt="CuisLogo">
-<em>Given the vertices
-given by <a href="#ch07_002d11_002dTorpedoDiagram">Figure 7.11</a>, how will you write its
-<code>morphExtent</code> method?</em>
+<p>&nbsp;<img class="image" src="CuisLogo.png" alt="CuisLogo">
+<em class="emph">Given the vertices
+given by <a class="ref" href="#ch07_002d11_002dTorpedoDiagram">Figure 7.11</a>, how will you write its
+<code class="code">morphExtent</code> method?</em>
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong>Exercise 7.4: </strong>Torpedo extent</p></div></div>
+<div class="caption"><p><strong class="strong">Exercise 7.4: </strong>Torpedo extent</p></div></div>
 
-<div class="float"><span id="exeTorpedoDrawing"></span>
+<div class="float" id="exeTorpedoDrawing">
 <blockquote class="indentedblock">
-<p>&nbsp;<img src="CuisLogo.png" alt="CuisLogo">
-<em>How will you write
-the <code>Torpedo</code>&rsquo;s <code>drawOn:</code> method?</em>
+<p>&nbsp;<img class="image" src="CuisLogo.png" alt="CuisLogo">
+<em class="emph">How will you write
+the <code class="code">Torpedo</code>&rsquo;s <code class="code">drawOn:</code> method?</em>
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong>Exercise 7.5: </strong>Torpedo drawing</p></div></div>
+<div class="caption"><p><strong class="strong">Exercise 7.5: </strong>Torpedo drawing</p></div></div>
 
-<span id="Drawing-revisited"></span><h4 class="subsection">7.3.4 Drawing revisited</h4>
+</div>
+<div class="subsection-level-extent" id="Drawing-revisited">
+<h4 class="subsection">7.3.4 Drawing revisited</h4>
 
-<span id="index-class-14"></span>
-<span id="index-variable-7"></span>
-<p>As you may have observed, the <code>SpaceShip</code> and <code>Torpedo</code>
-<code>drawOn:</code> methods share the same logic: drawing a polygon given
+<a class="index-entry-id" id="index-class-14"></a>
+<a class="index-entry-id" id="index-variable-7"></a>
+<p>As you may have observed, the <code class="code">SpaceShip</code> and <code class="code">Torpedo</code>
+<code class="code">drawOn:</code> methods share the same logic: drawing a polygon given
 its vertices. We likely want to push this common logic to their common
-ancestor, the <code>Mobile</code> class. It needs to know about its
+ancestor, the <code class="code">Mobile</code> class. It needs to know about its
 vertices, so we may want to add an instance variable
-<code>vertices</code> initialized in its subclasses with an array
+<code class="code">vertices</code> initialized in its subclasses with an array
 containing the points:
 </p>
-<div class="example">
-<pre class="example">PlacedMorph subclass: #Mobile
+<div class="example smallexample">
+<pre class="example-preformatted">PlacedMorph subclass: #Mobile
    instanceVariableNames: 'acceleration color velocity vertices'
    classVariableNames: ''
    poolDictionaries: ''
@@ -289,65 +296,65 @@ Torpedo&gt;&gt;initialize
 torpedoes, the vertices array will be duplicated 200 times with the
 same data!
 </p>
-<span id="Class-instance-variable"></span><h4 class="subsubheading">Class instance variable</h4>
+<h4 class="subsubheading" id="Class-instance-variable">Class instance variable</h4>
 
-<p>In that kind of situation, what you want is a <em>class instance
+<p>In that kind of situation, what you want is a <em class="dfn">class instance
 variable</em> defined in the class side &ndash; in contrast to the instance
 side where we have been coding until now.
 </p>
 <p>We make use of the fact that all objects are instances of some class.
-The  <code>Mobile class</code> is an instance of the class <code>Class</code>!
+The  <code class="code">Mobile class</code> is an instance of the class <code class="code">Class</code>!
 </p>
-<ol>
-<li> A <em>class instance variable</em> can be accessed and assigned
- only by the class itself in a <em>class method</em>.
+<ol class="enumerate">
+<li> A <em class="dfn">class instance variable</em> can be accessed and assigned
+ only by the class itself in a <em class="dfn">class method</em>.
 
 </li><li> An entity (i.e. a fired torpedo) can access class instance
- variables via <em>class methods</em>, by sending a message to a class
- (i.e. <code>Torpedo</code>) rather than to itself or some other entity.
+ variables via <em class="dfn">class methods</em>, by sending a message to a class
+ (i.e. <code class="code">Torpedo</code>) rather than to itself or some other entity.
 
 </li><li> In the class hierarchy, each subclass has its own instance
  of the class instance variable, and can assign a different value to
- it &ndash; in contrast with a <em>class variable</em> which is shared among
+ it &ndash; in contrast with a <em class="dfn">class variable</em> which is shared among
  all the subclasses (discussed later).
 
-</li><li> To edit the <em>class</em> instance variables and <em>class</em>
- methods, in the System Browser press the <code>class</code> button under
+</li><li> To edit the <em class="emph">class</em> instance variables and <em class="emph">class</em>
+ methods, in the System Browser press the <code class="command">class</code> button under
  the class list.
 
 </li></ol>
 
-<p>In the System Browser, we click the <code>class</code> button then we
-declare our variable in the <code>Mobile class</code> definition &ndash;
-<a href="#ch07_002d12_002dbrowserClassSide">Figure 7.12</a>:
+<p>In the System Browser, we click the <code class="command">class</code> button then we
+declare our variable in the <code class="code">Mobile class</code> definition &ndash;
+<a class="ref" href="#ch07_002d12_002dbrowserClassSide">Figure 7.12</a>:
 </p>
-<div class="float"><span id="instanceVariableMobileClass"></span>
-<div class="example">
-<pre class="example">Mobile class
+<div class="float" id="instanceVariableMobileClass">
+<div class="example smallexample">
+<pre class="example-preformatted">Mobile class
    instanceVariableNames: 'vertices'
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 7.6: </strong><code>vertices</code> an instance variable in <code>Mobile class</code></p></div></div>
-<p>Then we write an access method in the <code>Mobile class</code>, so
-<code>SpaceShip</code> and <code>Torpedo</code> instances can access it:
+<div class="caption"><p><strong class="strong">Example 7.6: </strong><code class="code">vertices</code> an instance variable in <code class="code">Mobile class</code></p></div></div>
+<p>Then we write an access method in the <code class="code">Mobile class</code>, so
+<code class="code">SpaceShip</code> and <code class="code">Torpedo</code> instances can access it:
 </p>
-<div class="example">
-<pre class="example">Mobile class&gt;&gt;vertices
+<div class="example smallexample">
+<pre class="example-preformatted">Mobile class&gt;&gt;vertices
    ^ vertices
 </pre></div>
 
-<div class="float"><span id="ch07_002d12_002dbrowserClassSide"></span>
-<div align="center"><img src="ch07-12-browserClassSide.png" alt="ch07-12-browserClassSide">
+<div class="float" id="ch07_002d12_002dbrowserClassSide">
+<div class="center"><img class="image" src="ch07-12-browserClassSide.png" alt="ch07-12-browserClassSide">
 </div>
-<div class="float-caption"><p><strong>Figure 7.12: </strong>The class side of the System Browser</p></div></div>
+<div class="caption"><p><strong class="strong">Figure 7.12: </strong>The class side of the System Browser</p></div></div>
 
-<span id="index-class-15"></span>
+<a class="index-entry-id" id="index-class-15"></a>
 <p>Next, each subclass is responsible to correctly initialize
-<code>vertices</code> with its <code>initialize</code> class method:
+<code class="code">vertices</code> with its <code class="code">initialize</code> class method:
 </p>
-<div class="float"><span id="initializeClass"></span>
-<div class="example">
-<pre class="example">SpaceShip class&gt;&gt;initialize
+<div class="float" id="initializeClass">
+<div class="example smallexample">
+<pre class="example-preformatted">SpaceShip class&gt;&gt;initialize
 &quot;SpaceShip initialize&quot;
    vertices :=  {0@-15 . -10@15 . 0@10 . 10@15}
 
@@ -356,18 +363,18 @@ Torpedo class&gt;&gt;initialize
    vertices := {0@-4 . -2@4 . 2@4}
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 7.7: </strong>Initialize a class</p></div></div>
+<div class="caption"><p><strong class="strong">Example 7.7: </strong>Initialize a class</p></div></div>
 
-<p>When a class is installed in Cuis-Smalltalk, its <code>initialize</code> class
+<p>When a class is installed in Cuis-Smalltalk, its <code class="code">initialize</code> class
 method is executed. Alternatively select the comment and execute it
-with <kbd>Ctrl-d</kbd>.
+with <kbd class="kbd">Ctrl-d</kbd>.
 </p>
 <p>Experiment in a Workspace to understand how a class instance
 variable behaves:
 </p>
-<div class="float"><span id="classInstanceVar"></span>
-<div class="example">
-<pre class="example">SpaceShip vertices.
+<div class="float" id="classInstanceVar">
+<div class="example smallexample">
+<pre class="example-preformatted">SpaceShip vertices.
 &rArr; nil 
 SpaceShip initialize.
 SpaceShip vertices.
@@ -380,28 +387,28 @@ Torpedo vertices.
 &rArr; #(0@-4 -2@4 2@4)
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 7.8: </strong>A class instance variable value is not shared by the subclasses</p></div></div>
-<p>This is really the behavior we want: <code>SpaceShip</code> and
-<code>Torpedo</code> instances have a different diagram. However, every
-instances of a <code>SpaceShip</code> will have the same diagram, referring
-to the same <code>vertices</code> array (i.e. same location in the
+<div class="caption"><p><strong class="strong">Example 7.8: </strong>A class instance variable value is not shared by the subclasses</p></div></div>
+<p>This is really the behavior we want: <code class="code">SpaceShip</code> and
+<code class="code">Torpedo</code> instances have a different diagram. However, every
+instances of a <code class="code">SpaceShip</code> will have the same diagram, referring
+to the same <code class="code">vertices</code> array (i.e. same location in the
 computer memory).
 </p>
-<span id="index-class-16"></span>
-<p>Each instance asks its class side with the <code>#class</code> message:
+<a class="index-entry-id" id="index-class-16"></a>
+<p>Each instance asks its class side with the <code class="code">#class</code> message:
 </p>
-<div class="example">
-<pre class="example">aTorpedo class
+<div class="example smallexample">
+<pre class="example-preformatted">aTorpedo class
 &rArr; Torpedo
 self class
 &rArr; SpaceShip
 </pre></div>
 
-<p>The <code>Torpedo</code>&rsquo;s <code>drawOn:</code> is rewritten to access the
+<p>The <code class="code">Torpedo</code>&rsquo;s <code class="code">drawOn:</code> is rewritten to access the
 vertices in its class side:
 </p>
-<div class="example">
-<pre class="example">Torpedo&gt;&gt;drawOn: canvas
+<div class="example smallexample">
+<pre class="example-preformatted">Torpedo&gt;&gt;drawOn: canvas
    | vertices |
    vertices := self class vertices.
    canvas line: vertices first to: vertices second width: 2 color: color.
@@ -409,24 +416,24 @@ vertices in its class side:
    canvas line: vertices first to: vertices third width: 2 color: color
 </pre></div>
 
-<div class="float"><span id="exeSpaceShipClassSideDiagram"></span>
+<div class="float" id="exeSpaceShipClassSideDiagram">
 <blockquote class="indentedblock">
-<p>&nbsp;<img src="CuisLogo.png" alt="CuisLogo">
-<em>How will you rewrite <code>SpaceShip</code>&rsquo;s <code>drawOn:</code> to use the vertices in its class side?</em>
+<p>&nbsp;<img class="image" src="CuisLogo.png" alt="CuisLogo">
+<em class="emph">How will you rewrite <code class="code">SpaceShip</code>&rsquo;s <code class="code">drawOn:</code> to use the vertices in its class side?</em>
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong>Exercise 7.6: </strong>Space ship access to its diagram in class side</p></div></div>
-<p>So far, we still have this redundancy in the <code>drawOn:</code>
-methods. What we want is <code>Mobile</code> to be responsible to draw the
-polygon given a vertices array: <code>self drawOn: canvas
+<div class="caption"><p><strong class="strong">Exercise 7.6: </strong>Space ship access to its diagram in class side</p></div></div>
+<p>So far, we still have this redundancy in the <code class="code">drawOn:</code>
+methods. What we want is <code class="code">Mobile</code> to be responsible to draw the
+polygon given a vertices array: <code class="code">self drawOn: canvas
 polygon: vertices</code>.
 </p>
-<p>The <code>SpaceShip</code> and <code>Torpedo</code>&rsquo;s <code>drawOn:</code> will then
+<p>The <code class="code">SpaceShip</code> and <code class="code">Torpedo</code>&rsquo;s <code class="code">drawOn:</code> will then
 be simply written as:
 </p>
-<div class="example">
-<pre class="example">Torpedo&gt;&gt;drawOn: canvas
+<div class="example smallexample">
+<pre class="example-preformatted">Torpedo&gt;&gt;drawOn: canvas
    self drawOn: canvas polygon: self class vertices
 
 SpaceShip&gt;&gt;drawOn: canvas
@@ -438,128 +445,134 @@ SpaceShip&gt;&gt;drawOn: canvas
       canvas line: vertices third to: 0@35 width: 1 color: Color gray]
 </pre></div>
 
-<div class="float"><span id="exeDrawMobile"></span>
+<div class="float" id="exeDrawMobile">
 <blockquote class="indentedblock">
-<p>&nbsp;<img src="CuisLogo.png" alt="CuisLogo">
-<em>How will you
-write the <code>drawOn:polygon:</code> method in <code>Mobile</code>? Tip: use the
-iterator <code>withIndexDo:</code>.</em>
+<p>&nbsp;<img class="image" src="CuisLogo.png" alt="CuisLogo">
+<em class="emph">How will you
+write the <code class="code">drawOn:polygon:</code> method in <code class="code">Mobile</code>? Tip: use the
+iterator <code class="code">withIndexDo:</code>.</em>
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong>Exercise 7.7: </strong>Draw on <code>Mobile</code></p></div></div>
-<span id="Class-variable"></span><h4 class="subsubheading">Class variable</h4>
-<span id="index-class-17"></span>
-<span id="index-variable-8"></span>
+<div class="caption"><p><strong class="strong">Exercise 7.7: </strong>Draw on <code class="code">Mobile</code></p></div></div>
+<h4 class="subsubheading" id="Class-variable">Class variable</h4>
+<a class="index-entry-id" id="index-class-17"></a>
+<a class="index-entry-id" id="index-variable-8"></a>
 
-<p>A <em>class variable</em> is written capitalized in the argument of
-<code>classVariableNames:</code> keyword:
+<p>A <em class="dfn">class variable</em> is written capitalized in the argument of
+<code class="code">classVariableNames:</code> keyword:
 </p>
-<div class="float"><span id="classVariableMobile"></span>
-<div class="example">
-<pre class="example">PlacedMorph subclass: #Mobile
+<div class="float" id="classVariableMobile">
+<div class="example smallexample">
+<pre class="example-preformatted">PlacedMorph subclass: #Mobile
    instanceVariableNames: 'acceleration color velocity'
    classVariableNames: 'Vertices'
    poolDictionaries: ''
    category: 'Spacewar!'
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 7.9: </strong><code>Vertices</code> a class variable in <code>Mobile</code></p></div></div>
+<div class="caption"><p><strong class="strong">Example 7.9: </strong><code class="code">Vertices</code> a class variable in <code class="code">Mobile</code></p></div></div>
 <p>As a class instance variable, it can be directly accessed from the
 class side and instances are grant access only with messages send to
-the class side. <strong>Contrary</strong> to a class instance variable, its
+the class side. <strong class="strong">Contrary</strong> to a class instance variable, its
 value is common in the whole class hierarchy. 
 </p>
-<p>In Spacewar!, a class variable <code>Vertices</code> will have the same
+<p>In Spacewar!, a class variable <code class="code">Vertices</code> will have the same
 diagram for a space ship and a torpedo. This is not what we want.
 </p>
-<div class="example">
-<pre class="example">SpaceShip&gt;&gt;vertices
+<div class="example smallexample">
+<pre class="example-preformatted">SpaceShip&gt;&gt;vertices
    ^ `{0@-15 . -10@15 . 0@10 . 10@15}`
 </pre></div>
 
-<span id="Drawing-simplified"></span><h4 class="subsection">7.3.5 Drawing simplified</h4>
+</div>
+<div class="subsection-level-extent" id="Drawing-simplified">
+<h4 class="subsection">7.3.5 Drawing simplified</h4>
 <p>Using a class variable in the present game design is a bit
 overkill. It was an excuse to present the concept of class
 variables. If the game came with an editor where the user redesigns
 the ship and torpedo diagrams, it would make sense to hold the vertices
 in a variable. But our vertices of the space ship and torpedo diagrams
 are constant. We do not modify them. As we did with the mass of the
-space ship &ndash; <a href="Spacewar_0021-States-and-Behaviors.html#methodConstant">Example 3.16</a> &ndash; we can use a method returning a
+space ship &ndash; <a class="ref" href="Spacewar_0021-States-and-Behaviors.html#methodConstant">Example 3.16</a> &ndash; we can use a method returning a
 collection, surrounded with backtricks to improve efficiency.
 </p>
-<div class="float"><span id="verticesMethod"></span>
-<div class="example">
-<pre class="example">SpaceShip&gt;&gt;vertices
+<div class="float" id="verticesMethod">
+<div class="example smallexample">
+<pre class="example-preformatted">SpaceShip&gt;&gt;vertices
    ^ `{0@-15 . -10@15 . 0@10 . 10@15}`
    
 Torpedo&gt;&gt;vertices
    ^ `{0@-4 . -2@4 . 2@4}`
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 7.10: </strong>Vertices returned by an instance method</p></div></div>
-<p>Then in the drawing methods, we replace <code>self class
-vertices</code> by <code>self vertices</code>.
+<div class="caption"><p><strong class="strong">Example 7.10: </strong>Vertices returned by an instance method</p></div></div>
+<p>Then in the drawing methods, we replace <code class="code">self class
+vertices</code> by <code class="code">self vertices</code>.
 </p>
-<span id="Collisions-revisited"></span><h4 class="subsection">7.3.6 Collisions revisited</h4>
-<p>In <a href="SpaceWar_0021-collections.html#shipSunCollision">Example 4.23</a>, we have a very naive approach for collision
+</div>
+<div class="subsection-level-extent" id="Collisions-revisited">
+<h4 class="subsection">7.3.6 Collisions revisited</h4>
+<p>In <a class="ref" href="SpaceWar_0021-collections.html#shipSunCollision">Example 4.23</a>, we have a very naive approach for collision
 between the central star and the ships, based on distance between
 morphs. It was very inaccurate.
 </p>
 <p>In bitmap games, a classic way to deal with collision detection is to
 look at the intersections of the rectangles surrounding the graphic
-objects. The <code>#displayBounds</code> message sent to a morph answers its
+objects. The <code class="code">#displayBounds</code> message sent to a morph answers its
 bounds in the display, a rectangle encompassing the morph given its
 rotation and scale.
 </p>
-<div class="float"><span id="ch07_002d13_002dshipDisplayBounds"></span>
-<div align="center"><img src="ch07-13-shipDisplayBounds.png" alt="ch07-13-shipDisplayBounds">
+<div class="float" id="ch07_002d13_002dshipDisplayBounds">
+<div class="center"><img class="image" src="ch07-13-shipDisplayBounds.png" alt="ch07-13-shipDisplayBounds">
 </div>
-<div class="float-caption"><p><strong>Figure 7.13: </strong>The display bounds of a space ship</p></div></div>
-<p>When browsing the <code>Rectangle</code> class, you learn the
-<code>#intersects:</code> message tells us if two rectangles overlap. This is
+<div class="caption"><p><strong class="strong">Figure 7.13: </strong>The display bounds of a space ship</p></div></div>
+<p>When browsing the <code class="code">Rectangle</code> class, you learn the
+<code class="code">#intersects:</code> message tells us if two rectangles overlap. This is
 what we need for a more accurate collision detection between the
 central star and the space ships:
 </p>
-<div class="float"><span id="accurateCollisionShipsSun"></span>
-<div class="example">
-<pre class="example">SpaceWar&gt;&gt;collisionsShipsStar
+<div class="float" id="accurateCollisionShipsSun">
+<div class="example smallexample">
+<pre class="example-preformatted">SpaceWar&gt;&gt;collisionsShipsStar
    ships do: [:aShip | 
       (aShip displayBounds intersects: centralStar displayBounds) ifTrue: [
          aShip flashWith: Color red.
          self teleport: aShip]]
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 7.11: </strong>Collision (rectangle overlapping) between the ships and
+<div class="caption"><p><strong class="strong">Example 7.11: </strong>Collision (rectangle overlapping) between the ships and
 the Sun</p></div></div>
 
 <p>Nevertheless we use the VectorGraphics framework, its knows about the
 shape of each morph it is rendering. It uses this knowledge for
 collision detection at the pixel precision. We rewrite our detection
-method simpler with the <code>#collides:</code> message:
+method simpler with the <code class="code">#collides:</code> message:
 </p>
-<div class="float"><span id="accuratePixelCollisionShipsSun"></span>
-<div class="example">
-<pre class="example">SpaceWar&gt;&gt;collisionsShipsStar
+<div class="float" id="accuratePixelCollisionShipsSun">
+<div class="example smallexample">
+<pre class="example-preformatted">SpaceWar&gt;&gt;collisionsShipsStar
    ships do: [:aShip | 
       (aShip collides: centralStar) ifTrue: [
          aShip flashWith: Color red.
          self teleport: aShip]]
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 7.12: </strong>Collision (pixel precision) between the ships and
+<div class="caption"><p><strong class="strong">Example 7.12: </strong>Collision (pixel precision) between the ships and
 the Sun</p></div></div>
-<div class="float"><span id="exeAccurateDetection"></span>
+<div class="float" id="exeAccurateDetection">
 <blockquote class="indentedblock">
-<p>&nbsp;<img src="CuisLogo.png" alt="CuisLogo">
-<em>Rewrite the three collision detection methods between space ships, torpedoes and the central star.</em>
+<p>&nbsp;<img class="image" src="CuisLogo.png" alt="CuisLogo">
+<em class="emph">Rewrite the three collision detection methods between space ships, torpedoes and the central star.</em>
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong>Exercise 7.8: </strong>Accurate collision detection</p></div></div><hr>
-<div class="header">
+<div class="caption"><p><strong class="strong">Exercise 7.8: </strong>Accurate collision detection</p></div></div></div>
+</div>
+<hr>
+<div class="nav-panel">
 <p>
-Previous: <a href="A-Clock-Morph.html" accesskey="p" rel="prev">A Clock Morph</a>, Up: <a href="The-Fundamentals-of-Morph.html" accesskey="u" rel="up">The Fundamentals of Morph</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Previous: <a href="A-Clock-Morph.html">A Clock Morph</a>, Up: <a href="The-Fundamentals-of-Morph.html">The Fundamentals of Morph</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

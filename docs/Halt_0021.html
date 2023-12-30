@@ -1,9 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
-Copyright (C) 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
+Copyright © 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
 
 
 Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
@@ -16,7 +19,7 @@ texts. Your help is very valuable.
 
 
 
-Compilation : December 2, 2023
+Compilation : December 30, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -52,9 +55,6 @@ original.
 
 Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
  -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Halt! (The Cuis-Smalltalk Book)</title>
 
 <meta name="description" content="Halt! (The Cuis-Smalltalk Book)">
@@ -62,27 +62,18 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="Debug-and-Exception-Handling.html" rel="up" title="Debug and Exception Handling">
-<link href="Sharing-Cuis.html" rel="next" title="Sharing Cuis">
 <link href="The-Debugger.html" rel="prev" title="The Debugger">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
+div.center {text-align:center}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
+kbd.kbd {font-style: oblique}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -91,67 +82,68 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Halt_0021"></span><div class="header">
+<div class="section-level-extent" id="Halt_0021">
+<div class="nav-panel">
 <p>
 Previous: <a href="The-Debugger.html" accesskey="p" rel="prev">The Debugger</a>, Up: <a href="Debug-and-Exception-Handling.html" accesskey="u" rel="up">Debug and Exception Handling</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Halt_0021-1"></span><h3 class="section">10.3 Halt!</h3>
+<h3 class="section" id="Halt_0021-1">10.3 Halt!</h3>
 
-<span id="index-tools-7"></span>
-<span id="index-halt"></span>
+<a class="index-entry-id" id="index-tools-7"></a>
+<a class="index-entry-id" id="index-halt"></a>
 
-<p>A <em>breakpoint</em> is a place in code where one wishes to pause code
+<p>A <em class="dfn">breakpoint</em> is a place in code where one wishes to pause code
 processing and look around.  One does not always want to single step
 to find a problem, especially one that occurs only once in a while.  A
 breakpoint set where the problem occurs is quite handy.
 </p>
-<p>In Smalltalk, one uses the <code>halt</code> method to set a breakpoint.
-The message <code>#halt</code> is sent to an object which is the
+<p>In Smalltalk, one uses the <code class="code">halt</code> method to set a breakpoint.
+The message <code class="code">#halt</code> is sent to an object which is the
 debugger&rsquo;s initial focus.
 </p>
-<p>Please change the Workspace code to add a <code>#halt</code> as follows.
+<p>Please change the Workspace code to add a <code class="code">#halt</code> as follows.
 </p>
-<div class="float"><span id="breakpoint"></span>
-<div class="example">
-<pre class="example">| fileNames |
+<div class="float" id="breakpoint">
+<div class="example smallexample">
+<pre class="example-preformatted">| fileNames |
 fileNames := OrderedCollection new.
 (DirectoryEntry smalltalkImageDirectory) 
     childrenDo: [ :f | fileNames add: f name. fileNames halt ].
 fileNames asArray.
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 10.4: </strong>Halt: Set a Breakpoint</p></div></div>
+<div class="caption"><p><strong class="strong">Example 10.4: </strong>Halt: Set a Breakpoint</p></div></div>
 <blockquote class="indentedblock">
-<p>&nbsp;<img src="note.png" alt="note">
-The object which receives the <code>#halt</code> message
+<p>&nbsp;<img class="image" src="note.png" alt="note">
+The object which receives the <code class="code">#halt</code> message
 becomes the focus object of the debugger.
 </p></blockquote>
 
-<p>Let&rsquo;s again <kbd>Ctrl-a</kbd> (<em>select <b>A</b>ll</em>) and <kbd>Ctrl-p</kbd>
-(<em>select <b>P</b>rint-it</em>).
+<p>Let&rsquo;s again <kbd class="kbd">Ctrl-a</kbd> (<em class="emph">select <b class="b">A</b>ll</em>) and <kbd class="kbd">Ctrl-p</kbd>
+(<em class="emph">select <b class="b">P</b>rint-it</em>).
 </p>
-<div class="float"><span id="ch10_002d06_002dHalt"></span>
-<div align="center"><img src="ch10-06-Halt.png" alt="ch10-06-Halt">
+<div class="float" id="ch10_002d06_002dHalt">
+<div class="center"><img class="image" src="ch10-06-Halt.png" alt="ch10-06-Halt">
 </div>
-<div class="float-caption"><p><strong>Figure 10.6: </strong>Halt</p></div></div>
-<p>Press <kbd>Over</kbd> twice to step over the breakpoint.
+<div class="caption"><p><strong class="strong">Figure 10.6: </strong>Halt</p></div></div>
+<p>Press <kbd class="kbd">Over</kbd> twice to step over the breakpoint.
 </p>
-<div class="float"><span id="ch10_002d07_002dOver"></span>
-<div align="center"><img src="ch10-07-Over.png" alt="ch10-07-Over">
+<div class="float" id="ch10_002d07_002dOver">
+<div class="center"><img class="image" src="ch10-07-Over.png" alt="ch10-07-Over">
 </div>
-<div class="float-caption"><p><strong>Figure 10.7: </strong>Step Over Breakpoint</p></div></div>
+<div class="caption"><p><strong class="strong">Figure 10.7: </strong>Step Over Breakpoint</p></div></div>
 <p>Well, this looks familiar.  I know what to do here.
 </p>
-<p>Note that the <code>halt</code> is inside a loop.  While in the loop, each
-time you press <kbd>Proceed</kbd> you will <em>hit</em> the breakpoint in the
+<p>Note that the <code class="code">halt</code> is inside a loop.  While in the loop, each
+time you press <kbd class="kbd">Proceed</kbd> you will <em class="emph">hit</em> the breakpoint in the
 next iteration of the loop.
 </p>
 <p>In many programming envionments, to make a change you need to kill a
 process, recompile code, then start a new process.
 </p>
-<p>Smalltalk is a <em>live</em> environment.  You can break, then change or
-write code (the <kbd>Create</kbd> button at mid-right), restart the stack
+<p>Smalltalk is a <em class="emph">live</em> environment.  You can break, then change or
+write code (the <kbd class="kbd">Create</kbd> button at mid-right), restart the stack
 frame, and continue processing &ndash; all without unwinding the context
 stack!
 </p>
@@ -161,22 +153,23 @@ toe.&rdquo; then takes out a gun, shoots you, and sends your mother a note
 &ldquo;have another child.&rdquo;  Smalltalk is much more friendly!
 </p>
 <p>Note that with great power comes great
-responsibility. <a id="DOCF28" href="#FOOT28"><sup>28</sup></a>
+responsibility. <a class="footnote" id="DOCF28" href="#FOOT28"><sup>28</sup></a>
 In an open system, you can place a breakpoint anywhere, including
 places which can break the user interface!  For example, it could be a
 bad thing to put a breakpoint in the code for the Debugger!
 </p>
-<div class="footnote">
+</div>
+<div class="footnotes-segment">
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h5><a id="FOOT28" href="#DOCF28">(28)</a></h3>
-<p><a href="https://quoteinvestigator.com/2015/07/23/great-power/">https://quoteinvestigator.com/2015/07/23/great-power/</a></p>
+<h5 class="footnote-body-heading"><a id="FOOT28" href="#DOCF28">(28)</a></h5>
+<p><a class="url" href="https://quoteinvestigator.com/2015/07/23/great-power/">https://quoteinvestigator.com/2015/07/23/great-power/</a></p>
 </div>
 <hr>
-<div class="header">
+<div class="nav-panel">
 <p>
-Previous: <a href="The-Debugger.html" accesskey="p" rel="prev">The Debugger</a>, Up: <a href="Debug-and-Exception-Handling.html" accesskey="u" rel="up">Debug and Exception Handling</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Previous: <a href="The-Debugger.html">The Debugger</a>, Up: <a href="Debug-and-Exception-Handling.html">Debug and Exception Handling</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

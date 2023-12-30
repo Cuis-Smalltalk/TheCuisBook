@@ -1,9 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
-Copyright (C) 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
+Copyright © 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
 
 
 Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
@@ -16,7 +19,7 @@ texts. Your help is very valuable.
 
 
 
-Compilation : December 2, 2023
+Compilation : December 30, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -52,9 +55,6 @@ original.
 
 Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
  -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>The Collection Way of Life (Solutions) (The Cuis-Smalltalk Book)</title>
 
 <meta name="description" content="The Collection Way of Life (Solutions) (The Cuis-Smalltalk Book)">
@@ -62,6 +62,8 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="Solutions-to-the-Exercises.html" rel="up" title="Solutions to the Exercises">
@@ -69,20 +71,7 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="Class-_002d_002d-model-of-Communicating-Entities-_0028Solutions_0029.html" rel="prev" title="Class -- model of Communicating Entities (Solutions)">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -91,57 +80,58 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="The-Collection-Way-of-Life-_0028Solutions_0029"></span><div class="header">
+<div class="unnumberedsec-level-extent" id="The-Collection-Way-of-Life-_0028Solutions_0029">
+<div class="nav-panel">
 <p>
-Next: <a href="Control-Flow-Messaging-_0028Solutions_0029.html" accesskey="n" rel="next">Control Flow Messaging (Solutions)</a>, Previous: <a href="Class-_002d_002d-model-of-Communicating-Entities-_0028Solutions_0029.html" accesskey="p" rel="prev">Class -- model of Communicating Entities (Solutions)</a>, Up: <a href="Solutions-to-the-Exercises.html" accesskey="u" rel="up">Solutions to the Exercises</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Control-Flow-Messaging-_0028Solutions_0029.html" accesskey="n" rel="next">Control Flow Messaging</a>, Previous: <a href="Class-_002d_002d-model-of-Communicating-Entities-_0028Solutions_0029.html" accesskey="p" rel="prev">Class, model of Communicating Entities</a>, Up: <a href="Solutions-to-the-Exercises.html" accesskey="u" rel="up">Solutions to the Exercises</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="The-Collection-Way-of-Life-2"></span><h3 class="unnumberedsec">The Collection Way of Life</h3>
-<span id="cutString-1"></span><h4 class="subheading"><a href="String-_002d_002d-a-particular-collection.html#cutString">Exercise 4.1</a></h4>
-<p>Open the protocol browser on the class <code>String</code>, search for the
-method <code>allButFirst:</code> implemented in
-<code>SequenceableCollection</code>. Read its comment in its source code.
-</p><div class="example">
-<pre class="example">'Hello My Friend' allButFirst: 6
+<h3 class="unnumberedsec" id="The-Collection-Way-of-Life-2">The Collection Way of Life</h3>
+<h4 class="subheading" id="cutString-1"><a class="ref" href="String-_002d_002d-a-particular-collection.html#cutString">Exercise 4.1</a></h4>
+<p>Open the protocol browser on the class <code class="code">String</code>, search for the
+method <code class="code">allButFirst:</code> implemented in
+<code class="code">SequenceableCollection</code>. Read its comment in its source code.
+</p><div class="example smallexample">
+<pre class="example-preformatted">'Hello My Friend' allButFirst: 6
 &rArr; 'My Friend'
 </pre></div>
 
-<span id="exeNegativeIntegers-1"></span><h4 class="subheading"><a href="Fun-with-collections.html#exeNegativeIntegers">Exercise 4.2</a></h4>
-<div class="example">
-<pre class="example">(-80 to: 50) asArray
+<h4 class="subheading" id="exeNegativeIntegers-1"><a class="ref" href="Fun-with-collections.html#exeNegativeIntegers">Exercise 4.2</a></h4>
+<div class="example smallexample">
+<pre class="example-preformatted">(-80 to: 50) asArray
 </pre></div>
 
-<span id="holeSet-1"></span><h4 class="subheading"><a href="Fun-with-collections.html#holeSet">Exercise 4.3</a></h4>
-<div class="example">
-<pre class="example">(1 to: 100) difference: (25 to: 75)
+<h4 class="subheading" id="holeSet-1"><a class="ref" href="Fun-with-collections.html#holeSet">Exercise 4.3</a></h4>
+<div class="example smallexample">
+<pre class="example-preformatted">(1 to: 100) difference: (25 to: 75)
 &rArr; #(1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21
 22 23 24 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91
 92 93 94 95 96 97 98 99 100) 
 </pre></div>
 
-<span id="oddNumbers-1"></span><h4 class="subheading"><a href="Fun-with-collections.html#oddNumbers">Exercise 4.4</a></h4>
-<div class="example">
-<pre class="example">(-20 to: 45) select: [:z | z odd]
+<h4 class="subheading" id="oddNumbers-1"><a class="ref" href="Fun-with-collections.html#oddNumbers">Exercise 4.4</a></h4>
+<div class="example smallexample">
+<pre class="example-preformatted">(-20 to: 45) select: [:z | z odd]
 </pre></div>
 
-<span id="qtyPrime200-1"></span><h4 class="subheading"><a href="Fun-with-collections.html#qtyPrime200">Exercise 4.5</a></h4>
-<div class="example">
-<pre class="example">((101 to: 200) select: [:n | n isPrime]) size
+<h4 class="subheading" id="qtyPrime200-1"><a class="ref" href="Fun-with-collections.html#qtyPrime200">Exercise 4.5</a></h4>
+<div class="example smallexample">
+<pre class="example-preformatted">((101 to: 200) select: [:n | n isPrime]) size
 &rArr; 21 
 </pre></div>
 
-<span id="multiples7-1"></span><h4 class="subheading"><a href="Fun-with-collections.html#multiples7">Exercise 4.6</a></h4>
-<div class="example">
-<pre class="example">(1 to: 100) select:[:n | n isDivisibleBy: 7]
+<h4 class="subheading" id="multiples7-1"><a class="ref" href="Fun-with-collections.html#multiples7">Exercise 4.6</a></h4>
+<div class="example smallexample">
+<pre class="example-preformatted">(1 to: 100) select:[:n | n isDivisibleBy: 7]
 &rArr; #(7 14 21 28 35 42 49 56 63 70 77 84 91 98) 
 </pre></div>
 
-<span id="oddNonPrime-1"></span><h4 class="subheading"><a href="Fun-with-collections.html#oddNonPrime">Exercise 4.7</a></h4>
+<h4 class="subheading" id="oddNonPrime-1"><a class="ref" href="Fun-with-collections.html#oddNonPrime">Exercise 4.7</a></h4>
 <p>This solution, based on set operations and multiple use of the
-<code>#select:</code> message, is mostly compatible with the knowledge
+<code class="code">#select:</code> message, is mostly compatible with the knowledge
 acquired at this point of the book.
-</p><div class="example">
-<pre class="example">| primeNumbers nonPrimeNumbers |
+</p><div class="example smallexample">
+<pre class="example-preformatted">| primeNumbers nonPrimeNumbers |
 primeNumbers := (1 to: 100) select: [:n | n isPrime].
 nonPrimeNumbers := (1 to: 100) difference: primeNumbers.
 nonPrimeNumbers select: [:n | n odd]
@@ -151,71 +141,71 @@ nonPrimeNumbers select: [:n | n odd]
 
 <p>A shorter solution with logical operations we have not discussed so
 far:
-</p><div class="example">
-<pre class="example">(1 to: 100) select:[:n | n isPrime not and: [n odd]]
+</p><div class="example smallexample">
+<pre class="example-preformatted">(1 to: 100) select:[:n | n isPrime not and: [n odd]]
 </pre></div>
 
-<span id="decodeCipher-1"></span><h4 class="subheading"><a href="Fun-with-collections.html#decodeCipher">Exercise 4.8</a></h4>
-<div class="example">
-<pre class="example">'Zpv!bsf!b!cptt' collect: [:c |
+<h4 class="subheading" id="decodeCipher-1"><a class="ref" href="Fun-with-collections.html#decodeCipher">Exercise 4.8</a></h4>
+<div class="example smallexample">
+<pre class="example-preformatted">'Zpv!bsf!b!cptt' collect: [:c |
    (c asciiValue - 1) asCharacter]
 &rArr; 'You are a boss' 
 </pre></div>
 
-<span id="alphabetCipher-1"></span><h4 class="subheading"><a href="Fun-with-collections.html#alphabetCipher">Exercise 4.9</a></h4>
-<div class="example">
-<pre class="example">($A to: $Z) collect: [:c |
+<h4 class="subheading" id="alphabetCipher-1"><a class="ref" href="Fun-with-collections.html#alphabetCipher">Exercise 4.9</a></h4>
+<div class="example smallexample">
+<pre class="example-preformatted">($A to: $Z) collect: [:c |
    (c asciiValue - 65 + 3 \\ 26 + 65) asCharacter]
 </pre></div>
 
-<p>Each character from A to Z is referenced by the <code>c</code> block
+<p>Each character from A to Z is referenced by the <code class="code">c</code> block
 parameter and converted to its Ascii
-value<a id="DOCF30" href="#FOOT30"><sup>30</sup></a>:
-<code>c asciiValue</code>. It is shifted of 65, so the A character
+value<a class="footnote" id="DOCF30" href="#FOOT30"><sup>30</sup></a>:
+<code class="code">c asciiValue</code>. It is shifted of 65, so the A character
 counts as 0 and Z as 25 in the alphabet list. To apply the Caesar
-cipher, we send the message <code>+ 3</code> to the previous result.
+cipher, we send the message <code class="code">+ 3</code> to the previous result.
 </p>
 <p>We are almost good, only the characters X, Y, Z will overflow the
 alphabet, indeed these characters will be ciphered as 26, 27, 28. To
-fix that we send <code>\\ 26</code> to the previous result, it is an
+fix that we send <code class="code">\\ 26</code> to the previous result, it is an
 old trick of programming: the reminder of the Euclidean division by 26
-frames the value between 0 and 25<a id="DOCF31" href="#FOOT31"><sup>31</sup></a>.
+frames the value between 0 and 25<a class="footnote" id="DOCF31" href="#FOOT31"><sup>31</sup></a>.
 </p>
 <p>Finally we shift back of 65 before converting from the Ascii value to
 the character.
 </p>
 
-<span id="encodeCaesar-1"></span><h4 class="subheading"><a href="Fun-with-collections.html#encodeCaesar">Exercise 4.10</a></h4>
-<p>In the solution of <a href="Fun-with-collections.html#alphabetCipher">Exercise 4.9</a>, we just need to replace the
+<h4 class="subheading" id="encodeCaesar-1"><a class="ref" href="Fun-with-collections.html#encodeCaesar">Exercise 4.10</a></h4>
+<p>In the solution of <a class="ref" href="Fun-with-collections.html#alphabetCipher">Exercise 4.9</a>, we just need to replace the
 characters interval with a string:
-</p><div class="example">
-<pre class="example">'SMALLTALKEXPRESSION' collect: [:c |
+</p><div class="example smallexample">
+<pre class="example-preformatted">'SMALLTALKEXPRESSION' collect: [:c |
    (c asciiValue - 65 + 3 \\ 26 + 65) asCharacter]
 &rArr; 'VPDOOWDONHASUHVVLRQ' 
 </pre></div>
 
-<span id="decodeCaesar-1"></span><h4 class="subheading"><a href="Fun-with-collections.html#decodeCaesar">Exercise 4.11</a></h4>
-<div class="example">
-<pre class="example">  'DOHDMDFWDHVW' collect: [:c |
+<h4 class="subheading" id="decodeCaesar-1"><a class="ref" href="Fun-with-collections.html#decodeCaesar">Exercise 4.11</a></h4>
+<div class="example smallexample">
+<pre class="example-preformatted">  'DOHDMDFWDHVW' collect: [:c |
     (c asciiValue - 65 - 3 \\ 26 + 65) asCharacter]
 &rArr; 'ALEAJACTAEST'
 </pre></div>
 
-<span id="collFirst-1"></span><h4 class="subheading"><a href="Collections-detailed.html#collFirst">Exercise 4.12</a></h4>
-<p>The appropriate message is <code>#first:</code>, defined in the parent
-class <code>SequenceableCollection</code>. You need to use the protocol or
-hierarchy browser on <code>Array</code> to discover it:
+<h4 class="subheading" id="collFirst-1"><a class="ref" href="Collections-detailed.html#collFirst">Exercise 4.12</a></h4>
+<p>The appropriate message is <code class="code">#first:</code>, defined in the parent
+class <code class="code">SequenceableCollection</code>. You need to use the protocol or
+hierarchy browser on <code class="code">Array</code> to discover it:
 </p>
-<div class="example">
-<pre class="example">array1 first: 2
+<div class="example smallexample">
+<pre class="example-preformatted">array1 first: 2
 &rArr; #(2 'Apple') 
 </pre></div>
 
-<span id="fillArray-1"></span><h4 class="subheading"><a href="Collections-detailed.html#fillArray">Exercise 4.13</a></h4>
+<h4 class="subheading" id="fillArray-1"><a class="ref" href="Collections-detailed.html#fillArray">Exercise 4.13</a></h4>
 <p>You could simply do a thumb:
 </p>
-<div class="example">
-<pre class="example">array1 at: 1 put: 'kiwi'.
+<div class="example smallexample">
+<pre class="example-preformatted">array1 at: 1 put: 'kiwi'.
 array1 at: 2 put: 'kiwi'.
 array1 at: 3 put: 'kiwi'.
 array1 at: 4 put: 'kiwi'.
@@ -223,68 +213,68 @@ array1 at: 4 put: 'kiwi'.
 
 <p>Or even a bit less thumb:
 </p>
-<div class="example">
-<pre class="example">1 to: array1 size do: [:index |
+<div class="example smallexample">
+<pre class="example-preformatted">1 to: array1 size do: [:index |
    array1 at: index put: 'kiwi']
 </pre></div>
 
-<p>But if you search for carefully the <code>Array</code> protocol, you can
+<p>But if you search for carefully the <code class="code">Array</code> protocol, you can
 just do:
 </p>
-<div class="example">
-<pre class="example">array1 atAllPut: 'kiwi'.
+<div class="example smallexample">
+<pre class="example-preformatted">array1 atAllPut: 'kiwi'.
 </pre></div>
 
-<span id="addAfter-1"></span><h4 class="subheading"><a href="Collections-detailed.html#addAfter">Exercise 4.14</a></h4>
-<p>In the <code>OrderedCollection</code> protocol search for the method
-<code>add:after:</code>.
-</p><div class="example">
-<pre class="example">coll1 := {2 . 'Apple' . 2@1 . 1/3 } asOrderedCollection .		
+<h4 class="subheading" id="addAfter-1"><a class="ref" href="Collections-detailed.html#addAfter">Exercise 4.14</a></h4>
+<p>In the <code class="code">OrderedCollection</code> protocol search for the method
+<code class="code">add:after:</code>.
+</p><div class="example smallexample">
+<pre class="example-preformatted">coll1 := {2 . 'Apple' . 2@1 . 1/3 } asOrderedCollection .		
 coll1 add: 'Orange' after: 'Apple'; yourself.
 &rArr;  an OrderedCollection(2 'Apple' 'Orange' 2@1 1/3) 
 </pre></div>
 
-<span id="setLetters-1"></span><h4 class="subheading"><a href="Collections-detailed.html#setLetters">Exercise 4.15</a></h4>
-<div class="example">
-<pre class="example">Set  new
+<h4 class="subheading" id="setLetters-1"><a class="ref" href="Collections-detailed.html#setLetters">Exercise 4.15</a></h4>
+<div class="example smallexample">
+<pre class="example-preformatted">Set  new
    addAll: 'buenos d&iacute;as';
    addAll: 'bonjour';
    yourself.
 &rArr;  a Set($e $j $o $a $u $b $  $&iacute; $r $d $n $s) 
 </pre></div>
 
-<span id="nameColor-1"></span><h4 class="subheading"><a href="Collections-detailed.html#nameColor">Exercise 4.16</a></h4>
-<div class="example">
-<pre class="example">colors keysDo: [:key |
+<h4 class="subheading" id="nameColor-1"><a class="ref" href="Collections-detailed.html#nameColor">Exercise 4.16</a></h4>
+<div class="example smallexample">
+<pre class="example-preformatted">colors keysDo: [:key |
    colors at: key put: key asString capitalized].
 colors
 &rArr; a Dictionary(#blue-&gt;'Blue' #green-&gt;'Green' #red-&gt;'Red'
 #yellow-&gt;'Yellow' ) 
 </pre></div>
 
-<span id="initActorsCollections-1"></span><h4 class="subheading"><a href="SpaceWar_0021-collections.html#initActorsCollections">Exercise 4.17</a></h4>
+<h4 class="subheading" id="initActorsCollections-1"><a class="ref" href="SpaceWar_0021-collections.html#initActorsCollections">Exercise 4.17</a></h4>
 <p>When the game starts there is no fired torpedoes, therefore
-<code>torpedoes</code> is an empty <code>OrderedCollection</code>,
-instantiated with the <code>#new</code> class message.
+<code class="code">torpedoes</code> is an empty <code class="code">OrderedCollection</code>,
+instantiated with the <code class="code">#new</code> class message.
 </p>
-<p>In the other hand, the <code>ships</code> is an <code>Array</code>
+<p>In the other hand, the <code class="code">ships</code> is an <code class="code">Array</code>
 containing only two elements, the player ships. We use the
-<code>#with:with</code> class message to instantiate and populate the array
+<code class="code">#with:with</code> class message to instantiate and populate the array
 with two ships created in the argument message.
 </p>
 <p>For the readability, we split the code in several lines with the
 appropriate indentation.
 </p>
-<div class="example">
-<pre class="example">   torpedoes := OrderedCollection new.
+<div class="example smallexample">
+<pre class="example-preformatted">   torpedoes := OrderedCollection new.
    ships := Array 
       with: SpaceShip new
       with: SpaceShip new.
 </pre></div>
 
-<span id="updateShipsTorpedoes-1"></span><h4 class="subheading"><a href="SpaceWar_0021-collections.html#updateShipsTorpedoes">Exercise 4.18</a></h4>
-<div class="example">
-<pre class="example">SpaceWar&gt;&gt;stepAt: msSinceLast
+<h4 class="subheading" id="updateShipsTorpedoes-1"><a class="ref" href="SpaceWar_0021-collections.html#updateShipsTorpedoes">Exercise 4.18</a></h4>
+<div class="example smallexample">
+<pre class="example-preformatted">SpaceWar&gt;&gt;stepAt: msSinceLast
   ships do: [:each | each update: msSinceLast / 1000 ].
   ships do: [:each | each unpush ].
   torpedoes do: [:each | each update: msSinceLast / 1000 ].
@@ -292,21 +282,22 @@ appropriate indentation.
 
 
 
-<div class="footnote">
+</div>
+<div class="footnotes-segment">
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h5><a id="FOOT30" href="#DOCF30">(30)</a></h3>
-<p><a href="https://en.wikipedia.org/wiki/ASCII">https://en.wikipedia.org/wiki/ASCII</a></p>
-<h5><a id="FOOT31" href="#DOCF31">(31)</a></h3>
+<h5 class="footnote-body-heading"><a id="FOOT30" href="#DOCF30">(30)</a></h5>
+<p><a class="url" href="https://en.wikipedia.org/wiki/ASCII">https://en.wikipedia.org/wiki/ASCII</a></p>
+<h5 class="footnote-body-heading"><a id="FOOT31" href="#DOCF31">(31)</a></h5>
 <p>It generalizes to the
 mathematics field of modular arithmetic,
-<a href="https://www.wikiwand.com/en/Modular_arithmetic">https://www.wikiwand.com/en/Modular_arithmetic</a></p>
+<a class="url" href="https://www.wikiwand.com/en/Modular_arithmetic">https://www.wikiwand.com/en/Modular_arithmetic</a></p>
 </div>
 <hr>
-<div class="header">
+<div class="nav-panel">
 <p>
-Next: <a href="Control-Flow-Messaging-_0028Solutions_0029.html" accesskey="n" rel="next">Control Flow Messaging (Solutions)</a>, Previous: <a href="Class-_002d_002d-model-of-Communicating-Entities-_0028Solutions_0029.html" accesskey="p" rel="prev">Class -- model of Communicating Entities (Solutions)</a>, Up: <a href="Solutions-to-the-Exercises.html" accesskey="u" rel="up">Solutions to the Exercises</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Control-Flow-Messaging-_0028Solutions_0029.html">Control Flow Messaging</a>, Previous: <a href="Class-_002d_002d-model-of-Communicating-Entities-_0028Solutions_0029.html">Class, model of Communicating Entities</a>, Up: <a href="Solutions-to-the-Exercises.html">Solutions to the Exercises</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

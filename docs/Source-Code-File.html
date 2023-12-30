@@ -1,9 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
-Copyright (C) 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
+Copyright © 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
 
 
 Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
@@ -16,7 +19,7 @@ texts. Your help is very valuable.
 
 
 
-Compilation : December 2, 2023
+Compilation : December 30, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -52,9 +55,6 @@ original.
 
 Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
  -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Source Code File (The Cuis-Smalltalk Book)</title>
 
 <meta name="description" content="Source Code File (The Cuis-Smalltalk Book)">
@@ -62,27 +62,14 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="Code-Management.html" rel="up" title="Code Management">
-<link href="Debug-and-Exception-Handling.html" rel="next" title="Debug and Exception Handling">
 <link href="Daily-Workflow.html" rel="prev" title="Daily Workflow">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
-div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -91,83 +78,60 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Source-Code-File"></span><div class="header">
+<div class="section-level-extent" id="Source-Code-File">
+<div class="nav-panel">
 <p>
 Previous: <a href="Daily-Workflow.html" accesskey="p" rel="prev">Daily Workflow</a>, Up: <a href="Code-Management.html" accesskey="u" rel="up">Code Management</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Source-Code-File-1"></span><h3 class="section">9.6 Source Code File</h3>
-<span id="index-_002est"></span>
-<span id="index-_002epck_002est"></span>
-<span id="index-file-extension"></span>
-<span id="index-file-extension-1"></span>
+<h3 class="section" id="Source-Code-File-1">9.6 Source Code File</h3>
+<a class="index-entry-id" id="index-_002est"></a>
+<a class="index-entry-id" id="index-_002epck_002est"></a>
+<a class="index-entry-id" id="index-file-extension"></a>
+<a class="index-entry-id" id="index-file-extension-1"></a>
 
 <p>In this chapter, you encountered files produced by the Cuis-Smalltalk
-management tools. Some come with the extension <samp>.pck.st</samp> and
-others with the extension <samp>.st</samp>. They both contain Smalltalk code
+management tools. Some come with the extension <samp class="file">.pck.st</samp> and
+others with the extension <samp class="file">.st</samp>. They both contain Smalltalk code
 but serve different purposes.
 </p>
-<p>Files with extension <samp>.pck.st</samp> are Cuis-Smalltalk package files. They
+<p>Files with extension <samp class="file">.pck.st</samp> are Cuis-Smalltalk package files. They
 have a preamble with package information, like feature provided,
 version information, a description for the package and the package
 requirements.
 </p>
 <p>Smalltalk code files can be installed by selecting them in the File
-List Browser and clicking on <code>install</code> button.
+List Browser and clicking on <code class="command">install</code> button.
 </p>
 <p>When a package is installed, its dependencies are also installed and
 the loaded packaged appears in the Package List tool. Package files
-<samp>.pck.st</samp> are created using the Packages List tool in
+<samp class="file">.pck.st</samp> are created using the Packages List tool in
 Cuis-Smalltalk.
 </p>
-<p>Files with extension <samp>.st</samp> contained serialized Smalltalk code &ndash;
-classes and methods. They are created when you <em>file out</em> a
+<p>Files with extension <samp class="file">.st</samp> contained serialized Smalltalk code &ndash;
+classes and methods. They are created when you <em class="dfn">file out</em> a
 Smalltalk system category, class or method. You can serialize code in
-the System Browser by selecting a <strong>system
-category</strong>, <strong>class</strong> or <strong>method</strong> &rarr; right click and
-select <code>fileOut</code> from the context menu.
+the System Browser by selecting a <strong class="strong">system
+category</strong>, <strong class="strong">class</strong> or <strong class="strong">method</strong> &rarr; right click and
+select <code class="command">fileOut</code> from the context menu.
 </p>
-<p>Unlike <samp>.pck.st</samp> files, <samp>.st</samp> files don&rsquo;t contain any
+<p>Unlike <samp class="file">.pck.st</samp> files, <samp class="file">.st</samp> files don&rsquo;t contain any
 dependencies, description, or package information, only serialized
-Smalltalk code. <samp>.st</samp> files are around since Smalltalk’s early
-days, while <samp>.pkg.st</samp> were added with the Cuis-Smalltalk package
+Smalltalk code. <samp class="file">.st</samp> files are around since Smalltalk’s early
+days, while <samp class="file">.pkg.st</samp> were added with the Cuis-Smalltalk package
 functionality.
 </p>
-<p>In addition to <code>install</code>, selecting a code file in the File List
-Browser also adds buttons to inspect the <code>code</code> and to treat code
-<code>contents</code> like a Change Sorter. When inspecting the code, a
+<p>In addition to <code class="command">install</code>, selecting a code file in the File List
+Browser also adds buttons to inspect the <code class="command">code</code> and to treat code
+<code class="command">contents</code> like a Change Sorter. When inspecting the code, a
 browser shows what code is different between the file and the running
 image and allows one to import individual classes or methods with the
 help of the context menu.
-</p>
-
-<blockquote class="indentedblock">
-<p>&nbsp;<img src="note.png" alt="note">
-Not to save the image is just best practice advice for you
-when your primary goal is to create new code. We already discussed the
-caveats of saving the image concerning code management
-(See <a href="The-Image.html#ch09_002dImage">The Image</a>).  But from time to time, you&rsquo;ll find
-yourself in the position of an explorer when you open multiple code
-browsers and workplaces to figure something out. In this case, the
-state of the system, the open windows and code snippets, holds the
-value you care about, and saving the image is the right way to
-preserve the system&rsquo;s state.<a id="DOCF27" href="#FOOT27"><sup>27</sup></a>
-</p></blockquote>
-<div class="footnote">
+</p></div>
 <hr>
-<h4 class="footnotes-heading">Footnotes</h4>
-
-<h5><a id="FOOT27" href="#DOCF27">(27)</a></h3>
-<p>For more insight regarding the
-policy of saving the image, read this discussion in the Cuis community
-<a href="https://lists.cuis.st/mailman/archives/cuis-dev/2023-July/007841.html">there</a>
-and
-<a href="https://lists.cuis.st/mailman/archives/cuis-dev/2023-August/007884.html">there</a></p>
-</div>
-<hr>
-<div class="header">
+<div class="nav-panel">
 <p>
-Previous: <a href="Daily-Workflow.html" accesskey="p" rel="prev">Daily Workflow</a>, Up: <a href="Code-Management.html" accesskey="u" rel="up">Code Management</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Previous: <a href="Daily-Workflow.html">Daily Workflow</a>, Up: <a href="Code-Management.html">Code Management</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

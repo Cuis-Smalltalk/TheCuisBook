@@ -1,9 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
-Copyright (C) 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
+Copyright © 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
 
 
 Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
@@ -16,7 +19,7 @@ texts. Your help is very valuable.
 
 
 
-Compilation : December 2, 2023
+Compilation : December 30, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -52,9 +55,6 @@ original.
 
 Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
  -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Inspecting the Unexpected (The Cuis-Smalltalk Book)</title>
 
 <meta name="description" content="Inspecting the Unexpected (The Cuis-Smalltalk Book)">
@@ -62,27 +62,16 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="Debug-and-Exception-Handling.html" rel="up" title="Debug and Exception Handling">
 <link href="The-Debugger.html" rel="next" title="The Debugger">
-<link href="Debug-and-Exception-Handling.html" rel="prev" title="Debug and Exception Handling">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
+div.center {text-align:center}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -91,68 +80,75 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Inspecting-the-Unexpected"></span><div class="header">
+<div class="section-level-extent" id="Inspecting-the-Unexpected">
+<div class="nav-panel">
 <p>
 Next: <a href="The-Debugger.html" accesskey="n" rel="next">The Debugger</a>, Up: <a href="Debug-and-Exception-Handling.html" accesskey="u" rel="up">Debug and Exception Handling</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Inspecting-the-Unexpected-1"></span><h3 class="section">10.1 Inspecting the Unexpected</h3>
-<span id="index-exception"></span>
+<h3 class="section" id="Inspecting-the-Unexpected-1">10.1 Inspecting the Unexpected</h3>
+<a class="index-entry-id" id="index-exception"></a>
 <p>We have seen how various exceptional situations cause the appearance of
-a debugger window.  Indeed, <code>Exception</code>s are also 
+a debugger window.  Indeed, <code class="code">Exception</code>s are also 
 objects which remember their context and can present it.  Above, we have
-seen how to generate <code>MessageNotUnderstood</code> and <code>ZeroDivide</code>
+seen how to generate <code class="code">MessageNotUnderstood</code> and <code class="code">ZeroDivide</code>
 Exception instances.
 </p>
 <p>This is another area where the actual mechanics are complex, but the basic ideas are simple.
 </p>
-<span id="index-block-6"></span>
-<p>Exception instances, being objects, also have classes.  The <code>BlockClosure</code>
-has a method category <code>exceptions</code> which gathers some handy methods
-which allow one to <code>ensure:</code> cleanup or capture and use exceptions
-(<code>on:do:</code> and friends).
+<a class="index-entry-id" id="index-block-6"></a>
+<p>Exception instances, being objects, also have classes.  The <code class="code">BlockClosure</code>
+has a method category <code class="command">exceptions</code> which gathers some handy methods
+which allow one to <code class="code">ensure:</code> cleanup or capture and use exceptions
+(<code class="code">on:do:</code> and friends).
 </p>
-<div class="float"><span id="ensure"></span>
-<div class="example">
-<pre class="example">FileEntry&gt;&gt;readStreamDo: blockWithArg 
+<div class="float" id="ensure">
+<div class="example smallexample">
+<pre class="example-preformatted">FileEntry&gt;&gt;readStreamDo: blockWithArg 
   &quot;Raise FileDoesNotExistException if not found.&quot;
   | stream result |
   stream := self readStream.
-  <b>[</b> result := blockWithArg value: stream <b>]</b>
-	<b>ensure:</b> <b>[</b> stream ifNotNil: [ :s | s close ]<b>]</b>.
+  <b class="b">[</b> result := blockWithArg value: stream <b class="b">]</b>
+	<b class="b">ensure:</b> <b class="b">[</b> stream ifNotNil: [ :s | s close ]<b class="b">]</b>.
   ^ result
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 10.1: </strong>Ensure a FileStream is closed</p></div></div>
-<p>Exceptions are created and <em>signal</em>ed.  Let&rsquo;s make one and look at it.
+<div class="caption"><p><strong class="strong">Example 10.1: </strong>Ensure a FileStream is closed</p></div></div>
+<p>Exceptions are created and <em class="dfn">signal</em>ed.  Let&rsquo;s make one and look at it.
 </p>
-<div class="float"><span id="ch10_002d01_002dZeroDivide"></span>
-<div align="center"><img src="ch10-01-ZeroDivide.png" alt="ch10-01-ZeroDivide">
+<div class="float" id="ch10_002d01_002dZeroDivide">
+<div class="center"><img class="image" src="ch10-01-ZeroDivide.png" alt="ch10-01-ZeroDivide">
 </div>
-<div class="float-caption"><p><strong>Figure 10.1: </strong>Inspecting a <code>ZeroDivide</code> instance</p></div></div>
-<p>Again, we can use an Inspector on any object, and <code>Exception</code>s are
+<div class="caption"><p><strong class="strong">Figure 10.1: </strong>Inspecting a <code class="code">ZeroDivide</code> instance</p></div></div>
+<p>Again, we can use an Inspector on any object, and <code class="code">Exception</code>s are
 no exception!  Now you know how to capture one when you need to.
 </p>
-<p><code>Exception</code>s, like <code>MorphicEvent</code>s are a change,
+<p><code class="code">Exception</code>s, like <code class="code">MorphicEvent</code>s are a change,
 an exception, to typical control flow.
 </p>
 <p>We noted above the special
-pseudo-variable, <code>thisContext</code>.  Signalling an exception
+pseudo-variable, <code class="code">thisContext</code>.  Signalling an exception
 captures this.
 </p>
-<div class="float"><span id="signal"></span>
-<div class="example">
-<pre class="example">Exception&gt;&gt;signal
+<div class="float" id="signal">
+<div class="example smallexample">
+<pre class="example-preformatted">Exception&gt;&gt;signal
 
   ^ self signalIn: thisContext
 
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 10.2: </strong>Capture thisContext</p></div></div>
-<p>Just as Smalltalk code has special view windows which we call <code>Browser</code>s,
-<code>Exception</code>s have an enhanced viewer we call the <code>Debugger</code>.
+<div class="caption"><p><strong class="strong">Example 10.2: </strong>Capture thisContext</p></div></div>
+<p>Just as Smalltalk code has special view windows which we call <code class="command">Browser</code>s,
+<code class="code">Exception</code>s have an enhanced viewer we call the <code class="command">Debugger</code>.
 Let us look at how to use this very useful viewer.
 </p>
+</div>
+<hr>
+<div class="nav-panel">
+<p>
+Next: <a href="The-Debugger.html">The Debugger</a>, Up: <a href="Debug-and-Exception-Handling.html">Debug and Exception Handling</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+</div>
 
 
 

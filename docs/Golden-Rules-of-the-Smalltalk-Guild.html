@@ -1,9 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
-Copyright (C) 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
+Copyright © 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
 
 
 Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
@@ -16,7 +19,7 @@ texts. Your help is very valuable.
 
 
 
-Compilation : December 2, 2023
+Compilation : December 30, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -52,9 +55,6 @@ original.
 
 Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
  -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Golden Rules of the Smalltalk Guild (The Cuis-Smalltalk Book)</title>
 
 <meta name="description" content="Golden Rules of the Smalltalk Guild (The Cuis-Smalltalk Book)">
@@ -62,27 +62,15 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="Sharing-Cuis.html" rel="up" title="Sharing Cuis">
 <link href="Refactoring-to-Improve-Understanding.html" rel="next" title="Refactoring to Improve Understanding">
-<link href="Sharing-Cuis.html" rel="prev" title="Sharing Cuis">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
-div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
+ul.mark-bullet {list-style-type: disc}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -91,23 +79,24 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Golden-Rules-of-the-Smalltalk-Guild"></span><div class="header">
+<div class="section-level-extent" id="Golden-Rules-of-the-Smalltalk-Guild">
+<div class="nav-panel">
 <p>
 Next: <a href="Refactoring-to-Improve-Understanding.html" accesskey="n" rel="next">Refactoring to Improve Understanding</a>, Up: <a href="Sharing-Cuis.html" accesskey="u" rel="up">Sharing Cuis</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Golden-Rules-of-the-Smalltalk-Guild-1"></span><h3 class="section">11.1 Golden Rules of the Smalltalk Guild</h3>
+<h3 class="section" id="Golden-Rules-of-the-Smalltalk-Guild-1">11.1 Golden Rules of the Smalltalk Guild</h3>
 
 <p>Basic questions, that appear to be the golden rules of the Smalltalk
-intergalactic guild<a id="DOCF29" href="#FOOT29"><sup>29</sup></a>:
+intergalactic guild<a class="footnote" id="DOCF29" href="#FOOT29"><sup>29</sup></a>:
 </p>
-<ul>
-<li> Are methods short and understandable?
- </li><li> Does a line of code read like a sentence?
- </li><li> Do method names say what they do, rather than how they do it?
- </li><li> Do class and instance variable names indicate their role(s)?
- </li><li> Are there useful class comments?
- </li><li> Can we make something simpler?  Leave something out?
+<ul class="itemize mark-bullet">
+<li>Are methods short and understandable?
+ </li><li>Does a line of code read like a sentence?
+ </li><li>Do method names say what they do, rather than how they do it?
+ </li><li>Do class and instance variable names indicate their role(s)?
+ </li><li>Are there useful class comments?
+ </li><li>Can we make something simpler?  Leave something out?
 </li></ul>
 
 <p>Now, we have been doing Smalltalk code for a while
@@ -116,12 +105,13 @@ take another look at our code and see
 if we can make it easier for a reader to understand.
 </p>
 
-<div class="footnote">
+</div>
+<div class="footnotes-segment">
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h5><a id="FOOT29" href="#DOCF29">(29)</a></h3>
-<p><em>Don&rsquo;t panic</em>, at this stage of the
+<h5 class="footnote-body-heading"><a id="FOOT29" href="#DOCF29">(29)</a></h5>
+<p><em class="emph">Don&rsquo;t panic</em>, at this stage of the
 book, the authors are still looking to find all the questions that
 really matter.</p>
 </div>

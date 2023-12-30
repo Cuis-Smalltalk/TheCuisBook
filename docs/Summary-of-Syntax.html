@@ -1,9 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
-Copyright (C) 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
+Copyright © 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
 
 
 Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
@@ -16,7 +19,7 @@ texts. Your help is very valuable.
 
 
 
-Compilation : December 2, 2023
+Compilation : December 30, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -52,9 +55,6 @@ original.
 
 Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
  -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Summary of Syntax (The Cuis-Smalltalk Book)</title>
 
 <meta name="description" content="Summary of Syntax (The Cuis-Smalltalk Book)">
@@ -62,6 +62,8 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="index.html" rel="up" title="Top">
@@ -69,20 +71,6 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="Documents-Copyright.html" rel="prev" title="Documents Copyright">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
-div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -91,263 +79,266 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Summary-of-Syntax"></span><div class="header">
+<div class="appendix-level-extent" id="Summary-of-Syntax">
+<div class="nav-panel">
 <p>
-Next: <a href="The-Exercises.html" accesskey="n" rel="next">The Exercises</a>, Previous: <a href="Documents-Copyright.html" accesskey="p" rel="prev">Documents Copyright</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="The-Exercises.html" accesskey="n" rel="next">The Exercises</a>, Previous: <a href="Documents-Copyright.html" accesskey="p" rel="prev">Documents Copyright</a>, Up: <a href="index.html" accesskey="u" rel="up">Table of Contents</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Summary-of-Syntax-1"></span><h2 class="appendix">Appendix B Summary of Syntax</h2>
+<h2 class="appendix" id="Summary-of-Syntax-1">Appendix B Summary of Syntax</h2>
 
 <div class="float">
-<table>
+<table class="multitable">
 <thead><tr><th width="49%">Syntax</th><th width="1%"></th><th width="50%">What it represents</th></tr></thead>
-<tr><td width="49%"><code>startPoint</code></td><td width="1%"></td><td width="50%">a variable name</td></tr>
-<tr><td width="49%"><code>Transcript</code></td><td width="1%"></td><td width="50%">a global variable name</td></tr>
-<tr><td width="49%"><code>self</code></td><td width="1%"></td><td width="50%">pseudo-variable</td></tr>
+<tbody><tr><td width="49%"><code class="code">startPoint</code></td><td width="1%"></td><td width="50%">a variable name</td></tr>
+<tr><td width="49%"><code class="code">Transcript</code></td><td width="1%"></td><td width="50%">a global variable name</td></tr>
+<tr><td width="49%"><code class="code">self</code></td><td width="1%"></td><td width="50%">pseudo-variable</td></tr>
 <tr><td width="49%"></td><td width="1%"></td><td width="50%"></td></tr>
-<tr><td width="49%"><code>1</code></td><td width="1%"></td><td width="50%">decimal integer</td></tr>
-<tr><td width="49%"><code>2r101</code></td><td width="1%"></td><td width="50%">binary integer (radix 2)</td></tr>
-<tr><td width="49%"><code>16r1a</code></td><td width="1%"></td><td width="50%">hexadecimal integer (radix 16)</td></tr>
-<tr><td width="49%"><code>1.5</code></td><td width="1%"></td><td width="50%">floating point number</td></tr>
-<tr><td width="49%"><code>2.4e7</code></td><td width="1%"></td><td width="50%">exponential notation</td></tr>
-<tr><td width="49%"><code>$a</code></td><td width="1%"></td><td width="50%">the character ‘a’</td></tr>
-<tr><td width="49%"><code>'Hello'</code></td><td width="1%"></td><td width="50%">the string “Hello”</td></tr>
-<tr><td width="49%"><code>#Hello</code></td><td width="1%"></td><td width="50%">the symbol #Hello</td></tr>
-<tr><td width="49%"><code>#(1 2 3)</code></td><td width="1%"></td><td width="50%">a literal array</td></tr>
-<tr><td width="49%"><code>{1. 2. 1 + 2}</code></td><td width="1%"></td><td width="50%">a dynamic array</td></tr>
+<tr><td width="49%"><code class="code">1</code></td><td width="1%"></td><td width="50%">decimal integer</td></tr>
+<tr><td width="49%"><code class="code">2r101</code></td><td width="1%"></td><td width="50%">binary integer (radix 2)</td></tr>
+<tr><td width="49%"><code class="code">16r1a</code></td><td width="1%"></td><td width="50%">hexadecimal integer (radix 16)</td></tr>
+<tr><td width="49%"><code class="code">1.5</code></td><td width="1%"></td><td width="50%">floating point number</td></tr>
+<tr><td width="49%"><code class="code">2.4e7</code></td><td width="1%"></td><td width="50%">exponential notation</td></tr>
+<tr><td width="49%"><code class="code">$a</code></td><td width="1%"></td><td width="50%">the character ‘a’</td></tr>
+<tr><td width="49%"><code class="code">'Hello'</code></td><td width="1%"></td><td width="50%">the string “Hello”</td></tr>
+<tr><td width="49%"><code class="code">#Hello</code></td><td width="1%"></td><td width="50%">the symbol #Hello</td></tr>
+<tr><td width="49%"><code class="code">#(1 2 3)</code></td><td width="1%"></td><td width="50%">a literal array</td></tr>
+<tr><td width="49%"><code class="code">{1. 2. 1 + 2}</code></td><td width="1%"></td><td width="50%">a dynamic array</td></tr>
 <tr><td width="49%"></td><td width="1%"></td><td width="50%"></td></tr>
-<tr><td width="49%"><code>&quot;a comment&quot;</code></td><td width="1%"></td><td width="50%">a comment</td></tr>
+<tr><td width="49%"><code class="code">&quot;a comment&quot;</code></td><td width="1%"></td><td width="50%">a comment</td></tr>
 <tr><td width="49%"></td><td width="1%"></td></tr>
-<tr><td width="49%"><code>|xy|</code></td><td width="1%"></td><td width="50%">declaration of variables x and y</td></tr>
-<tr><td width="49%"><code>x &#x2190; 1</code>, <code>x := 1</code></td><td width="1%"></td><td width="50%">assign 1 to x</td></tr>
-<tr><td width="49%"><code>[x + y]</code></td><td width="1%"></td><td width="50%">a block that evaluates to x+y</td></tr>
-<tr><td width="49%"><code>&lt;primitive: 1&gt;</code></td><td width="1%"></td><td width="50%">virtual machine primitive or annotation</td></tr>
+<tr><td width="49%"><code class="code">|xy|</code></td><td width="1%"></td><td width="50%">declaration of variables x and y</td></tr>
+<tr><td width="49%"><code class="code">x &#x2190; 1</code>, <code class="code">x := 1</code></td><td width="1%"></td><td width="50%">assign 1 to x</td></tr>
+<tr><td width="49%"><code class="code">[x + y]</code></td><td width="1%"></td><td width="50%">a block that evaluates to x+y</td></tr>
+<tr><td width="49%"><code class="code">&lt;primitive: 1&gt;</code></td><td width="1%"></td><td width="50%">virtual machine primitive or annotation</td></tr>
 <tr><td width="49%"></td><td width="1%"></td><td width="50%"></td></tr>
-<tr><td width="49%"><code>3 factorial</code></td><td width="1%"></td><td width="50%">a unary message</td></tr>
-<tr><td width="49%"><code>3+4</code></td><td width="1%"></td><td width="50%">a binary message</td></tr>
-<tr><td width="49%"><code>2 raisedTo: 6 modulo: 10</code></td><td width="1%"></td><td width="50%">a keyword message</td></tr>
+<tr><td width="49%"><code class="code">3 factorial</code></td><td width="1%"></td><td width="50%">a unary message</td></tr>
+<tr><td width="49%"><code class="code">3+4</code></td><td width="1%"></td><td width="50%">a binary message</td></tr>
+<tr><td width="49%"><code class="code">2 raisedTo: 6 modulo: 10</code></td><td width="1%"></td><td width="50%">a keyword message</td></tr>
 <tr><td width="49%"></td><td width="1%"></td><td width="50%"></td></tr>
-<tr><td width="49%"><code>&#x2191; true</code>, <code>^ true</code></td><td width="1%"></td><td width="50%">return the value true</td></tr>
-<tr><td width="49%"><code>Transcript show: 'hello'. Transcript cr</code></td><td width="1%"></td><td width="50%">expression separator (.)</td></tr>
-<tr><td width="49%"><code>Transcript show: 'hello'; cr</code></td><td width="1%"></td><td width="50%">message cascade (;)</td></tr>
-<tr><td width="49%"><code>BoxedMorph new :: color: Color blue; openInWorld</code></td><td width="1%"></td><td width="50%">message cascade (::)</td></tr>
-<tr><td width="49%"><code>`{ 3@4 . 56 . 'click me'}`</code></td><td width="1%"></td><td width="50%">the compound literal <code>#(3@4 56 'click me')</code></td></tr>
+<tr><td width="49%"><code class="code">&#x2191; true</code>, <code class="code">^ true</code></td><td width="1%"></td><td width="50%">return the value true</td></tr>
+<tr><td width="49%"><code class="code">Transcript show: 'hello'. Transcript cr</code></td><td width="1%"></td><td width="50%">expression separator (.)</td></tr>
+<tr><td width="49%"><code class="code">Transcript show: 'hello'; cr</code></td><td width="1%"></td><td width="50%">message cascade (;)</td></tr>
+<tr><td width="49%"><code class="code">BoxedMorph new :: color: Color blue; openInWorld</code></td><td width="1%"></td><td width="50%">message cascade (::)</td></tr>
+<tr><td width="49%"><code class="code">`{ 3@4 . 56 . 'click me'}`</code></td><td width="1%"></td><td width="50%">the compound literal <code class="code">#(3@4 56 'click me')</code></td></tr>
+</tbody>
 </table>
 </div>
 
-<dl compact="compact">
-<dd><span id="index-variable-9"></span>
+<dl class="table">
+<dd><a class="index-entry-id" id="index-variable-9"></a>
 </dd>
-<dt><strong>Local variables.</strong></dt>
+<dt><strong class="strong">Local variables.</strong></dt>
 <dd>
-<p><code>startPoint</code> is a variable name, or identifier. By
+<p><code class="code">startPoint</code> is a variable name, or identifier. By
  convention, identifiers are composed of words in “camelCase” (i.e.,
  each word except the first starting with an upper case letter). The
  first letter of an instance variable, method or block argument, or
  temporary variable must be lower case. This indicates to the reader
  that the variable has a private scope.
 </p>
-<span id="index-variable-10"></span>
+<a class="index-entry-id" id="index-variable-10"></a>
 </dd>
-<dt><strong>Shared variables</strong></dt>
+<dt><strong class="strong">Shared variables</strong></dt>
 <dd>
 <p>Identifiers that start with upper case letters are global variables,
  class variables, pool dictionaries or class
- names. <code>Smalltalk</code> is a global variable, an instance of the
- class <code>SystemDictionary</code>.
+ names. <code class="code">Smalltalk</code> is a global variable, an instance of the
+ class <code class="code">SystemDictionary</code>.
 </p>
-<span id="index-receiver"></span>
+<a class="index-entry-id" id="index-receiver"></a>
 </dd>
-<dt><strong>The receiver.</strong></dt>
+<dt><strong class="strong">The receiver.</strong></dt>
 <dd>
-<p><code>self</code> is a keyword that refers to the object inside which
+<p><code class="code">self</code> is a keyword that refers to the object inside which
  the current method is executing. We call it “the receiver” because
  this object will normally have received the message that caused the
  method to execute. self is called a “pseudo-variable” since we cannot
  assign to it.
 </p>
-<span id="index-integer-_0028see-number_0029"></span>
-<span id="index-number-39"></span>
+<a class="index-entry-id" id="index-integer-_0028see-number_0029"></a>
+<a class="index-entry-id" id="index-number-39"></a>
 </dd>
-<dt><strong>Integers.</strong></dt>
+<dt><strong class="strong">Integers.</strong></dt>
 <dd>
-<p>In addition to ordinary decimal integers like <code>42</code>, Cuis-Smalltalk
- also provides a radix notation. <code>2r101</code> is 101 in radix 2
+<p>In addition to ordinary decimal integers like <code class="code">42</code>, Cuis-Smalltalk
+ also provides a radix notation. <code class="code">2r101</code> is 101 in radix 2
  (i.e., binary), which is equal to decimal 5.
 </p>
-<span id="index-float-_0028see-number_0029"></span>
-<span id="index-number-40"></span>
+<a class="index-entry-id" id="index-float-_0028see-number_0029"></a>
+<a class="index-entry-id" id="index-number-40"></a>
 </dd>
-<dt><strong>Float point numbers.</strong></dt>
+<dt><strong class="strong">Float point numbers.</strong></dt>
 <dd>
 <p>Floating point numbers can be specified with their base-ten exponent:
- <code>2.4e7</code> is 2.4 × 10<sup>7</sup>.
+ <code class="code">2.4e7</code> is 2.4 × 10<sup class="sup">7</sup>.
 </p>
-<span id="index-character-3"></span>
+<a class="index-entry-id" id="index-character-3"></a>
 </dd>
-<dt><strong>Characters.</strong></dt>
+<dt><strong class="strong">Characters.</strong></dt>
 <dd>
-<p>A dollar sign introduces a literal character: <code>$a</code> is the
+<p>A dollar sign introduces a literal character: <code class="code">$a</code> is the
  literal for ‘a’. Instances of non-printing characters can be obtained
- by sending appropriately named messages to the <code>Character</code>
- class, such as <code>Character space</code> and <code>Character
+ by sending appropriately named messages to the <code class="code">Character</code>
+ class, such as <code class="code">Character space</code> and <code class="code">Character
  tab</code>.
 </p>
-<span id="index-string-14"></span>
+<a class="index-entry-id" id="index-string-14"></a>
 </dd>
-<dt><strong>Strings.</strong></dt>
+<dt><strong class="strong">Strings.</strong></dt>
 <dd>
 <p>Single quotes are used to define a literal string. If you want a
  string with a quote inside, just double the quote, as in
- <code>'G''day'</code>.
+ <code class="code">'G''day'</code>.
 </p>
-<span id="index-symbol-1"></span>
+<a class="index-entry-id" id="index-symbol-1"></a>
 </dd>
-<dt><strong>Symbols.</strong></dt>
+<dt><strong class="strong">Symbols.</strong></dt>
 <dd>
 <p>Symbols are like Strings, in that they contain a sequence of
  characters.  However, unlike a string, a literal symbol is guaranteed
  to be globally unique. There is only one Symbol object
- <code>#Hello</code> but there may be multiple String objects with the
- value <code>'Hello'</code>.
+ <code class="code">#Hello</code> but there may be multiple String objects with the
+ value <code class="code">'Hello'</code>.
 </p>
-<span id="index-array-4"></span>
+<a class="index-entry-id" id="index-array-4"></a>
 </dd>
-<dt><strong>Static arrays.</strong></dt>
+<dt><strong class="strong">Static arrays.</strong></dt>
 <dd>
-<p>Static arrays or Compile-time arrays are defined by <code>#( )</code>,
+<p>Static arrays or Compile-time arrays are defined by <code class="code">#( )</code>,
  surrounding space-separated literals. Everything within the
  parentheses must be a compile-time constant. For example,
- <code>#(27 #(true false) abc)</code> is a literal array of three
- elements: the integer <code>27</code>, the compile-time array containing the two
- booleans, and the symbol <code>#abc</code>.
+ <code class="code">#(27 #(true false) abc)</code> is a literal array of three
+ elements: the integer <code class="code">27</code>, the compile-time array containing the two
+ booleans, and the symbol <code class="code">#abc</code>.
 </p>
-<span id="index-array-5"></span>
+<a class="index-entry-id" id="index-array-5"></a>
 </dd>
-<dt><strong>Dynamic arrays.</strong></dt>
+<dt><strong class="strong">Dynamic arrays.</strong></dt>
 <dd>
 <p>Dynamic arrays or Run-time arrays. Curly braces { } define a
  (dynamic) array at run-time.  Elements are expressions separated by
- periods. So <code>{ 1. 2. 1+2 }</code> defines an array with
- elements <code>1</code>, <code>2</code>, and the result of evaluating
- <code>1+2</code>. (The curly-brace notation is peculiar to the Squeak
+ periods. So <code class="code">{ 1. 2. 1+2 }</code> defines an array with
+ elements <code class="code">1</code>, <code class="code">2</code>, and the result of evaluating
+ <code class="code">1+2</code>. (The curly-brace notation is peculiar to the Squeak
  family dialect of Smalltalk! In other Smalltalks you must build up
  dynamic arrays explicitly.)
 </p>
-<span id="index-comment"></span>
+<a class="index-entry-id" id="index-comment"></a>
 </dd>
-<dt><strong>Comments.</strong></dt>
+<dt><strong class="strong">Comments.</strong></dt>
 <dd>
-<p>Comments are enclosed in double quotes. <code>&quot;hello&quot;</code> is a
+<p>Comments are enclosed in double quotes. <code class="code">&quot;hello&quot;</code> is a
  comment, not a string, and is ignored by the Cuis-Smalltalk
  compiler. Comments may span multiple lines.
 </p>
-<span id="index-variable-11"></span>
+<a class="index-entry-id" id="index-variable-11"></a>
 </dd>
-<dt><strong>Local variable declarations.</strong></dt>
+<dt><strong class="strong">Local variable declarations.</strong></dt>
 <dd>
 <p>Vertical bars | | enclose the declaration of one or more local
  variables in a method (and also in a block).
 </p>
-<span id="index-variable-12"></span>
+<a class="index-entry-id" id="index-variable-12"></a>
 </dd>
-<dt><strong>Assignment.</strong></dt>
+<dt><strong class="strong">Assignment.</strong></dt>
 <dd>
-<p><code>:=</code> assigns an object to a variable. In the printed
+<p><code class="code">:=</code> assigns an object to a variable. In the printed
  version of the book we wrote &#x2190; instead. Since this character
  is not present in the keyboard, you key in with the underscore
- character key. So, <code>x := 1</code> is the same as <code>x
- &#x2190; 1</code> or <code>x _ 1</code>.
+ character key. So, <code class="code">x := 1</code> is the same as <code class="code">x
+ &#x2190; 1</code> or <code class="code">x _ 1</code>.
 </p>
-<span id="index-block-7"></span>
+<a class="index-entry-id" id="index-block-7"></a>
 </dd>
-<dt><strong>Blocks.</strong></dt>
+<dt><strong class="strong">Blocks.</strong></dt>
 <dd>
-<p>Square brackets <code>[ ]</code> define a block, also known as a block
+<p>Square brackets <code class="code">[ ]</code> define a block, also known as a block
  closure or a lexical closure, which is a first-class object
  representing a function. As we shall see, blocks may take arguments
  and can have local variables.
 </p>
-<span id="index-primitive"></span>
+<a class="index-entry-id" id="index-primitive"></a>
 </dd>
-<dt><strong>Primitives.</strong></dt>
+<dt><strong class="strong">Primitives.</strong></dt>
 <dd>
-<p><code>&lt;primitive: ...&gt;</code> denotes an invocation of a virtual
- machine primitive. (<code>&lt;primitive: 1&gt;</code> is the VM primitive
- for <code>SmallInteger&gt;&gt;+</code>.) Any code following the primitive is
+<p><code class="code">&lt;primitive: ...&gt;</code> denotes an invocation of a virtual
+ machine primitive. (<code class="code">&lt;primitive: 1&gt;</code> is the VM primitive
+ for <code class="code">SmallInteger&gt;&gt;+</code>.) Any code following the primitive is
  executed only if the primitive fails. The same syntax is also used
  for method annotations.
 </p>
-<span id="index-message-11"></span>
+<a class="index-entry-id" id="index-message-11"></a>
 </dd>
-<dt><strong>Unary messages.</strong></dt>
+<dt><strong class="strong">Unary messages.</strong></dt>
 <dd>
-<p>Unary messages consist of a single word (like <code>#factorial</code>)
+<p>Unary messages consist of a single word (like <code class="code">#factorial</code>)
  sent to a receiver (like 3).
 </p>
-<span id="index-message-12"></span>
+<a class="index-entry-id" id="index-message-12"></a>
 </dd>
-<dt><strong>Binary messages.</strong></dt>
+<dt><strong class="strong">Binary messages.</strong></dt>
 <dd>
-<p>Binary messages are operators (like <code>+</code>) sent to a receiver
- and taking a single argument. In <code>3 + 4</code>, the receiver is
- <code>3</code> and the argument is <code>4</code>.
+<p>Binary messages are operators (like <code class="code">+</code>) sent to a receiver
+ and taking a single argument. In <code class="code">3 + 4</code>, the receiver is
+ <code class="code">3</code> and the argument is <code class="code">4</code>.
 </p>
-<span id="index-message-13"></span>
+<a class="index-entry-id" id="index-message-13"></a>
 </dd>
-<dt><strong>Keyword messages.</strong></dt>
+<dt><strong class="strong">Keyword messages.</strong></dt>
 <dd>
 <p>Keyword messages consist of multiple keywords (like
- <code>#raisedTo:modulo:</code>), each ending with a colon and taking a single
- argument. In the expression <code>2 raisedTo: 6 modulo: 10</code>, the
- message selector <code>raisedTo:modulo:</code> takes the two arguments
+ <code class="code">#raisedTo:modulo:</code>), each ending with a colon and taking a single
+ argument. In the expression <code class="code">2 raisedTo: 6 modulo: 10</code>, the
+ message selector <code class="code">raisedTo:modulo:</code> takes the two arguments
  6 and 10, one following each colon. We send the message to the
  receiver 2.
 </p>
-<span id="index-returned-value-2"></span>
+<a class="index-entry-id" id="index-returned-value-2"></a>
 </dd>
-<dt><strong>Method return.</strong></dt>
+<dt><strong class="strong">Method return.</strong></dt>
 <dd>
 <p>&#x2191; is used to return a value from a method. (You must type ^ to obtain
  the &#x2191; character.)
 </p>
-<span id="index-sequence"></span>
+<a class="index-entry-id" id="index-sequence"></a>
 </dd>
-<dt><strong>Sequences of statements.</strong></dt>
+<dt><strong class="strong">Sequences of statements.</strong></dt>
 <dd>
 <p>A period or full-stop (.) is the statement separator.  Putting a
  period between two expressions turns them into independent
  statements.
 </p>
-<span id="index-cascade-of-messages-1"></span>
+<a class="index-entry-id" id="index-cascade-of-messages-1"></a>
 </dd>
-<dt><strong>Cascades.</strong></dt>
+<dt><strong class="strong">Cascades.</strong></dt>
 <dd>
 <p>There are two kinds of message cascades.
 </p>
 <p>Semicolons can be used to send a cascade of messages to the original 
- receiver. In <code>Transcript show: 'hello'; cr</code> we first send
- the keyword message <code>#show: 'hello'</code> to the receiver
- <code>Transcript</code>, and then we send the unary message <code>#cr</code> to
+ receiver. In <code class="code">Transcript show: 'hello'; cr</code> we first send
+ the keyword message <code class="code">#show: 'hello'</code> to the receiver
+ <code class="code">Transcript</code>, and then we send the unary message <code class="code">#cr</code> to
  the same receiver.
 </p>
-<p>It is sometimes useful to send messages to the <em>result</em> of a message send.
- In <code> BoxedMorph new :: color: Color blue; openInWorld. </code> we send
+<p>It is sometimes useful to send messages to the <em class="emph">result</em> of a message send.
+ In <code class="code"> BoxedMorph new :: color: Color blue; openInWorld. </code> we send
  suceeding messages to the new BoxedMorph instance, not the BoxedMorph
  class.
 </p>
 </dd>
-<dt><strong>Compound Literal</strong></dt>
+<dt><strong class="strong">Compound Literal</strong></dt>
 <dd>
-<p>Backticks (<code>`</code>) can be used to create compound literals at compile time.
+<p>Backticks (<code class="code">`</code>) can be used to create compound literals at compile time.
  All components of a compound literal must be known when the code is compiled.
 </p>
 </dd>
 </dl>
+</div>
 <hr>
-<div class="header">
+<div class="nav-panel">
 <p>
-Next: <a href="The-Exercises.html" accesskey="n" rel="next">The Exercises</a>, Previous: <a href="Documents-Copyright.html" accesskey="p" rel="prev">Documents Copyright</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="The-Exercises.html">The Exercises</a>, Previous: <a href="Documents-Copyright.html">Documents Copyright</a>, Up: <a href="index.html">Table of Contents</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

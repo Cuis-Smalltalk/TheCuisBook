@@ -1,9 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
-Copyright (C) 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
+Copyright © 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
 
 
 Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
@@ -16,7 +19,7 @@ texts. Your help is very valuable.
 
 
 
-Compilation : December 2, 2023
+Compilation : December 30, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -52,9 +55,6 @@ original.
 
 Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
  -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Syntactic elements (The Cuis-Smalltalk Book)</title>
 
 <meta name="description" content="Syntactic elements (The Cuis-Smalltalk Book)">
@@ -62,27 +62,14 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="Control-Flow-Messaging.html" rel="up" title="Control Flow Messaging">
 <link href="Pseudo_002dvariables.html" rel="next" title="Pseudo-variables">
-<link href="Control-Flow-Messaging.html" rel="prev" title="Control Flow Messaging">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
-div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -91,20 +78,21 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Syntactic-elements"></span><div class="header">
+<div class="section-level-extent" id="Syntactic-elements">
+<div class="nav-panel">
 <p>
 Next: <a href="Pseudo_002dvariables.html" accesskey="n" rel="next">Pseudo-variables</a>, Up: <a href="Control-Flow-Messaging.html" accesskey="u" rel="up">Control Flow Messaging</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Syntactic-elements-1"></span><h3 class="section">5.1 Syntactic elements</h3>
+<h3 class="section" id="Syntactic-elements-1">5.1 Syntactic elements</h3>
 <p>Expressions are composed of the following building blocks:
 </p>
-<ol>
-<li> six reserved keywords, or <em>pseudo-variables</em>:
-    <code>self</code>, <code>super</code>, <code>nil</code>,
-    <code>true</code>, <code>false</code>, and <code>thisContext</code>,
+<ol class="enumerate">
+<li> six reserved keywords, or <em class="emph">pseudo-variables</em>:
+    <code class="code">self</code>, <code class="code">super</code>, <code class="code">nil</code>,
+    <code class="code">true</code>, <code class="code">false</code>, and <code class="code">thisContext</code>,
 
-</li><li> constant expressions for <em>literal objects</em> including
+</li><li> constant expressions for <em class="emph">literal objects</em> including
   numbers, characters, strings, symbols and arrays,
 
 </li><li> variable declarations
@@ -117,6 +105,7 @@ Next: <a href="Pseudo_002dvariables.html" accesskey="n" rel="next">Pseudo-variab
 
 </li></ol>
 
+</div>
 
 
 

@@ -1,9 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
-Copyright (C) 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
+Copyright © 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
 
 
 Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
@@ -16,7 +19,7 @@ texts. Your help is very valuable.
 
 
 
-Compilation : December 2, 2023
+Compilation : December 30, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -52,9 +55,6 @@ original.
 
 Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
  -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Daily Workflow (The Cuis-Smalltalk Book)</title>
 
 <meta name="description" content="Daily Workflow (The Cuis-Smalltalk Book)">
@@ -62,6 +62,8 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="Code-Management.html" rel="up" title="Code Management">
@@ -69,20 +71,10 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="The-Package.html" rel="prev" title="The Package">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
+div.center {text-align:center}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
+ul.mark-bullet {list-style-type: disc}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -91,18 +83,19 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Daily-Workflow"></span><div class="header">
+<div class="section-level-extent" id="Daily-Workflow">
+<div class="nav-panel">
 <p>
 Next: <a href="Source-Code-File.html" accesskey="n" rel="next">Source Code File</a>, Previous: <a href="The-Package.html" accesskey="p" rel="prev">The Package</a>, Up: <a href="Code-Management.html" accesskey="u" rel="up">Code Management</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Daily-Workflow-1"></span><h3 class="section">9.5 Daily Workflow</h3>
+<h3 class="section" id="Daily-Workflow-1">9.5 Daily Workflow</h3>
 
 <p>For our Spacewar! game, we created a dedicated package
-<samp>Spacewar!.pck.st</samp> file. This is the way to go when writing
+<samp class="file">Spacewar!.pck.st</samp> file. This is the way to go when writing
 external package: define a dedicated package and from time to time
-save your work with the <code>save</code> button in the Installed Packages
-tool (See <a href="Spacewar_0021-models.html#ch02_002dInstalledPackages">Figure 2.3</a>).
+save your work with the <code class="command">save</code> button in the Installed Packages
+tool (See <a class="xref" href="Spacewar_0021-models.html#ch02_002dInstalledPackages">Figure 2.3</a>).
 </p>
 <p>Cuis-Smalltalk uses GitHub to host, version, diff its core development and to
 manage a set of external packages (i.e. code that is maintained
@@ -120,7 +113,7 @@ together as a whole.
 <p>Your daily workflow with Cuis-Smalltalk to develop an external package will
 look like:
 </p>
-<ol>
+<ol class="enumerate">
 <li> Start with a standard, fresh, Cuis image. Never save the
   image.
 
@@ -129,7 +122,7 @@ look like:
   with a name beginning with &rsquo;Cuis-Smalltalk-&rsquo;, so it will be easy for
   anybody to find it. But beside this consideration, using any other
   version control system is fine.
-  
+
 </li><li> Install the necessary packages from the Cuis-Smalltalk Git
   repositories.
 
@@ -144,23 +137,28 @@ look like:
   changes to packages.
 
 </li><li> Exit the image. Usually without saving.
-   
+
 </li></ol>
 
-
 <blockquote class="indentedblock">
-<p>&nbsp;<img src="note.png" alt="note">
-In addition to adding a package preload <em>requirement</em>,
-you can also select a requirement and <code>delete</code> or <code>update</code>
-it using the buttons at the lower right.  Sometimes a package changes
-which your code depends on and you have to change your code to accord.
-When this happens, to want to be sure to require the newer, changed
-version.  Selecting a requirement and pressing <code>update</code>
-will update the requirement to use the latest loaded package version.
+<p>&nbsp;<img class="image" src="note.png" alt="note">
+Not to save the image is just best practice advice for you
+when your primary goal is to create new code. We already discussed the
+caveats of saving the image concerning code management
+(See <a class="xref" href="The-Image.html#ch09_002dImage">The Image</a>).  But from time to time, you&rsquo;ll find
+yourself in the position of an explorer when you open multiple code
+browsers and workplaces to figure something out. In this case, the
+state of the system, the open windows and code snippets, holds the
+value you care about, and saving the image is the right way to
+preserve the system&rsquo;s state.
+<a class="footnote" id="DOCF27" href="#FOOT27"><sup>27</sup></a>
 </p></blockquote>
 
-
-<span id="Automate-your-image"></span><h4 class="subsection">9.5.1 Automate your image</h4>
+<ul class="mini-toc">
+<li><a href="#Automate-your-image" accesskey="1">Automate your image</a></li>
+</ul>
+<div class="subsection-level-extent" id="Automate-your-image">
+<h4 class="subsection">9.5.1 Automate your image</h4>
 
 <p>As described in the daily workflow, it is a good habit to not save the
 whole image but only the modified package of the edited source
@@ -169,43 +167,43 @@ set up the image to fit our personal needs and taste.
 </p>
 <p>Things one may want to personalize in the image are:
 </p>
-<ul>
-<li> Preferences adjustments,
+<ul class="itemize mark-bullet">
+<li>Preferences adjustments,
 
-</li><li> Placement of tools like System Browser, Workspace, Transcript,
+</li><li>Placement of tools like System Browser, Workspace, Transcript,
 
-</li><li> Default contents in the Workspace, ready to be executed,
+</li><li>Default contents in the Workspace, ready to be executed,
 
-</li><li> Installation of Packages.
+</li><li>Installation of Packages.
 
 </li></ul>
 
-<span id="index-command-line-option"></span>
-<span id="index-start_002dup-script"></span>
+<a class="index-entry-id" id="index-command-line-option"></a>
+<a class="index-entry-id" id="index-start_002dup-script"></a>
 
 <p>We want to record these image preferences in a
-<samp>setUpEnvironment.st</samp> script to be executed at start up. On
-GNU/Linux, you ask Cuis-Smalltalk to run a script with the <samp>-s</samp>, for
-example <code>squeakVM Cuis5.0.image -s setUpEnvironement.st</code> where
-<samp>setUpEnvironement.st</samp>. is a file containing Smalltalk code. A
+<samp class="file">setUpEnvironment.st</samp> script to be executed at start up. On
+GNU/Linux, you ask Cuis-Smalltalk to run a script with the <samp class="option">-s</samp>, for
+example <code class="command">squeakVM Cuis5.0.image -s setUpEnvironement.st</code> where
+<samp class="file">setUpEnvironement.st</samp>. is a file containing Smalltalk code. A
 real life example may look like:
 </p><pre class="verbatim">../cogspur/squeak Cuis5.0-4426 -s ../scripts/setUpEnvironment.st
 </pre>
 <p>We describe in detail an example of a set up script organizing the
-environment as seen in <a href="#ch10_002dImageSetUp">Figure 9.13</a>. It is interesting
+environment as seen in <a class="ref" href="#ch10_002dImageSetUp">Figure 9.13</a>. It is interesting
 Smalltalk code poking around heterogeneous areas of Cuis-Smalltalk like the
 developer tools, the Morph system, the preferences and collection
 handling.
 </p>
-<div class="float"><span id="ch10_002dImageSetUp"></span>
-<div align="center"><img src="ch10-ImageSetUp.png" alt="ch10-ImageSetUp">
+<div class="float" id="ch10_002dImageSetUp">
+<div class="center"><img class="image" src="ch10-ImageSetUp.png" alt="ch10-ImageSetUp">
 </div>
-<div class="float-caption"><p><strong>Figure 9.13: </strong>Environment of an image started with the set up script</p></div></div>
-<span id="index-morph-25"></span>
+<div class="caption"><p><strong class="strong">Figure 9.13: </strong>Environment of an image started with the set up script</p></div></div>
+<a class="index-entry-id" id="index-morph-25"></a>
 <p>Let&rsquo;s start by removing the open windows:
 </p>
-<div class="example">
-<pre class="example">| list |
+<div class="example smallexample">
+<pre class="example-preformatted">| list |
 &quot;Delete all windows but the taskbar&quot;
 self runningWorld doOneCycleNow.
 list := UISupervisor ui submorphs reject: [:aMorph |
@@ -214,17 +212,17 @@ list do: [:each | each delete].
 </pre></div>
 
 <p>The whole user interface world of Cuis-Smalltalk is a kind of Morph, a
-<code>WorldMorph</code> instance. Its submorphs are windows, menus, the
+<code class="code">WorldMorph</code> instance. Its submorphs are windows, menus, the
 taskbar or any kind of morph the user can interact with. To access
-this <code>WorldMorph</code> instance you ask to the <code>UISupervisor</code>
-with the <code>#ui</code> message. Once we select all the morphs in the world
-but the taskbar &ndash; really <code>#reject:</code> it &ndash; we <code>#delete</code> them
+this <code class="code">WorldMorph</code> instance you ask to the <code class="code">UISupervisor</code>
+with the <code class="code">#ui</code> message. Once we select all the morphs in the world
+but the taskbar &ndash; really <code class="code">#reject:</code> it &ndash; we <code class="code">#delete</code> them
 from the world.
 </p>
 <p>Next, we change the preferences:
 </p>
-<div class="example">
-<pre class="example">| list morph |
+<div class="example smallexample">
+<pre class="example-preformatted">| list morph |
 ../..
 &quot;Change to Dark theme&quot;
 Feature require: #'Theme-Themes'.
@@ -247,14 +245,14 @@ taskbar and we request Cuis-Smalltalk to display itself full screen. As we
 changed several visual parts, we request one update cycle of the
 environment (i.e. the running world in Cuis-Smalltalk terminology).
 </p>
-<p>Before installing the tools, we ask a <code>RealEstateAgent</code> the free
+<p>Before installing the tools, we ask a <code class="code">RealEstateAgent</code> the free
 area. Sadly this agent does not take into consideration the area
 occupied by the taskbar, so we need to tweak its answer. Then we
 compute a quarter of this free area extent (half in width and half
 in height make a quarter of the whole free area):
 </p>
-<div class="example">
-<pre class="example">| list morph area extent |
+<div class="example smallexample">
+<pre class="example-preformatted">| list morph area extent |
 ../..
 &quot;Compute the available free space for windows placement&quot;
 area := RealEstateAgent maximumUsableArea
@@ -265,8 +263,8 @@ extent := area extent // 2.
 <p>Now we are ready to install a few tools. First three browsers each
 occupying a quarter of the screen:
 </p>
-<div class="example">
-<pre class="example">&quot;Open a few System Browsers&quot;
+<div class="example smallexample">
+<pre class="example-preformatted">&quot;Open a few System Browsers&quot;
 BrowserWindow openBrowser
    morphPosition: 0 @ 0;
    morphExtent: extent.
@@ -286,8 +284,8 @@ installed with some default contents. We need to hack a bit because
 when asking for a new Workspace, Cuis-Smalltalk does not answer the created
 instance, we have to search it in the windows of the world.
 </p>
-<div class="example">
-<pre class="example">&quot;Open a Workspace with some default contents&quot;
+<div class="example smallexample">
+<pre class="example-preformatted">&quot;Open a Workspace with some default contents&quot;
 morph := Workspace openWorkspace.
 morph model actualContents: '&quot;Some code&quot;
 1 + 2.
@@ -302,13 +300,26 @@ TranscriptWindow openTranscript
    morphExtent: extent x @ (1 / 3 * extent y).
 </pre></div>
 
-<p>Of course you should adjust the argument of the <code>#actualContents:</code>
+<p>Of course you should adjust the argument of the <code class="code">#actualContents:</code>
 message to meaningful code for your usage.
 </p>
+</div>
+</div>
+<div class="footnotes-segment">
 <hr>
-<div class="header">
+<h4 class="footnotes-heading">Footnotes</h4>
+
+<h5 class="footnote-body-heading"><a id="FOOT27" href="#DOCF27">(27)</a></h5>
+<p>For more insight regarding the
+policy of saving the image, read this discussion in the Cuis community
+<a class="url" href="https://lists.cuis.st/mailman/archives/cuis-dev/2023-July/007841.html">there</a>
+and
+<a class="url" href="https://lists.cuis.st/mailman/archives/cuis-dev/2023-August/007884.html">there</a></p>
+</div>
+<hr>
+<div class="nav-panel">
 <p>
-Next: <a href="Source-Code-File.html" accesskey="n" rel="next">Source Code File</a>, Previous: <a href="The-Package.html" accesskey="p" rel="prev">The Package</a>, Up: <a href="Code-Management.html" accesskey="u" rel="up">Code Management</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Source-Code-File.html">Source Code File</a>, Previous: <a href="The-Package.html">The Package</a>, Up: <a href="Code-Management.html">Code Management</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

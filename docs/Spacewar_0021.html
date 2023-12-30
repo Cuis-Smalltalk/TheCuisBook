@@ -1,9 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
-Copyright (C) 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
+Copyright © 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
 
 
 Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
@@ -16,7 +19,7 @@ texts. Your help is very valuable.
 
 
 
-Compilation : December 2, 2023
+Compilation : December 30, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -52,9 +55,6 @@ original.
 
 Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
  -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Spacewar! (The Cuis-Smalltalk Book)</title>
 
 <meta name="description" content="Spacewar! (The Cuis-Smalltalk Book)">
@@ -62,27 +62,15 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="Beginnings.html" rel="up" title="Beginnings">
-<link href="The-Message-Way-of-Life.html" rel="next" title="The Message Way of Life">
 <link href="Writing-your-first-scripts.html" rel="prev" title="Writing your first scripts">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
-div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
+div.center {text-align:center}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -91,27 +79,28 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Spacewar_0021"></span><div class="header">
+<div class="section-level-extent" id="Spacewar_0021">
+<div class="nav-panel">
 <p>
 Previous: <a href="Writing-your-first-scripts.html" accesskey="p" rel="prev">Writing your first scripts</a>, Up: <a href="Beginnings.html" accesskey="u" rel="up">Beginnings</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Spacewar_0021-1"></span><h3 class="section">1.4 Spacewar!</h3>
+<h3 class="section" id="Spacewar_0021-1">1.4 Spacewar!</h3>
 <p>The Spacewar! game was initially developed in 1962 by Steve Russell on
 a DEC PDP-1 minicomputer. It is said to be the first known video game
 installed on several computers and it was very popular in the
 programming community in the 1960s. It was ported and rewritten
 several times to different hardware architectures and complemented with
-additional features. <em>Computer Space</em>, the first arcade video
+additional features. <em class="emph">Computer Space</em>, the first arcade video
 game cabinet was a clone of Spacewar!
 </p>
-<div class="float"><span id="ch01_002dSpacewarPDP"></span>
-<div align="center"><img src="ch01-SpacewarPDP.png" alt="ch01-SpacewarPDP">
+<div class="float" id="ch01_002dSpacewarPDP">
+<div class="center"><img class="image" src="ch01-SpacewarPDP.png" alt="ch01-SpacewarPDP">
 </div>
-<div class="float-caption"><p><strong>Figure 1.4: </strong>Spacewar! game on a DEC PDP-1 minicomputer</p></div></div>
+<div class="caption"><p><strong class="strong">Figure 1.4: </strong>Spacewar! game on a DEC PDP-1 minicomputer</p></div></div>
 <p>Wikipedia describes very precisely this space combat simulation game:
 </p>
-<blockquote>
+<blockquote class="quotation">
 <p>The gameplay of Spacewar! involves two monochrome spaceships called
 &quot;the needle&quot; and &quot;the wedge&quot;, each controlled by a player, attempting
 to shoot one another while maneuvering on a two-dimensional plane in
@@ -133,31 +122,32 @@ the player at the risk of misjudging the trajectory and falling into
 the star. If a ship moves past one edge of the screen, it reappears on
 the other side in a wraparound effect.
 </p></blockquote>
-<div align="center">&mdash; <em>Wikipedia, <a href="https://en.wikipedia.org/wiki/Spacewar!#Gameplay">Spacewar!</a></em>
+<div class="center">&mdash; <em class="emph">Wikipedia, <a class="url" href="https://en.wikipedia.org/wiki/Spacewar!#Gameplay">Spacewar!</a></em>
 </div>
 <p>Therefore, the protagonists of the game are:
 </p>
-<ol>
-<li> a <strong>central star</strong> generating a gravity field,
+<ol class="enumerate">
+<li> a <strong class="strong">central star</strong> generating a gravity field,
 
-</li><li> a <strong>star field</strong> background,
+</li><li> a <strong class="strong">star field</strong> background,
 
-</li><li> two <strong>space ships</strong> called <em>the needle</em> and <em>the
+</li><li> two <strong class="strong">space ships</strong> called <em class="emph">the needle</em> and <em class="emph">the
  wedge</em> controlled by two players.
 
-</li><li> <strong>torpedoes</strong> fired by the space ships.
+</li><li> <strong class="strong">torpedoes</strong> fired by the space ships.
 
 </li></ol>
 
-<div class="float"><span id="ch01_002dSpacewarGameplay"></span>
-<div align="center"><img src="ch01-SpacewarGameplay.png" alt="ch01-SpacewarGameplay">
+<div class="float" id="ch01_002dSpacewarGameplay">
+<div class="center"><img class="image" src="ch01-SpacewarGameplay.png" alt="ch01-SpacewarGameplay">
 </div>
-<div class="float-caption"><p><strong>Figure 1.5: </strong>Spacewar! game play</p></div></div>
+<div class="caption"><p><strong class="strong">Figure 1.5: </strong>Spacewar! game play</p></div></div>
 
+</div>
 <hr>
-<div class="header">
+<div class="nav-panel">
 <p>
-Previous: <a href="Writing-your-first-scripts.html" accesskey="p" rel="prev">Writing your first scripts</a>, Up: <a href="Beginnings.html" accesskey="u" rel="up">Beginnings</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Previous: <a href="Writing-your-first-scripts.html">Writing your first scripts</a>, Up: <a href="Beginnings.html">Beginnings</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

@@ -1,9 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
-Copyright (C) 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
+Copyright © 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
 
 
 Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
@@ -16,7 +19,7 @@ texts. Your help is very valuable.
 
 
 
-Compilation : December 2, 2023
+Compilation : December 30, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -52,9 +55,6 @@ original.
 
 Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
  -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Writing your first scripts (The Cuis-Smalltalk Book)</title>
 
 <meta name="description" content="Writing your first scripts (The Cuis-Smalltalk Book)">
@@ -62,6 +62,8 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="Beginnings.html" rel="up" title="Beginnings">
@@ -69,20 +71,11 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="Installing-and-configuring-Cuis_002dSmalltalk.html" rel="prev" title="Installing and configuring Cuis-Smalltalk">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
+div.center {text-align:center}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
+kbd.kbd {font-style: oblique}
+ul.mark-bullet {list-style-type: disc}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -91,118 +84,123 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Writing-your-first-scripts"></span><div class="header">
+<div class="section-level-extent" id="Writing-your-first-scripts">
+<div class="nav-panel">
 <p>
 Next: <a href="Spacewar_0021.html" accesskey="n" rel="next">Spacewar!</a>, Previous: <a href="Installing-and-configuring-Cuis_002dSmalltalk.html" accesskey="p" rel="prev">Installing and configuring Cuis-Smalltalk</a>, Up: <a href="Beginnings.html" accesskey="u" rel="up">Beginnings</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Writing-your-first-scripts-1"></span><h3 class="section">1.3 Writing your first scripts</h3>
+<h3 class="section" id="Writing-your-first-scripts-1">1.3 Writing your first scripts</h3>
 <p>In this section you will learn how to write simple scripts in the
 Workspace to get a taste and feel for Smalltalk code. The
 examples are associated with small exercises to experiment with and
 accompanied with solutions in the appendix. We intentionally kept the
 details of the syntax out of this section.
 </p>
-<p>In a Workspace, the usual <em>Hello World!</em> program can be written
+<p>In a Workspace, the usual <em class="emph">Hello World!</em> program can be written
 in Smalltalk:
 </p>
-<div class="float"><span id="hello"></span>
-<div class="example">
-<pre class="example">Transcript show: 'Hello World!'
+<div class="float" id="hello">
+<div class="example smallexample">
+<pre class="example-preformatted">Transcript show: 'Hello World!'
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 1.1: </strong>The traditional &rsquo;Hello World!&rsquo; program</p></div></div>
-<span id="index-tools-1"></span>
+<div class="caption"><p><strong class="strong">Example 1.1: </strong>The traditional &rsquo;Hello World!&rsquo; program</p></div></div>
+<a class="index-entry-id" id="index-tools-1"></a>
 <p>To execute this code, select it with the mouse and over it do
-...right mouse click &rarr; <code>Do it (d)</code>...
+...right mouse click &rarr; <code class="command">Do it (d)</code>...
 You may now see nothing happen! Indeed to see the output, you need a
-<em>Transcript</em> window to be visible.  The <code>Transcript</code> is a
+<em class="dfn">Transcript</em> window to be visible.  The <code class="code">Transcript</code> is a
 place where a programmer can send information to the user as we are
-doing here. Do ...World menu &rarr; <code>Open...</code>
-&rarr; <code>Transcript</code>... and execute the code again.
+doing here. Do ...World menu &rarr; <code class="command">Open...</code>
+&rarr; <code class="command">Transcript</code>... and execute the code again.
 </p>
-<div class="float"><span id="ch01_002dimg2"></span>
-<div align="center"><img src="ch01-img2.png" alt="ch01-img2">
+<div class="float" id="ch01_002dimg2">
+<div class="center"><img class="image" src="ch01-img2.png" alt="ch01-img2">
 </div>
-<div class="float-caption"><p><strong>Figure 1.3: </strong>Transcript window with output</p></div></div>
+<div class="caption"><p><strong class="strong">Figure 1.3: </strong>Transcript window with output</p></div></div>
 <p>The workspace code has three parts:
 </p>
-<ul>
-<li> the string literal <code>'Hello World!'</code>  
+<ul class="itemize mark-bullet">
+<li>the string literal <code class="code">'Hello World!'</code>  
 
-</li><li> the message <code>#show:</code> with its argument <code>'Hello World!'</code>
+</li><li>the message <code class="code">#show:</code> with its argument <code class="code">'Hello World!'</code>
 
-</li><li> the class <code>Transcript</code> receiving the message <code>#show:</code> with its argument
+</li><li>the class <code class="code">Transcript</code> receiving the message <code class="code">#show:</code> with its argument
 
 </li></ul>
 
-<span id="index-keyboard-shortcut"></span>
-<span id="index-keyboard-shortcut-1"></span>
+<a class="index-entry-id" id="index-keyboard-shortcut"></a>
+<a class="index-entry-id" id="index-keyboard-shortcut-1"></a>
 <p>The action of printing takes place in the class
-<code>Transcript</code>. The code execution is also invoked with keyboard
-shortcuts <kbd>Ctrl-a</kbd> (<em>select <b>A</b>ll</em>) then <kbd>Ctrl-d</kbd>
-(<em><b>D</b>o it</em>).
+<code class="code">Transcript</code>. The code execution is also invoked with keyboard
+shortcuts <kbd class="kbd">Ctrl-a</kbd> (<em class="emph">select <b class="b">A</b>ll</em>) then <kbd class="kbd">Ctrl-d</kbd>
+(<em class="emph"><b class="b">D</b>o it</em>).
 </p>
-<div class="float"><span id="hello2"></span>
-<div class="example">
-<pre class="example">Transcript show: 'Hello World!'.
+<div class="float" id="hello2">
+<div class="example smallexample">
+<pre class="example-preformatted">Transcript show: 'Hello World!'.
 Transcript newLine.
 Transcript show: 'I am Cuising'
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 1.2: </strong>Multiple lines</p></div></div>
+<div class="caption"><p><strong class="strong">Example 1.2: </strong>Multiple lines</p></div></div>
 <p>In this three line script, observe how the lines are separated by a
 dot &ldquo;.&rdquo;. This dot (or period) is a line separator so it is not needed in the
-third line nor in a one line script. The message <code>#newLine</code> has no
+third line nor in a one line script. The message <code class="code">#newLine</code> has no
 argument.
 </p>
-<span id="index-string"></span>
-<p>A <em>String</em> is the way text is represented in a programming
+<a class="index-entry-id" id="index-string"></a>
+<p>A <em class="dfn">String</em> is the way text is represented in a programming
 language, it is a collection of characters. We already met string with
-our first script, it is enclosed in single quotes: <code>'hello
-world!'</code>. We capitalize it with the <code>#capitalized</code> message:
+our first script, it is enclosed in single quotes: <code class="code">'hello
+world!'</code>. We capitalize it with the <code class="code">#capitalized</code> message:
 </p>
-<span id="index-string-1"></span>
-<div class="example">
-<pre class="example">Transcript show: 'hello world!' capitalized
+<a class="index-entry-id" id="index-string-1"></a>
+<div class="example smallexample">
+<pre class="example-preformatted">Transcript show: 'hello world!' capitalized
 &rArr; 'Hello world!' 
 </pre></div>
 
-<span id="index-string-2"></span>
-<p>To convert all the characters to capitals use the <code>#asUppercase</code> message:
+<a class="index-entry-id" id="index-string-2"></a>
+<p>To convert all the characters to capitals use the <code class="code">#asUppercase</code> message:
 </p>
-<div class="example">
-<pre class="example">Transcript show: 'hello world!' asUppercase
+<div class="example smallexample">
+<pre class="example-preformatted">Transcript show: 'hello world!' asUppercase
 &rArr; 'HELLO WORLD!'
 </pre></div>
 
-<span id="index-string-3"></span>
-<p>Two strings are concatenated with the <code>#,</code> message:
+<a class="index-entry-id" id="index-string-3"></a>
+<p>Two strings are concatenated with the <code class="code">#,</code> message:
 </p>
-<div class="float"><span id="concatenateStrings"></span>
-<div class="example">
-<pre class="example">Transcript show: 'Hello ', 'my beloved ', 'friend'
+<div class="float" id="concatenateStrings">
+<div class="example smallexample">
+<pre class="example-preformatted">Transcript show: 'Hello ', 'my beloved ', 'friend'
 &rArr; 'Hello my beloved friend'
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 1.3: </strong>Concatenate strings</p></div></div>
-<div class="float"><span id="concatenateUppercase"></span>
+<div class="caption"><p><strong class="strong">Example 1.3: </strong>Concatenate strings</p></div></div>
+<div class="float" id="concatenateUppercase">
 <blockquote class="indentedblock">
-<p>&nbsp;<img src="CuisLogo.png" alt="CuisLogo">
-<em>Add a message to modify <a href="#concatenateStrings">Example 1.3</a> to output
+<p>&nbsp;<img class="image" src="CuisLogo.png" alt="CuisLogo">
+<em class="emph">Add a message to modify <a class="ref" href="#concatenateStrings">Example 1.3</a> to output
 &rsquo;Hello MY BELOVED friends&rsquo;.</em>
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong>Exercise 1.2: </strong>Concatenate and uppercase</p></div></div>
-<span id="Fun-with-numbers"></span><h4 class="subsection">1.3.1 Fun with numbers</h4>
-<span id="index-number"></span>
-<span id="index-keyboard-shortcut-2"></span>
+<div class="caption"><p><strong class="strong">Exercise 1.2: </strong>Concatenate and uppercase</p></div></div>
+<ul class="mini-toc">
+<li><a href="#Fun-with-numbers" accesskey="1">Fun with numbers</a></li>
+</ul>
+<div class="subsection-level-extent" id="Fun-with-numbers">
+<h4 class="subsection">1.3.1 Fun with numbers</h4>
+<a class="index-entry-id" id="index-number"></a>
+<a class="index-entry-id" id="index-keyboard-shortcut-2"></a>
 
 <p>In your Workspace, to compute a factorial execute the example below
-with <kbd>Ctrl-a</kbd> then <kbd>Ctrl-p</kbd> (<em><b>P</b>rint it</em>):
-</p><div class="example">
-<pre class="example">100 factorial
+with <kbd class="kbd">Ctrl-a</kbd> then <kbd class="kbd">Ctrl-p</kbd> (<em class="emph"><b class="b">P</b>rint it</em>):
+</p><div class="example smallexample">
+<pre class="example-preformatted">100 factorial
 &rArr;  9332621544394415268169923885626670049071596826438162146859
 29638952175999932299156089414639761565182862536979208272237582
 51185210916864000000000000000000000000
@@ -210,34 +208,34 @@ with <kbd>Ctrl-a</kbd> then <kbd>Ctrl-p</kbd> (<em><b>P</b>rint it</em>):
 
 <p>Cuis-Smalltalk handles very large integer numbers without requiring a
 special type declaration or method. To convince yourself try the example below:
-</p><div class="example">
-<pre class="example">10000 factorial / 9999 factorial
+</p><div class="example smallexample">
+<pre class="example-preformatted">10000 factorial / 9999 factorial
 &rArr; 10000
 </pre></div>
 
-<p>If you execute and print with <kbd>Ctrl-p</kbd> the code: <code>10000
+<p>If you execute and print with <kbd class="kbd">Ctrl-p</kbd> the code: <code class="code">10000
 factorial</code>, you will see that it takes far more time to print one factorial result 
 than to compute two factorials and divide them. The result is an integer
 as expected, not a scaled decimal number as many computer languages
 will return.
 </p>
-<span id="index-number-1"></span>
+<a class="index-entry-id" id="index-number-1"></a>
 
 <p>As we are discussing division, you may not get the result you expect:
-</p><div class="example">
-<pre class="example">15 / 4
+</p><div class="example smallexample">
+<pre class="example-preformatted">15 / 4
 &rArr; 15/4
 </pre></div>
 
 <p>It looks like Cuis-Smalltalk is lazy because it does not answer the decimal
-number <code>3.75</code> as we were expecting. In fact Cuis-Smalltalk wants to
+number <code class="code">3.75</code> as we were expecting. In fact Cuis-Smalltalk wants to
 be as accurate as possible, and its answer is a rational number! After
 all, a fraction is just a division we are too lazy &ndash; because it
 is troublesome &ndash; to compute, Cuis-Smalltalk does just that!
 </p>
 <p>Try out this to understand what is happening underneath:
-</p><div class="example">
-<pre class="example">(15 / 4) + (1 / 4)
+</p><div class="example smallexample">
+<pre class="example-preformatted">(15 / 4) + (1 / 4)
 &rArr; 4
 </pre></div>
 
@@ -247,74 +245,77 @@ an accurate result thanks to intermediate computation on rational
 numbers.
 </p>
 <blockquote class="indentedblock">
-<p>&nbsp;<img src="note.png" alt="note">
+<p>&nbsp;<img class="image" src="note.png" alt="note">
 In the example, observe how the parentheses are used
 although in arithmetic calculation the division is performed first. With
 Cuis-Smalltalk you need to specify the order of operations with
 parentheses. We will explain why later.
 </p></blockquote>
 
-<div class="float"><span id="inverseSum"></span>
+<div class="float" id="inverseSum">
 <blockquote class="indentedblock">
-<p>&nbsp;<img src="CuisLogo.png" alt="CuisLogo">
-<em>Write the code to compute the
+<p>&nbsp;<img class="image" src="CuisLogo.png" alt="CuisLogo">
+<em class="emph">Write the code to compute the
 sum of the first four integer inverses. 4 inverted is 1/4</em>
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong>Exercise 1.3: </strong>Inverse sum</p></div></div>
+<div class="caption"><p><strong class="strong">Exercise 1.3: </strong>Inverse sum</p></div></div>
 <p>Integers can be printed in different forms with the appropriate
 message:
 </p>
-<span id="index-number-2"></span>
-<span id="index-number-3"></span>
-<span id="index-number-4"></span>
-<div class="example">
-<pre class="example">2020 printStringRoman &rArr; 'MMXX' 
+<a class="index-entry-id" id="index-number-2"></a>
+<a class="index-entry-id" id="index-number-3"></a>
+<a class="index-entry-id" id="index-number-4"></a>
+<div class="example smallexample">
+<pre class="example-preformatted">2020 printStringRoman &rArr; 'MMXX' 
 2020 printStringWords  &rArr; 'two thousand, twenty'
 &quot;Number as the Maya did&quot;
 2020 printStringBase: 20 &rArr; '510'
 </pre></div>
 
-<div class="float"><span id="capWordNumber"></span>
+<div class="float" id="capWordNumber">
 <blockquote class="indentedblock">
-<p>&nbsp;<img src="CuisLogo.png" alt="CuisLogo">
-<em>Print 2020 as
+<p>&nbsp;<img class="image" src="CuisLogo.png" alt="CuisLogo">
+<em class="emph">Print 2020 as
 words, capitalized.</em>
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong>Exercise 1.4: </strong>Capitalize number as words</p></div></div>
+<div class="caption"><p><strong class="strong">Exercise 1.4: </strong>Capitalize number as words</p></div></div>
 
-<span id="index-number-5"></span>
-<span id="index-literal"></span>
-<p>The integer and float numbers we have played with are <em>Numeric
+<a class="index-entry-id" id="index-number-5"></a>
+<a class="index-entry-id" id="index-literal"></a>
+<p>The integer and float numbers we have played with are <em class="dfn">Numeric
 Literals</em>. Literals are building blocks of the language and considered as
 constant expressions.  They literally are as they appear.
 </p>
 <p>There are several syntax variants which denote a number:
 </p>
-<table>
+<table class="multitable">
 <thead><tr><th width="45%">Numeric literal</th><th width="55%">What it represents</th></tr></thead>
-<tr><td width="45%"><code>1</code></td><td width="55%">integer (decimal notation)</td></tr>
-<tr><td width="45%"><code>2r101</code></td><td width="55%">integer (binary radix)</td></tr>
-<tr><td width="45%"><code>16rFF</code></td><td width="55%">integer (hexadecimal radix)</td></tr>
-<tr><td width="45%"><code>1.5</code></td><td width="55%">floating point number</td></tr>
-<tr><td width="45%"><code>2.4e7</code></td><td width="55%">floating point (exponential notation)</td></tr>
+<tbody><tr><td width="45%"><code class="code">1</code></td><td width="55%">integer (decimal notation)</td></tr>
+<tr><td width="45%"><code class="code">2r101</code></td><td width="55%">integer (binary radix)</td></tr>
+<tr><td width="45%"><code class="code">16rFF</code></td><td width="55%">integer (hexadecimal radix)</td></tr>
+<tr><td width="45%"><code class="code">1.5</code></td><td width="55%">floating point number</td></tr>
+<tr><td width="45%"><code class="code">2.4e7</code></td><td width="55%">floating point (exponential notation)</td></tr>
+</tbody>
 </table>
 
 <p>Depending on the value we need to use, we can mix these literal
 representations:
 </p>
-<div class="example">
-<pre class="example">16rA + 1 + 5e-1 + 6e-2
+<div class="example smallexample">
+<pre class="example-preformatted">16rA + 1 + 5e-1 + 6e-2
 &rArr; 289/25
 </pre></div>
 
+</div>
+</div>
 <hr>
-<div class="header">
+<div class="nav-panel">
 <p>
-Next: <a href="Spacewar_0021.html" accesskey="n" rel="next">Spacewar!</a>, Previous: <a href="Installing-and-configuring-Cuis_002dSmalltalk.html" accesskey="p" rel="prev">Installing and configuring Cuis-Smalltalk</a>, Up: <a href="Beginnings.html" accesskey="u" rel="up">Beginnings</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Spacewar_0021.html">Spacewar!</a>, Previous: <a href="Installing-and-configuring-Cuis_002dSmalltalk.html">Installing and configuring Cuis-Smalltalk</a>, Up: <a href="Beginnings.html">Beginnings</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

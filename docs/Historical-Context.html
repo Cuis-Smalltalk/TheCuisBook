@@ -1,9 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
-Copyright (C) 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
+Copyright © 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
 
 
 Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
@@ -16,7 +19,7 @@ texts. Your help is very valuable.
 
 
 
-Compilation : December 2, 2023
+Compilation : December 30, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -52,9 +55,6 @@ original.
 
 Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
  -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Historical Context (The Cuis-Smalltalk Book)</title>
 
 <meta name="description" content="Historical Context (The Cuis-Smalltalk Book)">
@@ -62,27 +62,14 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="Beginnings.html" rel="up" title="Beginnings">
 <link href="Installing-and-configuring-Cuis_002dSmalltalk.html" rel="next" title="Installing and configuring Cuis-Smalltalk">
-<link href="Beginnings.html" rel="prev" title="Beginnings">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
-div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -91,12 +78,13 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Historical-Context"></span><div class="header">
+<div class="section-level-extent" id="Historical-Context">
+<div class="nav-panel">
 <p>
 Next: <a href="Installing-and-configuring-Cuis_002dSmalltalk.html" accesskey="n" rel="next">Installing and configuring Cuis-Smalltalk</a>, Up: <a href="Beginnings.html" accesskey="u" rel="up">Beginnings</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Historical-Context-1"></span><h3 class="section">1.1 Historical Context</h3>
+<h3 class="section" id="Historical-Context-1">1.1 Historical Context</h3>
 
 <p>One major idea in software is that programming is merely giving a
 computer a set of instructions to solve some problem.  In this point
@@ -109,7 +97,7 @@ write software, and the rest of the world just ignores it.
 <p>Our focus is on one thread in the history of powerful ideas which give
 a different lens through which to explore software development.
 The historical development of these ideas differs from 
-the <em>just solve a problem</em> view. We think this is worth
+the <em class="emph">just solve a problem</em> view. We think this is worth
 revisiting. 
 </p>
 <p>The first clear vision of an automated information processor to augment
@@ -117,41 +105,41 @@ our collective memory, to find and share knowledge &ndash; indeed to transform t
 data explosion into an information explosion, and then into a knowledge and 
 understanding explosion &ndash; was called Memex and described in the Vannevar Bush 
 essay &ldquo;As We May Think&rdquo; in 1945
-<a id="DOCF3" href="#FOOT3"><sup>3</sup></a>.
+<a class="footnote" id="DOCF3" href="#FOOT3"><sup>3</sup></a>.
 Bush&rsquo;s description of the possibility of developing a Memex processing system
 to help individuals access, evolve and capture knowledge 
 for our collective benefit
 inspired many later thinkers and inventors in the development
 of personal computers, networks, hypertext, search engines, and
 knowledge repositories such as Wikipedia
-<a id="DOCF4" href="#FOOT4"><sup>4</sup></a>.
+<a class="footnote" id="DOCF4" href="#FOOT4"><sup>4</sup></a>.
 </p>
 <p>As computational machinery evolved from large, single program at a time mainframes,
 into timesharing mainframes, and into minicomputers, another area of 
 insight was developing with models of how humans learn 
-<a id="DOCF5" href="#FOOT5"><sup>5</sup></a>.
-People began to talk of <em>human-computer symbiosis</em>.
+<a class="footnote" id="DOCF5" href="#FOOT5"><sup>5</sup></a>.
+People began to talk of <em class="dfn">human-computer symbiosis</em>.
 Alan Kay
 conceived the idea that computer software and computer programming
 could become a new medium for expressing thoughts and knowledge. The
 ability to express ideas in this new medium would be the new
 literacy. Every person should learn to read and write in this new
-digital medium, and would have available their own dynamic book, a <em>Dynabook</em>
-<a id="DOCF6" href="#FOOT6"><sup>6</sup></a>
-<a id="DOCF7" href="#FOOT7"><sup>7</sup></a>
+digital medium, and would have available their own dynamic book, a <em class="dfn">Dynabook</em>
+<a class="footnote" id="DOCF6" href="#FOOT6"><sup>6</sup></a>
+<a class="footnote" id="DOCF7" href="#FOOT7"><sup>7</sup></a>
 to accomplish this.
 </p>
 <p>Very readable accounts of historic developments are Alan Kay&rsquo;s papers
-&ldquo;The Early History of Smalltalk&rdquo; <a id="DOCF8" href="#FOOT8"><sup>8</sup></a> and 
-&ldquo;What is a Dynabook?&rdquo; <a id="DOCF9" href="#FOOT9"><sup>9</sup></a>
-in which he notes <em>The best way to predict the future is to invent it</em>.
+&ldquo;The Early History of Smalltalk&rdquo; <a class="footnote" id="DOCF8" href="#FOOT8"><sup>8</sup></a> and 
+&ldquo;What is a Dynabook?&rdquo; <a class="footnote" id="DOCF9" href="#FOOT9"><sup>9</sup></a>
+in which he notes <em class="emph">The best way to predict the future is to invent it</em>.
 Realizing the Dynabook vision required significant advances and
 mutually supporting development of
 hardware and software. The original development took place at the
-Xerox PARC research center in the 1970&rsquo;s. The first <em>interim
+Xerox PARC research center in the 1970&rsquo;s. The first <em class="emph">interim
 Dynabook</em> hardware was the Xerox Alto, generally considered the first
 personal computer. The software system was Smalltalk. The design of both
-was guided by the objectives of making <em>Personal Dynamic Media</em>
+was guided by the objectives of making <em class="emph">Personal Dynamic Media</em>
 and the Dynabook real. The final version of Smalltalk built at Xerox
 was Smalltalk-80.
 </p>
@@ -163,13 +151,13 @@ advance hasn&rsquo;t happened for the medium of personal software.
 </p>
 <p>In 1981 Dan Ingalls, one of the early Smalltalk inventors, wrote in his
 article &ldquo;Design Principles Behind Smalltalk&rdquo;
-<a id="DOCF10" href="#FOOT10"><sup>10</sup></a>
+<a class="footnote" id="DOCF10" href="#FOOT10"><sup>10</sup></a>
 a number of principles that still guide us today. Among these:
-</p><blockquote>
-<p><strong>Personal Mastery.</strong> If a system is to serve the creative
+</p><blockquote class="quotation">
+<p><strong class="strong">Personal Mastery.</strong> If a system is to serve the creative
 spirit, it must be entirely comprehensible to a single individual.
 </p>
-<p><strong>Reactive Principle.</strong> Every component accessible to the user
+<p><strong class="strong">Reactive Principle.</strong> Every component accessible to the user
 should be able to present itself in a meaningful way for observation
 and manipulation.
 </p></blockquote>
@@ -185,14 +173,14 @@ we believe that everyone should have full access to the software that
 runs our systems.  Understanding and exploring computer systems
 requires writing software in ways that can be read and shared.
 </p>
-<p>The thinking change in problem solving can shift from <em>What can I
-do here with what I am presented?</em> to asking <em>What tools do I
+<p>The thinking change in problem solving can shift from <em class="emph">What can I
+do here with what I am presented?</em> to asking <em class="emph">What tools do I
 need to be successful here?</em> and then building them to be ever more
 successful.
 </p>
 <p>This way of thinking about software systems is important to us.
 </p>
-<p>For this reason, Cuis is a <em>kernel</em> Smalltalk system which is still rather
+<p>For this reason, Cuis is a <em class="emph">kernel</em> Smalltalk system which is still rather
 close to Smalltalk-80. 
 The Cuis-Smalltalk goal is to be a small, coherent Smalltalk
 development environment that, with study, is
@@ -217,41 +205,42 @@ a new medium takes time and practice.
 <p>First, however, we must start with some of the mechanics.
 </p>
 <p>As the saying goes &ldquo;A journey of a thousand miles begins with a single step&rdquo;
-<a id="DOCF11" href="#FOOT11"><sup>11</sup></a>.
+<a class="footnote" id="DOCF11" href="#FOOT11"><sup>11</sup></a>.
 </p>
 <p>Let&rsquo;s step forward together.
-</p><div class="footnote">
+</p></div>
+<div class="footnotes-segment">
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h5><a id="FOOT3" href="#DOCF3">(3)</a></h3>
-<p><a href="https://en.wikipedia.org/wiki/As_We_May_Think">https://en.wikipedia.org/wiki/As_We_May_Think</a></p>
-<h5><a id="FOOT4" href="#DOCF4">(4)</a></h3>
+<h5 class="footnote-body-heading"><a id="FOOT3" href="#DOCF3">(3)</a></h5>
+<p><a class="url" href="https://en.wikipedia.org/wiki/As_We_May_Think">https://en.wikipedia.org/wiki/As_We_May_Think</a></p>
+<h5 class="footnote-body-heading"><a id="FOOT4" href="#DOCF4">(4)</a></h5>
 <p>Notable early milestones in this line of
 development were Ivan Sutherland&rsquo;s Sketchpad (1963), the RAND tablet
 (1964), and Doug Engelbart&rsquo;s NLS (&quot;oN-Line System&quot;) (1968). Later
 developments include Ted Nelson&rsquo;s Xanadu, the Apple Macintosh, the
 World Wide Web, smartphones and tablet computers.</p>
-<h5><a id="FOOT5" href="#DOCF5">(5)</a></h3>
+<h5 class="footnote-body-heading"><a id="FOOT5" href="#DOCF5">(5)</a></h5>
 <p>Early notables
 here are J. Piaget, J. Brunner, O. K. Moore, and S. Papert.</p>
-<h5><a id="FOOT6" href="#DOCF6">(6)</a></h3>
-<p>&ldquo;A personal computer for children of all ages&rdquo;(1972) <a href="http://www.vpri.org/pdf/hc_pers_comp_for_children.pdf">http://www.vpri.org/pdf/hc_pers_comp_for_children.pdf</a></p>
-<h5><a id="FOOT7" href="#DOCF7">(7)</a></h3>
-<p>&ldquo;Personal Dynamic Media&rdquo;(1977) <a href="http://www.vpri.org/pdf/m1977001_dynamedia.pdf">http://www.vpri.org/pdf/m1977001_dynamedia.pdf</a></p>
-<h5><a id="FOOT8" href="#DOCF8">(8)</a></h3>
-<p><a href="http://worrydream.com/EarlyHistoryOfSmalltalk">http://worrydream.com/EarlyHistoryOfSmalltalk</a></p>
-<h5><a id="FOOT9" href="#DOCF9">(9)</a></h3>
-<p><a href="http://www.vpri.org/pdf/hc_what_Is_a_dynabook.pdf">http://www.vpri.org/pdf/hc_what_Is_a_dynabook.pdf</a></p>
-<h5><a id="FOOT10" href="#DOCF10">(10)</a></h3>
-<p><a href="http://www.cs.virginia.edu/~evans/cs655/readings/smalltalk.html">http://www.cs.virginia.edu/~evans/cs655/readings/smalltalk.html</a></p>
-<h5><a id="FOOT11" href="#DOCF11">(11)</a></h3>
-<p><a href="https://en.wikipedia.org/wiki/A_journey_of_a_thousand_miles_begins_with_a_single_step">https://en.wikipedia.org/wiki/A_journey_of_a_thousand_miles_begins_with_a_single_step</a></p>
+<h5 class="footnote-body-heading"><a id="FOOT6" href="#DOCF6">(6)</a></h5>
+<p>&ldquo;A personal computer for children of all ages&rdquo;(1972) <a class="url" href="http://www.vpri.org/pdf/hc_pers_comp_for_children.pdf">http://www.vpri.org/pdf/hc_pers_comp_for_children.pdf</a></p>
+<h5 class="footnote-body-heading"><a id="FOOT7" href="#DOCF7">(7)</a></h5>
+<p>&ldquo;Personal Dynamic Media&rdquo;(1977) <a class="url" href="http://www.vpri.org/pdf/m1977001_dynamedia.pdf">http://www.vpri.org/pdf/m1977001_dynamedia.pdf</a></p>
+<h5 class="footnote-body-heading"><a id="FOOT8" href="#DOCF8">(8)</a></h5>
+<p><a class="url" href="http://worrydream.com/EarlyHistoryOfSmalltalk">http://worrydream.com/EarlyHistoryOfSmalltalk</a></p>
+<h5 class="footnote-body-heading"><a id="FOOT9" href="#DOCF9">(9)</a></h5>
+<p><a class="url" href="http://www.vpri.org/pdf/hc_what_Is_a_dynabook.pdf">http://www.vpri.org/pdf/hc_what_Is_a_dynabook.pdf</a></p>
+<h5 class="footnote-body-heading"><a id="FOOT10" href="#DOCF10">(10)</a></h5>
+<p><a class="url" href="http://www.cs.virginia.edu/~evans/cs655/readings/smalltalk.html">http://www.cs.virginia.edu/~evans/cs655/readings/smalltalk.html</a></p>
+<h5 class="footnote-body-heading"><a id="FOOT11" href="#DOCF11">(11)</a></h5>
+<p><a class="url" href="https://en.wikipedia.org/wiki/A_journey_of_a_thousand_miles_begins_with_a_single_step">https://en.wikipedia.org/wiki/A_journey_of_a_thousand_miles_begins_with_a_single_step</a></p>
 </div>
 <hr>
-<div class="header">
+<div class="nav-panel">
 <p>
-Next: <a href="Installing-and-configuring-Cuis_002dSmalltalk.html" accesskey="n" rel="next">Installing and configuring Cuis-Smalltalk</a>, Up: <a href="Beginnings.html" accesskey="u" rel="up">Beginnings</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Installing-and-configuring-Cuis_002dSmalltalk.html">Installing and configuring Cuis-Smalltalk</a>, Up: <a href="Beginnings.html">Beginnings</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

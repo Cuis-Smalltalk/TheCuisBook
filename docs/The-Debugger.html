@@ -1,9 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
-Copyright (C) 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
+Copyright © 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
 
 
 Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
@@ -16,7 +19,7 @@ texts. Your help is very valuable.
 
 
 
-Compilation : December 2, 2023
+Compilation : December 30, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -52,9 +55,6 @@ original.
 
 Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
  -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>The Debugger (The Cuis-Smalltalk Book)</title>
 
 <meta name="description" content="The Debugger (The Cuis-Smalltalk Book)">
@@ -62,6 +62,8 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="Debug-and-Exception-Handling.html" rel="up" title="Debug and Exception Handling">
@@ -69,20 +71,11 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="Inspecting-the-Unexpected.html" rel="prev" title="Inspecting the Unexpected">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
+div.center {text-align:center}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
+kbd.kbd {font-style: oblique}
+ul.mark-bullet {list-style-type: disc}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -91,62 +84,63 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="The-Debugger"></span><div class="header">
+<div class="section-level-extent" id="The-Debugger">
+<div class="nav-panel">
 <p>
 Next: <a href="Halt_0021.html" accesskey="n" rel="next">Halt!</a>, Previous: <a href="Inspecting-the-Unexpected.html" accesskey="p" rel="prev">Inspecting the Unexpected</a>, Up: <a href="Debug-and-Exception-Handling.html" accesskey="u" rel="up">Debug and Exception Handling</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="The-Debugger-1"></span><h3 class="section">10.2 The Debugger</h3>
-<span id="index-tools-6"></span>
+<h3 class="section" id="The-Debugger-1">10.2 The Debugger</h3>
+<a class="index-entry-id" id="index-tools-6"></a>
 <p>First, we need a fairly simple code example to look at.  Please type
 or copy the following into a Workspace.
 </p>
-<div class="float"><span id="childNames"></span>
-<div class="example">
-<pre class="example">| fileNames |
+<div class="float" id="childNames">
+<div class="example smallexample">
+<pre class="example-preformatted">| fileNames |
 fileNames := OrderedCollection new.
 (DirectoryEntry smalltalkImageDirectory) 
     childrenDo: [ :f | fileNames add: f name ].
 fileNames asArray.
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 10.3: </strong>Names of Directory Entries</p></div></div>
-<p>Now, you can <kbd>Ctrl-a</kbd> (<em>select <b>A</b>ll</em>) and <kbd>Ctrl-p</kbd>
-(<em>select <b>P</b>rint-it</em>) to see the result.
+<div class="caption"><p><strong class="strong">Example 10.3: </strong>Names of Directory Entries</p></div></div>
+<p>Now, you can <kbd class="kbd">Ctrl-a</kbd> (<em class="emph">select <b class="b">A</b>ll</em>) and <kbd class="kbd">Ctrl-p</kbd>
+(<em class="emph">select <b class="b">P</b>rint-it</em>) to see the result.
 </p>
-<div class="float"><span id="ch10_002d02_002dDirChildNames"></span>
-<div align="center"><img src="ch10-02-DirChildNames.png" alt="ch10-02-DirChildNames">
+<div class="float" id="ch10_002d02_002dDirChildNames">
+<div class="center"><img class="image" src="ch10-02-DirChildNames.png" alt="ch10-02-DirChildNames">
 </div>
-<div class="float-caption"><p><strong>Figure 10.2: </strong>Names of files and directories in a Directory</p></div></div>
-<span id="index-file"></span>
-<span id="index-string-13"></span>
+<div class="caption"><p><strong class="strong">Figure 10.2: </strong>Names of files and directories in a Directory</p></div></div>
+<a class="index-entry-id" id="index-file"></a>
+<a class="index-entry-id" id="index-string-13"></a>
 <blockquote class="indentedblock">
-<p>&nbsp;<img src="note.png" alt="note">
-The <code>String</code> class has several method category names
-starting with <code>fileman-</code> for converting pathnames (system names
-for files and directories) into <code>FileEntry</code> and
-<code>DirectoryEntry</code> objects.  <code>String&gt;&gt;asFileEntry</code> gives
+<p>&nbsp;<img class="image" src="note.png" alt="note">
+The <code class="code">String</code> class has several method category names
+starting with <code class="command">fileman-</code> for converting pathnames (system names
+for files and directories) into <code class="code">FileEntry</code> and
+<code class="code">DirectoryEntry</code> objects.  <code class="code">String&gt;&gt;asFileEntry</code> gives
 examples.
 </p></blockquote>
 
 <p>Now that we know what to expect, let us step through processing of the code
 using the debugger.
-Remove the result, then <kbd>Ctrl-a</kbd> (<em>select <b>A</b>ll</em>) and
-<kbd>Ctrl-Shift-D</kbd> (<em>select <b>D</b>ebug-it</em>).
+Remove the result, then <kbd class="kbd">Ctrl-a</kbd> (<em class="emph">select <b class="b">A</b>ll</em>) and
+<kbd class="kbd">Ctrl-Shift-D</kbd> (<em class="emph">select <b class="b">D</b>ebug-it</em>).
 </p>
-<div class="float"><span id="ch10_002d03_002dDebugIt"></span>
-<div align="center"><img src="ch10-03-DebugIt.png" alt="ch10-03-DebugIt">
+<div class="float" id="ch10_002d03_002dDebugIt">
+<div class="center"><img class="image" src="ch10-03-DebugIt.png" alt="ch10-03-DebugIt">
 </div>
-<div class="float-caption"><p><strong>Figure 10.3: </strong>Debug It</p></div></div>
-<span id="index-execution-stack"></span>
-<p>The top pane in the debugger shows a view of the <em>execution stack</em>
+<div class="caption"><p><strong class="strong">Figure 10.3: </strong>Debug It</p></div></div>
+<a class="index-entry-id" id="index-execution-stack"></a>
+<p>The top pane in the debugger shows a view of the <em class="dfn">execution stack</em>
 for this bit of execution context.  The way to think of this, the
-<em>model of execution</em>, is that each time a method sends a message,
+<em class="dfn">model of execution</em>, is that each time a method sends a message,
 it and its current state, arguments and local variables, are placed on
-a <em>stack</em> until the result of that message is received.  If that
+a <em class="emph">stack</em> until the result of that message is received.  If that
 message causes another message to be sent, then the new state is
-pushed onto the stack.  When a result is returned, the <em>stack
-frame</em> is <em>poped</em> and processing continues.  This works like a
+pushed onto the stack.  When a result is returned, the <em class="dfn">stack
+frame</em> is <em class="emph">poped</em> and processing continues.  This works like a
 stack of trays in a cafeteria.
 </p>
 <p>The stack frames are displayed to show the stacked receiver and
@@ -155,7 +149,7 @@ has an inspector in the lower left debugger panes at the bottom or the
 window.
 </p>
 <p>The next two lower panes are an inspector for the
-arguments and local variables, or <em>temporaries</em>, of the context frame.
+arguments and local variables, or <em class="dfn">temporaries</em>, of the context frame.
 </p>
 <p>The larger area displays the code being processed and
 hilights the next message to be sent.
@@ -170,25 +164,25 @@ and control of how the execution processing is to proceed.
 </p>
 <p>Notable buttons in the second row:
 </p>
-<ul>
-<li> <strong>Proceed.</strong> Continue execution
+<ul class="itemize mark-bullet">
+<li><strong class="strong">Proceed.</strong> Continue execution
  
-</li><li> <strong>Restart.</strong> Start execution of the current method from
+</li><li><strong class="strong">Restart.</strong> Start execution of the current method from
  the beginning.
  <br>
  You can edit a method shown in the code pane, save it, and restart it!
 
-</li><li> <strong>Into.</strong> Step Into the code of the next message send.
+</li><li><strong class="strong">Into.</strong> Step Into the code of the next message send.
 
-</li><li> <strong>Over.</strong> Step Over the message send.
+</li><li><strong class="strong">Over.</strong> Step Over the message send.
  <br>
  Do the next message send, but stay in the current method.
 
-</li><li> <strong>Through.</strong> Step into a block of code by going through &ndash;
+</li><li><strong class="strong">Through.</strong> Step into a block of code by going through &ndash;
  skipping &ndash; the intermediate message sends.
  <br>
  Useful when you need to examine what is going on in a block of code,
- argument of the stepped message, for example the <code>#do:</code>
+ argument of the stepped message, for example the <code class="code">#do:</code>
  message.
 
 </li></ul>
@@ -196,30 +190,30 @@ and control of how the execution processing is to proceed.
 <p>Now, we are going to play a bit.  If you get out of synch with the
 instructions here, just close the debugger and start with Debug-It again.
 </p>
-<div class="float"><span id="ch10_002d04_002dStepInto"></span>
-<div align="center"><img src="ch10-04-StepInto.png" alt="ch10-04-StepInto">
+<div class="float" id="ch10_002d04_002dStepInto">
+<div class="center"><img class="image" src="ch10-04-StepInto.png" alt="ch10-04-StepInto">
 </div>
-<div class="float-caption"><p><strong>Figure 10.4: </strong>Step Into</p></div></div>
-<p>As you <em>single step</em> the debugger, hilighting of the <em>next</em> message
-send changes.  Press <kbd>Over</kbd> three times.  You should see the line
-starting with <em>childrenDo:</em> hilighted.  Now press <kbd>Into</kbd>.
+<div class="caption"><p><strong class="strong">Figure 10.4: </strong>Step Into</p></div></div>
+<p>As you <em class="dfn">single step</em> the debugger, hilighting of the <em class="emph">next</em> message
+send changes.  Press <kbd class="kbd">Over</kbd> three times.  You should see the line
+starting with <em class="emph">childrenDo:</em> hilighted.  Now press <kbd class="kbd">Into</kbd>.
 </p>
-<div class="float"><span id="ch10_002d05_002dFocusObjAndArgs"></span>
-<div align="center"><img src="ch10-05-FocusObjAndArgs.png" alt="ch10-05-FocusObjAndArgs">
+<div class="float" id="ch10_002d05_002dFocusObjAndArgs">
+<div class="center"><img class="image" src="ch10-05-FocusObjAndArgs.png" alt="ch10-05-FocusObjAndArgs">
 </div>
-<div class="float-caption"><p><strong>Figure 10.5: </strong>Viewing Focus Object and Temporaries</p></div></div>
-<p>The stack area shows the focus object is a <code>DirectoryEntry</code>.
+<div class="caption"><p><strong class="strong">Figure 10.5: </strong>Viewing Focus Object and Temporaries</p></div></div>
+<p>The stack area shows the focus object is a <code class="code">DirectoryEntry</code>.
 Inspect its instance values by selecting lines in the lower
 left pane.
 </p>
-<p>The stack area shows the focus method is <code>DirectoryEntry&gt;&gt;childrenDo:</code>.
+<p>The stack area shows the focus method is <code class="code">DirectoryEntry&gt;&gt;childrenDo:</code>.
 This is the method displayed in the code pane.
 </p>
-<p>The argument to <code>childrenDo:</code> is <code>aBlock</code>.  There are no
+<p>The argument to <code class="code">childrenDo:</code> is <code class="code">aBlock</code>.  There are no
 method variables to display.
 </p>
-<p>If you press <kbd>Over</kbd> again and <kbd>Into</kbd>, you should see the
-context where <code>do:</code> is being processed.
+<p>If you press <kbd class="kbd">Over</kbd> again and <kbd class="kbd">Into</kbd>, you should see the
+context where <code class="code">do:</code> is being processed.
 </p>
 <p>This might be a good place to investigate the inspectors, look up and down the
 stack, and play around a bit.  By this time you should feel confident
@@ -229,10 +223,11 @@ that you understand the basics of what is displayed here.
 </p>
 <p>Let&rsquo;s look briefly at another way of doing this.
 </p>
+</div>
 <hr>
-<div class="header">
+<div class="nav-panel">
 <p>
-Next: <a href="Halt_0021.html" accesskey="n" rel="next">Halt!</a>, Previous: <a href="Inspecting-the-Unexpected.html" accesskey="p" rel="prev">Inspecting the Unexpected</a>, Up: <a href="Debug-and-Exception-Handling.html" accesskey="u" rel="up">Debug and Exception Handling</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Halt_0021.html">Halt!</a>, Previous: <a href="Inspecting-the-Unexpected.html">Inspecting the Unexpected</a>, Up: <a href="Debug-and-Exception-Handling.html">Debug and Exception Handling</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

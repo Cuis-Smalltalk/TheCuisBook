@@ -1,9 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
-Copyright (C) 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
+Copyright © 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
 
 
 Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
@@ -16,7 +19,7 @@ texts. Your help is very valuable.
 
 
 
-Compilation : December 2, 2023
+Compilation : December 30, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -52,9 +55,6 @@ original.
 
 Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
  -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Refactoring to Improve Understanding (The Cuis-Smalltalk Book)</title>
 
 <meta name="description" content="Refactoring to Improve Understanding (The Cuis-Smalltalk Book)">
@@ -62,27 +62,16 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="Sharing-Cuis.html" rel="up" title="Sharing Cuis">
-<link href="Documents-Copyright.html" rel="next" title="Documents Copyright">
 <link href="Golden-Rules-of-the-Smalltalk-Guild.html" rel="prev" title="Golden Rules of the Smalltalk Guild">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
-div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
+div.center {text-align:center}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -91,111 +80,113 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Refactoring-to-Improve-Understanding"></span><div class="header">
+<div class="section-level-extent" id="Refactoring-to-Improve-Understanding">
+<div class="nav-panel">
 <p>
 Previous: <a href="Golden-Rules-of-the-Smalltalk-Guild.html" accesskey="p" rel="prev">Golden Rules of the Smalltalk Guild</a>, Up: <a href="Sharing-Cuis.html" accesskey="u" rel="up">Sharing Cuis</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Refactoring-to-Improve-Understanding-1"></span><h3 class="section">11.2 Refactoring to Improve Understanding</h3>
-<span id="index-refactoring-1"></span>
-<p>Browsing through the code, I note a method named <code>#left</code>, which seems perhaps
-like an abbreviation.  I can ask for <em>senders</em> to see how <code>#left</code> is used
+<h3 class="section" id="Refactoring-to-Improve-Understanding-1">11.2 Refactoring to Improve Understanding</h3>
+<a class="index-entry-id" id="index-refactoring-1"></a>
+<p>Browsing through the code, I note a method named <code class="code">#left</code>, which seems perhaps
+like an abbreviation.  I can ask for <em class="emph">senders</em> to see how <code class="code">#left</code> is used
 in code elsewhere.
 </p>
-<div class="float"><span id="ch11_002d01_002dSendersOfLeft"></span>
-<div align="center"><img src="ch11-01-SendersOfLeft.png" alt="ch11-01-SendersOfLeft">
+<div class="float" id="ch11_002d01_002dSendersOfLeft">
+<div class="center"><img class="image" src="ch11-01-SendersOfLeft.png" alt="ch11-01-SendersOfLeft">
 </div>
-<div class="float-caption"><p><strong>Figure 11.1: </strong>Senders of <code>left</code></p></div></div>
-<p>I notice that most uses of <code>#left</code> are to indicate a position,
+<div class="caption"><p><strong class="strong">Figure 11.1: </strong>Senders of <code class="code">left</code></p></div></div>
+<p>I notice that most uses of <code class="code">#left</code> are to indicate a position,
 not take an action.  How can I fix that?
 </p>
 <p>Because people frequently want to change things for the better,
 there are a number of handy tools to help do this.
 </p>
-<p>Now I could look at our uses of <code>#left</code> in Spacewars!, but the Cuis IDE
+<p>Now I could look at our uses of <code class="code">#left</code> in Spacewars!, but the Cuis IDE
 already knows how to do this!
 </p>
 <p>If I right-click on the Method Pane in the Browser, I get a context menu
-with selections to help me out. Here I choose <strong>Rename</strong>.
+with selections to help me out. Here I choose <strong class="strong">Rename</strong>.
 </p>
-<div class="float"><span id="ch11_002d02_002dRenameLeft"></span>
-<div align="center"><img src="ch11-02-RenameLeft.png" alt="ch11-02-RenameLeft">
+<div class="float" id="ch11_002d02_002dRenameLeft">
+<div class="center"><img class="image" src="ch11-02-RenameLeft.png" alt="ch11-02-RenameLeft">
 </div>
-<div class="float-caption"><p><strong>Figure 11.2: </strong>Rename <code>left</code></p></div></div>
+<div class="caption"><p><strong class="strong">Figure 11.2: </strong>Rename <code class="code">left</code></p></div></div>
 <p>Now the tools that help us refactor code are quite powerful, so
 restraint is called for.  I don&rsquo;t want to change all uses of
-<code>#left</code> in the Cuis-Smalltalk system, just in the <code>Spacewar!</code>
+<code class="code">#left</code> in the Cuis-Smalltalk system, just in the <code class="command">Spacewar!</code>
 category.
 </p>
-<div class="float"><span id="ch11_002d03_002dRenameInCategory"></span>
-<div align="center"><img src="ch11-03-RenameInCategory.png" alt="ch11-03-RenameInCategory">
+<div class="float" id="ch11_002d03_002dRenameInCategory">
+<div class="center"><img class="image" src="ch11-03-RenameInCategory.png" alt="ch11-03-RenameInCategory">
 </div>
-<div class="float-caption"><p><strong>Figure 11.3: </strong>Rename in Category</p></div></div>
+<div class="caption"><p><strong class="strong">Figure 11.3: </strong>Rename in Category</p></div></div>
 <p>Of course, when making changes one wants to see that the result is
 what one expects.
 </p>
-<div class="float"><span id="ch11_002d04_002dturnLeft"></span>
-<div align="center"><img src="ch11-04-turnLeft.png" alt="ch11-04-turnLeft">
+<div class="float" id="ch11_002d04_002dturnLeft">
+<div class="center"><img class="image" src="ch11-04-turnLeft.png" alt="ch11-04-turnLeft">
 </div>
-<div class="float-caption"><p><strong>Figure 11.4: </strong>Results of Renaming</p></div></div>
+<div class="caption"><p><strong class="strong">Figure 11.4: </strong>Results of Renaming</p></div></div>
 <p>As I am not perfect, I tend to save the Cuis-Smalltalk image before I make
 large changes using powerful tools.  If something happens that
 I did not want, I can then quit the image without saving and
 restart the saved image which remembers the world before I made the change.
 </p>
-<div class="float"><span id="exeRenameMethod"></span>
+<div class="float" id="exeRenameMethod">
 <blockquote class="indentedblock">
-<p>&nbsp;<img src="CuisLogo.png" alt="CuisLogo">
-<em>Rename <code>#right</code> to
-<code>#turnRight</code>.</em>
+<p>&nbsp;<img class="image" src="CuisLogo.png" alt="CuisLogo">
+<em class="emph">Rename <code class="code">#right</code> to
+<code class="code">#turnRight</code>.</em>
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong>Exercise 11.1: </strong>Renaming a method</p></div></div>
+<div class="caption"><p><strong class="strong">Exercise 11.1: </strong>Renaming a method</p></div></div>
 <p>Looking around some more in the Browser, I notice the method
-<code>SpaceShip&gt;&gt;nose</code>.
+<code class="code">SpaceShip&gt;&gt;nose</code>.
 </p>
 <p>Where did I use this?  Ah, senders..
 </p>
-<div class="float"><span id="ch11_002d05_002dnoseSenders"></span>
-<div align="center"><img src="ch11-05-noseSenders.png" alt="ch11-05-noseSenders">
+<div class="float" id="ch11_002d05_002dnoseSenders">
+<div class="center"><img class="image" src="ch11-05-noseSenders.png" alt="ch11-05-noseSenders">
 </div>
-<div class="float-caption"><p><strong>Figure 11.5: </strong>Senders of <code>nose</code></p></div></div>
-<p>Hmmm, perhaps something more specific.  How about <code>#noseDirection</code>?
+<div class="caption"><p><strong class="strong">Figure 11.5: </strong>Senders of <code class="code">nose</code></p></div></div>
+<p>Hmmm, perhaps something more specific.  How about <code class="code">#noseDirection</code>?
 How does that look?
 </p>
-<div class="float"><span id="ch11_002d06_002dnoseDirection"></span>
-<div align="center"><img src="ch11-06-noseDirection.png" alt="ch11-06-noseDirection">
+<div class="float" id="ch11_002d06_002dnoseDirection">
+<div class="center"><img class="image" src="ch11-06-noseDirection.png" alt="ch11-06-noseDirection">
 </div>
-<div class="float-caption"><p><strong>Figure 11.6: </strong>Rename <code>nose</code> to <code>noseDirection</code></p></div></div>
+<div class="caption"><p><strong class="strong">Figure 11.6: </strong>Rename <code class="code">nose</code> to <code class="code">noseDirection</code></p></div></div>
 <blockquote class="indentedblock">
-<p>&nbsp;<img src="note.png" alt="note">
-World menu &rarr; <code>Help</code> is your friend.
-The <code>Terse Guide to Cuise</code> gives access to a large sample
-of code usages. The <code>Class Comment Browser</code> is an alternate
+<p>&nbsp;<img class="image" src="note.png" alt="note">
+World menu &rarr; <code class="command">Help</code> is your friend.
+The <code class="command">Terse Guide to Cuise</code> gives access to a large sample
+of code usages. The <code class="command">Class Comment Browser</code> is an alternate
 way to find interesting class information.  There are also more notes
 on code maganement and how we use GitHub.
 </p></blockquote>
 
 <blockquote class="indentedblock">
-<p>&nbsp;<img src="note.png" alt="note">
+<p>&nbsp;<img class="image" src="note.png" alt="note">
 We want to share with you! Please visit packages at the main Cuis-Smalltalk
-repository at <a href="https://github.com/Cuis-Smalltalk">https://github.com/Cuis-Smalltalk</a>, search GitHub
-for repositories with names starting with <strong>Cuis-Smalltalk-</strong>,
+repository at <a class="url" href="https://github.com/Cuis-Smalltalk">https://github.com/Cuis-Smalltalk</a>, search GitHub
+for repositories with names starting with <strong class="strong">Cuis-Smalltalk-</strong>,
 and perhaps take a look at tutorials and information
-in <a href="https://github.com/Cuis-Smalltalk/Learning-Cuis">https://github.com/Cuis-Smalltalk/Learning-Cuis</a>.
+in <a class="url" href="https://github.com/Cuis-Smalltalk/Learning-Cuis">https://github.com/Cuis-Smalltalk/Learning-Cuis</a>.
 </p></blockquote>
 
-<p>There is much more to explore, but this book is an <em>introduction</em>
+<p>There is much more to explore, but this book is an <em class="emph">introduction</em>
 and we have to stop writing text somewhere.  This is a good place.
 We want to get back to writing code!
-And we look forward to seeing <em>your</em> projects!
+And we look forward to seeing <em class="emph">your</em> projects!
 </p>
 <p>Welcome to Cuis-Smalltalk!
-</p><hr>
-<div class="header">
+</p></div>
+<hr>
+<div class="nav-panel">
 <p>
-Previous: <a href="Golden-Rules-of-the-Smalltalk-Guild.html" accesskey="p" rel="prev">Golden Rules of the Smalltalk Guild</a>, Up: <a href="Sharing-Cuis.html" accesskey="u" rel="up">Sharing Cuis</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Previous: <a href="Golden-Rules-of-the-Smalltalk-Guild.html">Golden Rules of the Smalltalk Guild</a>, Up: <a href="Sharing-Cuis.html">Sharing Cuis</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

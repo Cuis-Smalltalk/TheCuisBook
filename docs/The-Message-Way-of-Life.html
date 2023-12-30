@@ -1,9 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
-Copyright (C) 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
+Copyright © 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
 
 
 Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
@@ -16,7 +19,7 @@ texts. Your help is very valuable.
 
 
 
-Compilation : December 2, 2023
+Compilation : December 30, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -52,9 +55,6 @@ original.
 
 Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
  -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>The Message Way of Life (The Cuis-Smalltalk Book)</title>
 
 <meta name="description" content="The Message Way of Life (The Cuis-Smalltalk Book)">
@@ -62,27 +62,16 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="index.html" rel="up" title="Top">
-<link href="Communicating-entities.html" rel="next" title="Communicating entities">
-<link href="Spacewar_0021.html" rel="prev" title="Spacewar!">
+<link href="Class-_002d-Model-of-Communicating-Entities.html" rel="next" title="Class - Model of Communicating Entities">
+<link href="Beginnings.html" rel="prev" title="Beginnings">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
-div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
+div.center {text-align:center}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -91,19 +80,20 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="The-Message-Way-of-Life"></span><div class="header">
+<div class="chapter-level-extent" id="The-Message-Way-of-Life">
+<div class="nav-panel">
 <p>
-Next: <a href="Class-_002d-Model-of-Communicating-Entities.html" accesskey="n" rel="next">Class - Model of Communicating Entities</a>, Previous: <a href="Beginnings.html" accesskey="p" rel="prev">Beginnings</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Class-_002d-Model-of-Communicating-Entities.html" accesskey="n" rel="next">Class, Model of Communicating Entities</a>, Previous: <a href="Beginnings.html" accesskey="p" rel="prev">Beginnings</a>, Up: <a href="index.html" accesskey="u" rel="up">Table of Contents</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="The-Message-Way-of-Life-1"></span><h2 class="chapter">2 The Message Way of Life</h2>
+<h2 class="chapter" id="The-Message-Way-of-Life-1">2 The Message Way of Life</h2>
 
-<blockquote>
+<blockquote class="quotation">
 <p>The key in making great and growable systems is much more to design how its
  modules communicate rather than what their internal properties and
  behaviors should be.
 </p></blockquote>
-<div align="center">&mdash; <em>Alan Kay</em>
+<div class="center">&mdash; <em class="emph">Alan Kay</em>
 </div>
 
 <br> <br> <br> <br>
@@ -112,21 +102,16 @@ Next: <a href="Class-_002d-Model-of-Communicating-Entities.html" accesskey="n" r
 through messages. That&rsquo;s all, there is nothing more.
 </p>
 
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="Communicating-entities.html" accesskey="1">Communicating entities</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Message-send-definitions.html" accesskey="2">Message send definitions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Message-to-string-entities.html" accesskey="3">Message to string entities</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Messages-to-number-entities.html" accesskey="4">Messages to number entities</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="A-brief-introduction-to-the-system-Browser.html" accesskey="5">A brief introduction to the system Browser</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Spacewar_0021-models.html" accesskey="6">Spacewar! models</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 
+<ul class="mini-toc">
+<li><a href="Communicating-entities.html" accesskey="1">Communicating entities</a></li>
+<li><a href="Message-send-definitions.html" accesskey="2">Message send definitions</a></li>
+<li><a href="Message-to-string-entities.html" accesskey="3">Message to string entities</a></li>
+<li><a href="Messages-to-number-entities.html" accesskey="4">Messages to number entities</a></li>
+<li><a href="A-brief-introduction-to-the-system-Browser.html" accesskey="5">A brief introduction to the system Browser</a></li>
+<li><a href="Spacewar_0021-models.html" accesskey="6">Spacewar! models</a></li>
+</ul>
+</div>
 
 
 

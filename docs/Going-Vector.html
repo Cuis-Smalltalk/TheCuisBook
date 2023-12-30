@@ -1,9 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
-Copyright (C) 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
+Copyright © 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
 
 
 Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
@@ -16,7 +19,7 @@ texts. Your help is very valuable.
 
 
 
-Compilation : December 2, 2023
+Compilation : December 30, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -52,9 +55,6 @@ original.
 
 Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
  -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Going Vector (The Cuis-Smalltalk Book)</title>
 
 <meta name="description" content="Going Vector (The Cuis-Smalltalk Book)">
@@ -62,27 +62,18 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="The-Fundamentals-of-Morph.html" rel="up" title="The Fundamentals of Morph">
 <link href="A-Clock-Morph.html" rel="next" title="A Clock Morph">
-<link href="The-Fundamentals-of-Morph.html" rel="prev" title="The Fundamentals of Morph">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
+div.center {text-align:center}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
+kbd.kbd {font-style: oblique}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -91,12 +82,13 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Going-Vector"></span><div class="header">
+<div class="section-level-extent" id="Going-Vector">
+<div class="nav-panel">
 <p>
 Next: <a href="A-Clock-Morph.html" accesskey="n" rel="next">A Clock Morph</a>, Up: <a href="The-Fundamentals-of-Morph.html" accesskey="u" rel="up">The Fundamentals of Morph</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Going-Vector-1"></span><h3 class="section">7.1 Going Vector</h3>
+<h3 class="section" id="Going-Vector-1">7.1 Going Vector</h3>
 
 <p>For Cuis-Smalltalk, we built Morphic 3, the third design iteration of these
 ideas, after Self&rsquo;s Morphic 1 and Squeak&rsquo;s Morphic 2. If you already
@@ -110,11 +102,19 @@ the late 80&rsquo;s and late 90&rsquo;s respectively). Additionally, careful
 design of the framework relieves Morph programmers from much the
 complexity that was required, especially with regards to geometry.
 </p>
-<span id="A-first-example"></span><h4 class="subsection">7.1.1 A first example</h4>
+<ul class="mini-toc">
+<li><a href="#A-first-example" accesskey="1">A first example</a></li>
+<li><a href="#Morph-you-can-move" accesskey="2">Morph you can move</a></li>
+<li><a href="#Filled-morph" accesskey="3">Filled morph</a></li>
+<li><a href="#Animated-morph" accesskey="4">Animated morph</a></li>
+<li><a href="#Morph-in-morph" accesskey="5">Morph in morph</a></li>
+</ul>
+<div class="subsection-level-extent" id="A-first-example">
+<h4 class="subsection">7.1.1 A first example</h4>
 
 <p>Let&rsquo;s start with some examples. What we want is to build our own
 graphic objects, or Morphs. A Morph class is part of the Morph
-hierarchy and usually includes a <code>drawOn:</code> method for drawing
+hierarchy and usually includes a <code class="code">drawOn:</code> method for drawing
 its distinctive appearance. If we forget about computers for a second,
 and consider drawing with color pens on a sheet of paper, one of the
 most basic things we can do is to draw straight lines.
@@ -122,20 +122,20 @@ most basic things we can do is to draw straight lines.
 <p>So, let&rsquo;s start a System Browser window and build a straight line
 object:
 </p>
-<div class="example">
-<pre class="example">Morph subclass: #LineExampleMorph
+<div class="example smallexample">
+<pre class="example-preformatted">Morph subclass: #LineExampleMorph
    instanceVariableNames: ''
    classVariableNames: ''
    poolDictionaries: ''
    category: 'Morphic-Learning'
 </pre></div>
 
-<p>In method category <code>drawing</code> add:
+<p>In method category <code class="command">drawing</code> add:
 </p>
-<span id="index-morph-7"></span>
-<span id="index-morph-8"></span>
-<div class="example">
-<pre class="example">LineExampleMorph&gt;&gt;drawOn: aCanvas
+<a class="index-entry-id" id="index-morph-7"></a>
+<a class="index-entry-id" id="index-morph-8"></a>
+<div class="example smallexample">
+<pre class="example-preformatted">LineExampleMorph&gt;&gt;drawOn: aCanvas
    aCanvas strokeWidth: 20 color: Color green do: [
       aCanvas
          moveTo: 100 @ 100;
@@ -143,112 +143,116 @@ object:
 </pre></div>
 
 <p>Now in a Workspace execute:
-</p><div class="example">
-<pre class="example">LineExampleMorph new openInWorld
+</p><div class="example smallexample">
+<pre class="example-preformatted">LineExampleMorph new openInWorld
 </pre></div>
 
 <p>If you get a prompter asking whether to install and activate Vector
 Graphics support, please answer yes. There it is. You have already
-built your first <code>Morph</code> class.
+built your first <code class="code">Morph</code> class.
 </p>
-<div class="float"><span id="ch07_002d01_002dLineDetails"></span>
-<div align="center"><img src="ch07-01-LineDetails.png" alt="ch07-01-LineDetails">
+<div class="float" id="ch07_002d01_002dLineDetails">
+<div class="center"><img class="image" src="ch07-01-LineDetails.png" alt="ch07-01-LineDetails">
 </div>
-<div class="float-caption"><p><strong>Figure 7.1: </strong>Details of our line morph</p></div></div>
-<p>The code is self evident, the <code>drawOn:</code> method takes a
-<code>VectorCanvas</code> instance as an argument. <code>VectorCanvas</code>
+<div class="caption"><p><strong class="strong">Figure 7.1: </strong>Details of our line morph</p></div></div>
+<p>The code is self evident, the <code class="code">drawOn:</code> method takes a
+<code class="code">VectorCanvas</code> instance as an argument. <code class="code">VectorCanvas</code>
 provides many drawing operations for morphs to use. You can play with
 the various drawing operations and their parameters, and see the
-result. If you make a mistake, and the <code>drawOn:</code> method fails,
+result. If you make a mistake, and the <code class="code">drawOn:</code> method fails,
 you&rsquo;ll get a red and yellow error box. After fixing your
-<code>drawOn:</code> method, do ...World menu &rarr;
-<code>Debug...</code> &rarr; <code>Start drawing all again</code>.. to get
+<code class="code">drawOn:</code> method, do ...World menu &rarr;
+<code class="command">Debug...</code> &rarr; <code class="command">Start drawing all again</code>.. to get
 your morph redrawn correctly.
 </p>
-<div class="float"><span id="exeCrossMorph"></span>
+<div class="float" id="exeCrossMorph">
 <blockquote class="indentedblock">
-<p>&nbsp;<img src="CuisLogo.png" alt="CuisLogo">
-<em>How will you modify our
+<p>&nbsp;<img class="image" src="CuisLogo.png" alt="CuisLogo">
+<em class="emph">How will you modify our
 line morph so it draws itself as a cross with an extent of 200
 pixels?</em>
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong>Exercise 7.1: </strong>Cross morph</p></div></div>
+<div class="caption"><p><strong class="strong">Exercise 7.1: </strong>Cross morph</p></div></div>
 
-<span id="Morph-you-can-move"></span><h4 class="subsection">7.1.2 Morph you can move</h4>
-<span id="index-morph-9"></span>
+</div>
+<div class="subsection-level-extent" id="Morph-you-can-move">
+<h4 class="subsection">7.1.2 Morph you can move</h4>
+<a class="index-entry-id" id="index-morph-9"></a>
 <p>You might have already tried to click and drag on your Line, like you
 can do with regular windows and most other Morphs. If not, try
 now. But nothing happens! The reason is that our Morph is fixed in a
 place in the owner morph (the WorldMorph). It is fixed because
-<code>drawOn:</code> says it should be a line between <code>100 @ 100</code>
-and <code>400 @ 200</code>. Moving it around would mean modifying those
+<code class="code">drawOn:</code> says it should be a line between <code class="code">100 @ 100</code>
+and <code class="code">400 @ 200</code>. Moving it around would mean modifying those
 points. One possible way to do that could be to store those points in instance
 variables.
 </p>
 <p>But now, we just want to code our morph in the simplest possible way,
 and still be able to move it around. The solution is to make it
-subclass of <code>PlacedMorph</code>, instead of <code>Morph</code>.
+subclass of <code class="code">PlacedMorph</code>, instead of <code class="code">Morph</code>.
 </p>
-<span id="index-morph-10"></span>
+<a class="index-entry-id" id="index-morph-10"></a>
 <p>To do this, first evaluate the code below to get rid of all
 LineExampleMorph instances:
 </p>
-<div class="float"><span id="deleteMorphInstances"></span>
-<div class="example">
-<pre class="example">LineExampleMorph allInstancesDo: [ :m | m delete]
+<div class="float" id="deleteMorphInstances">
+<div class="example smallexample">
+<pre class="example-preformatted">LineExampleMorph allInstancesDo: [ :m | m delete]
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 7.1: </strong>Delete all instances of a given morph</p></div></div>
+<div class="caption"><p><strong class="strong">Example 7.1: </strong>Delete all instances of a given morph</p></div></div>
 <p>Then, in the System Browser class declaration for LineExampleMorph, type
-<code>PlacedMorph</code> instead of <code>Morph</code> and save. Now execute
+<code class="code">PlacedMorph</code> instead of <code class="code">Morph</code> and save. Now execute
 again:
 </p>
-<div class="example">
-<pre class="example">LineExampleMorph new openInWorld
+<div class="example smallexample">
+<pre class="example-preformatted">LineExampleMorph new openInWorld
 </pre></div>
 
-<span id="index-morph-11"></span>
+<a class="index-entry-id" id="index-morph-11"></a>
 <p>You will get a line you can grab with the mouse and move it
-around. <code>PlacedMorph</code> adds a new instance variable called
-<code>location</code>. If a morph has a <code>location</code>, it can be
-moved around, by modifying it. The <code>location</code> also defines a
+around. <code class="code">PlacedMorph</code> adds a new instance variable called
+<code class="code">location</code>. If a morph has a <code class="code">location</code>, it can be
+moved around, by modifying it. The <code class="code">location</code> also defines a
 new local coordinate system. All the coordinates used in the
-<code>drawOn:</code> method are now relative to this new coordinate
-system. That&rsquo;s why we don&rsquo;t need to modify the <code>drawOn:</code>
-method. <code>drawOn:</code> now tells how the morph should be drawn, but
-not where. The <code>location</code> also specifies a possible rotation
-and scale factor. This means that subinstances of <code>PlacedMorph</code>
+<code class="code">drawOn:</code> method are now relative to this new coordinate
+system. That&rsquo;s why we don&rsquo;t need to modify the <code class="code">drawOn:</code>
+method. <code class="code">drawOn:</code> now tells how the morph should be drawn, but
+not where. The <code class="code">location</code> also specifies a possible rotation
+and scale factor. This means that subinstances of <code class="code">PlacedMorph</code>
 can also be rotated and zoomed.
 </p>
 
-<span id="Filled-morph"></span><h4 class="subsection">7.1.3 Filled morph</h4>
+</div>
+<div class="subsection-level-extent" id="Filled-morph">
+<h4 class="subsection">7.1.3 Filled morph</h4>
 <p>Let&rsquo;s build another morph, to have more fun.
 </p>
-<div class="example">
-<pre class="example">PlacedMorph subclass: #TriangleExampleMorph
+<div class="example smallexample">
+<pre class="example-preformatted">PlacedMorph subclass: #TriangleExampleMorph
    instanceVariableNames: 'borderColor fillColor'
    classVariableNames: ''
    poolDictionaries: ''
    category: 'Morphic-Learning'
 </pre></div>
 
-<p>In method category <code>initialization</code> add:
+<p>In method category <code class="command">initialization</code> add:
 </p>
-<div class="example">
-<pre class="example">TriangleExampleMorph&gt;&gt;initialize
+<div class="example smallexample">
+<pre class="example-preformatted">TriangleExampleMorph&gt;&gt;initialize
    super initialize.
    borderColor := Color random alpha: 0.8.
    fillColor := Color random alpha: 0.6.
 </pre></div>
 
-<p>In the <code>drawing</code> method category add:
+<p>In the <code class="command">drawing</code> method category add:
 </p>
-<span id="index-morph-12"></span>
-<span id="index-morph-13"></span>
-<div class="example">
-<pre class="example">TriangleExampleMorph&gt;&gt;drawOn: aCanvas
+<a class="index-entry-id" id="index-morph-12"></a>
+<a class="index-entry-id" id="index-morph-13"></a>
+<div class="example smallexample">
+<pre class="example-preformatted">TriangleExampleMorph&gt;&gt;drawOn: aCanvas
    aCanvas strokeWidth: 10 color: borderColor fillColor: fillColor do: [
       aCanvas
          moveTo: 0 @ 100;
@@ -260,8 +264,8 @@ can also be rotated and zoomed.
 <p>Take a moment to understand that code, to guess what it will do. Now
 execute:
 </p>
-<div class="example">
-<pre class="example">TriangleExampleMorph new openInWorld
+<div class="example smallexample">
+<pre class="example-preformatted">TriangleExampleMorph new openInWorld
 </pre></div>
 
 <p>Do it several times, and move each triangle around. Each new triangle
@@ -269,42 +273,42 @@ you create has different colors. And these colors are not completely
 opaque. This means that when you place your triangle over some other
 morph, you can see through it.
 </p>
-<div class="float"><span id="ch07_002d02_002dTriangles"></span>
-<div align="center"><img src="ch07-02-Triangles.png" alt="ch07-02-Triangles">
+<div class="float" id="ch07_002d02_002dTriangles">
+<div class="center"><img class="image" src="ch07-02-Triangles.png" alt="ch07-02-Triangles">
 </div>
-<div class="float-caption"><p><strong>Figure 7.2: </strong>A variety of triangle morphs, one decorated with its halo and coordinates system</p></div></div>
+<div class="caption"><p><strong class="strong">Figure 7.2: </strong>A variety of triangle morphs, one decorated with its halo and coordinates system</p></div></div>
 
-<div class="float"><span id="exeRectMorph"></span>
+<div class="float" id="exeRectMorph">
 <blockquote class="indentedblock">
-<p>&nbsp;<img src="CuisLogo.png" alt="CuisLogo">
-<em>How will you write a
+<p>&nbsp;<img class="image" src="CuisLogo.png" alt="CuisLogo">
+<em class="emph">How will you write a
 movable rectangle morph with an x,y extent of 200 by 100? The rect will
 be filled with a random translucent color and surrounded by a thin
 blue line.</em>
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong>Exercise 7.2: </strong>Rectangle morph</p></div></div>
+<div class="caption"><p><strong class="strong">Exercise 7.2: </strong>Rectangle morph</p></div></div>
 <p>As we learnt previously, Morphic gives you additional ways to interact
 with your morphs. With a three button mouse or a wheel mouse, place
-the mouse pointer (a <code>HandMorph</code> instance) over one of your
+the mouse pointer (a <code class="code">HandMorph</code> instance) over one of your
 triangles and click with the center button or mouse wheel. If you don&rsquo;t have
-a three button mouse substitute <kbd>Command-click</kbd>. You get a constellation
+a three button mouse substitute <kbd class="kbd">Command-click</kbd>. You get a constellation
 of small colored circles around your morph. This is called the morph&rsquo;s
-<em>halo</em>, and each colored circle is a <em>halo
-handle</em>. See <a href="#ch07_002d02_002dTriangles">Figure 7.2</a>.
+<em class="dfn">halo</em>, and each colored circle is a <em class="dfn">halo
+handle</em>. See <a class="xref" href="#ch07_002d02_002dTriangles">Figure 7.2</a>.
 </p>
-<p>At the top left you have the red <code>Remove</code> handle. Clicking on it
+<p>At the top left you have the red <code class="command">Remove</code> handle. Clicking on it
 just removes the morph from the morphic world. Hover your hand over
 each handle, and you&rsquo;ll get a tooltip with its name. Other handles let
-you <code>Duplicate</code> a morph, open a <code>Menu</code> with actions on it,
-<code>Pick up</code> (same as dragging it with the the mouse as you did
-before). The <code>Move</code> operation is similar to <code>Pick up</code>, but
+you <code class="command">Duplicate</code> a morph, open a <code class="command">Menu</code> with actions on it,
+<code class="command">Pick up</code> (same as dragging it with the the mouse as you did
+before). The <code class="command">Move</code> operation is similar to <code class="command">Pick up</code>, but
 doesn&rsquo;t remove the morph from the current owner. More about that,
-later. The <code>Debug</code> handle opens a menu from where you can open
+later. The <code class="command">Debug</code> handle opens a menu from where you can open
 an Inspector or a Hierarchy Browser to study the morph.
 </p>
-<p>You also have a <code>Rotate</code> and <code>Change scale</code> handles. Try
+<p>You also have a <code class="command">Rotate</code> and <code class="command">Change scale</code> handles. Try
 them! To use them, move your hand to the handle, and then press the
 mouse button and drag it. As you might have guessed, the rotate
 handles spins your morph around the center of its surrounding
@@ -315,33 +319,35 @@ inner coordinate system defined by your morph. Displacement, rotation
 and scale are floating point numbers, and thus not limited to
 integers.
 </p>
-<span id="index-morph-14"></span>
+<a class="index-entry-id" id="index-morph-14"></a>
 <p>To change the center of rotation of a Morph, you override the method
-<code>rotationCenter</code> accordingly:
+<code class="code">rotationCenter</code> accordingly:
 </p>
-<div class="example">
-<pre class="example">RectangleExampleMorph&gt;&gt;rotationCenter
+<div class="example smallexample">
+<pre class="example-preformatted">RectangleExampleMorph&gt;&gt;rotationCenter
    ^ 0 @ 0
 </pre></div>
 
 <p>Observe how our rectangle morph now reacts to the rotation handle. We
 will learn how to control all this with code and animate our morph.
 </p>
-<span id="Animated-morph"></span><h4 class="subsection">7.1.4 Animated morph</h4>
-<span id="index-morph-15"></span>
-<p>Let&rsquo;s add two methods to our <code>TriangleExampleMorph</code> to
-make our triangle <em>alive</em>:
+</div>
+<div class="subsection-level-extent" id="Animated-morph">
+<h4 class="subsection">7.1.4 Animated morph</h4>
+<a class="index-entry-id" id="index-morph-15"></a>
+<p>Let&rsquo;s add two methods to our <code class="code">TriangleExampleMorph</code> to
+make our triangle <em class="emph">alive</em>:
 </p>
-<span id="index-morph-16"></span>
-<p>In the method category <code>stepping</code> define:
-</p><div class="example">
-<pre class="example">TriangleExampleMorph&gt;&gt;wantsSteps
+<a class="index-entry-id" id="index-morph-16"></a>
+<p>In the method category <code class="command">stepping</code> define:
+</p><div class="example smallexample">
+<pre class="example-preformatted">TriangleExampleMorph&gt;&gt;wantsSteps
    ^ true
 </pre></div>
 
 <p>...and:
-</p><div class="example">
-<pre class="example">TriangleExampleMorph&gt;&gt;step
+</p><div class="example smallexample">
+<pre class="example-preformatted">TriangleExampleMorph&gt;&gt;step
    fillColor := Color random.
    self redrawNeeded
 </pre></div>
@@ -351,17 +357,17 @@ make our triangle <em>alive</em>:
 <p>This will make our triangles change color once a second. But more
 interesting, edit the method:
 </p>
-<div class="example">
-<pre class="example">TriangleExampleMorph&gt;&gt;stepTime
+<div class="example smallexample">
+<pre class="example-preformatted">TriangleExampleMorph&gt;&gt;stepTime
    ^ 100
 </pre></div>
 
 <p>...and:
 </p>
-<span id="index-morph-17"></span>
+<a class="index-entry-id" id="index-morph-17"></a>
 
-<div class="example">
-<pre class="example">TriangleExampleMorph&gt;&gt;step
+<div class="example smallexample">
+<pre class="example-preformatted">TriangleExampleMorph&gt;&gt;step
    self morphPosition: self morphPosition + (0.4@0).
    self redrawNeeded
 </pre></div>
@@ -375,10 +381,10 @@ that looks.
 </p>
 <p>Now try this:
 </p>
-<span id="index-morph-18"></span>
+<a class="index-entry-id" id="index-morph-18"></a>
 
-<div class="example">
-<pre class="example">TriangleExampleMorph&gt;&gt;step
+<div class="example smallexample">
+<pre class="example-preformatted">TriangleExampleMorph&gt;&gt;step
    self morphPosition: self morphPosition + (0.2@0).
    self rotateBy: 4 degreesToRadians.
    self redrawNeeded
@@ -386,25 +392,25 @@ that looks.
 
 <p>It gets even better. First get rid of all instances:
 </p> 
-<div class="example">
-<pre class="example">TriangleExampleMorph allInstancesDo: [ :m | m delete]
+<div class="example smallexample">
+<pre class="example-preformatted">TriangleExampleMorph allInstancesDo: [ :m | m delete]
 </pre></div>
 
 <p>And modify these methods:
 </p>
-<div class="example">
-<pre class="example">TriangleExampleMorph&gt;&gt;initialize
+<div class="example smallexample">
+<pre class="example-preformatted">TriangleExampleMorph&gt;&gt;initialize
    super initialize.
    borderColor := Color random alpha: 0.8.
    fillColor := Color random alpha: 0.6.
    scaleBy := 1.1
 </pre></div>
 
-<p>Accept <code>scaleBy</code> as a new instance variable of the
-<code>TriangleExampleMorph</code> class.
+<p>Accept <code class="code">scaleBy</code> as a new instance variable of the
+<code class="code">TriangleExampleMorph</code> class.
 </p>
-<div class="example">
-<pre class="example">TriangleExampleMorph&gt;&gt;step
+<div class="example smallexample">
+<pre class="example-preformatted">TriangleExampleMorph&gt;&gt;step
    self morphPosition: self morphPosition + (0.2@0).
    self rotateBy: 4 degreesToRadians.
    self scaleBy: scaleBy.
@@ -414,28 +420,30 @@ that looks.
 </pre></div>
 
 <p>Then create a new triangle:
-</p><div class="example">
-<pre class="example">TriangleExampleMorph new openInWorld
+</p><div class="example smallexample">
+<pre class="example-preformatted">TriangleExampleMorph new openInWorld
 </pre></div>
 
 <p>See that when the triangle is doing its crazy dance, you can still
 open a halo and interact with it.
 </p>
 
-<div class="float"><span id="ch07_002d03_002dAnimatedMorph"></span>
-<div align="center"><img src="ch07-03-AnimatedMorph.gif" alt="ch07-03-AnimatedMorph">
+<div class="float" id="ch07_002d03_002dAnimatedMorph">
+<div class="center"><img class="image" src="ch07-03-AnimatedMorph.gif" alt="ch07-03-AnimatedMorph">
 </div>
-<div class="float-caption"><p><strong>Figure 7.3: </strong>Animated morph</p></div></div>
+<div class="caption"><p><strong class="strong">Figure 7.3: </strong>Animated morph</p></div></div>
 
-<span id="Morph-in-morph"></span><h4 class="subsection">7.1.5 Morph in morph</h4>
-<span id="index-morph-19"></span>
+</div>
+<div class="subsection-level-extent" id="Morph-in-morph">
+<h4 class="subsection">7.1.5 Morph in morph</h4>
+<a class="index-entry-id" id="index-morph-19"></a>
 
 <p>Now, let&rsquo;s try something different. Grab one of your
-<code>LineExampleMorph</code>. With the halo, zoom it until it is about the
+<code class="code">LineExampleMorph</code>. With the halo, zoom it until it is about the
 size of your triangle. Now place the triangle above your line. Open a
-halo on the triangle, click on the <code>Menu</code> handle and select
-...<code>embed into</code> &rarr;
-<code>LineExampleMorph</code>. This makes the triangle a submorph of the
+halo on the triangle, click on the <code class="command">Menu</code> handle and select
+...<code class="command">embed into</code> &rarr;
+<code class="command">LineExampleMorph</code>. This makes the triangle a submorph of the
 line. Now, if you move, scale or rotate the line, the triangle also
 gets adjusted.
 </p>
@@ -444,20 +452,20 @@ over it. With the halo on the triangle, you can rotate or zoom it
 independently of the line. Also note that when you grab the triangle
 with your hand (not using the halo), you grab the
 line&nbsp;+&nbsp;triangle composite. You can&rsquo;t just drag the triangle
-away. For this, you need the triangle&rsquo;s halo. Use its <code>Move</code>
-handle<a id="DOCF22" href="#FOOT22"><sup>22</sup></a> to position it without <em>getting it out</em> of the line. Use
-its <code>Pick up</code> handle to take it with the hand and drop
+away. For this, you need the triangle&rsquo;s halo. Use its <code class="command">Move</code>
+handle<a class="footnote" id="DOCF22" href="#FOOT22"><sup>22</sup></a> to position it without <em class="emph">getting it out</em> of the line. Use
+its <code class="command">Pick up</code> handle to take it with the hand and drop
 it in the world. Now, the triangle is no a longer submorph of the line,
 and the morphs can be moved, rotated or scaled independently.
 </p>
 <p>But let&rsquo;s try something. Make the triangle submorph of the line
-again. Now add the following method to category <code>geometry
-testing</code> of the class <code>LineExampleMorph</code>:
+again. Now add the following method to category <code class="command">geometry
+testing</code> of the class <code class="code">LineExampleMorph</code>:
 </p>
-<span id="index-morph-20"></span>
+<a class="index-entry-id" id="index-morph-20"></a>
 
-<div class="example">
-<pre class="example">LineExampleMorph&gt;&gt;clipsSubmorphs
+<div class="example smallexample">
+<pre class="example-preformatted">LineExampleMorph&gt;&gt;clipsSubmorphs
    ^ true
 </pre></div>
 
@@ -465,24 +473,26 @@ testing</code> of the class <code>LineExampleMorph</code>:
 line. This is most useful for implementing scrolling panes that only
 make a part of their contents visible, but might have other uses too.
 </p>
-<div class="float"><span id="ch07_002d04_002dAnimatedAndClippedSubmorph"></span>
-<div align="center"><img src="ch07-04-AnimatedAndClippedSubmorph.png" alt="ch07-04-AnimatedAndClippedSubmorph">
+<div class="float" id="ch07_002d04_002dAnimatedAndClippedSubmorph">
+<div class="center"><img class="image" src="ch07-04-AnimatedAndClippedSubmorph.png" alt="ch07-04-AnimatedAndClippedSubmorph">
 </div>
-<div class="float-caption"><p><strong>Figure 7.4: </strong>An animated and clipped submorph
+<div class="caption"><p><strong class="strong">Figure 7.4: </strong>An animated and clipped submorph
 triangle</p></div></div>
 
-<div class="footnote">
+</div>
+</div>
+<div class="footnotes-segment">
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h5><a id="FOOT22" href="#DOCF22">(22)</a></h3>
+<h5 class="footnote-body-heading"><a id="FOOT22" href="#DOCF22">(22)</a></h5>
 <p>By now, it is likely that the triangle has walked quite
 a bit!</p>
 </div>
 <hr>
-<div class="header">
+<div class="nav-panel">
 <p>
-Next: <a href="A-Clock-Morph.html" accesskey="n" rel="next">A Clock Morph</a>, Up: <a href="The-Fundamentals-of-Morph.html" accesskey="u" rel="up">The Fundamentals of Morph</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="A-Clock-Morph.html">A Clock Morph</a>, Up: <a href="The-Fundamentals-of-Morph.html">The Fundamentals of Morph</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

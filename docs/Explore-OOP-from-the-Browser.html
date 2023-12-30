@@ -1,9 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
-Copyright (C) 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
+Copyright © 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
 
 
 Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
@@ -16,7 +19,7 @@ texts. Your help is very valuable.
 
 
 
-Compilation : December 2, 2023
+Compilation : December 30, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -52,9 +55,6 @@ original.
 
 Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
  -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Explore OOP from the Browser (The Cuis-Smalltalk Book)</title>
 
 <meta name="description" content="Explore OOP from the Browser (The Cuis-Smalltalk Book)">
@@ -62,6 +62,8 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="Class-_002d-Model-of-Communicating-Entities.html" rel="up" title="Class - Model of Communicating Entities">
@@ -69,20 +71,11 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="Understanding-Object-Oriented-Programming.html" rel="prev" title="Understanding Object Oriented Programming">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
+div.center {text-align:center}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
+kbd.kbd {font-style: oblique}
+ul.mark-bullet {list-style-type: disc}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -91,24 +84,25 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Explore-OOP-from-the-Browser"></span><div class="header">
+<div class="section-level-extent" id="Explore-OOP-from-the-Browser">
+<div class="nav-panel">
 <p>
-Next: <a href="Cuis-system-classes.html" accesskey="n" rel="next">Cuis system classes</a>, Previous: <a href="Understanding-Object-Oriented-Programming.html" accesskey="p" rel="prev">Understanding Object Oriented Programming</a>, Up: <a href="Class-_002d-Model-of-Communicating-Entities.html" accesskey="u" rel="up">Class - Model of Communicating Entities</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Cuis-system-classes.html" accesskey="n" rel="next">Cuis system classes</a>, Previous: <a href="Understanding-Object-Oriented-Programming.html" accesskey="p" rel="prev">Understanding Object Oriented Programming</a>, Up: <a href="Class-_002d-Model-of-Communicating-Entities.html" accesskey="u" rel="up">Class, Model of Communicating Entities</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Explore-OOP-from-the-Browser-1"></span><h3 class="section">3.2 Explore OOP from the Browser</h3>
-<p>In <a href="A-brief-introduction-to-the-system-Browser.html#ch02_002dbrowserDetailed">Figure 2.1</a> of the Browser, below the classes pane, there are three
+<h3 class="section" id="Explore-OOP-from-the-Browser-1">3.2 Explore OOP from the Browser</h3>
+<p>In <a class="ref" href="A-brief-introduction-to-the-system-Browser.html#ch02_002dbrowserDetailed">Figure 2.1</a> of the Browser, below the classes pane, there are three
 buttons:
 </p>
-<ul>
-<li> <code>instance</code>: to access the <strong>instance methods</strong> of
+<ul class="itemize mark-bullet">
+<li><code class="command">instance</code>: to access the <strong class="strong">instance methods</strong> of
    the selected class. These methods apply to each and every instance
    of the class.  Each instance reacts to these.
 
-</li><li> <code>?</code>: to access to documentation &ndash; comment &ndash; of the
+</li><li><code class="command">?</code>: to access to documentation &ndash; comment &ndash; of the
    selected class.
 
-</li><li> <code>class</code>: to access the <strong>class methods</strong> of the
+</li><li><code class="command">class</code>: to access the <strong class="strong">class methods</strong> of the
    selected class. These methods are only accessible from the class
    itself.  Only the class object reacts to class methods.
 
@@ -119,46 +113,46 @@ contextual information on the selected item.
 </p>
 <p>Again, Class methods apply to the Class itself.  Instance Methods apply for 
 all instances modeled by the class.  We saw above that
-the class <code>Fraction</code>
-has a method <code>#numerator:denominator:</code> which is used to get a new instance of
-a <code>Fraction</code>.  There is only one <code>Fraction</code> class object.
-Messages like <code>#squared</code> and <code>#abs</code> are sent to any <code>Fraction</code>
+the class <code class="code">Fraction</code>
+has a method <code class="code">#numerator:denominator:</code> which is used to get a new instance of
+a <code class="code">Fraction</code>.  There is only one <code class="code">Fraction</code> class object.
+Messages like <code class="code">#squared</code> and <code class="code">#abs</code> are sent to any <code class="code">Fraction</code>
 instance, of which there are many.
 </p>
 <p>Up to now we have attempted to be very careful with definitions, but 
 you know that when we say &ldquo;a fraction&rdquo; we
-mean &ldquo;an instance of the class <code>Fraction</code>&rdquo;.
+mean &ldquo;an instance of the class <code class="code">Fraction</code>&rdquo;.
 From here our language will be more casual.
 </p>
-<div class="float"><span id="floatInfo"></span>
+<div class="float" id="floatInfo">
 <blockquote class="indentedblock">
-<p>&nbsp;<img src="CuisLogo.png" alt="CuisLogo">
-<em>When the
-<code>Float</code> class is selected, what is the information provided by
+<p>&nbsp;<img class="image" src="CuisLogo.png" alt="CuisLogo">
+<em class="emph">When the
+<code class="code">Float</code> class is selected, what is the information provided by
 the text pane?</em>
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong>Exercise 3.1: </strong>Float class information</p></div></div>
+<div class="caption"><p><strong class="strong">Exercise 3.1: </strong>Float class information</p></div></div>
 <p>We have spent much time here because it is important to avoid
 confusion between instance methods and class
-methods. Let&rsquo;s consider the <code>Float</code> class as an example.
+methods. Let&rsquo;s consider the <code class="code">Float</code> class as an example.
 </p>
-<span id="index-method-8"></span>
+<a class="index-entry-id" id="index-method-8"></a>
 
-<p><strong>Class Methods.</strong> In <a href="#ch03_002dfloatClassSide">Figure 3.1</a> the methods listed are
-class side, in the browser the <code>class</code> button is pressed to see this
+<p><strong class="strong">Class Methods.</strong> In <a class="ref" href="#ch03_002dfloatClassSide">Figure 3.1</a> the methods listed are
+class side, in the browser the <code class="command">class</code> button is pressed to see this
 list.
 </p>
-<div class="float"><span id="ch03_002dfloatClassSide"></span>
-<div align="center"><img src="ch03-floatClassSide.png" alt="ch03-floatClassSide">
+<div class="float" id="ch03_002dfloatClassSide">
+<div class="center"><img class="image" src="ch03-floatClassSide.png" alt="ch03-floatClassSide">
 </div>
-<div class="float-caption"><p><strong>Figure 3.1: </strong>Class methods in <code>Float</code></p></div></div>
+<div class="caption"><p><strong class="strong">Figure 3.1: </strong>Class methods in <code class="code">Float</code></p></div></div>
 <p>From a Workspace, these methods are called with the message name sent
 directly to the class:
 </p>
-<div class="example">
-<pre class="example">Float e
+<div class="example smallexample">
+<pre class="example-preformatted">Float e
 &rArr; 2.718281828459045
 Float epsilon
 &rArr; 2.220446049250313e-16
@@ -167,27 +161,27 @@ Float fmax
 </pre></div>
 
 
-<span id="index-keyboard-shortcut-7"></span>
+<a class="index-entry-id" id="index-keyboard-shortcut-7"></a>
 
 <blockquote class="indentedblock">
-<p>&nbsp;<img src="note.png" alt="note">
+<p>&nbsp;<img class="image" src="note.png" alt="note">
 You have noticed that text typed into the Workspace is
 colored and highlighted based on what you type.  We will discuss this
 below when we talk about the Smalltalk language, but the idea is to be
 helpful.  If you start to type a word the Cuis Workspace knows about,
-you can press the <kbd>tab</kbd> key and get a set of choices for
-completion of the word.  Try typing <code>Float epsi</code> and
-pressing <kbd>tab</kbd>.  You can then press <kbd>enter</kbd> and should see
-<code>Float epsilon</code>.  Click elsewhere on the Workspace to make
+you can press the <kbd class="kbd">tab</kbd> key and get a set of choices for
+completion of the word.  Try typing <code class="code">Float epsi</code> and
+pressing <kbd class="kbd">tab</kbd>.  You can then press <kbd class="kbd">enter</kbd> and should see
+<code class="code">Float epsilon</code>.  Click elsewhere on the Workspace to make
 this menu go away.
 </p></blockquote>
 
 <p>Nevertheless, you can not send a class message to an instance of
-<code>Float</code>, it throws an error and opens the red debugger
+<code class="code">Float</code>, it throws an error and opens the red debugger
 window. Just close the debug window for now to ignore the result.
 </p>
-<div class="example">
-<pre class="example">3.14 pi
+<div class="example smallexample">
+<pre class="example-preformatted">3.14 pi
 &rArr; MessageNotUnderstood: SmallFloat64&gt;&gt;pi
 Float pi e
 &rArr; MessageNotUnderstood: SmallFloat64&gt;&gt;e
@@ -196,8 +190,8 @@ Float pi e
 <p>Often these class methods are used to access constant values as seen in
 the previous example or to create a new instance:
 </p>
-<div class="example">
-<pre class="example">OrderedCollection new
+<div class="example smallexample">
+<pre class="example-preformatted">OrderedCollection new
 &rArr; Create a new empty ordered collection
 Fraction numerator: 1 denominator: 3
 &rArr; 1/3 &quot;a fraction instance&quot;
@@ -209,21 +203,21 @@ Integer primesUpTo: 20
 &rArr; #(2 3 5 7 11 13 17 19) 
 </pre></div>
 
-<span id="index-method-9"></span>
+<a class="index-entry-id" id="index-method-9"></a>
 
-<p><strong>Instance methods.</strong> In <a href="#ch03_002dfloatInstanceSide">Figure 3.2</a>, the methods
-listed are instance side, in the browser the <code>instance</code> button
+<p><strong class="strong">Instance methods.</strong> In <a class="ref" href="#ch03_002dfloatInstanceSide">Figure 3.2</a>, the methods
+listed are instance side, in the browser the <code class="command">instance</code> button
 is pressed to see this list.
 </p>
-<div class="float"><span id="ch03_002dfloatInstanceSide"></span>
-<div align="center"><img src="ch03-floatInstanceSide.png" alt="ch03-floatInstanceSide">
+<div class="float" id="ch03_002dfloatInstanceSide">
+<div class="center"><img class="image" src="ch03-floatInstanceSide.png" alt="ch03-floatInstanceSide">
 </div>
-<div class="float-caption"><p><strong>Figure 3.2: </strong>Instance methods in <code>Float</code></p></div></div>
+<div class="caption"><p><strong class="strong">Figure 3.2: </strong>Instance methods in <code class="code">Float</code></p></div></div>
 <p>In a Workspace, these methods are called with the message name sent
 directly to an instance:
 </p>
-<div class="example">
-<pre class="example">-10.12 abs &rArr; 10.12
+<div class="example smallexample">
+<pre class="example-preformatted">-10.12 abs &rArr; 10.12
 3.14 cos &rArr; -0.9999987317275395
 -10.12 * 2 &rArr; -20.24
 </pre></div>
@@ -231,8 +225,8 @@ directly to an instance:
 <p>Instance method messages cannot be sent directly to a class, you need
 to instantiate an object first:
 </p>
-<div class="example">
-<pre class="example">Float cos
+<div class="example smallexample">
+<pre class="example-preformatted">Float cos
 &rArr; MessageNotUnderstood: Float class&gt;&gt;cos
 Fraction squared
 &rArr; MessageNotUnderstood: Fraction class&gt;&gt;squared
@@ -243,8 +237,8 @@ OrderedCollection add: 10
 <p>Of course you can mix both class and instance methods, as long as you
 send the message to the appropriate class or instance:
 </p>
-<div class="example">
-<pre class="example">Float pi cos
+<div class="example smallexample">
+<pre class="example-preformatted">Float pi cos
 &rArr; -1.0
 Float e ln
 &rArr; 1.0 
@@ -259,19 +253,20 @@ OrderedCollection new add: Float pi; add: Float e; yourself
 methods. This portion of code updates the orientation of a torpedo
 according to its velocity vector:
 </p>
-<div class="float"><span id="torpedoOrientation"></span>
-<div class="example">
-<pre class="example">self rotation: (velocity y arcTan: velocity x) + Float halfPi
+<div class="float" id="torpedoOrientation">
+<div class="example smallexample">
+<pre class="example-preformatted">self rotation: (velocity y arcTan: velocity x) + Float halfPi
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 3.2: </strong>Aligning a torpedo with its velocity direction</p></div></div>
+<div class="caption"><p><strong class="strong">Example 3.2: </strong>Aligning a torpedo with its velocity direction</p></div></div>
 <p>With this brief introduction to the system browser, you are now
 equipped to explore the system classes.
 </p>
+</div>
 <hr>
-<div class="header">
+<div class="nav-panel">
 <p>
-Next: <a href="Cuis-system-classes.html" accesskey="n" rel="next">Cuis system classes</a>, Previous: <a href="Understanding-Object-Oriented-Programming.html" accesskey="p" rel="prev">Understanding Object Oriented Programming</a>, Up: <a href="Class-_002d-Model-of-Communicating-Entities.html" accesskey="u" rel="up">Class - Model of Communicating Entities</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Cuis-system-classes.html">Cuis system classes</a>, Previous: <a href="Understanding-Object-Oriented-Programming.html">Understanding Object Oriented Programming</a>, Up: <a href="Class-_002d-Model-of-Communicating-Entities.html">Class, Model of Communicating Entities</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

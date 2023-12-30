@@ -1,9 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
-Copyright (C) 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
+Copyright © 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
 
 
 Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
@@ -16,7 +19,7 @@ texts. Your help is very valuable.
 
 
 
-Compilation : December 2, 2023
+Compilation : December 30, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -52,9 +55,6 @@ original.
 
 Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
  -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Ellipse Morph (The Cuis-Smalltalk Book)</title>
 
 <meta name="description" content="Ellipse Morph (The Cuis-Smalltalk Book)">
@@ -62,6 +62,8 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="Visual-with-Morph.html" rel="up" title="Visual with Morph">
@@ -69,20 +71,8 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="Installing-a-Package.html" rel="prev" title="Installing a Package">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
-div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
+div.center {text-align:center}
+kbd.kbd {font-style: oblique}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -91,28 +81,29 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Ellipse-Morph"></span><div class="header">
+<div class="section-level-extent" id="Ellipse-Morph">
+<div class="nav-panel">
 <p>
 Next: <a href="Submorph.html" accesskey="n" rel="next">Submorph</a>, Previous: <a href="Installing-a-Package.html" accesskey="p" rel="prev">Installing a Package</a>, Up: <a href="Visual-with-Morph.html" accesskey="u" rel="up">Visual with Morph</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Ellipse-Morph-1"></span><h3 class="section">6.2 Ellipse Morph</h3>
-<span id="index-morph"></span>
-<p>Let&rsquo;s start with one of the basic morphs, an <code>EllipseMorph</code>.
-You could write <code>EllipseMorph new openInWorld</code> and
-<code><b>D</b>o-it</code>, but we are doing visual things for now, so let&rsquo;s
-get a World Menu and select from <code>New Morph...</code> <code>Basic</code>
+<h3 class="section" id="Ellipse-Morph-1">6.2 Ellipse Morph</h3>
+<a class="index-entry-id" id="index-morph"></a>
+<p>Let&rsquo;s start with one of the basic morphs, an <code class="code">EllipseMorph</code>.
+You could write <code class="code">EllipseMorph new openInWorld</code> and
+<code class="command"><b class="b">D</b>o-it</code>, but we are doing visual things for now, so let&rsquo;s
+get a World Menu and select from <code class="command">New Morph...</code> <code class="command">Basic</code>
 submenu and drag onto the desktop.
 </p>
-<p>Every time one obtains a morph from a <code>New Morph...</code> submenu,
+<p>Every time one obtains a morph from a <code class="command">New Morph...</code> submenu,
 one gets a different morph but made to a standard style.
 </p>
-<div class="float"><span id="ch06_002d01_002dEllipseMorphFromMenu"></span>
-<div align="center"><img src="ch06-01-EllipseMorphFromMenu.png" alt="ch06-01-EllipseMorphFromMenu">
+<div class="float" id="ch06_002d01_002dEllipseMorphFromMenu">
+<div class="center"><img class="image" src="ch06-01-EllipseMorphFromMenu.png" alt="ch06-01-EllipseMorphFromMenu">
 </div>
-<div class="float-caption"><p><strong>Figure 6.1: </strong>Select <code>EllipseMorph</code> from a
+<div class="caption"><p><strong class="strong">Figure 6.1: </strong>Select <code class="code">EllipseMorph</code> from a
 menu</p></div></div>
-<p>The basic challenge of <em>user interface design</em> is
+<p>The basic challenge of <em class="dfn">user interface design</em> is
 to communicate visibility and control.
 Where am I?  What can I do here?
 </p>
@@ -120,36 +111,37 @@ Where am I?  What can I do here?
 useful strategy is to reveal capabilities in context as they are
 needed.
 </p>
-<span id="index-morph-1"></span>
+<a class="index-entry-id" id="index-morph-1"></a>
 <p>In the case of Cuis-Smalltalk, you have to know some basics because helpful
 tools are there but stay out of the way.  At any time you can
-<kbd>Right-Click</kbd> on the desktop to get the World Menu.  You can also
-<kbd>Middle-Click</kbd> on any <code>Morph</code> to get a <em>halo</em> of
-<em>construction handles</em>, which show up as small colored circular
-icons.  If you pause the cursor over one of these, you get a <em>tool
+<kbd class="kbd">Right-Click</kbd> on the desktop to get the World Menu.  You can also
+<kbd class="kbd">Middle-Click</kbd> on any <code class="code">Morph</code> to get a <em class="dfn">halo</em> of
+<em class="dfn">construction handles</em>, which show up as small colored circular
+icons.  If you pause the cursor over one of these, you get a <em class="dfn">tool
 tip</em>, a temporary text popup who&rsquo;s name should give a clue to its
 usage.
 </p>
 <p>If you click elsewhere the construction handles leave, but you can get them
 back at any time with a mouse click.
 </p>
-<div class="float"><span id="ch06_002d03_002dDragToEnlarge"></span>
-<div align="center"><img src="ch06-03-DragToEnlarge.png" alt="ch06-03-DragToEnlarge">
+<div class="float" id="ch06_002d03_002dDragToEnlarge">
+<div class="center"><img class="image" src="ch06-03-DragToEnlarge.png" alt="ch06-03-DragToEnlarge">
 </div>
-<div class="float-caption"><p><strong>Figure 6.2: </strong>Drag construction handle to change size</p></div></div>
+<div class="caption"><p><strong class="strong">Figure 6.2: </strong>Drag construction handle to change size</p></div></div>
 <p>Now that you know this, move the yellow lower right handle with tool
-tip <code>Change size</code> via <em>Click-Drag</em>.  Just hold down the
+tip <code class="command">Change size</code> via <em class="dfn">Click-Drag</em>.  Just hold down the
 left mouse button while the cursor is over the handle, move the cursor
 to the right and down, and release the mouse button.
 </p>
-<div class="float"><span id="ch06_002d04_002dEnlarged"></span>
-<div align="center"><img src="ch06-04-Enlarged.png" alt="ch06-04-Enlarged">
+<div class="float" id="ch06_002d04_002dEnlarged">
+<div class="center"><img class="image" src="ch06-04-Enlarged.png" alt="ch06-04-Enlarged">
 </div>
-<div class="float-caption"><p><strong>Figure 6.3: </strong>A larger ellipse</p></div></div>
+<div class="caption"><p><strong class="strong">Figure 6.3: </strong>A larger ellipse</p></div></div>
+</div>
 <hr>
-<div class="header">
+<div class="nav-panel">
 <p>
-Next: <a href="Submorph.html" accesskey="n" rel="next">Submorph</a>, Previous: <a href="Installing-a-Package.html" accesskey="p" rel="prev">Installing a Package</a>, Up: <a href="Visual-with-Morph.html" accesskey="u" rel="up">Visual with Morph</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Submorph.html">Submorph</a>, Previous: <a href="Installing-a-Package.html">Installing a Package</a>, Up: <a href="Visual-with-Morph.html">Visual with Morph</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

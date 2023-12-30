@@ -1,9 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
-Copyright (C) 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
+Copyright © 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
 
 
 Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
@@ -16,7 +19,7 @@ texts. Your help is very valuable.
 
 
 
-Compilation : December 2, 2023
+Compilation : December 30, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -52,9 +55,6 @@ original.
 
 Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
  -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Kernel-Numbers (The Cuis-Smalltalk Book)</title>
 
 <meta name="description" content="Kernel-Numbers (The Cuis-Smalltalk Book)">
@@ -62,6 +62,8 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="Class-_002d-Model-of-Communicating-Entities.html" rel="up" title="Class - Model of Communicating Entities">
@@ -69,20 +71,9 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="Cuis-system-classes.html" rel="prev" title="Cuis system classes">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
+kbd.kbd {font-style: oblique}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -91,52 +82,53 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Kernel_002dNumbers"></span><div class="header">
+<div class="section-level-extent" id="Kernel_002dNumbers">
+<div class="nav-panel">
 <p>
-Next: <a href="Kernel_002dText.html" accesskey="n" rel="next">Kernel-Text</a>, Previous: <a href="Cuis-system-classes.html" accesskey="p" rel="prev">Cuis system classes</a>, Up: <a href="Class-_002d-Model-of-Communicating-Entities.html" accesskey="u" rel="up">Class - Model of Communicating Entities</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Kernel_002dText.html" accesskey="n" rel="next">Kernel-Text</a>, Previous: <a href="Cuis-system-classes.html" accesskey="p" rel="prev">Cuis system classes</a>, Up: <a href="Class-_002d-Model-of-Communicating-Entities.html" accesskey="u" rel="up">Class, Model of Communicating Entities</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Kernel_002dNumbers-1"></span><h3 class="section">3.4 Kernel-Numbers</h3>
-<span id="index-method-10"></span>
+<h3 class="section" id="Kernel_002dNumbers-1">3.4 Kernel-Numbers</h3>
+<a class="index-entry-id" id="index-method-10"></a>
 
-<p>The top hierarchy <code>Number</code> class shows most of the behaviors
-inherited by the subclasses as <code>Float</code>, <code>Integer</code> and
-<code>Fraction</code>. The Smalltalk way to learn about a behavior is to
+<p>The top hierarchy <code class="code">Number</code> class shows most of the behaviors
+inherited by the subclasses as <code class="code">Float</code>, <code class="code">Integer</code> and
+<code class="code">Fraction</code>. The Smalltalk way to learn about a behavior is to
 point the System Browser toward a top hierarchy class and to explore
 the method categories.
 </p>
-<p>Let&rsquo;s suppose we want to round a float number. In <code>Number</code>, we
-explore the <strong>Truncation and round off</strong> method category to
+<p>Let&rsquo;s suppose we want to round a float number. In <code class="code">Number</code>, we
+explore the <strong class="strong">Truncation and round off</strong> method category to
 discover several behaviors. The next thing to do is to test these
 messages in a Workspace to discover the one we are searching for:
 </p>
-<span id="index-number-22"></span>
-<span id="index-number-23"></span>
+<a class="index-entry-id" id="index-number-22"></a>
+<a class="index-entry-id" id="index-number-23"></a>
 
-<div class="float"><span id="roundingNumbers"></span>
-<div class="example">
-<pre class="example">1.264 roundTo: 0.1 &rArr; 1.3 
+<div class="float" id="roundingNumbers">
+<div class="example smallexample">
+<pre class="example-preformatted">1.264 roundTo: 0.1 &rArr; 1.3 
 1.264 roundTo: 0.01 &rArr; 1.26 
 1.264 roundUpTo: 0.01 &rArr; 1.27
 1.264 roundTo: 0.001 &rArr; 1.264
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 3.3: </strong>Rounding numbers, Workspace try out</p></div></div>
+<div class="caption"><p><strong class="strong">Example 3.3: </strong>Rounding numbers, Workspace try out</p></div></div>
 
-<span id="index-loop"></span>
-<span id="index-loop-1"></span>
-<span id="index-number-24"></span>
-<span id="index-number-25"></span>
+<a class="index-entry-id" id="index-loop"></a>
+<a class="index-entry-id" id="index-loop-1"></a>
+<a class="index-entry-id" id="index-number-24"></a>
+<a class="index-entry-id" id="index-number-25"></a>
 
 <p>Number is a very strange place to look for an indexed loop in a given
 interval. Nevertheless, an interval is defined by start and stop
-numbers. In the <code>Number</code> class, the method category
-<strong>intervals</strong> reveals related behaviors. These methods work
+numbers. In the <code class="code">Number</code> class, the method category
+<strong class="strong">intervals</strong> reveals related behaviors. These methods work
 polymorphically with most kinds of number:
 </p>
-<div class="float"><span id="intervalLoops"></span>
-<div class="example">
-<pre class="example">1 to: 10 do: [:i | Transcript show: 1 / i; space]
+<div class="float" id="intervalLoops">
+<div class="example smallexample">
+<pre class="example-preformatted">1 to: 10 do: [:i | Transcript show: 1 / i; space]
 &rArr; 1 (1/2) (1/3) (1/4) (1/5) (1/6) (1/7) (1/8) (1/9) (1/10)
 
 1 to: 10 by: 2 do: [:i | Transcript show: 1 / i; space]
@@ -150,57 +142,57 @@ Float pi to: 5 by: 1/3 do: [:i | Transcript show: i; space]
 4.141592653589793 4.474925986923126 4.808259320256459
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 3.4: </strong>Interval loops (for-loop)</p></div></div>
-<span id="index-loop-2"></span>
-<span id="index-number-26"></span>
+<div class="caption"><p><strong class="strong">Example 3.4: </strong>Interval loops (for-loop)</p></div></div>
+<a class="index-entry-id" id="index-loop-2"></a>
+<a class="index-entry-id" id="index-number-26"></a>
 
-<p>Now, in the <code>Integer</code> class, explore the method category
-<code>enumerating</code>, to find <code>timesRepeat:</code>. When a
+<p>Now, in the <code class="code">Integer</code> class, explore the method category
+<code class="command">enumerating</code>, to find <code class="code">timesRepeat:</code>. When a
 portion of code needs to be executed several times
-<a id="DOCF14" href="#FOOT14"><sup>14</sup></a>, without
-the need for an index, the <code>#timesRepeat:</code> message is sent to an
+<a class="footnote" id="DOCF14" href="#FOOT14"><sup>14</sup></a>, without
+the need for an index, the <code class="code">#timesRepeat:</code> message is sent to an
 integer. We already saw this variant in a previous section of this
 chapter.  Throwing a 6 face die 5 times can be simulated with
 an integer:
 </p>
-<span id="index-number-27"></span>
-<div class="float"><span id="playingDice"></span>
-<div class="example">
-<pre class="example">5 timesRepeat: [Transcript show: 6 atRandom; space]
+<a class="index-entry-id" id="index-number-27"></a>
+<div class="float" id="playingDice">
+<div class="example smallexample">
+<pre class="example-preformatted">5 timesRepeat: [Transcript show: 6 atRandom; space]
 &rArr; 1 2 4 6 2
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 3.5: </strong>Throwing a die 5 times</p></div></div>
+<div class="caption"><p><strong class="strong">Example 3.5: </strong>Throwing a die 5 times</p></div></div>
 <p>Note: Expect a different result each time.
 </p>
-<span id="index-Interval"></span>
-<span id="index-number-28"></span>
-<span id="index-number-29"></span>
-<span id="index-number-30"></span>
+<a class="index-entry-id" id="index-Interval"></a>
+<a class="index-entry-id" id="index-number-28"></a>
+<a class="index-entry-id" id="index-number-29"></a>
+<a class="index-entry-id" id="index-number-30"></a>
 
 <p>Intervals of numbers can be defined on their own, for future use:
 </p>
-<div class="float"><span id="interval"></span>
-<div class="example">
-<pre class="example">1 to: 10
+<div class="float" id="interval">
+<div class="example smallexample">
+<pre class="example-preformatted">1 to: 10
 &rArr; (1 to: 10)
 
 1 to: 10 by: 2
 &rArr; (1 to: 9 by: 2)
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 3.6: </strong>Interval</p></div></div>
-<p>Intervals work with other kinds of objects such as <code>Character</code>s:
-</p><div class="example">
-<pre class="example">$d to: $h
+<div class="caption"><p><strong class="strong">Example 3.6: </strong>Interval</p></div></div>
+<p>Intervals work with other kinds of objects such as <code class="code">Character</code>s:
+</p><div class="example smallexample">
+<pre class="example-preformatted">$d to: $h
 &rArr; #($d $e $f $g $h)
 </pre></div>
 
 <p>In fact, an interval is an object of its own. It is a sort of
 collection:
 </p>
-<div class="example">
-<pre class="example">(1 to: 10) class
+<div class="example smallexample">
+<pre class="example-preformatted">(1 to: 10) class
 &rArr; Interval
 
 (1 to: 10 by: 2) squared
@@ -213,51 +205,51 @@ collection:
 <p>In Spacewar!, when a ship is destroyed it is teleported to a random
 position in the square game play area. Intervals are handy to pick 
 random coordinates. In the example below, the variable
-<code>randomCoordinate</code> holds a block of code &ndash; called an anonymous
+<code class="code">randomCoordinate</code> holds a block of code &ndash; called an anonymous
 function in other languages. It picks a random value in the
 interval consisting of the gameplay area&rsquo;s left and right extents:
 </p>
-<div class="float"><span id="teleportShipInterval"></span>
-<div class="example">
-<pre class="example">randomCoordinate := [(area left to: area right) atRandom].
+<div class="float" id="teleportShipInterval">
+<div class="example smallexample">
+<pre class="example-preformatted">randomCoordinate := [(area left to: area right) atRandom].
 aShip
    velocity: 0 @ 0;
    morphPosition: randomCoordinate value @ randomCoordinate value
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 3.7: </strong>Teleport ship</p></div></div>
+<div class="caption"><p><strong class="strong">Example 3.7: </strong>Teleport ship</p></div></div>
 
-<div class="float"><span id="cosTable"></span>
+<div class="float" id="cosTable">
 <blockquote class="indentedblock">
-<p>&nbsp;<img src="CuisLogo.png" alt="CuisLogo">
-<em>Compute the cosine values in
+<p>&nbsp;<img class="image" src="CuisLogo.png" alt="CuisLogo">
+<em class="emph">Compute the cosine values in
 the interval [0 ; 2PI], each 1/10. Output the result in the transcript.</em>
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong>Exercise 3.2: </strong>Cosine table</p></div></div>
-<span id="index-number-31"></span>
+<div class="caption"><p><strong class="strong">Exercise 3.2: </strong>Cosine table</p></div></div>
+<a class="index-entry-id" id="index-number-31"></a>
 <p>Integer numbers are represented in different bases when prefixed with
-the base and &ldquo;r&rdquo;. The <code>r</code> stands for radix, the base root by
+the base and &ldquo;r&rdquo;. The <code class="command">r</code> stands for radix, the base root by
 which the following number is interpreted.
-When executing and printing <kbd>Ctrl-p</kbd> on such a
+When executing and printing <kbd class="kbd">Ctrl-p</kbd> on such a
 number, it is immediately printed in the decimal base:
 </p>
-<div class="float"><span id="integerBase"></span>
-<div class="example">
-<pre class="example">2r1111 &rArr; 15
+<div class="float" id="integerBase">
+<div class="example smallexample">
+<pre class="example-preformatted">2r1111 &rArr; 15
 16rF &rArr; 15
 8r17 &rArr; 15
 20rF &rArr; 15
 10r15 &rArr; 15
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 3.8: </strong>Integer represented by different bases</p></div></div>
-<p>Writing numbers as Mayans or Babylonians<a id="DOCF15" href="#FOOT15"><sup>15</sup></a>:
+<div class="caption"><p><strong class="strong">Example 3.8: </strong>Integer represented by different bases</p></div></div>
+<p>Writing numbers as Mayans or Babylonians<a class="footnote" id="DOCF15" href="#FOOT15"><sup>15</sup></a>:
 </p>
-<div class="float"><span id="countingAncients"></span>
-<div class="example">
-<pre class="example">&quot;The Babylonians&quot;
+<div class="float" id="countingAncients">
+<div class="example smallexample">
+<pre class="example-preformatted">&quot;The Babylonians&quot;
 60r10 &rArr; 60
 60r30 &rArr; 180
 60r60 &rArr; 360
@@ -270,146 +262,147 @@ number, it is immediately printed in the decimal base:
 20r100 &rArr; 400
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 3.9: </strong>Counting like the ancients</p></div></div>
-<span id="index-bits-shifting"></span>
+<div class="caption"><p><strong class="strong">Example 3.9: </strong>Counting like the ancients</p></div></div>
+<a class="index-entry-id" id="index-bits-shifting"></a>
 <p>Because of the nature of a number represented in base 2, shifting its
 bits left and right is equivalent to multiplying by 2 and dividing by
 2:
 </p>
-<div class="float"><span id="shiftBits"></span>
-<div class="example">
-<pre class="example">(2r1111 &lt;&lt; 1) printStringBase: 2 &rArr; '11110'
+<div class="float" id="shiftBits">
+<div class="example smallexample">
+<pre class="example-preformatted">(2r1111 &lt;&lt; 1) printStringBase: 2 &rArr; '11110'
 2r1111 &lt;&lt; 1 &rArr; 30
 (2r1111 &gt;&gt; 1) printStringBase: 2 &rArr; '111'
 2r1111 &gt;&gt; 1 &rArr; 7
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 3.10: </strong>Shifting bits</p></div></div>
-<div class="float"><span id="multiplyBy1024"></span>
+<div class="caption"><p><strong class="strong">Example 3.10: </strong>Shifting bits</p></div></div>
+<div class="float" id="multiplyBy1024">
 <blockquote class="indentedblock">
-<p>&nbsp;<img src="CuisLogo.png" alt="CuisLogo">
-<em>How would you multiply
+<p>&nbsp;<img class="image" src="CuisLogo.png" alt="CuisLogo">
+<em class="emph">How would you multiply
 the integer 360 by 1024, without using the multiplication operation?</em>
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong>Exercise 3.3: </strong>Multiply by 1024</p></div></div>
+<div class="caption"><p><strong class="strong">Exercise 3.3: </strong>Multiply by 1024</p></div></div>
 
-<span id="Hiatus-with-decimal-numbers"></span><h4 class="subheading">Hiatus with decimal numbers</h4>
-<span id="index-number-32"></span>
+<h4 class="subheading" id="Hiatus-with-decimal-numbers">Hiatus with decimal numbers</h4>
+<a class="index-entry-id" id="index-number-32"></a>
 
 <p>We saw decimal numbers are written with a dot &ldquo;.&rdquo; to separate the
-integer and the decimal parts: <code>1.5</code>, <code>1235.021</code>
-or <code>0.5</code>. The number <code>0.0000241</code> is more easily
-written with the scientific notation <code>2.41e-5</code>; it means 2
+integer and the decimal parts: <code class="code">1.5</code>, <code class="code">1235.021</code>
+or <code class="code">0.5</code>. The number <code class="code">0.0000241</code> is more easily
+written with the scientific notation <code class="code">2.41e-5</code>; it means 2
 preceded by 5 zeros or 2 as the fifth digit after the decimal dot.
 </p>
 <blockquote class="indentedblock">
-<p>&nbsp;<img src="note.png" alt="note">
+<p>&nbsp;<img class="image" src="note.png" alt="note">
 Computers encode and store decimal numbers imprecisely. You
 need to be aware of that when doing computation and equality
 comparisons. Many systems hide these errors because they are very tiny
 errors. Cuis-Smalltalk does not hide this inaccuracy.  There is good
-information about this in the class comment of <code>Float</code>.
+information about this in the class comment of <code class="code">Float</code>.
 </p></blockquote>
 
-<div class="float"><span id="FloatPrecision"></span>
-<div class="example">
-<pre class="example">0.1 + 0.2 - 0.3
+<div class="float" id="FloatPrecision">
+<div class="example smallexample">
+<pre class="example-preformatted">0.1 + 0.2 - 0.3
 &rArr; 5.551115123125783e-17
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 3.11: </strong>Computer dyscalculia!</p></div></div>
-<p>In <a href="#FloatPrecision">Example 3.11</a>, the returned value should be zero but it is
-not the case. The computer returns <code>5.55e-17</code>, or
-<code>0.0000000000000000555</code>, it is very close to zero, but there
+<div class="caption"><p><strong class="strong">Example 3.11: </strong>Computer dyscalculia!</p></div></div>
+<p>In <a class="ref" href="#FloatPrecision">Example 3.11</a>, the returned value should be zero but it is
+not the case. The computer returns <code class="code">5.55e-17</code>, or
+<code class="code">0.0000000000000000555</code>, it is very close to zero, but there
 is an error.
 </p>
-<div class="float"><span id="exeFloatPrecision"></span>
+<div class="float" id="exeFloatPrecision">
 <blockquote class="indentedblock">
-<p>&nbsp;<img src="CuisLogo.png" alt="CuisLogo">
-<em>Give 3 calculations showing errors compared
+<p>&nbsp;<img class="image" src="CuisLogo.png" alt="CuisLogo">
+<em class="emph">Give 3 calculations showing errors compared
 to the expected results.</em>
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong>Exercise 3.4: </strong>Miscellaneous calculation errors with decimal
+<div class="caption"><p><strong class="strong">Exercise 3.4: </strong>Miscellaneous calculation errors with decimal
 numbers</p></div></div>
 <p>When accuracy is mandatory use the Rational Numbers
 representation in Cuis-Smalltalk.
 </p>
-<span id="index-number-33"></span>
+<a class="index-entry-id" id="index-number-33"></a>
 
 <p>A rational number is written with the division symbol between two
-integers: do <kbd>Ctrl-p</kbd> on <code>5/2</code> &rArr;
-<code>5/2</code>. Cuis-Smalltalk returns a rational number, it does not compute a
+integers: do <kbd class="kbd">Ctrl-p</kbd> on <code class="code">5/2</code> &rArr;
+<code class="code">5/2</code>. Cuis-Smalltalk returns a rational number, it does not compute a
 decimal.
 </p>
-<div class="float"><span id="exeZeroDivide"></span>
+<div class="float" id="exeZeroDivide">
 <blockquote class="indentedblock">
-<p>&nbsp;<img src="CuisLogo.png" alt="CuisLogo">
-<em>What happens when
-executing this code</em> <code>5/0</code><em>?</em>
+<p>&nbsp;<img class="image" src="CuisLogo.png" alt="CuisLogo">
+<em class="emph">What happens when
+executing this code</em> <code class="code">5/0</code><em class="emph">?</em>
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong>Exercise 3.5: </strong>Toward the infinite</p></div></div>
+<div class="caption"><p><strong class="strong">Exercise 3.5: </strong>Toward the infinite</p></div></div>
 <p>Let&rsquo;s come back to our computer&rsquo;s dyscalculia with decimal numbers. When
-using the rational numbers, the <a href="#FloatPrecision">Example 3.11</a> becomes:
+using the rational numbers, the <a class="ref" href="#FloatPrecision">Example 3.11</a> becomes:
 </p>
-<div class="float"><span id="FractionPrecision"></span>
-<div class="example">
-<pre class="example">(1/10) + (2/10) - (3/10)
+<div class="float" id="FractionPrecision">
+<div class="example smallexample">
+<pre class="example-preformatted">(1/10) + (2/10) - (3/10)
 &rArr; 0
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 3.12: </strong>Calculation is correct using fractions!</p></div></div>
+<div class="caption"><p><strong class="strong">Example 3.12: </strong>Calculation is correct using fractions!</p></div></div>
 <p>This time we have the expected result. Under the covers the computer
 only does the calculations with integer components so no roundoff
 results. This is a fine example where solving some problems requires a
 paradigm shift.
 </p>
-<div class="float"><span id="exeFractionPrecision"></span>
+<div class="float" id="exeFractionPrecision">
 <blockquote class="indentedblock">
-<p>&nbsp;<img src="CuisLogo.png" alt="CuisLogo">
-<em>Return to
-<a href="#exeFloatPrecision">Exercise 3.4</a> and use rational numbers to represent decimal
+<p>&nbsp;<img class="image" src="CuisLogo.png" alt="CuisLogo">
+<em class="emph">Return to
+<a class="ref" href="#exeFloatPrecision">Exercise 3.4</a> and use rational numbers to represent decimal
 numbers. The errors will be resolved.</em>
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong>Exercise 3.6: </strong>Fix the errors</p></div></div>
-<span id="index-number-34"></span>
+<div class="caption"><p><strong class="strong">Exercise 3.6: </strong>Fix the errors</p></div></div>
+<a class="index-entry-id" id="index-number-34"></a>
 <p>Cuis-Smalltalk knows how to convert a decimal number to a fraction, by
-sending the message <code>#asFraction</code>. We already acknowledged the
+sending the message <code class="code">#asFraction</code>. We already acknowledged the
 computer&rsquo;s dyscalculia with decimal numbers, this is why when
 asking for a fraction representation we have this strange answer. The
-internal computer representation of <code>1.3</code> is not exactly as
+internal computer representation of <code class="code">1.3</code> is not exactly as
 it seems:
 </p>
-<div class="example">
-<pre class="example">(13/10) asFloat
+<div class="example smallexample">
+<pre class="example-preformatted">(13/10) asFloat
 &rArr; 1.3
 
 (13/10) asFloat asFraction
 &rArr; 5854679515581645/45035996273704
 </pre></div>
 
-<div class="footnote">
+</div>
+<div class="footnotes-segment">
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h5><a id="FOOT14" href="#DOCF14">(14)</a></h3>
+<h5 class="footnote-body-heading"><a id="FOOT14" href="#DOCF14">(14)</a></h5>
 <p>More strictly, to be repeated an integer number of times.</p>
-<h5><a id="FOOT15" href="#DOCF15">(15)</a></h3>
+<h5 class="footnote-body-heading"><a id="FOOT15" href="#DOCF15">(15)</a></h5>
 <p>Base 20 and 60
 number representations are not exclusive to these civilisations,
 although they are the most documented use cases.</p>
 </div>
 <hr>
-<div class="header">
+<div class="nav-panel">
 <p>
-Next: <a href="Kernel_002dText.html" accesskey="n" rel="next">Kernel-Text</a>, Previous: <a href="Cuis-system-classes.html" accesskey="p" rel="prev">Cuis system classes</a>, Up: <a href="Class-_002d-Model-of-Communicating-Entities.html" accesskey="u" rel="up">Class - Model of Communicating Entities</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Kernel_002dText.html">Kernel-Text</a>, Previous: <a href="Cuis-system-classes.html">Cuis system classes</a>, Up: <a href="Class-_002d-Model-of-Communicating-Entities.html">Class, Model of Communicating Entities</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

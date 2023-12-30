@@ -1,9 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
-Copyright (C) 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
+Copyright © 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
 
 
 Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
@@ -16,7 +19,7 @@ texts. Your help is very valuable.
 
 
 
-Compilation : December 2, 2023
+Compilation : December 30, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -52,9 +55,6 @@ original.
 
 Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
  -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Submorph (The Cuis-Smalltalk Book)</title>
 
 <meta name="description" content="Submorph (The Cuis-Smalltalk Book)">
@@ -62,6 +62,8 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="Visual-with-Morph.html" rel="up" title="Visual with Morph">
@@ -69,20 +71,8 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="Ellipse-Morph.html" rel="prev" title="Ellipse Morph">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
-div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
+div.center {text-align:center}
+kbd.kbd {font-style: oblique}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -91,47 +81,49 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Submorph"></span><div class="header">
+<div class="section-level-extent" id="Submorph">
+<div class="nav-panel">
 <p>
 Next: <a href="A-brief-introduction-to-Inspectors.html" accesskey="n" rel="next">A brief introduction to Inspectors</a>, Previous: <a href="Ellipse-Morph.html" accesskey="p" rel="prev">Ellipse Morph</a>, Up: <a href="Visual-with-Morph.html" accesskey="u" rel="up">Visual with Morph</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Submorph-1"></span><h3 class="section">6.3 Submorph</h3>
-<span id="index-morph-2"></span>
-<span id="index-morph-3"></span>
+<h3 class="section" id="Submorph-1">6.3 Submorph</h3>
+<a class="index-entry-id" id="index-morph-2"></a>
+<a class="index-entry-id" id="index-morph-3"></a>
 <p>Morphs can contain other morphs.  These interior morphs are called
-<em>submorph</em>s of their containing morph. Again, you can do this by
+<em class="dfn">submorph</em>s of their containing morph. Again, you can do this by
 writing the software &ldquo;code&rdquo;, but let&rsquo;s do it directly with a
-<code>BoxedMorph</code>.
+<code class="code">BoxedMorph</code>.
 </p>
-<p>First we obtain a <code>BoxedMorph</code> from the <code>New morph...</code>
-submenus. The <code>BoxedMorph</code> instance displays itself as a
+<p>First we obtain a <code class="code">BoxedMorph</code> from the <code class="command">New morph...</code>
+submenus. The <code class="code">BoxedMorph</code> instance displays itself as a
 rect with a border.
 </p>
-<div class="float"><span id="ch06_002d05_002dAddRectangle"></span>
-<div align="center"><img src="ch06-05-AddRectangle.png" alt="ch06-05-AddRectangle">
+<div class="float" id="ch06_002d05_002dAddRectangle">
+<div class="center"><img class="image" src="ch06-05-AddRectangle.png" alt="ch06-05-AddRectangle">
 </div>
-<div class="float-caption"><p><strong>Figure 6.4: </strong>Obtain a <code>BoxedMorph</code></p></div></div>
-<p>Now drag the rect over the ellipse and <kbd>Middle-Click</kbd> on the
+<div class="caption"><p><strong class="strong">Figure 6.4: </strong>Obtain a <code class="code">BoxedMorph</code></p></div></div>
+<p>Now drag the rect over the ellipse and <kbd class="kbd">Middle-Click</kbd> on the
 rect and click on the blue construction handle to gets the rect&rsquo;s
-<em>Morph Menu</em>.  Use the menu selection <code>embed into</code> and
+<em class="dfn">Morph Menu</em>.  Use the menu selection <code class="command">embed into</code> and
 select the ellipse as its new parent.
 </p>
-<div class="float"><span id="ch06_002d06_002dEmbedRectIntoEllipse"></span>
-<div align="center"><img src="ch06-06-EmbedRectIntoEllipse.png" alt="ch06-06-EmbedRectIntoEllipse">
+<div class="float" id="ch06_002d06_002dEmbedRectIntoEllipse">
+<div class="center"><img class="image" src="ch06-06-EmbedRectIntoEllipse.png" alt="ch06-06-EmbedRectIntoEllipse">
 </div>
-<div class="float-caption"><p><strong>Figure 6.5: </strong>Make the rect a submorph of the
+<div class="caption"><p><strong class="strong">Figure 6.5: </strong>Make the rect a submorph of the
 ellipse</p></div></div>
-<p>Now when you click-drag the ellipse, or use the <code>Pick up</code> or
-<code>Move</code> construction handles, the rect is just a decoration for
+<p>Now when you click-drag the ellipse, or use the <code class="command">Pick up</code> or
+<code class="command">Move</code> construction handles, the rect is just a decoration for
 the ellipse.
 </p>
 <p>Indeed, the rect seems to have fused into the ellipse.  Using the
 mouse where the rect shows itself is just using the mouse on the
 ellipse.  This rect does not have many interesting behaviors.
 </p>
-<p>Let&rsquo;s add a behavior to just this one <code>BoxedMorph</code>.
+<p>Let&rsquo;s add a behavior to just this one <code class="code">BoxedMorph</code>.
 </p>
+</div>
 
 
 

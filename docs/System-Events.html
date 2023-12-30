@@ -1,9 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
-Copyright (C) 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
+Copyright © 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
 
 
 Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
@@ -16,7 +19,7 @@ texts. Your help is very valuable.
 
 
 
-Compilation : December 2, 2023
+Compilation : December 30, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -52,9 +55,6 @@ original.
 
 Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
  -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>System Events (The Cuis-Smalltalk Book)</title>
 
 <meta name="description" content="System Events (The Cuis-Smalltalk Book)">
@@ -62,27 +62,15 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="Events.html" rel="up" title="Events">
 <link href="Overall-Mechanism.html" rel="next" title="Overall Mechanism">
-<link href="Events.html" rel="prev" title="Events">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
-div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
+pre.format-preformatted {font-family: inherit}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -91,52 +79,53 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="System-Events"></span><div class="header">
+<div class="section-level-extent" id="System-Events">
+<div class="nav-panel">
 <p>
 Next: <a href="Overall-Mechanism.html" accesskey="n" rel="next">Overall Mechanism</a>, Up: <a href="Events.html" accesskey="u" rel="up">Events</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="System-Events-1"></span><h3 class="section">8.1 System Events</h3>
+<h3 class="section" id="System-Events-1">8.1 System Events</h3>
 
-<p>Modern integrated <em>System On a Chip</em> (<em>SOC</em>) hardware has many
+<p>Modern integrated <em class="dfn">System On a Chip</em> (<em class="dfn">SOC</em>) hardware has many
 circuits which are active at the same time.  So one kind of event is
-sensing something happening in the world.  Class <code>EventSensor</code>
-handles keyboard key press and mouse <em>hardware interrupts</em>,
+sensing something happening in the world.  Class <code class="code">EventSensor</code>
+handles keyboard key press and mouse <em class="dfn">hardware interrupts</em>,
 translating between hardware signals and software event objects.
 </p>
-<p>Basically, a morph <em>raises its hand</em> and says what events, if
+<p>Basically, a morph <em class="emph">raises its hand</em> and says what events, if
 any, it is interested in receiving. Then it implements methods to get
 the event objects holding the information of the captured events. In
-Cuis-Smalltalk, the class <code>MorphicEvent</code> and its subclasses represent
+Cuis-Smalltalk, the class <code class="code">MorphicEvent</code> and its subclasses represent
 the diversity of events in the system.
 </p>
-<span id="index-event-2"></span>
+<a class="index-entry-id" id="index-event-2"></a>
 <div class="format">
-<pre class="format"><code>MorphicEvent</code>
-   <code>DropEvent</code>
-   <code>DropFilesEvent</code>
-   <code>UserInputEvent</code>
-      <code>KeyboardEvent</code>
-      <code>MouseEvent</code>
-         <code>MouseButtonEvent</code>
-         <code>MouseMoveEvent</code>
-         <code>MouseScrollEvent</code>
-      <code>WindowEvent</code>
+<pre class="format-preformatted"><code class="code">MorphicEvent</code>
+   <code class="code">DropEvent</code>
+   <code class="code">DropFilesEvent</code>
+   <code class="code">UserInputEvent</code>
+      <code class="code">KeyboardEvent</code>
+      <code class="code">MouseEvent</code>
+         <code class="code">MouseButtonEvent</code>
+         <code class="code">MouseMoveEvent</code>
+         <code class="code">MouseScrollEvent</code>
+      <code class="code">WindowEvent</code>
 </pre></div>
 
 
-<p>As <code>MouseMoveEvent</code>s are generated, the <code>HandMorph</code>
+<p>As <code class="code">MouseMoveEvent</code>s are generated, the <code class="code">HandMorph</code>
 adjusts its screen position.  When mouse and keystroke events arrive,
-the <code>HandMorph</code> coordinates the &ldquo;dispatch&rdquo; of events to the
+the <code class="code">HandMorph</code> coordinates the &ldquo;dispatch&rdquo; of events to the
 proper morph under the hand as well as displaying tool tips and
 carrying morphs in transit during drag operations.
 </p>
-<p>As we saw in the previous chapter with <code>ColorClickEllipse</code>, any
-morph may override default <code>Morph</code> methods to assert that it
+<p>As we saw in the previous chapter with <code class="code">ColorClickEllipse</code>, any
+morph may override default <code class="code">Morph</code> methods to assert that it
 handles various user events and the methods which take the associated
 event objects when events arrive.
 </p>
-<p>Basically, user input events are generated, a <code>HandMorph</code>
+<p>Basically, user input events are generated, a <code class="code">HandMorph</code>
 reflects any cursor movement, morphs react to events, each long
 running task gets a time slice and makes some progress, any display
 changes are updated on the screen, and the next step happens.  Time
@@ -146,10 +135,11 @@ marches forward a step.
 that all balls in the air are moving at once.  Underneath, the balls
 are each moving just a bit, in sequence.
 </p>
+</div>
 <hr>
-<div class="header">
+<div class="nav-panel">
 <p>
-Next: <a href="Overall-Mechanism.html" accesskey="n" rel="next">Overall Mechanism</a>, Up: <a href="Events.html" accesskey="u" rel="up">Events</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Overall-Mechanism.html">Overall Mechanism</a>, Up: <a href="Events.html">Events</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

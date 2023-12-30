@@ -1,9 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
-Copyright (C) 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
+Copyright © 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
 
 
 Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
@@ -16,7 +19,7 @@ texts. Your help is very valuable.
 
 
 
-Compilation : December 2, 2023
+Compilation : December 30, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -52,9 +55,6 @@ original.
 
 Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
  -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Method syntax (The Cuis-Smalltalk Book)</title>
 
 <meta name="description" content="Method syntax (The Cuis-Smalltalk Book)">
@@ -62,6 +62,8 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="Control-Flow-Messaging.html" rel="up" title="Control Flow Messaging">
@@ -69,20 +71,8 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="Pseudo_002dvariables.html" rel="prev" title="Pseudo-variables">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
+ul.mark-bullet {list-style-type: disc}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -91,13 +81,14 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Method-syntax"></span><div class="header">
+<div class="section-level-extent" id="Method-syntax">
+<div class="nav-panel">
 <p>
 Next: <a href="Block-syntax.html" accesskey="n" rel="next">Block syntax</a>, Previous: <a href="Pseudo_002dvariables.html" accesskey="p" rel="prev">Pseudo-variables</a>, Up: <a href="Control-Flow-Messaging.html" accesskey="u" rel="up">Control Flow Messaging</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Method-syntax-1"></span><h3 class="section">5.3 Method syntax</h3>
-<span id="index-method-13"></span>
+<h3 class="section" id="Method-syntax-1">5.3 Method syntax</h3>
+<a class="index-entry-id" id="index-method-13"></a>
 
 <p>Whereas expressions may be evaluated anywhere in Cuis-Smalltalk (for example 
 in a workspace, in a debugger, or in a browser), methods are normally
@@ -112,13 +103,13 @@ for defining classes. We are already farmiliar with this
 from previous examples.
 </p>
 <p>Let&rsquo;s take a another look to the method syntax when control flow is
-involved &ndash; our first explanation was <a href="Spacewar_0021-States-and-Behaviors.html">Spacewar! States and Behaviors</a>).
+involved &ndash; our first explanation was <a class="ref" href="Spacewar_0021-States-and-Behaviors.html">Spacewar! States and Behaviors</a>).
 </p>
-<p>Here is the method <code>keyStroke:</code> in the class <code>SpaceWar</code>.
+<p>Here is the method <code class="code">keyStroke:</code> in the class <code class="code">SpaceWar</code>.
 </p>
-<div class="float"><span id="spacewarKeyStroke"></span>
-<div class="example">
-<pre class="example">SpaceWar&gt;&gt;keyStroke: event
+<div class="float" id="spacewarKeyStroke">
+<div class="example smallexample">
+<pre class="example-preformatted">SpaceWar&gt;&gt;keyStroke: event
 &quot;Check for any keyboard stroke, and take action accordingly&quot;
    | key |
    key := event keyCharacter.
@@ -130,20 +121,20 @@ involved &ndash; our first explanation was <a href="Spacewar_0021-States-and-Beh
    ...
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 5.1: </strong>SpaceWar! key stroke</p></div></div>
+<div class="caption"><p><strong class="strong">Example 5.1: </strong>SpaceWar! key stroke</p></div></div>
 <p>Syntactically, a method consists of:
 </p>
-<ul>
-<li> the method pattern, containing the name (<em>i.e.</em>,
- <code>keyStroke:</code>) and any arguments. Here <code>event</code> is a
- <code>KeyboardEvent</code>,
+<ul class="itemize mark-bullet">
+<li>the method pattern, containing the name (<em class="emph">i.e.</em>,
+ <code class="code">keyStroke:</code>) and any arguments. Here <code class="code">event</code> is a
+ <code class="code">KeyboardEvent</code>,
 
-</li><li> comments (these may occur anywhere, but the convention is to
+</li><li>comments (these may occur anywhere, but the convention is to
  put one at the top that explains what the method does),
  
-</li><li> declarations of local variables (<em>i.e.</em>, <code>key</code>),
+</li><li>declarations of local variables (<em class="emph">i.e.</em>, <code class="code">key</code>),
 
-</li><li> and any number of expressions separated by dots; here there are
+</li><li>and any number of expressions separated by dots; here there are
  5.
 
 </li></ul>
@@ -152,23 +143,24 @@ involved &ndash; our first explanation was <a href="Spacewar_0021-States-and-Beh
 will cause the method to exit at that point, returning the value of
 that expression. A method that terminates without explicitly returning
 the value of some expression will always return the current
-value of <code>self</code>.
+value of <code class="code">self</code>.
 </p>
 <p>Arguments and local variables should always start with lower case
 letters. Names starting with upper-case letters are assumed to be
-global variables. Class names, like <code>Character</code>, for example,
+global variables. Class names, like <code class="code">Character</code>, for example,
 are simply global variables referring to the object representing
 that class.
 </p>
-<p>As you might suspect from <a href="Communicating-entities.html#classesCount">Example 2.2</a>, <code>Smalltalk allClasses size</code> just
-sends the <code>#allClasses</code> method to a dictionary named <code>Smalltalk</code>.
+<p>As you might suspect from <a class="ref" href="Communicating-entities.html#classesCount">Example 2.2</a>, <code class="code">Smalltalk allClasses size</code> just
+sends the <code class="code">#allClasses</code> method to a dictionary named <code class="code">Smalltalk</code>.
 As with any other object, you can inspect this dictionary.  You can note a case of
-self-reference here: the value of <code>Smalltalk at: #Smalltalk</code> is <code>Smalltalk</code>.
+self-reference here: the value of <code class="code">Smalltalk at: #Smalltalk</code> is <code class="code">Smalltalk</code>.
 </p>
+</div>
 <hr>
-<div class="header">
+<div class="nav-panel">
 <p>
-Next: <a href="Block-syntax.html" accesskey="n" rel="next">Block syntax</a>, Previous: <a href="Pseudo_002dvariables.html" accesskey="p" rel="prev">Pseudo-variables</a>, Up: <a href="Control-Flow-Messaging.html" accesskey="u" rel="up">Control Flow Messaging</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Block-syntax.html">Block syntax</a>, Previous: <a href="Pseudo_002dvariables.html">Pseudo-variables</a>, Up: <a href="Control-Flow-Messaging.html">Control Flow Messaging</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

@@ -1,9 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
-Copyright (C) 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
+Copyright © 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
 
 
 Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
@@ -16,7 +19,7 @@ texts. Your help is very valuable.
 
 
 
-Compilation : December 2, 2023
+Compilation : December 30, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -52,9 +55,6 @@ original.
 
 Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
  -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Spacewar! Morphs (The Cuis-Smalltalk Book)</title>
 
 <meta name="description" content="Spacewar! Morphs (The Cuis-Smalltalk Book)">
@@ -62,27 +62,19 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="Visual-with-Morph.html" rel="up" title="Visual with Morph">
-<link href="The-Fundamentals-of-Morph.html" rel="next" title="The Fundamentals of Morph">
 <link href="Building-your-specialized-Morph.html" rel="prev" title="Building your specialized Morph">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
+div.center {text-align:center}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
+kbd.kbd {font-style: oblique}
+ul.mark-bullet {list-style-type: disc}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -91,46 +83,52 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Spacewar_0021-Morphs"></span><div class="header">
+<div class="section-level-extent" id="Spacewar_0021-Morphs">
+<div class="nav-panel">
 <p>
 Previous: <a href="Building-your-specialized-Morph.html" accesskey="p" rel="prev">Building your specialized Morph</a>, Up: <a href="Visual-with-Morph.html" accesskey="u" rel="up">Visual with Morph</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Spacewar_0021-Morphs-1"></span><h3 class="section">6.6 Spacewar! Morphs</h3>
+<h3 class="section" id="Spacewar_0021-Morphs-1">6.6 Spacewar! Morphs</h3>
 
-<span id="All-Morphs"></span><h4 class="subsection">6.6.1 All Morphs</h4>
+<ul class="mini-toc">
+<li><a href="#All-Morphs" accesskey="1">All Morphs</a></li>
+<li><a href="#The-art-of-refactoring" accesskey="2">The art of refactoring</a></li>
+</ul>
+<div class="subsection-level-extent" id="All-Morphs">
+<h4 class="subsection">6.6.1 All Morphs</h4>
 <p>Previously we defined the actors of the game as subclasses of the very
-general <code>Object</code> class (See
-<a href="Spacewar_0021-States-and-Behaviors.html#torpedoClassVariables">Example 3.14</a>). However the game play, the central star,
+general <code class="code">Object</code> class (See
+<a class="ref" href="Spacewar_0021-States-and-Behaviors.html#torpedoClassVariables">Example 3.14</a>). However the game play, the central star,
 the ships and the torpedoes are visual objects, each with a dedicated
 graphic shape:
 </p>
-<ul>
-<li> the game play is a simple rectangular area filled with the
+<ul class="itemize mark-bullet">
+<li>the game play is a simple rectangular area filled with the
   black color,
 
-</li><li> the central star is a fluctuating yellow disk with an orange
+</li><li>the central star is a fluctuating yellow disk with an orange
   aura,
 
-</li><li> the ships are rotating quadrangles each one painted with a
+</li><li>the ships are rotating quadrangles each one painted with a
   different color,
 
-</li><li> a torpedo is a rotating triangle to paint with a different
+</li><li>a torpedo is a rotating triangle to paint with a different
   color depending on the firing ship.
   
 </li></ul>
 
 <p>Therefore it makes sense to turn these actors into kinds of
-<code>Morph</code>s, the visual entity of Cuis-Smalltalk. To do so, point a System
+<code class="code">Morph</code>s, the visual entity of Cuis-Smalltalk. To do so, point a System
 Browser to the class definition of each actor, replace the parent
-class <code>Object</code> by <code>PlacedMorph</code><a id="DOCF20" href="#FOOT20"><sup>20</sup></a>, then save the class definition
-with <kbd>Ctrl-s</kbd>.
+class <code class="code">Object</code> by <code class="code">PlacedMorph</code><a class="footnote" id="DOCF20" href="#FOOT20"><sup>20</sup></a>, then save the class definition
+with <kbd class="kbd">Ctrl-s</kbd>.
 </p>
-<p>For example, the torpedo class as seen in <a href="Spacewar_0021-States-and-Behaviors.html#torpedoClassVariables">Example 3.14</a>
+<p>For example, the torpedo class as seen in <a class="ref" href="Spacewar_0021-States-and-Behaviors.html#torpedoClassVariables">Example 3.14</a>
 is edited as:
 </p>
-<div class="example">
-<pre class="example">PlacedMorph subclass: #Torpedo
+<div class="example smallexample">
+<pre class="example-preformatted">PlacedMorph subclass: #Torpedo
    instanceVariableNames: 'position heading velocity lifeSpan'
    classVariableNames: ''
    poolDictionaries: ''
@@ -139,36 +137,36 @@ is edited as:
 
 <p>Moreover, a placed Morph already knows about its position and
 orientation on screen &ndash; it can be dragged and moved in the screen and
-rotated with the mouse cursor. Therefore the <code>position</code> and
-<code>heading</code> instance variables are redundant and should be
+rotated with the mouse cursor. Therefore the <code class="code">position</code> and
+<code class="code">heading</code> instance variables are redundant and should be
 removed. For now we keep it, it will be removed later when we will
 know how to replace each of its use cases with its appropriate Morph
 counterpart.
 </p>
-<div class="float"><span id="allActorsMorph"></span>
+<div class="float" id="allActorsMorph">
 <blockquote class="indentedblock">
-<p>&nbsp;<img src="CuisLogo.png" alt="CuisLogo">
-<em>Edit
-<code>SpaceWar</code>, <code>CentralStar</code> and <code>SpaceShip</code>
-to be subclasses of the <code>PlacedMorph</code> class.</em>
+<p>&nbsp;<img class="image" src="CuisLogo.png" alt="CuisLogo">
+<em class="emph">Edit
+<code class="code">SpaceWar</code>, <code class="code">CentralStar</code> and <code class="code">SpaceShip</code>
+to be subclasses of the <code class="code">PlacedMorph</code> class.</em>
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong>Exercise 6.1: </strong>Make all Morphs</p></div></div>
+<div class="caption"><p><strong class="strong">Exercise 6.1: </strong>Make all Morphs</p></div></div>
 <p>As explained in the previous sections of this chapter, a morph can be
-embedded within another morph. In Spacewar!, a <code>SpaceWar</code> morph
-instance presenting the game play, it is the <em>owner</em> of the central
+embedded within another morph. In Spacewar!, a <code class="code">SpaceWar</code> morph
+instance presenting the game play, it is the <em class="emph">owner</em> of the central
 star, space ship and torpedo morphs. Put in other words, the central
-star, space ships and torpedoes are <em>submorphs</em> of a
-<code>SpaceWar</code> morph instance.
+star, space ships and torpedoes are <em class="emph">submorphs</em> of a
+<code class="code">SpaceWar</code> morph instance.
 </p>
-<p>The <code>SpaceWar&gt;&gt;initializeActors</code> code in <a href="SpaceWar_0021-collections.html#initActors">Example 4.17</a> is
+<p>The <code class="code">SpaceWar&gt;&gt;initializeActors</code> code in <a class="ref" href="SpaceWar_0021-collections.html#initActors">Example 4.17</a> is
  not complete without adding and positioning the central star and
  space ships as submorphs of the Spacewar! game play:
 </p>
-<div class="float"><span id="initFullActors"></span>
-<div class="example">
-<pre class="example">SpaceWar&gt;&gt;initializeActors
+<div class="float" id="initFullActors">
+<div class="example smallexample">
+<pre class="example-preformatted">SpaceWar&gt;&gt;initializeActors
    centralStar := CentralStar new.
    self addMorph: centralStar.
    centralStar morphPosition: 0 @ 0.
@@ -183,62 +181,64 @@ star, space ships and torpedoes are <em>submorphs</em> of a
       color: Color red
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 6.3: </strong>Complete code to initialize the Spacewar! actors</p></div></div>
-<p>There are two important messages: <code>#addMorph:</code> and
-<code>#morphPosition:</code>. The former asks to the receiver morph to embed
+<div class="caption"><p><strong class="strong">Example 6.3: </strong>Complete code to initialize the Spacewar! actors</p></div></div>
+<p>There are two important messages: <code class="code">#addMorph:</code> and
+<code class="code">#morphPosition:</code>. The former asks to the receiver morph to embed
 its morph argument as a submorph, the latter asks to set the receiver
 coordinates in its owner&rsquo;s reference frame. From reading the code, you
 deduce the origin of the owner reference frame is its middle, indeed
 our central star is in the middle of the game play.
 </p>
-<p>There is a third message not written here, <code>#morphPosition</code>, to ask
+<p>There is a third message not written here, <code class="code">#morphPosition</code>, to ask
 the coordinates of the receiver in its owner&rsquo;s reference frame.
 </p>
-<p>Remember our discussion about the <code>position</code> instance
+<p>Remember our discussion about the <code class="code">position</code> instance
 variable. Now you clearly understand it is redundant and we remove it
-from the <code>SpaceShip</code> and <code>Torpedo</code> definitions. Each time
-we need to access the position, we just write <code>self
+from the <code class="code">SpaceShip</code> and <code class="code">Torpedo</code> definitions. Each time
+we need to access the position, we just write <code class="code">self
 morphPosition</code> and each time we need to modify the position we write
-<code>self morphPosition: newPosition</code>. More on that later.
+<code class="code">self morphPosition: newPosition</code>. More on that later.
 </p>
 
-<span id="The-art-of-refactoring"></span><h4 class="subsection">6.6.2 The art of refactoring</h4>
-<span id="index-refactoring"></span>
+</div>
+<div class="subsection-level-extent" id="The-art-of-refactoring">
+<h4 class="subsection">6.6.2 The art of refactoring</h4>
+<a class="index-entry-id" id="index-refactoring"></a>
 
-<p>In our <a href="Spacewar_0021-models.html#newtonModel">newtonian model</a> we explained the
+<p>In our <a class="ref" href="Spacewar_0021-models.html#newtonModel">newtonian model</a> we explained the
 space ships are subjected to the engine acceleration and the gravity
 pull of the central star. The equations are described in
-<a href="Spacewar_0021-models.html#motionEquations">Figure 2.4</a>.
+<a class="ref" href="Spacewar_0021-models.html#motionEquations">Figure 2.4</a>.
 </p>
-<p>Based on these mathematics, we wrote the <code>SpaceShip&gt;&gt;update:</code>
+<p>Based on these mathematics, we wrote the <code class="code">SpaceShip&gt;&gt;update:</code>
 method to update the ship position according to the elapsed time &ndash;
-see <a href="SpaceWar_0021-collections.html#spaceShipMechanic">Example 4.19</a>.
+see <a class="ref" href="SpaceWar_0021-collections.html#spaceShipMechanic">Example 4.19</a>.
 </p>
 <p>So far in our model, a torpedo is not subjected to the central star&rsquo;s
 gravity pull nor its engine acceleration. It is supposing its mass is
-zero which is unlikely. Of course the <code>Torpedo&gt;&gt;update:</code>
+zero which is unlikely. Of course the <code class="code">Torpedo&gt;&gt;update:</code>
 method is simpler than the space ship counter part &ndash; see
-<a href="SpaceWar_0021-collections.html#torpedoMechanic">Example 4.18</a>. Nevertheless, it is more accurate and even more
-fun that the torpedoes are subjected to the gravity pull<a id="DOCF21" href="#FOOT21"><sup>21</sup></a> and its engine acceleration; an
+<a class="ref" href="SpaceWar_0021-collections.html#torpedoMechanic">Example 4.18</a>. Nevertheless, it is more accurate and even more
+fun that the torpedoes are subjected to the gravity pull<a class="footnote" id="DOCF21" href="#FOOT21"><sup>21</sup></a> and its engine acceleration; an
 agile space ship pilot could use gravity assist to accelerate a
 torpedo fired with a path close to the central star.
 </p>
 <p>What are the impacts of these considerations on the torpedo and space
 ship entities?
 </p>
-<ol>
-<li> They will share <em>common states</em> as the mass, the
+<ol class="enumerate">
+<li> They will share <em class="emph">common states</em> as the mass, the
   position, the heading, the velocity and the acceleration.
 
-</li><li> They will share <em>common behaviors</em> as the necessary
+</li><li> They will share <em class="emph">common behaviors</em> as the necessary
   computations to update the position, direction, gravity pull and
   velocity.
 
-</li><li> They will have <em>different states</em>: a torpedo
+</li><li> They will have <em class="emph">different states</em>: a torpedo
   has a life span state while a space ship has fuel tank capacity and
   torpedoes stock states.
 
-</li><li> They will have <em>different behaviors</em>: a
+</li><li> They will have <em class="emph">different behaviors</em>: a
   torpedo self destructs when its life span expires, a space ship
   fires torpedoes and accelerates as long as its fuel tank and its
   torpedoes count are not zero.
@@ -248,54 +248,54 @@ ship entities?
 <p>Shared state and behaviors suggest a common class.  Unshared states
 and behaviors suggests specialized subclasses which embody
 the differences.  So let us &ldquo;factor out&rdquo; the shared elements of
-the <code>SpaceShip</code> and <code>Torpedo</code>
+the <code class="code">SpaceShip</code> and <code class="code">Torpedo</code>
 classes into a common ancestor class; one more specialized
-than the <code>Morph</code> class they currently share.
+than the <code class="code">Morph</code> class they currently share.
 </p>
 <p>Doing such analysis on the computer model of the game is part of the
-<em>refactoring</em> effort to avoid behavior and state duplications while
+<em class="dfn">refactoring</em> effort to avoid behavior and state duplications while
 making more obvious the common logic in the entities. The general idea of
 code refactoring is to rework existing code to make it more elegant,
 understandable and logical.
 </p>
-<p>To do so, we will introduce a <code>Mobile</code> class, a kind of
- <code>PlacedMorph</code> with behaviors specific to a mobile object
+<p>To do so, we will introduce a <code class="code">Mobile</code> class, a kind of
+ <code class="code">PlacedMorph</code> with behaviors specific to a mobile object
  subjected to accelerations. Its states are the mass, position,
  heading, velocity and acceleration. Well, as we are discussing
  refactoring, the mass state does not really makes sense in our game,
  indeed our mobile&rsquo;s mass is constant. We just need a method returning
- a literal number and we can then remove the <code>mass</code> instance
- variable. Moreover, as explained previously, a <code>PlacedMorph</code>
+ a literal number and we can then remove the <code class="code">mass</code> instance
+ variable. Moreover, as explained previously, a <code class="code">PlacedMorph</code>
  instance already know about its position and heading, so we also
  remove these two attributes, although there are common behaviors to a
  Space ship and a torpedo.
 </p>
-<p>It results in this <code>Mobile</code> definition:
+<p>It results in this <code class="code">Mobile</code> definition:
 </p>
-<div class="float"><span id="mobileClass"></span>
-<div class="example">
-<pre class="example">PlacedMorph subclass: #Mobile
+<div class="float" id="mobileClass">
+<div class="example smallexample">
+<pre class="example-preformatted">PlacedMorph subclass: #Mobile
    instanceVariableNames: 'velocity acceleration color'
    classVariableNames: ''
    poolDictionaries: ''
    category: 'Spacewar!'
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 6.4: </strong>Mobile in the game play</p></div></div>
-<div class="float"><span id="refactoryShipTorpedo"></span>
+<div class="caption"><p><strong class="strong">Example 6.4: </strong>Mobile in the game play</p></div></div>
+<div class="float" id="refactoryShipTorpedo">
 <blockquote class="indentedblock">
-<p>&nbsp;<img src="CuisLogo.png" alt="CuisLogo">
-<em>What should be the refactored definitions of the
-<code>SpaceShip</code> and <code>Torpedo</code> classes?</em>
+<p>&nbsp;<img class="image" src="CuisLogo.png" alt="CuisLogo">
+<em class="emph">What should be the refactored definitions of the
+<code class="code">SpaceShip</code> and <code class="code">Torpedo</code> classes?</em>
 </p></blockquote>
 
 
-<div class="float-caption"><p><strong>Exercise 6.2: </strong>Refactoring <code>SpaceShip</code> and <code>Torpedo</code></p></div></div>
-<p>The first behaviors we add to our <code>Mobile</code> are its
+<div class="caption"><p><strong class="strong">Exercise 6.2: </strong>Refactoring <code class="code">SpaceShip</code> and <code class="code">Torpedo</code></p></div></div>
+<p>The first behaviors we add to our <code class="code">Mobile</code> are its
 initialization and its mass:
 </p>
-<div class="example">
-<pre class="example">Mobile&gt;&gt;initialize
+<div class="example smallexample">
+<pre class="example-preformatted">Mobile&gt;&gt;initialize
   super initialize.
   velocity := 0 @ 0.
   acceleration := 0
@@ -307,51 +307,51 @@ Mobile&gt;&gt;mass
 <p>The next methods to add are the ones relative to the physical
 calculations. First, the code to calculate the gravity acceleration:
 </p>
-<div class="float"><span id="gravityForce"></span>
-<div class="example">
-<pre class="example">Mobile&gt;&gt;gravity
+<div class="float" id="gravityForce">
+<div class="example smallexample">
+<pre class="example-preformatted">Mobile&gt;&gt;gravity
 &quot;Compute the gravity acceleration vector&quot;
    | position |
    position := self morphPosition.
    ^ -10 * self mass * owner starMass / (position r raisedTo: 3) * position
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 6.5: </strong>Calculate the gravity force</p></div></div>
+<div class="caption"><p><strong class="strong">Example 6.5: </strong>Calculate the gravity force</p></div></div>
 <p>This method deserves a few comments:
-</p><ul>
-<li> <code>self morphPosition</code> returns a <code>Point</code>
+</p><ul class="itemize mark-bullet">
+<li><code class="code">self morphPosition</code> returns a <code class="code">Point</code>
   instance, the position of the mobile in the owner reference frame,
 
-</li><li> <code>owner</code> is the <code>SpaceWar</code> instance
+</li><li><code class="code">owner</code> is the <code class="code">SpaceWar</code> instance
   representing the game play. It is the owner &ndash; parent morph &ndash; of
-  the mobile. When asking <code>#starMass</code>, it interrogates its central
+  the mobile. When asking <code class="code">#starMass</code>, it interrogates its central
   star mass and return its value:
 
-<div class="example">
-<pre class="example">SpaceWar&gt;&gt;starMass
+<div class="example smallexample">
+<pre class="example-preformatted">SpaceWar&gt;&gt;starMass
    ^ centralStar mass
 </pre></div>
 
-</li><li> In <code>position r</code>, the <code>#r</code> message asks the radius
+</li><li>In <code class="code">position r</code>, the <code class="code">#r</code> message asks the radius
   attribute of a point considered in polar coordinates. It is just its
   length. It is the distance between the mobile and the central star.
 
-</li><li> <code>* position</code> really means multiply the previous
-  scalar value with a <code>Point</code>, hence a vector. Thus the returned
-  value is a <code>Point</code>, a vector in this context, the gravity
+</li><li><code class="code">* position</code> really means multiply the previous
+  scalar value with a <code class="code">Point</code>, hence a vector. Thus the returned
+  value is a <code class="code">Point</code>, a vector in this context, the gravity
   vector.
 
 </li></ul>
 
 <p>The method to update the mobile position and velocity is mostly the
-same as in <a href="SpaceWar_0021-collections.html#spaceShipMechanic">Example 4.19</a>. Of course the
-<code>SpaceShip&gt;&gt;update:</code> and <code>Torpedo&gt;&gt;update:</code>
+same as in <a class="ref" href="SpaceWar_0021-collections.html#spaceShipMechanic">Example 4.19</a>. Of course the
+<code class="code">SpaceShip&gt;&gt;update:</code> and <code class="code">Torpedo&gt;&gt;update:</code>
 version must be both deleted. Below is the complete version with the
 morph&rsquo;s way of accessing the mobile&rsquo;s position:
 </p>
-<div class="float"><span id="mobileUpdate"></span>
-<div class="example">
-<pre class="example">Mobile&gt;&gt;update: t
+<div class="float" id="mobileUpdate">
+<div class="example smallexample">
+<pre class="example-preformatted">Mobile&gt;&gt;update: t
 &quot;Update the mobile position and velocity&quot;
   | ai ag newVelocity |
   &quot;acceleration vectors&quot;
@@ -370,17 +370,17 @@ morph&rsquo;s way of accessing the mobile&rsquo;s position:
      self morphPosition: self morphPosition negated]
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 6.6: </strong><code>Mobile</code>&rsquo;s <code>update:</code> method</p></div></div>
+<div class="caption"><p><strong class="strong">Example 6.6: </strong><code class="code">Mobile</code>&rsquo;s <code class="code">update:</code> method</p></div></div>
 <p>Now we should add the two methods to detect when a mobile is heading
 off into deep space.
 </p>
-<p>But first we define the method <code>morphLocalBounds</code> in each of
-our Morph objects. It returns a <code>Rectangle</code> instance defined in
+<p>But first we define the method <code class="code">morphLocalBounds</code> in each of
+our Morph objects. It returns a <code class="code">Rectangle</code> instance defined in
 the Morph coordinates by its origin and extent:
 </p>
-<div class="float"><span id="boundMorph"></span>
-<div class="example">
-<pre class="example">SpaceWar&gt;&gt;morphLocalBounds
+<div class="float" id="boundMorph">
+<div class="example smallexample">
+<pre class="example-preformatted">SpaceWar&gt;&gt;morphLocalBounds
    ^ -300 @ -300 extent: 600 @ 600
 
 CentralStar&gt;&gt;morphLocalBounds
@@ -390,10 +390,10 @@ Mobile&gt;&gt;morphLocalBounds
    ^ Rectangle encompassing: self class vertices
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 6.7: </strong>Bounds of our Morph objects</p></div></div>
-<div class="float"><span id="mobileDeepSpace"></span>
-<div class="example">
-<pre class="example">Mobile&gt;&gt;isInOuterSpace
+<div class="caption"><p><strong class="strong">Example 6.7: </strong>Bounds of our Morph objects</p></div></div>
+<div class="float" id="mobileDeepSpace">
+<div class="example smallexample">
+<pre class="example-preformatted">Mobile&gt;&gt;isInOuterSpace
 &quot;Is the mobile located in the outer space? (outside of the game
 play area)&quot;
    ^ (owner morphLocalBounds containsPoint: self morphPosition) not
@@ -403,24 +403,24 @@ Mobile&gt;&gt;isGoingOuterSpace
    ^ (self morphPosition dotProduct: velocity) &gt; 0
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 6.8: </strong>Test when a mobile is &ldquo;spaced out&rdquo;</p></div></div>
+<div class="caption"><p><strong class="strong">Example 6.8: </strong>Test when a mobile is &ldquo;spaced out&rdquo;</p></div></div>
 <p>As you see, these test methods are simple and short. When writing
 Cuis-Smalltalk code, this is something we appreciate a lot and we do not
 hesitate to cut a long method in several small methods. It improves
-readability and code reuse. The <code>#containsPoint:</code> message asks the
+readability and code reuse. The <code class="code">#containsPoint:</code> message asks the
 receiver rectangle whether the point in argument is inside its shape.
 </p>
-<span id="index-overriding-1"></span>
+<a class="index-entry-id" id="index-overriding-1"></a>
 <p>When a mobile is updated, its position and velocity are
-updated. However the <code>Mobile</code> subclasses <code>SpaceShip</code> or
-<code>Torpedo</code> may need additional specific updates. In object
+updated. However the <code class="code">Mobile</code> subclasses <code class="code">SpaceShip</code> or
+<code class="code">Torpedo</code> may need additional specific updates. In object
 oriented programming there is this special mechanism named
-<em>overriding</em> to achieve this.
+<em class="dfn">overriding</em> to achieve this.
 </p>
-<p>See the <code>Torpedo&gt;&gt;update:</code> definition:
+<p>See the <code class="code">Torpedo&gt;&gt;update:</code> definition:
 </p>
-<div class="example">
-<pre class="example">Torpedo&gt;&gt;update: t
+<div class="example smallexample">
+<pre class="example-preformatted">Torpedo&gt;&gt;update: t
    &quot;Update the torpedo position&quot;
    super update: t.
    &quot;orientate the torpedo in its velocity direction, nicer effect
@@ -431,15 +431,15 @@ oriented programming there is this special mechanism named
    acceleration &gt; 0 ifTrue: [acceleration := acceleration - 500]
 </pre></div>
 
-<p>Here the <code>update:</code> method is specialized to the torpedo
-specific needs. The mechanical calculation done in <code>Mobile&gt;&gt;update:</code>
+<p>Here the <code class="code">update:</code> method is specialized to the torpedo
+specific needs. The mechanical calculation done in <code class="code">Mobile&gt;&gt;update:</code>
 is still used to update the torpedo position and velocity: this is
-done by <code>super update: t</code>. We already discussed
-<code>super</code>. In the context of
-<code>Torpedo&gt;&gt;update:</code> it means search for an <code>update:</code>
-method in <code>Torpedo</code>&rsquo;s parent class, that class&rsquo;s parent
+done by <code class="code">super update: t</code>. We already discussed
+<code class="code">super</code>. In the context of
+<code class="code">Torpedo&gt;&gt;update:</code> it means search for an <code class="code">update:</code>
+method in <code class="code">Torpedo</code>&rsquo;s parent class, that class&rsquo;s parent
 and so on until the method
-is found, if not a <em>Message Not Understood</em> error is signalled.
+is found, if not a <em class="emph">Message Not Understood</em> error is signalled.
 </p>
 <p>Among the specific added behaviors, the torpedo orientation along its
 velocity vector is inaccurate but nice looking. To orient accordingly
@@ -449,27 +449,27 @@ the torpedo, we adjust its heading with its velocity vector heading.
 acceleration are also handled specifically. When a torpedo is just fired, its
 engine acceleration is huge then it decreases quickly.
 </p>
-<p>With the System Browser pointed to the <code>Torpedo&gt;&gt;update:</code>
-method, observe the <samp>inheritance</samp> button. It is light green,
-which indicates the message is sent to <code>super</code> too. This is
+<p>With the System Browser pointed to the <code class="code">Torpedo&gt;&gt;update:</code>
+method, observe the <samp class="option">inheritance</samp> button. It is light green,
+which indicates the message is sent to <code class="code">super</code> too. This is
 a reminder the method supplies a specialized behavior.  The button
 tool tip explains the color hilight meanings within the method&rsquo;s text.
-When pressing the <samp>inheritance</samp> button, you browse all
-implementations of the <code>update:</code> method within this inheritance
+When pressing the <samp class="option">inheritance</samp> button, you browse all
+implementations of the <code class="code">update:</code> method within this inheritance
 chain.
 </p>
-<div class="float"><span id="ch06_002d20_002dTorpedoUpdateInheritance"></span>
-<div align="center"><img src="ch06-20-TorpedoUpdateInheritance.png" alt="ch06-20-TorpedoUpdateInheritance">
+<div class="float" id="ch06_002d20_002dTorpedoUpdateInheritance">
+<div class="center"><img class="image" src="ch06-20-TorpedoUpdateInheritance.png" alt="ch06-20-TorpedoUpdateInheritance">
 </div>
-<div class="float-caption"><p><strong>Figure 6.14: </strong>Update&rsquo;s inheritance button</p></div></div>
+<div class="caption"><p><strong class="strong">Figure 6.14: </strong>Update&rsquo;s inheritance button</p></div></div>
 <p>We already met an example of overriding when initializing a space ship
-instance &ndash; see <a href="Spacewar_0021-States-and-Behaviors.html#initSpaceShip">Example 3.17</a>. In the context of our class
-refactoring, the <code>initialize</code> overriding spans the whole
-<code>Mobile</code> hierarchy:
+instance &ndash; see <a class="ref" href="Spacewar_0021-States-and-Behaviors.html#initSpaceShip">Example 3.17</a>. In the context of our class
+refactoring, the <code class="code">initialize</code> overriding spans the whole
+<code class="code">Mobile</code> hierarchy:
 </p>
-<div class="float"><span id="initMobileHierarchy"></span>
-<div class="example">
-<pre class="example">Mobile&gt;&gt;initialize
+<div class="float" id="initMobileHierarchy">
+<div class="example smallexample">
+<pre class="example-preformatted">Mobile&gt;&gt;initialize
    super initialize.
    color := Color gray.
    velocity := 0 @ 0.
@@ -485,55 +485,57 @@ Torpedo&gt;&gt;initialize
    acceleration := 3000
 </pre></div>
 
-<div class="float-caption"><p><strong>Example 6.9: </strong>Initialize overriding in the <code>Mobile</code>
+<div class="caption"><p><strong class="strong">Example 6.9: </strong>Initialize overriding in the <code class="code">Mobile</code>
 hierarchy</p></div></div>
 <p>Observe how each class is only responsible of its specific state
 initialization:
 </p>
-<ol>
-<li> <strong>SpaceShip.</strong> Its mechanical states are set with the
- <code>super initialize</code> and then the ship is resupplied with
+<ol class="enumerate">
+<li> <strong class="strong">SpaceShip.</strong> Its mechanical states are set with the
+ <code class="code">super initialize</code> and then the ship is resupplied with
  fuel and torpedoes:
 
-<div class="example">
-<pre class="example">SpaceShip&gt;&gt;resupply
+<div class="example smallexample">
+<pre class="example-preformatted">SpaceShip&gt;&gt;resupply
    fuel := 500.
    torpedoes := 10
 </pre></div>
 
-</li><li> <strong>Torpedo.</strong> Inherited mechanical states initialized; add
+</li><li> <strong class="strong">Torpedo.</strong> Inherited mechanical states initialized; add
  self-destroy sequence initialization and acceleration adjusted to
  mimic the torpedo boost at fire up.
 
 </li></ol>
 
 <p>The behaviors specific to each mobile is set with additional
-methods. The <code>SpaceShip</code> comes with its control methods we
-already described previously in <a href="Spacewar_0021_0027s-methods.html#shipControls">Example 5.8</a> and
-<a href="Spacewar_0021_0027s-methods.html#fireTorpedo">Example 5.9</a>, of course there is none for a
-<code>Torpedo</code>.
+methods. The <code class="code">SpaceShip</code> comes with its control methods we
+already described previously in <a class="ref" href="Spacewar_0021_0027s-methods.html#shipControls">Example 5.8</a> and
+<a class="ref" href="Spacewar_0021_0027s-methods.html#fireTorpedo">Example 5.9</a>, of course there is none for a
+<code class="code">Torpedo</code>.
 </p>
-<p>Another important specific behavior is how each kind of <code>Mobile</code>
+<p>Another important specific behavior is how each kind of <code class="code">Mobile</code>
 is drawn in the game play, this will be discussed in a next chapter on
 the fundamentals of Morph.
 </p>
-<div class="footnote">
+</div>
+</div>
+<div class="footnotes-segment">
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h5><a id="FOOT20" href="#DOCF20">(20)</a></h3>
+<h5 class="footnote-body-heading"><a id="FOOT20" href="#DOCF20">(20)</a></h5>
 <p>A
-<code>PlacedMorph</code> is a kind of <code>Morph</code> with a supplementary
-<code>location</code> attribute; so it can be instructed to move, to
+<code class="code">PlacedMorph</code> is a kind of <code class="code">Morph</code> with a supplementary
+<code class="code">location</code> attribute; so it can be instructed to move, to
 scale and to rotate in the screen.</p>
-<h5><a id="FOOT21" href="#DOCF21">(21)</a></h3>
+<h5 class="footnote-body-heading"><a id="FOOT21" href="#DOCF21">(21)</a></h5>
 <p>So a
 torpedo should come with a mass.</p>
 </div>
 <hr>
-<div class="header">
+<div class="nav-panel">
 <p>
-Previous: <a href="Building-your-specialized-Morph.html" accesskey="p" rel="prev">Building your specialized Morph</a>, Up: <a href="Visual-with-Morph.html" accesskey="u" rel="up">Visual with Morph</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Previous: <a href="Building-your-specialized-Morph.html">Building your specialized Morph</a>, Up: <a href="Visual-with-Morph.html">Visual with Morph</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

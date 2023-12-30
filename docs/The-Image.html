@@ -1,9 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
+<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
-Copyright (C) 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
+Copyright © 2020, 2021, 2022, 2023 Hilaire Fernandes with Ken Dickey & Juan Vuletich
 
 
 Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
@@ -16,7 +19,7 @@ texts. Your help is very valuable.
 
 
 
-Compilation : December 2, 2023
+Compilation : December 30, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -52,9 +55,6 @@ original.
 
 Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
  -->
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>The Image (The Cuis-Smalltalk Book)</title>
 
 <meta name="description" content="The Image (The Cuis-Smalltalk Book)">
@@ -62,27 +62,14 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="index.html" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
 <link href="Code-Management.html" rel="up" title="Code Management">
 <link href="The-Change-Log.html" rel="next" title="The Change Log">
-<link href="Code-Management.html" rel="prev" title="Code Management">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
-div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -91,14 +78,15 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="The-Image"></span><div class="header">
+<div class="section-level-extent" id="The-Image">
+<div class="nav-panel">
 <p>
 Next: <a href="The-Change-Log.html" accesskey="n" rel="next">The Change Log</a>, Up: <a href="Code-Management.html" accesskey="u" rel="up">Code Management</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="ch09_002dImage"></span><span id="The-Image-1"></span><h3 class="section">9.1 The Image</h3>
+<a class="anchor" id="ch09_002dImage"></a><h3 class="section" id="The-Image-1">9.1 The Image</h3>
 
-<p>We already wrote about the Cuis-Smalltalk <em>image</em> (See <a href="Installing-and-configuring-Cuis_002dSmalltalk.html">Installing and configuring Cuis-Smalltalk</a>). When saving the state of the virtual machine in
+<p>We already wrote about the Cuis-Smalltalk <em class="dfn">image</em> (See <a class="xref" href="Installing-and-configuring-Cuis_002dSmalltalk.html">Installing and configuring Cuis-Smalltalk</a>). When saving the state of the virtual machine in
 the image file, every single change done in the environment will be
 embodied in the saved image: this includes the windows in the
 environment, Workspace contents, newly written classes and methods,
@@ -106,7 +94,7 @@ existing instances including the visual morphs, a debugging session
 with a System Browser, an Inspector, etc.
 </p>
 <p>At any time, the user can save the image with ...World
-menu &rarr; <code>Save</code>... Alternatively <code>Save as...</code> saves
+menu &rarr; <code class="command">Save</code>... Alternatively <code class="command">Save as...</code> saves
 the image under an alternate name provided by the user.
 </p>
 <p>Saving the image is the easiest and most straightforward method to
@@ -122,8 +110,9 @@ using the image as your sole source code repository. The net result
 could be loosing your work.
 </p>
 <p>Where you lost code because of a virtual machine crash there is a
-solution to recover your lost editing, the <em>Change Log</em>.
+solution to recover your lost editing, the <em class="dfn">Change Log</em>.
 </p>
+</div>
 
 
 
