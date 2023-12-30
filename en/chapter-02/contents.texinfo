@@ -9,7 +9,7 @@ The key in making great and growable systems is much more to design how its
 @end quotation
 
 
-@* @* @* @*
+@*
 
 A Smalltalk system is a collection of entities communicating with each other
 through messages. That's all, there is nothing more.

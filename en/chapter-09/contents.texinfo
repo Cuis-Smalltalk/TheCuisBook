@@ -6,8 +6,7 @@ Change is easy, except for the changed part.
 @author Alan Kay
 @end quotation
 
-@* @* @* @*
-
+@*
 
 Regarding the source code, @cuis{} comes with several tools to
 manipulate it: the image, the change record, the change set and the

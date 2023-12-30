@@ -59,7 +59,7 @@ color: #033DA3;
 border-radius: 8px;
 }
 
-pre.example, pre.smallexample
+pre.example-preformatted, pre.smallexample-preformatted
 {
 font-size: 120%;
 margin: 0.5em 1em .5em 1em;
@@ -179,24 +179,29 @@ h2.section, h3.section, h3.heading, h3.subsection, h2.appendix
 margin-top: 1em;
 }
 
-div.footnote h4
+a.footnote
+{
+    font-size: 80%;
+}
+
+div.footnotes-segment
 {
     font-size: 90%;
 }
 
-div.footnote h5
+h5.footnote-body-heading
 {
     display: inline;
-    font-size: 80%;
+    font-size: 70%;
     margin-bottom: -10px;
     
 }
-div.footnote p
+div.footnotes-segment p
 {
-    font-size: 90%;
+    font-size: 100%;
     display: inline;
 }
-div.footnote p::after
+div.footnotes-segment p::after
 {
     content: '\A';
     white-space: pre;
@@ -208,13 +213,13 @@ div.footnote p::after
 margin-top: 1em;
 }
 
-div.header p
+div.nav-panel p
 {
     white-space: nowrap;
     margin: 0.3em 0em 0.3em 0em;
 }
 
-div.header
+div.nav-panel
 {
     color: white;
     font-size: 90%;
@@ -256,7 +261,7 @@ a:hover {
     text-decoration-color: #4da71f;
 }
 
-div.header p a:link {
+div.nav-panel p a:link {
    font-weight: bold;
    padding: 3px;
    text-decoration:none;
@@ -268,12 +273,12 @@ div.header p a:link {
 
 }
 
-div.header p a:visited {
+div.nav-panel p a:visited {
    text-decoration:none;
    color: black;
    border: 2px solid #a1cb81;
 }
-div.header p a:hover {
+div.nav-panel p a:hover {
     text-decoration:none;
     color: black;
     background: #85b75f;
@@ -281,7 +286,7 @@ div.header p a:hover {
 
 }
 
-div.header p a:active {
+div.nav-panel p a:active {
     text-decoration:none;
     color: black;
 }
@@ -326,13 +331,22 @@ li
     margin-bottom: .5em;
 }
 
-table.menu
+ul.mini-toc
 {
     border-top: solid 1px #4ea823;
     padding-top: .5em;
+    padding-left: 3em;
     white-space: nowrap;
     margin-top: 2em;
     line-height: 1.4em;
+}
+
+ul.mini-toc li
+{
+    list-style-type: square;
+    color: #4da71f;
+    margin-top: 0;
+    margin-bottom: 5px;
 }
 
 dl
@@ -381,7 +395,7 @@ code:hover
     cursor: none;
 }
 
-table.index-cp code
+td.printindex-index-entry code
 {
     font-family: revert;
     font-size: 120%;

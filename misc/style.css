@@ -331,13 +331,22 @@ li
     margin-bottom: .5em;
 }
 
-table.menu
+ul.mini-toc
 {
     border-top: solid 1px #4ea823;
     padding-top: .5em;
+    padding-left: 3em;
     white-space: nowrap;
     margin-top: 2em;
     line-height: 1.4em;
+}
+
+ul.mini-toc li
+{
+    list-style-type: square;
+    color: #4da71f;
+    margin-top: 0;
+    margin-bottom: 5px;
 }
 
 dl
@@ -386,7 +395,7 @@ code:hover
     cursor: none;
 }
 
-table.index-cp code
+td.printindex-index-entry code
 {
     font-family: revert;
     font-size: 120%;

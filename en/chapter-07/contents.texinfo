@@ -6,9 +6,7 @@ Simple things should be simple and complex things should be possible.
 @author Alan Kay
 @end quotation
 
-@* @* @* @*
-
-
+@*
 
 What would we expect if we asked for good support for building GUIs in a
 programming system?

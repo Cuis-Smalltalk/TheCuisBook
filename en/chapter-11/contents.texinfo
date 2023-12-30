@@ -8,7 +8,6 @@ one that requires practice.
 @author Kent Beck, @url{https://1lib.us/book/2083614/6104eb,,``Smalltalk Best Practice Patterns''(1997)}
 @end quotation
 
-
 @quotation
 Programming remains an intensively collaborative process between
 groups of program readers and writers.
@@ -23,7 +22,7 @@ afraid to delegate, even to yourself.
 @end quotation
 
 
-@* @* @* @*
+@*
 
 
 This book is an invitation.

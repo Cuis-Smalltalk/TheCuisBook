@@ -1,53 +1,15 @@
 \input texinfo @c -*-texinfo-*-
 @c %**start of header
 @include ../bookSettings.texinfo
+@include copying.texinfo
 @c %**end of header
-
-@copying
-This book is for @cuis{} (@value{cuisVersion}), a free and modern
-implementation of the Smalltalk language and environment.
-
-Copyright @copyright{} 2020, 2021, 2022, 2023 @writers{}
-@*
-@thanks{}
-@*
-
-@*
-Compilation : @today{}
-
-Documentation source: @url{https://github.com/Cuis-Smalltalk/TheCuisBook} 
-
-@*
-The contents of this book are protected under Creative Commons
-Attribution-ShareAlike 4.0 International.
-
-@i{You are free to:}
-@*
-@b{Share} -- copy and redistribute the material in any medium or
-format
-@*
-@b{Adapt} -- remix, transform, and build upon the material for any
-purpose, even commercially.
-
-@*
-@i{Under the following terms:}
-@*
-@b{Attribution.} You must give appropriate credit, provide a link to
-the license, and indicate if changes were made. You may do so in any
-reasonable manner, but not in any way that suggests the licensor
-endorses you or your use.
-@*
-@b{Share Alike.} If you remix, transform, or build upon the material,
-you must distribute your contributions under the same license as the
-original.
-
-Complete license: @url{https://creativecommons.org/licenses/by-sa/4.0/legalcode}
-
-@end copying
 
 @titlepage
 @title The @cuis{} book
 @subtitle Introduction to Programming with Smalltalk
+@* @* @* @*
+
+@alanQuoteAboutCuis
 @author @writers{}
 
 @iftex
@@ -65,10 +27,9 @@ Complete license: @url{https://creativecommons.org/licenses/by-sa/4.0/legalcode}
 @node Top
 
 @ifnottex
-@quotation
-I like it... It's nice and clean and simple and pretty. Nice stuff!
-@author Alan Kay
-@end quotation
+@alanQuoteAboutCuis
+
+@*
 
 Cuis is a free Smalltalk-80 environment with a specific set of goals:
 being simple and powerful. It is also portable to any platform, fast
@@ -76,6 +37,8 @@ and efficient.
 @*
 
 You are reading the Cuis Book!
+
+@insertcopying
 
 @top Table of Contents
 @end ifnottex
@@ -103,13 +66,10 @@ You are reading the Cuis Book!
 * Indexes::
 @end menu
 
-@ifnottex
- @insertcopying
-@end ifnottex 
-
 @tex
 \global\parskip=0.5em
 @end tex
+
 
 @c================================================================
 @c Preface
@@ -173,7 +133,6 @@ In the raw source code below, understand the ``_'' character as ``@assign{}''.
 @printindex cp
 @c================================================================
 @c: To be filled
-
 
 
 @c:END OF THE BOOK

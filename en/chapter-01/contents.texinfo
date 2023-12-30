@@ -6,7 +6,7 @@ The computer is simply an instrument whose music is ideas.
 @author Alan Kay
 @end quotation
 
-@* @* @* @*
+@*
 
 Before getting into the details of how to use the @cuis{} language and
 tools to build software, we need to understand the point of view,

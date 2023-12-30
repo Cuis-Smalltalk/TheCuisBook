@@ -8,7 +8,7 @@ for observation and manipulation.
 @author Dan Ingalls
 @end quotation
 
-@* @* @* @*
+@*
 
 The quote above is worth repeating.
 
@@ -252,7 +252,7 @@ toe.'' then takes out a gun, shoots you, and sends your mother a note
 ``have another child.''  Smalltalk is much more friendly!
 
 Note that with great power comes great
-responsibility. @footnote{@url{https://quoteinvestigator.com/2015/07/23/great-power/}}
+responsibility@footnote{@url{https://quoteinvestigator.com/2015/07/23/great-power/}}.
 In an open system, you can place a breakpoint anywhere, including
 places which can break the user interface!  For example, it could be a
 bad thing to put a breakpoint in the code for the Debugger!

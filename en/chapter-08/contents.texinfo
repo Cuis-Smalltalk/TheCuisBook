@@ -7,7 +7,7 @@ happened, and now here I am in the middle of one!
 @author Lewis Carroll, Alice in Wonderland
 @end quotation
 
-@* @* @* @*
+@*
 
 
 @heading What just happened?

@@ -7,7 +7,7 @@ it. Geniuses remove it.
 @author Alan Perlis
 @end quotation
 
-@* @* @* @*
+@*
 
 @cuis{} syntax is minimal. Essentially there is syntax only for
 sending messages (i.e., expressions) . Expressions are built up from a

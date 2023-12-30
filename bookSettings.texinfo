@@ -11,14 +11,20 @@
 @c 7x9.25 inches 17.8x23.5 cm
 @smallbook
 
-
 @c Macro definitions
+@macro alanQuoteAboutCuis
+@quotation
+I like it... It's nice and clean and simple and pretty. Nice stuff!
+@author Alan Kay
+@end quotation
+@end macro
+
 @macro cuis
 Cuis-Smalltalk
 @end macro
 
 @macro writers
-Hilaire Fernandes with Ken Dickey & Juan Vuletich
+H. Fernandes with K. Dickey & J. Vuletich
 @end macro
 
 

@@ -8,7 +8,7 @@ build lively interactive user interfaces.
 @end quotation
 
 
-@* @* @* @*
+@*
 
 
 What would we expect if we asked for good support for building GUIs in a

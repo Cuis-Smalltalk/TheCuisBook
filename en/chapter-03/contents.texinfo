@@ -16,7 +16,7 @@ to learning how to control a computer system.
 @author Adele Goldberg
 @end quotation
 
-@* @* @* @*
+@*
 
 @cuis{} is a pure object oriented programming (OOP) language. All the
 entities in the language: integers, floats, rational numbers, strings,
