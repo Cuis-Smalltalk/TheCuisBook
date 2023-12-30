@@ -394,6 +394,14 @@ category,ch10-BrowsePackageChange,9}
 Observe how each category -- class or method one -- of an extension is
 prefixed with a @label{*}.
 
+@cuisNote{In addition to adding a package preload @emph{requirement},
+you can also select a requirement and @label{delete} or @label{update}
+it using the buttons at the lower right.  Sometimes a package changes
+which your code depends on and you have to change your code to accord.
+When this happens, to want to be sure to require the newer, changed
+version.  Selecting a requirement and pressing @label{update}
+will update the requirement to use the latest loaded package version.}
+
 @node Daily Workflow
 @section Daily Workflow
 
@@ -429,7 +437,7 @@ look like:
   with a name beginning with 'Cuis-Smalltalk-', so it will be easy for
   anybody to find it. But beside this consideration, using any other
   version control system is fine.
-  
+
   @item Install the necessary packages from the @cuis{} Git
   repositories.
 
@@ -444,18 +452,23 @@ look like:
   changes to packages.
 
   @item Exit the image. Usually without saving.
-   
+
 @end enumerate
 
-
-@cuisNote{In addition to adding a package preload @emph{requirement},
-you can also select a requirement and @label{delete} or @label{update}
-it using the buttons at the lower right.  Sometimes a package changes
-which your code depends on and you have to change your code to accord.
-When this happens, to want to be sure to require the newer, changed
-version.  Selecting a requirement and pressing @label{update}
-will update the requirement to use the latest loaded package version.}
-
+@cuisNote{Not to save the image is just best practice advice for you
+when your primary goal is to create new code. We already discussed the
+caveats of saving the image concerning code management
+(@xref{ch09-Image,,The Image}).  But from time to time, you'll find
+yourself in the position of an explorer when you open multiple code
+browsers and workplaces to figure something out. In this case, the
+state of the system, the open windows and code snippets, holds the
+value you care about, and saving the image is the right way to
+preserve the system's state.
+@footnote{For more insight regarding the
+policy of saving the image, read this discussion in the Cuis community
+@url{https://lists.cuis.st/mailman/archives/cuis-dev/2023-July/007841.html,there}
+and
+@url{https://lists.cuis.st/mailman/archives/cuis-dev/2023-August/007884.html,there}}}
 
 @subsection Automate your image
 
@@ -637,18 +650,3 @@ Browser also adds buttons to inspect the @label{code} and to treat code
 browser shows what code is different between the file and the running
 image and allows one to import individual classes or methods with the
 help of the context menu.
-
-
-@cuisNote{Not to save the image is just best practice advice for you
-when your primary goal is to create new code. We already discussed the
-caveats of saving the image concerning code management
-(@xref{ch09-Image,,The Image}).  But from time to time, you'll find
-yourself in the position of an explorer when you open multiple code
-browsers and workplaces to figure something out. In this case, the
-state of the system, the open windows and code snippets, holds the
-value you care about, and saving the image is the right way to
-preserve the system's state.@footnote{For more insight regarding the
-policy of saving the image, read this discussion in the Cuis community
-@url{https://lists.cuis.st/mailman/archives/cuis-dev/2023-July/007841.html,there}
-and
-@url{https://lists.cuis.st/mailman/archives/cuis-dev/2023-August/007884.html,there}}}
