@@ -38,9 +38,10 @@ and efficient.
 
 You are reading the Cuis Book!
 
+@top Table of Contents
+
 @insertcopying
 
-@top Table of Contents
 @end ifnottex
 
 @menu
