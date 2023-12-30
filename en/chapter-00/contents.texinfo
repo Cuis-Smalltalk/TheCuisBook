@@ -7,7 +7,7 @@ not worth knowing.
 @author Alan Perlis
 @end quotation
 
-@* @* @* @*
+@*
 
 @c We should write Cuis is easily discoverable, one can learn by looking at Cuis code
 

@@ -17,13 +17,9 @@ texts. Your help is very valuable.
 
 
 
-
-
 Compilation : December 30, 2023
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
-
-
 
 The contents of this book are protected under Creative Commons
 Attribution-ShareAlike 4.0 International.
@@ -37,8 +33,6 @@ format
 
 Adapt - remix, transform, and build upon the material for any
 purpose, even commercially.
-
-
 
 Under the following terms:
 
@@ -66,10 +60,12 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 
 <link href="#Top" rel="start" title="Top">
 <link href="Indexes.html" rel="index" title="Indexes">
+<link href="#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="Preface.html" rel="next" title="Preface">
 <style type="text/css">
 <!--
 div.center {text-align:center}
+ul.toc-numbered-mark {list-style: none}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -104,7 +100,7 @@ div.center {text-align:center}
 <div class="top-level-extent" id="Top">
 <div class="nav-panel">
 <p>
-Next: <a href="Preface.html" accesskey="n" rel="next">Preface</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Preface.html" accesskey="n" rel="next">Preface</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 
@@ -122,7 +118,36 @@ and efficient.
 </p>
 <p>You are reading the Cuis Book!
 </p>
-<h1 class="top" id="Table-of-Contents">Table of Contents</h1>
+<h1 class="top" id="The-Cuis-Book">The Cuis Book</h1>
+
+<div class="element-shortcontents" id="SEC_Shortcontents">
+<h2 class="shortcontents-heading">Short Table of Contents</h2>
+
+<div class="shortcontents">
+<ul class="toc-numbered-mark">
+<li><a id="stoc-Preface-1" href="#toc-Preface-1">Preface</a></li>
+<li><a id="stoc-Beginnings-1" href="#toc-Beginnings-1">1 Beginnings</a></li>
+<li><a id="stoc-The-Message-Way-of-Life-1" href="#toc-The-Message-Way-of-Life-1">2 The Message Way of Life</a></li>
+<li><a id="stoc-Class_002c-Model-of-Communicating-Entities" href="#toc-Class_002c-Model-of-Communicating-Entities">3 Class, Model of Communicating Entities</a></li>
+<li><a id="stoc-The-Collection-Way-of-Life-1" href="#toc-The-Collection-Way-of-Life-1">4 The Collection Way of Life</a></li>
+<li><a id="stoc-Control-Flow-Messaging-1" href="#toc-Control-Flow-Messaging-1">5 Control Flow Messaging</a></li>
+<li><a id="stoc-Visual-with-Morph-1" href="#toc-Visual-with-Morph-1">6 Visual with Morph</a></li>
+<li><a id="stoc-The-Fundamentals-of-Morph-1" href="#toc-The-Fundamentals-of-Morph-1">7 The Fundamentals of Morph</a></li>
+<li><a id="stoc-Events-1" href="#toc-Events-1">8 Events</a></li>
+<li><a id="stoc-Code-Management-1" href="#toc-Code-Management-1">9 Code Management</a></li>
+<li><a id="stoc-Debug-and-Exception-Handling-1" href="#toc-Debug-and-Exception-Handling-1">10 Debug and Exception Handling</a></li>
+<li><a id="stoc-Sharing-Cuis-1" href="#toc-Sharing-Cuis-1">11 Sharing Cuis</a></li>
+<li><a id="stoc-Documents-Copyright-1" href="#toc-Documents-Copyright-1">Appendix A Documents Copyright</a></li>
+<li><a id="stoc-Summary-of-Syntax-1" href="#toc-Summary-of-Syntax-1">Appendix B Summary of Syntax</a></li>
+<li><a id="stoc-The-Exercises-1" href="#toc-The-Exercises-1">Appendix C The Exercises</a></li>
+<li><a id="stoc-Solutions-to-the-Exercises-1" href="#toc-Solutions-to-the-Exercises-1">Appendix D Solutions to the Exercises</a></li>
+<li><a id="stoc-The-Examples-1" href="#toc-The-Examples-1">Appendix E The Examples</a></li>
+<li><a id="stoc-The-Figures-1" href="#toc-The-Figures-1">Appendix F The Figures</a></li>
+<li><a id="stoc-Spacewar_0021-Source-Code-1" href="#toc-Spacewar_0021-Source-Code-1">Appendix G Spacewar! Source Code</a></li>
+<li><a id="stoc-Conceptual-index" href="#toc-Conceptual-index" rel="index">Appendix H Conceptual index</a></li>
+</ul>
+</div>
+</div>
 <p>This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 </p>
@@ -135,12 +160,10 @@ Sniechowski for the reviews of the book, suggestions and borrowed
 texts. Your help is very valuable.
 <br>
 </p>
-<br>
 <p>Compilation : December 30, 2023
 </p>
 <p>Documentation source: <a class="url" href="https://github.com/Cuis-Smalltalk/TheCuisBook">https://github.com/Cuis-Smalltalk/TheCuisBook</a> 
 </p>
-<br>
 <p>The contents of this book are protected under Creative Commons
 Attribution-ShareAlike 4.0 International.
 </p>
@@ -152,7 +175,6 @@ format
 <b class="b">Adapt</b> &ndash; remix, transform, and build upon the material for any
 purpose, even commercially.
 </p>
-<br>
 <p><i class="i">Under the following terms:</i>
 <br>
 <b class="b">Attribution.</b> You must give appropriate credit, provide a link to
@@ -166,38 +188,180 @@ original.
 </p>
 <p>Complete license: <a class="url" href="https://creativecommons.org/licenses/by-sa/4.0/legalcode">https://creativecommons.org/licenses/by-sa/4.0/legalcode</a>
 </p>
+<div class="element-contents" id="SEC_Contents">
+<h2 class="contents-heading">Table of Contents</h2>
 
+<div class="contents">
 
-
-
-
-<ul class="mini-toc">
-<li><a href="Preface.html" accesskey="1">Preface</a></li>
-<li><a href="Beginnings.html" accesskey="2">Beginnings</a></li>
-<li><a href="The-Message-Way-of-Life.html" accesskey="3">The Message Way of Life</a></li>
-<li><a href="Class-_002d-Model-of-Communicating-Entities.html" accesskey="4">Class, Model of Communicating Entities</a></li>
-<li><a href="The-Collection-Way-of-Life.html" accesskey="5">The Collection Way of Life</a></li>
-<li><a href="Control-Flow-Messaging.html" accesskey="6">Control Flow Messaging</a></li>
-<li><a href="Visual-with-Morph.html" accesskey="7">Visual with Morph</a></li>
-<li><a href="The-Fundamentals-of-Morph.html" accesskey="8">The Fundamentals of Morph</a></li>
-<li><a href="Events.html" accesskey="9">Events</a></li>
-<li><a href="Code-Management.html">Code Management</a></li>
-<li><a href="Debug-and-Exception-Handling.html">Debug and Exception Handling</a></li>
-<li><a href="Sharing-Cuis.html">Sharing Cuis</a></li>
-<li><a href="Documents-Copyright.html">Documents Copyright</a></li>
-<li><a href="Summary-of-Syntax.html">Summary of Syntax</a></li>
-<li><a href="The-Exercises.html">The Exercises</a></li>
-<li><a href="Solutions-to-the-Exercises.html">Solutions to the Exercises</a></li>
-<li><a href="The-Examples.html">The Examples</a></li>
-<li><a href="The-Figures.html">The Figures</a></li>
-<li><a href="Spacewar_0021-Source-Code.html">Spacewar! Source Code</a></li>
-<li><a href="Indexes.html">Conceptual index</a></li>
+<ul class="toc-numbered-mark">
+  <li><a id="toc-Preface-1" href="Preface.html">Preface</a></li>
+  <li><a id="toc-Beginnings-1" href="Beginnings.html">1 Beginnings</a>
+  <ul class="toc-numbered-mark">
+    <li><a id="toc-Historical-Context-1" href="Historical-Context.html">1.1 Historical Context</a></li>
+    <li><a id="toc-Installing-and-configuring-Cuis_002dSmalltalk-1" href="Installing-and-configuring-Cuis_002dSmalltalk.html">1.2 Installing and configuring Cuis-Smalltalk</a>
+    <ul class="toc-numbered-mark">
+      <li><a id="toc-Editing-your-preferences" href="Installing-and-configuring-Cuis_002dSmalltalk.html#Editing-your-preferences">1.2.1 Editing your preferences</a></li>
+      <li><a id="toc-Fun-with-window-placement" href="Installing-and-configuring-Cuis_002dSmalltalk.html#Fun-with-window-placement">1.2.2 Fun with window placement</a></li>
+    </ul></li>
+    <li><a id="toc-Writing-your-first-scripts-1" href="Writing-your-first-scripts.html">1.3 Writing your first scripts</a>
+    <ul class="toc-numbered-mark">
+      <li><a id="toc-Fun-with-numbers" href="Writing-your-first-scripts.html#Fun-with-numbers">1.3.1 Fun with numbers</a></li>
+    </ul></li>
+    <li><a id="toc-Spacewar_0021-1" href="Spacewar_0021.html">1.4 Spacewar!</a></li>
+  </ul></li>
+  <li><a id="toc-The-Message-Way-of-Life-1" href="The-Message-Way-of-Life.html">2 The Message Way of Life</a>
+  <ul class="toc-numbered-mark">
+    <li><a id="toc-Communicating-entities-1" href="Communicating-entities.html">2.1 Communicating entities</a></li>
+    <li><a id="toc-Message-send-definitions-1" href="Message-send-definitions.html">2.2 Message send definitions</a></li>
+    <li><a id="toc-Message-to-string-entities-1" href="Message-to-string-entities.html">2.3 Message to string entities</a></li>
+    <li><a id="toc-Messages-to-number-entities-1" href="Messages-to-number-entities.html">2.4 Messages to number entities</a></li>
+    <li><a id="toc-A-brief-introduction-to-the-system-Browser-1" href="A-brief-introduction-to-the-system-Browser.html">2.5 A brief introduction to the system Browser</a></li>
+    <li><a id="toc-Spacewar_0021-models-1" href="Spacewar_0021-models.html">2.6 Spacewar! models</a>
+    <ul class="toc-numbered-mark">
+      <li><a id="toc-First-classes" href="Spacewar_0021-models.html#First-classes">2.6.1 First classes</a></li>
+      <li><a id="toc-Spacewar_0021-package-1" href="Spacewar_0021-models.html#Spacewar_0021-package-1">2.6.2 Spacewar! package</a></li>
+      <li><a id="toc-The-Newtonian-model" href="Spacewar_0021-models.html#The-Newtonian-model">2.6.3 The Newtonian model</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Class_002c-Model-of-Communicating-Entities" href="Class-_002d-Model-of-Communicating-Entities.html">3 Class, Model of Communicating Entities</a>
+  <ul class="toc-numbered-mark">
+    <li><a id="toc-Understanding-Object-Oriented-Programming-1" href="Understanding-Object-Oriented-Programming.html">3.1 Understanding Object Oriented Programming</a></li>
+    <li><a id="toc-Explore-OOP-from-the-Browser-1" href="Explore-OOP-from-the-Browser.html">3.2 Explore OOP from the Browser</a></li>
+    <li><a id="toc-Cuis-system-classes-1" href="Cuis-system-classes.html">3.3 Cuis system classes</a></li>
+    <li><a id="toc-Kernel_002dNumbers-1" href="Kernel_002dNumbers.html">3.4 Kernel-Numbers</a></li>
+    <li><a id="toc-Kernel_002dText-1" href="Kernel_002dText.html">3.5 Kernel-Text</a></li>
+    <li><a id="toc-Spacewar_0021-States-and-Behaviors-1" href="Spacewar_0021-States-and-Behaviors.html">3.6 Spacewar! States and Behaviors</a>
+    <ul class="toc-numbered-mark">
+      <li><a id="toc-The-game-states" href="Spacewar_0021-States-and-Behaviors.html#The-game-states">3.6.1 The game states</a></li>
+      <li><a id="toc-Instance-variables" href="Spacewar_0021-States-and-Behaviors.html#Instance-variables">3.6.2 Instance variables</a></li>
+      <li><a id="toc-Behaviors" href="Spacewar_0021-States-and-Behaviors.html#Behaviors">3.6.3 Behaviors</a></li>
+      <li><a id="toc-Initializing" href="Spacewar_0021-States-and-Behaviors.html#Initializing">3.6.4 Initializing</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-The-Collection-Way-of-Life-1" href="The-Collection-Way-of-Life.html">4 The Collection Way of Life</a>
+  <ul class="toc-numbered-mark">
+    <li><a id="toc-String-_002d_002d-a-particular-collection-1" href="String-_002d_002d-a-particular-collection.html">4.1 String &ndash; a particular collection</a></li>
+    <li><a id="toc-Fun-with-variables-1" href="Fun-with-variables.html">4.2 Fun with variables</a></li>
+    <li><a id="toc-Fun-with-collections-1" href="Fun-with-collections.html">4.3 Fun with collections</a></li>
+    <li><a id="toc-Collections-detailed-1" href="Collections-detailed.html">4.4 Collections detailed</a></li>
+    <li><a id="toc-SpaceWar_0021-collections-1" href="SpaceWar_0021-collections.html">4.5 SpaceWar! collections</a>
+    <ul class="toc-numbered-mark">
+      <li><a id="toc-Instantiate-collections" href="SpaceWar_0021-collections.html#Instantiate-collections">4.5.1 Instantiate collections</a></li>
+      <li><a id="toc-Collections-in-action" href="SpaceWar_0021-collections.html#Collections-in-action">4.5.2 Collections in action</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Control-Flow-Messaging-1" href="Control-Flow-Messaging.html">5 Control Flow Messaging</a>
+  <ul class="toc-numbered-mark">
+    <li><a id="toc-Syntactic-elements-1" href="Syntactic-elements.html">5.1 Syntactic elements</a></li>
+    <li><a id="toc-Pseudo_002dvariables-1" href="Pseudo_002dvariables.html">5.2 Pseudo-variables</a></li>
+    <li><a id="toc-Method-syntax-1" href="Method-syntax.html">5.3 Method syntax</a></li>
+    <li><a id="toc-Block-syntax-1" href="Block-syntax.html">5.4 Block syntax</a></li>
+    <li><a id="toc-Control-flow-with-block-and-message-1" href="Control-flow-with-block-and-message.html">5.5 Control flow with block and message</a></li>
+    <li><a id="toc-Spacewar_0021_0027s-methods-1" href="Spacewar_0021_0027s-methods.html">5.6 Spacewar!&rsquo;s methods</a>
+    <ul class="toc-numbered-mark">
+      <li><a id="toc-Initializing-the-game-play" href="Spacewar_0021_0027s-methods.html#Initializing-the-game-play">5.6.1 Initializing the game play</a></li>
+      <li><a id="toc-Space-ship-controls" href="Spacewar_0021_0027s-methods.html#Space-ship-controls">5.6.2 Space ship controls</a></li>
+      <li><a id="toc-Collisions" href="Spacewar_0021_0027s-methods.html#Collisions">5.6.3 Collisions</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Visual-with-Morph-1" href="Visual-with-Morph.html">6 Visual with Morph</a>
+  <ul class="toc-numbered-mark">
+    <li><a id="toc-Installing-a-Package-1" href="Installing-a-Package.html">6.1 Installing a Package</a></li>
+    <li><a id="toc-Ellipse-Morph-1" href="Ellipse-Morph.html">6.2 Ellipse Morph</a></li>
+    <li><a id="toc-Submorph-1" href="Submorph.html">6.3 Submorph</a></li>
+    <li><a id="toc-A-brief-introduction-to-Inspectors-1" href="A-brief-introduction-to-Inspectors.html">6.4 A brief introduction to Inspectors</a></li>
+    <li><a id="toc-Building-your-specialized-Morph-1" href="Building-your-specialized-Morph.html">6.5 Building your specialized Morph</a></li>
+    <li><a id="toc-Spacewar_0021-Morphs-1" href="Spacewar_0021-Morphs.html">6.6 Spacewar! Morphs</a>
+    <ul class="toc-numbered-mark">
+      <li><a id="toc-All-Morphs" href="Spacewar_0021-Morphs.html#All-Morphs">6.6.1 All Morphs</a></li>
+      <li><a id="toc-The-art-of-refactoring" href="Spacewar_0021-Morphs.html#The-art-of-refactoring">6.6.2 The art of refactoring</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-The-Fundamentals-of-Morph-1" href="The-Fundamentals-of-Morph.html">7 The Fundamentals of Morph</a>
+  <ul class="toc-numbered-mark">
+    <li><a id="toc-Going-Vector-1" href="Going-Vector.html">7.1 Going Vector</a>
+    <ul class="toc-numbered-mark">
+      <li><a id="toc-A-first-example" href="Going-Vector.html#A-first-example">7.1.1 A first example</a></li>
+      <li><a id="toc-Morph-you-can-move" href="Going-Vector.html#Morph-you-can-move">7.1.2 Morph you can move</a></li>
+      <li><a id="toc-Filled-morph" href="Going-Vector.html#Filled-morph">7.1.3 Filled morph</a></li>
+      <li><a id="toc-Animated-morph" href="Going-Vector.html#Animated-morph">7.1.4 Animated morph</a></li>
+      <li><a id="toc-Morph-in-morph" href="Going-Vector.html#Morph-in-morph">7.1.5 Morph in morph</a></li>
+    </ul></li>
+    <li><a id="toc-A-Clock-Morph-1" href="A-Clock-Morph.html">7.2 A Clock Morph</a></li>
+    <li><a id="toc-Back-to-Spacewar_0021-Morphs-1" href="Back-to-Spacewar_0021-Morphs.html">7.3 Back to Spacewar! Morphs</a>
+    <ul class="toc-numbered-mark">
+      <li><a id="toc-Central-star" href="Back-to-Spacewar_0021-Morphs.html#Central-star">7.3.1 Central star</a></li>
+      <li><a id="toc-Space-ship" href="Back-to-Spacewar_0021-Morphs.html#Space-ship">7.3.2 Space ship</a></li>
+      <li><a id="toc-Torpedo" href="Back-to-Spacewar_0021-Morphs.html#Torpedo">7.3.3 Torpedo</a></li>
+      <li><a id="toc-Drawing-revisited" href="Back-to-Spacewar_0021-Morphs.html#Drawing-revisited">7.3.4 Drawing revisited</a></li>
+      <li><a id="toc-Drawing-simplified" href="Back-to-Spacewar_0021-Morphs.html#Drawing-simplified">7.3.5 Drawing simplified</a></li>
+      <li><a id="toc-Collisions-revisited" href="Back-to-Spacewar_0021-Morphs.html#Collisions-revisited">7.3.6 Collisions revisited</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Events-1" href="Events.html">8 Events</a>
+  <ul class="toc-numbered-mark">
+    <li><a id="toc-System-Events-1" href="System-Events.html">8.1 System Events</a></li>
+    <li><a id="toc-Overall-Mechanism-1" href="Overall-Mechanism.html">8.2 Overall Mechanism</a></li>
+    <li><a id="toc-Spacewar_0021-Events-1" href="Spacewar_0021-Events.html">8.3 Spacewar! Events</a>
+    <ul class="toc-numbered-mark">
+      <li><a id="toc-Mouse-event" href="Spacewar_0021-Events.html#Mouse-event">8.3.1 Mouse event</a></li>
+      <li><a id="toc-Keyboard-event" href="Spacewar_0021-Events.html#Keyboard-event">8.3.2 Keyboard event</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Code-Management-1" href="Code-Management.html">9 Code Management</a>
+  <ul class="toc-numbered-mark">
+    <li><a id="toc-The-Image-1" href="The-Image.html">9.1 The Image</a></li>
+    <li><a id="toc-The-Change-Log-1" href="The-Change-Log.html">9.2 The Change Log</a></li>
+    <li><a id="toc-The-Change-Set-1" href="The-Change-Set.html">9.3 The Change Set</a></li>
+    <li><a id="toc-The-Package-1" href="The-Package.html">9.4 The Package</a></li>
+    <li><a id="toc-Daily-Workflow-1" href="Daily-Workflow.html">9.5 Daily Workflow</a>
+    <ul class="toc-numbered-mark">
+      <li><a id="toc-Automate-your-image" href="Daily-Workflow.html#Automate-your-image">9.5.1 Automate your image</a></li>
+    </ul></li>
+    <li><a id="toc-Source-Code-File-1" href="Source-Code-File.html">9.6 Source Code File</a></li>
+  </ul></li>
+  <li><a id="toc-Debug-and-Exception-Handling-1" href="Debug-and-Exception-Handling.html">10 Debug and Exception Handling</a>
+  <ul class="toc-numbered-mark">
+    <li><a id="toc-Inspecting-the-Unexpected-1" href="Inspecting-the-Unexpected.html">10.1 Inspecting the Unexpected</a></li>
+    <li><a id="toc-The-Debugger-1" href="The-Debugger.html">10.2 The Debugger</a></li>
+    <li><a id="toc-Halt_0021-1" href="Halt_0021.html">10.3 Halt!</a></li>
+  </ul></li>
+  <li><a id="toc-Sharing-Cuis-1" href="Sharing-Cuis.html">11 Sharing Cuis</a>
+  <ul class="toc-numbered-mark">
+    <li><a id="toc-Golden-Rules-of-the-Smalltalk-Guild-1" href="Golden-Rules-of-the-Smalltalk-Guild.html">11.1 Golden Rules of the Smalltalk Guild</a></li>
+    <li><a id="toc-Refactoring-to-Improve-Understanding-1" href="Refactoring-to-Improve-Understanding.html">11.2 Refactoring to Improve Understanding</a></li>
+  </ul></li>
+  <li><a id="toc-Documents-Copyright-1" href="Documents-Copyright.html">Appendix A Documents Copyright</a></li>
+  <li><a id="toc-Summary-of-Syntax-1" href="Summary-of-Syntax.html">Appendix B Summary of Syntax</a></li>
+  <li><a id="toc-The-Exercises-1" href="The-Exercises.html">Appendix C The Exercises</a></li>
+  <li><a id="toc-Solutions-to-the-Exercises-1" href="Solutions-to-the-Exercises.html">Appendix D Solutions to the Exercises</a>
+  <ul class="toc-numbered-mark">
+    <li><a id="toc-Preface-2" href="Preface-_0028Solutions_0029.html">Preface</a></li>
+    <li><a id="toc-Smallltalk-Philosophy" href="Smallltalk-Philosophy-_0028Solutions_0029.html">Smallltalk Philosophy</a></li>
+    <li><a id="toc-The-Message-Way-of-Life-2" href="The-Message-Way-of-Life-_0028Solutions_0029.html">The Message Way of Life</a></li>
+    <li><a id="toc-Class_002c-model-of-Communicating-Entities" href="Class-_002d_002d-model-of-Communicating-Entities-_0028Solutions_0029.html">Class, model of Communicating Entities</a></li>
+    <li><a id="toc-The-Collection-Way-of-Life-2" href="The-Collection-Way-of-Life-_0028Solutions_0029.html">The Collection Way of Life</a></li>
+    <li><a id="toc-Control-Flow-Messaging-2" href="Control-Flow-Messaging-_0028Solutions_0029.html">Control Flow Messaging</a></li>
+    <li><a id="toc-Visual-with-Morph-2" href="Visual-with-Morph-_0028Solutions_0029.html">Visual with Morph</a></li>
+    <li><a id="toc-The-Fundamentals-of-Morph-2" href="The-Fundamentals-of-Morph-_0028Solutions_0029.html">The Fundamentals of Morph</a></li>
+    <li><a id="toc-Events-2" href="Events-_0028Solutions_0029.html">Events</a></li>
+    <li><a id="toc-Code-Management-2" href="Code-Management-_0028Solutions_0029.html">Code Management</a></li>
+  </ul></li>
+  <li><a id="toc-The-Examples-1" href="The-Examples.html">Appendix E The Examples</a></li>
+  <li><a id="toc-The-Figures-1" href="The-Figures.html">Appendix F The Figures</a></li>
+  <li><a id="toc-Spacewar_0021-Source-Code-1" href="Spacewar_0021-Source-Code.html">Appendix G Spacewar! Source Code</a></li>
+  <li><a id="toc-Conceptual-index" href="Indexes.html" rel="index">Appendix H Conceptual index</a></li>
 </ul>
+</div>
+</div>
+
+
+
 </div>
 <hr>
 <div class="nav-panel">
 <p>
-Next: <a href="Preface.html" accesskey="n" rel="next">Preface</a> &nbsp; [<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Preface.html" accesskey="n" rel="next">Preface</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

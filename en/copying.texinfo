@@ -7,12 +7,10 @@ Copyright @copyright{} 2020, 2021, 2022, 2023 @writers{}
 @thanks{}
 @*
 
-@*
 Compilation : @today{}
 
 Documentation source: @url{https://github.com/Cuis-Smalltalk/TheCuisBook} 
 
-@*
 The contents of this book are protected under Creative Commons
 Attribution-ShareAlike 4.0 International.
 
@@ -24,7 +22,6 @@ format
 @b{Adapt} -- remix, transform, and build upon the material for any
 purpose, even commercially.
 
-@*
 @i{Under the following terms:}
 @*
 @b{Attribution.} You must give appropriate credit, provide a link to

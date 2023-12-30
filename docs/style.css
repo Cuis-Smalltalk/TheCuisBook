@@ -182,6 +182,7 @@ margin-top: 1em;
 a.footnote
 {
     font-size: 80%;
+    color: black;
 }
 
 div.footnotes-segment
@@ -329,6 +330,20 @@ ul, ol
 li
 {
     margin-bottom: .5em;
+}
+
+table.menu
+{
+    border-top: solid 1px #4ea823;
+    padding-top: .5em;
+    padding-left: 3em;
+    white-space: nowrap;
+    margin-top: 2em;
+    line-height: 1.4em;
+}
+
+td.menu-entry-destination {
+   color: #4da71f;
 }
 
 ul.mini-toc

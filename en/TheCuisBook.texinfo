@@ -14,7 +14,7 @@
 
 @iftex
    @page
-   @vskip 0pt plus 1filll
+   @vskip 0pt plus 1filll       
    @insertcopying
 @end iftex
 @end titlepage
@@ -26,7 +26,6 @@
 
 @node Top
 
-@ifnottex
 @alanQuoteAboutCuis
 
 @*
@@ -38,39 +37,40 @@ and efficient.
 
 You are reading the Cuis Book!
 
-@top Table of Contents
+@top The Cuis Book
 
-@insertcopying
-
+@ifnottex
+  @shortcontents
+  @insertcopying
+  @contents
 @end ifnottex
 
-@menu
-* Preface::
-* Beginnings::
-* The Message Way of Life::
-* Class - Model of Communicating Entities::
-* The Collection Way of Life::
-* Control Flow Messaging::
-* Visual with Morph::
-* The Fundamentals of Morph::
-* Events::
-* Code Management::
-* Debug and Exception Handling::
-* Sharing Cuis::
-* Documents Copyright::
-* Summary of Syntax::
-* The Exercises::
-* Solutions to the Exercises::
-* The Examples::
-* The Figures::
-* Spacewar! Source Code::
-* Indexes::
-@end menu
+@c @menu
+@c * Preface::
+@c * Beginnings::
+@c * The Message Way of Life::
+@c * Class - Model of Communicating Entities::
+@c * The Collection Way of Life::
+@c * Control Flow Messaging::
+@c * Visual with Morph::
+@c * The Fundamentals of Morph::
+@c * Events::
+@c * Code Management::
+@c * Debug and Exception Handling::
+@c * Sharing Cuis::
+@c * Documents Copyright::
+@c * Summary of Syntax::
+@c * The Exercises::
+@c * Solutions to the Exercises::
+@c * The Examples::
+@c * The Figures::
+@c * Spacewar! Source Code::
+@c * Indexes::
+@c @end menu
 
 @tex
 \global\parskip=0.5em
 @end tex
-
 
 @c================================================================
 @c Preface
@@ -134,7 +134,6 @@ In the raw source code below, understand the ``_'' character as ``@assign{}''.
 @printindex cp
 @c================================================================
 @c: To be filled
-
 
 @c:END OF THE BOOK
 @bye
