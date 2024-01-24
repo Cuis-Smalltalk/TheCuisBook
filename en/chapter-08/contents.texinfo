@@ -111,9 +111,9 @@ behavior with instance methods. In the @class{Morph} class, observe
 the method categories @label{event} and @label{event handling
 testing}.
 
-Method catrgory @label{event handling testing} lists methods returning a
-Boolean to indicate if the instance should be notified about certain
-events. Let's take a look at one of these methods,
+The method category @label{event handling testing} lists methods
+returning a Boolean to indicate if the instance should be notified about
+certain events. Let's take a look at one of these methods,
 @method{handlesMouseDown:}, its comment is worth reading:
 
 @smalltalkExample{Morph>>handlesMouseDown: aMouseButtonEvent

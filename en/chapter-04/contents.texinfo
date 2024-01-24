@@ -381,7 +381,7 @@ each element of the collection returning true to a test condition:
 @result{}  #(2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71
 73 79 83 89 97)}
 
-This example introduces the message @msg{select:} and block of code, a
+This example introduces the message @msg{select:} and a block of code, a
 primordial constituent element of the @cuis{} model. A block of code,
 delimited by square brackets, is a piece of code for later
 execution(s). Let's explain how this script is evaluated:
@@ -424,7 +424,7 @@ We like simple!
 To get an idea of how useful enumerators are, take a browse at the
 @class{Collection} class in the method category @smalltalk{enumerating}.
 
-@exercise{Odd integers,oddNumbers,@emph{Select the odd number between
+@exercise{Odd integers,oddNumbers,@emph{Select the odd numbers between
 -20 and 45.}}
 
 You want to know the number of prime numbers under 100.  Just send the

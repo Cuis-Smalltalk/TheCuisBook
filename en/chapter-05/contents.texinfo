@@ -174,7 +174,7 @@ are simply global variables referring to the object representing
 that class.
 
 As you might suspect from @ref{classesCount}, @smalltalk{Smalltalk allClasses size} just
-sends the @msg{allClasses} method to a dictionary named @smalltalk{Smalltalk}.
+sends the @msg{allClasses} message to a dictionary named @smalltalk{Smalltalk}.
 As with any other object, you can inspect this dictionary.  You can note a case of
 self-reference here: the value of @smalltalk{Smalltalk at: #Smalltalk} is @smalltalk{Smalltalk}.
 
