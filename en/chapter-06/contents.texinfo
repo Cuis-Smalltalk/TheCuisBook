@@ -86,7 +86,7 @@ you can also discover in this repository.
 @cindex package @subentry load @subentry by code
 Once done, in a Workspace execute the code to install the package:
 
-@smalltalkExample{Feature require: 'UI-Shapes}
+@smalltalkExample{Feature require: 'UI-Shapes'}
 
 Your @cuis{} environment is now equiped for the next sections of this
 chapter.

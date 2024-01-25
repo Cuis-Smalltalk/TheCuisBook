@@ -166,7 +166,7 @@ each unsaved change set is marked with a @label{--->}. Here it tells us
 the change was not saved on disk. To save the change set, just use its
 contextual menu and use one of the @label{file out} entries. The change
 set will be saved along the @cuis{} image under its system name with
-@label{AuthorName} substituated with the real author name.
+@label{AuthorName} substituted with the real author name.
 
 @figure{The Change Sorter@comma{} method edit,ch10-ChangeSet2,8}
 
