@@ -1,6 +1,6 @@
-'From Cuis6.0 [latest update: #6154] on 27 January 2024 at 5:33:34 pm'!
+'From Cuis6.0 [latest update: #6154] on 27 January 2024 at 5:42:28 pm'!
 'Description SpaceWar!! game code'!
-!provides: 'Spacewar!!' 1 95!
+!provides: 'Spacewar!!' 1 96!
 SystemOrganization addCategory: #'Spacewar!!'!
 
 
@@ -210,14 +210,14 @@ unpush
 "Stop the accelaration boost"
 	acceleration := acceleration - 5 max: 0! !
 
-!SpaceShip methodsFor: 'drawing' stamp: 'hlsf 1/27/2024 17:00:53'!
+!SpaceShip methodsFor: 'drawing' stamp: 'hlsf 1/27/2024 17:42:24'!
 drawOn: canvas
 	| vertices  |
 	vertices := self class vertices.
 	super drawOn: canvas polygon: vertices.
 	"Draw gas exhaust"
 	acceleration ifNotZero: [
-		canvas line: vertices third to: 0@ acceleration  width: 1 + acceleration / 8 color: Color orange].! !
+		canvas line: vertices third to: 0@acceleration  width: 1 + acceleration / 8 color: Color orange].! !
 
 !SpaceShip methodsFor: 'drawing' stamp: 'hlsf 12/15/2020 21:16:09'!
 nose
