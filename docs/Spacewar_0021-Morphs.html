@@ -191,7 +191,7 @@ morphPosition</code> and each time we need to modify the position we write
 <code class="code">self morphPosition: newPosition</code>. More on that later.
 </p>
 
-</div>
+<a class="anchor" id="artRefactoring"></a></div>
 <div class="subsection-level-extent" id="The-art-of-refactoring">
 <h4 class="subsection">6.6.2 The art of refactoring</h4>
 <a class="index-entry-id" id="index-refactoring"></a>
@@ -323,6 +323,9 @@ calculations. First, the code to calculate the gravity acceleration:
    ^ centralStar mass
 </pre></div>
 
+<p>As a side benefit, we can remove the method <code class="code">starMass</code>
+defined earlier in the <code class="code">SpaceShip</code> class.
+</p>
 </li><li>In <code class="code">position r</code>, the <code class="code">#r</code> message asks the radius
   attribute of a point considered in polar coordinates. It is just its
   length. It is the distance between the mobile and the central star.

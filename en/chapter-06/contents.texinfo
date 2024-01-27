@@ -404,6 +404,7 @@ morphPosition} and each time we need to modify the position we write
 
 
 @c refactor ship and torpedo as mobile entity
+@anchor{artRefactoring}
 @subsection The art of refactoring
 @cindex refactoring
 
@@ -521,6 +522,9 @@ This method deserves a few comments:
 
   @smalltalkExample{SpaceWar>>starMass
    @return{} centralStar mass}
+
+   As a side benefit, we can remove the method @method{starMass}
+defined earlier in the @class{SpaceShip} class.
 
   @item In @smalltalk{position r}, the @msg{r} message asks the radius
   attribute of a point considered in polar coordinates. It is just its

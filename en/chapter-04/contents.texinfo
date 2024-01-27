@@ -907,8 +907,13 @@ SpaceShip>>gravity
 "Compute the gravity acceleration vector"
    | position |
    position @assign{} self morphPosition.
-   @return{} [-10 * self mass * owner starMass / (position r raisedTo: 3) * position]
+   @return{} [-10 * self mass * self starMass / (position r raisedTo: 3) * position]
       on: Error do: [0 @@ 0]}
+
+Observe the message @smalltalk{#starMass} sent to the space ship. We
+have not yet figured out how to access the star mass from a space ship
+instance. Its @method{starMass} method can just return, for now, the
+constant 8000.
 
 @c Explain the SpaceWar step method
 The game play is the responsibility of a @class{SpaceWar} instance. At

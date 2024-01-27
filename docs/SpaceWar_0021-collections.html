@@ -214,11 +214,16 @@ is subjected to:
 &quot;Compute the gravity acceleration vector&quot;
    | position |
    position := self morphPosition.
-   ^ [-10 * self mass * owner starMass / (position r raisedTo: 3) * position]
+   ^ [-10 * self mass * self starMass / (position r raisedTo: 3) * position]
       on: Error do: [0 @ 0]
 </pre></div>
 
 <div class="caption"><p><strong class="strong">Example 4.21: </strong>Space ship gravity</p></div></div>
+<p>Observe the message <code class="code">#starMass</code> sent to the space ship. We
+have not yet figured out how to access the star mass from a space ship
+instance. Its <code class="code">starMass</code> method can just return, for now, the
+constant 8000.
+</p>
 <p>The game play is the responsibility of a <code class="code">SpaceWar</code> instance. At
 a regular interval of time, it refreshes the states of the game
 actors. A <code class="code">stepAt:</code> method is called at a regular interval of time

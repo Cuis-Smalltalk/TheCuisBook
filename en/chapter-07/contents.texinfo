@@ -669,6 +669,10 @@ SpaceShip>>drawOn: canvas
    acceleration ifNotZero: [
       canvas line: c to: 0 @@ 35 width: 1 color: Color gray]}
 
+@exercise{Gas exhaust drawing, exeGasExhaust, @emph{How will you modify
+the space ship @method{drawOn:} method with the gas exhaust drawing
+depends on the acceleration rate?}}
+
 When there is an acceleration from the engine, we draw a small gray
 line to represent the gas exhaust.
 

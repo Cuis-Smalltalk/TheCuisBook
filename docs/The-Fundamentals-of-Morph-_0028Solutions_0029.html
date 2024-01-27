@@ -152,15 +152,45 @@ thin red line and filled in yellow.
       borderColor: Color red fillColor: Color yellow
 </pre></div>
 
+<h4 class="subheading" id="exeGasExhaust-1"><a class="ref" href="Back-to-Spacewar_0021-Morphs.html#exeGasExhaust">Exercise 7.4</a></h4>
+<p>On top of the <code class="code">drawOn:</code> method, we also want the acceleration
+variable to take a range of values between 0 and 50.
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted">SpaceShip&gt;&gt;push
+&quot;Init an accelaration boost&quot;
+   fuel isZero ifTrue: [^ self].
+   fuel := fuel - 1.
+   acceleration := (acceleration + 10) min: 50
+</pre></div>
 
-<h4 class="subheading" id="exeTorpedoExtent-1"><a class="ref" href="Back-to-Spacewar_0021-Morphs.html#exeTorpedoExtent">Exercise 7.4</a></h4>
+<div class="example smallexample">
+<pre class="example-preformatted">SpaceShip&gt;&gt;unpush
+&quot;Stop the accelaration boost&quot;
+   acceleration := acceleration - 5 max: 0
+</pre></div>
+
+<div class="example smallexample">
+<pre class="example-preformatted">drawOn: canvas
+../..
+&quot;Draw gas exhaust&quot;
+   acceleration ifNotZero: [
+      canvas
+         line: vertices third
+         to: 0&nbsp;acceleration
+         width: 1 + acceleration / 8
+         color: Color orange].
+</pre></div>
+
+
+<h4 class="subheading" id="exeTorpedoExtent-1"><a class="ref" href="Back-to-Spacewar_0021-Morphs.html#exeTorpedoExtent">Exercise 7.5</a></h4>
 <p>The width of the torpedo is 4 pixels and its height 8 pixels:
 </p><div class="example smallexample">
 <pre class="example-preformatted">Torpedo&gt;&gt;morphExtent
    ^ `4 @ 8`
 </pre></div>
 
-<h4 class="subheading" id="exeTorpedoDrawing-1"><a class="ref" href="Back-to-Spacewar_0021-Morphs.html#exeTorpedoDrawing">Exercise 7.5</a></h4>
+<h4 class="subheading" id="exeTorpedoDrawing-1"><a class="ref" href="Back-to-Spacewar_0021-Morphs.html#exeTorpedoDrawing">Exercise 7.6</a></h4>
 <p>The <code class="code">Torpedo</code>&rsquo;s <code class="code">drawOn:</code> method is very similar to the
 one in <code class="code">SpaceShip</code> class:
 </p><div class="example smallexample">
@@ -174,7 +204,7 @@ one in <code class="code">SpaceShip</code> class:
    canvas line: a to: c width: 2 color: color.
 </pre></div>
 
-<h4 class="subheading" id="exeSpaceShipClassSideDiagram-1"><a class="ref" href="Back-to-Spacewar_0021-Morphs.html#exeSpaceShipClassSideDiagram">Exercise 7.6</a></h4>
+<h4 class="subheading" id="exeSpaceShipClassSideDiagram-1"><a class="ref" href="Back-to-Spacewar_0021-Morphs.html#exeSpaceShipClassSideDiagram">Exercise 7.7</a></h4>
 <p>We use a local variable because we use two times the vertices, one to
 draw the ship and a second time to draw the gas exhaust.
 </p><div class="example smallexample">
@@ -190,7 +220,7 @@ draw the ship and a second time to draw the gas exhaust.
       canvas line: vertices third to: 0@35 width: 1 color: Color gray]
 </pre></div>
 
-<h4 class="subheading" id="exeDrawMobile-1"><a class="ref" href="Back-to-Spacewar_0021-Morphs.html#exeDrawMobile">Exercise 7.7</a></h4>
+<h4 class="subheading" id="exeDrawMobile-1"><a class="ref" href="Back-to-Spacewar_0021-Morphs.html#exeDrawMobile">Exercise 7.8</a></h4>
 <p>You need both to iterate each vertex of the <code class="code">vertices</code> array
 and access the subsequent vertex by index. The arithmetic reminder
 operation <code class="code">#\\</code> is needed to keep the index in the boundary of the
@@ -222,7 +252,7 @@ collection.
          color: color]
 </pre></div>
 
-<h4 class="subheading" id="exeAccurateDetection-1"><a class="ref" href="Back-to-Spacewar_0021-Morphs.html#exeAccurateDetection">Exercise 7.8</a></h4>
+<h4 class="subheading" id="exeAccurateDetection-1"><a class="ref" href="Back-to-Spacewar_0021-Morphs.html#exeAccurateDetection">Exercise 7.9</a></h4>
 <p>Just replace each morph position distance approach with the
 intersection detection between the morphs&rsquo; display bounds:
 </p>

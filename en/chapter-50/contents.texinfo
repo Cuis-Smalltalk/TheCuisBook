@@ -626,6 +626,36 @@ ClockSecondHandMorph>>drawOn: aCanvas
       borderColor: Color red fillColor: Color yellow
 @end smallexample
 
+@subheading @ref{exeGasExhaust}
+On top of the @method{drawOn:} method, we also want the acceleration
+variable to take a range of values between 0 and 50.
+
+@smallexample
+SpaceShip>>push
+"Init an accelaration boost"
+   fuel isZero ifTrue: [^ self].
+   fuel := fuel - 1.
+   acceleration := (acceleration + 10) min: 50
+@end smallexample
+
+@smallexample
+SpaceShip>>unpush
+"Stop the accelaration boost"
+   acceleration := acceleration - 5 max: 0
+@end smallexample
+
+@smallexample
+drawOn: canvas
+../..
+"Draw gas exhaust"
+   acceleration ifNotZero: [
+      canvas
+         line: c
+         to: 0@ acceleration
+         width: 1 + acceleration / 8
+         color: Color orange].
+@end smallexample
+
 
 @subheading @ref{exeTorpedoExtent}
 The width of the torpedo is 4 pixels and its height 8 pixels:

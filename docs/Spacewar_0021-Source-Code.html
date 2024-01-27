@@ -83,59 +83,59 @@ Next: <a href="Indexes.html" accesskey="n" rel="next">Conceptual index</a>, Prev
 <h2 class="appendix" id="Spacewar_0021-Source-Code-1">Appendix G Spacewar! Source Code</h2>
 <p>In the raw source code below, understand the &ldquo;_&rdquo; character as &ldquo;:=&rdquo;.
 </p><div class="format smallformat">
-<pre class="verbatim">'From Cuis 6.0 [latest update: #5661] on 22 February 2023 at 9:33:46 pm'!
+<pre class="verbatim">'From Cuis6.0 [latest update: #6154] on 27 January 2024 at 3:51:59 pm'!
 'Description SpaceWar!! game code'!
-!provides: 'Spacewar!!' 1 92!
-SystemOrganization addCategory: 'Spacewar!!'!
+!provides: 'Spacewar!!' 1 94!
+SystemOrganization addCategory: #'Spacewar!!'!
 
 
-!classDefinition: #Mobile category: 'Spacewar!!'!
+!classDefinition: #Mobile category: #'Spacewar!!'!
 PlacedMorph subclass: #Mobile
 	instanceVariableNames: 'acceleration color velocity'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Spacewar!!'!
-!classDefinition: 'Mobile class' category: 'Spacewar!!'!
+!classDefinition: 'Mobile class' category: #'Spacewar!!'!
 Mobile class
 	instanceVariableNames: 'vertices'!
 
-!classDefinition: #SpaceShip category: 'Spacewar!!'!
+!classDefinition: #SpaceShip category: #'Spacewar!!'!
 Mobile subclass: #SpaceShip
 	instanceVariableNames: 'name fuel torpedoes'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Spacewar!!'!
-!classDefinition: 'SpaceShip class' category: 'Spacewar!!'!
+!classDefinition: 'SpaceShip class' category: #'Spacewar!!'!
 SpaceShip class
 	instanceVariableNames: ''!
 
-!classDefinition: #Torpedo category: 'Spacewar!!'!
+!classDefinition: #Torpedo category: #'Spacewar!!'!
 Mobile subclass: #Torpedo
 	instanceVariableNames: 'lifeSpan'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Spacewar!!'!
-!classDefinition: 'Torpedo class' category: 'Spacewar!!'!
+!classDefinition: 'Torpedo class' category: #'Spacewar!!'!
 Torpedo class
 	instanceVariableNames: ''!
 
-!classDefinition: #SpaceWar category: 'Spacewar!!'!
+!classDefinition: #SpaceWar category: #'Spacewar!!'!
 PlacedMorph subclass: #SpaceWar
 	instanceVariableNames: 'color ships torpedoes centralStar'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Spacewar!!'!
-!classDefinition: 'SpaceWar class' category: 'Spacewar!!'!
+!classDefinition: 'SpaceWar class' category: #'Spacewar!!'!
 SpaceWar class
 	instanceVariableNames: ''!
 
-!classDefinition: #CentralStar category: 'Spacewar!!'!
+!classDefinition: #CentralStar category: #'Spacewar!!'!
 Morph subclass: #CentralStar
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Spacewar!!'!
-!classDefinition: 'CentralStar class' category: 'Spacewar!!'!
+!classDefinition: 'CentralStar class' category: #'Spacewar!!'!
 CentralStar class
 	instanceVariableNames: ''!
 
@@ -187,16 +187,20 @@ heading: aHeading
 mass
 	^ 1! !
 
+!Mobile methodsFor: 'accessing' stamp: 'hlsf 1/27/2024 15:47:36'!
+starMass
+	^ owner starMass! !
+
 !Mobile methodsFor: 'accessing' stamp: 'hlsf 8/23/2021 11:55:02'!
 velocity: aVector
 	velocity _ aVector ! !
 
-!Mobile methodsFor: 'computing' stamp: 'hlsf 10/1/2020 08:34:37'!
+!Mobile methodsFor: 'computing' stamp: 'hlsf 1/27/2024 15:47:23'!
 gravity
 &quot;Compute the gravity acceleration vector&quot;
 	| position |
-	position _ self morphPosition.
-	^ [-10 * self mass * owner starMass / (position r raisedTo: 3) * position]
+	position := self morphPosition.
+	^ [-10 * self mass * self starMass / (position r raisedTo: 3) * position]
 		on: Error do: [0 @ 0]! !
 
 !Mobile methodsFor: 'computing' stamp: 'hlsf 8/23/2021 11:52:21'!
@@ -274,31 +278,31 @@ left
 &quot;Rotate the ship to its left&quot;
 	self heading: self heading - 0.1! !
 
-!SpaceShip methodsFor: 'control' stamp: 'hlsf 10/1/2020 17:26:59'!
+!SpaceShip methodsFor: 'control' stamp: 'hlsf 1/27/2024 15:39:46'!
 push
 &quot;Init an accelaration boost&quot;
 	fuel isZero ifTrue: [^ self].
-	fuel _ fuel - 1.
-	acceleration _ 50! !
+	fuel := fuel - 1.
+	acceleration := (acceleration + 10) min: 50! !
 
 !SpaceShip methodsFor: 'control' stamp: 'hlsf 2/14/2022 14:10:08'!
 right
 &quot;Rotate the ship to its right&quot;
 	self heading: self heading + 0.1! !
 
-!SpaceShip methodsFor: 'control' stamp: 'hlsf 9/16/2020 15:08:18'!
+!SpaceShip methodsFor: 'control' stamp: 'hlsf 1/27/2024 15:39:56'!
 unpush
 &quot;Stop the accelaration boost&quot;
-	acceleration _ 0! !
+	acceleration := acceleration - 5 max: 0! !
 
-!SpaceShip methodsFor: 'drawing' stamp: 'hlsf 12/20/2020 15:18:30'!
+!SpaceShip methodsFor: 'drawing' stamp: 'hlsf 1/27/2024 15:45:10'!
 drawOn: canvas
 	| vertices  |
-	vertices _ self class vertices.
+	vertices := self class vertices.
 	super drawOn: canvas polygon: vertices.
 	&quot;Draw gas exhaust&quot;
 	acceleration ifNotZero: [
-		canvas line: vertices third to: 0@35 width: 1 color: Color gray].! !
+		canvas line: vertices third to: 0@ (1 + acceleration)  width: 1+ acceleration / 8 color: Color orange].! !
 
 !SpaceShip methodsFor: 'drawing' stamp: 'hlsf 12/15/2020 21:16:09'!
 nose
