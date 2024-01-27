@@ -1,3 +1,5 @@
+@documentlanguage fr
+@documentencoding UTF-8
 @settitle The Cuis-Smalltalk Book
 @c Prefered settings
 @set cuisVersion 6.0#5608 or later
