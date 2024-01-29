@@ -832,7 +832,7 @@ After defining the classes involved in the game design, we now define
 
  @item A @class{SpaceWar} instance representing the game play needs to
  know about the @smalltalk{centralStar}, the @smalltalk{ships}, the
-fired @smalltalk{torpedoes} and its @smalltalk{color}.
+ fired @smalltalk{torpedoes}, and its @smalltalk{color}.
 
  @item A @class{CentralStar} has a @smalltalk{mass} state. It is
  necessary to compute the gravity force applied to a given ship.
@@ -1097,10 +1097,10 @@ variable and edit the @method{mass} method to return a literal number:
 SpaceShip>>mass
    @return{} 1}
 
-In the other hand, we could also consider the @smalltalk{mass} to
-depend on the consumed fuel and torpedoes. After all 93@tie{}% of
-Saturn@tie{}V mass is fuel.  We will discuss more about that later in
-the @ref{artRefactoring,chapter about refactoring}.
+On the other hand, we could also consider the @smalltalk{mass} to depend
+on the consumed fuel and torpedoes. After all, 93@tie{}% of
+Saturn@tie{}V's mass was made up of its fuel. We will discuss more about
+that later in the @ref{artRefactoring,chapter about refactoring}.
 
 
 @anchor{simpleControls}
