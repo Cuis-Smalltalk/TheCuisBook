@@ -17,7 +17,7 @@ texts. Your help is very valuable.
 
 
 
-Compilation : January 27, 2024
+Compilation : January 31, 2024
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -199,13 +199,13 @@ SpaceShip&gt;&gt;left
 <p>But how does this heading affect the rotation of the morph?
 </p>
 <p>Underneath, the <code class="code">MobileMorph</code> is equipped with an affine
-transformation to scale, rotate and translate the coordinates passed
-as arguments to the drawing messages received by the canvas.
-Therefore, our <code class="code">heading</code> methods are defined to match this
-internal representation and we use the <code class="code">rotation:</code> method from
-the <code class="code">PacedMorph</code> class to rotate appropriately. The
-<code class="code">location</code> attribute represents an affine transformation, and we
-get its rotation angle with the <code class="code">#radians</code> message.
+transformation to scale, rotate and translate the coordinates passed as
+arguments to the drawing messages received by the canvas. Therefore, our
+<code class="code">heading</code> methods are defined to match this internal
+representation and we use the <code class="code">rotation:</code> method from the
+<code class="code">PlacedMorph</code> class to rotate appropriately. The
+<code class="code">location</code> attribute represents an affine transformation, and
+we get its rotation angle with the <code class="code">#radians</code> message.
 </p>
 <a class="index-entry-id" id="index-morph-23"></a>
 <a class="index-entry-id" id="index-morph-24"></a>

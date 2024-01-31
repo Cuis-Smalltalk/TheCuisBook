@@ -1097,10 +1097,11 @@ variable and edit the @method{mass} method to return a literal number:
 SpaceShip>>mass
    @return{} 1}
 
-On the other hand, we could also consider the @smalltalk{mass} to depend
-on the consumed fuel and torpedoes. After all, 93@tie{}% of
-Saturn@tie{}V's mass was made up of its fuel. We will discuss more about
-that later in the @ref{artRefactoring,chapter about refactoring}.
+On the other hand, we could also consider the @smalltalk{mass} to
+depend on the consumed fuel and torpedoes. After all, 93@tie{}% of
+Saturn@tie{}V rocket's mass was made up of its fuel. We will discuss
+more about that later in the @ref{artRefactoring,chapter about
+refactoring}.
 
 
 @anchor{simpleControls}
