@@ -36,7 +36,7 @@ programming is a thoughtful process.
 We understand software development as the activity of learning and
 documenting knowledge for ourselves and others to use, and also to be
 run on a computer. The fact that a computer can execute the software
-and produce useful solutions to some problem is a consequence of the
+and produce useful solutions to some problems is a consequence of the
 knowledge being sound and relevant. Just making it work is not the
 important part!
 
@@ -90,14 +90,14 @@ to explore on your own.
 The code examples in the online version can be directly copied and
 pasted into @cuis{}. This is why the assignment character ``@U{2190}''
 you see in the developer @cuis{} window is printed as ``:='' in the
-online version of the book. The same applies with the return character
+online version of the book. The same applies to the return character
 ``@U{2191}'' printed as ``^'' in the online version.
 
 In the offline PDF version, the code examples are printed with the same
 assignment and return characters as seen in the @cuis{} windows. Copying
 and pasting also work as expected.
 
-Other examples are code extracts which are not self sufficient to be
+Other examples are code extracts which are not self-sufficient to be
 executed as is. Their purpose is to expose specific facets of the Smalltalk
 language.
 
