@@ -18,9 +18,9 @@ to learning how to control a computer system.
 
 @*
 
-@cuis{} is a pure object oriented programming (OOP) language. All the
+@cuis{} is a pure object-oriented programming (OOP) language. All the
 entities in the language: integers, floats, rational numbers, strings,
-collections, blocks of code and so forth -- every instance usable as a
+collections, blocks of code, and so forth -- every instance usable as a
 noun in Smalltalk -- is an object.
 
 
@@ -33,8 +33,8 @@ noun in Smalltalk -- is an object.
 * Spacewar! States and Behaviors::
 @end menu
 
-@node Understanding Object Oriented Programming
-@section Understanding Object Oriented Programming
+@node Understanding Object-Oriented Programming
+@section Understanding Object-Oriented Programming
 
 But just what is an object?
 
@@ -79,7 +79,7 @@ as we will now describe.
 @cindex instance variable
 A given class declares its internal variables -- states -- and the
 behavior by implementing the methods.  A variable is basically a named
-box which can hold any object.  Each instance variable of a class gets its own
+box that can hold any object.  Each instance variable of a class gets its own
 box with the common name.
 
 @cindex number @subentry rational (fraction)
@@ -112,7 +112,7 @@ state and behavior from their parent Class.  This child, or subclass
 then specifies just the instance state and behavior that is different
 from its parent, retaining all the unmodified behaviours.
 
-This aspect of object oriented programming is called
+This aspect of object-oriented programming is called
 @dfn{inheritance}. In @cuis{}, each class inherits from one parent
 class.
 
@@ -152,7 +152,7 @@ aNumber isInteger ifTrue:
 
 From this source code, we learn that in some situations, the method
 returns a fraction, reduced. We can expect that in some other
-situation an integer is returned, for example @smalltalk{6 / 2}.
+situation, an integer is returned, for example, @smalltalk{6 / 2}.
 
 In the example, we observe the message @msg{numerator:denominator:} is
 sent to the class @class{Fraction}, such a message refers to a
@@ -240,7 +240,7 @@ returned.
 When the message @msg{squared} is sent to a number, different methods are
 executed depending on if the number is a fraction or another kind of
 number. Polymorphism means that the Class of each instance decides
-how it will repond to a particular message.
+how it will respond to a particular message.
 Here, the @class{Fraction} class
 is @dfn{overriding} the @method{squared} method, defined above in the
 class hierarchy.  If a method is not overridden, an inherited method
@@ -299,7 +299,7 @@ produce the naturally expected result.}
 As an object instance is modeled by its class, it is possible to
 ask any object its
 class with the @msg{class} message. Observe carefully the class
-returned in line 2 and 3:
+returned in lines 2 and 3:
 
 @smalltalkExampleCaption{Asking the class of an instance,askingClass,
 1 class @result{} SmallInteger 
@@ -331,7 +331,7 @@ buttons:
 
 @end itemize
 
-Below these three buttons, observe the wide text pane, it provides
+Below these three buttons, observe the wide text pane, which provides
 contextual information on the selected item.
 
 Again, Class methods apply to the Class itself.  Instance Methods apply for 
@@ -342,7 +342,7 @@ a @smalltalk{Fraction}.  There is only one @class{Fraction} class object.
 Messages like @msg{squared} and @msg{abs} are sent to any @smalltalk{Fraction}
 instance, of which there are many.
 
-Up to now we have attempted to be very careful with definitions, but 
+Up to now, we have attempted to be very careful with definitions, but 
 you know that when we say ``a fraction'' we
 mean ``an instance of the class @class{Fraction}''.
 From here our language will be more casual.
@@ -434,7 +434,7 @@ Fraction squared
 OrderedCollection add: 10
 @result{} MessageNotUnderstood: OrderedCollection class>>add:}
 
-Of course you can mix both class and instance methods, as long as you
+Of course, you can mix both class and instance methods, as long as you
 send the message to the appropriate class or instance:
 
 @smalltalkExample{Float pi cos
@@ -460,7 +460,7 @@ equipped to explore the system classes.
 @node Cuis system classes
 @section Cuis system classes
 As we noted above, @cuis{} is a pure object-oriented environment. This 
-means that every single entitiy you are dealing with is represented
+means that every single entity you are dealing with is represented
 as an instance of a class written in @cuis{} itself. As a direct
 consequence, @cuis{} is mostly written in itself.  This means
 the entire system is open to you to learn and play with.
@@ -482,7 +482,7 @@ to start with are:
 
    @item @strong{Kernel-Numbers}. Related to the different number
    representations and calculations, including mathematics functions,
-   conversion, intervals and even iterations.
+   conversion, intervals, and even iterations.
    
    @item @strong{Kernel-Text}. Related to character and string as
    collection of characters.
@@ -505,7 +505,7 @@ to start with are:
 The top hierarchy @class{Number} class shows most of the behaviors
 inherited by the subclasses as @class{Float}, @class{Integer} and
 @class{Fraction}. The Smalltalk way to learn about a behavior is to
-point the System Browser toward a top hierarchy class and to explore
+point the System Browser toward a top hierarchy class and explore
 the method categories.
 
 Let's suppose we want to round a float number. In @class{Number}, we
@@ -533,7 +533,7 @@ Number is a very strange place to look for an indexed loop in a given
 interval. Nevertheless, an interval is defined by start and stop
 numbers. In the @class{Number} class, the method category
 @strong{intervals} reveals related behaviors. These methods work
-polymorphically with most kinds of number:
+polymorphically with most kinds of numbers:
 
 @smalltalkExampleCaption{Interval loops (for-loop), intervalLoops,
 1 to: 10 do: [:i | Transcript show: 1 / i; space]
@@ -559,7 +559,7 @@ portion of code needs to be executed several times
 @footnote{More strictly, to be repeated an integer number of times.}, without
 the need for an index, the @msg{timesRepeat:} message is sent to an
 integer. We already saw this variant in a previous section of this
-chapter.  Throwing a 6 face die 5 times can be simulated with
+chapter.  Throwing a 6-face die 5 times can be simulated with
 an integer:
 
 @cindex number @subentry integer @subentry @method{atRandom}
@@ -600,7 +600,7 @@ collection:
 @result{} 4 "different result each time"}
 
 In Spacewar!, when a ship is destroyed it is teleported to a random
-position in the square game play area. Intervals are handy to pick 
+position in the square gameplay area. Intervals are handy to pick 
 random coordinates. In the example below, the variable
 @smalltalk{randomCoordinate} holds a block of code -- called an anonymous
 function in other languages. It picks a random value in the
@@ -616,7 +616,7 @@ aShip
 @exercise{Cosine table, cosTable, @emph{Compute the cosine values in
 the interval [0 ; 2PI]@comma{} each 1/10. Output the result in the transcript.}}
 
-@c Integer bits representation and manpulation
+@c Integer bits representation and manipulation
 @cindex number @subentry integer @subentry base
 Integer numbers are represented in different bases when prefixed with
 the base and ``r''. The @label{r} stands for radix, the base root by
@@ -711,7 +711,7 @@ using the rational numbers, the @ref{FloatPrecision} becomes:
 (1/10) + (2/10) - (3/10)
 @result{} 0}
 
-This time we have the expected result. Under the covers the computer
+This time we have the expected result. Under the covers, the computer
 only does the calculations with integer components so no roundoff
 results. This is a fine example where solving some problems requires a
 paradigm shift.
@@ -720,7 +720,7 @@ paradigm shift.
 @ref{exeFloatPrecision} and use rational numbers to represent decimal
 numbers. The errors will be resolved.}}
 
-@cindex number @subentry convertion
+@cindex number @subentry conversion
 @cuis{} knows how to convert a decimal number to a fraction, by
 sending the message @msg{asFraction}. We already acknowledged the
 computer's dyscalculia with decimal numbers, this is why when
@@ -736,7 +736,7 @@ it seems:
 
 @node Kernel-Text
 @section Kernel-Text
-Notably, this category contains classes @class{Character}, @class{String} and @class{Symbol}. @class{String} instances are collections of @class{Character} instances. All these are limited to the small @acronym{ASCII} character set. The corresponding classes that can handle the much larger Unicode character set are @class{UnicodeCodePoint}, @class{UnicodeString} and @class{UnicodeSymbol}. As stated before, the Unicode classes can also handle @acronym{ASCII}, and they are interchangeable. You usually don't need to care about which flavor (@acronym{ASCII} or Unicode) an instance actually is.
+Notably, this category contains classes @class{Character}, @class{String} and @class{Symbol}. @class{String} instances are collections of @class{Character} instances. All these are limited to the small @acronym{ASCII} character set. The corresponding classes that can handle the much larger Unicode character set are @class{UnicodeCodePoint}, @class{UnicodeString}, and @class{UnicodeSymbol}. As stated before, the Unicode classes can also handle @acronym{ASCII}, and they are interchangeable. You usually don't need to care about which flavor (@acronym{ASCII} or Unicode) an instance actually is.
 
 @cindex character
 @strong{Character/UnicodeCodePoint.} An individual character is written prefixed with a ``$'', for example: @smalltalk{$A} or @smalltalk{$φ}. It can be defined with the class side method @method{codePoint:}. Note, however, that you can ask Character only about valid Characters. It is generally safer to ask UnicodeCodePoint instead:
@@ -745,7 +745,7 @@ Notably, this category contains classes @class{Character}, @class{String} and @c
 Character codePoint: 966 @result{} nil
 UnicodeCodePoint codePoint: 966 @result{} $φ}
 
-There are class side methods for non printable characters:
+There are class-side methods for nonprintable characters:
 @smalltalk{Character tab}, @smalltalk{Character lf}, etc.
 
 Additionally, @class{UnicodeCodePoint} defines a @msg{namedCharactersMap}, that lets you enter many Unicode characters easily, like:
@@ -830,7 +830,7 @@ After defining the classes involved in the game design, we now define
 
 @itemize
 
- @item A @class{SpaceWar} instance representing the game play needs to
+ @item A @class{SpaceWar} instance representing the gameplay needs to
  know about the @smalltalk{centralStar}, the @smalltalk{ships}, the
  fired @smalltalk{torpedoes}, and its @smalltalk{color}.
 
@@ -848,7 +848,7 @@ After defining the classes involved in the game design, we now define
 
 @end itemize
 
-We need to explain the mathematical nature of these states, then
+We need to explain the mathematical nature of these states, and then
 discuss their object representation in the instance variables of our
 classes.
 
@@ -871,7 +871,7 @@ game:
   is an @class{Array} instance, its size is fixed to two elements.
   
   @item @smalltalk{torpedoes} is a collection of the fired torpedoes
-  in the game play. As this quantity is variable, a dynamic
+  in the gameplay. As this quantity is variable, a dynamic
   @class{OrderedCollection} makes sense.
 
 @end itemize
@@ -883,7 +883,7 @@ an @smalltalk{Integer}.
 
 @heading @class{SpaceShip}
 
-The space ship is the most complex object, some clarifications
+The spaceship is the most complex object, some clarifications
 regarding its variables are needed.
 
 @itemize
@@ -905,12 +905,12 @@ regarding its variables are needed.
 
   The ship's @smalltalk{position} is regularly recomputed according to
   the law of the Galilean reference frame. The computation depends on
-  the ship's velocity, it's current engine boost and the gravity pull
+  the ship's velocity, it's current engine boost, and the gravity pull
   of the central star.
  
   @item @smalltalk{heading} is an angle in radians, the direction
-  where the ship nose is pointing.  It is therefore a @class{Float}
-  number. At game start, the ships are oriented to the top, the
+  where the ship's nose is pointing.  It is therefore a @class{Float}
+  number. At the game's start, the ships are oriented to the top, the
   @smalltalk{heading} value is then -pi/2 radians; the oy axis is
   oriented from the top to the bottom of the screen.
   
@@ -934,7 +934,7 @@ regarding its variables are needed.
 
 @end itemize
 
-A few words regarding the euclidean coordinates: the origin of our
+A few words regarding the Euclidean coordinates: the origin of our
 orthonormal frame is the central star, its first vector is oriented
 toward the right of the screen, and the second one towards the top of
 the screen. This choice eases the computation of the ship's acceleration,
@@ -942,15 +942,15 @@ velocity and position.  More on this below.
 
 @heading @class{Torpedo}
 A torpedo is launched or ``fired'' from a ship with an initial
-velocity related to the ship velocity. Once the torpedo life span
-counter reaches zero, it self destructs.
+velocity related to the ship's velocity. Once the torpedo life span
+counter reaches zero, it self-destructs.
 
 @itemize
 
   @item @smalltalk{position} is a 2D screen coordinate, a
-  @class{Point} instance. Unlike the ship it does not accelerate based
+  @class{Point} instance. Unlike the ship, it does not accelerate based
   on the gravity pull of the central star. Indeed, a torpedo does not
-  come with a mass state.  For our purposes it is essentially
+  come with a mass state.  For our purposes, it is essentially
   zero. Its position over time only depends on the torpedo velocity
   and its initial acceleration.
 
@@ -959,7 +959,7 @@ counter reaches zero, it self destructs.
   heading when fired, it is therefore a @class{Float} number too.
 
   @item @smalltalk{velocity} is a vector representing the
-  instantaneous speed of the torpedo. It is constant over the torpedo
+  instantaneous speed of the torpedo. It is constant over the torpedo's
   lifespan. Again velocity is kept as a @class{Point} instance.
 
   @item @smalltalk{lifeSpan} is an integer number counter, when it
@@ -971,7 +971,7 @@ counter reaches zero, it self destructs.
 @c show on one class declaration how to put the variable
 In the previous chapter, we explained how to define the four classes
 @class{SpaceWar}, @class{CentralStar}, @class{SpaceShip} and
-@class{Torpedo}. In this section, we will add to the these definitions
+@class{Torpedo}. In this section, we will add to these definitions
 the instance variables -- states -- discussed above.
 
 To add the variables to the @class{Torpedo} class, from the Browser,
@@ -999,12 +999,12 @@ Some of these states need to be accessed from other entities:
 
 @itemize
 
-  @item When initializing a space ship, we want to set its name
+  @item When initializing a spaceship, we want to set its name
   with a keyword message categorised as a @dfn{setter}:
   @smalltalk{ship name: 'The needle'}.
   
   @item To compute the gravity force applied to an object owning a
-  mass, we want to get its value with an unary message categorised as
+  mass, we want to get its value with a unary message categorised as
   a @dfn{getter}: @smalltalk{star mass * ship mass}.
   
 @end itemize
@@ -1069,7 +1069,7 @@ The @assign{} character is an assignment, it means the
 @smalltalk{name} instance variable is bound to the @smalltalk{aString}
 object. 
 To type in this symbol type @key{_} then space,
-@cuis{} will turn it to left arrow symbol.  Alternatively write
+@cuis{} will turn it into the left arrow symbol.  Alternatively write
 @smalltalk{name := aString}.  One might pronounce @assign{} as ``gets''.
 
 Since @smalltalk{name} is an instance variable, each instance method
@@ -1084,10 +1084,10 @@ like to name the argument to show that we intend that the
 
 @exercise{@class{SpaceShip} setter messages, spaceShipSetters,
 @emph{Ship @smalltalk{position} and @smalltalk{velocity}, as well as
-torpedo @smalltalk{heading} will need to be set at game start up or
+torpedo @smalltalk{heading} will need to be set at game start-up or
 when a ship jumps in hyperspace.  Write the appropriate setters.}}
 
-Observe how we do not have a setter message for the space ship
+Observe how we do not have a setter message for the spaceship
 @smalltalk{mass} attribute. Indeed, it does not make sense to change
 the mass of a ship from another object. In fact, if we consider both
 player ships to be of equal mass, we should remove the @smalltalk{mass}
@@ -1106,9 +1106,9 @@ refactoring}.
 
 @anchor{simpleControls}
 @subsubheading Controls
-A space ship controlled by the player understands messages to adjust
+A spaceship controlled by the player understands messages to adjust
 its direction and acceleration@footnote{The velocity is a consequence
-of the accelerations applied to the space ship.}:
+of the accelerations applied to the spaceship.}:
 
 @strong{Direction.} The ship's heading is controlled with the
   @msg{left} and @msg{right} messages. The former decrements the
@@ -1116,31 +1116,31 @@ of the accelerations applied to the space ship.}:
 
 @exercise{Methods to control ship heading, shipHeading, @emph{Write
   two methods named @method{left} and @method{right} to shift the ship
-  heading of 0.1 accordingly to the indications above.}}
+  heading of 0.1 according to the indications above.}}
 
 @strong{Acceleration.} When the @msg{push} message is sent to
-  the ship, the engines are ignited and an internal acceleration of 10
-  units of acceleration is applied to the ship. When the @msg{unpush}
+  the ship, the engines are ignited, and an internal acceleration of 10
+  units of acceleration are applied to the ship. When the @msg{unpush}
   message is sent, the acceleration stops.
 
 @exercise{Methods to control ship acceleration, shipAcceleration,
   @emph{Write two methods named @method{push} and @method{unpush} to
-  adjust the ship inner acceleration accordingly to the indications
+  adjust the ship's inner acceleration according to the indications
   above.}}
 
 
 @subsection Initializing
 @cindex @method{initialize}
-When an instance is created, for example @smalltalk{SpaceShip new}, it
+When an instance is created, for example, @smalltalk{SpaceShip new}, it
 is automatically initialized: the message @msg{initialize} is sent to
 the newly created object and its matching @method{initialize} instance
 side method is called.
 
 The initializing process is useful to set the default values of the
 instance variables. When we create a new space ship object we want to
-set its default position, speed, acceleration:
+set its default position, speed, and acceleration:
 
-@smalltalkExampleCaption{Initialize the space ship,initSpaceShip,
+@smalltalkExampleCaption{Initialize the spaceship,initSpaceShip,
 SpaceShip>>initialize
    super initialize.
    velocity @assign{} 0 @@ 0.
@@ -1155,7 +1155,7 @@ using @smalltalk{super}. So far, the @class{SpaceShip} parent class is
 @class{Object}, therefore the @smalltalk{Object>>initialize} method is
 called first for initialization.
 
-When created, a space ship is positioned to the top and right of the
+When created, a spaceship is positioned to the top and right of the
 central star. It has no velocity nor internal acceleration -- only the
 gravity pull of the central star.  Its nose points in direction of the
 top of the game display.
@@ -1171,4 +1171,4 @@ will define the heading behavior with the appropriate @method{heading}
 and @method{heading:} methods.
 
 @exercise{Initialize central star, initCentralStar, @emph{Write the
-method to initialize the central star with 8000 units of mass?}}
+method to initialize the central star with 8000 units of mass.}}
