@@ -9,9 +9,9 @@ Simplicity does not precede complexity, but follows it.
 @*
 
 Since the concept's introduction in the 70s, collections and their associated
-iterators are important programming elements of Smalltalk. Correctly
+iterators have been important programming elements of Smalltalk. Correctly
 used, they improve both code compactness and code understanding; two
-paradigms which may seem antagonistic. Since then, these innovations
+paradigms that may seem antagonistic. Since then, these innovations
 have percolated into many popular programming languages.
 
 @menu
@@ -89,7 +89,7 @@ options:
       @item At the far left, the class categories pane is absent,
       
       @item In the classes pane, the hierarchy of @class{String} is
-      printed. It makes easy to browse @class{String} parent and
+      printed. It makes it easy to browse @class{String} parent and
       child classes.
 
    @end itemize
@@ -116,7 +116,7 @@ Practice the tools and resolve the exercise below.
 method to transform 'Hello My Friend' into 'My Friend'.}}
 
 Beware, some messages in the @class{String} protocol may obviously not
-work. Observe below, the error is thrown on a @class{Character}
+work. Observe below, that the error is thrown on a @class{Character}
 instance:
 
 @smalltalkExample{'Hello My Friend' cos
@@ -131,8 +131,8 @@ asked for its cosine.
 @strong{Symbol.} A symbol is very like a string but it is unique and
 never duplicated.
 Two references to @smalltalk{'hello'} might be to two or only
-one object depending computational history.  Two references
-to @smalltalk{#hello} are guarenteed to always refer to the same object.
+one object depending on computational history.  Two references
+to @smalltalk{#hello} are guaranteed to always refer to the same object.
 
 Symbols got their name because they are used as @dfn{symbolic
 constants}.  You already observed how in the book we wrote message
@@ -183,7 +183,7 @@ Note that many @class{String} methods are defined to return strings.
 @cindex variable @subentry method
 @cindex method @subentry variable @seeentry{variable}
 
-How a variable can be fun? With @cuis{}, a variable is the name of a
+How can a variable be fun? With @cuis{}, a variable is the name of a
 box that holds a value -- an object, that's it!
 
 A variable can hold a value of any class.  The value is strongly typed
@@ -207,13 +207,13 @@ The initial value of the variable @smalltalk{a} was a @class{Fraction}
 instance, after some calculation it ends as a @class{SmallInteger}
 instance.
 
-In fact to be honest, there is no such things as type, it is only
+In fact, there is no such thing as type, it is only
 referenced objects which can @emph{mutate} over time into other kind
 of object: a metal body structure to which you add two wheels may
 become a bicycle, or a car if you add four wheels.
 
 Therefore, to declare a method variable we just name it at the
-beginning of the script and surround it by pipe characters ``|''.
+beginning of the script and surround it with pipe characters ``|''.
 
 A variable always holds a value.  Until we place a different value
 into a variable, the variable holds the @smalltalk{nil} value, an
@@ -221,7 +221,7 @@ instance of @class{UndefinedObject}.  When we say that a value is
 @dfn{bound} to a variable we mean that the named box now holds that
 value.
 
-So far we sent messages directly to objects, but we can send message to a
+So far we sent messages directly to objects, but we can send messages to a
 variable bound to an object too.
 
 Any object responds to the message @msg{printString}.
@@ -238,7 +238,7 @@ Transcript show: msg class printString; newLine.}
 a message to a
 variable bound to an object, the system does not check ahead of time
 that the object
-understands the message. Nevertheless there is a procedure to catch
+understands the message. Nevertheless, there is a procedure to catch
 this kind of situation when the message is actually sent.}
 
 @node Fun with collections
@@ -249,14 +249,14 @@ precisely a collection of characters.  Many kinds of Collection have
 similar behaviors.
 
 @cindex @class{Array}
-An @class{Array} is a fixed size collection, and unlike a string it can
+An @class{Array} is a fixed-size collection, and unlike a string, it can
 contain any kind of literal enclosed in @smalltalk{#(@tie{})}:
 @smalltalkExample{"array of numbers"
 #(1 3 5 7 11 1.1)
 "array of mixed literals"
 #(1 'friend' $& 'al')}
 
-An Array is constructed directly using well formed @emph{literal} elements.
+An Array is constructed directly using well-formed @emph{literal} elements.
 We will get to the meaning of this last statement when we discuss
 details of the Smalltalk language.
 
@@ -292,7 +292,7 @@ Mathematical operations work as well:
 0.7071067811865475 0.49999999999999994)}
 
 @cindex array @subentry statistic
-Basic statistical methods can be used directly on array of numbers:
+Basic statistical methods can be used directly on arrays of numbers:
 
 @smalltalkExample{#(7.5 3.5 8.9) mean @result{} 6.633333333333333 
 #(7.5 3.5 8.9) range @result{} 5.4
@@ -398,8 +398,8 @@ execution(s). Let's explain how this script is evaluated:
  @item in the @method{select:} method, for each integer of the
  interval, the block of code is invoked with its parameter
  @smalltalk{n} set to the integer value.  A @dfn{block parameter}
- starts with a colon, ``:'', and is an ordinary identifer @footnote{An
- @dfn{identifier} is just a word that starts in a lower case letter
+ starts with a colon, ``:'', and is an ordinary identifier @footnote{An
+ @dfn{identifier} is just a word that starts in a lowercase letter
  and consists of upper and lower case letters and decimal digits.  All
  variable names are identifiers}.  Then, each time @smalltalk{n
  isPrime} evaluates to true, the @smalltalk{n} value is added to a new
@@ -418,7 +418,7 @@ add2 @assign{} [:n| n + 2].
 
 
 Enumerators implement tremendously powerful ways to process collections without
-the need of index.  By this we mean that they are simple to get right.
+needing an index.  By this, we mean that they are simple to get right.
 We like simple!
 
 To get an idea of how useful enumerators are, take a browse at the
@@ -437,12 +437,12 @@ resulting collection:
 @result{} 25}
 
 For more clarity, we use a variable named @smalltalk{primeNumbers} to
-remember about the prime numbers list we build:
+store the prime numbers list we built:
 @smalltalkExample{| primeNumbers |
 primeNumbers @assign{} (1 to: 100) select: [:n | n isPrime].
 primeNumbers size}
 
-@exercise{Number of prime number between 101 and
+@exercise{Number of prime numbers between 101 and
 200,qtyPrime200,@emph{Modify @ref{qtyPrime100} to calculate the number
 of prime numbers between 101 and 200.}}
 
@@ -455,7 +455,7 @@ collection of the odd integers in [1 ; 100] which are not prime.}}
 @cindex collection @subentry @method{collect:}
 A sister enumerator to @msg{select:} is @msg{collect:}. It returns a
 new collection of the same size, with each element transformed by a
-block of code. When searching perfect cubic roots, it is useful to
+block of code. When searching for perfect cubic roots, it is useful to
 know about some cubes:
 
 @smalltalkExampleCaption{Collect cubes,cubesCollect,
@@ -468,8 +468,8 @@ enumerated and integers are collected:
 @smalltalkExample{'Bonjour' collect: [:c | c asciiValue ]
 @result{}  #(66 111 110 106 111 117 114)}
 
-We can shift the ascii value, convert back to character then collect
-in a new string. It is a simple cipher:
+We can shift the ASCII value, convert it back to a character, then collect
+it in a new string. It is a simple cipher:
 @smalltalkExampleCaption{Simple cipher,simpleCipher,
 'Bonjour' collect: [:c | (c asciiValue + 1) asCharacter ]
 @result{} 'Cpokpvs'}
@@ -478,12 +478,12 @@ in a new string. It is a simple cipher:
 cipher 'Zpv!bsf!b!cptt', it was encoded with @ref{simpleCipher}.}}
 
 @cindex Caesar cipher
-The Caesar's cipher is based on shifting letter to the right in the
+Caesar's cipher is based on shifting letters to the right in the
 alphabet order.  The method is named after Julius Caesar, who used it
 in his private correspondence with a shift of 3.
 
 @exercise{Alphabet Caesar's cipher,alphabetCipher,@emph{Write a script
-to collect the alphabet upper letters representing the Caesar's
+to collect the alphabet's uppercase letters representing the Caesar's
 cipher. The expected answers is} #($D $E $F $G $H $I $J $K $L $M $N $O
 $P $Q $R $S $T $U $V $W $X $Y $Z $A $B $C).}
 
@@ -524,7 +524,7 @@ inserted:
 
 @cindex loop @subentry repeat
 @cindex Fibonacci sequence
-A repeated loop without index or any collection is written with the
+A repeated loop without an index or any collection is written with the
 @msg{timesRepeat:} message send to an integer:
 @smalltalkExampleCaption{A @emph{repeat} loop, repeatLoop,
 | fibo |
@@ -535,7 +535,7 @@ fibo
 @result{} an OrderedCollection(1 1 2 3 5 8 13 21 34 55 89 144)}
 
 @cindex collection @subentry @method{pairsDo:}
-The quotient of consecutive Fibonacci terms converge toward the golden
+The quotient of consecutive Fibonacci terms converges toward the golden
 value:
 @smalltalkExample{fibo pairsDo: [:i :j |
    Transcript show: (j / i ) asFloat ; cr]
@@ -555,14 +555,14 @@ there are 7 of them gathering 46 classes.
 
 @c explain category Collections-Abstract
 @cindex class @subentry abstract
-The category @label{Collections-Abstract} groups classes which are
+The category @label{Collections-Abstract} groups classes that are
 said to be abstract. An @dfn{abstract} class cannot be instantiated,
 its behavior is declared but not completely implemented. It is the
 responsibility of its subclasses to implement the missing part of the
 behavior.
 
 An abstract class is useful to establish a set of polymorphic methods
-which each of its concrete subclasses are expected to specialize.
+which each of its concrete subclasses is expected to specialize.
 This captures and communicates our intent.
 
 Observe how the important @method{do:} method is declared
@@ -587,8 +587,8 @@ super do: [:assoc | aBlock value: assoc value]}
 @c distinguish growable and non-growable collection Array (Collections-Arrayed) and OrderedCollection
 @c (Collections_Sequenceable)
 
-Two important groups of collections must be distinguished: collection
-with a fixed size and collection with a variable size.
+Two important groups of collections must be distinguished: collections
+with a fixed size and collections with a variable size.
 
 @cindex collection @subentry fixed size
 @strong{Collection of fixed size.}  Such collections are gathered in
@@ -609,10 +609,10 @@ array2 @assign{} Array with: 2 with: 'Apple' with: 2@@3 with: 1/3.
 array3 @assign{} Array ofSize: 4 "an empty array with a 4 element capacity"}
 
 Array @smalltalk{array1} and @smalltalk{array1b} are bit
-different. The former one is created and filled with its contents at
+different. The former one is created and filled with its contents during the
 compile time of the code, the consequence is it can only be filled
-with literal elements as integer, float, string. The later one is
-created at execution time of the code, it can be filled with elements
+with literal elements such as integer, float, or string. The latter one is
+created at the execution time of the code, it can be filled with elements
 instantiated at the execution time as @class{Fraction} or
 @class{Point} instances.
 
@@ -630,7 +630,7 @@ array2 swap: 2 with: 4 @result{} #(2 1/3 2@@3 'Apple')
 array1 at: 2 put: 'Orange'; yourself @result{} #(2 'Orange' $@@ 4)
 array1 indexOf: 'Orange @result{} 2}
 
-Use the System Browser to discover alternative way to access elements
+Use the System Browser to discover alternative ways to access elements
 of a collection.
 
 @exercise{Access part of a collection, collFirst, @emph{What is the
@@ -657,8 +657,8 @@ collections.
 
 @class{OrderedCollection} is a notable one. Its elements are ordered:
 elements are added one after the other in sequence@footnote{Of course you can
-insert an element between two elements. However @class{LinkList}
-instance are more efficient for this use case.}. Its size is
+insert an element between two elements. However, a @class{LinkList}
+instance is more efficient for this use case.}. Its size is
 variable depending on added or removed elements.
 
 @cindex collection @subentry instantiate variable size array
@@ -687,7 +687,7 @@ coll1 remove: 2@@1; yourself
 @cindex @class{Set}
 @cindex collection @subentry @class{Set}
 @strong{Set.} @class{Set} is an unordered collection without duplicated
-elements. The order of the element is not guaranteed, though. Observe
+elements. The order of the elements is not guaranteed, though. Observe
 how pi is the first element of the set:
 
 @smalltalkExampleCaption{Set collection, setCollection,
@@ -695,7 +695,7 @@ set @assign{} Set new.
 set add: 1; add: Float pi; yourself
 @result{} a Set(3.141592653589793 1)}
 
-Non duplicate are guaranteed at least, even with number of different
+Nonduplicates are guaranteed at least, even with a number of different
 types. Observe how @smalltalk{1}, @smalltalk{3/3} and @smalltalk{1.0}
 are considered equal and not duplicated in the set:
 
@@ -707,7 +707,7 @@ set add: 1; add: Float pi; add: 3/3; add: 1/3; add: 1.0; yourself
 
 @cindex collection @subentry convert
 A very handy way to create a @class{Set} instance, or any other
-collection, is to create a dynamic array and convert it with the
+collection is to create a dynamic array and convert it with the
 @msg{asSet} message:
 
 @smalltalkExampleCaption{Convert dynamic array, convertDynArray,
@@ -736,7 +736,7 @@ the sentences 'buenos d@'{@dotless{i}}as' and 'bonjour'?}}
 @cindex collection @subentry @class{Dictionary}
 @cindex @class{Dictionary}
 @strong{Dictionary.} A dictionary is a list of associations between a
-key and an object. Of course a key is an object, but it must respond
+key and an object. Of course, a key is an object, but it must respond
 to equality tests. Most of the time, symbols are used as keys.
 
 To compile a list of colors:
@@ -764,7 +764,7 @@ colors at: #yellow ifAbsentPut: Color yellow
 @result{} association `#yellow -> Colors yellow` added to the dictionary}
 
 
-There are different way to access a dictionary contents:
+There are different ways to access a dictionary's contents:
 
 @smalltalkExample{colors keys.
 @result{} #(#red #green #blue) 
@@ -777,7 +777,7 @@ dictionary:
 @smalltalkExample{colors do: [:value | Transcript show:  value; space ]
 @result{} (Color r: 1.000 g: 1.000 b: 0.078) (Color r: 0.898 g: 0.000 b: 0.000)...}
 
-Sometimes, you really need to iterated the whole key-value association:
+Sometimes, you really need to iterate the whole key-value association:
 
 @smalltalkExample{colors associationsDo: [:assoc | 
    Transcript show: assoc key; space; assoc value; cr ]}
@@ -801,7 +801,7 @@ experiment with the Workspace.
 @subsection Instantiate collections
 Whenever you need to deal with more than one element of the same
 nature -- instances of the same class -- it is a clue to use a
-collection to hold them. Moreover, when these elements are of fixed
+collection to hold them. Moreover, when these elements are of a fixed
 quantity, it indicates more precisely you want to use an @class{Array}
 instance. An @class{Array} is a collection of fixed size. It can not
 grow nor shrink.
@@ -810,11 +810,11 @@ When this quantity is variable, you want to use an
 @class{OrderedCollection} instance. It is a collection of variable
 size, it can grow or shrink.
 
-SpaceWar! is a two-players game, there will be always two players
-and two space ships. We use an @class{Array} instance to keep
-reference of each space ship.
+SpaceWar! is a two-player game, there will always be two players
+and two spaceships. We use an @class{Array} instance to keep a
+reference to each spaceship.
 
-Each player can fire several torpedoes; therefore the game play holds
+Each player can fire several torpedoes; therefore the gameplay holds
 zero or more torpedoes -- hundreds if we decide so. The torpedoes
 quantity is variable, we want to use an @class{OrdredCollection}
 instance to keep track of them.
@@ -846,13 +846,13 @@ instantiated and if necessary populated.}}
 
 
 @subsection Collections in action
-@c Show the update code, explain a bit the physics
+@c Show the update code, explain a bit about the physics
 
-The space ship and the torpedo objects are responsible of their
+The spaceship and the torpedo objects are responsible for their
 internal states. They understand the @msg{update:} message to recompute
 their position according to the mechanical laws.
 
-A fired torpedo has a constant velocity, no external forces is applied
+A fired torpedo has a constant velocity, no external forces are applied
 to it. Its position is linearly updated according to the time
 elapsed. The @smalltalk{t} parameter in the @msg{update:} message is
 this time interval.
@@ -863,9 +863,9 @@ Torpedo>>update: t
    position @assign{} velocity * t + position.
    ../..}
 
-A space ship is put under the strain of the star's gravity pull and
+A spaceship is put under the strain of the star's gravity pull and
 the acceleration of its engines. Therefore its velocity and position
-change accordingly to the mechanical laws of physics.
+change according to the mechanical laws of physics.
 
 @smalltalkExampleCaption{Space ship mechanics, spaceShipMechanic,
 SpaceShip>>update: t
@@ -896,10 +896,10 @@ nose direction of the spaceship:
 
 @smalltalkExampleCaption{Space ship direction method,spaceShipDirection,
 SpaceShip>>direction
-"I am an unit vector representing the nose direction of the mobile"
+"I am a unit vector representing the nose direction of the mobile"
    @return{} Point rho: 1 theta: self heading}
 
-The @msg{gravity} message asks for the gravity vector the space ship
+The @msg{gravity} message asks for the gravity vector of the spaceship
 is subjected to:
 
 @smalltalkExampleCaption{Space ship gravity,spaceShipGravity,
@@ -916,12 +916,12 @@ for its stellar mass. Our @method{starMass} method can just return, for
 now, the number 8000.
 
 @c Explain the SpaceWar step method
-The game play is the responsibility of a @class{SpaceWar} instance. At
+The gameplay is the responsibility of a @class{SpaceWar} instance. At
 a regular interval of time, it refreshes the states of the game
 actors. A @method{stepAt:} method is called at a regular interval of time
 determined by the @method{stepTime} method:
 
-@smalltalkExampleCaption{Regular refresh of the game play, reflreshGamePlay,
+@smalltalkExampleCaption{Regular refresh of the gameplay, reflreshGamePlay,
 SpaceWar>>stepTime
 "millisecond"
    @return{} 20
@@ -933,19 +933,19 @@ SpaceWar>>stepAt: millisecondSinceLast
 
 @c Ask the reader to write the code to update the ship and torpedo position
 In the @method{stepAt:} method, we intentionally left out the details to
-update the ship and torpedoe positions. Note: each ship is sent
+update the ship and torpedo positions. Note: each ship is sent
 regularly an @msg{unpush} message to reset its previous @msg{push}
 acceleration.
 
 @exercise{Update all ships and torpedoes, updateShipsTorpedoes,
 @emph{Replace the two lines ``../..'' with code to update the ships
-and the torpedoes positions and velocities.}}
+and the torpedoes' positions and velocities.}}
 
 
-Among other things, the game play handles the collisions between the
+Among other things, the gameplay handles the collisions between the
 various protagonists. Enumerators are very handy for this.
 
-Ships are hold in array of size 2, we just iterate it with a @msg{do:}
+Ships are held in an array of size 2, we just iterate it with a @msg{do:}
 message and a dedicated block of code:
 
 @smalltalkExampleCaption{Collision between the ships and the Sun,shipSunCollision,
