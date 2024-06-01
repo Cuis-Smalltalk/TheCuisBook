@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
@@ -9,15 +9,15 @@ implementation of the Smalltalk language and environment.
 Copyright © 2020, 2021, 2022, 2023, 2024 H. Fernandes with K. Dickey & J. Vuletich
 
 
-Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
-Lewis, John McGarey, Mariano Montone, Ricardo Pacheco, Barry Perryman,
-Tommy Pettersson, Bernhard Pieber, Mauro Rizzi, Stephen Smith & Ignacio
-Sniechowski for the reviews of the book, suggestions and borrowed
-texts. Your help is very valuable.
+Thanks to Matt Armstrong, Ezequiel Birman, Michael Khol, Szabolcs
+Komáromi, David Lewis, John McGarey, Mariano Montone, Ricardo Pacheco,
+Barry Perryman, Tommy Pettersson, Bernhard Pieber, Mauro Rizzi,
+Stephen Smith & Ignacio Sniechowski for the reviews of the book,
+suggestions and borrowed texts. Your help is very valuable.
 
 
 
-Compilation : January 31, 2024
+Compilation : June 1, 2024
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -64,7 +64,13 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="Preface.html" rel="next" title="Preface">
 <style type="text/css">
 <!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
 div.center {text-align:center}
+pre.menu-comment-preformatted {font-family: serif}
+span:hover a.copiable-link {visibility: visible}
+td.menu-entry-description {vertical-align: top}
+td.menu-entry-destination {vertical-align: top}
+th.menu-comment {text-align:left}
 ul.toc-numbered-mark {list-style: none}
 -->
 </style>
@@ -118,7 +124,7 @@ and efficient.
 </p>
 <p>You are reading the Cuis Book!
 </p>
-<h1 class="top" id="The-Cuis-Book">The Cuis Book</h1>
+<h1 class="top" id="The-Cuis-Book"><span>The Cuis Book<a class="copiable-link" href="#The-Cuis-Book"> &para;</a></span></h1>
 
 <div class="element-shortcontents" id="SEC_Shortcontents">
 <h2 class="shortcontents-heading">Short Table of Contents</h2>
@@ -153,14 +159,14 @@ implementation of the Smalltalk language and environment.
 </p>
 <p>Copyright &copy; 2020, 2021, 2022, 2023, 2024 H. Fernandes with K. Dickey &amp; J. Vuletich
 <br>
-Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
-Lewis, John McGarey, Mariano Montone, Ricardo Pacheco, Barry Perryman,
-Tommy Pettersson, Bernhard Pieber, Mauro Rizzi, Stephen Smith &amp; Ignacio
-Sniechowski for the reviews of the book, suggestions and borrowed
-texts. Your help is very valuable.
+Thanks to Matt Armstrong, Ezequiel Birman, Michael Khol, Szabolcs
+Komáromi, David Lewis, John McGarey, Mariano Montone, Ricardo Pacheco,
+Barry Perryman, Tommy Pettersson, Bernhard Pieber, Mauro Rizzi,
+Stephen Smith &amp; Ignacio Sniechowski for the reviews of the book,
+suggestions and borrowed texts. Your help is very valuable.
 <br>
 </p>
-<p>Compilation : January 31, 2024
+<p>Compilation : June 1, 2024
 </p>
 <p>Documentation source: <a class="url" href="https://github.com/Cuis-Smalltalk/TheCuisBook">https://github.com/Cuis-Smalltalk/TheCuisBook</a> 
 </p>
@@ -225,7 +231,7 @@ original.
   </ul></li>
   <li><a id="toc-Class_002c-Model-of-Communicating-Entities" href="Class-_002d-Model-of-Communicating-Entities.html">3 Class, Model of Communicating Entities</a>
   <ul class="toc-numbered-mark">
-    <li><a id="toc-Understanding-Object-Oriented-Programming-1" href="Understanding-Object-Oriented-Programming.html">3.1 Understanding Object Oriented Programming</a></li>
+    <li><a id="toc-Understanding-Object_002dOriented-Programming" href="Understanding-Object-Oriented-Programming.html">3.1 Understanding Object-Oriented Programming</a></li>
     <li><a id="toc-Explore-OOP-from-the-Browser-1" href="Explore-OOP-from-the-Browser.html">3.2 Explore OOP from the Browser</a></li>
     <li><a id="toc-Cuis-system-classes-1" href="Cuis-system-classes.html">3.3 Cuis system classes</a></li>
     <li><a id="toc-Kernel_002dNumbers-1" href="Kernel_002dNumbers.html">3.4 Kernel-Numbers</a></li>
@@ -357,6 +363,218 @@ original.
 
 
 
+<table class="menu" border="0" cellspacing="0">
+<tr><td class="menu-entry-destination">&bull; <a href="Preface.html" accesskey="1">Preface</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="Beginnings.html" accesskey="2">Beginnings</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="The-Message-Way-of-Life.html" accesskey="3">The Message Way of Life</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="Class-_002d-Model-of-Communicating-Entities.html" accesskey="4">Class - Model of Communicating Entities</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="The-Collection-Way-of-Life.html" accesskey="5">The Collection Way of Life</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="Control-Flow-Messaging.html" accesskey="6">Control Flow Messaging</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="Visual-with-Morph.html" accesskey="7">Visual with Morph</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="The-Fundamentals-of-Morph.html" accesskey="8">The Fundamentals of Morph</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="Events.html" accesskey="9">Events</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="Code-Management.html">Code Management</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="Debug-and-Exception-Handling.html">Debug and Exception Handling</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="Sharing-Cuis.html">Sharing Cuis</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="Documents-Copyright.html">Documents Copyright</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="Summary-of-Syntax.html">Summary of Syntax</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="The-Exercises.html">The Exercises</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="Solutions-to-the-Exercises.html">Solutions to the Exercises</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="The-Examples.html">The Examples</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="The-Figures.html">The Figures</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="Spacewar_0021-Source-Code.html">Spacewar! Source Code</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="Indexes.html" rel="index">Indexes</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><th class="menu-comment" colspan="3"><pre class="menu-comment-preformatted">
+
+</pre></th></tr><tr><th class="menu-comment" colspan="3"><pre class="menu-comment-preformatted"> &mdash; The Detailed Node Listing &mdash;
+
+Beginnings
+
+</pre></th></tr><tr><td class="menu-entry-destination">&bull; <a href="Historical-Context.html">Historical Context</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="Installing-and-configuring-Cuis_002dSmalltalk.html">Installing and configuring Cuis-Smalltalk</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="Writing-your-first-scripts.html">Writing your first scripts</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="Spacewar_0021.html">Spacewar!</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><th class="menu-comment" colspan="3"><pre class="menu-comment-preformatted">
+
+The Message Way of Life
+
+</pre></th></tr><tr><td class="menu-entry-destination">&bull; <a href="Communicating-entities.html">Communicating entities</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="Message-send-definitions.html">Message send definitions</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="Message-to-string-entities.html">Message to string entities</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="Messages-to-number-entities.html">Messages to number entities</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="A-brief-introduction-to-the-system-Browser.html">A brief introduction to the system Browser</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="Spacewar_0021-models.html">Spacewar! models</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><th class="menu-comment" colspan="3"><pre class="menu-comment-preformatted">
+
+Class, Model of Communicating Entities
+
+</pre></th></tr><tr><td class="menu-entry-destination">&bull; <a href="Understanding-Object-Oriented-Programming.html">Understanding Object Oriented Programming</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="Explore-OOP-from-the-Browser.html">Explore OOP from the Browser</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="Cuis-system-classes.html">Cuis system classes</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="Kernel_002dNumbers.html">Kernel-Numbers</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="Kernel_002dText.html">Kernel-Text</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="Spacewar_0021-States-and-Behaviors.html">Spacewar! States and Behaviors</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><th class="menu-comment" colspan="3"><pre class="menu-comment-preformatted">
+
+The Collection Way of Life
+
+</pre></th></tr><tr><td class="menu-entry-destination">&bull; <a href="String-_002d_002d-a-particular-collection.html">String -- a particular collection</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="Fun-with-variables.html">Fun with variables</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="Fun-with-collections.html">Fun with collections</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="Collections-detailed.html">Collections detailed </a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="SpaceWar_0021-collections.html">SpaceWar! collections</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><th class="menu-comment" colspan="3"><pre class="menu-comment-preformatted">
+
+Control Flow Messaging
+
+</pre></th></tr><tr><td class="menu-entry-destination">&bull; <a href="Syntactic-elements.html">Syntactic elements</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="Pseudo_002dvariables.html">Pseudo-variables</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="Method-syntax.html">Method syntax</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="Block-syntax.html">Block syntax</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="Control-flow-with-block-and-message.html">Control flow with block and message</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="Spacewar_0021_0027s-methods.html">Spacewar!'s methods</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><th class="menu-comment" colspan="3"><pre class="menu-comment-preformatted">
+
+Visual with Morph
+
+</pre></th></tr><tr><td class="menu-entry-destination">&bull; <a href="Installing-a-Package.html">Installing a Package</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="Ellipse-Morph.html">Ellipse Morph</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="Submorph.html">Submorph</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="A-brief-introduction-to-Inspectors.html">A brief introduction to Inspectors</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="Building-your-specialized-Morph.html">Building your specialized Morph</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="Spacewar_0021-Morphs.html">Spacewar! Morphs</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><th class="menu-comment" colspan="3"><pre class="menu-comment-preformatted">
+
+The Fundamentals of Morph
+
+</pre></th></tr><tr><td class="menu-entry-destination">&bull; <a href="Going-Vector.html">Going Vector</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="A-Clock-Morph.html">A Clock Morph</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="Back-to-Spacewar_0021-Morphs.html">Back to Spacewar! Morphs</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><th class="menu-comment" colspan="3"><pre class="menu-comment-preformatted">
+
+Events
+
+</pre></th></tr><tr><td class="menu-entry-destination">&bull; <a href="System-Events.html">System Events</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="Overall-Mechanism.html">Overall Mechanism</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="Spacewar_0021-Events.html">Spacewar! Events</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><th class="menu-comment" colspan="3"><pre class="menu-comment-preformatted">
+
+Code Management
+
+</pre></th></tr><tr><td class="menu-entry-destination">&bull; <a href="The-Image.html">The Image</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="The-Change-Log.html">The Change Log</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="The-Change-Set.html">The Change Set</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="The-Package.html">The Package</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="Daily-Workflow.html">Daily Workflow</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="Source-Code-File.html">Source Code File</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><th class="menu-comment" colspan="3"><pre class="menu-comment-preformatted">
+
+Debug and Exception Handling
+
+</pre></th></tr><tr><td class="menu-entry-destination">&bull; <a href="Inspecting-the-Unexpected.html">Inspecting the Unexpected</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="The-Debugger.html">The Debugger</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="Halt_0021.html">Halt!</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><th class="menu-comment" colspan="3"><pre class="menu-comment-preformatted">
+
+Sharing Cuis
+
+</pre></th></tr><tr><td class="menu-entry-destination">&bull; <a href="Golden-Rules-of-the-Smalltalk-Guild.html">Golden Rules of the Smalltalk Guild </a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="Refactoring-to-Improve-Understanding.html">Refactoring to Improve Understanding</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><th class="menu-comment" colspan="3"><pre class="menu-comment-preformatted">
+
+Solutions to the Exercises
+
+</pre></th></tr><tr><td class="menu-entry-destination">&bull; <a href="Preface-_0028Solutions_0029.html">Preface (Solutions)</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="Smallltalk-Philosophy-_0028Solutions_0029.html">Smallltalk Philosophy (Solutions)</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="The-Message-Way-of-Life-_0028Solutions_0029.html">The Message Way of Life (Solutions)</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="Class-_002d_002d-model-of-Communicating-Entities-_0028Solutions_0029.html">Class -- model of Communicating Entities (Solutions)</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="The-Collection-Way-of-Life-_0028Solutions_0029.html">The Collection Way of Life (Solutions)</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="Control-Flow-Messaging-_0028Solutions_0029.html">Control Flow Messaging (Solutions)</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="Visual-with-Morph-_0028Solutions_0029.html">Visual with Morph (Solutions)</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="The-Fundamentals-of-Morph-_0028Solutions_0029.html">The Fundamentals of Morph (Solutions)</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="Events-_0028Solutions_0029.html">Events (Solutions)</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+<tr><td class="menu-entry-destination">&bull; <a href="Code-Management-_0028Solutions_0029.html">Code Management (Solutions)</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+</table>
 </div>
 <hr>
 <div class="nav-panel">

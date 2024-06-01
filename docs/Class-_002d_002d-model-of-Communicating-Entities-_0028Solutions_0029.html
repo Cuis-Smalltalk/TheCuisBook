@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
@@ -9,15 +9,15 @@ implementation of the Smalltalk language and environment.
 Copyright © 2020, 2021, 2022, 2023, 2024 H. Fernandes with K. Dickey & J. Vuletich
 
 
-Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
-Lewis, John McGarey, Mariano Montone, Ricardo Pacheco, Barry Perryman,
-Tommy Pettersson, Bernhard Pieber, Mauro Rizzi, Stephen Smith & Ignacio
-Sniechowski for the reviews of the book, suggestions and borrowed
-texts. Your help is very valuable.
+Thanks to Matt Armstrong, Ezequiel Birman, Michael Khol, Szabolcs
+Komáromi, David Lewis, John McGarey, Mariano Montone, Ricardo Pacheco,
+Barry Perryman, Tommy Pettersson, Bernhard Pieber, Mauro Rizzi,
+Stephen Smith & Ignacio Sniechowski for the reviews of the book,
+suggestions and borrowed texts. Your help is very valuable.
 
 
 
-Compilation : January 31, 2024
+Compilation : June 1, 2024
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -66,7 +66,9 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="The-Message-Way-of-Life-_0028Solutions_0029.html" rel="prev" title="The Message Way of Life (Solutions)">
 <style type="text/css">
 <!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
 div.example {margin-left: 3.2em}
+span:hover a.copiable-link {visibility: visible}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -81,19 +83,19 @@ div.example {margin-left: 3.2em}
 Next: <a href="The-Collection-Way-of-Life-_0028Solutions_0029.html" accesskey="n" rel="next">The Collection Way of Life</a>, Previous: <a href="The-Message-Way-of-Life-_0028Solutions_0029.html" accesskey="p" rel="prev">The Message Way of Life</a>, Up: <a href="Solutions-to-the-Exercises.html" accesskey="u" rel="up">Solutions to the Exercises</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<h3 class="unnumberedsec" id="Class_002c-model-of-Communicating-Entities">Class, model of Communicating Entities</h3>
-<h4 class="subheading" id="floatInfo-1"><a class="ref" href="Explore-OOP-from-the-Browser.html#floatInfo">Exercise 3.1</a></h4>
+<h3 class="unnumberedsec" id="Class_002c-model-of-Communicating-Entities"><span>Class, model of Communicating Entities<a class="copiable-link" href="#Class_002c-model-of-Communicating-Entities"> &para;</a></span></h3>
+<h4 class="subheading" id="floatInfo-1"><span><a class="ref" href="Explore-OOP-from-the-Browser.html#floatInfo">Exercise 3.1</a><a class="copiable-link" href="#floatInfo-1"> &para;</a></span></h4>
 <p>When the <code class="code">Float</code> is selected, the wide text pane prints: &ldquo;class
 definition for Float &deg; 92 instance methods &deg;
 34 class methods &deg; 1280 total lines of code&rdquo;
 </p>
-<h4 class="subheading" id="cosTable-1"><a class="ref" href="Kernel_002dNumbers.html#cosTable">Exercise 3.2</a></h4>
+<h4 class="subheading" id="cosTable-1"><span><a class="ref" href="Kernel_002dNumbers.html#cosTable">Exercise 3.2</a><a class="copiable-link" href="#cosTable-1"> &para;</a></span></h4>
 <div class="example smallexample">
 <pre class="example-preformatted">0 to: Float twoPi by: 1/10 do: [:i |
    Transcript show: i cos; cr]
 </pre></div>
 
-<h4 class="subheading" id="multiplyBy1024-1"><a class="ref" href="Kernel_002dNumbers.html#multiplyBy1024">Exercise 3.3</a></h4>
+<h4 class="subheading" id="multiplyBy1024-1"><span><a class="ref" href="Kernel_002dNumbers.html#multiplyBy1024">Exercise 3.3</a><a class="copiable-link" href="#multiplyBy1024-1"> &para;</a></span></h4>
 <p>1024 is not a random number. It is 2<sup class="sup">10</sup> then written in base 2 :
 10000000000, it is also <code class="code">1 &lt;&lt; 10</code>:
 </p>
@@ -110,7 +112,7 @@ definition for Float &deg; 92 instance methods &deg;
 360 * 1024 &rArr; 368640 
 </pre></div>
 
-<h4 class="subheading" id="exeFloatPrecision-1"><a class="ref" href="Kernel_002dNumbers.html#exeFloatPrecision">Exercise 3.4</a></h4>
+<h4 class="subheading" id="exeFloatPrecision-1"><span><a class="ref" href="Kernel_002dNumbers.html#exeFloatPrecision">Exercise 3.4</a><a class="copiable-link" href="#exeFloatPrecision-1"> &para;</a></span></h4>
 <div class="example smallexample">
 <pre class="example-preformatted">5.2 + 0.9  - 6.1
 &rArr; 8.881784197001252e-16
@@ -122,10 +124,10 @@ definition for Float &deg; 92 instance methods &deg;
 &rArr; -4.440892098500626e-16
 </pre></div>
 
-<h4 class="subheading" id="exeZeroDivide-1"><a class="ref" href="Kernel_002dNumbers.html#exeZeroDivide">Exercise 3.5</a></h4>
+<h4 class="subheading" id="exeZeroDivide-1"><span><a class="ref" href="Kernel_002dNumbers.html#exeZeroDivide">Exercise 3.5</a><a class="copiable-link" href="#exeZeroDivide-1"> &para;</a></span></h4>
 <p>The system returns the error <code class="code">ZeroDivide</code>, division by zero.
 </p>
-<h4 class="subheading" id="exeFractionPrecision-1"><a class="ref" href="Kernel_002dNumbers.html#exeFractionPrecision">Exercise 3.6</a></h4>
+<h4 class="subheading" id="exeFractionPrecision-1"><span><a class="ref" href="Kernel_002dNumbers.html#exeFractionPrecision">Exercise 3.6</a><a class="copiable-link" href="#exeFractionPrecision-1"> &para;</a></span></h4>
 <div class="example smallexample">
 <pre class="example-preformatted">(52/10) + (9/10)  - (61/10)
 &rArr; 0
@@ -137,7 +139,7 @@ definition for Float &deg; 92 instance methods &deg;
 &rArr; 0
 </pre></div>
 
-<h4 class="subheading" id="selectApples-1"><a class="ref" href="Kernel_002dText.html#selectApples">Exercise 3.7</a></h4>
+<h4 class="subheading" id="selectApples-1"><span><a class="ref" href="Kernel_002dText.html#selectApples">Exercise 3.7</a><a class="copiable-link" href="#selectApples-1"> &para;</a></span></h4>
 <p>There are different options, with slightly different results:
 </p><div class="example smallexample">
 <pre class="example-preformatted">'There are 12 apples' select: [:i |i isLetter].
@@ -156,7 +158,7 @@ definition for Float &deg; 92 instance methods &deg;
 &rArr; 'There are  apples' 
 </pre></div>
 
-<h4 class="subheading" id="formatString-1"><a class="ref" href="Kernel_002dText.html#formatString">Exercise 3.8</a></h4>
+<h4 class="subheading" id="formatString-1"><span><a class="ref" href="Kernel_002dText.html#formatString">Exercise 3.8</a><a class="copiable-link" href="#formatString-1"> &para;</a></span></h4>
 <p>In <code class="code">String</code>, search for the method category <samp class="option">format</samp>, there
 you find the <code class="code">format:</code> method:
 </p><div class="example smallexample">
@@ -166,7 +168,7 @@ you find the <code class="code">format:</code> method:
 
 
 
-<h4 class="subheading" id="spacewarVar-1"><a class="ref" href="Spacewar_0021-States-and-Behaviors.html#spacewarVar">Exercise 3.9</a></h4>
+<h4 class="subheading" id="spacewarVar-1"><span><a class="ref" href="Spacewar_0021-States-and-Behaviors.html#spacewarVar">Exercise 3.9</a><a class="copiable-link" href="#spacewarVar-1"> &para;</a></span></h4>
 <p>The <code class="code">SpaceWar</code>, <code class="code">CentralStar</code> and <code class="code">SpaceShip</code>
 definitions with their added instance variable should look like:
 </p><div class="example smallexample">
@@ -190,7 +192,7 @@ Object subclass: #SpaceShip
    category: 'Spacewar!'
 </pre></div>
 
-<h4 class="subheading" id="spaceShipGetters-1"><a class="ref" href="Spacewar_0021-States-and-Behaviors.html#spaceShipGetters">Exercise 3.10</a></h4>
+<h4 class="subheading" id="spaceShipGetters-1"><span><a class="ref" href="Spacewar_0021-States-and-Behaviors.html#spaceShipGetters">Exercise 3.10</a><a class="copiable-link" href="#spaceShipGetters-1"> &para;</a></span></h4>
 <div class="example smallexample">
 <pre class="example-preformatted">SpaceShip&gt;&gt;position
    ^ position
@@ -202,7 +204,7 @@ SpaceShip&gt;&gt;mass
    ^ mass
 </pre></div>
 
-<h4 class="subheading" id="spaceShipSetters-1"><a class="ref" href="Spacewar_0021-States-and-Behaviors.html#spaceShipSetters">Exercise 3.11</a></h4>
+<h4 class="subheading" id="spaceShipSetters-1"><span><a class="ref" href="Spacewar_0021-States-and-Behaviors.html#spaceShipSetters">Exercise 3.11</a><a class="copiable-link" href="#spaceShipSetters-1"> &para;</a></span></h4>
 <div class="example smallexample">
 <pre class="example-preformatted">SpaceShip&gt;&gt;position: aPoint
    position := aPoint
@@ -214,7 +216,7 @@ Torpedo&gt;&gt;heading: aFloat
    heading := aFloat
 </pre></div>
 
-<h4 class="subheading" id="shipHeading-1"><a class="ref" href="Spacewar_0021-States-and-Behaviors.html#shipHeading">Exercise 3.12</a></h4>
+<h4 class="subheading" id="shipHeading-1"><span><a class="ref" href="Spacewar_0021-States-and-Behaviors.html#shipHeading">Exercise 3.12</a><a class="copiable-link" href="#shipHeading-1"> &para;</a></span></h4>
 <div class="example smallexample">
 <pre class="example-preformatted">SpaceShip&gt;&gt;left
 &quot;Rotate the ship to its left&quot;
@@ -225,7 +227,7 @@ SpaceShip&gt;&gt;right
    heading := heading - 0.1
 </pre></div>
 
-<h4 class="subheading" id="shipAcceleration-1"><a class="ref" href="Spacewar_0021-States-and-Behaviors.html#shipAcceleration">Exercise 3.13</a></h4>
+<h4 class="subheading" id="shipAcceleration-1"><span><a class="ref" href="Spacewar_0021-States-and-Behaviors.html#shipAcceleration">Exercise 3.13</a><a class="copiable-link" href="#shipAcceleration-1"> &para;</a></span></h4>
 <div class="example smallexample">
 <pre class="example-preformatted">SpaceShip&gt;&gt;push
 &quot;Init an acceleration boost&quot;
@@ -237,7 +239,7 @@ SpaceShip&gt;&gt;unpush
 </pre></div>
 
 
-<h4 class="subheading" id="initCentralStar-1"><a class="ref" href="Spacewar_0021-States-and-Behaviors.html#initCentralStar">Exercise 3.14</a></h4>
+<h4 class="subheading" id="initCentralStar-1"><span><a class="ref" href="Spacewar_0021-States-and-Behaviors.html#initCentralStar">Exercise 3.14</a><a class="copiable-link" href="#initCentralStar-1"> &para;</a></span></h4>
 <div class="example smallexample">
 <pre class="example-preformatted">CentralStar&gt;&gt;initialize
    super initialize.

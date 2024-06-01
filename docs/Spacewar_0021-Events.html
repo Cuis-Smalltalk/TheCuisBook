@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
@@ -9,15 +9,15 @@ implementation of the Smalltalk language and environment.
 Copyright © 2020, 2021, 2022, 2023, 2024 H. Fernandes with K. Dickey & J. Vuletich
 
 
-Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
-Lewis, John McGarey, Mariano Montone, Ricardo Pacheco, Barry Perryman,
-Tommy Pettersson, Bernhard Pieber, Mauro Rizzi, Stephen Smith & Ignacio
-Sniechowski for the reviews of the book, suggestions and borrowed
-texts. Your help is very valuable.
+Thanks to Matt Armstrong, Ezequiel Birman, Michael Khol, Szabolcs
+Komáromi, David Lewis, John McGarey, Mariano Montone, Ricardo Pacheco,
+Barry Perryman, Tommy Pettersson, Bernhard Pieber, Mauro Rizzi,
+Stephen Smith & Ignacio Sniechowski for the reviews of the book,
+suggestions and borrowed texts. Your help is very valuable.
 
 
 
-Compilation : January 31, 2024
+Compilation : June 1, 2024
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -65,9 +65,11 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="Overall-Mechanism.html" rel="prev" title="Overall Mechanism">
 <style type="text/css">
 <!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
 blockquote.indentedblock {margin-right: 0em}
 div.center {text-align:center}
 div.example {margin-left: 3.2em}
+span:hover a.copiable-link {visibility: visible}
 ul.mark-bullet {list-style-type: disc}
 -->
 </style>
@@ -83,7 +85,7 @@ ul.mark-bullet {list-style-type: disc}
 Previous: <a href="Overall-Mechanism.html" accesskey="p" rel="prev">Overall Mechanism</a>, Up: <a href="Events.html" accesskey="u" rel="up">Events</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<h3 class="section" id="Spacewar_0021-Events-1">8.3 Spacewar! Events</h3>
+<h3 class="section" id="Spacewar_0021-Events-1"><span>8.3 Spacewar! Events<a class="copiable-link" href="#Spacewar_0021-Events-1"> &para;</a></span></h3>
 <p>Obviously our Spacewar! game handles events. Firstly we want to control the
 ships with the keyboard. Secondly, we want the game to pause
 when the mouse cursor moves out of the game play, and resume when it
@@ -94,12 +96,12 @@ game play. Therefore we want this instance to handle the events
 described above.
 </p>
 <div class="subsection-level-extent" id="Mouse-event">
-<h4 class="subsection">8.3.1 Mouse event</h4>
-<a class="index-entry-id" id="index-event-5"></a>
+<h4 class="subsection"><span>8.3.1 Mouse event<a class="copiable-link" href="#Mouse-event"> &para;</a></span></h4>
+<a class="index-entry-id" id="index-event-mouse"></a>
 <a class="index-entry-id" id="index-mouse"></a>
 
-<h4 class="subsubheading" id="Mouse-cursor-enters-game-play">Mouse cursor enters game play</h4>
-<a class="index-entry-id" id="index-event-6"></a>
+<h4 class="subsubheading" id="Mouse-cursor-enters-game-play"><span>Mouse cursor enters game play<a class="copiable-link" href="#Mouse-cursor-enters-game-play"> &para;</a></span></h4>
+<a class="index-entry-id" id="index-event-testing-mouse-over"></a>
 
 <p>We want to catch events when the mouse cursor moves over our
 <code class="code">SpaceWar</code> morph.
@@ -111,14 +113,12 @@ described above.
 with a dedicated messages that the mouse cursor enters or leaves? In which
 class should we implement this method?</em>
 </p></blockquote>
-
-
 <div class="caption"><p><strong class="strong">Exercise 8.1: </strong>Get notified of mouse move-over event</p></div></div>
 <p>Once we make explicit we want the game play to receive mouse move-over
 events, we need to set the behavior accordingly with dedicated
 methods.
 </p>
-<a class="index-entry-id" id="index-event-7"></a>
+<a class="index-entry-id" id="index-event-handling-mouse-enter"></a>
 <p>Each time the mouse cursor enters the game play, we want to:
 </p>
 <ul class="itemize mark-bullet">
@@ -150,11 +150,9 @@ methods.
 sent to the game play to be notified the mouse cursor enters the game
 play area?  How should the matching method be written?</em>
 </p></blockquote>
-
-
 <div class="caption"><p><strong class="strong">Exercise 8.2: </strong>Handle mouse enter event</p></div></div>
-<h4 class="subsubheading" id="Mouse-cursor-leaves-game-play">Mouse cursor leaves game play</h4>
-<a class="index-entry-id" id="index-event-8"></a>
+<h4 class="subsubheading" id="Mouse-cursor-leaves-game-play"><span>Mouse cursor leaves game play<a class="copiable-link" href="#Mouse-cursor-leaves-game-play"> &para;</a></span></h4>
+<a class="index-entry-id" id="index-event-handling-mouse_002denter"></a>
 
 <p>We also want to be informed when the mouse cursor leaves our
 <code class="code">SpaceWar</code> morph. Thanks to the work done in
@@ -186,8 +184,6 @@ the behavior when the mouse cursor leaves the game play:
 sent to the game play to be notified the mouse cursor leaves the game
 play area?  How should we write the overridden method?</em>
 </p></blockquote>
-
-
 <div class="caption"><p><strong class="strong">Exercise 8.3: </strong>Handle mouse leave event</p></div></div>
 <p>In graphic user interface, a visual effect is often used to inform the
 user the keyboard focus changed. In Spacewar! we change the game play
@@ -199,8 +195,7 @@ underneath.
 </p>
 <div class="float" id="ch08_002dFocus">
 <div class="center"><img class="image" src="ch08-Focus.png" alt="ch08-Focus">
-</div>
-<div class="caption"><p><strong class="strong">Figure 8.1: </strong>Spacewar! effect depending on the keyboard focus</p></div></div>
+</div><div class="caption"><p><strong class="strong">Figure 8.1: </strong>Spacewar! effect depending on the keyboard focus</p></div></div>
 <p>In the Morph framework, the <code class="code">#keyboardFocusChange:</code> message is sent
 to the morph losing or gaining the keyboard focus, its parameter is a
 Boolean. Therefore we implement the <a class="ref" href="#ch08_002dFocus">Figure 8.1</a> behavior in the
@@ -214,13 +209,12 @@ matching <code class="code">SpaceWar</code>&rsquo;s method <code class="code">ke
       ifFalse: [color := self defaultColor alpha: 0.5].
    self redrawNeeded
 </pre></div>
-
 <div class="caption"><p><strong class="strong">Example 8.1: </strong>Spacewar! keyboard focus effect</p></div></div>
 </div>
 <div class="subsection-level-extent" id="Keyboard-event">
-<h4 class="subsection">8.3.2 Keyboard event</h4>
-<a class="index-entry-id" id="index-event-9"></a>
-<a class="index-entry-id" id="index-event-10"></a>
+<h4 class="subsection"><span>8.3.2 Keyboard event<a class="copiable-link" href="#Keyboard-event"> &para;</a></span></h4>
+<a class="index-entry-id" id="index-event-keyboard"></a>
+<a class="index-entry-id" id="index-event-testing-keyboard"></a>
 
 <p>To control the space ships, we use the keyboard. Therefore we want the
 game play to be notified of keyboard events.
@@ -232,10 +226,8 @@ game play to be notified of keyboard events.
 out which method should return true to let the game be notified of
 keyboard event.</em>
 </p></blockquote>
-
-
 <div class="caption"><p><strong class="strong">Exercise 8.4: </strong>Get notified of keyboard event</p></div></div>
-<a class="index-entry-id" id="index-event-11"></a>
+<a class="index-entry-id" id="index-event-handling-keyboard"></a>
 <p>We can decide to be notified of the key down or key up event and also
 key down then up event (<em class="dfn">key stroke</em>). As long as our
 <code class="code">SpaceWar</code> morph responds true to the <code class="code">#handlesKeyboard</code>
@@ -258,7 +250,6 @@ the keyboard arrows when there are stroked:
    event isArrowDown ifTrue: [^ ships first fireTorpedo].
    ...
 </pre></div>
-
 <div class="caption"><p><strong class="strong">Example 8.2: </strong>Keystroke to control the first player ship</p></div></div>
 <p>To control the second player ship, we use another classic arrangement
 in QWERTY keyboard controlled game:
@@ -271,8 +262,6 @@ WASD<a class="footnote" id="DOCF26" href="#FOOT26"><sup>26</sup></a>.
 the second player ship with the keys WASD. As a reminder, in Smalltalk
 the character code for q can be written as <code class="code">$q</code>.</em>
 </p></blockquote>
-
-
 <div class="caption"><p><strong class="strong">Exercise 8.5: </strong>Keys to control the second player ship</p></div></div>
 
 

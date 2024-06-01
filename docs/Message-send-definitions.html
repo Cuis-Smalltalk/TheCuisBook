@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
@@ -9,15 +9,15 @@ implementation of the Smalltalk language and environment.
 Copyright © 2020, 2021, 2022, 2023, 2024 H. Fernandes with K. Dickey & J. Vuletich
 
 
-Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
-Lewis, John McGarey, Mariano Montone, Ricardo Pacheco, Barry Perryman,
-Tommy Pettersson, Bernhard Pieber, Mauro Rizzi, Stephen Smith & Ignacio
-Sniechowski for the reviews of the book, suggestions and borrowed
-texts. Your help is very valuable.
+Thanks to Matt Armstrong, Ezequiel Birman, Michael Khol, Szabolcs
+Komáromi, David Lewis, John McGarey, Mariano Montone, Ricardo Pacheco,
+Barry Perryman, Tommy Pettersson, Bernhard Pieber, Mauro Rizzi,
+Stephen Smith & Ignacio Sniechowski for the reviews of the book,
+suggestions and borrowed texts. Your help is very valuable.
 
 
 
-Compilation : January 31, 2024
+Compilation : June 1, 2024
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -66,8 +66,10 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="Communicating-entities.html" rel="prev" title="Communicating entities">
 <style type="text/css">
 <!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
 div.example {margin-left: 3.2em}
 kbd.kbd {font-style: oblique}
+span:hover a.copiable-link {visibility: visible}
 ul.mark-bullet {list-style-type: disc}
 -->
 </style>
@@ -83,12 +85,12 @@ ul.mark-bullet {list-style-type: disc}
 Next: <a href="Message-to-string-entities.html" accesskey="n" rel="next">Message to string entities</a>, Previous: <a href="Communicating-entities.html" accesskey="p" rel="prev">Communicating entities</a>, Up: <a href="The-Message-Way-of-Life.html" accesskey="u" rel="up">The Message Way of Life</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<h3 class="section" id="Message-send-definitions-1">2.2 Message send definitions</h3>
-<a class="index-entry-id" id="index-message-2"></a>
+<h3 class="section" id="Message-send-definitions-1"><span>2.2 Message send definitions<a class="copiable-link" href="#Message-send-definitions-1"> &para;</a></span></h3>
+<a class="index-entry-id" id="index-message-send"></a>
 
 <p>There are three kinds of messages in Cuis-Smalltalk:
 </p>
-<a class="index-entry-id" id="index-message-3"></a>
+<a class="index-entry-id" id="index-message-unary"></a>
 
 <ul class="itemize mark-bullet">
 <li><strong class="strong">Unary messages</strong> take no argument.
@@ -96,13 +98,13 @@ Next: <a href="Message-to-string-entities.html" accesskey="n" rel="next">Message
  In <code class="code">1 factorial</code> the message <code class="code">#factorial</code> is sent to the
  object <code class="code">1</code>.
 
-<a class="index-entry-id" id="index-message-4"></a>
+<a class="index-entry-id" id="index-message-binary"></a>
 </li><li><strong class="strong">Binary messages</strong> take exactly one argument.
  <br> 
  In <code class="code">1 + 2</code> the message <code class="code">#+</code> is sent to the object
  <code class="code">1</code> with the argument <code class="code">2</code>.
 
-<a class="index-entry-id" id="index-message-5"></a>
+<a class="index-entry-id" id="index-message-keyword"></a>
 </li><li><strong class="strong">Keyword messages</strong> take an arbitrary number of
  arguments.
  <br> 
@@ -112,8 +114,8 @@ Next: <a href="Message-to-string-entities.html" accesskey="n" rel="next">Message
 
 </li></ul>
 
-<p>Unary message selectors consist of alphanumeric characters, and start
-with a lower case letter.
+<p>Unary message selectors consist of alphanumeric characters and start
+with a lowercase letter.
 </p>
 <p>Binary message selectors consist of one or more characters from the
 following set:
@@ -126,8 +128,8 @@ following set:
 keywords, where each keyword starts with a lower-case letter and ends
 with a colon.
 </p>
-<a class="index-entry-id" id="index-message-6"></a>
-<p>Unary messages have the highest precedence, then binary messages, and
+<a class="index-entry-id" id="index-message-precedence"></a>
+<p>Unary messages have the highest precedence, followed by binary messages, and
 finally keyword messages, so:
 </p>
 <div class="example smallexample">
@@ -154,7 +156,7 @@ finally keyword messages, so:
 </pre></div>
 
 <p>Parentheses can also be used to make potentially confusing code more
-clear. For example, the strict left to right evaluation order can be
+clear. For example, the strict left-to-right evaluation order can be
 confusing when applied to mathematical expressions. In the Spacewar!
 code snippet below, the parentheses make it more clear that the
 addition happens first:
@@ -163,9 +165,8 @@ addition happens first:
 <div class="example smallexample">
 <pre class="example-preformatted">newVelocity := (ai + ag) * t + velocity
 </pre></div>
-
 <div class="caption"><p><strong class="strong">Example 2.3: </strong>Ship velocity</p></div></div>
-<a class="index-entry-id" id="index-message-7"></a>
+<a class="index-entry-id" id="index-message-cascade"></a>
 <a class="index-entry-id" id="index-cascade-of-messages"></a>
 <p>To send multiple messages to the same receiver a <em class="dfn">cascade</em> can be
 used to state the receiver once, followed by the cascade of messages
@@ -179,7 +180,6 @@ expressed with a cascade:
    newLine;
    show: 'I am Cuising'
 </pre></div>
-
 <div class="caption"><p><strong class="strong">Example 2.4: </strong>Cascade of messages</p></div></div>
 <p>Another example of a cascade from the Spacewar! game:
 </p>
@@ -189,7 +189,6 @@ expressed with a cascade:
    velocity: 0 @ 0;
    morphPosition: randomCoordinate value @ randomCoordinate value
 </pre></div>
-
 <div class="caption"><p><strong class="strong">Example 2.5: </strong>Stop and teleport spaceship at a random position</p></div></div>
 <p>Observe the text here is formatted to ease code understanding. It is possible to
 write the cascade of messages in one line, but it reduces the
@@ -203,11 +202,11 @@ readability of the code:
 useful information when developing an application. An alternative to
 the <kbd class="kbd">Ctrl-d</kbd> (<em class="emph"><b class="b">D</b>o it</em>) shortcut is <kbd class="kbd">Ctrl-p</kbd>
 (<em class="emph"><b class="b">P</b>rint it</em>), which executes the script and prints the result
-direcly in the Workspace.
+directly in the Workspace.
 </p>
 <p>In the <a class="ref" href="#helloCascade">Example 2.4</a>, we have requested no special result.  Selecting the
 text and typing <kbd class="kbd">Ctrl-p</kbd> results in the default, which is to
-return the object to which a message is sent, in this case the
+return the object to which a message is sent, in this case, the
 <code class="code">Transcript</code>.
 </p>
 </div>

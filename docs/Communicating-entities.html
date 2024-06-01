@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
@@ -9,15 +9,15 @@ implementation of the Smalltalk language and environment.
 Copyright © 2020, 2021, 2022, 2023, 2024 H. Fernandes with K. Dickey & J. Vuletich
 
 
-Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
-Lewis, John McGarey, Mariano Montone, Ricardo Pacheco, Barry Perryman,
-Tommy Pettersson, Bernhard Pieber, Mauro Rizzi, Stephen Smith & Ignacio
-Sniechowski for the reviews of the book, suggestions and borrowed
-texts. Your help is very valuable.
+Thanks to Matt Armstrong, Ezequiel Birman, Michael Khol, Szabolcs
+Komáromi, David Lewis, John McGarey, Mariano Montone, Ricardo Pacheco,
+Barry Perryman, Tommy Pettersson, Bernhard Pieber, Mauro Rizzi,
+Stephen Smith & Ignacio Sniechowski for the reviews of the book,
+suggestions and borrowed texts. Your help is very valuable.
 
 
 
-Compilation : January 31, 2024
+Compilation : June 1, 2024
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -65,8 +65,10 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="Message-send-definitions.html" rel="next" title="Message send definitions">
 <style type="text/css">
 <!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
 blockquote.indentedblock {margin-right: 0em}
 div.example {margin-left: 3.2em}
+span:hover a.copiable-link {visibility: visible}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -81,10 +83,10 @@ div.example {margin-left: 3.2em}
 Next: <a href="Message-send-definitions.html" accesskey="n" rel="next">Message send definitions</a>, Up: <a href="The-Message-Way-of-Life.html" accesskey="u" rel="up">The Message Way of Life</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<h3 class="section" id="Communicating-entities-1">2.1 Communicating entities</h3>
+<h3 class="section" id="Communicating-entities-1"><span>2.1 Communicating entities<a class="copiable-link" href="#Communicating-entities-1"> &para;</a></span></h3>
 
-<a class="index-entry-id" id="index-message"></a>
-<a class="index-entry-id" id="index-message-1"></a>
+<a class="index-entry-id" id="index-message-sender"></a>
+<a class="index-entry-id" id="index-message-receiver"></a>
 <a class="index-entry-id" id="index-instance"></a>
 <a class="index-entry-id" id="index-class"></a>
 <p>When a given entity receives a message from another entity, it
@@ -108,13 +110,12 @@ then automatically garbage collected when no longer required. On a
 fresh Cuis-Smalltalk environment, the count of class instances is more than
 150000.
 </p>
-<a class="index-entry-id" id="index-collection"></a>
+<a class="index-entry-id" id="index-collection-inject_003ainto_003a"></a>
 <div class="float" id="entitiesCount">
 <div class="example smallexample">
 <pre class="example-preformatted">ProtoObject allSubclasses sum: [ :class | class allInstances size] 
 &rArr; 152058
 </pre></div>
-
 <div class="caption"><p><strong class="strong">Example 2.1: </strong>Calculating the number of entities</p></div></div>
 <p>The count of classes, the models for the entities &ndash; instances of the class <code class="code">Class</code> &ndash; is less than 700.
 </p>
@@ -123,7 +124,6 @@ fresh Cuis-Smalltalk environment, the count of class instances is more than
 <pre class="example-preformatted">Smalltalk allClasses size
 &rArr; 671
 </pre></div>
-
 <div class="caption"><p><strong class="strong">Example 2.2: </strong>Calculating the number of classes</p></div></div>
 <blockquote class="indentedblock">
 <p>&nbsp;<img class="image" src="note.png" alt="note">
@@ -132,7 +132,7 @@ to teach classes, you will likely see
 a much larger number.
 </p></blockquote>
 
-<p>To be honest, in our previous chapter we skipped this important detail
+<p>To be honest, in our previous chapter, we skipped this important detail
 on Smalltalk design. We wrote about message sending without explaining
 much, we wanted you to discover this design informally.
 The scripts you

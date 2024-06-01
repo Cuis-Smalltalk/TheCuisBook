@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
@@ -9,15 +9,15 @@ implementation of the Smalltalk language and environment.
 Copyright © 2020, 2021, 2022, 2023, 2024 H. Fernandes with K. Dickey & J. Vuletich
 
 
-Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
-Lewis, John McGarey, Mariano Montone, Ricardo Pacheco, Barry Perryman,
-Tommy Pettersson, Bernhard Pieber, Mauro Rizzi, Stephen Smith & Ignacio
-Sniechowski for the reviews of the book, suggestions and borrowed
-texts. Your help is very valuable.
+Thanks to Matt Armstrong, Ezequiel Birman, Michael Khol, Szabolcs
+Komáromi, David Lewis, John McGarey, Mariano Montone, Ricardo Pacheco,
+Barry Perryman, Tommy Pettersson, Bernhard Pieber, Mauro Rizzi,
+Stephen Smith & Ignacio Sniechowski for the reviews of the book,
+suggestions and borrowed texts. Your help is very valuable.
 
 
 
-Compilation : January 31, 2024
+Compilation : June 1, 2024
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -65,10 +65,12 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="A-Clock-Morph.html" rel="next" title="A Clock Morph">
 <style type="text/css">
 <!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
 blockquote.indentedblock {margin-right: 0em}
 div.center {text-align:center}
 div.example {margin-left: 3.2em}
 kbd.kbd {font-style: oblique}
+span:hover a.copiable-link {visibility: visible}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -83,7 +85,7 @@ kbd.kbd {font-style: oblique}
 Next: <a href="A-Clock-Morph.html" accesskey="n" rel="next">A Clock Morph</a>, Up: <a href="The-Fundamentals-of-Morph.html" accesskey="u" rel="up">The Fundamentals of Morph</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<h3 class="section" id="Going-Vector-1">7.1 Going Vector</h3>
+<h3 class="section" id="Going-Vector-1"><span>7.1 Going Vector<a class="copiable-link" href="#Going-Vector-1"> &para;</a></span></h3>
 
 <p>For Cuis-Smalltalk, we built Morphic 3, the third design iteration of these
 ideas, after Self&rsquo;s Morphic 1 and Squeak&rsquo;s Morphic 2. If you already
@@ -98,7 +100,7 @@ design of the framework relieves Morph programmers from much the
 complexity that was required, especially with regards to geometry.
 </p>
 <div class="subsection-level-extent" id="A-first-example">
-<h4 class="subsection">7.1.1 A first example</h4>
+<h4 class="subsection"><span>7.1.1 A first example<a class="copiable-link" href="#A-first-example"> &para;</a></span></h4>
 
 <p>Let&rsquo;s start with some examples. What we want is to build our own
 graphic objects, or Morphs. A Morph class is part of the Morph
@@ -120,8 +122,8 @@ object:
 
 <p>In method category <code class="command">drawing</code> add:
 </p>
-<a class="index-entry-id" id="index-morph-7"></a>
-<a class="index-entry-id" id="index-morph-8"></a>
+<a class="index-entry-id" id="index-morph-vector-line-drawing"></a>
+<a class="index-entry-id" id="index-morph-drawOn_003a"></a>
 <div class="example smallexample">
 <pre class="example-preformatted">LineExampleMorph&gt;&gt;drawOn: aCanvas
    aCanvas strokeWidth: 20 color: Color green do: [
@@ -141,8 +143,7 @@ built your first <code class="code">Morph</code> class.
 </p>
 <div class="float" id="ch07_002d01_002dLineDetails">
 <div class="center"><img class="image" src="ch07-01-LineDetails.png" alt="ch07-01-LineDetails">
-</div>
-<div class="caption"><p><strong class="strong">Figure 7.1: </strong>Details of our line morph</p></div></div>
+</div><div class="caption"><p><strong class="strong">Figure 7.1: </strong>Details of our line morph</p></div></div>
 <p>The code is self evident, the <code class="code">drawOn:</code> method takes a
 <code class="code">VectorCanvas</code> instance as an argument. <code class="code">VectorCanvas</code>
 provides many drawing operations for morphs to use. You can play with
@@ -160,14 +161,12 @@ your morph redrawn correctly.
 line morph so it draws itself as a cross with an extent of 200
 pixels?</em>
 </p></blockquote>
-
-
 <div class="caption"><p><strong class="strong">Exercise 7.1: </strong>Cross morph</p></div></div>
 
 </div>
 <div class="subsection-level-extent" id="Morph-you-can-move">
-<h4 class="subsection">7.1.2 Morph you can move</h4>
-<a class="index-entry-id" id="index-morph-9"></a>
+<h4 class="subsection"><span>7.1.2 Morph you can move<a class="copiable-link" href="#Morph-you-can-move"> &para;</a></span></h4>
+<a class="index-entry-id" id="index-morph-movable"></a>
 <p>You might have already tried to click and drag on your Line, like you
 can do with regular windows and most other Morphs. If not, try
 now. But nothing happens! The reason is that our Morph is fixed in a
@@ -181,7 +180,7 @@ variables.
 and still be able to move it around. The solution is to make it
 subclass of <code class="code">PlacedMorph</code>, instead of <code class="code">Morph</code>.
 </p>
-<a class="index-entry-id" id="index-morph-10"></a>
+<a class="index-entry-id" id="index-morph-delete"></a>
 <p>To do this, first evaluate the code below to get rid of all
 LineExampleMorph instances:
 </p>
@@ -189,7 +188,6 @@ LineExampleMorph instances:
 <div class="example smallexample">
 <pre class="example-preformatted">LineExampleMorph allInstancesDo: [ :m | m delete]
 </pre></div>
-
 <div class="caption"><p><strong class="strong">Example 7.1: </strong>Delete all instances of a given morph</p></div></div>
 <p>Then, in the System Browser class declaration for LineExampleMorph, type
 <code class="code">PlacedMorph</code> instead of <code class="code">Morph</code> and save. Now execute
@@ -199,7 +197,7 @@ again:
 <pre class="example-preformatted">LineExampleMorph new openInWorld
 </pre></div>
 
-<a class="index-entry-id" id="index-morph-11"></a>
+<a class="index-entry-id" id="index-morph-location"></a>
 <p>You will get a line you can grab with the mouse and move it
 around. <code class="code">PlacedMorph</code> adds a new instance variable called
 <code class="code">location</code>. If a morph has a <code class="code">location</code>, it can be
@@ -215,7 +213,7 @@ can also be rotated and zoomed.
 
 </div>
 <div class="subsection-level-extent" id="Filled-morph">
-<h4 class="subsection">7.1.3 Filled morph</h4>
+<h4 class="subsection"><span>7.1.3 Filled morph<a class="copiable-link" href="#Filled-morph"> &para;</a></span></h4>
 <p>Let&rsquo;s build another morph, to have more fun.
 </p>
 <div class="example smallexample">
@@ -237,8 +235,8 @@ can also be rotated and zoomed.
 
 <p>In the <code class="command">drawing</code> method category add:
 </p>
-<a class="index-entry-id" id="index-morph-12"></a>
-<a class="index-entry-id" id="index-morph-13"></a>
+<a class="index-entry-id" id="index-morph-vector-filling-area"></a>
+<a class="index-entry-id" id="index-morph-drawOn_003a-1"></a>
 <div class="example smallexample">
 <pre class="example-preformatted">TriangleExampleMorph&gt;&gt;drawOn: aCanvas
    aCanvas strokeWidth: 10 color: borderColor fillColor: fillColor do: [
@@ -263,8 +261,7 @@ morph, you can see through it.
 </p>
 <div class="float" id="ch07_002d02_002dTriangles">
 <div class="center"><img class="image" src="ch07-02-Triangles.png" alt="ch07-02-Triangles">
-</div>
-<div class="caption"><p><strong class="strong">Figure 7.2: </strong>A variety of triangle morphs, one decorated with its halo and coordinates system</p></div></div>
+</div><div class="caption"><p><strong class="strong">Figure 7.2: </strong>A variety of triangle morphs, one decorated with its halo and coordinates system</p></div></div>
 
 <div class="float" id="exeRectMorph">
 <blockquote class="indentedblock">
@@ -274,8 +271,6 @@ movable rectangle morph with an x,y extent of 200 by 100? The rect will
 be filled with a random translucent color and surrounded by a thin
 blue line.</em>
 </p></blockquote>
-
-
 <div class="caption"><p><strong class="strong">Exercise 7.2: </strong>Rectangle morph</p></div></div>
 <p>As we learnt previously, Morphic gives you additional ways to interact
 with your morphs. With a three button mouse or a wheel mouse, place
@@ -307,7 +302,7 @@ inner coordinate system defined by your morph. Displacement, rotation
 and scale are floating point numbers, and thus not limited to
 integers.
 </p>
-<a class="index-entry-id" id="index-morph-14"></a>
+<a class="index-entry-id" id="index-morph-rotationCenter"></a>
 <p>To change the center of rotation of a Morph, you override the method
 <code class="code">rotationCenter</code> accordingly:
 </p>
@@ -321,12 +316,12 @@ will learn how to control all this with code and animate our morph.
 </p>
 </div>
 <div class="subsection-level-extent" id="Animated-morph">
-<h4 class="subsection">7.1.4 Animated morph</h4>
-<a class="index-entry-id" id="index-morph-15"></a>
+<h4 class="subsection"><span>7.1.4 Animated morph<a class="copiable-link" href="#Animated-morph"> &para;</a></span></h4>
+<a class="index-entry-id" id="index-morph-animated"></a>
 <p>Let&rsquo;s add two methods to our <code class="code">TriangleExampleMorph</code> to
 make our triangle <em class="emph">alive</em>:
 </p>
-<a class="index-entry-id" id="index-morph-16"></a>
+<a class="index-entry-id" id="index-morph-step_002cwantsSteps"></a>
 <p>In the method category <code class="command">stepping</code> define:
 </p><div class="example smallexample">
 <pre class="example-preformatted">TriangleExampleMorph&gt;&gt;wantsSteps
@@ -352,7 +347,7 @@ interesting, edit the method:
 
 <p>...and:
 </p>
-<a class="index-entry-id" id="index-morph-17"></a>
+<a class="index-entry-id" id="index-morph-morphPosition"></a>
 
 <div class="example smallexample">
 <pre class="example-preformatted">TriangleExampleMorph&gt;&gt;step
@@ -369,7 +364,7 @@ that looks.
 </p>
 <p>Now try this:
 </p>
-<a class="index-entry-id" id="index-morph-18"></a>
+<a class="index-entry-id" id="index-morph-rotateBy_003a"></a>
 
 <div class="example smallexample">
 <pre class="example-preformatted">TriangleExampleMorph&gt;&gt;step
@@ -418,13 +413,12 @@ open a halo and interact with it.
 
 <div class="float" id="ch07_002d03_002dAnimatedMorph">
 <div class="center"><img class="image" src="ch07-03-AnimatedMorph.gif" alt="ch07-03-AnimatedMorph">
-</div>
-<div class="caption"><p><strong class="strong">Figure 7.3: </strong>Animated morph</p></div></div>
+</div><div class="caption"><p><strong class="strong">Figure 7.3: </strong>Animated morph</p></div></div>
 
 </div>
 <div class="subsection-level-extent" id="Morph-in-morph">
-<h4 class="subsection">7.1.5 Morph in morph</h4>
-<a class="index-entry-id" id="index-morph-19"></a>
+<h4 class="subsection"><span>7.1.5 Morph in morph<a class="copiable-link" href="#Morph-in-morph"> &para;</a></span></h4>
+<a class="index-entry-id" id="index-morph-submorph-1"></a>
 
 <p>Now, let&rsquo;s try something different. Grab one of your
 <code class="code">LineExampleMorph</code>. With the halo, zoom it until it is about the
@@ -450,7 +444,7 @@ and the morphs can be moved, rotated or scaled independently.
 again. Now add the following method to category <code class="command">geometry
 testing</code> of the class <code class="code">LineExampleMorph</code>:
 </p>
-<a class="index-entry-id" id="index-morph-20"></a>
+<a class="index-entry-id" id="index-morph-clipsSubmorphs"></a>
 
 <div class="example smallexample">
 <pre class="example-preformatted">LineExampleMorph&gt;&gt;clipsSubmorphs
@@ -463,8 +457,7 @@ make a part of their contents visible, but might have other uses too.
 </p>
 <div class="float" id="ch07_002d04_002dAnimatedAndClippedSubmorph">
 <div class="center"><img class="image" src="ch07-04-AnimatedAndClippedSubmorph.png" alt="ch07-04-AnimatedAndClippedSubmorph">
-</div>
-<div class="caption"><p><strong class="strong">Figure 7.4: </strong>An animated and clipped submorph
+</div><div class="caption"><p><strong class="strong">Figure 7.4: </strong>An animated and clipped submorph
 triangle</p></div></div>
 
 </div>

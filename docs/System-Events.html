@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
@@ -9,15 +9,15 @@ implementation of the Smalltalk language and environment.
 Copyright © 2020, 2021, 2022, 2023, 2024 H. Fernandes with K. Dickey & J. Vuletich
 
 
-Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
-Lewis, John McGarey, Mariano Montone, Ricardo Pacheco, Barry Perryman,
-Tommy Pettersson, Bernhard Pieber, Mauro Rizzi, Stephen Smith & Ignacio
-Sniechowski for the reviews of the book, suggestions and borrowed
-texts. Your help is very valuable.
+Thanks to Matt Armstrong, Ezequiel Birman, Michael Khol, Szabolcs
+Komáromi, David Lewis, John McGarey, Mariano Montone, Ricardo Pacheco,
+Barry Perryman, Tommy Pettersson, Bernhard Pieber, Mauro Rizzi,
+Stephen Smith & Ignacio Sniechowski for the reviews of the book,
+suggestions and borrowed texts. Your help is very valuable.
 
 
 
-Compilation : January 31, 2024
+Compilation : June 1, 2024
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -65,7 +65,9 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="Overall-Mechanism.html" rel="next" title="Overall Mechanism">
 <style type="text/css">
 <!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
 pre.format-preformatted {font-family: inherit}
+span:hover a.copiable-link {visibility: visible}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -80,7 +82,7 @@ pre.format-preformatted {font-family: inherit}
 Next: <a href="Overall-Mechanism.html" accesskey="n" rel="next">Overall Mechanism</a>, Up: <a href="Events.html" accesskey="u" rel="up">Events</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<h3 class="section" id="System-Events-1">8.1 System Events</h3>
+<h3 class="section" id="System-Events-1"><span>8.1 System Events<a class="copiable-link" href="#System-Events-1"> &para;</a></span></h3>
 
 <p>Modern integrated <em class="dfn">System On a Chip</em> (<em class="dfn">SOC</em>) hardware has many
 circuits which are active at the same time.  So one kind of event is
@@ -94,7 +96,7 @@ the event objects holding the information of the captured events. In
 Cuis-Smalltalk, the class <code class="code">MorphicEvent</code> and its subclasses represent
 the diversity of events in the system.
 </p>
-<a class="index-entry-id" id="index-event-2"></a>
+<a class="index-entry-id" id="index-event-classes"></a>
 <div class="format">
 <pre class="format-preformatted"><code class="code">MorphicEvent</code>
    <code class="code">DropEvent</code>

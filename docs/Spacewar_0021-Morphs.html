@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
@@ -9,15 +9,15 @@ implementation of the Smalltalk language and environment.
 Copyright © 2020, 2021, 2022, 2023, 2024 H. Fernandes with K. Dickey & J. Vuletich
 
 
-Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
-Lewis, John McGarey, Mariano Montone, Ricardo Pacheco, Barry Perryman,
-Tommy Pettersson, Bernhard Pieber, Mauro Rizzi, Stephen Smith & Ignacio
-Sniechowski for the reviews of the book, suggestions and borrowed
-texts. Your help is very valuable.
+Thanks to Matt Armstrong, Ezequiel Birman, Michael Khol, Szabolcs
+Komáromi, David Lewis, John McGarey, Mariano Montone, Ricardo Pacheco,
+Barry Perryman, Tommy Pettersson, Bernhard Pieber, Mauro Rizzi,
+Stephen Smith & Ignacio Sniechowski for the reviews of the book,
+suggestions and borrowed texts. Your help is very valuable.
 
 
 
-Compilation : January 31, 2024
+Compilation : June 1, 2024
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -65,10 +65,12 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="Building-your-specialized-Morph.html" rel="prev" title="Building your specialized Morph">
 <style type="text/css">
 <!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
 blockquote.indentedblock {margin-right: 0em}
 div.center {text-align:center}
 div.example {margin-left: 3.2em}
 kbd.kbd {font-style: oblique}
+span:hover a.copiable-link {visibility: visible}
 ul.mark-bullet {list-style-type: disc}
 -->
 </style>
@@ -84,10 +86,10 @@ ul.mark-bullet {list-style-type: disc}
 Previous: <a href="Building-your-specialized-Morph.html" accesskey="p" rel="prev">Building your specialized Morph</a>, Up: <a href="Visual-with-Morph.html" accesskey="u" rel="up">Visual with Morph</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<h3 class="section" id="Spacewar_0021-Morphs-1">6.6 Spacewar! Morphs</h3>
+<h3 class="section" id="Spacewar_0021-Morphs-1"><span>6.6 Spacewar! Morphs<a class="copiable-link" href="#Spacewar_0021-Morphs-1"> &para;</a></span></h3>
 
 <div class="subsection-level-extent" id="All-Morphs">
-<h4 class="subsection">6.6.1 All Morphs</h4>
+<h4 class="subsection"><span>6.6.1 All Morphs<a class="copiable-link" href="#All-Morphs"> &para;</a></span></h4>
 <p>Previously we defined the actors of the game as subclasses of the very
 general <code class="code">Object</code> class (See
 <a class="ref" href="Spacewar_0021-States-and-Behaviors.html#torpedoClassVariables">Example 3.14</a>). However the game play, the central star,
@@ -141,8 +143,6 @@ counterpart.
 <code class="code">SpaceWar</code>, <code class="code">CentralStar</code> and <code class="code">SpaceShip</code>
 to be subclasses of the <code class="code">PlacedMorph</code> class.</em>
 </p></blockquote>
-
-
 <div class="caption"><p><strong class="strong">Exercise 6.1: </strong>Make all Morphs</p></div></div>
 <p>As explained in the previous sections of this chapter, a morph can be
 embedded within another morph. In Spacewar!, a <code class="code">SpaceWar</code> morph
@@ -171,7 +171,6 @@ star, space ships and torpedoes are <em class="emph">submorphs</em> of a
       morphPosition: -200 @ 200;
       color: Color red
 </pre></div>
-
 <div class="caption"><p><strong class="strong">Example 6.3: </strong>Complete code to initialize the Spacewar! actors</p></div></div>
 <p>There are two important messages: <code class="code">#addMorph:</code> and
 <code class="code">#morphPosition:</code>. The former asks to the receiver morph to embed
@@ -193,7 +192,7 @@ morphPosition</code> and each time we need to modify the position we write
 
 <a class="anchor" id="artRefactoring"></a></div>
 <div class="subsection-level-extent" id="The-art-of-refactoring">
-<h4 class="subsection">6.6.2 The art of refactoring</h4>
+<h4 class="subsection"><span>6.6.2 The art of refactoring<a class="copiable-link" href="#The-art-of-refactoring"> &para;</a></span></h4>
 <a class="index-entry-id" id="index-refactoring"></a>
 
 <p>In our <a class="ref" href="Spacewar_0021-models.html#newtonModel">newtonian model</a> we explained the
@@ -271,7 +270,6 @@ understandable and logical.
    poolDictionaries: ''
    category: 'Spacewar!'
 </pre></div>
-
 <div class="caption"><p><strong class="strong">Example 6.4: </strong>Mobile in the game play</p></div></div>
 <div class="float" id="refactoryShipTorpedo">
 <blockquote class="indentedblock">
@@ -279,8 +277,6 @@ understandable and logical.
 <em class="emph">What should be the refactored definitions of the
 <code class="code">SpaceShip</code> and <code class="code">Torpedo</code> classes?</em>
 </p></blockquote>
-
-
 <div class="caption"><p><strong class="strong">Exercise 6.2: </strong>Refactoring <code class="code">SpaceShip</code> and <code class="code">Torpedo</code></p></div></div>
 <p>The first behaviors we add to our <code class="code">Mobile</code> are its
 initialization and its mass:
@@ -306,7 +302,6 @@ calculations. First, the code to calculate the gravity acceleration:
    position := self morphPosition.
    ^ -10 * self mass * owner starMass / (position r raisedTo: 3) * position
 </pre></div>
-
 <div class="caption"><p><strong class="strong">Example 6.5: </strong>Calculate the gravity force</p></div></div>
 <p>This method deserves a few comments:
 </p><ul class="itemize mark-bullet">
@@ -363,7 +358,6 @@ morph&rsquo;s way of accessing the mobile&rsquo;s position:
      velocity := velocity / 2.
      self morphPosition: self morphPosition negated]
 </pre></div>
-
 <div class="caption"><p><strong class="strong">Example 6.6: </strong><code class="code">Mobile</code>&rsquo;s <code class="code">update:</code> method</p></div></div>
 <p>Now we should add the two methods to detect when a mobile is heading
 off into deep space.
@@ -383,7 +377,6 @@ CentralStar&gt;&gt;morphLocalBounds
 Mobile&gt;&gt;morphLocalBounds
    ^ Rectangle encompassing: self class vertices
 </pre></div>
-
 <div class="caption"><p><strong class="strong">Example 6.7: </strong>Bounds of our Morph objects</p></div></div>
 <div class="float" id="mobileDeepSpace">
 <div class="example smallexample">
@@ -396,7 +389,6 @@ Mobile&gt;&gt;isGoingOuterSpace
 &quot;is the mobile going crazy in the direction of the outer space?&quot;
    ^ (self morphPosition dotProduct: velocity) &gt; 0
 </pre></div>
-
 <div class="caption"><p><strong class="strong">Example 6.8: </strong>Test when a mobile is &ldquo;spaced out&rdquo;</p></div></div>
 <p>As you see, these test methods are simple and short. When writing
 Cuis-Smalltalk code, this is something we appreciate a lot and we do not
@@ -454,8 +446,7 @@ chain.
 </p>
 <div class="float" id="ch06_002d20_002dTorpedoUpdateInheritance">
 <div class="center"><img class="image" src="ch06-20-TorpedoUpdateInheritance.png" alt="ch06-20-TorpedoUpdateInheritance">
-</div>
-<div class="caption"><p><strong class="strong">Figure 6.14: </strong>Update&rsquo;s inheritance button</p></div></div>
+</div><div class="caption"><p><strong class="strong">Figure 6.14: </strong>Update&rsquo;s inheritance button</p></div></div>
 <p>We already met an example of overriding when initializing a space ship
 instance &ndash; see <a class="ref" href="Spacewar_0021-States-and-Behaviors.html#initSpaceShip">Example 3.17</a>. In the context of our class
 refactoring, the <code class="code">initialize</code> overriding spans the whole
@@ -478,7 +469,6 @@ Torpedo&gt;&gt;initialize
    lifeSpan := 500.
    acceleration := 3000
 </pre></div>
-
 <div class="caption"><p><strong class="strong">Example 6.9: </strong>Initialize overriding in the <code class="code">Mobile</code>
 hierarchy</p></div></div>
 <p>Observe how each class is only responsible of its specific state

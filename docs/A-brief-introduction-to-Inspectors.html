@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
@@ -9,15 +9,15 @@ implementation of the Smalltalk language and environment.
 Copyright © 2020, 2021, 2022, 2023, 2024 H. Fernandes with K. Dickey & J. Vuletich
 
 
-Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
-Lewis, John McGarey, Mariano Montone, Ricardo Pacheco, Barry Perryman,
-Tommy Pettersson, Bernhard Pieber, Mauro Rizzi, Stephen Smith & Ignacio
-Sniechowski for the reviews of the book, suggestions and borrowed
-texts. Your help is very valuable.
+Thanks to Matt Armstrong, Ezequiel Birman, Michael Khol, Szabolcs
+Komáromi, David Lewis, John McGarey, Mariano Montone, Ricardo Pacheco,
+Barry Perryman, Tommy Pettersson, Bernhard Pieber, Mauro Rizzi,
+Stephen Smith & Ignacio Sniechowski for the reviews of the book,
+suggestions and borrowed texts. Your help is very valuable.
 
 
 
-Compilation : January 31, 2024
+Compilation : June 1, 2024
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -66,9 +66,11 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="Submorph.html" rel="prev" title="Submorph">
 <style type="text/css">
 <!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
 div.center {text-align:center}
 div.example {margin-left: 3.2em}
 kbd.kbd {font-style: oblique}
+span:hover a.copiable-link {visibility: visible}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -83,27 +85,25 @@ kbd.kbd {font-style: oblique}
 Next: <a href="Building-your-specialized-Morph.html" accesskey="n" rel="next">Building your specialized Morph</a>, Previous: <a href="Submorph.html" accesskey="p" rel="prev">Submorph</a>, Up: <a href="Visual-with-Morph.html" accesskey="u" rel="up">Visual with Morph</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<h3 class="section" id="A-brief-introduction-to-Inspectors-1">6.4 A brief introduction to Inspectors</h3>
+<h3 class="section" id="A-brief-introduction-to-Inspectors-1"><span>6.4 A brief introduction to Inspectors<a class="copiable-link" href="#A-brief-introduction-to-Inspectors-1"> &para;</a></span></h3>
 <p>To get the construction halo for an interior morph, just
 <kbd class="kbd">Middle-Click</kbd> multiple times to &ldquo;drill down&rdquo; through the
 submorph hierarchy.
 </p>
 <div class="float" id="ch06_002d07_002dMiddleClickRect">
 <div class="center"><img class="image" src="ch06-07-MiddleClickRect.png" alt="ch06-07-MiddleClickRect">
-</div>
-<div class="caption"><p><strong class="strong">Figure 6.6: </strong>Middle-Click for construction
+</div><div class="caption"><p><strong class="strong">Figure 6.6: </strong>Middle-Click for construction
 handles</p></div></div>
 <div class="float" id="ch06_002d08_002d2ndMidClckToSubmorph">
 <div class="center"><img class="image" src="ch06-08-2ndMidClckToSubmorph.png" alt="ch06-08-2ndMidClckToSubmorph">
-</div>
-<div class="caption"><p><strong class="strong">Figure 6.7: </strong>Middle-Click again to descend into
+</div><div class="caption"><p><strong class="strong">Figure 6.7: </strong>Middle-Click again to descend into
 submorphs</p></div></div>
 <p>There is an orange handle on the right, just under the green
 <code class="command">Duplicate</code> handle.  <kbd class="kbd">Left-Click</kbd> this to get the
 <code class="command">Debug</code> menu.  Use this menu to get an <em class="dfn">Inspector</em> for the
 rect.
 </p>
-<a class="index-entry-id" id="index-tools-3"></a>
+<a class="index-entry-id" id="index-tools-inspector"></a>
 <p>Observe <a class="ref" href="#ch06_002d11aColorClickOnRect">Figure 6.8</a>, on the left we have a pane for
 self, all inst vars, and the individual instance variables.  Clicking
 to select &ldquo;all inst vars&rdquo; and the values pane on the right shows
@@ -117,13 +117,12 @@ where <code class="code">self</code> is bound to the object we are inspecting.
 </p>
 <div class="float" id="ch06_002d11aColorClickOnRect">
 <div class="center"><img class="image" src="ch06-11aColorClickOnRect.png" alt="ch06-11aColorClickOnRect">
-</div>
-<div class="caption"><p><strong class="strong">Figure 6.8: </strong>Add instance specific behavior</p></div></div>
+</div><div class="caption"><p><strong class="strong">Figure 6.8: </strong>Add instance specific behavior</p></div></div>
 <p>To add a behavior to all instances of a class, we create an instance
 method.  Here we are going to create a behavior for &ldquo;just this one
 <code class="code">BoxedMorph</code> instance&rdquo;.
 </p>
-<a class="anchor" id="morphProperties"></a><a class="index-entry-id" id="index-morph-4"></a>
+<a class="anchor" id="morphProperties"></a><a class="index-entry-id" id="index-morph-properties"></a>
 <p>In addition to instance variables, a morph can have any number of
 named <em class="dfn">properties</em> which can be different for each morph.
 </p>
@@ -135,7 +134,6 @@ named <em class="dfn">properties</em> which can be different for each morph.
 self setProperty: #mouseButton1Up:localPosition:
    toValue: [:ignoredEvent :ignoredPosition| self color: Color random]
 </pre></div>
-
 <div class="caption"><p><strong class="strong">Example 6.1: </strong>Edit the behavior of this morph from its Inspector</p></div></div>
 <p>These properties are special to the user interface.  You can find
 methods with these names in the <code class="code">Morph</code> class to see what they
@@ -148,26 +146,23 @@ do.
 rect, because the rect now takes the mouse event.  You have to
 mouse-down on the ellipse.  More on this below.
 </p>
-<a class="index-entry-id" id="index-morph-5"></a>
+<a class="index-entry-id" id="index-morph-move_002fpick-up"></a>
 <p>One quick note on <code class="command">Move</code> versus <code class="command">Pick up</code>.  <code class="command">Move</code>
 moves a submorph &ldquo;within&rdquo; its parent.  <code class="command">Pick up</code> grabs a morph
 &ldquo;out&rdquo; of its parent.
 </p>
 <div class="float" id="ch06_002d09_002dMove_002dWithin">
 <div class="center"><img class="image" src="ch06-09-Move-Within.png" alt="ch06-09-Move-Within">
-</div>
-<div class="caption"><p><strong class="strong">Figure 6.9: </strong>Move submorph within its parent</p></div></div>
+</div><div class="caption"><p><strong class="strong">Figure 6.9: </strong>Move submorph within its parent</p></div></div>
 <div class="float" id="ch06_002d10_002dPickUp_002d2_002dMoveOut">
 <div class="center"><img class="image" src="ch06-10-PickUp-2-MoveOut.png" alt="ch06-10-PickUp-2-MoveOut">
-</div>
-<div class="caption"><p><strong class="strong">Figure 6.10: </strong>Pick a submorph out of its parent</p></div></div>
+</div><div class="caption"><p><strong class="strong">Figure 6.10: </strong>Pick a submorph out of its parent</p></div></div>
 <p>Before we go on, let&rsquo;s use an inspector on the ellipse to change
 values of a couple of its instance variables.
 </p>
 <div class="float" id="ch06_002d12_002dInspectEllipse">
 <div class="center"><img class="image" src="ch06-12-InspectEllipse.png" alt="ch06-12-InspectEllipse">
-</div>
-<div class="caption"><p><strong class="strong">Figure 6.11: </strong>Inspect instance variables of the ellipse</p></div></div>
+</div><div class="caption"><p><strong class="strong">Figure 6.11: </strong>Inspect instance variables of the ellipse</p></div></div>
 <p>Observe <a class="ref" href="#ch06_002d14_002dSetBorderColor">Figure 6.12</a> and <a class="ref" href="#editShapeInspector">Example 6.2</a>. In
 the lower pane of the inspector, code can be executed in the context
 of the inspected object. <code class="code">self</code> refers to the instance. Here
@@ -178,12 +173,10 @@ the pane contains code to set the borderWidth and the borderColor.
 <pre class="example-preformatted">self borderWidth: 10.
 self borderColor: Color blue
 </pre></div>
-
 <div class="caption"><p><strong class="strong">Example 6.2: </strong>Edit the state of this ellipse from its Inspector</p></div></div>
 <div class="float" id="ch06_002d14_002dSetBorderColor">
 <div class="center"><img class="image" src="ch06-14-SetBorderColor.png" alt="ch06-14-SetBorderColor">
-</div>
-<div class="caption"><p><strong class="strong">Figure 6.12: </strong>Use Inspector to set border color and
+</div><div class="caption"><p><strong class="strong">Figure 6.12: </strong>Use Inspector to set border color and
 border width</p></div></div>
 <p>In the typical case one wants to refine or change behaviors for all
 instances of a class.

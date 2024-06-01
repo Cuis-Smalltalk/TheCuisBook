@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
@@ -9,15 +9,15 @@ implementation of the Smalltalk language and environment.
 Copyright © 2020, 2021, 2022, 2023, 2024 H. Fernandes with K. Dickey & J. Vuletich
 
 
-Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
-Lewis, John McGarey, Mariano Montone, Ricardo Pacheco, Barry Perryman,
-Tommy Pettersson, Bernhard Pieber, Mauro Rizzi, Stephen Smith & Ignacio
-Sniechowski for the reviews of the book, suggestions and borrowed
-texts. Your help is very valuable.
+Thanks to Matt Armstrong, Ezequiel Birman, Michael Khol, Szabolcs
+Komáromi, David Lewis, John McGarey, Mariano Montone, Ricardo Pacheco,
+Barry Perryman, Tommy Pettersson, Bernhard Pieber, Mauro Rizzi,
+Stephen Smith & Ignacio Sniechowski for the reviews of the book,
+suggestions and borrowed texts. Your help is very valuable.
 
 
 
-Compilation : January 31, 2024
+Compilation : June 1, 2024
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -66,7 +66,9 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="Class-_002d_002d-model-of-Communicating-Entities-_0028Solutions_0029.html" rel="prev" title="Class -- model of Communicating Entities (Solutions)">
 <style type="text/css">
 <!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
 div.example {margin-left: 3.2em}
+span:hover a.copiable-link {visibility: visible}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -81,8 +83,8 @@ div.example {margin-left: 3.2em}
 Next: <a href="Control-Flow-Messaging-_0028Solutions_0029.html" accesskey="n" rel="next">Control Flow Messaging</a>, Previous: <a href="Class-_002d_002d-model-of-Communicating-Entities-_0028Solutions_0029.html" accesskey="p" rel="prev">Class, model of Communicating Entities</a>, Up: <a href="Solutions-to-the-Exercises.html" accesskey="u" rel="up">Solutions to the Exercises</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<h3 class="unnumberedsec" id="The-Collection-Way-of-Life-2">The Collection Way of Life</h3>
-<h4 class="subheading" id="cutString-1"><a class="ref" href="String-_002d_002d-a-particular-collection.html#cutString">Exercise 4.1</a></h4>
+<h3 class="unnumberedsec" id="The-Collection-Way-of-Life-2"><span>The Collection Way of Life<a class="copiable-link" href="#The-Collection-Way-of-Life-2"> &para;</a></span></h3>
+<h4 class="subheading" id="cutString-1"><span><a class="ref" href="String-_002d_002d-a-particular-collection.html#cutString">Exercise 4.1</a><a class="copiable-link" href="#cutString-1"> &para;</a></span></h4>
 <p>Open the protocol browser on the class <code class="code">String</code>, search for the
 method <code class="code">allButFirst:</code> implemented in
 <code class="code">SequenceableCollection</code>. Read its comment in its source code.
@@ -91,12 +93,12 @@ method <code class="code">allButFirst:</code> implemented in
 &rArr; 'My Friend'
 </pre></div>
 
-<h4 class="subheading" id="exeNegativeIntegers-1"><a class="ref" href="Fun-with-collections.html#exeNegativeIntegers">Exercise 4.2</a></h4>
+<h4 class="subheading" id="exeNegativeIntegers-1"><span><a class="ref" href="Fun-with-collections.html#exeNegativeIntegers">Exercise 4.2</a><a class="copiable-link" href="#exeNegativeIntegers-1"> &para;</a></span></h4>
 <div class="example smallexample">
 <pre class="example-preformatted">(-80 to: 50) asArray
 </pre></div>
 
-<h4 class="subheading" id="holeSet-1"><a class="ref" href="Fun-with-collections.html#holeSet">Exercise 4.3</a></h4>
+<h4 class="subheading" id="holeSet-1"><span><a class="ref" href="Fun-with-collections.html#holeSet">Exercise 4.3</a><a class="copiable-link" href="#holeSet-1"> &para;</a></span></h4>
 <div class="example smallexample">
 <pre class="example-preformatted">(1 to: 100) difference: (25 to: 75)
 &rArr; #(1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21
@@ -104,24 +106,24 @@ method <code class="code">allButFirst:</code> implemented in
 92 93 94 95 96 97 98 99 100) 
 </pre></div>
 
-<h4 class="subheading" id="oddNumbers-1"><a class="ref" href="Fun-with-collections.html#oddNumbers">Exercise 4.4</a></h4>
+<h4 class="subheading" id="oddNumbers-1"><span><a class="ref" href="Fun-with-collections.html#oddNumbers">Exercise 4.4</a><a class="copiable-link" href="#oddNumbers-1"> &para;</a></span></h4>
 <div class="example smallexample">
 <pre class="example-preformatted">(-20 to: 45) select: [:z | z odd]
 </pre></div>
 
-<h4 class="subheading" id="qtyPrime200-1"><a class="ref" href="Fun-with-collections.html#qtyPrime200">Exercise 4.5</a></h4>
+<h4 class="subheading" id="qtyPrime200-1"><span><a class="ref" href="Fun-with-collections.html#qtyPrime200">Exercise 4.5</a><a class="copiable-link" href="#qtyPrime200-1"> &para;</a></span></h4>
 <div class="example smallexample">
 <pre class="example-preformatted">((101 to: 200) select: [:n | n isPrime]) size
 &rArr; 21 
 </pre></div>
 
-<h4 class="subheading" id="multiples7-1"><a class="ref" href="Fun-with-collections.html#multiples7">Exercise 4.6</a></h4>
+<h4 class="subheading" id="multiples7-1"><span><a class="ref" href="Fun-with-collections.html#multiples7">Exercise 4.6</a><a class="copiable-link" href="#multiples7-1"> &para;</a></span></h4>
 <div class="example smallexample">
 <pre class="example-preformatted">(1 to: 100) select:[:n | n isDivisibleBy: 7]
 &rArr; #(7 14 21 28 35 42 49 56 63 70 77 84 91 98) 
 </pre></div>
 
-<h4 class="subheading" id="oddNonPrime-1"><a class="ref" href="Fun-with-collections.html#oddNonPrime">Exercise 4.7</a></h4>
+<h4 class="subheading" id="oddNonPrime-1"><span><a class="ref" href="Fun-with-collections.html#oddNonPrime">Exercise 4.7</a><a class="copiable-link" href="#oddNonPrime-1"> &para;</a></span></h4>
 <p>This solution, based on set operations and multiple use of the
 <code class="code">#select:</code> message, is mostly compatible with the knowledge
 acquired at this point of the book.
@@ -140,14 +142,14 @@ far:
 <pre class="example-preformatted">(1 to: 100) select:[:n | n isPrime not and: [n odd]]
 </pre></div>
 
-<h4 class="subheading" id="decodeCipher-1"><a class="ref" href="Fun-with-collections.html#decodeCipher">Exercise 4.8</a></h4>
+<h4 class="subheading" id="decodeCipher-1"><span><a class="ref" href="Fun-with-collections.html#decodeCipher">Exercise 4.8</a><a class="copiable-link" href="#decodeCipher-1"> &para;</a></span></h4>
 <div class="example smallexample">
 <pre class="example-preformatted">'Zpv!bsf!b!cptt' collect: [:c |
    (c asciiValue - 1) asCharacter]
 &rArr; 'You are a boss' 
 </pre></div>
 
-<h4 class="subheading" id="alphabetCipher-1"><a class="ref" href="Fun-with-collections.html#alphabetCipher">Exercise 4.9</a></h4>
+<h4 class="subheading" id="alphabetCipher-1"><span><a class="ref" href="Fun-with-collections.html#alphabetCipher">Exercise 4.9</a><a class="copiable-link" href="#alphabetCipher-1"> &para;</a></span></h4>
 <div class="example smallexample">
 <pre class="example-preformatted">($A to: $Z) collect: [:c |
    (c asciiValue - 65 + 3 \\ 26 + 65) asCharacter]
@@ -170,7 +172,7 @@ frames the value between 0 and 25<a class="footnote" id="DOCF31" href="#FOOT31">
 the character.
 </p>
 
-<h4 class="subheading" id="encodeCaesar-1"><a class="ref" href="Fun-with-collections.html#encodeCaesar">Exercise 4.10</a></h4>
+<h4 class="subheading" id="encodeCaesar-1"><span><a class="ref" href="Fun-with-collections.html#encodeCaesar">Exercise 4.10</a><a class="copiable-link" href="#encodeCaesar-1"> &para;</a></span></h4>
 <p>In the solution of <a class="ref" href="Fun-with-collections.html#alphabetCipher">Exercise 4.9</a>, we just need to replace the
 characters interval with a string:
 </p><div class="example smallexample">
@@ -179,14 +181,14 @@ characters interval with a string:
 &rArr; 'VPDOOWDONHASUHVVLRQ' 
 </pre></div>
 
-<h4 class="subheading" id="decodeCaesar-1"><a class="ref" href="Fun-with-collections.html#decodeCaesar">Exercise 4.11</a></h4>
+<h4 class="subheading" id="decodeCaesar-1"><span><a class="ref" href="Fun-with-collections.html#decodeCaesar">Exercise 4.11</a><a class="copiable-link" href="#decodeCaesar-1"> &para;</a></span></h4>
 <div class="example smallexample">
 <pre class="example-preformatted">  'DOHDMDFWDHVW' collect: [:c |
     (c asciiValue - 65 - 3 \\ 26 + 65) asCharacter]
 &rArr; 'ALEAJACTAEST'
 </pre></div>
 
-<h4 class="subheading" id="collFirst-1"><a class="ref" href="Collections-detailed.html#collFirst">Exercise 4.12</a></h4>
+<h4 class="subheading" id="collFirst-1"><span><a class="ref" href="Collections-detailed.html#collFirst">Exercise 4.12</a><a class="copiable-link" href="#collFirst-1"> &para;</a></span></h4>
 <p>The appropriate message is <code class="code">#first:</code>, defined in the parent
 class <code class="code">SequenceableCollection</code>. You need to use the protocol or
 hierarchy browser on <code class="code">Array</code> to discover it:
@@ -196,7 +198,7 @@ hierarchy browser on <code class="code">Array</code> to discover it:
 &rArr; #(2 'Apple') 
 </pre></div>
 
-<h4 class="subheading" id="fillArray-1"><a class="ref" href="Collections-detailed.html#fillArray">Exercise 4.13</a></h4>
+<h4 class="subheading" id="fillArray-1"><span><a class="ref" href="Collections-detailed.html#fillArray">Exercise 4.13</a><a class="copiable-link" href="#fillArray-1"> &para;</a></span></h4>
 <p>You could simply do a thumb:
 </p>
 <div class="example smallexample">
@@ -220,7 +222,7 @@ just do:
 <pre class="example-preformatted">array1 atAllPut: 'kiwi'.
 </pre></div>
 
-<h4 class="subheading" id="addAfter-1"><a class="ref" href="Collections-detailed.html#addAfter">Exercise 4.14</a></h4>
+<h4 class="subheading" id="addAfter-1"><span><a class="ref" href="Collections-detailed.html#addAfter">Exercise 4.14</a><a class="copiable-link" href="#addAfter-1"> &para;</a></span></h4>
 <p>In the <code class="code">OrderedCollection</code> protocol search for the method
 <code class="code">add:after:</code>.
 </p><div class="example smallexample">
@@ -229,7 +231,7 @@ coll1 add: 'Orange' after: 'Apple'; yourself.
 &rArr;  an OrderedCollection(2 'Apple' 'Orange' 2@1 1/3) 
 </pre></div>
 
-<h4 class="subheading" id="setLetters-1"><a class="ref" href="Collections-detailed.html#setLetters">Exercise 4.15</a></h4>
+<h4 class="subheading" id="setLetters-1"><span><a class="ref" href="Collections-detailed.html#setLetters">Exercise 4.15</a><a class="copiable-link" href="#setLetters-1"> &para;</a></span></h4>
 <div class="example smallexample">
 <pre class="example-preformatted">Set  new
    addAll: 'buenos d&iacute;as';
@@ -238,7 +240,7 @@ coll1 add: 'Orange' after: 'Apple'; yourself.
 &rArr;  a Set($e $j $o $a $u $b $  $&iacute; $r $d $n $s) 
 </pre></div>
 
-<h4 class="subheading" id="nameColor-1"><a class="ref" href="Collections-detailed.html#nameColor">Exercise 4.16</a></h4>
+<h4 class="subheading" id="nameColor-1"><span><a class="ref" href="Collections-detailed.html#nameColor">Exercise 4.16</a><a class="copiable-link" href="#nameColor-1"> &para;</a></span></h4>
 <div class="example smallexample">
 <pre class="example-preformatted">colors keysDo: [:key |
    colors at: key put: key asString capitalized].
@@ -247,7 +249,7 @@ colors
 #yellow-&gt;'Yellow' ) 
 </pre></div>
 
-<h4 class="subheading" id="initActorsCollections-1"><a class="ref" href="SpaceWar_0021-collections.html#initActorsCollections">Exercise 4.17</a></h4>
+<h4 class="subheading" id="initActorsCollections-1"><span><a class="ref" href="SpaceWar_0021-collections.html#initActorsCollections">Exercise 4.17</a><a class="copiable-link" href="#initActorsCollections-1"> &para;</a></span></h4>
 <p>When the game starts there is no fired torpedoes, therefore
 <code class="code">torpedoes</code> is an empty <code class="code">OrderedCollection</code>,
 instantiated with the <code class="code">#new</code> class message.
@@ -267,7 +269,7 @@ appropriate indentation.
       with: SpaceShip new.
 </pre></div>
 
-<h4 class="subheading" id="updateShipsTorpedoes-1"><a class="ref" href="SpaceWar_0021-collections.html#updateShipsTorpedoes">Exercise 4.18</a></h4>
+<h4 class="subheading" id="updateShipsTorpedoes-1"><span><a class="ref" href="SpaceWar_0021-collections.html#updateShipsTorpedoes">Exercise 4.18</a><a class="copiable-link" href="#updateShipsTorpedoes-1"> &para;</a></span></h4>
 <div class="example smallexample">
 <pre class="example-preformatted">SpaceWar&gt;&gt;stepAt: msSinceLast
   ships do: [:each | each update: msSinceLast / 1000 ].

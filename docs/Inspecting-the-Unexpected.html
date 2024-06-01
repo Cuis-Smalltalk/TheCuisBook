@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
@@ -9,15 +9,15 @@ implementation of the Smalltalk language and environment.
 Copyright © 2020, 2021, 2022, 2023, 2024 H. Fernandes with K. Dickey & J. Vuletich
 
 
-Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
-Lewis, John McGarey, Mariano Montone, Ricardo Pacheco, Barry Perryman,
-Tommy Pettersson, Bernhard Pieber, Mauro Rizzi, Stephen Smith & Ignacio
-Sniechowski for the reviews of the book, suggestions and borrowed
-texts. Your help is very valuable.
+Thanks to Matt Armstrong, Ezequiel Birman, Michael Khol, Szabolcs
+Komáromi, David Lewis, John McGarey, Mariano Montone, Ricardo Pacheco,
+Barry Perryman, Tommy Pettersson, Bernhard Pieber, Mauro Rizzi,
+Stephen Smith & Ignacio Sniechowski for the reviews of the book,
+suggestions and borrowed texts. Your help is very valuable.
 
 
 
-Compilation : January 31, 2024
+Compilation : June 1, 2024
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -65,8 +65,10 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="The-Debugger.html" rel="next" title="The Debugger">
 <style type="text/css">
 <!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
 div.center {text-align:center}
 div.example {margin-left: 3.2em}
+span:hover a.copiable-link {visibility: visible}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -81,7 +83,7 @@ div.example {margin-left: 3.2em}
 Next: <a href="The-Debugger.html" accesskey="n" rel="next">The Debugger</a>, Up: <a href="Debug-and-Exception-Handling.html" accesskey="u" rel="up">Debug and Exception Handling</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<h3 class="section" id="Inspecting-the-Unexpected-1">10.1 Inspecting the Unexpected</h3>
+<h3 class="section" id="Inspecting-the-Unexpected-1"><span>10.1 Inspecting the Unexpected<a class="copiable-link" href="#Inspecting-the-Unexpected-1"> &para;</a></span></h3>
 <a class="index-entry-id" id="index-exception"></a>
 <p>We have seen how various exceptional situations cause the appearance of
 a debugger window.  Indeed, <code class="code">Exception</code>s are also 
@@ -91,7 +93,7 @@ Exception instances.
 </p>
 <p>This is another area where the actual mechanics are complex, but the basic ideas are simple.
 </p>
-<a class="index-entry-id" id="index-block-6"></a>
+<a class="index-entry-id" id="index-block-ensure_003a"></a>
 <p>Exception instances, being objects, also have classes.  The <code class="code">BlockClosure</code>
 has a method category <code class="command">exceptions</code> which gathers some handy methods
 which allow one to <code class="code">ensure:</code> cleanup or capture and use exceptions
@@ -107,14 +109,12 @@ which allow one to <code class="code">ensure:</code> cleanup or capture and use 
 	<b class="b">ensure:</b> <b class="b">[</b> stream ifNotNil: [ :s | s close ]<b class="b">]</b>.
   ^ result
 </pre></div>
-
 <div class="caption"><p><strong class="strong">Example 10.1: </strong>Ensure a FileStream is closed</p></div></div>
 <p>Exceptions are created and <em class="dfn">signal</em>ed.  Let&rsquo;s make one and look at it.
 </p>
 <div class="float" id="ch10_002d01_002dZeroDivide">
 <div class="center"><img class="image" src="ch10-01-ZeroDivide.png" alt="ch10-01-ZeroDivide">
-</div>
-<div class="caption"><p><strong class="strong">Figure 10.1: </strong>Inspecting a <code class="code">ZeroDivide</code> instance</p></div></div>
+</div><div class="caption"><p><strong class="strong">Figure 10.1: </strong>Inspecting a <code class="code">ZeroDivide</code> instance</p></div></div>
 <p>Again, we can use an Inspector on any object, and <code class="code">Exception</code>s are
 no exception!  Now you know how to capture one when you need to.
 </p>
@@ -132,7 +132,6 @@ captures this.
   ^ self signalIn: thisContext
 
 </pre></div>
-
 <div class="caption"><p><strong class="strong">Example 10.2: </strong>Capture thisContext</p></div></div>
 <p>Just as Smalltalk code has special view windows which we call <code class="command">Browser</code>s,
 <code class="code">Exception</code>s have an enhanced viewer we call the <code class="command">Debugger</code>.

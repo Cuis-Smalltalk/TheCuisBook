@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
@@ -9,15 +9,15 @@ implementation of the Smalltalk language and environment.
 Copyright © 2020, 2021, 2022, 2023, 2024 H. Fernandes with K. Dickey & J. Vuletich
 
 
-Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
-Lewis, John McGarey, Mariano Montone, Ricardo Pacheco, Barry Perryman,
-Tommy Pettersson, Bernhard Pieber, Mauro Rizzi, Stephen Smith & Ignacio
-Sniechowski for the reviews of the book, suggestions and borrowed
-texts. Your help is very valuable.
+Thanks to Matt Armstrong, Ezequiel Birman, Michael Khol, Szabolcs
+Komáromi, David Lewis, John McGarey, Mariano Montone, Ricardo Pacheco,
+Barry Perryman, Tommy Pettersson, Bernhard Pieber, Mauro Rizzi,
+Stephen Smith & Ignacio Sniechowski for the reviews of the book,
+suggestions and borrowed texts. Your help is very valuable.
 
 
 
-Compilation : January 31, 2024
+Compilation : June 1, 2024
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -66,9 +66,11 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="The-Image.html" rel="prev" title="The Image">
 <style type="text/css">
 <!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
 div.center {text-align:center}
 div.example {margin-left: 3.2em}
 kbd.kbd {font-style: oblique}
+span:hover a.copiable-link {visibility: visible}
 ul.mark-bullet {list-style-type: disc}
 -->
 </style>
@@ -84,7 +86,7 @@ ul.mark-bullet {list-style-type: disc}
 Next: <a href="The-Change-Set.html" accesskey="n" rel="next">The Change Set</a>, Previous: <a href="The-Image.html" accesskey="p" rel="prev">The Image</a>, Up: <a href="Code-Management.html" accesskey="u" rel="up">Code Management</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<h3 class="section" id="The-Change-Log-1">9.2 The Change Log</h3>
+<h3 class="section" id="The-Change-Log-1"><span>9.2 The Change Log<a class="copiable-link" href="#The-Change-Log-1"> &para;</a></span></h3>
 <a class="index-entry-id" id="index-change-log"></a>
 
 <p>Cuis-Smalltalk records any action occurring in the environment: the code you
@@ -130,8 +132,7 @@ changes:
 </p>
 <div class="float" id="ch10_002dRecoverLostChanges1">
 <div class="center"><img class="image" src="ch10-RecoverLostChanges1.png" alt="ch10-RecoverLostChanges1">
-</div>
-<div class="caption"><p><strong class="strong">Figure 9.1: </strong>Cuis-Smalltalk informs about lost changes</p></div></div>
+</div><div class="caption"><p><strong class="strong">Figure 9.1: </strong>Cuis-Smalltalk informs about lost changes</p></div></div>
 <p>From there you have three options:
 </p>
 <ul class="itemize mark-bullet">
@@ -141,7 +142,7 @@ changes:
   Workspaces or any places where code can be executed). Often this is
   not really what you want to do, particularly the executed code.
 
-<a class="index-entry-id" id="index-tools-4"></a>
+<a class="index-entry-id" id="index-tools-lost-changes"></a>
 </li><li><strong class="strong">Restore lost changes manually.</strong> In the subsequent
   <code class="command">Lost changes</code> window you are presented with the unsaved
   changes, one per line, in chronological order, with the older ones
@@ -151,8 +152,7 @@ changes:
 
 <div class="float" id="ch10_002dRecoverLostChanges2">
 <div class="center"><img class="image" src="ch10-RecoverLostChanges2.png" alt="ch10-RecoverLostChanges2">
-</div>
-<div class="caption"><p><strong class="strong">Figure 9.2: </strong>Manually select the changes to file in</p></div></div>
+</div><div class="caption"><p><strong class="strong">Figure 9.2: </strong>Manually select the changes to file in</p></div></div>
 <p>To file-in the changes related to the creation of the
   <code class="code">TheBook</code> class but not the executed code in the Workspace, select
   the two lines related to class definition.
@@ -164,7 +164,7 @@ changes:
 </li><li><strong class="strong">Nothing.</strong> No changes are restored. Keep in mind that
   unsaved changes aren&rsquo;t discarded until you save your image.
 
-<a class="index-entry-id" id="index-tools-5"></a>
+<a class="index-entry-id" id="index-tools-recent-changes"></a>
 <p>In case you change your mind and you want to recover changes, do
   ...World menu &rarr; <code class="command">Changes...</code>  &rarr;
   <code class="command">Recently logged Changes...</code>.

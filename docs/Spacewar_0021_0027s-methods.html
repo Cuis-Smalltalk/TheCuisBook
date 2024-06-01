@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
@@ -9,15 +9,15 @@ implementation of the Smalltalk language and environment.
 Copyright © 2020, 2021, 2022, 2023, 2024 H. Fernandes with K. Dickey & J. Vuletich
 
 
-Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
-Lewis, John McGarey, Mariano Montone, Ricardo Pacheco, Barry Perryman,
-Tommy Pettersson, Bernhard Pieber, Mauro Rizzi, Stephen Smith & Ignacio
-Sniechowski for the reviews of the book, suggestions and borrowed
-texts. Your help is very valuable.
+Thanks to Matt Armstrong, Ezequiel Birman, Michael Khol, Szabolcs
+Komáromi, David Lewis, John McGarey, Mariano Montone, Ricardo Pacheco,
+Barry Perryman, Tommy Pettersson, Bernhard Pieber, Mauro Rizzi,
+Stephen Smith & Ignacio Sniechowski for the reviews of the book,
+suggestions and borrowed texts. Your help is very valuable.
 
 
 
-Compilation : January 31, 2024
+Compilation : June 1, 2024
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -65,10 +65,12 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="Control-flow-with-block-and-message.html" rel="prev" title="Control flow with block and message">
 <style type="text/css">
 <!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
 blockquote.indentedblock {margin-right: 0em}
 div.center {text-align:center}
 div.example {margin-left: 3.2em}
 kbd.kbd {font-style: oblique}
+span:hover a.copiable-link {visibility: visible}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -83,14 +85,14 @@ kbd.kbd {font-style: oblique}
 Previous: <a href="Control-flow-with-block-and-message.html" accesskey="p" rel="prev">Control flow with block and message</a>, Up: <a href="Control-Flow-Messaging.html" accesskey="u" rel="up">Control Flow Messaging</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<h3 class="section" id="Spacewar_0021_0027s-methods-1">5.6 Spacewar!&rsquo;s methods</h3>
+<h3 class="section" id="Spacewar_0021_0027s-methods-1"><span>5.6 Spacewar!&rsquo;s methods<a class="copiable-link" href="#Spacewar_0021_0027s-methods-1"> &para;</a></span></h3>
 <p>You are already acquainted to the writing of simple methods for the
 Spacewar! game. We will write some more and learn how to categorize
 them.
 </p>
 <div class="subsection-level-extent" id="Initializing-the-game-play">
-<h4 class="subsection">5.6.1 Initializing the game play</h4>
-<a class="index-entry-id" id="index-method-14"></a>
+<h4 class="subsection"><span>5.6.1 Initializing the game play<a class="copiable-link" href="#Initializing-the-game-play"> &para;</a></span></h4>
+<a class="index-entry-id" id="index-method-creating"></a>
 
 <p>We want to add the <code class="code">initialize</code> method to our <code class="code">SpaceWar</code>
 class. Of course we need to use the System Browser:
@@ -141,7 +143,6 @@ class. Of course we need to use the System Browser:
   self startSteppingStepTime: self stepTime.
   self initializeActors
 </pre></div>
-
 <div class="caption"><p><strong class="strong">Example 5.7: </strong>Initialize <code class="code">SpaceWar</code></p></div></div>
 </li><li> Once edited, save-it with <kbd class="kbd">Ctrl-s</kbd> or
   ...right click &rarr; <code class="command">Accept (s)</code>...
@@ -161,12 +162,10 @@ class. Of course we need to use the System Browser:
 in <a class="ref" href="Block-syntax.html#teleportMethod">Example 5.3</a> then categorize it in the <code class="command">events</code>
 method category.</em>
 </p></blockquote>
-
-
 <div class="caption"><p><strong class="strong">Exercise 5.3: </strong>Categorize a method</p></div></div>
 </div>
 <div class="subsection-level-extent" id="Space-ship-controls">
-<h4 class="subsection">5.6.2 Space ship controls</h4>
+<h4 class="subsection"><span>5.6.2 Space ship controls<a class="copiable-link" href="#Space-ship-controls"> &para;</a></span></h4>
 
 <p>In a previous chapter, you wrote as an exercise simple implementation
 of the <a class="ref" href="Spacewar_0021-States-and-Behaviors.html#simpleControls">control ship methods</a>. The definitive
@@ -192,7 +191,6 @@ SpaceShip&gt;&gt;left
   &quot;Rotate the ship to its left&quot;
   self heading: self heading - 0.1
 </pre></div>
-
 <div class="caption"><p><strong class="strong">Example 5.8: </strong>Ship controls</p></div></div>
 <p>Observe the <code class="code">right</code> and <code class="code">left</code> methods, they are mostly
 identical to the ones asked in <a class="ref" href="Spacewar_0021-States-and-Behaviors.html#shipHeading">Exercise 3.12</a>. We don&rsquo;t modify
@@ -206,8 +204,6 @@ information.
 <em class="emph">Categorize the control methods in a newly created method
 category named <code class="command">control</code>.</em>
 </p></blockquote>
-
-
 <div class="caption"><p><strong class="strong">Exercise 5.4: </strong>Categorize control methods</p></div></div>
 <p>Control will not be complete without the method to fire a torpedo. It
 is more complex to correctly initialize a torpedo.
@@ -232,17 +228,15 @@ space ship position, heading, and velocity before being fired.
     color: self color muchLighter.
   owner addTorpedo: torpedo
 </pre></div>
-
 <div class="caption"><p><strong class="strong">Example 5.9: </strong>Firing a torpedo from a space ship in motion</p></div></div>
 
 <div class="float" id="ch05_002dSpacewarGamePlay">
 <div class="center"><img class="image" src="ch05-SpacewarGamePlay.png" alt="ch05-SpacewarGamePlay">
-</div>
-<div class="caption"><p><strong class="strong">Figure 5.1: </strong>Spacewar! torpedoes around</p></div></div>
+</div><div class="caption"><p><strong class="strong">Figure 5.1: </strong>Spacewar! torpedoes around</p></div></div>
 
 </div>
 <div class="subsection-level-extent" id="Collisions">
-<h4 class="subsection">5.6.3 Collisions</h4>
+<h4 class="subsection"><span>5.6.3 Collisions<a class="copiable-link" href="#Collisions"> &para;</a></span></h4>
 <p>In a previous chapter we gave a small taste of the collision detection
 code between the space ships and the central star. It relies on
 iterator, block of code and control flow.
@@ -257,8 +251,6 @@ torpedo-ship collisions.
 method to detect the collision between the two ships and take action
 accordingly? (Adapt from <a class="ref" href="SpaceWar_0021-collections.html#shipSunCollision">Example 4.23</a>).</em>
 </p></blockquote>
-
-
 <div class="caption"><p><strong class="strong">Exercise 5.5: </strong>Ships collision</p></div></div>
 <p>The detection between the two ships and the possible numerous
 torpedoes required two enumerators with nested blocks of code:
@@ -276,7 +268,6 @@ ships do: [:aShip |
   ]
 ]
 </pre></div>
-
 <div class="caption"><p><strong class="strong">Example 5.10: </strong>Collision between the ships and the
 torpedoes</p></div></div>
 
@@ -290,8 +281,6 @@ you.
 and the central star and take action accordingly. (Adapt from
 <a class="ref" href="SpaceWar_0021-collections.html#shipSunCollision">Example 4.23</a> and <a class="ref" href="#shipsTorpedoesCollision">Example 5.10</a>.)</em>
 </p></blockquote>
-
-
 <div class="caption"><p><strong class="strong">Exercise 5.6: </strong>Collision between the torpedoes and the Sun</p></div></div></div>
 </div>
 <hr>

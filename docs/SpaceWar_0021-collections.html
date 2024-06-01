@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
@@ -9,15 +9,15 @@ implementation of the Smalltalk language and environment.
 Copyright © 2020, 2021, 2022, 2023, 2024 H. Fernandes with K. Dickey & J. Vuletich
 
 
-Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
-Lewis, John McGarey, Mariano Montone, Ricardo Pacheco, Barry Perryman,
-Tommy Pettersson, Bernhard Pieber, Mauro Rizzi, Stephen Smith & Ignacio
-Sniechowski for the reviews of the book, suggestions and borrowed
-texts. Your help is very valuable.
+Thanks to Matt Armstrong, Ezequiel Birman, Michael Khol, Szabolcs
+Komáromi, David Lewis, John McGarey, Mariano Montone, Ricardo Pacheco,
+Barry Perryman, Tommy Pettersson, Bernhard Pieber, Mauro Rizzi,
+Stephen Smith & Ignacio Sniechowski for the reviews of the book,
+suggestions and borrowed texts. Your help is very valuable.
 
 
 
-Compilation : January 31, 2024
+Compilation : June 1, 2024
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -65,8 +65,10 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="Collections-detailed.html" rel="prev" title="Collections detailed">
 <style type="text/css">
 <!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
 blockquote.indentedblock {margin-right: 0em}
 div.example {margin-left: 3.2em}
+span:hover a.copiable-link {visibility: visible}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -81,13 +83,13 @@ div.example {margin-left: 3.2em}
 Previous: <a href="Collections-detailed.html" accesskey="p" rel="prev">Collections detailed</a>, Up: <a href="The-Collection-Way-of-Life.html" accesskey="u" rel="up">The Collection Way of Life</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<h3 class="section" id="SpaceWar_0021-collections-1">4.5 SpaceWar! collections</h3>
+<h3 class="section" id="SpaceWar_0021-collections-1"><span>4.5 SpaceWar! collections<a class="copiable-link" href="#SpaceWar_0021-collections-1"> &para;</a></span></h3>
 
 <div class="subsection-level-extent" id="Instantiate-collections">
-<h4 class="subsection">4.5.1 Instantiate collections</h4>
+<h4 class="subsection"><span>4.5.1 Instantiate collections<a class="copiable-link" href="#Instantiate-collections"> &para;</a></span></h4>
 <p>Whenever you need to deal with more than one element of the same
 nature &ndash; instances of the same class &ndash; it is a clue to use a
-collection to hold them. Moreover, when these elements are of fixed
+collection to hold them. Moreover, when these elements are of a fixed
 quantity, it indicates more precisely you want to use an <code class="code">Array</code>
 instance. An <code class="code">Array</code> is a collection of fixed size. It can not
 grow nor shrink.
@@ -96,11 +98,11 @@ grow nor shrink.
 <code class="code">OrderedCollection</code> instance. It is a collection of variable
 size, it can grow or shrink.
 </p>
-<p>SpaceWar! is a two-players game, there will be always two players
-and two space ships. We use an <code class="code">Array</code> instance to keep
-reference of each space ship.
+<p>SpaceWar! is a two-player game, there will always be two players
+and two spaceships. We use an <code class="code">Array</code> instance to keep a
+reference to each spaceship.
 </p>
-<p>Each player can fire several torpedoes; therefore the game play holds
+<p>Each player can fire several torpedoes; therefore the gameplay holds
 zero or more torpedoes &ndash; hundreds if we decide so. The torpedoes
 quantity is variable, we want to use an <code class="code">OrdredCollection</code>
 instance to keep track of them.
@@ -125,7 +127,6 @@ create the necessary collections.
       position: -200 @ 200;
       color: Color red
 </pre></div>
-
 <div class="caption"><p><strong class="strong">Example 4.17: </strong>Incomplete game initialization</p></div></div>
 <div class="float" id="initActorsCollections">
 <blockquote class="indentedblock">
@@ -135,19 +136,17 @@ create the necessary collections.
 &ldquo;../..&rdquo; with lines of code where these collections are
 instantiated and if necessary populated.</em>
 </p></blockquote>
-
-
 <div class="caption"><p><strong class="strong">Exercise 4.17: </strong>Collections to hold the ships and torpedoes</p></div></div>
 
 </div>
 <div class="subsection-level-extent" id="Collections-in-action">
-<h4 class="subsection">4.5.2 Collections in action</h4>
+<h4 class="subsection"><span>4.5.2 Collections in action<a class="copiable-link" href="#Collections-in-action"> &para;</a></span></h4>
 
-<p>The space ship and the torpedo objects are responsible of their
+<p>The spaceship and the torpedo objects are responsible for their
 internal states. They understand the <code class="code">#update:</code> message to recompute
 their position according to the mechanical laws.
 </p>
-<p>A fired torpedo has a constant velocity, no external forces is applied
+<p>A fired torpedo has a constant velocity, no external forces are applied
 to it. Its position is linearly updated according to the time
 elapsed. The <code class="code">t</code> parameter in the <code class="code">#update:</code> message is
 this time interval.
@@ -159,11 +158,10 @@ this time interval.
    position := velocity * t + position.
    ../..
 </pre></div>
-
 <div class="caption"><p><strong class="strong">Example 4.18: </strong>Torpedo mechanics</p></div></div>
-<p>A space ship is put under the strain of the star&rsquo;s gravity pull and
+<p>A spaceship is put under the strain of the star&rsquo;s gravity pull and
 the acceleration of its engines. Therefore its velocity and position
-change accordingly to the mechanical laws of physics.
+change according to the mechanical laws of physics.
 </p>
 <div class="float" id="spaceShipMechanic">
 <div class="example smallexample">
@@ -178,7 +176,6 @@ change accordingly to the mechanical laws of physics.
    velocity := newVelocity.
    ../..
 </pre></div>
-
 <div class="caption"><p><strong class="strong">Example 4.19: </strong>Space ship mechanics</p></div></div>
 <blockquote class="indentedblock">
 <p>&nbsp;<img class="image" src="note.png" alt="note">
@@ -200,12 +197,11 @@ nose direction of the spaceship:
 <div class="float" id="spaceShipDirection">
 <div class="example smallexample">
 <pre class="example-preformatted">SpaceShip&gt;&gt;direction
-&quot;I am an unit vector representing the nose direction of the mobile&quot;
+&quot;I am a unit vector representing the nose direction of the mobile&quot;
    ^ Point rho: 1 theta: self heading
 </pre></div>
-
 <div class="caption"><p><strong class="strong">Example 4.20: </strong>Space ship direction method</p></div></div>
-<p>The <code class="code">#gravity</code> message asks for the gravity vector the space ship
+<p>The <code class="code">#gravity</code> message asks for the gravity vector of the spaceship
 is subjected to:
 </p>
 <div class="float" id="spaceShipGravity">
@@ -217,14 +213,13 @@ is subjected to:
    ^ [-10 * self mass * self starMass / (position r raisedTo: 3) * position]
       on: Error do: [0 @ 0]
 </pre></div>
-
 <div class="caption"><p><strong class="strong">Example 4.21: </strong>Space ship gravity</p></div></div>
 <p>Observe the message <code class="code">#starMass</code> sent to the spaceship herself.
 We, as a spaceship, have not yet figured out how to ask the central star
 for its stellar mass. Our <code class="code">starMass</code> method can just return, for
 now, the number 8000.
 </p>
-<p>The game play is the responsibility of a <code class="code">SpaceWar</code> instance. At
+<p>The gameplay is the responsibility of a <code class="code">SpaceWar</code> instance. At
 a regular interval of time, it refreshes the states of the game
 actors. A <code class="code">stepAt:</code> method is called at a regular interval of time
 determined by the <code class="code">stepTime</code> method:
@@ -240,10 +235,9 @@ SpaceWar&gt;&gt;stepAt: millisecondSinceLast
    ships do: [:each | each unpush].
    ../..
 </pre></div>
-
-<div class="caption"><p><strong class="strong">Example 4.22: </strong>Regular refresh of the game play</p></div></div>
+<div class="caption"><p><strong class="strong">Example 4.22: </strong>Regular refresh of the gameplay</p></div></div>
 <p>In the <code class="code">stepAt:</code> method, we intentionally left out the details to
-update the ship and torpedoe positions. Note: each ship is sent
+update the ship and torpedo positions. Note: each ship is sent
 regularly an <code class="code">#unpush</code> message to reset its previous <code class="code">#push</code>
 acceleration.
 </p>
@@ -251,16 +245,14 @@ acceleration.
 <blockquote class="indentedblock">
 <p>&nbsp;<img class="image" src="CuisLogo.png" alt="CuisLogo">
 <em class="emph">Replace the two lines &ldquo;../..&rdquo; with code to update the ships
-and the torpedoes positions and velocities.</em>
+and the torpedoes&rsquo; positions and velocities.</em>
 </p></blockquote>
-
-
 <div class="caption"><p><strong class="strong">Exercise 4.18: </strong>Update all ships and torpedoes</p></div></div>
 
-<p>Among other things, the game play handles the collisions between the
+<p>Among other things, the gameplay handles the collisions between the
 various protagonists. Enumerators are very handy for this.
 </p>
-<p>Ships are hold in array of size 2, we just iterate it with a <code class="code">#do:</code>
+<p>Ships are held in an array of size 2, we just iterate it with a <code class="code">#do:</code>
 message and a dedicated block of code:
 </p>
 <div class="float" id="shipSunCollision">
@@ -272,7 +264,6 @@ message and a dedicated block of code:
          self teleport: aShip]
    ]
 </pre></div>
-
 <div class="caption"><p><strong class="strong">Example 4.23: </strong>Collision between the ships and the Sun</p></div></div></div>
 </div>
 <hr>

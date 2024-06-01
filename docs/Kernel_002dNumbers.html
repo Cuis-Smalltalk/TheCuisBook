@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
@@ -9,15 +9,15 @@ implementation of the Smalltalk language and environment.
 Copyright © 2020, 2021, 2022, 2023, 2024 H. Fernandes with K. Dickey & J. Vuletich
 
 
-Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
-Lewis, John McGarey, Mariano Montone, Ricardo Pacheco, Barry Perryman,
-Tommy Pettersson, Bernhard Pieber, Mauro Rizzi, Stephen Smith & Ignacio
-Sniechowski for the reviews of the book, suggestions and borrowed
-texts. Your help is very valuable.
+Thanks to Matt Armstrong, Ezequiel Birman, Michael Khol, Szabolcs
+Komáromi, David Lewis, John McGarey, Mariano Montone, Ricardo Pacheco,
+Barry Perryman, Tommy Pettersson, Bernhard Pieber, Mauro Rizzi,
+Stephen Smith & Ignacio Sniechowski for the reviews of the book,
+suggestions and borrowed texts. Your help is very valuable.
 
 
 
-Compilation : January 31, 2024
+Compilation : June 1, 2024
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -66,9 +66,11 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="Cuis-system-classes.html" rel="prev" title="Cuis system classes">
 <style type="text/css">
 <!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
 blockquote.indentedblock {margin-right: 0em}
 div.example {margin-left: 3.2em}
 kbd.kbd {font-style: oblique}
+span:hover a.copiable-link {visibility: visible}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -83,13 +85,13 @@ kbd.kbd {font-style: oblique}
 Next: <a href="Kernel_002dText.html" accesskey="n" rel="next">Kernel-Text</a>, Previous: <a href="Cuis-system-classes.html" accesskey="p" rel="prev">Cuis system classes</a>, Up: <a href="Class-_002d-Model-of-Communicating-Entities.html" accesskey="u" rel="up">Class, Model of Communicating Entities</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<h3 class="section" id="Kernel_002dNumbers-1">3.4 Kernel-Numbers</h3>
-<a class="index-entry-id" id="index-method-10"></a>
+<h3 class="section" id="Kernel_002dNumbers-1"><span>3.4 Kernel-Numbers<a class="copiable-link" href="#Kernel_002dNumbers-1"> &para;</a></span></h3>
+<a class="index-entry-id" id="index-method-category-1"></a>
 
 <p>The top hierarchy <code class="code">Number</code> class shows most of the behaviors
 inherited by the subclasses as <code class="code">Float</code>, <code class="code">Integer</code> and
 <code class="code">Fraction</code>. The Smalltalk way to learn about a behavior is to
-point the System Browser toward a top hierarchy class and to explore
+point the System Browser toward a top hierarchy class and explore
 the method categories.
 </p>
 <p>Let&rsquo;s suppose we want to round a float number. In <code class="code">Number</code>, we
@@ -97,8 +99,8 @@ explore the <strong class="strong">Truncation and round off</strong> method cate
 discover several behaviors. The next thing to do is to test these
 messages in a Workspace to discover the one we are searching for:
 </p>
-<a class="index-entry-id" id="index-number-22"></a>
-<a class="index-entry-id" id="index-number-23"></a>
+<a class="index-entry-id" id="index-number-roundTo_003a"></a>
+<a class="index-entry-id" id="index-number-roundUpTo_003a"></a>
 
 <div class="float" id="roundingNumbers">
 <div class="example smallexample">
@@ -107,19 +109,18 @@ messages in a Workspace to discover the one we are searching for:
 1.264 roundUpTo: 0.01 &rArr; 1.27
 1.264 roundTo: 0.001 &rArr; 1.264
 </pre></div>
-
 <div class="caption"><p><strong class="strong">Example 3.3: </strong>Rounding numbers, Workspace try out</p></div></div>
 
-<a class="index-entry-id" id="index-loop"></a>
-<a class="index-entry-id" id="index-loop-1"></a>
-<a class="index-entry-id" id="index-number-24"></a>
-<a class="index-entry-id" id="index-number-25"></a>
+<a class="index-entry-id" id="index-loop-for"></a>
+<a class="index-entry-id" id="index-loop-for-step"></a>
+<a class="index-entry-id" id="index-number-to_003ado_003a"></a>
+<a class="index-entry-id" id="index-number-to_003ado_003aby"></a>
 
 <p>Number is a very strange place to look for an indexed loop in a given
 interval. Nevertheless, an interval is defined by start and stop
 numbers. In the <code class="code">Number</code> class, the method category
 <strong class="strong">intervals</strong> reveals related behaviors. These methods work
-polymorphically with most kinds of number:
+polymorphically with most kinds of numbers:
 </p>
 <div class="float" id="intervalLoops">
 <div class="example smallexample">
@@ -136,10 +137,9 @@ Float pi to: 5 by: 1/3 do: [:i | Transcript show: i; space]
 &rArr; 3.141592653589793 3.4749259869231266 3.80825932025646
 4.141592653589793 4.474925986923126 4.808259320256459
 </pre></div>
-
 <div class="caption"><p><strong class="strong">Example 3.4: </strong>Interval loops (for-loop)</p></div></div>
-<a class="index-entry-id" id="index-loop-2"></a>
-<a class="index-entry-id" id="index-number-26"></a>
+<a class="index-entry-id" id="index-loop-repeat"></a>
+<a class="index-entry-id" id="index-number-integer-timesRepeat_003a"></a>
 
 <p>Now, in the <code class="code">Integer</code> class, explore the method category
 <code class="command">enumerating</code>, to find <code class="code">timesRepeat:</code>. When a
@@ -147,23 +147,22 @@ portion of code needs to be executed several times
 <a class="footnote" id="DOCF14" href="#FOOT14"><sup>14</sup></a>, without
 the need for an index, the <code class="code">#timesRepeat:</code> message is sent to an
 integer. We already saw this variant in a previous section of this
-chapter.  Throwing a 6 face die 5 times can be simulated with
+chapter.  Throwing a 6-face die 5 times can be simulated with
 an integer:
 </p>
-<a class="index-entry-id" id="index-number-27"></a>
+<a class="index-entry-id" id="index-number-integer-atRandom"></a>
 <div class="float" id="playingDice">
 <div class="example smallexample">
 <pre class="example-preformatted">5 timesRepeat: [Transcript show: 6 atRandom; space]
 &rArr; 1 2 4 6 2
 </pre></div>
-
 <div class="caption"><p><strong class="strong">Example 3.5: </strong>Throwing a die 5 times</p></div></div>
 <p>Note: Expect a different result each time.
 </p>
 <a class="index-entry-id" id="index-Interval"></a>
-<a class="index-entry-id" id="index-number-28"></a>
-<a class="index-entry-id" id="index-number-29"></a>
-<a class="index-entry-id" id="index-number-30"></a>
+<a class="index-entry-id" id="index-number-interval"></a>
+<a class="index-entry-id" id="index-number-to_003a"></a>
+<a class="index-entry-id" id="index-number-to_003aby_003a"></a>
 
 <p>Intervals of numbers can be defined on their own, for future use:
 </p>
@@ -175,7 +174,6 @@ an integer:
 1 to: 10 by: 2
 &rArr; (1 to: 9 by: 2)
 </pre></div>
-
 <div class="caption"><p><strong class="strong">Example 3.6: </strong>Interval</p></div></div>
 <p>Intervals work with other kinds of objects such as <code class="code">Character</code>s:
 </p><div class="example smallexample">
@@ -198,7 +196,7 @@ collection:
 </pre></div>
 
 <p>In Spacewar!, when a ship is destroyed it is teleported to a random
-position in the square game play area. Intervals are handy to pick 
+position in the square gameplay area. Intervals are handy to pick 
 random coordinates. In the example below, the variable
 <code class="code">randomCoordinate</code> holds a block of code &ndash; called an anonymous
 function in other languages. It picks a random value in the
@@ -211,7 +209,6 @@ aShip
    velocity: 0 @ 0;
    morphPosition: randomCoordinate value @ randomCoordinate value
 </pre></div>
-
 <div class="caption"><p><strong class="strong">Example 3.7: </strong>Teleport ship</p></div></div>
 
 <div class="float" id="cosTable">
@@ -220,10 +217,8 @@ aShip
 <em class="emph">Compute the cosine values in
 the interval [0 ; 2PI], each 1/10. Output the result in the transcript.</em>
 </p></blockquote>
-
-
 <div class="caption"><p><strong class="strong">Exercise 3.2: </strong>Cosine table</p></div></div>
-<a class="index-entry-id" id="index-number-31"></a>
+<a class="index-entry-id" id="index-number-integer-base-1"></a>
 <p>Integer numbers are represented in different bases when prefixed with
 the base and &ldquo;r&rdquo;. The <code class="command">r</code> stands for radix, the base root by
 which the following number is interpreted.
@@ -238,7 +233,6 @@ number, it is immediately printed in the decimal base:
 20rF &rArr; 15
 10r15 &rArr; 15
 </pre></div>
-
 <div class="caption"><p><strong class="strong">Example 3.8: </strong>Integer represented by different bases</p></div></div>
 <p>Writing numbers as Mayans or Babylonians<a class="footnote" id="DOCF15" href="#FOOT15"><sup>15</sup></a>:
 </p>
@@ -256,7 +250,6 @@ number, it is immediately printed in the decimal base:
 20r40 &rArr; 80 &quot;pronounced 4-twenties in some languages&quot;
 20r100 &rArr; 400
 </pre></div>
-
 <div class="caption"><p><strong class="strong">Example 3.9: </strong>Counting like the ancients</p></div></div>
 <a class="index-entry-id" id="index-bits-shifting"></a>
 <p>Because of the nature of a number represented in base 2, shifting its
@@ -270,7 +263,6 @@ bits left and right is equivalent to multiplying by 2 and dividing by
 (2r1111 &gt;&gt; 1) printStringBase: 2 &rArr; '111'
 2r1111 &gt;&gt; 1 &rArr; 7
 </pre></div>
-
 <div class="caption"><p><strong class="strong">Example 3.10: </strong>Shifting bits</p></div></div>
 <div class="float" id="multiplyBy1024">
 <blockquote class="indentedblock">
@@ -278,12 +270,10 @@ bits left and right is equivalent to multiplying by 2 and dividing by
 <em class="emph">How would you multiply
 the integer 360 by 1024, without using the multiplication operation?</em>
 </p></blockquote>
-
-
 <div class="caption"><p><strong class="strong">Exercise 3.3: </strong>Multiply by 1024</p></div></div>
 
-<h4 class="subheading" id="Hiatus-with-decimal-numbers">Hiatus with decimal numbers</h4>
-<a class="index-entry-id" id="index-number-32"></a>
+<h4 class="subheading" id="Hiatus-with-decimal-numbers"><span>Hiatus with decimal numbers<a class="copiable-link" href="#Hiatus-with-decimal-numbers"> &para;</a></span></h4>
+<a class="index-entry-id" id="index-number-decimal"></a>
 
 <p>We saw decimal numbers are written with a dot &ldquo;.&rdquo; to separate the
 integer and the decimal parts: <code class="code">1.5</code>, <code class="code">1235.021</code>
@@ -305,7 +295,6 @@ information about this in the class comment of <code class="code">Float</code>.
 <pre class="example-preformatted">0.1 + 0.2 - 0.3
 &rArr; 5.551115123125783e-17
 </pre></div>
-
 <div class="caption"><p><strong class="strong">Example 3.11: </strong>Computer dyscalculia!</p></div></div>
 <p>In <a class="ref" href="#FloatPrecision">Example 3.11</a>, the returned value should be zero but it is
 not the case. The computer returns <code class="code">5.55e-17</code>, or
@@ -318,14 +307,12 @@ is an error.
 <em class="emph">Give 3 calculations showing errors compared
 to the expected results.</em>
 </p></blockquote>
-
-
 <div class="caption"><p><strong class="strong">Exercise 3.4: </strong>Miscellaneous calculation errors with decimal
 numbers</p></div></div>
 <p>When accuracy is mandatory use the Rational Numbers
 representation in Cuis-Smalltalk.
 </p>
-<a class="index-entry-id" id="index-number-33"></a>
+<a class="index-entry-id" id="index-number-rational-_0028fraction_0029-2"></a>
 
 <p>A rational number is written with the division symbol between two
 integers: do <kbd class="kbd">Ctrl-p</kbd> on <code class="code">5/2</code> &rArr;
@@ -338,8 +325,6 @@ decimal.
 <em class="emph">What happens when
 executing this code</em> <code class="code">5/0</code><em class="emph">?</em>
 </p></blockquote>
-
-
 <div class="caption"><p><strong class="strong">Exercise 3.5: </strong>Toward the infinite</p></div></div>
 <p>Let&rsquo;s come back to our computer&rsquo;s dyscalculia with decimal numbers. When
 using the rational numbers, the <a class="ref" href="#FloatPrecision">Example 3.11</a> becomes:
@@ -349,9 +334,8 @@ using the rational numbers, the <a class="ref" href="#FloatPrecision">Example 3.
 <pre class="example-preformatted">(1/10) + (2/10) - (3/10)
 &rArr; 0
 </pre></div>
-
 <div class="caption"><p><strong class="strong">Example 3.12: </strong>Calculation is correct using fractions!</p></div></div>
-<p>This time we have the expected result. Under the covers the computer
+<p>This time we have the expected result. Under the covers, the computer
 only does the calculations with integer components so no roundoff
 results. This is a fine example where solving some problems requires a
 paradigm shift.
@@ -363,10 +347,8 @@ paradigm shift.
 <a class="ref" href="#exeFloatPrecision">Exercise 3.4</a> and use rational numbers to represent decimal
 numbers. The errors will be resolved.</em>
 </p></blockquote>
-
-
 <div class="caption"><p><strong class="strong">Exercise 3.6: </strong>Fix the errors</p></div></div>
-<a class="index-entry-id" id="index-number-34"></a>
+<a class="index-entry-id" id="index-number-conversion"></a>
 <p>Cuis-Smalltalk knows how to convert a decimal number to a fraction, by
 sending the message <code class="code">#asFraction</code>. We already acknowledged the
 computer&rsquo;s dyscalculia with decimal numbers, this is why when

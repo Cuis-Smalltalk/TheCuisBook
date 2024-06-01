@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
@@ -9,15 +9,15 @@ implementation of the Smalltalk language and environment.
 Copyright © 2020, 2021, 2022, 2023, 2024 H. Fernandes with K. Dickey & J. Vuletich
 
 
-Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
-Lewis, John McGarey, Mariano Montone, Ricardo Pacheco, Barry Perryman,
-Tommy Pettersson, Bernhard Pieber, Mauro Rizzi, Stephen Smith & Ignacio
-Sniechowski for the reviews of the book, suggestions and borrowed
-texts. Your help is very valuable.
+Thanks to Matt Armstrong, Ezequiel Birman, Michael Khol, Szabolcs
+Komáromi, David Lewis, John McGarey, Mariano Montone, Ricardo Pacheco,
+Barry Perryman, Tommy Pettersson, Bernhard Pieber, Mauro Rizzi,
+Stephen Smith & Ignacio Sniechowski for the reviews of the book,
+suggestions and borrowed texts. Your help is very valuable.
 
 
 
-Compilation : January 31, 2024
+Compilation : June 1, 2024
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -66,6 +66,8 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="Documents-Copyright.html" rel="prev" title="Documents Copyright">
 <style type="text/css">
 <!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -80,7 +82,7 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 Next: <a href="The-Exercises.html" accesskey="n" rel="next">The Exercises</a>, Previous: <a href="Documents-Copyright.html" accesskey="p" rel="prev">Documents Copyright</a>, Up: <a href="index.html" accesskey="u" rel="up">The Cuis Book</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<h2 class="appendix" id="Summary-of-Syntax-1">Appendix B Summary of Syntax</h2>
+<h2 class="appendix" id="Summary-of-Syntax-1"><span>Appendix B Summary of Syntax<a class="copiable-link" href="#Summary-of-Syntax-1"> &para;</a></span></h2>
 
 <div class="float">
 <table class="multitable">
@@ -121,7 +123,7 @@ Next: <a href="The-Exercises.html" accesskey="n" rel="next">The Exercises</a>, P
 </div>
 
 <dl class="table">
-<dd><a class="index-entry-id" id="index-variable-9"></a>
+<dd><a class="index-entry-id" id="index-variable-local"></a>
 </dd>
 <dt><strong class="strong">Local variables.</strong></dt>
 <dd>
@@ -132,7 +134,7 @@ Next: <a href="The-Exercises.html" accesskey="n" rel="next">The Exercises</a>, P
  temporary variable must be lower case. This indicates to the reader
  that the variable has a private scope.
 </p>
-<a class="index-entry-id" id="index-variable-10"></a>
+<a class="index-entry-id" id="index-variable-shared"></a>
 </dd>
 <dt><strong class="strong">Shared variables</strong></dt>
 <dd>
@@ -152,7 +154,7 @@ Next: <a href="The-Exercises.html" accesskey="n" rel="next">The Exercises</a>, P
  assign to it.
 </p>
 <a class="index-entry-id" id="index-integer-_0028see-number_0029"></a>
-<a class="index-entry-id" id="index-number-39"></a>
+<a class="index-entry-id" id="index-number-integer-1"></a>
 </dd>
 <dt><strong class="strong">Integers.</strong></dt>
 <dd>
@@ -161,14 +163,14 @@ Next: <a href="The-Exercises.html" accesskey="n" rel="next">The Exercises</a>, P
  (i.e., binary), which is equal to decimal 5.
 </p>
 <a class="index-entry-id" id="index-float-_0028see-number_0029"></a>
-<a class="index-entry-id" id="index-number-40"></a>
+<a class="index-entry-id" id="index-number-float"></a>
 </dd>
 <dt><strong class="strong">Float point numbers.</strong></dt>
 <dd>
 <p>Floating point numbers can be specified with their base-ten exponent:
  <code class="code">2.4e7</code> is 2.4 × 10<sup class="sup">7</sup>.
 </p>
-<a class="index-entry-id" id="index-character-3"></a>
+<a class="index-entry-id" id="index-character-1"></a>
 </dd>
 <dt><strong class="strong">Characters.</strong></dt>
 <dd>
@@ -178,7 +180,7 @@ Next: <a href="The-Exercises.html" accesskey="n" rel="next">The Exercises</a>, P
  class, such as <code class="code">Character space</code> and <code class="code">Character
  tab</code>.
 </p>
-<a class="index-entry-id" id="index-string-14"></a>
+<a class="index-entry-id" id="index-string-2"></a>
 </dd>
 <dt><strong class="strong">Strings.</strong></dt>
 <dd>
@@ -196,7 +198,7 @@ Next: <a href="The-Exercises.html" accesskey="n" rel="next">The Exercises</a>, P
  <code class="code">#Hello</code> but there may be multiple String objects with the
  value <code class="code">'Hello'</code>.
 </p>
-<a class="index-entry-id" id="index-array-4"></a>
+<a class="index-entry-id" id="index-array-static"></a>
 </dd>
 <dt><strong class="strong">Static arrays.</strong></dt>
 <dd>
@@ -207,7 +209,7 @@ Next: <a href="The-Exercises.html" accesskey="n" rel="next">The Exercises</a>, P
  elements: the integer <code class="code">27</code>, the compile-time array containing the two
  booleans, and the symbol <code class="code">#abc</code>.
 </p>
-<a class="index-entry-id" id="index-array-5"></a>
+<a class="index-entry-id" id="index-array-dynamic-1"></a>
 </dd>
 <dt><strong class="strong">Dynamic arrays.</strong></dt>
 <dd>
@@ -227,14 +229,14 @@ Next: <a href="The-Exercises.html" accesskey="n" rel="next">The Exercises</a>, P
  comment, not a string, and is ignored by the Cuis-Smalltalk
  compiler. Comments may span multiple lines.
 </p>
-<a class="index-entry-id" id="index-variable-11"></a>
+<a class="index-entry-id" id="index-variable-local-declaration"></a>
 </dd>
 <dt><strong class="strong">Local variable declarations.</strong></dt>
 <dd>
 <p>Vertical bars | | enclose the declaration of one or more local
  variables in a method (and also in a block).
 </p>
-<a class="index-entry-id" id="index-variable-12"></a>
+<a class="index-entry-id" id="index-variable-assignment-2"></a>
 </dd>
 <dt><strong class="strong">Assignment.</strong></dt>
 <dd>
@@ -244,7 +246,7 @@ Next: <a href="The-Exercises.html" accesskey="n" rel="next">The Exercises</a>, P
  character key. So, <code class="code">x := 1</code> is the same as <code class="code">x
  &#x2190; 1</code> or <code class="code">x _ 1</code>.
 </p>
-<a class="index-entry-id" id="index-block-7"></a>
+<a class="index-entry-id" id="index-block-2"></a>
 </dd>
 <dt><strong class="strong">Blocks.</strong></dt>
 <dd>
@@ -263,14 +265,14 @@ Next: <a href="The-Exercises.html" accesskey="n" rel="next">The Exercises</a>, P
  executed only if the primitive fails. The same syntax is also used
  for method annotations.
 </p>
-<a class="index-entry-id" id="index-message-11"></a>
+<a class="index-entry-id" id="index-message-unary-1"></a>
 </dd>
 <dt><strong class="strong">Unary messages.</strong></dt>
 <dd>
 <p>Unary messages consist of a single word (like <code class="code">#factorial</code>)
  sent to a receiver (like 3).
 </p>
-<a class="index-entry-id" id="index-message-12"></a>
+<a class="index-entry-id" id="index-message-binary-1"></a>
 </dd>
 <dt><strong class="strong">Binary messages.</strong></dt>
 <dd>
@@ -278,7 +280,7 @@ Next: <a href="The-Exercises.html" accesskey="n" rel="next">The Exercises</a>, P
  and taking a single argument. In <code class="code">3 + 4</code>, the receiver is
  <code class="code">3</code> and the argument is <code class="code">4</code>.
 </p>
-<a class="index-entry-id" id="index-message-13"></a>
+<a class="index-entry-id" id="index-message-keyword-1"></a>
 </dd>
 <dt><strong class="strong">Keyword messages.</strong></dt>
 <dd>

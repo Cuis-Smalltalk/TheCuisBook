@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
@@ -9,15 +9,15 @@ implementation of the Smalltalk language and environment.
 Copyright © 2020, 2021, 2022, 2023, 2024 H. Fernandes with K. Dickey & J. Vuletich
 
 
-Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
-Lewis, John McGarey, Mariano Montone, Ricardo Pacheco, Barry Perryman,
-Tommy Pettersson, Bernhard Pieber, Mauro Rizzi, Stephen Smith & Ignacio
-Sniechowski for the reviews of the book, suggestions and borrowed
-texts. Your help is very valuable.
+Thanks to Matt Armstrong, Ezequiel Birman, Michael Khol, Szabolcs
+Komáromi, David Lewis, John McGarey, Mariano Montone, Ricardo Pacheco,
+Barry Perryman, Tommy Pettersson, Bernhard Pieber, Mauro Rizzi,
+Stephen Smith & Ignacio Sniechowski for the reviews of the book,
+suggestions and borrowed texts. Your help is very valuable.
 
 
 
-Compilation : January 31, 2024
+Compilation : June 1, 2024
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -66,9 +66,11 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="Message-send-definitions.html" rel="prev" title="Message send definitions">
 <style type="text/css">
 <!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
 blockquote.indentedblock {margin-right: 0em}
 div.example {margin-left: 3.2em}
 kbd.kbd {font-style: oblique}
+span:hover a.copiable-link {visibility: visible}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -83,12 +85,12 @@ kbd.kbd {font-style: oblique}
 Next: <a href="Messages-to-number-entities.html" accesskey="n" rel="next">Messages to number entities</a>, Previous: <a href="Message-send-definitions.html" accesskey="p" rel="prev">Message send definitions</a>, Up: <a href="The-Message-Way-of-Life.html" accesskey="u" rel="up">The Message Way of Life</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<h3 class="section" id="Message-to-string-entities-1">2.3 Message to string entities</h3>
-<a class="index-entry-id" id="index-string-4"></a>
-<a class="index-entry-id" id="index-string-5"></a>
+<h3 class="section" id="Message-to-string-entities-1"><span>2.3 Message to string entities<a class="copiable-link" href="#Message-to-string-entities-1"> &para;</a></span></h3>
+<a class="index-entry-id" id="index-string-character-access"></a>
+<a class="index-entry-id" id="index-string-Unicode"></a>
 <a class="index-entry-id" id="index-Unicode"></a>
 <p>As previously stated, a <code class="code">String</code> is a sequence of <code class="code">Character</code> 
-elements, and repersents plain Text (without any formatting).
+elements, and represents plain Text (without any formatting).
 </p>
 <p>In Cuis, as in most programming languages, <code class="code">String</code> literals are a convenient syntax for creating <code class="code">String</code> instances. These are some examples of <code class="code">String</code> literals:
 </p>
@@ -113,13 +115,13 @@ the following examples with the <kbd class="kbd">Ctrl-p</kbd> shortcut:
 </p>
 <p><strong class="strong">Caution.</strong> The index indicates position, naturally starting from 1, and is valid up to the string length.
 </p>
-<a class="index-entry-id" id="index-string-6"></a>
+<a class="index-entry-id" id="index-string-indexOf_003a"></a>
 <div class="example smallexample">
 <pre class="example-preformatted">'Hello' indexOf: $e
 &rArr; 2
 </pre></div>
 
-<a class="index-entry-id" id="index-string-7"></a>
+<a class="index-entry-id" id="index-string-at_003aput_003a"></a>
 <a class="index-entry-id" id="index-yourself"></a>
 <p>To change one character, use the companion two keyword message
 <code class="code">#at:put:</code>. The argument must be noted as a character:
@@ -140,10 +142,8 @@ message.
 <em class="emph">Replace each character of
 the string &rsquo;Hello&rsquo; to become &rsquo;Belle&rsquo;.</em>
 </p></blockquote>
-
-
 <div class="caption"><p><strong class="strong">Exercise 2.1: </strong>Hello to Belle</p></div></div>
-<a class="index-entry-id" id="index-character"></a>
+<a class="index-entry-id" id="index-character-ascii"></a>
 <p>Characters that are part of the <abbr class="acronym">ASCII</abbr> character set can be
 asked for their <abbr class="acronym">ASCII</abbr> code. Conversely, given an
 <abbr class="acronym">ASCII</abbr> code, we can ask for the corresponding
@@ -156,7 +156,7 @@ Character asciiValue: 65 + 25
 &rArr; $Z
 </pre></div>
 
-<a class="index-entry-id" id="index-character-1"></a>
+<a class="index-entry-id" id="index-character-Unicode"></a>
 <a class="index-entry-id" id="index-Unicode-1"></a>
 <p>But Characters that are not part of <abbr class="acronym">ASCII</abbr> don&rsquo;t have an
 <abbr class="acronym">ASCII</abbr>. In general, it is better to use Unicode code points
@@ -173,8 +173,8 @@ UnicodeCodePoint codePoint: 966
 &rArr; $φ
 </pre></div>
 
-<a class="index-entry-id" id="index-string-8"></a>
-<a class="index-entry-id" id="index-collection-1"></a>
+<a class="index-entry-id" id="index-string-shuffled"></a>
+<a class="index-entry-id" id="index-collection-shuffled"></a>
 <p>Shuffling a string can be fun but not very useful. However,
 shuffling can apply to any kind of collection, not only to a string, and it
 will prove to be useful as we will see later:
@@ -184,8 +184,8 @@ will prove to be useful as we will see later:
 </pre></div>
 <p>Note that the results of each shuffle are different.
 </p>
-<a class="index-entry-id" id="index-string-9"></a>
-<a class="index-entry-id" id="index-message-8"></a>
+<a class="index-entry-id" id="index-string-asArray"></a>
+<a class="index-entry-id" id="index-message-composition"></a>
 <p>Messages naturally compose:
 </p><div class="example smallexample">
 <pre class="example-preformatted">'hello world' shuffled asArray
@@ -194,12 +194,12 @@ will prove to be useful as we will see later:
 
 <p>An <code class="code">Array</code> literal starts with a hash or sharp character, <code class="code">$#</code>
 and parentheses surround the elements of the array.
-In this case the elements are <code class="code">Character</code>s, but they can
+In this case, the elements are <code class="code">Character</code>s, but they can
 be instances of any class.
 </p>
 <p>Like <code class="code">#shuffled</code>, all collections answer to the message
 <code class="code">#sorted</code>, which answers a sorted collection.
-<a class="index-entry-id" id="index-string-10"></a>
+<a class="index-entry-id" id="index-string-sorted"></a>
 </p><div class="example smallexample">
 <pre class="example-preformatted">'hello world' sorted
 &rArr; ' dehllloorw'

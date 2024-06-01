@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
@@ -9,15 +9,15 @@ implementation of the Smalltalk language and environment.
 Copyright © 2020, 2021, 2022, 2023, 2024 H. Fernandes with K. Dickey & J. Vuletich
 
 
-Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
-Lewis, John McGarey, Mariano Montone, Ricardo Pacheco, Barry Perryman,
-Tommy Pettersson, Bernhard Pieber, Mauro Rizzi, Stephen Smith & Ignacio
-Sniechowski for the reviews of the book, suggestions and borrowed
-texts. Your help is very valuable.
+Thanks to Matt Armstrong, Ezequiel Birman, Michael Khol, Szabolcs
+Komáromi, David Lewis, John McGarey, Mariano Montone, Ricardo Pacheco,
+Barry Perryman, Tommy Pettersson, Bernhard Pieber, Mauro Rizzi,
+Stephen Smith & Ignacio Sniechowski for the reviews of the book,
+suggestions and borrowed texts. Your help is very valuable.
 
 
 
-Compilation : January 31, 2024
+Compilation : June 1, 2024
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -66,8 +66,10 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="Ellipse-Morph.html" rel="prev" title="Ellipse Morph">
 <style type="text/css">
 <!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
 div.center {text-align:center}
 kbd.kbd {font-style: oblique}
+span:hover a.copiable-link {visibility: visible}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -82,9 +84,9 @@ kbd.kbd {font-style: oblique}
 Next: <a href="A-brief-introduction-to-Inspectors.html" accesskey="n" rel="next">A brief introduction to Inspectors</a>, Previous: <a href="Ellipse-Morph.html" accesskey="p" rel="prev">Ellipse Morph</a>, Up: <a href="Visual-with-Morph.html" accesskey="u" rel="up">Visual with Morph</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<h3 class="section" id="Submorph-1">6.3 Submorph</h3>
-<a class="index-entry-id" id="index-morph-2"></a>
-<a class="index-entry-id" id="index-morph-3"></a>
+<h3 class="section" id="Submorph-1"><span>6.3 Submorph<a class="copiable-link" href="#Submorph-1"> &para;</a></span></h3>
+<a class="index-entry-id" id="index-morph-submorph"></a>
+<a class="index-entry-id" id="index-morph-rectangle"></a>
 <p>Morphs can contain other morphs.  These interior morphs are called
 <em class="dfn">submorph</em>s of their containing morph. Again, you can do this by
 writing the software &ldquo;code&rdquo;, but let&rsquo;s do it directly with a
@@ -96,8 +98,7 @@ rect with a border.
 </p>
 <div class="float" id="ch06_002d05_002dAddRectangle">
 <div class="center"><img class="image" src="ch06-05-AddRectangle.png" alt="ch06-05-AddRectangle">
-</div>
-<div class="caption"><p><strong class="strong">Figure 6.4: </strong>Obtain a <code class="code">BoxedMorph</code></p></div></div>
+</div><div class="caption"><p><strong class="strong">Figure 6.4: </strong>Obtain a <code class="code">BoxedMorph</code></p></div></div>
 <p>Now drag the rect over the ellipse and <kbd class="kbd">Middle-Click</kbd> on the
 rect and click on the blue construction handle to gets the rect&rsquo;s
 <em class="dfn">Morph Menu</em>.  Use the menu selection <code class="command">embed into</code> and
@@ -105,8 +106,7 @@ select the ellipse as its new parent.
 </p>
 <div class="float" id="ch06_002d06_002dEmbedRectIntoEllipse">
 <div class="center"><img class="image" src="ch06-06-EmbedRectIntoEllipse.png" alt="ch06-06-EmbedRectIntoEllipse">
-</div>
-<div class="caption"><p><strong class="strong">Figure 6.5: </strong>Make the rect a submorph of the
+</div><div class="caption"><p><strong class="strong">Figure 6.5: </strong>Make the rect a submorph of the
 ellipse</p></div></div>
 <p>Now when you click-drag the ellipse, or use the <code class="command">Pick up</code> or
 <code class="command">Move</code> construction handles, the rect is just a decoration for

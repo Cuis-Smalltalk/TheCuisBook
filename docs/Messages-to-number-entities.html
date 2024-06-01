@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
@@ -9,15 +9,15 @@ implementation of the Smalltalk language and environment.
 Copyright © 2020, 2021, 2022, 2023, 2024 H. Fernandes with K. Dickey & J. Vuletich
 
 
-Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
-Lewis, John McGarey, Mariano Montone, Ricardo Pacheco, Barry Perryman,
-Tommy Pettersson, Bernhard Pieber, Mauro Rizzi, Stephen Smith & Ignacio
-Sniechowski for the reviews of the book, suggestions and borrowed
-texts. Your help is very valuable.
+Thanks to Matt Armstrong, Ezequiel Birman, Michael Khol, Szabolcs
+Komáromi, David Lewis, John McGarey, Mariano Montone, Ricardo Pacheco,
+Barry Perryman, Tommy Pettersson, Bernhard Pieber, Mauro Rizzi,
+Stephen Smith & Ignacio Sniechowski for the reviews of the book,
+suggestions and borrowed texts. Your help is very valuable.
 
 
 
-Compilation : January 31, 2024
+Compilation : June 1, 2024
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -66,8 +66,10 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="Message-to-string-entities.html" rel="prev" title="Message to string entities">
 <style type="text/css">
 <!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
 blockquote.indentedblock {margin-right: 0em}
 div.example {margin-left: 3.2em}
+span:hover a.copiable-link {visibility: visible}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -82,11 +84,11 @@ div.example {margin-left: 3.2em}
 Next: <a href="A-brief-introduction-to-the-system-Browser.html" accesskey="n" rel="next">A brief introduction to the system Browser</a>, Previous: <a href="Message-to-string-entities.html" accesskey="p" rel="prev">Message to string entities</a>, Up: <a href="The-Message-Way-of-Life.html" accesskey="u" rel="up">The Message Way of Life</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<h3 class="section" id="Messages-to-number-entities-1">2.4 Messages to number entities</h3>
-<a class="index-entry-id" id="index-number-6"></a>
-<a class="index-entry-id" id="index-number-7"></a>
-<a class="index-entry-id" id="index-number-8"></a>
-<a class="index-entry-id" id="index-number-9"></a>
+<h3 class="section" id="Messages-to-number-entities-1"><span>2.4 Messages to number entities<a class="copiable-link" href="#Messages-to-number-entities-1"> &para;</a></span></h3>
+<a class="index-entry-id" id="index-number-root"></a>
+<a class="index-entry-id" id="index-number-sqrt"></a>
+<a class="index-entry-id" id="index-number-squared"></a>
+<a class="index-entry-id" id="index-number-rational-_0028fraction_0029-operations"></a>
 
 <p>Earlier, we discussed how Cuis-Smalltalk knows about rational numbers.  The
 four arithmetic operations and mathematical functions are implemented
@@ -105,10 +107,8 @@ with unary and binary messages understood by the rational numbers:
 <em class="emph">Write the code to compute the
 sum of the squares of the inverse of the first four integers.</em>
 </p></blockquote>
-
-
 <div class="caption"><p><strong class="strong">Exercise 2.2: </strong>Sum of the squares</p></div></div>
-<a class="index-entry-id" id="index-number-10"></a>
+<a class="index-entry-id" id="index-number-decimal-division"></a>
 <p>If Cuis-Smalltalk integer division returns a rational number, how do we find the
 result in decimal? One option is to write a number as a floating point literal,
 a <em class="dfn">Float</em>.
@@ -128,7 +128,7 @@ variable:
 &rArr; 3.75
 </pre></div>
 
-<a class="index-entry-id" id="index-number-11"></a>
+<a class="index-entry-id" id="index-number-integer-division"></a>
 <p>You can also ask for division with truncation to
 get an integer result using 
 the message <code class="code">#//</code>:
@@ -137,7 +137,7 @@ the message <code class="code">#//</code>:
 &rArr; 3
 </pre></div>
 
-<a class="index-entry-id" id="index-number-12"></a>
+<a class="index-entry-id" id="index-number-integer-division-reminder"></a>
 <p>The modulo remainder of the Euclidean division is computed with the message
 <code class="code">#\\</code>:
 </p><div class="example smallexample">
@@ -145,10 +145,10 @@ the message <code class="code">#//</code>:
 &rArr; 3
 </pre></div>
 
-<a class="index-entry-id" id="index-number-13"></a>
-<a class="index-entry-id" id="index-number-14"></a>
-<a class="index-entry-id" id="index-number-15"></a>
-<a class="index-entry-id" id="index-number-16"></a>
+<a class="index-entry-id" id="index-number-integer-odd"></a>
+<a class="index-entry-id" id="index-number-integer-even"></a>
+<a class="index-entry-id" id="index-number-integer-isPrime"></a>
+<a class="index-entry-id" id="index-number-integer-isDivisibleBy_003a"></a>
 <p>Cuis-Smalltalk has arithmetic operations to test if an integer is odd, even,
 a prime number, or divisible by another. You just send the appropriate unary or
 keyword message to the number:
@@ -163,10 +163,9 @@ keyword message to the number:
 117 isDivisibleBy: 7 &rArr; false
 117 isDivisibleBy: 9 &rArr; true
 </pre></div>
-
 <div class="caption"><p><strong class="strong">Example 2.6: </strong>Testing on integer</p></div></div>
-<a class="index-entry-id" id="index-number-17"></a>
-<a class="index-entry-id" id="index-number-18"></a>
+<a class="index-entry-id" id="index-number-integer-gcd_003a-_0028great-common-divisor_0029"></a>
+<a class="index-entry-id" id="index-number-integer-lcm_003a-_0028least-common-multiple_0029"></a>
 <p>With specific <em class="dfn">keyword messages</em> you can compute the Least Common
 Multiple and Greatest Common Divisor. A keyword message is composed of
 one or more colons &ldquo;:&rdquo; to insert one or more arguments:
@@ -188,7 +187,6 @@ done with message sending (See <a class="ref" href="Spacewar_0021-models.html#mo
 <div class="example smallexample">
 <pre class="example-preformatted">-10 * self mass * owner starMass / (position r raisedTo: 3) * position
 </pre></div>
-
 <div class="caption"><p><strong class="strong">Example 2.7: </strong>Computing the gravity force vector</p></div></div>
 </div>
 <hr>

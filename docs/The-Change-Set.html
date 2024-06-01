@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
@@ -9,15 +9,15 @@ implementation of the Smalltalk language and environment.
 Copyright © 2020, 2021, 2022, 2023, 2024 H. Fernandes with K. Dickey & J. Vuletich
 
 
-Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
-Lewis, John McGarey, Mariano Montone, Ricardo Pacheco, Barry Perryman,
-Tommy Pettersson, Bernhard Pieber, Mauro Rizzi, Stephen Smith & Ignacio
-Sniechowski for the reviews of the book, suggestions and borrowed
-texts. Your help is very valuable.
+Thanks to Matt Armstrong, Ezequiel Birman, Michael Khol, Szabolcs
+Komáromi, David Lewis, John McGarey, Mariano Montone, Ricardo Pacheco,
+Barry Perryman, Tommy Pettersson, Bernhard Pieber, Mauro Rizzi,
+Stephen Smith & Ignacio Sniechowski for the reviews of the book,
+suggestions and borrowed texts. Your help is very valuable.
 
 
 
-Compilation : January 31, 2024
+Compilation : June 1, 2024
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -66,8 +66,10 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="The-Change-Log.html" rel="prev" title="The Change Log">
 <style type="text/css">
 <!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
 div.center {text-align:center}
 div.example {margin-left: 3.2em}
+span:hover a.copiable-link {visibility: visible}
 ul.mark-bullet {list-style-type: disc}
 -->
 </style>
@@ -83,7 +85,7 @@ ul.mark-bullet {list-style-type: disc}
 Next: <a href="The-Package.html" accesskey="n" rel="next">The Package</a>, Previous: <a href="The-Change-Log.html" accesskey="p" rel="prev">The Change Log</a>, Up: <a href="Code-Management.html" accesskey="u" rel="up">Code Management</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<h3 class="section" id="The-Change-Set-1">9.3 The Change Set</h3>
+<h3 class="section" id="The-Change-Set-1"><span>9.3 The Change Set<a class="copiable-link" href="#The-Change-Set-1"> &para;</a></span></h3>
 <a class="index-entry-id" id="index-change-set"></a>
 
 <p>On a fresh Cuis-Smalltalk installation, each code you edit in the System
@@ -95,8 +97,7 @@ Browser is recorded in a <em class="dfn">Change Set</em>,
 </p>
 <div class="float" id="ch10_002dChangeSet1">
 <div class="center"><img class="image" src="ch10-ChangeSet1.png" alt="ch10-ChangeSet1">
-</div>
-<div class="caption"><p><strong class="strong">Figure 9.3: </strong>The Change Sorter, class edit</p></div></div>
+</div><div class="caption"><p><strong class="strong">Figure 9.3: </strong>The Change Sorter, class edit</p></div></div>
 <p>The <code class="code">TheBook</code> class we added to Cuis-Smalltalk in the previous section
 is a change made to the core of the system. By default, it is recorded
 in a change set automatically created by the system. In
@@ -111,8 +112,7 @@ set will be saved along the Cuis-Smalltalk image under its system name with
 </p>
 <div class="float" id="ch10_002dChangeSet2">
 <div class="center"><img class="image" src="ch10-ChangeSet2.png" alt="ch10-ChangeSet2">
-</div>
-<div class="caption"><p><strong class="strong">Figure 9.4: </strong>The Change Sorter, method edit</p></div></div>
+</div><div class="caption"><p><strong class="strong">Figure 9.4: </strong>The Change Sorter, method edit</p></div></div>
 <p>Observe <a class="ref" href="#ch10_002dChangeSet2">Figure 9.4</a>, after we added the method
 <code class="code">pages</code> to the <code class="code">TheBook</code> class, the middle pane lists the
 added or modified methods. When a method is selected its source code
@@ -137,7 +137,6 @@ Object subclass: #TheBook
 pages
    ^ 151! !
 </pre></div>
-
 <div class="caption"><p><strong class="strong">Example 9.1: </strong>Change set contents</p></div></div>
 <p>To load this change set back in a new image, you use the <em class="dfn">File
 List</em> tool ...World menu &rarr; <code class="command">Open</code> &rarr;
@@ -147,8 +146,7 @@ manipulate it.
 </p>
 <div class="float" id="ch10_002dFileListChangeSet">
 <div class="center"><img class="image" src="ch10-FileListChangeSet.png" alt="ch10-FileListChangeSet">
-</div>
-<div class="caption"><p><strong class="strong">Figure 9.5: </strong>The File List tool, to install a change set and more</p></div></div>
+</div><div class="caption"><p><strong class="strong">Figure 9.5: </strong>The File List tool, to install a change set and more</p></div></div>
 <ul class="itemize mark-bullet">
 <li><code class="command">code</code>. It opens a kind of System Browser limited to
   the code in the change set file. It is a very handy tool to read and
@@ -172,8 +170,7 @@ manipulate it.
 </p>
 <div class="float" id="ch10_002dChangeList">
 <div class="center"><img class="image" src="ch10-ChangeList.png" alt="ch10-ChangeList">
-</div>
-<div class="caption"><p><strong class="strong">Figure 9.6: </strong>Change List tool to review modifications to the image</p></div></div>
+</div><div class="caption"><p><strong class="strong">Figure 9.6: </strong>Change List tool to review modifications to the image</p></div></div>
 </li><li><code class="command">install</code>. It just installs the complete change set
   without interactivity.
   

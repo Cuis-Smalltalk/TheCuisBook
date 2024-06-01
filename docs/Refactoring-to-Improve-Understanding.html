@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
@@ -9,15 +9,15 @@ implementation of the Smalltalk language and environment.
 Copyright © 2020, 2021, 2022, 2023, 2024 H. Fernandes with K. Dickey & J. Vuletich
 
 
-Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
-Lewis, John McGarey, Mariano Montone, Ricardo Pacheco, Barry Perryman,
-Tommy Pettersson, Bernhard Pieber, Mauro Rizzi, Stephen Smith & Ignacio
-Sniechowski for the reviews of the book, suggestions and borrowed
-texts. Your help is very valuable.
+Thanks to Matt Armstrong, Ezequiel Birman, Michael Khol, Szabolcs
+Komáromi, David Lewis, John McGarey, Mariano Montone, Ricardo Pacheco,
+Barry Perryman, Tommy Pettersson, Bernhard Pieber, Mauro Rizzi,
+Stephen Smith & Ignacio Sniechowski for the reviews of the book,
+suggestions and borrowed texts. Your help is very valuable.
 
 
 
-Compilation : January 31, 2024
+Compilation : June 1, 2024
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -65,8 +65,10 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="Golden-Rules-of-the-Smalltalk-Guild.html" rel="prev" title="Golden Rules of the Smalltalk Guild">
 <style type="text/css">
 <!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
 blockquote.indentedblock {margin-right: 0em}
 div.center {text-align:center}
+span:hover a.copiable-link {visibility: visible}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -81,7 +83,7 @@ div.center {text-align:center}
 Previous: <a href="Golden-Rules-of-the-Smalltalk-Guild.html" accesskey="p" rel="prev">Golden Rules of the Smalltalk Guild</a>, Up: <a href="Sharing-Cuis.html" accesskey="u" rel="up">Sharing Cuis</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<h3 class="section" id="Refactoring-to-Improve-Understanding-1">11.2 Refactoring to Improve Understanding</h3>
+<h3 class="section" id="Refactoring-to-Improve-Understanding-1"><span>11.2 Refactoring to Improve Understanding<a class="copiable-link" href="#Refactoring-to-Improve-Understanding-1"> &para;</a></span></h3>
 <a class="index-entry-id" id="index-refactoring-1"></a>
 <p>Browsing through the code, I note a method named <code class="code">#left</code>, which seems perhaps
 like an abbreviation.  I can ask for <em class="emph">senders</em> to see how <code class="code">#left</code> is used
@@ -89,8 +91,7 @@ in code elsewhere.
 </p>
 <div class="float" id="ch11_002d01_002dSendersOfLeft">
 <div class="center"><img class="image" src="ch11-01-SendersOfLeft.png" alt="ch11-01-SendersOfLeft">
-</div>
-<div class="caption"><p><strong class="strong">Figure 11.1: </strong>Senders of <code class="code">left</code></p></div></div>
+</div><div class="caption"><p><strong class="strong">Figure 11.1: </strong>Senders of <code class="code">left</code></p></div></div>
 <p>I notice that most uses of <code class="code">#left</code> are to indicate a position,
 not take an action.  How can I fix that?
 </p>
@@ -105,8 +106,7 @@ with selections to help me out. Here I choose <strong class="strong">Rename</str
 </p>
 <div class="float" id="ch11_002d02_002dRenameLeft">
 <div class="center"><img class="image" src="ch11-02-RenameLeft.png" alt="ch11-02-RenameLeft">
-</div>
-<div class="caption"><p><strong class="strong">Figure 11.2: </strong>Rename <code class="code">left</code></p></div></div>
+</div><div class="caption"><p><strong class="strong">Figure 11.2: </strong>Rename <code class="code">left</code></p></div></div>
 <p>Now the tools that help us refactor code are quite powerful, so
 restraint is called for.  I don&rsquo;t want to change all uses of
 <code class="code">#left</code> in the Cuis-Smalltalk system, just in the <code class="command">Spacewar!</code>
@@ -114,15 +114,13 @@ category.
 </p>
 <div class="float" id="ch11_002d03_002dRenameInCategory">
 <div class="center"><img class="image" src="ch11-03-RenameInCategory.png" alt="ch11-03-RenameInCategory">
-</div>
-<div class="caption"><p><strong class="strong">Figure 11.3: </strong>Rename in Category</p></div></div>
+</div><div class="caption"><p><strong class="strong">Figure 11.3: </strong>Rename in Category</p></div></div>
 <p>Of course, when making changes one wants to see that the result is
 what one expects.
 </p>
 <div class="float" id="ch11_002d04_002dturnLeft">
 <div class="center"><img class="image" src="ch11-04-turnLeft.png" alt="ch11-04-turnLeft">
-</div>
-<div class="caption"><p><strong class="strong">Figure 11.4: </strong>Results of Renaming</p></div></div>
+</div><div class="caption"><p><strong class="strong">Figure 11.4: </strong>Results of Renaming</p></div></div>
 <p>As I am not perfect, I tend to save the Cuis-Smalltalk image before I make
 large changes using powerful tools.  If something happens that
 I did not want, I can then quit the image without saving and
@@ -134,8 +132,6 @@ restart the saved image which remembers the world before I made the change.
 <em class="emph">Rename <code class="code">#right</code> to
 <code class="code">#turnRight</code>.</em>
 </p></blockquote>
-
-
 <div class="caption"><p><strong class="strong">Exercise 11.1: </strong>Renaming a method</p></div></div>
 <p>Looking around some more in the Browser, I notice the method
 <code class="code">SpaceShip&gt;&gt;nose</code>.
@@ -144,15 +140,13 @@ restart the saved image which remembers the world before I made the change.
 </p>
 <div class="float" id="ch11_002d05_002dnoseSenders">
 <div class="center"><img class="image" src="ch11-05-noseSenders.png" alt="ch11-05-noseSenders">
-</div>
-<div class="caption"><p><strong class="strong">Figure 11.5: </strong>Senders of <code class="code">nose</code></p></div></div>
+</div><div class="caption"><p><strong class="strong">Figure 11.5: </strong>Senders of <code class="code">nose</code></p></div></div>
 <p>Hmmm, perhaps something more specific.  How about <code class="code">#noseDirection</code>?
 How does that look?
 </p>
 <div class="float" id="ch11_002d06_002dnoseDirection">
 <div class="center"><img class="image" src="ch11-06-noseDirection.png" alt="ch11-06-noseDirection">
-</div>
-<div class="caption"><p><strong class="strong">Figure 11.6: </strong>Rename <code class="code">nose</code> to <code class="code">noseDirection</code></p></div></div>
+</div><div class="caption"><p><strong class="strong">Figure 11.6: </strong>Rename <code class="code">nose</code> to <code class="code">noseDirection</code></p></div></div>
 <blockquote class="indentedblock">
 <p>&nbsp;<img class="image" src="note.png" alt="note">
 World menu &rarr; <code class="command">Help</code> is your friend.

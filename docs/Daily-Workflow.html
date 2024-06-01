@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
@@ -9,15 +9,15 @@ implementation of the Smalltalk language and environment.
 Copyright © 2020, 2021, 2022, 2023, 2024 H. Fernandes with K. Dickey & J. Vuletich
 
 
-Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
-Lewis, John McGarey, Mariano Montone, Ricardo Pacheco, Barry Perryman,
-Tommy Pettersson, Bernhard Pieber, Mauro Rizzi, Stephen Smith & Ignacio
-Sniechowski for the reviews of the book, suggestions and borrowed
-texts. Your help is very valuable.
+Thanks to Matt Armstrong, Ezequiel Birman, Michael Khol, Szabolcs
+Komáromi, David Lewis, John McGarey, Mariano Montone, Ricardo Pacheco,
+Barry Perryman, Tommy Pettersson, Bernhard Pieber, Mauro Rizzi,
+Stephen Smith & Ignacio Sniechowski for the reviews of the book,
+suggestions and borrowed texts. Your help is very valuable.
 
 
 
-Compilation : January 31, 2024
+Compilation : June 1, 2024
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -66,9 +66,11 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="The-Package.html" rel="prev" title="The Package">
 <style type="text/css">
 <!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
 blockquote.indentedblock {margin-right: 0em}
 div.center {text-align:center}
 div.example {margin-left: 3.2em}
+span:hover a.copiable-link {visibility: visible}
 ul.mark-bullet {list-style-type: disc}
 -->
 </style>
@@ -84,7 +86,7 @@ ul.mark-bullet {list-style-type: disc}
 Next: <a href="Source-Code-File.html" accesskey="n" rel="next">Source Code File</a>, Previous: <a href="The-Package.html" accesskey="p" rel="prev">The Package</a>, Up: <a href="Code-Management.html" accesskey="u" rel="up">Code Management</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<h3 class="section" id="Daily-Workflow-1">9.5 Daily Workflow</h3>
+<h3 class="section" id="Daily-Workflow-1"><span>9.5 Daily Workflow<a class="copiable-link" href="#Daily-Workflow-1"> &para;</a></span></h3>
 
 <p>For our Spacewar! game, we created a dedicated package
 <samp class="file">Spacewar!.pck.st</samp> file. This is the way to go when writing
@@ -150,7 +152,7 @@ preserve the system&rsquo;s state.
 </p></blockquote>
 
 <div class="subsection-level-extent" id="Automate-your-image">
-<h4 class="subsection">9.5.1 Automate your image</h4>
+<h4 class="subsection"><span>9.5.1 Automate your image<a class="copiable-link" href="#Automate-your-image"> &para;</a></span></h4>
 
 <p>As described in the daily workflow, it is a good habit to not save the
 whole image but only the modified package of the edited source
@@ -170,7 +172,7 @@ set up the image to fit our personal needs and taste.
 
 </li></ul>
 
-<a class="index-entry-id" id="index-command-line-option"></a>
+<a class="index-entry-id" id="index-command-line-option-_002ds-_0028run-a-script_0029"></a>
 <a class="index-entry-id" id="index-start_002dup-script"></a>
 
 <p>We want to record these image preferences in a
@@ -189,9 +191,8 @@ handling.
 </p>
 <div class="float" id="ch10_002dImageSetUp">
 <div class="center"><img class="image" src="ch10-ImageSetUp.png" alt="ch10-ImageSetUp">
-</div>
-<div class="caption"><p><strong class="strong">Figure 9.13: </strong>Environment of an image started with the set up script</p></div></div>
-<a class="index-entry-id" id="index-morph-25"></a>
+</div><div class="caption"><p><strong class="strong">Figure 9.13: </strong>Environment of an image started with the set up script</p></div></div>
+<a class="index-entry-id" id="index-morph-world"></a>
 <p>Let&rsquo;s start by removing the open windows:
 </p>
 <div class="example smallexample">

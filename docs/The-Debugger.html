@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
@@ -9,15 +9,15 @@ implementation of the Smalltalk language and environment.
 Copyright © 2020, 2021, 2022, 2023, 2024 H. Fernandes with K. Dickey & J. Vuletich
 
 
-Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
-Lewis, John McGarey, Mariano Montone, Ricardo Pacheco, Barry Perryman,
-Tommy Pettersson, Bernhard Pieber, Mauro Rizzi, Stephen Smith & Ignacio
-Sniechowski for the reviews of the book, suggestions and borrowed
-texts. Your help is very valuable.
+Thanks to Matt Armstrong, Ezequiel Birman, Michael Khol, Szabolcs
+Komáromi, David Lewis, John McGarey, Mariano Montone, Ricardo Pacheco,
+Barry Perryman, Tommy Pettersson, Bernhard Pieber, Mauro Rizzi,
+Stephen Smith & Ignacio Sniechowski for the reviews of the book,
+suggestions and borrowed texts. Your help is very valuable.
 
 
 
-Compilation : January 31, 2024
+Compilation : June 1, 2024
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -66,10 +66,12 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="Inspecting-the-Unexpected.html" rel="prev" title="Inspecting the Unexpected">
 <style type="text/css">
 <!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
 blockquote.indentedblock {margin-right: 0em}
 div.center {text-align:center}
 div.example {margin-left: 3.2em}
 kbd.kbd {font-style: oblique}
+span:hover a.copiable-link {visibility: visible}
 ul.mark-bullet {list-style-type: disc}
 -->
 </style>
@@ -85,8 +87,8 @@ ul.mark-bullet {list-style-type: disc}
 Next: <a href="Halt_0021.html" accesskey="n" rel="next">Halt!</a>, Previous: <a href="Inspecting-the-Unexpected.html" accesskey="p" rel="prev">Inspecting the Unexpected</a>, Up: <a href="Debug-and-Exception-Handling.html" accesskey="u" rel="up">Debug and Exception Handling</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<h3 class="section" id="The-Debugger-1">10.2 The Debugger</h3>
-<a class="index-entry-id" id="index-tools-6"></a>
+<h3 class="section" id="The-Debugger-1"><span>10.2 The Debugger<a class="copiable-link" href="#The-Debugger-1"> &para;</a></span></h3>
+<a class="index-entry-id" id="index-tools-debugger"></a>
 <p>First, we need a fairly simple code example to look at.  Please type
 or copy the following into a Workspace.
 </p>
@@ -98,17 +100,15 @@ fileNames := OrderedCollection new.
     childrenDo: [ :f | fileNames add: f name ].
 fileNames asArray.
 </pre></div>
-
 <div class="caption"><p><strong class="strong">Example 10.3: </strong>Names of Directory Entries</p></div></div>
 <p>Now, you can <kbd class="kbd">Ctrl-a</kbd> (<em class="emph">select <b class="b">A</b>ll</em>) and <kbd class="kbd">Ctrl-p</kbd>
 (<em class="emph">select <b class="b">P</b>rint-it</em>) to see the result.
 </p>
 <div class="float" id="ch10_002d02_002dDirChildNames">
 <div class="center"><img class="image" src="ch10-02-DirChildNames.png" alt="ch10-02-DirChildNames">
-</div>
-<div class="caption"><p><strong class="strong">Figure 10.2: </strong>Names of files and directories in a Directory</p></div></div>
+</div><div class="caption"><p><strong class="strong">Figure 10.2: </strong>Names of files and directories in a Directory</p></div></div>
 <a class="index-entry-id" id="index-file"></a>
-<a class="index-entry-id" id="index-string-13"></a>
+<a class="index-entry-id" id="index-string-file-entry"></a>
 <blockquote class="indentedblock">
 <p>&nbsp;<img class="image" src="note.png" alt="note">
 The <code class="code">String</code> class has several method category names
@@ -125,8 +125,7 @@ Remove the result, then <kbd class="kbd">Ctrl-a</kbd> (<em class="emph">select <
 </p>
 <div class="float" id="ch10_002d03_002dDebugIt">
 <div class="center"><img class="image" src="ch10-03-DebugIt.png" alt="ch10-03-DebugIt">
-</div>
-<div class="caption"><p><strong class="strong">Figure 10.3: </strong>Debug It</p></div></div>
+</div><div class="caption"><p><strong class="strong">Figure 10.3: </strong>Debug It</p></div></div>
 <a class="index-entry-id" id="index-execution-stack"></a>
 <p>The top pane in the debugger shows a view of the <em class="dfn">execution stack</em>
 for this bit of execution context.  The way to think of this, the
@@ -187,16 +186,14 @@ instructions here, just close the debugger and start with Debug-It again.
 </p>
 <div class="float" id="ch10_002d04_002dStepInto">
 <div class="center"><img class="image" src="ch10-04-StepInto.png" alt="ch10-04-StepInto">
-</div>
-<div class="caption"><p><strong class="strong">Figure 10.4: </strong>Step Into</p></div></div>
+</div><div class="caption"><p><strong class="strong">Figure 10.4: </strong>Step Into</p></div></div>
 <p>As you <em class="dfn">single step</em> the debugger, hilighting of the <em class="emph">next</em> message
 send changes.  Press <kbd class="kbd">Over</kbd> three times.  You should see the line
 starting with <em class="emph">childrenDo:</em> hilighted.  Now press <kbd class="kbd">Into</kbd>.
 </p>
 <div class="float" id="ch10_002d05_002dFocusObjAndArgs">
 <div class="center"><img class="image" src="ch10-05-FocusObjAndArgs.png" alt="ch10-05-FocusObjAndArgs">
-</div>
-<div class="caption"><p><strong class="strong">Figure 10.5: </strong>Viewing Focus Object and Temporaries</p></div></div>
+</div><div class="caption"><p><strong class="strong">Figure 10.5: </strong>Viewing Focus Object and Temporaries</p></div></div>
 <p>The stack area shows the focus object is a <code class="code">DirectoryEntry</code>.
 Inspect its instance values by selecting lines in the lower
 left pane.

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
@@ -9,15 +9,15 @@ implementation of the Smalltalk language and environment.
 Copyright © 2020, 2021, 2022, 2023, 2024 H. Fernandes with K. Dickey & J. Vuletich
 
 
-Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
-Lewis, John McGarey, Mariano Montone, Ricardo Pacheco, Barry Perryman,
-Tommy Pettersson, Bernhard Pieber, Mauro Rizzi, Stephen Smith & Ignacio
-Sniechowski for the reviews of the book, suggestions and borrowed
-texts. Your help is very valuable.
+Thanks to Matt Armstrong, Ezequiel Birman, Michael Khol, Szabolcs
+Komáromi, David Lewis, John McGarey, Mariano Montone, Ricardo Pacheco,
+Barry Perryman, Tommy Pettersson, Bernhard Pieber, Mauro Rizzi,
+Stephen Smith & Ignacio Sniechowski for the reviews of the book,
+suggestions and borrowed texts. Your help is very valuable.
 
 
 
-Compilation : January 31, 2024
+Compilation : June 1, 2024
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -66,9 +66,11 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="A-brief-introduction-to-Inspectors.html" rel="prev" title="A brief introduction to Inspectors">
 <style type="text/css">
 <!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
 div.center {text-align:center}
 div.example {margin-left: 3.2em}
 kbd.kbd {font-style: oblique}
+span:hover a.copiable-link {visibility: visible}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -83,8 +85,8 @@ kbd.kbd {font-style: oblique}
 Next: <a href="Spacewar_0021-Morphs.html" accesskey="n" rel="next">Spacewar! Morphs</a>, Previous: <a href="A-brief-introduction-to-Inspectors.html" accesskey="p" rel="prev">A brief introduction to Inspectors</a>, Up: <a href="Visual-with-Morph.html" accesskey="u" rel="up">Visual with Morph</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<h3 class="section" id="Building-your-specialized-Morph-1">6.5 Building your specialized Morph</h3>
-<a class="index-entry-id" id="index-morph-6"></a>
+<h3 class="section" id="Building-your-specialized-Morph-1"><span>6.5 Building your specialized Morph<a class="copiable-link" href="#Building-your-specialized-Morph-1"> &para;</a></span></h3>
+<a class="index-entry-id" id="index-morph-subclass"></a>
 <p>Let&rsquo;s make a simple subclass which changes color when
 <kbd class="kbd">Left-Click</kbd>ed.  Create a new class just as we did with Spacewar!
 but subclass <code class="code">EllipseMorph</code> with <code class="code">#ColorClickEllipse</code>.
@@ -99,7 +101,7 @@ but subclass <code class="code">EllipseMorph</code> with <code class="code">#Col
 
 <p>Save the class definition with <kbd class="kbd">Ctrl-s</kbd>.
 </p>
-<a class="index-entry-id" id="index-event"></a>
+<a class="index-entry-id" id="index-event-testing"></a>
 <p><kbd class="kbd">Right-Click</kbd> on the <code class="command">Message Category</code> pane and select
 <code class="command">new category...</code>.  This brings up a number of selections and
 allows us to create new ones.  Select &ldquo;event handling testing&rdquo;.
@@ -112,7 +114,7 @@ Then add the method <code class="code">ColorClickEllipse&gt;&gt;handlesMouseDown
 
 </pre></div>
 
-<a class="index-entry-id" id="index-event-1"></a>
+<a class="index-entry-id" id="index-event-handling"></a>
 <p>Likewise, add a new catagory &ldquo;event handing&rdquo; and add the other
 method we need.
 </p>
@@ -129,8 +131,7 @@ you want!
 </p>
 <div class="float" id="ch06_002d15_002dColorClickEllipse">
 <div class="center"><img class="image" src="ch06-15-ColorClickEllipse.png" alt="ch06-15-ColorClickEllipse">
-</div>
-<div class="caption"><p><strong class="strong">Figure 6.13: </strong>Obtain a <code class="code">ColorClickEllipse</code></p></div></div>
+</div><div class="caption"><p><strong class="strong">Figure 6.13: </strong>Obtain a <code class="code">ColorClickEllipse</code></p></div></div>
 <p>Now you know how to specialize an individual morph, or make a whole
 new class of them!
 </p>

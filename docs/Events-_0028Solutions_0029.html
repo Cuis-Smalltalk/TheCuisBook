@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
@@ -9,15 +9,15 @@ implementation of the Smalltalk language and environment.
 Copyright © 2020, 2021, 2022, 2023, 2024 H. Fernandes with K. Dickey & J. Vuletich
 
 
-Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
-Lewis, John McGarey, Mariano Montone, Ricardo Pacheco, Barry Perryman,
-Tommy Pettersson, Bernhard Pieber, Mauro Rizzi, Stephen Smith & Ignacio
-Sniechowski for the reviews of the book, suggestions and borrowed
-texts. Your help is very valuable.
+Thanks to Matt Armstrong, Ezequiel Birman, Michael Khol, Szabolcs
+Komáromi, David Lewis, John McGarey, Mariano Montone, Ricardo Pacheco,
+Barry Perryman, Tommy Pettersson, Bernhard Pieber, Mauro Rizzi,
+Stephen Smith & Ignacio Sniechowski for the reviews of the book,
+suggestions and borrowed texts. Your help is very valuable.
 
 
 
-Compilation : January 31, 2024
+Compilation : June 1, 2024
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -66,7 +66,9 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="The-Fundamentals-of-Morph-_0028Solutions_0029.html" rel="prev" title="The Fundamentals of Morph (Solutions)">
 <style type="text/css">
 <!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
 div.example {margin-left: 3.2em}
+span:hover a.copiable-link {visibility: visible}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -81,9 +83,9 @@ div.example {margin-left: 3.2em}
 Next: <a href="Code-Management-_0028Solutions_0029.html" accesskey="n" rel="next">Code Management</a>, Previous: <a href="The-Fundamentals-of-Morph-_0028Solutions_0029.html" accesskey="p" rel="prev">The Fundamentals of Morph</a>, Up: <a href="Solutions-to-the-Exercises.html" accesskey="u" rel="up">Solutions to the Exercises</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<h3 class="unnumberedsec" id="Events-2">Events</h3>
+<h3 class="unnumberedsec" id="Events-2"><span>Events<a class="copiable-link" href="#Events-2"> &para;</a></span></h3>
 
-<h4 class="subheading" id="handleMouseOver-1"><a class="ref" href="Spacewar_0021-Events.html#handleMouseOver">Exercise 8.1</a></h4>
+<h4 class="subheading" id="handleMouseOver-1"><span><a class="ref" href="Spacewar_0021-Events.html#handleMouseOver">Exercise 8.1</a><a class="copiable-link" href="#handleMouseOver-1"> &para;</a></span></h4>
 <p>The method <code class="code">handlesMouseOver:</code>, implemented in the
 <code class="code">SpaceWar</code> morph class, returns true so the game play is
 informed of mouse over events in dedicated methods.
@@ -92,7 +94,7 @@ informed of mouse over events in dedicated methods.
    ^ true
 </pre></div>
 
-<h4 class="subheading" id="mouseEnter-1"><a class="ref" href="Spacewar_0021-Events.html#mouseEnter">Exercise 8.2</a></h4>
+<h4 class="subheading" id="mouseEnter-1"><span><a class="ref" href="Spacewar_0021-Events.html#mouseEnter">Exercise 8.2</a><a class="copiable-link" href="#mouseEnter-1"> &para;</a></span></h4>
 <p>You need to browse the <code class="code">Morph&gt;&gt;handlesMouseOver:</code> method and
 read the comment. It writes about a <code class="code">#mouseEnter:</code> message; we
 implement the matching method in <code class="code">SpaceWar</code> class with the
@@ -103,7 +105,7 @@ behaviors previously described:
    self startStepping
 </pre></div>
 
-<h4 class="subheading" id="mouseLeave-1"><a class="ref" href="Spacewar_0021-Events.html#mouseLeave">Exercise 8.3</a></h4>
+<h4 class="subheading" id="mouseLeave-1"><span><a class="ref" href="Spacewar_0021-Events.html#mouseLeave">Exercise 8.3</a><a class="copiable-link" href="#mouseLeave-1"> &para;</a></span></h4>
 <p>The message <code class="code">#mouseLeave:</code> is sent to our <code class="code">SpaceWar</code> instance
 each time the mouse cursor move out (leaves) of the game
 play. Therefore we add the homonym method to the <code class="code">SpaceWar</code>
@@ -114,7 +116,7 @@ class:
    self stopStepping
 </pre></div>
 
-<h4 class="subheading" id="keyboardEvent-1"><a class="ref" href="Spacewar_0021-Events.html#keyboardEvent">Exercise 8.4</a></h4>
+<h4 class="subheading" id="keyboardEvent-1"><span><a class="ref" href="Spacewar_0021-Events.html#keyboardEvent">Exercise 8.4</a><a class="copiable-link" href="#keyboardEvent-1"> &para;</a></span></h4>
 <p>The <code class="code">#handlesKeyboard</code> message is sent to a morph to know if it
 wants to receive keyboard event. The morph responds true to this
 message to state its interest on keyboard event. We implement the
@@ -124,7 +126,7 @@ method in the <code class="code">SpaceWar</code> class:
    ^ true
 </pre></div>
 
-<h4 class="subheading" id="secondShipControl-1"><a class="ref" href="Spacewar_0021-Events.html#secondShipControl">Exercise 8.5</a></h4>
+<h4 class="subheading" id="secondShipControl-1"><span><a class="ref" href="Spacewar_0021-Events.html#secondShipControl">Exercise 8.5</a><a class="copiable-link" href="#secondShipControl-1"> &para;</a></span></h4>
 <p>We designate the characters as <code class="code">$w $a $s $d</code>. We append the
 code below to the method <code class="code">SpaceWar&gt;&gt;keyStroke:</code>
 </p><div class="example smallexample">
@@ -134,6 +136,11 @@ key = $a ifTrue: [^ ships second left].
 key = $s ifTrue: [^ ships second fireTorpedo]
 </pre></div>
 
+</div>
+<hr>
+<div class="nav-panel">
+<p>
+Next: <a href="Code-Management-_0028Solutions_0029.html">Code Management</a>, Previous: <a href="The-Fundamentals-of-Morph-_0028Solutions_0029.html">The Fundamentals of Morph</a>, Up: <a href="Solutions-to-the-Exercises.html">Solutions to the Exercises</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
@@ -9,15 +9,15 @@ implementation of the Smalltalk language and environment.
 Copyright © 2020, 2021, 2022, 2023, 2024 H. Fernandes with K. Dickey & J. Vuletich
 
 
-Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
-Lewis, John McGarey, Mariano Montone, Ricardo Pacheco, Barry Perryman,
-Tommy Pettersson, Bernhard Pieber, Mauro Rizzi, Stephen Smith & Ignacio
-Sniechowski for the reviews of the book, suggestions and borrowed
-texts. Your help is very valuable.
+Thanks to Matt Armstrong, Ezequiel Birman, Michael Khol, Szabolcs
+Komáromi, David Lewis, John McGarey, Mariano Montone, Ricardo Pacheco,
+Barry Perryman, Tommy Pettersson, Bernhard Pieber, Mauro Rizzi,
+Stephen Smith & Ignacio Sniechowski for the reviews of the book,
+suggestions and borrowed texts. Your help is very valuable.
 
 
 
-Compilation : January 31, 2024
+Compilation : June 1, 2024
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -65,9 +65,11 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="A-brief-introduction-to-the-system-Browser.html" rel="prev" title="A brief introduction to the system Browser">
 <style type="text/css">
 <!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
 div.center {text-align:center}
 div.example {margin-left: 3.2em}
 kbd.kbd {font-style: oblique}
+span:hover a.copiable-link {visibility: visible}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -82,11 +84,11 @@ kbd.kbd {font-style: oblique}
 Previous: <a href="A-brief-introduction-to-the-system-Browser.html" accesskey="p" rel="prev">A brief introduction to the system Browser</a>, Up: <a href="The-Message-Way-of-Life.html" accesskey="u" rel="up">The Message Way of Life</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<h3 class="section" id="Spacewar_0021-models-1">2.6 Spacewar! models</h3>
+<h3 class="section" id="Spacewar_0021-models-1"><span>2.6 Spacewar! models<a class="copiable-link" href="#Spacewar_0021-models-1"> &para;</a></span></h3>
 
 <div class="subsection-level-extent" id="First-classes">
-<h4 class="subsection">2.6.1 First classes</h4>
-<p>In the last chapter we listed the protagonists of the game. Now, we
+<h4 class="subsection"><span>2.6.1 First classes<a class="copiable-link" href="#First-classes"> &para;</a></span></h4>
+<p>In the last chapter, we listed the protagonists of the game. Now, we
 propose a first implementation of the game model with a set of classes
 representing the involved entities:
 </p>
@@ -101,8 +103,8 @@ representing the involved entities:
 
 </li></ol>
 
-<a class="index-entry-id" id="index-browser-3"></a>
-<a class="index-entry-id" id="index-class-5"></a>
+<a class="index-entry-id" id="index-browser-class-category-_0028new_0029"></a>
+<a class="index-entry-id" id="index-class-category-_0028new_0029"></a>
 <p>Before defining these classes in Cuis-Smalltalk, we want to create a
 dedicated class category to group them there.
 </p>
@@ -117,7 +119,7 @@ the left-most one &ndash; just do:
 key in <em class="emph">Spacewar!</em>
 </p>
 
-<a class="index-entry-id" id="index-class-6"></a>
+<a class="index-entry-id" id="index-class-create-_0028new_0029"></a>
 <p>Once our new category is created, the Browser proposes a code template in
 the method source code pane &ndash; the bottom one &ndash; to create a new class in
 the <code class="command">Spacewar!</code> category:
@@ -130,7 +132,7 @@ the <code class="command">Spacewar!</code> category:
    category: 'Spacewar!'
 </pre></div>
 
-<a class="index-entry-id" id="index-keyboard-shortcut-5"></a>
+<a class="index-entry-id" id="index-keyboard-shortcut-save-code-_0028Ctrl_002ds_0029"></a>
 <p>We replace the symbol <code class="code">#NameOfSubclass</code> with a symbol
 representing the name of the class we want to create. Let&rsquo;s start with
 <code class="code">#SpaceWar</code>. To save our class, while over the class
@@ -148,15 +150,14 @@ get another class code template, click the class category
 </p>
 <div class="float" id="ch02_002dspacewarClassCategory">
 <div class="center"><img class="image" src="ch02-spacewarClassCategory.png" alt="ch02-spacewarClassCategory">
-</div>
-<div class="caption"><p><strong class="strong">Figure 2.2: </strong>Spacewar! class category</p></div></div>
+</div><div class="caption"><p><strong class="strong">Figure 2.2: </strong>Spacewar! class category</p></div></div>
 
 <a class="anchor" id="Spacewar_0021-package"></a></div>
 <div class="subsection-level-extent" id="Spacewar_0021-package-1">
-<h4 class="subsection">2.6.2 Spacewar! package</h4>
-<a class="index-entry-id" id="index-package"></a>
-<a class="index-entry-id" id="index-package-1"></a>
-<a class="index-entry-id" id="index-package-2"></a>
+<h4 class="subsection"><span>2.6.2 Spacewar! package<a class="copiable-link" href="#Spacewar_0021-package-1"> &para;</a></span></h4>
+<a class="index-entry-id" id="index-package-create-_0028new_0029"></a>
+<a class="index-entry-id" id="index-package-save"></a>
+<a class="index-entry-id" id="index-package-tool"></a>
 <p>Another important use case of a class category is to define a package
 to save code to a file.  A package saves the code of the classes held in
 a given class category and a bit more, but more on that last point
@@ -178,9 +179,8 @@ we use the Installed Packages tool.
 
 <div class="float" id="ch02_002dInstalledPackages">
 <div class="center"><img class="image" src="ch02-InstalledPackages.png" alt="ch02-InstalledPackages">
-</div>
-<div class="caption"><p><strong class="strong">Figure 2.3: </strong>Installed Package window</p></div></div>
-<a class="index-entry-id" id="index-package-3"></a>
+</div><div class="caption"><p><strong class="strong">Figure 2.3: </strong>Installed Package window</p></div></div>
+<a class="index-entry-id" id="index-package-load-by-graphic-interface"></a>
 <p>A file <samp class="file">Spacewar!.pck.st</samp> is created alongside the Cuis-Smalltalk image
 file.  To install a package in a fresh Cuis-Smalltalk
 environment, use the File List tool:
@@ -197,7 +197,7 @@ environment, use the File List tool:
 <p>You can also drag and drop the package file from your operating system
 over to the Squeak window. Upon dropping the file over the window
 Cuis-Smalltalk will ask you what you want to do with this package.  To
-install it in your enviroment you can simply press <code class="command">Install
+install it in your environment you can simply press <code class="command">Install
 package</code>.
 </p>
 <p>Or, you can open a Workspace, type in <code class="code">Feature require: 'Spacewar!'</code>
@@ -212,7 +212,7 @@ chapters.
 </p>
 </div>
 <div class="subsection-level-extent" id="The-Newtonian-model">
-<h4 class="subsection">2.6.3 The Newtonian model</h4>
+<h4 class="subsection"><span>2.6.3 The Newtonian model<a class="copiable-link" href="#The-Newtonian-model"> &para;</a></span></h4>
 <a class="anchor" id="newtonModel"></a><p>For an enjoyable game experience, the player ships must follow
 Newton&rsquo;s laws of motion. Acceleration, speed and position are computed
 according to these laws. The ships are subjected to two forces: the
@@ -224,8 +224,7 @@ computer calculations.
 </p>
 <div class="float" id="motionEquations">
 <div class="center"><img class="image" src="motionEquations.png" alt="motionEquations">
-</div>
-<div class="caption"><p><strong class="strong">Figure 2.4: </strong>Equations of the accelerations, speed and position</p></div></div></div>
+</div><div class="caption"><p><strong class="strong">Figure 2.4: </strong>Equations of the accelerations, speed and position</p></div></div></div>
 </div>
 <hr>
 <div class="nav-panel">

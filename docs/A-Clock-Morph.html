@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
@@ -9,15 +9,15 @@ implementation of the Smalltalk language and environment.
 Copyright © 2020, 2021, 2022, 2023, 2024 H. Fernandes with K. Dickey & J. Vuletich
 
 
-Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
-Lewis, John McGarey, Mariano Montone, Ricardo Pacheco, Barry Perryman,
-Tommy Pettersson, Bernhard Pieber, Mauro Rizzi, Stephen Smith & Ignacio
-Sniechowski for the reviews of the book, suggestions and borrowed
-texts. Your help is very valuable.
+Thanks to Matt Armstrong, Ezequiel Birman, Michael Khol, Szabolcs
+Komáromi, David Lewis, John McGarey, Mariano Montone, Ricardo Pacheco,
+Barry Perryman, Tommy Pettersson, Bernhard Pieber, Mauro Rizzi,
+Stephen Smith & Ignacio Sniechowski for the reviews of the book,
+suggestions and borrowed texts. Your help is very valuable.
 
 
 
-Compilation : January 31, 2024
+Compilation : June 1, 2024
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -66,9 +66,11 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="Going-Vector.html" rel="prev" title="Going Vector">
 <style type="text/css">
 <!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
 blockquote.indentedblock {margin-right: 0em}
 div.center {text-align:center}
 div.example {margin-left: 3.2em}
+span:hover a.copiable-link {visibility: visible}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -83,7 +85,7 @@ div.example {margin-left: 3.2em}
 Next: <a href="Back-to-Spacewar_0021-Morphs.html" accesskey="n" rel="next">Back to Spacewar! Morphs</a>, Previous: <a href="Going-Vector.html" accesskey="p" rel="prev">Going Vector</a>, Up: <a href="The-Fundamentals-of-Morph.html" accesskey="u" rel="up">The Fundamentals of Morph</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<h3 class="section" id="A-Clock-Morph-1">7.2 A Clock Morph</h3>
+<h3 class="section" id="A-Clock-Morph-1"><span>7.2 A Clock Morph<a class="copiable-link" href="#A-Clock-Morph-1"> &para;</a></span></h3>
 <p>With all the things we have already learned, we can build a more
 sophisticated morph. Let&rsquo;s build a <code class="code">ClockMorph</code> as see in
 <a class="ref" href="#ch07_002d05_002dClock">Figure 7.5</a>.
@@ -91,8 +93,7 @@ sophisticated morph. Let&rsquo;s build a <code class="code">ClockMorph</code> as
 
 <div class="float" id="ch07_002d05_002dClock">
 <div class="center"><img class="image" src="ch07-05-Clock.png" alt="ch07-05-Clock">
-</div>
-<div class="caption"><p><strong class="strong">Figure 7.5: </strong>A clock morph</p></div></div>
+</div><div class="caption"><p><strong class="strong">Figure 7.5: </strong>A clock morph</p></div></div>
 <p>Let&rsquo;s create <code class="code">ClockMorph</code>, the dial clock :
 </p>
 <div class="example smallexample">
@@ -103,7 +104,7 @@ sophisticated morph. Let&rsquo;s build a <code class="code">ClockMorph</code> as
    category: 'Morphic-Learning'
 </pre></div>
 
-<a class="index-entry-id" id="index-morph-21"></a>
+<a class="index-entry-id" id="index-morph-drawOn_003a-2"></a>
 <p>...and its drawing method in the category <code class="command">drawing</code>:
 </p>
 <div class="float" id="clockDialDrawing">
@@ -120,7 +121,6 @@ sophisticated morph. Let&rsquo;s build a <code class="code">ClockMorph</code> as
    aCanvas drawString: 'VI' at: -11 @ 70 font: nil color: Color brown.
    aCanvas drawString: 'IX' at: -90 @ -10 font: nil color: Color brown
 </pre></div>
-
 <div class="caption"><p><strong class="strong">Example 7.2: </strong>Drawing the clock dial</p></div></div>
 
 <p>We create <code class="code">ClockHourHandMorph</code>, the hand for the hours:
@@ -222,14 +222,12 @@ variables.
 
 <div class="float" id="ch07_002d07_002dClockMorph_002dinitialize">
 <div class="center"><img class="image" src="ch07-07-ClockMorph-initialize.png" alt="ch07-07-ClockMorph-initialize">
-</div>
-<div class="caption"><p><strong class="strong">Figure 7.6: </strong>Declaring unknown variables as instance variables in current class</p></div></div>
+</div><div class="caption"><p><strong class="strong">Figure 7.6: </strong>Declaring unknown variables as instance variables in current class</p></div></div>
 <p>Your <code class="code">ClockMorph</code> class definition should now be complete!
 </p>
 <div class="float" id="ch07_002d08_002dClockMorph_002divars_002dadded">
 <div class="center"><img class="image" src="ch07-08-ClockMorph-ivars-added.png" alt="ch07-08-ClockMorph-ivars-added">
-</div>
-<div class="caption"><p><strong class="strong">Figure 7.7: </strong><code class="code">ClockMorph</code> with instance variables added</p></div></div>
+</div><div class="caption"><p><strong class="strong">Figure 7.7: </strong><code class="code">ClockMorph</code> with instance variables added</p></div></div>
 <p>Finally, we animate our clock. In method category <code class="command">stepping</code> add the
 method:
 </p>
@@ -277,8 +275,7 @@ hands. Their <code class="code">0 @ 0</code> origin will therefore be at the clo
 </p>
 <div class="float" id="ch07_002d06_002dExerciseClock">
 <div class="center"><img class="image" src="ch07-06-ExerciseClock.png" alt="ch07-06-ExerciseClock">
-</div>
-<div class="caption"><p><strong class="strong">Figure 7.8: </strong>A fancy clock morph</p></div></div>
+</div><div class="caption"><p><strong class="strong">Figure 7.8: </strong>A fancy clock morph</p></div></div>
 <div class="float" id="exeFancyClock">
 <blockquote class="indentedblock">
 <p>&nbsp;<img class="image" src="CuisLogo.png" alt="CuisLogo">
@@ -287,8 +284,6 @@ hands. Their <code class="code">0 @ 0</code> origin will therefore be at the clo
 decorated with a red and yellow disc is fancy? How will you modify our
 clock morph to get this result?</em>
 </p></blockquote>
-
-
 <div class="caption"><p><strong class="strong">Exercise 7.3: </strong>A fancy clock</p></div></div>
 <p>Create some instances of your clock: <code class="code">ClockMorph new
 openInWorld</code>. You can rotate and zoom. Look at the visual quality of

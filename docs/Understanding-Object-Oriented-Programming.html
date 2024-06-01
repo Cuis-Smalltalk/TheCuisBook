@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
@@ -9,15 +9,15 @@ implementation of the Smalltalk language and environment.
 Copyright © 2020, 2021, 2022, 2023, 2024 H. Fernandes with K. Dickey & J. Vuletich
 
 
-Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
-Lewis, John McGarey, Mariano Montone, Ricardo Pacheco, Barry Perryman,
-Tommy Pettersson, Bernhard Pieber, Mauro Rizzi, Stephen Smith & Ignacio
-Sniechowski for the reviews of the book, suggestions and borrowed
-texts. Your help is very valuable.
+Thanks to Matt Armstrong, Ezequiel Birman, Michael Khol, Szabolcs
+Komáromi, David Lewis, John McGarey, Mariano Montone, Ricardo Pacheco,
+Barry Perryman, Tommy Pettersson, Bernhard Pieber, Mauro Rizzi,
+Stephen Smith & Ignacio Sniechowski for the reviews of the book,
+suggestions and borrowed texts. Your help is very valuable.
 
 
 
-Compilation : January 31, 2024
+Compilation : June 1, 2024
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -65,10 +65,12 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="Explore-OOP-from-the-Browser.html" rel="next" title="Explore OOP from the Browser">
 <style type="text/css">
 <!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
 blockquote.indentedblock {margin-right: 0em}
 div.example {margin-left: 3.2em}
 kbd.kbd {font-style: oblique}
 pre.format-preformatted {font-family: inherit}
+span:hover a.copiable-link {visibility: visible}
 ul.mark-bullet {list-style-type: disc}
 -->
 </style>
@@ -84,7 +86,7 @@ ul.mark-bullet {list-style-type: disc}
 Next: <a href="Explore-OOP-from-the-Browser.html" accesskey="n" rel="next">Explore OOP from the Browser</a>, Up: <a href="Class-_002d-Model-of-Communicating-Entities.html" accesskey="u" rel="up">Class, Model of Communicating Entities</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<h3 class="section" id="Understanding-Object-Oriented-Programming-1">3.1 Understanding Object Oriented Programming</h3>
+<h3 class="section" id="Understanding-Object_002dOriented-Programming"><span>3.1 Understanding Object-Oriented Programming<a class="copiable-link" href="#Understanding-Object_002dOriented-Programming"> &para;</a></span></h3>
 
 <p>But just what is an object?
 </p>
@@ -104,7 +106,7 @@ Next: <a href="Explore-OOP-from-the-Browser.html" accesskey="n" rel="next">Explo
 
 </li></ul>
 
-<a class="index-entry-id" id="index-class-7"></a>
+<a class="index-entry-id" id="index-class-1"></a>
 <a class="index-entry-id" id="index-subclass"></a>
 <a class="index-entry-id" id="index-instance-1"></a>
 <a class="index-entry-id" id="index-selector"></a>
@@ -124,14 +126,14 @@ and the classes it inherits from define this common behavior,
 as we will now describe.
 </p>
 
-<a class="index-entry-id" id="index-variable-1"></a>
+<a class="index-entry-id" id="index-variable-instance"></a>
 <a class="index-entry-id" id="index-instance-variable"></a>
 <p>A given class declares its internal variables &ndash; states &ndash; and the
 behavior by implementing the methods.  A variable is basically a named
-box which can hold any object.  Each instance variable of a class gets its own
+box that can hold any object.  Each instance variable of a class gets its own
 box with the common name.
 </p>
-<a class="index-entry-id" id="index-number-19"></a>
+<a class="index-entry-id" id="index-number-rational-_0028fraction_0029-1"></a>
 <p>Lets see how the <code class="code">Fraction</code> class is declared:
 </p>
 <div class="example smallexample">
@@ -155,7 +157,7 @@ the class definition: <code class="code">Fraction</code> is a kind of
 class. <code class="code">Fraction</code> is called a <em class="dfn">subclass</em> of <code class="code">Number</code>,
 and so naturally we call <code class="code">Number</code> a <em class="dfn">superclass</em> of <code class="code">Fraction</code>.
 </p>
-<a class="index-entry-id" id="index-class-8"></a>
+<a class="index-entry-id" id="index-class-inheritance"></a>
 <p>A Class specifies the behavior of all of its instances.  It is useful
 to be able to say <em class="emph">this object is like that object, but with these
 differences</em>.  We do this in Smalltalk by having classes inherit instance
@@ -163,7 +165,7 @@ state and behavior from their parent Class.  This child, or subclass
 then specifies just the instance state and behavior that is different
 from its parent, retaining all the unmodified behaviours.
 </p>
-<p>This aspect of object oriented programming is called
+<p>This aspect of object-oriented programming is called
 <em class="dfn">inheritance</em>. In Cuis-Smalltalk, each class inherits from one parent
 class.
 </p>
@@ -179,9 +181,9 @@ object receiving the message.
 <p>Different kinds of objects respond to the same <code class="code">#printString</code>
 message in different, but appropriate ways.
 </p>
-<a class="index-entry-id" id="index-instance-2"></a>
-<a class="index-entry-id" id="index-class-9"></a>
-<a class="index-entry-id" id="index-method-3"></a>
+<a class="index-entry-id" id="index-instance-creation"></a>
+<a class="index-entry-id" id="index-class-method"></a>
+<a class="index-entry-id" id="index-method-class-method"></a>
 <p>We have already met fractions. Those fractions are objects called
 <em class="dfn">instance</em>s of the class <code class="code">Fraction</code>. To create an instance
 we wrote <code class="code">5 / 4</code>, the mechanism is based on message sending
@@ -204,7 +206,7 @@ aNumber isInteger ifTrue:
 
 <p>From this source code, we learn that in some situations, the method
 returns a fraction, reduced. We can expect that in some other
-situation an integer is returned, for example <code class="code">6 / 2</code>.
+situation, an integer is returned, for example, <code class="code">6 / 2</code>.
 </p>
 <p>In the example, we observe the message <code class="code">#numerator:denominator:</code> is
 sent to the class <code class="code">Fraction</code>, such a message refers to a
@@ -236,8 +238,8 @@ when instantiated with the <code class="code">#/</code> message:
 elements from the array given in the argument; <em class="emph"><code class="code">newFrom:</code></em> is
 another class method.
 </p>
-<a class="index-entry-id" id="index-instance-3"></a>
-<a class="index-entry-id" id="index-method-4"></a>
+<a class="index-entry-id" id="index-instance-method"></a>
+<a class="index-entry-id" id="index-method-instance-method-1"></a>
 <a class="index-entry-id" id="index-polymorphism-1"></a>
 <p>Now observe the hierarchy of the Number class:
 </p>
@@ -253,7 +255,7 @@ another class method.
       <code class="code">SmallInteger</code>
 </pre></div>
 
-<a class="index-entry-id" id="index-number-20"></a>
+<a class="index-entry-id" id="index-number-squared-1"></a>
 <p><code class="code">Float</code>, <code class="code">Integer</code> and <code class="code">Fraction</code> are direct
 descendants of the <code class="code">Number</code> class. We have already learned about the
 <code class="code">#squared</code> message sent to integer and fraction instances:
@@ -268,7 +270,7 @@ descendants of the <code class="code">Number</code> class. We have already learn
 called an <em class="dfn">instance method</em>. This method is defined in both the
 <code class="code">Number</code> and <code class="code">Fraction</code> classes.
 </p>
-<a class="index-entry-id" id="index-method-5"></a>
+<a class="index-entry-id" id="index-method-returned-value-_0028explicit_0029"></a>
 <a class="index-entry-id" id="index-returned-value-1"></a>
 <p>Let&rsquo;s examine this method in <code class="code">Number</code>:
 </p><div class="example smallexample">
@@ -295,18 +297,18 @@ numerator and denominator being squared.
 This alternate <code class="code">squared</code> method, ensures a fraction instance is
 returned.
 </p>
-<a class="index-entry-id" id="index-method-6"></a>
+<a class="index-entry-id" id="index-method-overriding"></a>
 <a class="index-entry-id" id="index-overriding"></a>
 <p>When the message <code class="code">#squared</code> is sent to a number, different methods are
 executed depending on if the number is a fraction or another kind of
 number. Polymorphism means that the Class of each instance decides
-how it will repond to a particular message.
+how it will respond to a particular message.
 Here, the <code class="code">Fraction</code> class
 is <em class="dfn">overriding</em> the <code class="code">squared</code> method, defined above in the
 class hierarchy.  If a method is not overridden, an inherited method
 is invoked to respond to the message.
 </p>
-<a class="index-entry-id" id="index-number-21"></a>
+<a class="index-entry-id" id="index-number-abs"></a>
 <p>Still in the <code class="code">Number</code> hierarchy, let&rsquo;s examine another example
 of polymorphism with the <code class="code">#abs</code> message:
 </p>
@@ -333,7 +335,7 @@ receiver.&quot;
 subclasses. Nevertheless, there are several classes overriding it for
 specialized or optimized cases.
 </p>
-<a class="index-entry-id" id="index-method-7"></a>
+<a class="index-entry-id" id="index-method-returned-value-_0028implicit_0029"></a>
 <p>For example, regarding large positive integer, <code class="code">abs</code> is
 empty. Indeed, <strong class="strong">in the absence of explicitly returned value, the
 default returned value is the instance itself</strong>, in our situation the
@@ -355,7 +357,7 @@ value is itself but with its sign reversed, that is <code class="code">negated</
 checks and ifTrue/ifFalse branches. Polymorphism is often used to avoid
 unnecessary checks and code branches.
 </p>
-<a class="index-entry-id" id="index-keyboard-shortcut-6"></a>
+<a class="index-entry-id" id="index-keyboard-shortcut-implementors-of-_0028Ctrl_002dm_0029"></a>
 
 <blockquote class="indentedblock">
 <p>&nbsp;<img class="image" src="note.png" alt="note">
@@ -370,7 +372,7 @@ produce the naturally expected result.
 <p>As an object instance is modeled by its class, it is possible to
 ask any object its
 class with the <code class="code">#class</code> message. Observe carefully the class
-returned in line 2 and 3:
+returned in lines 2 and 3:
 </p>
 <div class="float" id="askingClass">
 <div class="example smallexample">
@@ -382,7 +384,6 @@ returned in line 2 and 3:
 'Hello' class &rArr; String 
 ('Hello' at: 1) class &rArr; Character
 </pre></div>
-
 <div class="caption"><p><strong class="strong">Example 3.1: </strong>Asking the class of an instance</p></div></div>
 </div>
 <hr>

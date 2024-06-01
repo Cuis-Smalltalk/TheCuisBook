@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
@@ -9,15 +9,15 @@ implementation of the Smalltalk language and environment.
 Copyright © 2020, 2021, 2022, 2023, 2024 H. Fernandes with K. Dickey & J. Vuletich
 
 
-Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
-Lewis, John McGarey, Mariano Montone, Ricardo Pacheco, Barry Perryman,
-Tommy Pettersson, Bernhard Pieber, Mauro Rizzi, Stephen Smith & Ignacio
-Sniechowski for the reviews of the book, suggestions and borrowed
-texts. Your help is very valuable.
+Thanks to Matt Armstrong, Ezequiel Birman, Michael Khol, Szabolcs
+Komáromi, David Lewis, John McGarey, Mariano Montone, Ricardo Pacheco,
+Barry Perryman, Tommy Pettersson, Bernhard Pieber, Mauro Rizzi,
+Stephen Smith & Ignacio Sniechowski for the reviews of the book,
+suggestions and borrowed texts. Your help is very valuable.
 
 
 
-Compilation : January 31, 2024
+Compilation : June 1, 2024
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -66,10 +66,12 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="Messages-to-number-entities.html" rel="prev" title="Messages to number entities">
 <style type="text/css">
 <!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
 blockquote.indentedblock {margin-right: 0em}
 div.center {text-align:center}
 div.example {margin-left: 3.2em}
 kbd.kbd {font-style: oblique}
+span:hover a.copiable-link {visibility: visible}
 ul.mark-bullet {list-style-type: disc}
 -->
 </style>
@@ -85,16 +87,16 @@ ul.mark-bullet {list-style-type: disc}
 Next: <a href="Spacewar_0021-models.html" accesskey="n" rel="next">Spacewar! models</a>, Previous: <a href="Messages-to-number-entities.html" accesskey="p" rel="prev">Messages to number entities</a>, Up: <a href="The-Message-Way-of-Life.html" accesskey="u" rel="up">The Message Way of Life</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<h3 class="section" id="A-brief-introduction-to-the-system-Browser-1">2.5 A brief introduction to the system Browser</h3>
-<a class="index-entry-id" id="index-tools-2"></a>
+<h3 class="section" id="A-brief-introduction-to-the-system-Browser-1"><span>2.5 A brief introduction to the system Browser<a class="copiable-link" href="#A-brief-introduction-to-the-system-Browser-1"> &para;</a></span></h3>
+<a class="index-entry-id" id="index-tools-system-browser"></a>
 <a class="index-entry-id" id="index-browser"></a>
 
 <p>Smalltalk organizes instance behaviors using classes.  
-A class is an object which holds a set of methods to be executed
+A class is an object that holds a set of methods to be executed
 when one of its instances receives a message
 that is the name of one of these methods.
 </p>
-<p>The <em class="dfn">System Browser</em>, in short the <em class="dfn">Browser</em>, is a tool to
+<p>The <em class="dfn">System Browser</em>, in short, the <em class="dfn">Browser</em>, is a tool to
 rule all the classes in Cuis-Smalltalk. It is both a tool to explore the
 classes (system or user ones) and to write new classes and methods.
 </p>
@@ -103,10 +105,9 @@ classes (system or user ones) and to write new classes and methods.
 </p>
 <div class="float" id="ch02_002dbrowserDetailed">
 <div class="center"><img class="image" src="ch02-browserDetailed.png" alt="ch02-browserDetailed">
-</div>
-<div class="caption"><p><strong class="strong">Figure 2.1: </strong>The System Browser</p></div></div>
-<a class="index-entry-id" id="index-browser-1"></a>
-<a class="index-entry-id" id="index-class-1"></a>
+</div><div class="caption"><p><strong class="strong">Figure 2.1: </strong>The System Browser</p></div></div>
+<a class="index-entry-id" id="index-browser-class-category"></a>
+<a class="index-entry-id" id="index-class-category"></a>
 <p>At the top left are the <em class="dfn">class categories</em>, groups of classes
 sharing the same theme. A category can also be used to create a
 <em class="dfn">Package</em>, which is an organisational element to save code in a
@@ -117,7 +118,7 @@ fundamental categories, but it is only a convention. See the other
 categories such as <strong class="strong">Kernel-Text</strong> and <strong class="strong">Kernel-Chronology</strong>
 related to text and date entities.
 </p>
-<a class="index-entry-id" id="index-class-2"></a>
+<a class="index-entry-id" id="index-class-declaration"></a>
 <p>Next to the right are the classes in the selected class category. They
 are nicely presented in a parent-child class hierarchy. When a class is
 first selected in this pane, its declaration appears in the large pane
@@ -158,7 +159,7 @@ to describe what is different from its superclass.  An instance
 of <code class="code">Number</code> adds methods (which define behaviors) unknown to an instance
 of <code class="code">Magnitude</code>.  We will explore this in detail as we go forward.
 </p>
-<a class="index-entry-id" id="index-class-3"></a>
+<a class="index-entry-id" id="index-class-comment"></a>
 <p>To learn about the purpose of a class, it is good practice to <strong class="strong">always</strong>
 visit the class comment. Often a comment also comes with code
 examples to learn how to use the object; these code snippets can be
@@ -166,7 +167,7 @@ selected and executed in place as done from a Workspace. In
 <a class="ref" href="#ch02_002dbrowserDetailed">Figure 2.1</a>, see the <code class="command">comment</code> button to read or
 to edit the comment of the selected class.
 </p>
-<a class="index-entry-id" id="index-method-1"></a>
+<a class="index-entry-id" id="index-method-category"></a>
 <p>To the right of the class panel is the method categories panel.
 A class may have many methods, so grouping
 them by category helps other users orient themselves in finding related methods.
@@ -176,8 +177,8 @@ itself<a class="footnote" id="DOCF13" href="#FOOT13"><sup>13</sup></a>. Clicking
 directly gives access to related methods in the next and last pane at
 the right.
 </p>
-<a class="index-entry-id" id="index-class-4"></a>
-<a class="index-entry-id" id="index-keyboard-shortcut-3"></a>
+<a class="index-entry-id" id="index-class-category-1"></a>
+<a class="index-entry-id" id="index-keyboard-shortcut-find-a-class-_0028Ctrl_002df_0029"></a>
 
 <blockquote class="indentedblock">
 <p>&nbsp;<img class="image" src="note.png" alt="note">
@@ -195,11 +196,9 @@ fill-in panel and type part of a class name to match.  Try it with
 in the <strong class="strong">arithmetic</strong> method category of the <code class="code">CharacterSequence</code>
 class?</em>
 </p></blockquote>
-
-
 <div class="caption"><p><strong class="strong">Exercise 2.3: </strong>Count of methods</p></div></div>
 
-<a class="index-entry-id" id="index-method-2"></a>
+<a class="index-entry-id" id="index-method-instance-method"></a>
 <p>In the Browser, once a method is selected &ndash; as in
 <a class="ref" href="#ch02_002dbrowserDetailed">Figure 2.1</a>, <code class="code">abs</code> method &ndash; the bottom part
 shows its source code, ready to be explored or edited. Often,
@@ -208,8 +207,8 @@ surrounded by double quotes.
 </p>
 <p>Every object knows its own class and will respond with it when sent the message <code class="code">#class</code>.
 </p>
-<a class="index-entry-id" id="index-browser-2"></a>
-<a class="index-entry-id" id="index-keyboard-shortcut-4"></a>
+<a class="index-entry-id" id="index-browser-invoke-from-Workspace"></a>
+<a class="index-entry-id" id="index-keyboard-shortcut-browse-a-class-_0028Ctrl_002db_0029"></a>
 <p><strong class="strong">Tip.</strong> In the workspace <kbd class="kbd">Ctrl-b</kbd> (<em class="emph"><b class="b">B</b>rowse</em>)
 on the class name will open a Browser on the named class:
 </p>

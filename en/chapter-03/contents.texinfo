@@ -33,7 +33,7 @@ noun in Smalltalk -- is an object.
 * Spacewar! States and Behaviors::
 @end menu
 
-@node Understanding Object-Oriented Programming
+@node Understanding Object Oriented Programming
 @section Understanding Object-Oriented Programming
 
 But just what is an object?

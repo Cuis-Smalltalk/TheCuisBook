@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 7.0.3, https://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
@@ -9,15 +9,15 @@ implementation of the Smalltalk language and environment.
 Copyright © 2020, 2021, 2022, 2023, 2024 H. Fernandes with K. Dickey & J. Vuletich
 
 
-Thanks to Matt Armstrong, Ezequiel Birman, Szabolcs Komáromi, David
-Lewis, John McGarey, Mariano Montone, Ricardo Pacheco, Barry Perryman,
-Tommy Pettersson, Bernhard Pieber, Mauro Rizzi, Stephen Smith & Ignacio
-Sniechowski for the reviews of the book, suggestions and borrowed
-texts. Your help is very valuable.
+Thanks to Matt Armstrong, Ezequiel Birman, Michael Khol, Szabolcs
+Komáromi, David Lewis, John McGarey, Mariano Montone, Ricardo Pacheco,
+Barry Perryman, Tommy Pettersson, Bernhard Pieber, Mauro Rizzi,
+Stephen Smith & Ignacio Sniechowski for the reviews of the book,
+suggestions and borrowed texts. Your help is very valuable.
 
 
 
-Compilation : January 31, 2024
+Compilation : June 1, 2024
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -66,8 +66,10 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <link href="Visual-with-Morph-_0028Solutions_0029.html" rel="prev" title="Visual with Morph (Solutions)">
 <style type="text/css">
 <!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
 div.center {text-align:center}
 div.example {margin-left: 3.2em}
+span:hover a.copiable-link {visibility: visible}
 ul.mark-bullet {list-style-type: disc}
 -->
 </style>
@@ -83,9 +85,9 @@ ul.mark-bullet {list-style-type: disc}
 Next: <a href="Events-_0028Solutions_0029.html" accesskey="n" rel="next">Events</a>, Previous: <a href="Visual-with-Morph-_0028Solutions_0029.html" accesskey="p" rel="prev">Visual with Morph</a>, Up: <a href="Solutions-to-the-Exercises.html" accesskey="u" rel="up">Solutions to the Exercises</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Indexes.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<h3 class="unnumberedsec" id="The-Fundamentals-of-Morph-2">The Fundamentals of Morph</h3>
+<h3 class="unnumberedsec" id="The-Fundamentals-of-Morph-2"><span>The Fundamentals of Morph<a class="copiable-link" href="#The-Fundamentals-of-Morph-2"> &para;</a></span></h3>
 
-<h4 class="subheading" id="exeCrossMorph-1"><a class="ref" href="Going-Vector.html#exeCrossMorph">Exercise 7.1</a></h4>
+<h4 class="subheading" id="exeCrossMorph-1"><span><a class="ref" href="Going-Vector.html#exeCrossMorph">Exercise 7.1</a><a class="copiable-link" href="#exeCrossMorph-1"> &para;</a></span></h4>
 <p>The <code class="code">drawOn:</code> method is modified to draw two distinct,
 unconnected lines:
 </p>
@@ -103,7 +105,7 @@ unconnected lines:
 position with the pen up, then the <code class="code">#lineTo:</code> asks the pencil to
 draw from that previous position to this new position.
 </p>
-<h4 class="subheading" id="exeRectMorph-1"><a class="ref" href="Going-Vector.html#exeRectMorph">Exercise 7.2</a></h4>
+<h4 class="subheading" id="exeRectMorph-1"><span><a class="ref" href="Going-Vector.html#exeRectMorph">Exercise 7.2</a><a class="copiable-link" href="#exeRectMorph-1"> &para;</a></span></h4>
 <p>We create a <code class="code">RectangleExampleMorph</code>, subclass of
 <code class="code">PlacedMorph</code>:
 </p><div class="example smallexample">
@@ -134,10 +136,9 @@ drawOn: aCanvas
 
 <div class="float" id="E_002dexeRectMorph">
 <div class="center"><img class="image" src="E-exeRectMorph.png" alt="E-exeRectMorph">
-</div>
-<div class="caption"><p><strong class="strong">Figure D.2: </strong>Several rectangle morphs</p></div></div>
+</div><div class="caption"><p><strong class="strong">Figure D.2: </strong>Several rectangle morphs</p></div></div>
 
-<h4 class="subheading" id="exeFancyClock-1"><a class="ref" href="A-Clock-Morph.html#exeFancyClock">Exercise 7.3</a></h4>
+<h4 class="subheading" id="exeFancyClock-1"><span><a class="ref" href="A-Clock-Morph.html#exeFancyClock">Exercise 7.3</a><a class="copiable-link" href="#exeFancyClock-1"> &para;</a></span></h4>
 <p>Among the clock parts (submorphs) we only need to modify the drawing
 of the <code class="code">ClockSecondHandMorph</code> class. The disc is surrounded with a
 thin red line and filled in yellow.
@@ -152,7 +153,7 @@ thin red line and filled in yellow.
       borderColor: Color red fillColor: Color yellow
 </pre></div>
 
-<h4 class="subheading" id="exeGasExhaust-1"><a class="ref" href="Back-to-Spacewar_0021-Morphs.html#exeGasExhaust">Exercise 7.4</a></h4>
+<h4 class="subheading" id="exeGasExhaust-1"><span><a class="ref" href="Back-to-Spacewar_0021-Morphs.html#exeGasExhaust">Exercise 7.4</a><a class="copiable-link" href="#exeGasExhaust-1"> &para;</a></span></h4>
 <p>On top of the <code class="code">drawOn:</code> method, we also want the acceleration
 variable to take a range of values between 0 and 50.
 </p>
@@ -183,14 +184,14 @@ variable to take a range of values between 0 and 50.
 </pre></div>
 
 
-<h4 class="subheading" id="exeTorpedoExtent-1"><a class="ref" href="Back-to-Spacewar_0021-Morphs.html#exeTorpedoExtent">Exercise 7.5</a></h4>
+<h4 class="subheading" id="exeTorpedoExtent-1"><span><a class="ref" href="Back-to-Spacewar_0021-Morphs.html#exeTorpedoExtent">Exercise 7.5</a><a class="copiable-link" href="#exeTorpedoExtent-1"> &para;</a></span></h4>
 <p>The width of the torpedo is 4 pixels and its height 8 pixels:
 </p><div class="example smallexample">
 <pre class="example-preformatted">Torpedo&gt;&gt;morphExtent
    ^ `4 @ 8`
 </pre></div>
 
-<h4 class="subheading" id="exeTorpedoDrawing-1"><a class="ref" href="Back-to-Spacewar_0021-Morphs.html#exeTorpedoDrawing">Exercise 7.6</a></h4>
+<h4 class="subheading" id="exeTorpedoDrawing-1"><span><a class="ref" href="Back-to-Spacewar_0021-Morphs.html#exeTorpedoDrawing">Exercise 7.6</a><a class="copiable-link" href="#exeTorpedoDrawing-1"> &para;</a></span></h4>
 <p>The <code class="code">Torpedo</code>&rsquo;s <code class="code">drawOn:</code> method is very similar to the
 one in <code class="code">SpaceShip</code> class:
 </p><div class="example smallexample">
@@ -204,7 +205,7 @@ one in <code class="code">SpaceShip</code> class:
    canvas line: a to: c width: 2 color: color.
 </pre></div>
 
-<h4 class="subheading" id="exeSpaceShipClassSideDiagram-1"><a class="ref" href="Back-to-Spacewar_0021-Morphs.html#exeSpaceShipClassSideDiagram">Exercise 7.7</a></h4>
+<h4 class="subheading" id="exeSpaceShipClassSideDiagram-1"><span><a class="ref" href="Back-to-Spacewar_0021-Morphs.html#exeSpaceShipClassSideDiagram">Exercise 7.7</a><a class="copiable-link" href="#exeSpaceShipClassSideDiagram-1"> &para;</a></span></h4>
 <p>We use a local variable because we use two times the vertices, one to
 draw the ship and a second time to draw the gas exhaust.
 </p><div class="example smallexample">
@@ -220,7 +221,7 @@ draw the ship and a second time to draw the gas exhaust.
       canvas line: vertices third to: 0@35 width: 1 color: Color gray]
 </pre></div>
 
-<h4 class="subheading" id="exeDrawMobile-1"><a class="ref" href="Back-to-Spacewar_0021-Morphs.html#exeDrawMobile">Exercise 7.8</a></h4>
+<h4 class="subheading" id="exeDrawMobile-1"><span><a class="ref" href="Back-to-Spacewar_0021-Morphs.html#exeDrawMobile">Exercise 7.8</a><a class="copiable-link" href="#exeDrawMobile-1"> &para;</a></span></h4>
 <p>You need both to iterate each vertex of the <code class="code">vertices</code> array
 and access the subsequent vertex by index. The arithmetic reminder
 operation <code class="code">#\\</code> is needed to keep the index in the boundary of the
@@ -252,7 +253,7 @@ collection.
          color: color]
 </pre></div>
 
-<h4 class="subheading" id="exeAccurateDetection-1"><a class="ref" href="Back-to-Spacewar_0021-Morphs.html#exeAccurateDetection">Exercise 7.9</a></h4>
+<h4 class="subheading" id="exeAccurateDetection-1"><span><a class="ref" href="Back-to-Spacewar_0021-Morphs.html#exeAccurateDetection">Exercise 7.9</a><a class="copiable-link" href="#exeAccurateDetection-1"> &para;</a></span></h4>
 <p>Just replace each morph position distance approach with the
 intersection detection between the morphs&rsquo; display bounds:
 </p>
