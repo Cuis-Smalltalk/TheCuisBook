@@ -206,7 +206,7 @@ but there are always more platform variants than we can test for.
 do @emph{not} have a problem, you can ignore these for now.
 @itemize
 @item Current installation instructions at the GitHub Cuis Repository:
-@url{https://github.com/Cuis-Smalltalk/Cuis-Smalltalk-Dev#setting-up-cuis-in-your-machine}
+@url{https://github.com/Cuis-Smalltalk/Cuis-Smalltalk-Dev#running-cuis}
 @item Ask us on the Cuis email group
 @url{https://lists.cuis.st/mailman/listinfo/cuis-dev}
 @end itemize
