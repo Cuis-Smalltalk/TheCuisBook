@@ -245,7 +245,7 @@ play area?  How should we write the overridden method?}}
 
 In graphic user interface, a visual effect is often used to inform the
 user the keyboard focus changed. In Spacewar! we change the game play
-background depending on the sate of the keyboard focus.
+background depending on the state of the keyboard focus.
 
 In @ref{ch08-Focus}, at the left keyboard focus is on the game; at the
 right keyboard focus is not on the game, it is paused and we can see
