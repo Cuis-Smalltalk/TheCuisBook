@@ -184,14 +184,24 @@ class population and arrangement, how the classes inherit from each
 other. The class count is typically less than 700.
 
 To get you started easily, we encourage you to install
-@url{https://sites.google.com/view/cuis-university/descargas,,Cuis-University}@footnote{@url{https://sites.google.com/view/cuis-university/descargas}}. Here
-you will find bundles for GNU/Linux, Mac OS X and Windows on Intel
-architecture. These bundles come with the dedicated @vm{} and a recent
-image of @cuis{}; as well packages ready to be installed to make your
-life easier when you experience the examples and exercises of the
-book. By the time you read this book, @cuis{} will likely have evolved
-to a newer version.  What you learn here should, however, be
-easily transferable.
+@url{https://sites.google.com/view/cuis-university/descargas,,Cuis-University}@footnote{@url{https://sites.google.com/view/cuis-university/descargas}}.
+Here you will find bundles for GNU/Linux, Mac OS X and Windows, for the
+Intel architecture. These bundles differ from the bare @cuis{}
+distribution in that they package a customized @vm{}, together with a
+matching @cuis{} image that includes additional packages preinstalled
+@footnote{@url{https://github.com/Cuis-Smalltalk/Measures,,Measures and
+units (Aconcagua)},
+@url{https://github.com/Cuis-Smalltalk/Calendars,,Dates and calendars
+(Chaltén)}, Improved and additional automated refactorings by way of
+@url{https://github.com/hernanwilkinson/LiveTyping/,,LiveTyping}
+(automatic type annotations), a finder widget,
+@url{https://github.com/hernanwilkinson/TDDGuru,, TDD Guru},
+@url{https://github.com/hernanwilkinson/Cuis-Smalltalk-DenotativeObject,,DenotativeObject}
+(classless objects)} and some other packages ready to be installed that
+will make your life easier when you follow the examples and exercises in
+the book, or when you explore on your own. By the time you read this
+book, @cuis{} will likely have evolved to a newer version, but what you
+learn here should, however, be easily transferable.
 
 To get @cuis{} running on your computer, extract the bundle and
 execute the run script on Windows/Linux -- @file{run.bat} or
