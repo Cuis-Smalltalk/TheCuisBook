@@ -912,7 +912,7 @@ PlacedMorph subclass: #Mobile
    category: 'Spacewar!'}
 
 As a class instance variable, it can be directly accessed from the
-class side and instances are grant access only with messages send to
+class side and instances are granted access only with messages send to
 the class side. @strong{Contrary} to a class instance variable, its
 value is common in the whole class hierarchy. 
 
