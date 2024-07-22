@@ -17,7 +17,7 @@ suggestions and borrowed texts. Your help is very valuable.
 
 
 
-Compilation : June 1, 2024
+Compilation : July 22, 2024
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -157,7 +157,7 @@ far:
 
 <p>Each character from A to Z is referenced by the <code class="code">c</code> block
 parameter and converted to its Ascii
-value<a class="footnote" id="DOCF30" href="#FOOT30"><sup>30</sup></a>:
+value<a class="footnote" id="DOCF31" href="#FOOT31"><sup>31</sup></a>:
 <code class="code">c asciiValue</code>. It is shifted of 65, so the A character
 counts as 0 and Z as 25 in the alphabet list. To apply the Caesar
 cipher, we send the message <code class="code">+ 3</code> to the previous result.
@@ -166,7 +166,7 @@ cipher, we send the message <code class="code">+ 3</code> to the previous result
 alphabet, indeed these characters will be ciphered as 26, 27, 28. To
 fix that we send <code class="code">\\ 26</code> to the previous result, it is an
 old trick of programming: the reminder of the Euclidean division by 26
-frames the value between 0 and 25<a class="footnote" id="DOCF31" href="#FOOT31"><sup>31</sup></a>.
+frames the value between 0 and 25<a class="footnote" id="DOCF32" href="#FOOT32"><sup>32</sup></a>.
 </p>
 <p>Finally we shift back of 65 before converting from the Ascii value to
 the character.
@@ -284,9 +284,9 @@ appropriate indentation.
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h5 class="footnote-body-heading"><a id="FOOT30" href="#DOCF30">(30)</a></h5>
-<p><a class="url" href="https://en.wikipedia.org/wiki/ASCII">https://en.wikipedia.org/wiki/ASCII</a></p>
 <h5 class="footnote-body-heading"><a id="FOOT31" href="#DOCF31">(31)</a></h5>
+<p><a class="url" href="https://en.wikipedia.org/wiki/ASCII">https://en.wikipedia.org/wiki/ASCII</a></p>
+<h5 class="footnote-body-heading"><a id="FOOT32" href="#DOCF32">(32)</a></h5>
 <p>It generalizes to the
 mathematics field of modular arithmetic,
 <a class="url" href="https://www.wikiwand.com/en/Modular_arithmetic">https://www.wikiwand.com/en/Modular_arithmetic</a></p>
