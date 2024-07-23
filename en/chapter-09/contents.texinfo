@@ -60,11 +60,13 @@ solution to recover your lost editing, the @dfn{Change Log}.
 @cuis{} records any action occurring in the environment: the code you
 edit in the System Browser, the code you execute in a
 Workspace. Therefore, in the event of a @cuis{} crash you can restore
-unsaved changes when you launch the same @cuis{} image again. Let's explore
-this feature with a simple example.
+unsaved changes when you launch the same @cuis{} image again. Let's
+explore this feature with a simple example.
 
-On a fresh @cuis{} installation, create a new class category named
-@label{TheCuisBook} and within @class{TheBook} class:
+On a fresh @cuis{} installation, first set the appropriate preference by
+executing in a Workspace: @smalltalk{Preferences at:
+#checkLostChangesOnStartUp put: true}. Now create a new class category
+named @label{TheCuisBook} and within @class{TheBook} class:
 
 @itemize
 

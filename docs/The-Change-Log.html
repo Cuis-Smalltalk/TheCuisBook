@@ -93,11 +93,13 @@ Next: <a href="The-Change-Set.html" accesskey="n" rel="next">The Change Set</a>,
 <p>Cuis-Smalltalk records any action occurring in the environment: the code you
 edit in the System Browser, the code you execute in a
 Workspace. Therefore, in the event of a Cuis-Smalltalk crash you can restore
-unsaved changes when you launch the same Cuis-Smalltalk image again. Let&rsquo;s explore
-this feature with a simple example.
+unsaved changes when you launch the same Cuis-Smalltalk image again. Let&rsquo;s
+explore this feature with a simple example.
 </p>
-<p>On a fresh Cuis-Smalltalk installation, create a new class category named
-<code class="command">TheCuisBook</code> and within <code class="code">TheBook</code> class:
+<p>On a fresh Cuis-Smalltalk installation, first set the appropriate preference by
+executing in a Workspace: <code class="code">Preferences at:
+#checkLostChangesOnStartUp put: true</code>. Now create a new class category
+named <code class="command">TheCuisBook</code> and within <code class="code">TheBook</code> class:
 </p>
 <ul class="itemize mark-bullet">
 <li>Over the class category pane of System Browser (at the most
