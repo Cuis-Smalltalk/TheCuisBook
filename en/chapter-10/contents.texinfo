@@ -94,10 +94,10 @@ Now, you can @kbd{Ctrl-a} (@emph{select @b{A}ll}) and @kbd{Ctrl-p}
 
 @cindex file
 @cindex string @subentry file entry
-@cuisNote{The @class{String} class has several method category names
+@cuisNote{The @class{CharacterSequence} class has several method category names
 starting with @label{fileman-} for converting pathnames (system names
 for files and directories) into @class{FileEntry} and
-@class{DirectoryEntry} objects.  @method{String>>asFileEntry} gives
+@class{DirectoryEntry} objects.  @method{CharacterSequence>>asFileEntry} gives
 examples.}
 
 Now that we know what to expect, let us step through processing of the code
