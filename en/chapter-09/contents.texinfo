@@ -518,7 +518,7 @@ Let's start by removing the open windows.
 The code is placed in a block which is sent the message `#fork`
 in order to wait for the environment to be properly initialized.
 
-@smalltalkExample{| world | 
+@smalltalkExample{| world morph area extent | 
 world @assign{} UISupervisor ui.
 [
     | area extent morph | "used later"
@@ -526,7 +526,7 @@ world @assign{} UISupervisor ui.
         children @assign{} world submorphs reject: [:aMorph | aMorph is: #TaskbarMorph].
         children do: [:child | child delete].
     ]
-] fork
+] fork}
 
 The whole user interface world of @cuis{} is a kind of Morph, a
 @class{WorldMorph} instance. Its submorphs are windows, menus, the
@@ -608,7 +608,7 @@ morph
    morphPosition: 0 @@ (area height // 2);
    morphExtent: extent x @@ (2 / 3 * extent y).
 "Open a transcript for logs"
-TranscriptWindow openTranscript
+Transcript open
    morphPosition: 0 @@ (area height // 2 + (2 / 3 * extent y));
    morphExtent: extent x @@ (1 / 3 * extent y).}
 
