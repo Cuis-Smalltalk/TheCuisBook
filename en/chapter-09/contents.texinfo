@@ -514,14 +514,19 @@ handling.
 @figure{Environment of an image started with the set up script,ch10-ImageSetUp,12}
 
 @cindex morph @subentry world
-Let's start by removing the open windows:
+Let's start by removing the open windows.
+The code is placed in a block which is sent the message `#fork`
+in order to wait for the environment to be properly initialized.
 
-@smalltalkExample{| list |
-"Delete all windows but the taskbar"
-self runningWorld doOneCycleNow.
-list @assign{} UISupervisor ui submorphs reject: [:aMorph |
-   aMorph is: #TaskbarMorph].
-list do: [:each | each delete].}
+@smalltalkExample{| world | 
+world @assign{} UISupervisor ui.
+[
+    | area extent morph | "used later"
+    UISupervisor whenUIinSafeState: [
+        children @assign{} world submorphs reject: [:aMorph | aMorph is: #TaskbarMorph].
+        children do: [:child | child delete].
+    ]
+] fork
 
 The whole user interface world of @cuis{} is a kind of Morph, a
 @class{WorldMorph} instance. Its submorphs are windows, menus, the
@@ -531,10 +536,10 @@ with the @msg{ui} message. Once we select all the morphs in the world
 but the taskbar -- really @msg{reject:} it -- we @msg{delete} them
 from the world.
 
-Next, we change the preferences:
+Next, we change the preferences.
+Place the following code after the line above that deletes the children.
 
-@smalltalkExample{| list morph |
-../..
+@smalltalkExample{
 "Change to Dark theme"
 Feature require: #'Theme-Themes'.
 DarkTheme beCurrent.
@@ -561,8 +566,9 @@ occupied by the taskbar, so we need to tweak its answer. Then we
 compute a quarter of this free area extent (half in width and half
 in height make a quarter of the whole free area):
 
-@smalltalkExample{| list morph area extent |
-../..
+Place the following code after the previous code.
+
+@smalltalkExample{
 "Compute the available free space for windows placement"
 area @assign{} RealEstateAgent maximumUsableArea
    extendBy: 0 @@ morph morphHeight negated.
@@ -572,14 +578,14 @@ Now we are ready to install a few tools. First three browsers each
 occupying a quarter of the screen:
 
 @smalltalkExample{"Open a few System Browsers"
-BrowserWindow openBrowser
+Browser open
    morphPosition: 0 @@ 0;
    morphExtent: extent.
-BrowserWindow openBrowser
+Browser open
    morphPosition: area width // 2 @@ 0;
    morphExtent: extent.
 "Open a System Browser on a specific class"
-morph @assign{} BrowserWindow openBrowser
+morph @assign{} Browser open
    morphPosition: area extent // 2;
    morphExtent: extent.
 morph model setClass: Integer selector: nil.}
@@ -590,8 +596,10 @@ installed with some default contents. We need to hack a bit because
 when asking for a new Workspace, @cuis{} does not answer the created
 instance, we have to search it in the windows of the world.
 
+Place the following code after the previous code.
+
 @smalltalkExample{"Open a Workspace with some default contents"
-morph @assign{} Workspace openWorkspace.
+morph @assign{} Workspace open.
 morph model actualContents: '"Some code"
 1 + 2.
 "Other code"
