@@ -31,7 +31,7 @@ H. Fernandes with K. Dickey & J. Vuletich
 
 
 @macro thanks
-Thanks to Matt Armstrong, Ezequiel Birman, Michael Khol, Szabolcs
+Thanks to Matt Armstrong, Ezequiel Birman, Vanessa Freudenberg, Michael Khol, Szabolcs
 Komáromi, David Lewis, John McGarey, Mariano Montone, Ricardo Pacheco,
 Barry Perryman, Tommy Pettersson, Bernhard Pieber, Will Plusnick, Mauro
 Rizzi, Stephen Smith, Ignacio Sniechowski & Mark Volkmann for the
