@@ -219,6 +219,21 @@
  suceeding messages to the new BoxedMorph instance, not the BoxedMorph
  class.
 
+To better understand the differences between these message cascades,
+observe the result of the three statements below:
+
+@smallexample
+3 + 4 squared
+@result{} 19
+
+3 + 4 ; squared
+@result{} 9
+
+3 + 4 :: squared
+@result{} 49
+@end smallexample
+
+
  @item Compound Literal
 
  Backticks (@smalltalk{`}) can be used to create compound literals at compile time.

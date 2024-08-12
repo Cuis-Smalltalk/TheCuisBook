@@ -18,7 +18,7 @@ valuable.
 
 
 
-Compilation : August 4, 2024
+Compilation : August 12, 2024
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -68,6 +68,7 @@ Complete license: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 <style type="text/css">
 <!--
 a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+div.example {margin-left: 3.2em}
 span:hover a.copiable-link {visibility: visible}
 -->
 </style>
@@ -324,6 +325,21 @@ Next: <a href="The-Exercises.html" accesskey="n" rel="next">The Exercises</a>, P
  suceeding messages to the new BoxedMorph instance, not the BoxedMorph
  class.
 </p>
+<p>To better understand the differences between these message cascades,
+observe the result of the three statements below:
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted">3 + 4 squared
+&rArr; 19
+
+3 + 4 ; squared
+&rArr; 9
+
+3 + 4 :: squared
+&rArr; 49
+</pre></div>
+
+
 </dd>
 <dt><strong class="strong">Compound Literal</strong></dt>
 <dd>
