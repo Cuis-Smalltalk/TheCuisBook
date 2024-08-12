@@ -33,7 +33,7 @@
    @item @smalltalk{@U{2191} true}, @smalltalk{^ true}                     @tab @tab return the value true
    @item @smalltalk{Transcript show: 'hello'. Transcript cr} @tab @tab expression separator (.)
    @item @smalltalk{Transcript show: 'hello'; cr} @tab @tab message cascade (;)
-   @item @smalltalk{BoxedMorph new :: color: Color blue; openInWorld}      @tab @tab message cascade (::)
+   @item @smalltalk{BoxedMorph new :: color: Color blue; openInWorld}      @tab @tab message chain (::)
    @item @smalltalk{`@{ 3@@4 . 56 . 'click me'@}`}   @tab @tab the compound literal @smalltalk{#(3@@4 56 'click me')}
 @end multitable
 @end float
@@ -205,21 +205,23 @@
 
  @cindex cascade of messages
  @item Cascades.
+ @cindex chain of messages
+ @item Chains.
 
- There are two kinds of message cascades.
+ There are two kinds of message compositions, cascade and chain.
 
- Semicolons can be used to send a cascade of messages to the original 
+ Semicolons can be used to send a series of messages to the original 
  receiver. In @smalltalk{Transcript show: 'hello'; cr} we first send
  the keyword message @msg{show: 'hello'} to the receiver
  @class{Transcript}, and then we send the unary message @msg{cr} to
  the same receiver.
 
- It is sometimes useful to send messages to the @emph{result} of a message send.
+ It is sometimes useful to send a series of messages to the @emph{result} of a message send.
  In @smalltalk{ BoxedMorph new :: color: Color blue; openInWorld. } we send
  suceeding messages to the new BoxedMorph instance, not the BoxedMorph
  class.
 
-To better understand the differences between these message cascades,
+To better understand the differences between message cascade and chain,
 observe the result of the three statements below:
 
 @smallexample

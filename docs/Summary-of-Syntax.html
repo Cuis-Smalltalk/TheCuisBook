@@ -118,7 +118,7 @@ Next: <a href="The-Exercises.html" accesskey="n" rel="next">The Exercises</a>, P
 <tr><td width="49%"><code class="code">&#x2191; true</code>, <code class="code">^ true</code></td><td width="1%"></td><td width="50%">return the value true</td></tr>
 <tr><td width="49%"><code class="code">Transcript show: 'hello'. Transcript cr</code></td><td width="1%"></td><td width="50%">expression separator (.)</td></tr>
 <tr><td width="49%"><code class="code">Transcript show: 'hello'; cr</code></td><td width="1%"></td><td width="50%">message cascade (;)</td></tr>
-<tr><td width="49%"><code class="code">BoxedMorph new :: color: Color blue; openInWorld</code></td><td width="1%"></td><td width="50%">message cascade (::)</td></tr>
+<tr><td width="49%"><code class="code">BoxedMorph new :: color: Color blue; openInWorld</code></td><td width="1%"></td><td width="50%">message chain (::)</td></tr>
 <tr><td width="49%"><code class="code">`{ 3@4 . 56 . 'click me'}`</code></td><td width="1%"></td><td width="50%">the compound literal <code class="code">#(3@4 56 'click me')</code></td></tr>
 </tbody>
 </table>
@@ -311,21 +311,24 @@ Next: <a href="The-Exercises.html" accesskey="n" rel="next">The Exercises</a>, P
 <a class="index-entry-id" id="index-cascade-of-messages-1"></a>
 </dd>
 <dt><strong class="strong">Cascades.</strong></dt>
+<dd><a class="index-entry-id" id="index-chain-of-messages"></a>
+</dd>
+<dt><strong class="strong">Chains.</strong></dt>
 <dd>
-<p>There are two kinds of message cascades.
+<p>There are two kinds of message compositions, cascade and chain.
 </p>
-<p>Semicolons can be used to send a cascade of messages to the original 
+<p>Semicolons can be used to send a series of messages to the original 
  receiver. In <code class="code">Transcript show: 'hello'; cr</code> we first send
  the keyword message <code class="code">#show: 'hello'</code> to the receiver
  <code class="code">Transcript</code>, and then we send the unary message <code class="code">#cr</code> to
  the same receiver.
 </p>
-<p>It is sometimes useful to send messages to the <em class="emph">result</em> of a message send.
+<p>It is sometimes useful to send a series of messages to the <em class="emph">result</em> of a message send.
  In <code class="code"> BoxedMorph new :: color: Color blue; openInWorld. </code> we send
  suceeding messages to the new BoxedMorph instance, not the BoxedMorph
  class.
 </p>
-<p>To better understand the differences between these message cascades,
+<p>To better understand the differences between message cascade and chain,
 observe the result of the three statements below:
 </p>
 <div class="example smallexample">
