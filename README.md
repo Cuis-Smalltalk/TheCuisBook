@@ -9,7 +9,7 @@ examples then exercises with solutions in annexes.
 
 HTML - https://cuis-smalltalk.github.io/TheCuisBook/
 
-PDF - https://github.com/Cuis-Smalltalk/TheCuisBook/releases/download/latestpdfbuild/TheCuisBook.pdf
+PDF - https://github.com/Cuis-Smalltalk/TheCuisBook/releases
 
 
 ## License 
