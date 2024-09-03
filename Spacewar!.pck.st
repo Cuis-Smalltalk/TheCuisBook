@@ -1,6 +1,6 @@
 'From Cuis6.0 [latest update: #6154] on 27 January 2024 at 5:42:28 pm'!
 'Description SpaceWar!! game code'!
-!provides: 'Spacewar!!' 1 96!
+!provides: 'Spacewar!!' 1 97!
 SystemOrganization addCategory: #'Spacewar!!'!
 
 
@@ -152,7 +152,7 @@ isGoingOuterSpace
 !Mobile methodsFor: 'testing' stamp: 'jmv 10/28/2021 15:04:22'!
 isInOuterSpace
 "Is the mobile located in the outer space? (outside of the game play area)"
-	^(owner morphLocalBounds containsPoint: self morphPosition) not! !
+	^(owner localBounds containsPoint: self morphPosition) not! !
 
 !Mobile methodsFor: 'drawing' stamp: 'hlsf 8/23/2021 11:50:43'!
 drawOn: canvas polygon: vertices
@@ -166,7 +166,7 @@ drawOn: canvas polygon: vertices
 			color: color] ! !
 
 !Mobile methodsFor: 'geometry' stamp: 'jmv 10/28/2021 14:53:01'!
-morphLocalBounds
+localBounds
 
 	^Rectangle encompassing: self class vertices! !
 
@@ -282,7 +282,7 @@ teleport: aShip
 "Teleport a ship at a random location"
 	| area randomCoordinate |
 	aShip resupply.
-	area _ self morphLocalBounds insetBy: 20.
+	area _ self localBounds insetBy: 20.
 	randomCoordinate _ [(area left to: area right) atRandom].
 	aShip 
 		velocity: 0@0;
@@ -330,7 +330,7 @@ collisionsTorpedoesStar
 !SpaceWar methodsFor: 'drawing' stamp: 'hlsf 10/1/2020 15:45:54'!
 drawOn: aCanvas
 	aCanvas
-		fillRectangle: self morphLocalBounds
+		fillRectangle: self localBounds
 		color: color! !
 
 !SpaceWar methodsFor: 'event handling testing' stamp: 'hlsf 11/1/2020 10:03:57'!
@@ -422,7 +422,7 @@ wantsSteps
 	^ true! !
 
 !SpaceWar methodsFor: 'geometry' stamp: 'hlsf 2/16/2023 11:38:27'!
-morphLocalBounds
+localBounds
 
 	^ -300 @ -300 extent: 600@600! !
 
@@ -445,7 +445,7 @@ drawOn: canvas
 		fillColor: Color yellow ! !
 
 !CentralStar methodsFor: 'geometry' stamp: 'jmv 10/28/2021 14:55:55'!
-morphLocalBounds
+localBounds
 
 	^Rectangle center: 0@0 extent: self morphExtent! !
 SpaceShip initialize!
