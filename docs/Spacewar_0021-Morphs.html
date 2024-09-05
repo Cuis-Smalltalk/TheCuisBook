@@ -18,7 +18,7 @@ valuable.
 
 
 
-Compilation : August 12, 2024
+Compilation : September 5, 2024
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -363,19 +363,19 @@ morph&rsquo;s way of accessing the mobile&rsquo;s position:
 <p>Now we should add the two methods to detect when a mobile is heading
 off into deep space.
 </p>
-<p>But first we define the method <code class="code">morphLocalBounds</code> in each of
+<p>But first we define the method <code class="code">localBounds</code> in each of
 our Morph objects. It returns a <code class="code">Rectangle</code> instance defined in
 the Morph coordinates by its origin and extent:
 </p>
 <div class="float" id="boundMorph">
 <div class="example smallexample">
-<pre class="example-preformatted">SpaceWar&gt;&gt;morphLocalBounds
+<pre class="example-preformatted">SpaceWar&gt;&gt;localBounds
    ^ -300 @ -300 extent: 600 @ 600
 
-CentralStar&gt;&gt;morphLocalBounds
+CentralStar&gt;&gt;localBounds
    ^ Rectangle center: 0 @ 0 extent: self morphExtent
 
-Mobile&gt;&gt;morphLocalBounds
+Mobile&gt;&gt;localBounds
    ^ Rectangle encompassing: self class vertices
 </pre></div>
 <div class="caption"><p><strong class="strong">Example 6.7: </strong>Bounds of our Morph objects</p></div></div>
@@ -384,7 +384,7 @@ Mobile&gt;&gt;morphLocalBounds
 <pre class="example-preformatted">Mobile&gt;&gt;isInOuterSpace
 &quot;Is the mobile located in the outer space? (outside of the game
 play area)&quot;
-   ^ (owner morphLocalBounds containsPoint: self morphPosition) not
+   ^ (owner localBounds containsPoint: self morphPosition) not
 
 Mobile&gt;&gt;isGoingOuterSpace
 &quot;is the mobile going crazy in the direction of the outer space?&quot;

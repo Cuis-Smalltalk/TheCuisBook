@@ -565,25 +565,25 @@ Mobile>>update: t
 Now we should add the two methods to detect when a mobile is heading
 off into deep space.
 
-But first we define the method @method{morphLocalBounds} in each of
+But first we define the method @method{localBounds} in each of
 our Morph objects. It returns a @class{Rectangle} instance defined in
 the Morph coordinates by its origin and extent:
 
 @smalltalkExampleCaption{Bounds of our Morph objects,boundMorph,
-SpaceWar>>morphLocalBounds
+SpaceWar>>localBounds
    @return{} -300 @@ -300 extent: 600 @@ 600
 
-CentralStar>>morphLocalBounds
+CentralStar>>localBounds
    @return{} Rectangle center: 0 @@ 0 extent: self morphExtent
 
-Mobile>>morphLocalBounds
+Mobile>>localBounds
    @return{} Rectangle encompassing: self class vertices}
 
 @smalltalkExampleCaption{Test when a mobile is ``spaced out'',mobileDeepSpace,
 Mobile>>isInOuterSpace
 "Is the mobile located in the outer space? (outside of the game
 play area)"
-   @return{} (owner morphLocalBounds containsPoint: self morphPosition) not
+   @return{} (owner localBounds containsPoint: self morphPosition) not
 
 Mobile>>isGoingOuterSpace
 "is the mobile going crazy in the direction of the outer space?"
