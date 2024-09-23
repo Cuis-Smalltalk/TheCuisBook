@@ -33,7 +33,7 @@
    @item @smalltalk{@U{2191} true}, @smalltalk{^ true}                     @tab @tab return the value true
    @item @smalltalk{Transcript show: 'hello'. Transcript cr} @tab @tab expression separator (.)
    @item @smalltalk{Transcript show: 'hello'; cr} @tab @tab message cascade (;)
-   @item @smalltalk{BoxedMorph new :: color: Color blue; openInWorld}      @tab @tab message chain (::)
+   @item @smalltalk{ColoredBoxMorph new :: color: Color blue; openInWorld}      @tab @tab message chain (::)
    @item @smalltalk{`@{ 3@@4 . 56 . 'click me'@}`}   @tab @tab the compound literal @smalltalk{#(3@@4 56 'click me')}
 @end multitable
 @end float
@@ -217,8 +217,8 @@
  the same receiver.
 
  It is sometimes useful to send a series of messages to the @emph{result} of a message send.
- In @smalltalk{ BoxedMorph new :: color: Color blue; openInWorld. } we send
- suceeding messages to the new BoxedMorph instance, not the BoxedMorph
+ In @smalltalk{ ColoredBoxMorph new :: color: Color blue; openInWorld. } we send
+ suceeding messages to the new ColoredBoxMorph instance, not the ColoredBoxMorph
  class.
 
 To better understand the differences between message cascade and chain,

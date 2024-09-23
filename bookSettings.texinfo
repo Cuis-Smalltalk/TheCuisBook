@@ -9,9 +9,9 @@
 @finalout
 @setfilename TheCuisBook.info
 @c @afourwide
-@c @afourlatex
+@afourlatex
 @c 7x9.25 inches 17.8x23.5 cm
-@smallbook
+@c @smallbook
 
 @c Macro definitions
 @macro alanQuoteAboutCuis
