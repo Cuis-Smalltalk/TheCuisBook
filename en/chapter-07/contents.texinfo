@@ -16,7 +16,7 @@ gave an overview of Morphs and their interactive behavior. This
 chapter deals with how Morphs are built, how to create new Morphs and
 what rules they follow.
 
-@cindex moprh @subentry legacy
+@cindex morph @subentry legacy
 The User Interface framework in @cuis{} is called Morphic. Morphic was
 originally created by Randy Smith and John Maloney as the
 @url{https://bibliography.selflanguage.org/_static/self4.0UserInterface.pdf,,UI
