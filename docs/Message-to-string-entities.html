@@ -6,19 +6,19 @@
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
-Copyright © 2020, 2021, 2022, 2023, 2024 H. Fernandes with K. Dickey & J. Vuletich
+Copyright © 2020, 2021, 2022, 2023, 2024, 2025 H. Fernandes with K. Dickey & J. Vuletich
 
 
 Thanks to Matt Armstrong, Ezequiel Birman, Vanessa Freudenberg, Michael Khol, Szabolcs
 Komáromi, David Lewis, John McGarey, Mariano Montone, Ricardo Pacheco,
 Barry Perryman, Tommy Pettersson, Bernhard Pieber, Will Plusnick, Mauro
-Rizzi, Stephen Smith, Ignacio Sniechowski & Mark Volkmann for the
+Rizzi, Stephen Smith, Ignacio Sniechowski, Adam Teichert & Mark Volkmann for the
 reviews of the book, suggestions and borrowed texts. Your help is very
 valuable.
 
 
 
-Compilation : September 5, 2024
+Compilation : March 9, 2025
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -88,8 +88,8 @@ Next: <a href="Messages-to-number-entities.html" accesskey="n" rel="next">Messag
 <hr>
 <h3 class="section" id="Message-to-string-entities-1"><span>2.3 Message to string entities<a class="copiable-link" href="#Message-to-string-entities-1"> &para;</a></span></h3>
 <a class="index-entry-id" id="index-string-character-access"></a>
-<a class="index-entry-id" id="index-string-Unicode"></a>
-<a class="index-entry-id" id="index-Unicode"></a>
+<a class="index-entry-id" id="index-string-unicode"></a>
+<a class="index-entry-id" id="index-unicode"></a>
 <p>As previously stated, a <code class="code">String</code> is a sequence of <code class="code">Character</code> 
 elements, and represents plain Text (without any formatting).
 </p>
@@ -153,12 +153,12 @@ asked for their <abbr class="acronym">ASCII</abbr> code. Conversely, given an
 <div class="example smallexample">
 <pre class="example-preformatted">$A asciiValue
 &rArr; 65
-Character asciiValue: 65 + 25
+Character codePoint: 65 + 25
 &rArr; $Z
 </pre></div>
 
-<a class="index-entry-id" id="index-character-Unicode"></a>
-<a class="index-entry-id" id="index-Unicode-1"></a>
+<a class="index-entry-id" id="index-character-unicode"></a>
+<a class="index-entry-id" id="index-unicode-1"></a>
 <p>But Characters that are not part of <abbr class="acronym">ASCII</abbr> don&rsquo;t have an
 <abbr class="acronym">ASCII</abbr>. In general, it is better to use Unicode code points
 instead:
@@ -166,11 +166,11 @@ instead:
 <div class="example smallexample">
 <pre class="example-preformatted">$A codePoint
 &rArr; 65
-UnicodeCodePoint codePoint: 65 + 25
+Character codePoint: 65 + 25
 &rArr; $Z
 $φ codePoint
 &rArr; 966
-UnicodeCodePoint codePoint: 966
+Character codePoint: 966
 &rArr; $φ
 </pre></div>
 

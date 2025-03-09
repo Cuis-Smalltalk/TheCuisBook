@@ -6,19 +6,19 @@
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
-Copyright © 2020, 2021, 2022, 2023, 2024 H. Fernandes with K. Dickey & J. Vuletich
+Copyright © 2020, 2021, 2022, 2023, 2024, 2025 H. Fernandes with K. Dickey & J. Vuletich
 
 
 Thanks to Matt Armstrong, Ezequiel Birman, Vanessa Freudenberg, Michael Khol, Szabolcs
 Komáromi, David Lewis, John McGarey, Mariano Montone, Ricardo Pacheco,
 Barry Perryman, Tommy Pettersson, Bernhard Pieber, Will Plusnick, Mauro
-Rizzi, Stephen Smith, Ignacio Sniechowski & Mark Volkmann for the
+Rizzi, Stephen Smith, Ignacio Sniechowski, Adam Teichert & Mark Volkmann for the
 reviews of the book, suggestions and borrowed texts. Your help is very
 valuable.
 
 
 
-Compilation : September 5, 2024
+Compilation : March 9, 2025
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -118,7 +118,7 @@ Next: <a href="The-Exercises.html" accesskey="n" rel="next">The Exercises</a>, P
 <tr><td width="49%"><code class="code">&#x2191; true</code>, <code class="code">^ true</code></td><td width="1%"></td><td width="50%">return the value true</td></tr>
 <tr><td width="49%"><code class="code">Transcript show: 'hello'. Transcript cr</code></td><td width="1%"></td><td width="50%">expression separator (.)</td></tr>
 <tr><td width="49%"><code class="code">Transcript show: 'hello'; cr</code></td><td width="1%"></td><td width="50%">message cascade (;)</td></tr>
-<tr><td width="49%"><code class="code">BoxedMorph new :: color: Color blue; openInWorld</code></td><td width="1%"></td><td width="50%">message chain (::)</td></tr>
+<tr><td width="49%"><code class="code">ColoredBoxMorph new :: color: Color blue; openInWorld</code></td><td width="1%"></td><td width="50%">message chain (::)</td></tr>
 <tr><td width="49%"><code class="code">`{ 3@4 . 56 . 'click me'}`</code></td><td width="1%"></td><td width="50%">the compound literal <code class="code">#(3@4 56 'click me')</code></td></tr>
 </tbody>
 </table>
@@ -324,8 +324,8 @@ Next: <a href="The-Exercises.html" accesskey="n" rel="next">The Exercises</a>, P
  the same receiver.
 </p>
 <p>It is sometimes useful to send a series of messages to the <em class="emph">result</em> of a message send.
- In <code class="code"> BoxedMorph new :: color: Color blue; openInWorld. </code> we send
- suceeding messages to the new BoxedMorph instance, not the BoxedMorph
+ In <code class="code"> ColoredBoxMorph new :: color: Color blue; openInWorld. </code> we send
+ suceeding messages to the new ColoredBoxMorph instance, not the ColoredBoxMorph
  class.
 </p>
 <p>To better understand the differences between message cascade and chain,

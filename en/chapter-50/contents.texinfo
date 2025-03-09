@@ -310,14 +310,14 @@ far:
 @subheading @ref{decodeCipher}
 @smallexample
 'Zpv!bsf!b!cptt' collect: [:c |
-   (c asciiValue - 1) asCharacter]
+   Character codePoint: c asciiValue - 1]
 @result{} 'You are a boss' 
 @end smallexample
 
 @subheading @ref{alphabetCipher}
 @smallexample
 ($A to: $Z) collect: [:c |
-   (c asciiValue - 65 + 3 \\ 26 + 65) asCharacter]
+   Character codePoint: c asciiValue - 65 + 3 \\ 26 + 65]
 @end smallexample
 
 Each character from A to Z is referenced by the @smalltalk{c} block
@@ -344,14 +344,14 @@ In the solution of @ref{alphabetCipher}, we just need to replace the
 characters interval with a string:
 @smallexample
 'SMALLTALKEXPRESSION' collect: [:c |
-   (c asciiValue - 65 + 3 \\ 26 + 65) asCharacter]
+   Character codePoint: c asciiValue - 65 + 3 \\ 26 + 65]
 @result{} 'VPDOOWDONHASUHVVLRQ' 
 @end smallexample
 
 @subheading @ref{decodeCaesar}
 @smallexample
   'DOHDMDFWDHVW' collect: [:c |
-    (c asciiValue - 65 - 3 \\ 26 + 65) asCharacter]
+    Character codePoint: c asciiValue - 65 - 3 \\ 26 + 65]
 @result{} 'ALEAJACTAEST'
 @end smallexample
 

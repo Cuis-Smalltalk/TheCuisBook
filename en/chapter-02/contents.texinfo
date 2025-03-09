@@ -186,8 +186,8 @@ return the object to which a message is sent, in this case, the
 @node Message to string entities
 @section Message to string entities
 @cindex string @subentry character access
-@cindex string @subentry Unicode
-@cindex Unicode
+@cindex string @subentry unicode
+@cindex unicode
 As previously stated, a @class{String} is a sequence of @class{Character} 
 elements, and represents plain Text (without any formatting).
 
@@ -238,22 +238,22 @@ asked for their @acronym{ASCII} code. Conversely, given an
 
 @smalltalkExample{$A asciiValue
 @result{} 65
-Character asciiValue: 65 + 25
+Character codePoint: 65 + 25
 @result{} $Z}
 
-@cindex character @subentry Unicode
-@cindex Unicode
+@cindex character @subentry unicode
+@cindex unicode
 But Characters that are not part of @acronym{ASCII} don't have an
 @acronym{ASCII}. In general, it is better to use Unicode code points
 instead:
 
 @smalltalkExample{$A codePoint
 @result{} 65
-UnicodeCodePoint codePoint: 65 + 25
+Character codePoint: 65 + 25
 @result{} $Z
 $φ codePoint
 @result{} 966
-UnicodeCodePoint codePoint: 966
+Character codePoint: 966
 @result{} $φ}
 
 @cindex string @subentry @method{shuffled}

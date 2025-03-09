@@ -6,19 +6,19 @@
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
-Copyright © 2020, 2021, 2022, 2023, 2024 H. Fernandes with K. Dickey & J. Vuletich
+Copyright © 2020, 2021, 2022, 2023, 2024, 2025 H. Fernandes with K. Dickey & J. Vuletich
 
 
 Thanks to Matt Armstrong, Ezequiel Birman, Vanessa Freudenberg, Michael Khol, Szabolcs
 Komáromi, David Lewis, John McGarey, Mariano Montone, Ricardo Pacheco,
 Barry Perryman, Tommy Pettersson, Bernhard Pieber, Will Plusnick, Mauro
-Rizzi, Stephen Smith, Ignacio Sniechowski & Mark Volkmann for the
+Rizzi, Stephen Smith, Ignacio Sniechowski, Adam Teichert & Mark Volkmann for the
 reviews of the book, suggestions and borrowed texts. Your help is very
 valuable.
 
 
 
-Compilation : September 5, 2024
+Compilation : March 9, 2025
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -219,19 +219,7 @@ need to name something uniquely.
 &rArr; true
 </pre></div>
 
-<p>Now you know.  A symbol can&rsquo;t be duplicated nor changed.
-</p>
-<a class="index-entry-id" id="index-string-Unicode-1"></a>
-<a class="index-entry-id" id="index-Unicode-2"></a>
-<blockquote class="indentedblock">
-<p>&nbsp;<img class="image" src="note.png" alt="note">
-In Cuis-Smalltalk, strings with characters not part of the <abbr class="acronym">ASCII</abbr> table are usually instances of <code class="code">UnicodeString</code>.
-In the same way, you may get an instance of <code class="code">UnicodeSymbol</code>  and not <code class="code">Symbol</code>, or <code class="code">UnicodeCodePoint</code> and not <code class="code">Character</code>. You usually don&rsquo;t need to care about this. The <abbr class="acronym">ASCII</abbr> and Unicode classes provide the same services.
-</p></blockquote>
-
-
-
-<p>Symbols can contain space characters:
+<p>Now you know.  A symbol can&rsquo;t be duplicated nor changed. Symbols can contain space characters:
 </p>
 <div class="example smallexample">
 <pre class="example-preformatted">'hello my friend' asSymbol

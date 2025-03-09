@@ -147,16 +147,7 @@ In the example below, observe the same behavior with string:
 #hello  == #hello copy
 @result{} true}
 
-Now you know.  A symbol can't be duplicated nor changed.
-
-@cindex string @subentry Unicode
-@cindex Unicode
-@cuisNote{In @cuis{}, strings with characters not part of the @acronym{ASCII} table are usually instances of @class{UnicodeString}.
-In the same way, you may get an instance of @class{UnicodeSymbol}  and not @class{Symbol}, or @class{UnicodeCodePoint} and not @class{Character}. You usually don't need to care about this. The @acronym{ASCII} and Unicode classes provide the same services.}
-
-
-
-Symbols can contain space characters:
+Now you know.  A symbol can't be duplicated nor changed. Symbols can contain space characters:
 
 @smalltalkExample{'hello my friend' asSymbol
 @result{} #'hello my friend'}
@@ -471,7 +462,7 @@ enumerated and integers are collected:
 We can shift the ASCII value, convert it back to a character, then collect
 it in a new string. It is a simple cipher:
 @smalltalkExampleCaption{Simple cipher,simpleCipher,
-'Bonjour' collect: [:c | (c asciiValue + 1) asCharacter ]
+'Bonjour' collect: [:c | Character codePoint: c asciiValue + 1 ]
 @result{} 'Cpokpvs'}
 
 @exercise{Cipher decode,decodeCipher,@emph{Write the script to decode

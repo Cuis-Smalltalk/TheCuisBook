@@ -6,19 +6,19 @@
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
-Copyright © 2020, 2021, 2022, 2023, 2024 H. Fernandes with K. Dickey & J. Vuletich
+Copyright © 2020, 2021, 2022, 2023, 2024, 2025 H. Fernandes with K. Dickey & J. Vuletich
 
 
 Thanks to Matt Armstrong, Ezequiel Birman, Vanessa Freudenberg, Michael Khol, Szabolcs
 Komáromi, David Lewis, John McGarey, Mariano Montone, Ricardo Pacheco,
 Barry Perryman, Tommy Pettersson, Bernhard Pieber, Will Plusnick, Mauro
-Rizzi, Stephen Smith, Ignacio Sniechowski & Mark Volkmann for the
+Rizzi, Stephen Smith, Ignacio Sniechowski, Adam Teichert & Mark Volkmann for the
 reviews of the book, suggestions and borrowed texts. Your help is very
 valuable.
 
 
 
-Compilation : September 5, 2024
+Compilation : March 9, 2025
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -369,7 +369,7 @@ enumerated and integers are collected:
 it in a new string. It is a simple cipher:
 </p><div class="float" id="simpleCipher">
 <div class="example smallexample">
-<pre class="example-preformatted">'Bonjour' collect: [:c | (c asciiValue + 1) asCharacter ]
+<pre class="example-preformatted">'Bonjour' collect: [:c | Character codePoint: c asciiValue + 1 ]
 &rArr; 'Cpokpvs'
 </pre></div>
 <div class="caption"><p><strong class="strong">Example 4.6: </strong>Simple cipher</p></div></div>

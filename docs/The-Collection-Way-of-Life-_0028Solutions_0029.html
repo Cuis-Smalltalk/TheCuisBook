@@ -6,19 +6,19 @@
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
-Copyright © 2020, 2021, 2022, 2023, 2024 H. Fernandes with K. Dickey & J. Vuletich
+Copyright © 2020, 2021, 2022, 2023, 2024, 2025 H. Fernandes with K. Dickey & J. Vuletich
 
 
 Thanks to Matt Armstrong, Ezequiel Birman, Vanessa Freudenberg, Michael Khol, Szabolcs
 Komáromi, David Lewis, John McGarey, Mariano Montone, Ricardo Pacheco,
 Barry Perryman, Tommy Pettersson, Bernhard Pieber, Will Plusnick, Mauro
-Rizzi, Stephen Smith, Ignacio Sniechowski & Mark Volkmann for the
+Rizzi, Stephen Smith, Ignacio Sniechowski, Adam Teichert & Mark Volkmann for the
 reviews of the book, suggestions and borrowed texts. Your help is very
 valuable.
 
 
 
-Compilation : September 5, 2024
+Compilation : March 9, 2025
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -146,14 +146,14 @@ far:
 <h4 class="subheading" id="decodeCipher-1"><span><a class="ref" href="Fun-with-collections.html#decodeCipher">Exercise 4.8</a><a class="copiable-link" href="#decodeCipher-1"> &para;</a></span></h4>
 <div class="example smallexample">
 <pre class="example-preformatted">'Zpv!bsf!b!cptt' collect: [:c |
-   (c asciiValue - 1) asCharacter]
+   Character codePoint: c asciiValue - 1]
 &rArr; 'You are a boss' 
 </pre></div>
 
 <h4 class="subheading" id="alphabetCipher-1"><span><a class="ref" href="Fun-with-collections.html#alphabetCipher">Exercise 4.9</a><a class="copiable-link" href="#alphabetCipher-1"> &para;</a></span></h4>
 <div class="example smallexample">
 <pre class="example-preformatted">($A to: $Z) collect: [:c |
-   (c asciiValue - 65 + 3 \\ 26 + 65) asCharacter]
+   Character codePoint: c asciiValue - 65 + 3 \\ 26 + 65]
 </pre></div>
 
 <p>Each character from A to Z is referenced by the <code class="code">c</code> block
@@ -178,14 +178,14 @@ the character.
 characters interval with a string:
 </p><div class="example smallexample">
 <pre class="example-preformatted">'SMALLTALKEXPRESSION' collect: [:c |
-   (c asciiValue - 65 + 3 \\ 26 + 65) asCharacter]
+   Character codePoint: c asciiValue - 65 + 3 \\ 26 + 65]
 &rArr; 'VPDOOWDONHASUHVVLRQ' 
 </pre></div>
 
 <h4 class="subheading" id="decodeCaesar-1"><span><a class="ref" href="Fun-with-collections.html#decodeCaesar">Exercise 4.11</a><a class="copiable-link" href="#decodeCaesar-1"> &para;</a></span></h4>
 <div class="example smallexample">
 <pre class="example-preformatted">  'DOHDMDFWDHVW' collect: [:c |
-    (c asciiValue - 65 - 3 \\ 26 + 65) asCharacter]
+    Character codePoint: c asciiValue - 65 - 3 \\ 26 + 65]
 &rArr; 'ALEAJACTAEST'
 </pre></div>
 

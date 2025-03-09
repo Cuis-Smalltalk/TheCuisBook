@@ -736,19 +736,19 @@ it seems:
 
 @node Kernel-Text
 @section Kernel-Text
-Notably, this category contains classes @class{Character}, @class{String} and @class{Symbol}. @class{String} instances are collections of @class{Character} instances. All these are limited to the small @acronym{ASCII} character set. The corresponding classes that can handle the much larger Unicode character set are @class{UnicodeCodePoint}, @class{UnicodeString}, and @class{UnicodeSymbol}. As stated before, the Unicode classes can also handle @acronym{ASCII}, and they are interchangeable. You usually don't need to care about which flavor (@acronym{ASCII} or Unicode) an instance actually is.
+Notably, this category contains classes @class{Character}, @class{CharacterSequence}, @class{String} and @class{Symbol}. @class{String} instances are collections of @class{Character} instances. All these are not limited to the small @acronym{ASCII} character set, indeed it can handle the much larger Unicode character set associated with a numerical Unicode Code Point. As stated before, the Unicode classes can also handle @acronym{ASCII}, and they are interchangeable. You usually don't need to care about which flavor (@acronym{ASCII} or Unicode) an instance actually is.
 
 @cindex character
-@strong{Character/UnicodeCodePoint.} An individual character is written prefixed with a ``$'', for example: @smalltalk{$A} or @smalltalk{$φ}. It can be defined with the class side method @method{codePoint:}. Note, however, that you can ask Character only about valid Characters. It is generally safer to ask UnicodeCodePoint instead:
+@cindex unicode
+@strong{Character/UnicodeCodePoint.} An individual character is written prefixed with a ``$'', for example: @smalltalk{$A} or @smalltalk{$φ}. It can be defined with the class side method @method{codePoint:}. Note, that you can ask Character about any Unicode character using its Unicode Code Point:
 
 @smalltalkExample{Character codePoint: 65 @result{} $A
-Character codePoint: 966 @result{} nil
-UnicodeCodePoint codePoint: 966 @result{} $φ}
+Character codePoint: 966 @result{} $φ}
 
 There are class-side methods for nonprintable characters:
 @smalltalk{Character tab}, @smalltalk{Character lf}, etc.
 
-Additionally, @class{UnicodeCodePoint} defines a @msg{namedCharactersMap}, that lets you enter many Unicode characters easily, like:
+Additionally, @class{Character} defines a @msg{namedCharactersMap}, that lets you enter many Unicode characters easily, like:
 
 @smalltalk{\leftright} then press spacebar.
 

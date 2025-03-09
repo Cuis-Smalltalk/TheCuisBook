@@ -6,19 +6,19 @@
 <!-- This book is for Cuis-Smalltalk (6.0#5608 or later), a free and modern
 implementation of the Smalltalk language and environment.
 
-Copyright © 2020, 2021, 2022, 2023, 2024 H. Fernandes with K. Dickey & J. Vuletich
+Copyright © 2020, 2021, 2022, 2023, 2024, 2025 H. Fernandes with K. Dickey & J. Vuletich
 
 
 Thanks to Matt Armstrong, Ezequiel Birman, Vanessa Freudenberg, Michael Khol, Szabolcs
 Komáromi, David Lewis, John McGarey, Mariano Montone, Ricardo Pacheco,
 Barry Perryman, Tommy Pettersson, Bernhard Pieber, Will Plusnick, Mauro
-Rizzi, Stephen Smith, Ignacio Sniechowski & Mark Volkmann for the
+Rizzi, Stephen Smith, Ignacio Sniechowski, Adam Teichert & Mark Volkmann for the
 reviews of the book, suggestions and borrowed texts. Your help is very
 valuable.
 
 
 
-Compilation : September 5, 2024
+Compilation : March 9, 2025
 
 Documentation source: https://github.com/Cuis-Smalltalk/TheCuisBook 
 
@@ -86,21 +86,21 @@ Next: <a href="Spacewar_0021-States-and-Behaviors.html" accesskey="n" rel="next"
 </div>
 <hr>
 <h3 class="section" id="Kernel_002dText-1"><span>3.5 Kernel-Text<a class="copiable-link" href="#Kernel_002dText-1"> &para;</a></span></h3>
-<p>Notably, this category contains classes <code class="code">Character</code>, <code class="code">String</code> and <code class="code">Symbol</code>. <code class="code">String</code> instances are collections of <code class="code">Character</code> instances. All these are limited to the small <abbr class="acronym">ASCII</abbr> character set. The corresponding classes that can handle the much larger Unicode character set are <code class="code">UnicodeCodePoint</code>, <code class="code">UnicodeString</code>, and <code class="code">UnicodeSymbol</code>. As stated before, the Unicode classes can also handle <abbr class="acronym">ASCII</abbr>, and they are interchangeable. You usually don&rsquo;t need to care about which flavor (<abbr class="acronym">ASCII</abbr> or Unicode) an instance actually is.
+<p>Notably, this category contains classes <code class="code">Character</code>, <code class="code">CharacterSequence</code>, <code class="code">String</code> and <code class="code">Symbol</code>. <code class="code">String</code> instances are collections of <code class="code">Character</code> instances. All these are not limited to the small <abbr class="acronym">ASCII</abbr> character set, indeed it can handle the much larger Unicode character set associated with a numerical Unicode Code Point. As stated before, the Unicode classes can also handle <abbr class="acronym">ASCII</abbr>, and they are interchangeable. You usually don&rsquo;t need to care about which flavor (<abbr class="acronym">ASCII</abbr> or Unicode) an instance actually is.
 </p>
 <a class="index-entry-id" id="index-character"></a>
-<p><strong class="strong">Character/UnicodeCodePoint.</strong> An individual character is written prefixed with a &ldquo;$&rdquo;, for example: <code class="code">$A</code> or <code class="code">$φ</code>. It can be defined with the class side method <code class="code">codePoint:</code>. Note, however, that you can ask Character only about valid Characters. It is generally safer to ask UnicodeCodePoint instead:
+<a class="index-entry-id" id="index-unicode-2"></a>
+<p><strong class="strong">Character/UnicodeCodePoint.</strong> An individual character is written prefixed with a &ldquo;$&rdquo;, for example: <code class="code">$A</code> or <code class="code">$φ</code>. It can be defined with the class side method <code class="code">codePoint:</code>. Note, that you can ask Character about any Unicode character using its Unicode Code Point:
 </p>
 <div class="example smallexample">
 <pre class="example-preformatted">Character codePoint: 65 &rArr; $A
-Character codePoint: 966 &rArr; nil
-UnicodeCodePoint codePoint: 966 &rArr; $φ
+Character codePoint: 966 &rArr; $φ
 </pre></div>
 
 <p>There are class-side methods for nonprintable characters:
 <code class="code">Character tab</code>, <code class="code">Character lf</code>, etc.
 </p>
-<p>Additionally, <code class="code">UnicodeCodePoint</code> defines a <code class="code">#namedCharactersMap</code>, that lets you enter many Unicode characters easily, like:
+<p>Additionally, <code class="code">Character</code> defines a <code class="code">#namedCharactersMap</code>, that lets you enter many Unicode characters easily, like:
 </p>
 <p><code class="code">\leftright</code> then press spacebar.
 </p>
